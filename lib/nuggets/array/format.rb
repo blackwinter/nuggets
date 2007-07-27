@@ -1,0 +1,97 @@
+require File.join(File.dirname(__FILE__), 'combination')
+
+class Array
+
+  # call-seq:
+  #   array % other_array => aString
+  #   array % str         => aString
+  #
+  # Format--Uses the first string in _array_ for which the corresponding
+  # combination of _other_array_ does not contain blank elements as a format
+  # specification, and returns the result of applying it to that combination
+  # (cf. String#%). Returns an empty string if _other_array_ is empty.
+  #
+  # Applies to string argument accordingly: First string in _array_ applied to
+  # _str_; empty string if _str_ is empty.
+  def %(args)
+    opts = { :sep => ', ' }
+    opts.update(pop) if last.is_a?(Hash)
+
+    default = lambda { |n|
+      ['%s'] * n * opts[:sep]
+    }
+
+    case args
+      when String
+        return (first || default[1]) % args unless
+          args.nil? || args.empty?
+      when Array
+        i = 0
+        [*args].comb_all { |x|
+          return (self[i] || default[x.size]) % x unless
+            x.empty? || x.any? { |y|
+              y.nil? || y.empty?
+            }
+
+          i += 1
+        }
+    end
+
+    ''
+  end
+
+end
+
+if $0 == __FILE__
+  [[], 'string', ''].each { |x|
+    p x
+    puts '>> ' << ['"%s"'] % x
+  }
+
+  [ ['place', 'country'],
+    ['place', ''       ],
+    ['',      'country'],
+    ['',      ''       ]
+  ].each { |x|
+    p x
+    puts '>> ' << ['%s, (%s)', '%s', '(%s)'] % x
+  }
+
+  puts '=' * 80
+
+  [ ['author', 'title', 'year'],
+    ['author', 'title', ''    ],
+    ['author', '',      'year'],
+    ['',       'title', 'year'],
+    ['author', ''     , ''    ],
+    ['',       'title', ''    ],
+    ['',       '',      'year'],
+    ['',       '',      ''    ]
+  ].each { |x|
+    p x
+    puts '>> ' << ['%s: %s (%s)', '%s: %s', '%s (%s)', '%s (%s)'] % x
+  }
+
+  puts '=' * 80
+
+  [ ['1', '2', '3', '4'],
+    ['1', '2', '3', '' ],
+    ['1', '2', '',  '4'],
+    ['1', '',  '3', '4'],
+    ['',  '2', '3', '4'],
+    ['1', '2', '',  '' ],
+    ['1', '',  '3', '' ],
+    ['1', '',  '',  '4'],
+    ['',  '2', '3', '' ],
+    ['',  '2', '',  '4'],
+    ['',  '',  '3', '4'],
+    ['1', '',  '',  '' ],
+    ['',  '2', '',  '' ],
+    ['',  '',  '3', '' ],
+    ['',  '',  '',  '4'],
+    ['',  '',  '',  '' ]
+  ].each { |x|
+    p x
+    puts '>> ' << [{ :sep => ':' }] % x
+  }
+end

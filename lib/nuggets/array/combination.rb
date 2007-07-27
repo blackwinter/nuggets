@@ -1,34 +1,42 @@
 class Array
 
   # call-seq:
-  #   array.comb(n) { |x| ... } => nil
+  #   array.comb(n, ...) => new_array
+  #   array.comb(n, ...) { |combination| ... } => new_array
   #
-  # Yield each possible +n+-combination of _array_ to block. Based on
-  # <http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb>.
-  def comb(n = size)
-    case n
-      when 0
-        yield []
-      when (1..size)
-        self[1..-1].comb(n - 1) { |x|
-          yield([first] + x)
-        }
-        self[1..-1].comb(n) { |x|
-          yield x
-        }
-    end
-  end
+  # Returns an array of arrays of each possible +n+-combination of _array_ for
+  # each given +n+. If a block is given each +combination+ is yielded to it. Based
+  # on <http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb>.
+  def comb(*sizes)
+    # If no sizes are given, produce all!
+    sizes = (0..size).to_a.reverse if sizes.empty?
 
-  # call-seq:
-  #   array.comb_all { |x| ... } => nil
-  #
-  # Yield each possible combination of _array_ to block.
-  def comb_all
-    size.downto(0) { |i|
-      comb(i) { |x|
-        yield x
-      }
+    # Container for our combinations
+    combinations = []
+
+    # Collect combinations and, optionally, yield to block.
+    collect_and_yield = lambda { |combination|
+      combinations << combination
+
+      yield(combination) if block_given?
     }
+
+    sizes.each { |i|
+      case i
+        when 0          # Short-cut (breaks recursion)
+          collect_and_yield[[]]
+        when (1..size)  # Ignore out-of-range values
+          self[1..-1].comb(i - 1) { |combination|
+            collect_and_yield[[first] + combination]
+          }
+          self[1..-1].comb(i) { |combination|
+            collect_and_yield[combination]
+          }
+      end
+    }
+
+    # Anyway, return what we've found...
+    combinations
   end
 
 end
@@ -37,11 +45,15 @@ if $0 == __FILE__
   a = %w[a b c d]
   p a
 
+  p a.comb(3)
   a.comb(3) { |x|
     p x
   }
 
-  a.comb_all { |x|
+  p a.comb(4, 2, 4)
+
+  p a.comb
+  a.comb { |x|
     p x
   }
 end

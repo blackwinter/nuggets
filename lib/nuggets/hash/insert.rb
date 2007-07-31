@@ -17,7 +17,7 @@ class Hash
   #
   # Destructive version of #insert.
   def insert!(key, value, &block)
-    block ||= lambda { |r, s| r.merge(s) }
+    block ||= lambda { |old_val, val| old_val.merge(val) }
 
     self[key] = begin
       block[self[key], value]

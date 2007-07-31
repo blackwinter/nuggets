@@ -3,7 +3,7 @@ class String
   # call-seq:
   #   str.word_wrap(line_width) => new_str
   #
-  # Word wrap a string not exceeding max width. Based on the Ruby Facets
+  # Word wrap a string not exceeding +line_width+. Based on the Ruby Facets
   # implementation, but preserves paragraphs. Thus (save trailing newline)
   # <tt>str == str.word_wrap(str.split("\n").map { |l| l.length }.max)</tt>.
   def word_wrap(line_width = 80)

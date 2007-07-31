@@ -27,7 +27,7 @@ class Array
           args.nil? || args.empty?
       when Array
         i = 0
-        [*args].comb_all { |x|
+        [*args].comb { |x|
           return (self[i] || default[x.size]) % x unless
             x.empty? || x.any? { |y|
               y.nil? || y.empty?

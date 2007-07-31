@@ -4,9 +4,9 @@ class Array
   #   array.comb(n, ...) => new_array
   #   array.comb(n, ...) { |combination| ... } => new_array
   #
-  # Returns an array of arrays of each possible +n+-combination of _array_ for
-  # each given +n+. If a block is given each +combination+ is yielded to it. Based
-  # on <http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb>.
+  # Returns an array of arrays of each possible +n+-combination of _array_ for each
+  # given +n+. If a block is given, each +combination+ is yielded to it. Based on
+  # <http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb>.
   def comb(*sizes)
     # If no sizes are given, produce all!
     sizes = (0..size).to_a.reverse if sizes.empty?
@@ -21,15 +21,15 @@ class Array
       yield(combination) if block_given?
     }
 
-    sizes.each { |i|
-      case i
-        when 0          # Short-cut (breaks recursion)
+    sizes.each { |n|
+      case n
+        when 0        # Short-cut (breaks recursion)
           collect_and_yield[[]]
-        when (1..size)  # Ignore out-of-range values
-          self[1..-1].comb(i - 1) { |combination|
-            collect_and_yield[[first] + combination]
+        when 1..size  # Ignore out-of-range values
+          self[1..-1].comb(n - 1) { |combination|
+            collect_and_yield[combination.unshift(first)]
           }
-          self[1..-1].comb(i) { |combination|
+          self[1..-1].comb(n) { |combination|
             collect_and_yield[combination]
           }
       end

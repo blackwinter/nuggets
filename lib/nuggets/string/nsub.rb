@@ -30,7 +30,7 @@ class String
     
     i = 0
     gsub!(pattern) { |match|
-      (i += 1) <= count ? block.call : match
+      (i += 1) <= count ? block[match] : match
     }
   end
 

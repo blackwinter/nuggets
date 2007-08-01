@@ -1,7 +1,8 @@
 require 'rake'
 require 'rake/rdoctask'
+require 'rake/gempackagetask'
 
-desc "Generate documentation for ruby-nuggets"
+desc 'Generate documentation for ruby-nuggets'
 Rake::RDocTask.new(:doc) { |rdoc|
   rdoc.title    = 'ruby-nuggets documentation'
   rdoc.rdoc_dir = 'doc'
@@ -19,3 +20,22 @@ Rake::RDocTask.new(:doc) { |rdoc|
     'lib/**/*.rb'
   )
 }
+
+spec = Gem::Specification.new do |s|
+  s.name             = 'ruby-nuggets'
+  s.version          = '0.0.1'
+  s.author           = 'Jens Wille'
+  s.email            = 'jens.wille@uni-koeln.de'
+  s.summary          = 'Some extensions to the Ruby programming language.'
+  s.platform         = Gem::Platform::RUBY
+  s.files            = FileList['lib/**/*.rb'].to_a
+  s.require_path     = 'lib'
+  s.test_files       = Dir.glob('tests/*.rb')
+  s.has_rdoc         = true
+  s.extra_rdoc_files = %w[README COPYING ChangeLog]
+end
+
+desc 'Build gem package for ruby-nuggets'
+Rake::GemPackageTask.new(spec) do |pkg|
+  pkg.need_tar = true
+end

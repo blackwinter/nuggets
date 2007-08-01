@@ -27,12 +27,11 @@ spec = Gem::Specification.new do |s|
   s.author           = 'Jens Wille'
   s.email            = 'jens.wille@uni-koeln.de'
   s.summary          = 'Some extensions to the Ruby programming language.'
-  s.platform         = Gem::Platform::RUBY
   s.files            = FileList['lib/**/*.rb'].to_a
   s.require_path     = 'lib'
-  s.test_files       = Dir.glob('tests/*.rb')
   s.has_rdoc         = true
   s.extra_rdoc_files = %w[README COPYING ChangeLog]
+  s.rdoc_options     = %w[--line-numbers --inline-source --all -c UTF-8]
 end
 
 desc 'Build gem package for ruby-nuggets'

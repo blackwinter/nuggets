@@ -31,7 +31,7 @@ spec = Gem::Specification.new do |s|
   s.require_path     = 'lib'
   s.has_rdoc         = true
   s.extra_rdoc_files = %w[README COPYING ChangeLog]
-  s.rdoc_options     = %w[--line-numbers --inline-source --all -c UTF-8]
+  s.rdoc_options     = %w[--main README --line-numbers --inline-source --all -c UTF-8]
 end
 
 desc 'Build gem package for ruby-nuggets'

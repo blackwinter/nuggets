@@ -6,8 +6,8 @@ class String
   #
   # Returns a copy of _str_ with the _first_ +count+ occurrences of pattern
   # replaced with either +replacement+ or the value of the block.
-  def nsub(pattern, *args, &block)
-    dup.nsub!(pattern, *args, &block)
+  def nsub(*args, &block)
+    dup.nsub!(*args, &block)
   end
 
   # call-seq:
@@ -16,16 +16,23 @@ class String
   #
   # Performs the substitutions of #nsub in place, returning _str_, or +nil+ if
   # no substitutions were performed.
-  def nsub!(pattern, *args, &block)
-    if args.size == 1
-      # Only +count+ given; require block
-      count = *args
-      raise(ArgumentError, 'no block given') unless block_given?
-    else
-      # Both +replacement+ and +count+ given;
-      # ignore block (just like String#gsub does)
-      replacement, count = *args
-      block = lambda { replacement }
+  def nsub!(*args, &block)
+    case args.size
+      when 2
+        pattern = args.shift
+
+        # Only +count+ given; require block
+        count = *args
+        raise(ArgumentError, 'no block given') unless block_given?
+      when 3
+        pattern = args.shift
+
+        # Both +replacement+ and +count+ given;
+        # ignore block (just like String#gsub does)
+        replacement, count = *args
+        block = lambda { replacement }
+      else
+        raise ArgumentError, "wrong number of arguments (#{args.size} for 2-3)"
     end
     
     i = 0

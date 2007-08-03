@@ -1,13 +1,18 @@
+require 'enumerator'
+
 class String
 
   # call-seq:
   #   str.word_wrap(line_width) => new_str
   #
   # Word wrap a string not exceeding +line_width+. Based on the Ruby Facets
-  # implementation, but preserves paragraphs. Thus (save trailing newline)
+  # implementation, but preserves paragraphs. Thus
   # <tt>str == str.word_wrap(str.split("\n").map { |l| l.length }.max)</tt>.
   def word_wrap(line_width = 80)
-    dup.word_wrap!(line_width)
+    split(/(\n+)/).to_enum(:each_slice, 2).inject([]) {
+      |wrapped, (paragraph, linebreaks)|
+      wrapped << paragraph.word_wrap_paragraph!(line_width) << linebreaks
+    }.join
   end
 
   # call-seq:
@@ -15,10 +20,25 @@ class String
   #
   # As with #word_wrap, but modifies the string in place.
   def word_wrap!(line_width = 80)
-    gsub!(/\n/, "\n\n")
-    gsub!(/(.{1,#{line_width}})(?:[ \t]+|$)/, "\\1\n")
-    gsub!(/\n\n/, "\n")
-    gsub!(/\n\n/, "\n")
+    replace word_wrap(line_width)
+  end
+
+  # call-seq:
+  #   str.word_wrap_paragraph(line_width) => new_str
+  #
+  # Similar to #word_wrap, but assumes a single paragraph.
+  def word_wrap_paragraph(line_width = 80)
+    dup.word_wrap_paragraph!(line_width)
+  end
+
+  # call-seq:
+  #   str.word_wrap_paragraph!(line_width) => str
+  #
+  # Destructive version of #word_wrap_paragraph.
+  def word_wrap_paragraph!(line_width = 80)
+    gsub!(/(.{1,#{line_width}})(?:\s+|$)/, "\\1\n")
+    sub!(/\n$/, '')
+
     self
   end
 
@@ -31,9 +51,13 @@ ullamcorper non, vulputate eget, elementum quis, sapien. Quisque consequat
 porta enim. Phasellus porta libero et turpis. Ut felis.
 
 Phasellus eget est a enim rutrum accumsan. Integer nec purus. Maecenas
-facilisis urna sed arcu. Suspendisse potenti. Vestibulum lacus metus, faucibus
-sit amet, mattis non, mollis sed, pede. Aenean vitae sem nec sem euismod
-sollicitudin. Cras rhoncus.
+facilisis urna sed arcu. Suspendisse potenti.
+
+
+Vestibulum lacus metus, faucibus sit amet, mattis non, mollis sed, pede. Aenean
+vitae sem nec sem euismod sollicitudin. Cras rhoncus.
+
+
 
 Phasellus condimentum, ante a cursus dictum, lectus ipsum convallis magna, sed
 tincidunt massa eros vitae ante. Suspendisse nec sem.

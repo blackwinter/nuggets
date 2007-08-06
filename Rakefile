@@ -56,5 +56,6 @@ task :upload_gem do
     File.mtime(gem)
   }.last
 
-  sh "echo scp #{latest_gem} #{user}@#{host}:#{path}"
+  sh "scp #{latest_gem} #{user}@#{host}:#{path}/gems"
+  sh "ssh #{user}@#{host} 'index_gem_repository.rb -d #{path} -v'"
 end

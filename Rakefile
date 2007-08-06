@@ -47,7 +47,7 @@ Rake::GemPackageTask.new(spec) do |pkg|
 end
 
 desc 'Upload latest gem to gem server'
-task :upload_gem do
+task :upload_gem => [:gem] do
   host = 'prometheus.khi.uni-koeln.de'
   user = 'prometheus'
   path = '/var/www/rubygems'

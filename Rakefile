@@ -45,3 +45,16 @@ desc 'Build gem package for ruby-nuggets'
 Rake::GemPackageTask.new(spec) do |pkg|
   pkg.need_tar = true
 end
+
+desc 'Upload latest gem to gem server'
+task :upload_gem do
+  host = 'prometheus.khi.uni-koeln.de'
+  user = 'prometheus'
+  path = '/var/www/rubygems'
+
+  latest_gem = Dir.glob('pkg/*.gem').sort_by { |gem|
+    File.mtime(gem)
+  }.last
+
+  sh "echo scp #{latest_gem} #{user}@#{host}:#{path}"
+end

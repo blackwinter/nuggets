@@ -21,7 +21,7 @@ class Hash
 
     self[key] = begin
       block[self[key], value]
-    rescue NoMethodError, TypeError
+    rescue NoMethodError, TypeError => err
       unless relax
         raise err
       else

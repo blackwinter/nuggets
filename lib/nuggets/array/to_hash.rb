@@ -4,11 +4,19 @@ class Array
 
   # call-seq:
   #   array.to_h => aHash
+  #   array.to_h(value) => aHash
   #
-  # Converts _array_, being an array of two-element arrays, into a hash,
-  # preserving sub-arrays.
-  def to_hash
-    Hash[*flatten_once]
+  # If no +value+ is given, converts _array_, being an array of two-element
+  # arrays, into a hash, preserving sub-arrays. Otherwise, maps each element
+  # of _array_ to +value+.
+  def to_hash(value = default = Object.new)
+    if value == default
+      Hash[*flatten_once]
+    else
+      inject({}) { |hash, element|
+        hash.update(element => value)
+      }
+    end
   end
   alias_method :to_h, :to_hash
 
@@ -22,4 +30,8 @@ if $0 == __FILE__
   b = [[:a, [1, 2]], [:b, 3], [[:c, :d], [4, [5, 6]]]]
   p b
   p b.to_h
+
+  c = %w[a b c d]
+  p c
+  p c.to_h(1)
 end

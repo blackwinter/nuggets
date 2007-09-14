@@ -9,6 +9,10 @@ class Array
   # If no +value+ is given, converts _array_, being an array of two-element
   # arrays, into a hash, preserving sub-arrays. Otherwise, maps each element
   # of _array_ to +value+.
+  #
+  # Examples:
+  #   %w[a b c d].to_h     # => { "a" => "b", "c" => "d" }
+  #   %w[a b c d].to_h(1)  # => { "a" => 1, "b" => 1, "c" => 1, "d" => 1 }
   def to_hash(value = default = Object.new)
     if value == default
       Hash[*flatten_once]

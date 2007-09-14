@@ -1,3 +1,3 @@
-Dir.glob(__FILE__.sub(/\.rb$/, '/**/*.rb')).sort.each { |rb|
+Dir[__FILE__.sub(/\.rb\z/, '/**/*.rb')].sort.each { |rb|
   require rb
 }

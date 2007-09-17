@@ -2,6 +2,8 @@ require 'rake'
 require 'rake/rdoctask'
 require 'rake/gempackagetask'
 
+require 'lib/nuggets/version'
+
 desc 'Generate documentation for ruby-nuggets'
 Rake::RDocTask.new(:doc) { |rdoc|
   rdoc.title    = 'ruby-nuggets documentation'
@@ -23,7 +25,7 @@ Rake::RDocTask.new(:doc) { |rdoc|
 
 spec = Gem::Specification.new do |s|
   s.name             = 'ruby-nuggets'
-  s.version          = '0.0.1.' << `svnversion`.chomp[/\d+/]
+  s.version          = Nuggets::VERSION + '.' + `svnversion`.chomp[/\d+/]
   s.author           = 'Jens Wille'
   s.email            = 'jens.wille@uni-koeln.de'
   s.summary          = 'Some extensions to the Ruby programming language.'

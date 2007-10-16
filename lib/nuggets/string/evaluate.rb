@@ -44,7 +44,7 @@ if $0 == __FILE__
   s = 'bl#{a}blub'
   p s
 
-  def foo(bar)
+  def foo(bar) # :nodoc:
     a = 'ub'
     bar.evaluate(binding)
   end

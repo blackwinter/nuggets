@@ -52,7 +52,7 @@ class Array
   #   array.strictly_ascending? => true or false
   #
   # Check whether _array_ is strictly ascending.
-  def strictly_ascending?(strict = false)
+  def strictly_ascending?
     ascending?(true)
   end
 
@@ -68,7 +68,7 @@ class Array
   #   array.strictly_descending? => true or false
   #
   # Check whether _array_ is strictly descending.
-  def strictly_descending?(strict = false)
+  def strictly_descending?
     descending?(true)
   end
 

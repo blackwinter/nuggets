@@ -39,6 +39,7 @@ class Array
 
     true
   end
+  alias_method :monotonic?, :monotone?
 
   # call-seq:
   #   array.ascending? => true or false
@@ -47,6 +48,7 @@ class Array
   def ascending?(strict = false)
     monotone?(strict ? :< : :<=)
   end
+  alias_method :increasing?, :ascending?
 
   # call-seq:
   #   array.strictly_ascending? => true or false
@@ -55,6 +57,7 @@ class Array
   def strictly_ascending?
     ascending?(true)
   end
+  alias_method :strictly_increasing?, :strictly_ascending?
 
   # call-seq:
   #   array.descending? => true or false
@@ -63,6 +66,7 @@ class Array
   def descending?(strict = false)
     monotone?(strict ? :> : :>=)
   end
+  alias_method :decreasing?, :descending?
 
   # call-seq:
   #   array.strictly_descending? => true or false
@@ -71,6 +75,7 @@ class Array
   def strictly_descending?
     descending?(true)
   end
+  alias_method :strictly_decreasing?, :strictly_descending?
 
 end
 

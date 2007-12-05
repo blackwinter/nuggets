@@ -35,11 +35,16 @@ class String
   # Word wrap a string not exceeding +line_width+. Based on the Ruby Facets
   # implementation, but preserves paragraphs. Thus
   # <tt>str == str.word_wrap(str.split("\n").map { |l| l.length }.max)</tt>.
-  def word_wrap(line_width = 80)
-    split(/(\n+)/).to_enum(:each_slice, 2).inject([]) {
-      |wrapped, (paragraph, linebreaks)|
+  def word_wrap(line_width = 80, as_array = false)
+    wrapped = []
+
+    split(/(\n+)/).to_enum(:each_slice, 2).each { |paragraph, linebreaks|
       wrapped << paragraph.word_wrap_paragraph!(line_width) << linebreaks
-    }.join
+    }
+
+    wrapped = wrapped.join
+    
+    as_array ? wrapped.split("\n") : wrapped
   end
 
   # call-seq:

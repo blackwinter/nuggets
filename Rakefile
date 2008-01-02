@@ -15,7 +15,7 @@ task(:doc_spec) {{
 task(:gem_spec) {{
   :name             => 'ruby-nuggets',
   :version          => Nuggets::VERSION,
-  :summary          => 'Some extensions to the Ruby programming language',
+  :summary          => 'Some extensions to the Ruby programming language.',
   :files            => FILES + OTHER,
   :require_path     => 'lib',
   :extra_rdoc_files => RDOCS

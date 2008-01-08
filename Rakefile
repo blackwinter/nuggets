@@ -1,22 +1,20 @@
-# Utilizes global rake-tasks: alias rake="rake -r rake -R /path/to/rakelibdir"
-# (Base tasks at <http://prometheus.khi.uni-koeln.de/svn/scratch/rake-tasks/>)
+begin
+  require 'hen'
+rescue LoadError
+  abort "Please install the 'hen' gem first."
+end
 
 require 'lib/nuggets/version'
 
-FILES = FileList['lib/**/*.rb'].to_a
-RDOCS = %w[README COPYING ChangeLog]
-OTHER = FileList['[A-Z]*'].to_a
+Hen.lay! {{
+  :rubyforge => {
+    :package => 'ruby-nuggets'
+  },
 
-task(:doc_spec) {{
-  :title      => 'ruby-nuggets Application documentation',
-  :rdoc_files => RDOCS + FILES
-}}
-
-task(:gem_spec) {{
-  :name             => 'ruby-nuggets',
-  :version          => Nuggets::VERSION,
-  :summary          => 'Some extensions to the Ruby programming language.',
-  :files            => FILES + OTHER,
-  :require_path     => 'lib',
-  :extra_rdoc_files => RDOCS
+  :gem => {
+    :version     => Nuggets::VERSION,
+    :summary     => 'Some extensions to the Ruby programming language.',
+    :files       => FileList['lib/**/*.rb'].to_a,
+    :extra_files => FileList['[A-Z]*'].to_a
+  }
 }}

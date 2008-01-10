@@ -29,7 +29,7 @@ require File.join(File.dirname(__FILE__), '..', 'object', 'singleton_class')
 
 class Proc
 
-  # call.seq:
+  # call-seq:
   #   proc.bind(object) => aMethod
   #
   # Straight from Rails' ActiveSupport -- effectively binds _proc_ to +object+.

@@ -72,7 +72,7 @@ class Array
   # call-seq:
   #   array.vain? => true or false
   #
-  # Returns true if any of _array_'s elements are themselves vain.
+  # Returns true if all of _array_'s elements are themselves vain.
   def vain?
     blank? { |a| a.delete_if { |i| i.vain? } }
   end
@@ -84,7 +84,7 @@ class Hash
   # call-seq:
   #   hash.vain? => true or false
   #
-  # Returns true if any of _hash_'s values are themselves vain.
+  # Returns true if all of _hash_'s values are themselves vain.
   def vain?
     blank? { |h| h.delete_if { |k, v| v.vain? } }
   end

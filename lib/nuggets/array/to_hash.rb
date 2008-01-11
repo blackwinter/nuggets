@@ -64,7 +64,7 @@ class Array
   #   array.to_h { |element| ... } => aHash
   #
   # Same as #to_hash, but slightly optimized for speed. To use this one instead
-  # of #to_hash: <tt>class Array; alias_method :to_h, :to_hash_opt; end</tt>.
+  # of #to_hash: <tt>Array.send(:alias_method, :to_h, :to_hash_opt)</tt>.
   #
   # Benchmark (array = (1..20).to_a, N = 100_000):
   #                            user     system      total        real

@@ -30,9 +30,26 @@ class Array
   # call-seq:
   #   array.shuffle => new_array
   #
-  # Shuffles _array_ in random order.
+  # Shuffles _array_ in random order. Select a different shuffling algorithm:
+  # <tt>Array.send(:alias_method, :shuffle, :shuffle_kfy)</tt>.
   def shuffle
     sort_by { Kernel.rand }
+  end
+
+  # call-seq:
+  #   array.shuffle_knuth => new_array
+  #
+  # Non-destructive version of #shuffle_knuth!.
+  def shuffle_knuth
+    dup.shuffle_knuth!
+  end
+
+  # call-seq:
+  #   array.shuffle_kfy => new_array
+  #
+  # Non-destructive version of #shuffle_kfy!.
+  def shuffle_kfy
+    dup.shuffle_kfy!
   end
 
   # call-seq:
@@ -41,6 +58,32 @@ class Array
   # Destructive version of #shuffle.
   def shuffle!
     replace shuffle
+  end
+
+  # call-seq:
+  #   array.shuffle_knuth! => array
+  #
+  # Shuffles _array_ in random order using Knuth's algorithm.
+  def shuffle_knuth!
+    0.upto(length - 2) { |i|
+      n = i + rand(length - i)
+      self[i], self[n] = self[n], self[i]
+    }
+
+    self
+  end
+
+  # call-seq:
+  #   array.shuffle_kfy! => array
+  #
+  # Shuffles _array_ in random order using the Knuth-Fisher-Yates algorithm.
+  def shuffle_kfy!
+    (length - 1).downto(0) { |i|
+      n = rand(i + 1)
+      self[n], self[i] = self[i], self[n]
+    }
+
+    self
   end
 
 end
@@ -52,6 +95,39 @@ if $0 == __FILE__
   p a.shuffle
   p a.shuffle
 
+  p a.shuffle_knuth
+  p a.shuffle_kfy
+
   a.shuffle!
   p a
+
+  require File.join(File.dirname(__FILE__), '..', 'integer', 'factorial')
+  require File.join(File.dirname(__FILE__), '..', 'enumerable', 'minmax')
+
+  a = %w[a b c]
+  n = 100_000
+  m = a.length.f!
+  e = n / m.to_f
+  puts '%d / %d / %d / %.2f' % [a.length, n, m, e]
+
+  algorithms = %w[shuffle shuffle_knuth shuffle_kfy]
+  max = algorithms.max(:length)
+
+  algorithms.each { |algorithm|
+    score = Hash.new { |h, k| h[k] = 0 }
+
+    n.times {
+      score[a.send(algorithm)] += 1
+    }
+
+    x2 = 0
+    score.sort.each { |key, value|
+      x = value - e
+      y = x**2 / e
+      #puts '%s: %d (% .2f/%.2f)' % [key, value, x, y]
+
+      x2 += y
+    }
+    puts "%-#{max}s = %.2f (%.2f)" % [algorithm, x2, x2 / m]
+  }
 end

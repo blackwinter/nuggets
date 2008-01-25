@@ -25,40 +25,69 @@
 ###############################################################################
 #++
 
-require 'socket'
-require 'open-uri'
+require 'rubygems'
 
-module URI
+begin
+  require 'filemagic/ext'
+rescue LoadError
+  def File.content_type(path)  # :nodoc:
+    nil
+  end
+end
 
-  class << self
+begin
+  require 'mime/types'
+rescue LoadError
+  module MIME    # :nodoc:
+    class Types  # :nodoc:
+      def self.of(path)
+        []
+      end
+    end
+  end
+end
+
+require File.join(File.dirname(__FILE__), '..', 'uri', 'content_type')
+
+module Util
+
+  module ContentType
+
+    extend self
 
     # call-seq:
-    #   URI.content_type(uri) => aString or nil
+    #   ContentType.of(path) => aString or nil
     #
-    # Return the content type of +uri+, or +nil+ if not found.
-    def content_type(uri)
-      open(uri.to_s).content_type
-    rescue OpenURI::HTTPError, SocketError, Errno::ENOENT
-      nil
+    # Get the MIME-Type of the file living at +path+. Either by looking
+    # directly into the file (requires FileMagic), or, assuming +path+
+    # might denote a URI, by asking the web server (via OpenURI), or
+    # finally by just looking at the file extension (requires MIME::Types).
+    # Returns +nil+ in case no decision could be made.
+    #
+    # NOTE: This is really only useful with the filemagic and mime-types gems
+    # installed.
+    def of(path)
+      File.content_type(path) || URI.content_type(path) ||
+        ((t = MIME::Types.of(path)).empty? ? nil : t.first.content_type)
     end
 
   end
 
 end
 
+# Just a short-cut to make the code read nicer...
+ContentType = Util::ContentType
+
 if $0 == __FILE__
-  %w[
-    http://www.google.de
-    htp://www.google.de
-    www.google.de
-    http://blackwinter.de/misc/
-    http://blackwinter.de/misc/ww.png
-    http://blackwinter.de/misc/suicide_is_painless.mid
-    http://blackwinter.de/misc/expand_macros.pl.gz
-    http://blackwinter.de/misc/blanc60302523.nth
-    http://blackwinter.de/bla
-    http://blawinter.de
-  ].each { |u|
-    p [u, URI.content_type(u)]
+  [
+    __FILE__,
+    'bla/blub.jpg',
+    'bla/blub.blob',
+    'http://www.google.de',
+    'http://blackwinter.de/misc/ww.png',
+    'http://blackwinter.de/misc/ww.jpg',
+    'http://blackwinter.de/bla/blub.blob'
+  ].each { |f|
+    p [f, ContentType.of(f)]
   }
 end

@@ -25,6 +25,6 @@
 ###############################################################################
 #++
 
-Dir[File.dirname(__FILE__) + '/**/*.rb'].sort.each { |rb|
+Dir[File.dirname(__FILE__) + '/*/**/*.rb'].sort.each { |rb|
   require rb
 }

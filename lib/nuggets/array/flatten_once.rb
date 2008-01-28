@@ -30,16 +30,20 @@ class Array
   # call-seq:
   #   array.flatten_once => new_array
   #
-  # Flatten _array_ by _one_ level only.
+  # Flatten _array_ by _one_ level only. Pretty straight-forward port of David
+  # Alan Black's flattenx C implementation (though much slower, of course ;-).
   def flatten_once
-    inject([]) { |flat, element|
-      case element
-        when Array
-          flat + element
-        else
-          flat << element
+    flat = []
+
+    each { |element|
+      if element.is_a?(Array)
+        flat + element
+      else
+        flat << element
       end
     }
+
+    flat
   end
 
   # call-seq:

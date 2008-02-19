@@ -37,7 +37,7 @@ class Array
 
     each { |element|
       if element.is_a?(Array)
-        flat + element
+        flat += element
       else
         flat << element
       end

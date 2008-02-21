@@ -30,9 +30,9 @@ require File.join(File.dirname(__FILE__), 'flatten_once')
 class Array
 
   # call-seq:
-  #   array.to_h => aHash
-  #   array.to_h(value) => aHash
-  #   array.to_h { |element| ... } => aHash
+  #   array.to_hash => aHash
+  #   array.to_hash(value) => aHash
+  #   array.to_hash { |element| ... } => aHash
   #
   # If neither +value+ nor block is given, converts _array_, taken as an
   # array of key/value pairs, into a hash, preserving sub-arrays (Thus:
@@ -59,9 +59,9 @@ class Array
   alias_method :to_h, :to_hash
 
   # call-seq:
-  #   array.to_h => aHash
-  #   array.to_h(value) => aHash
-  #   array.to_h { |element| ... } => aHash
+  #   array.to_hash_opt => aHash
+  #   array.to_hash_opt(value) => aHash
+  #   array.to_hash_opt { |element| ... } => aHash
   #
   # Same as #to_hash, but slightly optimized for speed. To use this one instead
   # of #to_hash: <tt>Array.send(:alias_method, :to_h, :to_hash_opt)</tt>.

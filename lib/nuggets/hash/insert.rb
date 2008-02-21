@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007 Jens Wille                                               #
+# Copyright (C) 2007-2008 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -28,35 +28,27 @@
 class Hash
 
   # call-seq:
-  #   hash.insert(key, value) => new_hash
-  #   hash.insert(key, value) { |old_value, value| ... } => new_hash
+  #   hash.insert(other) => new_hash
+  #   hash.insert(other) { |key, old_value, new_value| ... } => new_hash
   #
-  # Inserts +value+ into _hash_ at +key+, while merging existing values at
-  # +key+ instead of just overwriting. Uses default Hash#merge or block for
-  # merging.
-  def insert(key, value, relax = true, &block)
-    dup.insert!(key, value, relax, &block) || dup
+  # Inserts +other+ into _hash_, while merging existing values instead of just
+  # overwriting. Uses default Hash#merge or block for merging.
+  def insert(other, &block)
+    block ||= lambda { |key, old_val, new_val|
+      old_val.is_a?(Hash) && new_val.is_a?(Hash) ?
+        old_val.merge(new_val, &block) : new_val
+    }
+
+    merge(other, &block)
   end
 
   # call-seq:
-  #   hash.insert!(key, value) => hash
-  #   hash.insert!(key, value) { |old_value, value| ... } => hash
+  #   hash.insert!(other) => hash
+  #   hash.insert!(other) { |key, old_value, new_value| ... } => hash
   #
   # Destructive version of #insert.
-  def insert!(key, value, relax = true, &block)
-    block ||= lambda { |old_val, val| old_val.merge(val) }
-
-    self[key] = begin
-      block[self[key], value]
-    rescue NoMethodError, TypeError => err
-      unless relax
-        raise err
-      else
-        value
-      end
-    end
-
-    self
+  def insert!(other, &block)
+    replace insert(other, &block)
   end
 
 end
@@ -65,9 +57,9 @@ if $0 == __FILE__
   h = { :a => 0, :b => { :b1 => 1, :b2 => 2 } }
   p h
 
-  p h.insert(:a, -1)
-  p h.insert(:b, :b3 => 3)
+  p h.insert(:a => -1)
+  p h.insert(:b => { :b3 => 3 })
 
-  h.insert!(:b, :b0 => 0)
+  h.insert!(:b => { :b0 => 0 })
   p h
 end

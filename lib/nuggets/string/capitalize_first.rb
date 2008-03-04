@@ -33,6 +33,7 @@ class String
   # Capitalizes the first character in +str+, but without downcasing the rest
   # like String#capitalize does.
   def capitalize_first
+    return self if empty?
     self[0..0].upcase << self[1..-1]
   end
 

@@ -25,50 +25,42 @@
 ###############################################################################
 #++
 
+require File.join(File.dirname(__FILE__), '..', 'integer', 'to_binary_s')
+
 class Integer
 
-  # Memoization container: integer => factorial(integer)
-  FACTORIAL = { 0 => 1 }
-
   # call-seq:
-  #   int.factorial => anInteger
+  #   int.to_dotted_decimal => aString
   #
-  # Calculate the factorial of _int_. To use the memoized version:
-  # <tt>Integer.send(:alias_method, :factorial, :factorial_memoized)</tt>
-  def factorial
-    (1..self).inject { |f, i| f * i }
+  # Converts _int_ to dotted-decimal notation.
+  def to_dotted_decimal
+    to_binary_s(32).unpack('a8' * 4).map { |s| s.to_i(2) }.join('.')
   end
 
-  # call-seq:
-  #   int.factorial_memoized => anInteger
-  #
-  # Calculate the factorial of _int_ with the help of memoization (Which gives
-  # a considerable speedup for repeated calculations -- at the cost of memory).
-  #
-  # WARNING: Don't try to calculate the factorial this way for a too large
-  # integer! This might well bring your system down to its knees... ;-)
-  def factorial_memoized
-    FACTORIAL[self] ||= (1..self).inject { |f, i| FACTORIAL[i] ||= f * i }
-  end
+end
 
-  alias_method :fac, :factorial
-  alias_method :f!,  :factorial
+class String
+
+  # call-seq:
+  #   str.from_dotted_decimal => anInteger
+  #
+  # Converts _str_ from dotted-decimal notation to integer.
+  def from_dotted_decimal
+    split('.').map { |i| i.to_i.to_binary_s(8) }.join.to_i(2)
+  end
 
 end
 
 if $0 == __FILE__
-  1.upto(8) { |i|
-    puts "#{i}: #{i.factorial}"
+  [2294967042, 4294967040].each { |i|
+    p i.to_binary_s(32)
+    p i.to_dotted_decimal
   }
 
-  require 'benchmark'
+  puts '#' * 34
 
-  Benchmark.bm(19) { |x|
-    [20000, 800, 300, 700, 130, 480, 9999, 9999, 25000].each { |i|
-      puts "#{i}:"
-
-      x.report('factorial')          { i.factorial          }
-      x.report('factorial_memoized') { i.factorial_memoized }
-    }
+  %w[77.47.161.3 196.101.53.1].each { |s|
+    p s
+    p s.from_dotted_decimal.to_binary_s(32)
   }
 end

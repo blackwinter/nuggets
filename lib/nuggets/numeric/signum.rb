@@ -30,7 +30,7 @@ class Numeric
   # call-seq:
   #   num.signum => -1, 0, 1
   #
-  # 
+  # Returns the sign of _num_.
   def signum
     self > 0 ? 1 : self < 0 ? -1 : 0
   end

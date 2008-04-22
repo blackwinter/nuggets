@@ -25,50 +25,23 @@
 ###############################################################################
 #++
 
-class Integer
-
-  # Memoization container: integer => factorial(integer)
-  FACTORIAL = { 0 => 1 }
+class Numeric
 
   # call-seq:
-  #   int.factorial => anInteger
+  #   num.between(min, max) => aNumeric
   #
-  # Calculate the factorial of _int_. To use the memoized version:
-  # <tt>Integer.send(:alias_method, :factorial, :factorial_memoized)</tt>
-  def factorial
-    (1..self).inject { |f, i| f * i }
-  end
+  # Cuts _num_ to the (inclusive) range of +min+ to +max+.
+  def between(min, max)
+    min, max = max, min if max < min
 
-  # call-seq:
-  #   int.factorial_memoized => anInteger
-  #
-  # Calculate the factorial of _int_ with the help of memoization (Which gives
-  # a considerable speedup for repeated calculations -- at the cost of memory).
-  #
-  # WARNING: Don't try to calculate the factorial this way for a too large
-  # integer! This might well bring your system down to its knees... ;-)
-  def factorial_memoized
-    FACTORIAL[self] ||= (1..self).inject { |f, i| FACTORIAL[i] ||= f * i }
+    self < min ? min : self > max ? max : self
   end
-
-  alias_method :fac, :factorial
-  alias_method :f!,  :factorial
 
 end
 
 if $0 == __FILE__
-  1.upto(8) { |i|
-    puts "#{i}: #{i.factorial}"
-  }
-
-  require 'benchmark'
-
-  Benchmark.bm(19) { |x|
-    [20000, 800, 300, 700, 130, 480, 9999, 9999, 25000].each { |i|
-      puts "#{i}:"
-
-      x.report('factorial')          { i.factorial          }
-      x.report('factorial_memoized') { i.factorial_memoized }
-    }
+  [123, -123, 0, 0.001, 1.23, -12.3].each { |n|
+    p n
+    p n.between(0, 10)
   }
 end

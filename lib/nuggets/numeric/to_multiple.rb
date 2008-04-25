@@ -27,34 +27,42 @@
 
 class Numeric
 
-  def positive?
-    self > 0
-  end
-
-  def negative?
-    self < 0
-  end
-
-  def non_negative?
-    !negative?
+  # call-seq:
+  #   num.to_multiple_of(target, what) => aNumeric
+  #
+  # Returns the nearest multiple of +target+ according to +what+.
+  def to_multiple_of(target, what = :round)
+    (to_f / target).send(what) * target
   end
 
   # call-seq:
-  #   num.signum => -1, 0, 1
+  #   num.round_to(target) => aNumeric
   #
-  # Returns the sign of _num_.
-  def signum
-    positive? ? 1 : negative? ? -1 : 0
+  # Rounds _num_ to the nearest multiple of +target+.
+  def round_to(target)
+     to_multiple_of(target, :round)
   end
 
-  alias_method :sign, :signum
-  alias_method :sgn,  :signum
+  # call-seq:
+  #   num.floor_to(target) => aNumeric
+  #
+  # Returns the largest multiple of +target+ less than or equal to _num_.
+  def floor_to(target)
+     to_multiple_of(target, :floor)
+  end
+
+  # call-seq:
+  #   num.ceil_to(target) => aNumeric
+  #
+  # Returns the smallest multiple of +target+ greater than or equal to _num_.
+  def ceil_to(target)
+    to_multiple_of(target, :ceil)
+  end
 
 end
 
 if $0 == __FILE__
-  [123, -123, 0, 0.001, 1.23, -12.3].each { |n|
-    p n
-    p n.sgn
+  [123, -123, 0, 0.001, 5.67, -12.3].each { |n|
+    p [n, n.round_to(10), n.floor_to(10), n.ceil_to(10)]
   }
 end

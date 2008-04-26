@@ -25,40 +25,19 @@
 ###############################################################################
 #++
 
-require 'rubygems'
-require 'amatch'
+require File.join(File.dirname(__FILE__), '..', 'enumerable', 'agrep')
 
-module Enumerable
+class IO
 
   # call-seq:
-  #   enum.agrep(pattern[, distance]) => anArray
-  #   enum.agrep(pattern[, distance]) { |obj| ... } => anArray
+  #   IO.agrep(fd, pattern[, distance]) => anArray
   #
-  # Returns an array of every element in _enum_ for which +pattern+ approximately
-  # matches +element+ (see Amatch::Levenshtein#search). If the optional +block+
-  # is supplied, each matching element is passed to it, and the block‘s result
-  # is stored in the output array.
-  def agrep(pattern, distance = 0, &block)
-    pattern = pattern.source if pattern.is_a?(Regexp)
-
-    amatch  = Amatch::Levenshtein.new(pattern)
-    matches = select { |obj| amatch.search(obj) <= distance }
-
-    block ? matches.map(&block) : matches
+  def self.agrep(fd, pattern, distance)
+    open(fd) { |io| io.agrep(pattern, distance) }
   end
 
 end
 
 if $0 == __FILE__
-  e = %w[quux quuux quix quixx]
-  p e
-
-  p e.agrep(/quux/)
-  p e.agrep(/quux/, 1)
-  p e.agrep(/quux/, 2)
-
-  p e.grep(/qu.x/)
-  p e.agrep(/qu.x/)
-
-  #p [123, 124, 1233].agrep(/123/, 1)
+  puts File.agrep(__FILE__, /calls/, 2)
 end

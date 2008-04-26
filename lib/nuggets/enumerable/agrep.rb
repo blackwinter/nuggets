@@ -38,11 +38,19 @@ module Enumerable
   # matches +element+ (see Amatch::Levenshtein#search). If the optional +block+
   # is supplied, each matching element is passed to it, and the block‘s result
   # is stored in the output array.
+  #
+  # LIMITATIONS:
+  #
+  # - Only strings are allowed as +pattern+. Regular expressions are reverted
+  #   to their respective source. (Equivalent to <tt>agrep -k</tt>)
+  # - Only works with string elements in _enum_. (Calls +to_s+ on each element)
+  # - The cost for individual error types (substitution, insertion, deletion)
+  #   cannot be adjusted. 
   def agrep(pattern, distance = 0, &block)
     pattern = pattern.source if pattern.is_a?(Regexp)
 
     amatch  = Amatch::Levenshtein.new(pattern)
-    matches = select { |obj| amatch.search(obj) <= distance }
+    matches = select { |obj| amatch.search(obj.to_s) <= distance }
 
     block ? matches.map(&block) : matches
   end

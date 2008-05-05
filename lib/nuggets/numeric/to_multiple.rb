@@ -32,7 +32,7 @@ class Numeric
   #
   # Returns the nearest multiple of +target+ according to +what+.
   def to_multiple_of(target, what = :round)
-    (to_f / target).send(what) * target
+    target.zero? ? self : (to_f / target).send(what) * target
   end
 
   # call-seq:

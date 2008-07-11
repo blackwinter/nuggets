@@ -28,14 +28,37 @@
 class Numeric
 
   # call-seq:
-  #   num.between(min, max) => aNumeric
+  #   num.limit(min, max) => aNumeric
   #
-  # Cuts _num_ to the (inclusive) range of +min+ to +max+.
-  def between(min, max)
+  # Returns +min+ if that's larger than _num_, or +max+ if that's smaller than
+  # _num_. Otherwise returns _num_.
+  def limit(min, max)
     min, max = max, min if max < min
 
-    self < min ? min : self > max ? max : self
+    self.min(min).max(max)
   end
+
+  alias_method :between, :limit
+
+  # call-seq:
+  #   num.min(min) => aNumeric
+  #
+  # Returns _num_ or +min+, whatever is larger.
+  def min(min)
+    self < min ? min : self
+  end
+
+  alias_method :at_least, :min
+
+  # call-seq:
+  #   num.max(max) => aNumeric
+  #
+  # Returns _num_ or +max+, whatever is smaller.
+  def max(max)
+    self > max ? max : self
+  end
+
+  alias_method :at_most, :max
 
 end
 

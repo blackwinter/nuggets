@@ -1,0 +1,2 @@
+# backwards compatibility
+require 'limit'

@@ -31,7 +31,7 @@ class IO
 
   class << self
 
-    alias_method :original_read, :read
+    alias_method :_nuggets_original_read, :read
 
     # call-seq:
     #   IO.read(name, [length [, offset]]) => aString
@@ -40,7 +40,7 @@ class IO
     # Opens +name+ with mode +r+. NOTE: With no associated block,
     # acts like the original IO::read, not like IO::new.
     def read(name, *args, &block)
-      return original_read(name, *args) unless block
+      return _nuggets_original_read(name, *args) unless block
 
       case args.size
         when 0

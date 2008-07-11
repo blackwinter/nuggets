@@ -27,8 +27,8 @@
 
 module Enumerable
 
-  alias_method :original_max, :max
-  alias_method :original_min, :min
+  alias_method :_nuggets_original_max, :max
+  alias_method :_nuggets_original_min, :min
 
   # call-seq:
   #   enum.minmax_by(meth, by) => aValue
@@ -81,18 +81,18 @@ module Enumerable
   #   enum.max(what) => aValue
   #
   # Maximum #minmax. If +what+ is omitted, or nil, the original Enumerable#max
-  # is called (available as +original_max+).
+  # is called.
   def max(what = nil, &block)
-    what ? minmax(:max, what) : original_max(&block)
+    what ? minmax(:max, what) : _nuggets_original_max(&block)
   end
 
   # call-seq:
   #   enum.min(what) => aValue
   #
   # Minimum #minmax. If +what+ is omitted, or nil, the original Enumerable#min
-  # is called (available as +original_min+).
+  # is called.
   def min(what = nil, &block)
-    what ? minmax(:min, what) : original_min(&block)
+    what ? minmax(:min, what) : _nuggets_original_min(&block)
   end
 
 end

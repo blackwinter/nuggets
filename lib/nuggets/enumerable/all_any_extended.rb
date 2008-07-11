@@ -27,8 +27,8 @@
 
 module Enumerable
 
-  alias_method :original_all?, :all?
-  alias_method :original_any?, :any?
+  alias_method :_nuggets_original_all?, :all?
+  alias_method :_nuggets_original_any?, :any?
 
   # call-seq:
   #   enum.all?(obj[, operator]) => true or false
@@ -38,7 +38,7 @@ module Enumerable
   # be tested against each item in _enum_ according to +operator+, defaulting
   # to :===.
   def all?(object = default = Object.new, operator = :===, &block)
-    original_all?(&_block_for_all_any_extended(object, default, operator, block))
+    _nuggets_original_all?(&_block_for_all_any_extended(object, default, operator, block))
   end
 
   # call-seq:
@@ -49,7 +49,7 @@ module Enumerable
   # be tested against each item in _enum_ according to +operator+, defaulting
   # to :===.
   def any?(object = default = Object.new, operator = :===, &block)
-    original_any?(&_block_for_all_any_extended(object, default, operator, block))
+    _nuggets_original_any?(&_block_for_all_any_extended(object, default, operator, block))
   end
 
   private

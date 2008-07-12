@@ -30,12 +30,14 @@ class Object
   # call-seq:
   #   object.singleton_class => aClass
   #
-  # Returns the singleton class associated with _object_.
+  # Returns the singleton (or virtual/eigen/meta) class associated with _object_.
   def singleton_class
     class << self; self; end
   end
-  alias_method :eigenclass, :singleton_class
-  alias_method :metaclass,  :singleton_class
+
+  alias_method :virtual_class, :singleton_class
+  alias_method :eigenclass,    :singleton_class
+  alias_method :metaclass,     :singleton_class
 
 end
 

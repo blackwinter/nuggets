@@ -5,6 +5,8 @@
 # - multi-line statements in irb (extract_source)
 # - polishing!
 
+require 'ruby2ruby'
+
 module AddedMethods
 
   extend self
@@ -57,11 +59,21 @@ module AddedMethods
           1
       end
 
-      script_lines[start, num_lines].map { |l| "  #{l}" }
+      lines = script_lines[start, num_lines]
+
+      # try to make sure we correctly extracted the method definition
+      if lines.first =~ /\b#{name}\b/
+        lines
+      else
+        # use Ruby2Ruby as a last resort. but note that it only
+        # ever finds the *latest*, i.e. currently active, method
+        # definition, not necessarily the one we're looking for.
+        "#### [R2R] ####\n#{Ruby2Ruby.translate(klass, name)}"
+      end
     end
 
     def to_s(num_lines = nil)
-      "# File #{file}, line #{line}\n#{extract_source(num_lines)}"
+      "# File #{file}, line #{line}\n#{extract_source(num_lines).map { |l| "  #{l}" }}"
     end
 
     def klass
@@ -195,6 +207,15 @@ module AddedMethods
     }
   end
 
+  def find_one_by_name_or_class(name_or_class, conditions = {})
+    (name_or_class.is_a?(Class) ?
+      find_by_class(name_or_class) :
+      find_by_name(name_or_class)
+    ).last
+  end
+
+  alias_method :[], :find_one_by_name_or_class
+
   private
 
   def singleton_class(klass = self)
@@ -283,7 +304,7 @@ module AddedMethods
       am.update(
         :file   => HISTFILENAME,
         :line   => Readline::HISTORY.size,
-        :source => Readline::HISTORY[-1]
+        :source => begin Readline::HISTORY[-1] rescue IndexError end
       )
     else
       file, line, _ = where(callstack).split(':')

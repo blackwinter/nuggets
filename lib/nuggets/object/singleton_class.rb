@@ -36,8 +36,10 @@ class Object
   end
 
   alias_method :virtual_class, :singleton_class
+  alias_method :ghost_class,   :singleton_class
   alias_method :eigenclass,    :singleton_class
   alias_method :metaclass,     :singleton_class
+  alias_method :uniclass,      :singleton_class
 
 end
 

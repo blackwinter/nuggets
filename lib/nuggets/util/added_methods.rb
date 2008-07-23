@@ -25,6 +25,41 @@ module Util
       end
 
       def extract_source(num_lines = nil)
+        lines = extract_source_from_script_lines(num_lines)
+
+        # try to make sure we correctly extracted the method definition
+        lines.first =~ /\b#{name}\b/ ? lines : extract_source_from_r2r || lines
+      end
+
+      def to_s(num_lines = nil)
+        str = "# File #{file}, line #{line}"
+
+        case lines = extract_source(num_lines)
+          when Array
+            num = line - 1
+            width = (num + lines.size).to_s.length
+
+            lines.map! { |l| "%0#{width}d: %s" % [num += 1, l] }
+
+            "#{' ' * width}  #{str}\n#{lines}"
+          when String
+            "#{str}#{lines}"
+          else
+            str
+        end
+      end
+
+      def klass
+        self[:class]
+      end
+
+      def method_missing(method, *args)
+        has_key?(method) ? self[method] : super
+      end
+
+      private
+
+      def extract_source_from_script_lines(num_lines = nil)
         return unless Object.const_defined?(:SCRIPT_LINES__)
         return unless script_lines = SCRIPT_LINES__[file]
 
@@ -64,29 +99,16 @@ module Util
             1
         end
 
-        lines = script_lines[start, num_lines]
-
-        # try to make sure we correctly extracted the method definition
-        if lines.first =~ /\b#{name}\b/ || !Object.const_defined?(:Ruby2Ruby)
-          lines
-        else
-          # use Ruby2Ruby as a last resort. but note that it only
-          # ever finds the *latest*, i.e. currently active, method
-          # definition, not necessarily the one we're looking for.
-          "#### [R2R] ####\n#{Ruby2Ruby.translate(klass, name)}"
-        end
+        script_lines[start, num_lines]
       end
 
-      def to_s(num_lines = nil)
-        "# File #{file}, line #{line}\n#{extract_source(num_lines).map { |l| "  #{l}" }}"
-      end
+      def extract_source_from_r2r
+        return unless Object.const_defined?(:Ruby2Ruby)
 
-      def klass
-        self[:class]
-      end
-
-      def method_missing(method, *args)
-        has_key?(method) ? self[method] : super
+        # use Ruby2Ruby as a last resort. but note that it only
+        # ever finds the *latest*, i.e. currently active, method
+        # definition, not necessarily the one we're looking for.
+        " [R2R]\n#{Ruby2Ruby.translate(klass, name)}"
       end
 
     end
@@ -207,9 +229,7 @@ module Util
 
     def find_by_name(*names)
       conditions = names.last.is_a?(Hash) ? names.pop : {}
-      names.inject([]) { |memo, name|
-        memo += find(conditions.merge(:name => name.to_s))
-      }
+      find(conditions.merge(:name => names.map { |m| m.to_s }))
     end
 
     def find_one_by_name_or_class(name_or_class, conditions = {})

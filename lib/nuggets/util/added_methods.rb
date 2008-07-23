@@ -102,13 +102,13 @@ module Util
         script_lines[start, num_lines]
       end
 
+      # Use Ruby2Ruby as a last resort. But note that it only
+      # ever finds the *latest*, i.e. currently active, method
+      # definition, not necessarily the one we're looking for.
       def extract_source_from_r2r
-        return unless Object.const_defined?(:Ruby2Ruby)
-
-        # use Ruby2Ruby as a last resort. but note that it only
-        # ever finds the *latest*, i.e. currently active, method
-        # definition, not necessarily the one we're looking for.
-        " [R2R]\n#{Ruby2Ruby.translate(klass, name)}"
+        if Object.const_defined?(:Ruby2Ruby)
+          " [R2R]\n#{Ruby2Ruby.translate(klass, name)}"
+        end
       end
 
     end

@@ -82,7 +82,7 @@ module Util
         }
       end
 
-      alias_method :class=,     :klass=
+      alias_method 'class=',    'klass='
       alias_method :singleton?, :singleton
 
       def [](key)

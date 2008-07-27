@@ -1,3 +1,30 @@
+#--
+###############################################################################
+#                                                                             #
+# A component of ruby-nuggets, some extensions to the Ruby programming        #
+# language.                                                                   #
+#                                                                             #
+# Copyright (C) 2007-2008 Jens Wille                                          #
+#                                                                             #
+# Authors:                                                                    #
+#     Jens Wille <jens.wille@uni-koeln.de>                                    #
+#                                                                             #
+# ruby-nuggets is free software; you can redistribute it and/or modify it     #
+# under the terms of the GNU General Public License as published by the Free  #
+# Software Foundation; either version 3 of the License, or (at your option)   #
+# any later version.                                                          #
+#                                                                             #
+# ruby-nuggets is distributed in the hope that it will be useful, but WITHOUT #
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or       #
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    #
+# more details.                                                               #
+#                                                                             #
+# You should have received a copy of the GNU General Public License along     #
+# with ruby-nuggets. If not, see <http://www.gnu.org/licenses/>.              #
+#                                                                             #
+###############################################################################
+#++
+
 begin
   require 'ruby2ruby'
 rescue LoadError
@@ -7,6 +34,33 @@ module Util
 
   # Watch for added methods and record them. Inspired by unroller,
   # <http://unroller.rubyforge.org/classes/Unroller.html#M000034>.
+  #
+  # Example:
+  #
+  #   require 'rubygems'
+  #   require 'nuggets/util/added_methods/init'
+  #
+  #   require 'some/library/or/whatever'
+  #
+  #   matches = Util::AddedMethods.find(
+  #     :name  => 'method_name',
+  #     :class => SomeClass  # optional
+  #   )
+  #
+  #   # get the class(es) where matching method(s) were defined
+  #   matches.each { |am| puts am[:class]  # or am.klass }
+  #
+  #   # assume the first one is the one we're looking for
+  #   am = matches.first
+  #
+  #   # is it a singleton method?
+  #   puts am.singleton
+  #
+  #   # where exactly has it been defined?
+  #   puts "#{am.file}, line #{am.line}"
+  #
+  #   # now get its source
+  #   puts am  # implies #to_s, you can also call #extract_source directly
   #
   # TODO:
   # - multi-line statements in irb w/o ruby2ruby? (=> extract_source)
@@ -18,23 +72,39 @@ module Util
 
     HISTFILENAME = '(Readline::HISTORY)'.freeze
 
-    class AddedMethod < Hash
+    class AddedMethod
 
-      def initialize(*args)
-        update(*args) unless args.empty?
+      attr_accessor :base, :klass, :name, :singleton, :file, :line, :def
+
+      def initialize(args = {})
+        args.each { |key, value|
+          send("#{key}=", value)
+        }
+      end
+
+      alias_method :class=,     :klass=
+      alias_method :singleton?, :singleton
+
+      def [](key)
+        send(key.to_sym == :class ? :klass : key)
+      end
+
+      def source
+        @source ||= extract_source
       end
 
       def extract_source(num_lines = nil)
         lines = extract_source_from_script_lines(num_lines)
 
-        # try to make sure we correctly extracted the method definition
+        # try to make sure we correctly extracted the method
+        # definition, otherwise try to get it from Ruby2Ruby
         lines.first =~ /\b#{name}\b/ ? lines : extract_source_from_r2r || lines
       end
 
-      def to_s(num_lines = nil)
+      def to_s
         str = "# File #{file}, line #{line}"
 
-        case lines = extract_source(num_lines)
+        case lines = source
           when Array
             num = line - 1
             width = (num + lines.size).to_s.length
@@ -47,14 +117,6 @@ module Util
           else
             str
         end
-      end
-
-      def klass
-        self[:class]
-      end
-
-      def method_missing(method, *args)
-        has_key?(method) ? self[method] : super
       end
 
       private
@@ -139,7 +201,7 @@ module Util
       raise TypeError, "wrong argument type #{klasses.class} (expected container object)" unless klasses.respond_to?(:empty?) && klasses.respond_to?(:include?)
 
       callbacks << [name, lambda { |am, callstack, inner_block|
-        method, klass = am.values_at(:name, :class)
+        method, klass = am.name, am.klass
 
         return if %w[method_added singleton_method_added].include?(method)
 
@@ -150,7 +212,7 @@ module Util
           outer_block[am] if outer_block
           inner_block[am] if inner_block
         else
-          msg = "[#{am.base}] Adding #{'singleton ' if am.singleton}method #{klass}##{method}"
+          msg = "[#{am.base}] Adding #{'singleton ' if am.singleton?}method #{klass}##{method}"
 
           msg << if irb?(callstack)
             " in (irb:#{IRB.conf[:MAIN_CONTEXT].instance_variable_get(:@line_no)})"
@@ -204,15 +266,12 @@ module Util
             next unless file_condition.is_a?(Regexp) ? file =~ file_condition : file == file_condition
           end
 
-          entries.each { |entry|
-            results << entry.merge(
-              :class => klass,
-              :file  => file
-            ) if conditions.all? { |key, value|
+          entries.each { |am|
+            results << am if conditions.all? { |key, value|
               case value
-                when Array:  value.include?(entry[key])
-                when Regexp: entry[key].to_s =~ value
-                else         entry[key] == value
+                when Array:  value.include?(am[key])
+                when Regexp: am[key].to_s =~ value
+                else         am[key] == value
               end
             }
           }
@@ -263,9 +322,7 @@ module Util
     def init_all_methods
       unless const_defined?(:ALL_METHODS)
         const_set(:ALL_METHODS, Hash.new { |h, k|
-          h[k] = Hash.new { |i, j|
-            i[j] = []
-          }
+          h[k] = Hash.new { |i, j| i[j] = [] }
         })
       end
     end
@@ -327,18 +384,18 @@ module Util
 
       if irb?(callstack)
         am.update(
-          :file   => HISTFILENAME,
-          :line   => Readline::HISTORY.size,
-          :source => begin Readline::HISTORY[-1] rescue IndexError end
+          :file => HISTFILENAME,
+          :line => Readline::HISTORY.size,
+          :def  => begin Readline::HISTORY[-1] rescue IndexError end
         )
       else
         file, line, _ = where(callstack).split(':')
         line = line.to_i
 
         am.update(
-          :file   => file,
-          :line   => line,
-          :source => (SCRIPT_LINES__[file] || [])[line - 1]
+          :file => file,
+          :line => line,
+          :def  => (SCRIPT_LINES__[file] || [])[line - 1]
         )
       end
 

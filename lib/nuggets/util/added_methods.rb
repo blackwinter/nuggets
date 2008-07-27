@@ -48,13 +48,13 @@ module Util
   #   )
   #
   #   # get the class(es) where matching method(s) were defined
-  #   matches.each { |am| puts am[:class]  # or am.klass }
+  #   matches.each { |am| puts am.klass  # also am[:klass] or am[:class] }
   #
   #   # assume the first one is the one we're looking for
   #   am = matches.first
   #
   #   # is it a singleton method?
-  #   puts am.singleton
+  #   puts am.singleton?
   #
   #   # where exactly has it been defined?
   #   puts "#{am.file}, line #{am.line}"

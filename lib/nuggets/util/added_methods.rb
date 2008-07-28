@@ -195,7 +195,7 @@ module Util
 
     def define_callback(name, regexp = //, klasses = [], &outer_block)
       raise TypeError, "wrong argument type #{name.class} (expected Symbol)" unless name.is_a?(Symbol)
-      raise "callback with name #{name} already exists" if callbacks.any? { |n, _| n == name }
+      raise "callback with name #{name} already exists" if callbacks.assoc(name)
 
       raise TypeError, "wrong argument type #{regexp.class} (expected Regexp)" unless regexp.is_a?(Regexp)
       raise TypeError, "wrong argument type #{klasses.class} (expected container object)" unless klasses.respond_to?(:empty?) && klasses.respond_to?(:include?)
@@ -269,9 +269,9 @@ module Util
           entries.each { |am|
             results << am if conditions.all? { |key, value|
               case value
-                when Array:  value.include?(am[key])
-                when Regexp: am[key].to_s =~ value
-                else         am[key] == value
+                when Array, Range: value.include?(am[key])
+                when Regexp:       value =~ am[key].to_s
+                else               value == am[key]
               end
             }
           }

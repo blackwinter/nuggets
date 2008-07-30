@@ -38,7 +38,7 @@ module URI
     # Return the content type of +uri+, or +nil+ if not found.
     def content_type(uri)
       open(uri.to_s).content_type
-    rescue OpenURI::HTTPError, SocketError, Errno::ENOENT, NoMethodError
+    rescue OpenURI::HTTPError, SocketError, Errno::ENOENT, Errno::EHOSTUNREACH, NoMethodError
       nil
     end
 
@@ -58,6 +58,7 @@ if $0 == __FILE__
     http://blackwinter.de/misc/blanc60302523.nth
     http://blackwinter.de/bla
     http://blawinter.de
+    http://192.168.12.34/foo/bar
   ].each { |u|
     p [u, URI.content_type(u)]
   }

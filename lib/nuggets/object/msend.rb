@@ -33,11 +33,8 @@ class Object
   # Sends _object_ multiple +messages+ and returns an array of the individual
   # return values.
   def msend(*messages)
-    messages_with_args = messages.last.is_a?(Hash) ? messages.pop : {}
-
-    (messages + messages_with_args.keys).map { |msg|
-      messages_with_args.has_key?(msg) ? send(msg, *messages_with_args[msg]) : send(msg)
-    }
+    hash = messages.last.is_a?(Hash) ? messages.pop : {}
+    (messages + hash.to_a).map { |msg| send *msg.is_a?(Array) ? msg : [msg] }
   end
 
 end
@@ -50,6 +47,7 @@ if $0 == __FILE__
   o = 42
   p o
   p o.msend(:to_s, :* => 2)
+  p o.msend([:to_s, 2], '-@')
 
   o = Time.now
   p o

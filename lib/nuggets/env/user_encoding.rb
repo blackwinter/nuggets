@@ -25,6 +25,11 @@
 ###############################################################################
 #++
 
+begin
+  require 'win32console'
+rescue LoadError
+end
+
 class << ENV
 
   # call-seq:
@@ -34,11 +39,10 @@ class << ENV
   def user_encoding
     ENV['ENCODING']          ||
     ENV['LANG'][/\.(.*)/, 1] ||
-    begin
-      require 'win32console'
+    if defined?(Win32::Console)
       "CP#{Win32::Console.InputCP}"
-    rescue LoadError
-      "CP#{%x{chcp}[/:\s*(.*?)\./, 1]}"
+    else
+      cp = %x{chcp}[/:\s*(.*?)\./, 1] and "CP#{cp}"
     end
   end
 

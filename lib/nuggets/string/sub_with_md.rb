@@ -110,8 +110,8 @@ if $0 == __FILE__
     #p m
     begin
       "#{$1.gsub(/[ao]/, 'X')}#{$2}"
-    rescue NoMethodError => e
-      warn e
+    rescue NoMethodError => err
+      warn err
     end
   }
 

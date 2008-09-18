@@ -47,9 +47,18 @@ class Object
   # Returns the object of which _object_ is the singleton_class.
   # Raises a TypeError if _object_ is not a singleton class.
   def singleton_object
-    object = ObjectSpace.each_object(self) { |obj| break obj }
-    raise TypeError unless self.equal?(object.singleton_class)
-    object
+    [true, false, nil].each { |obj|
+      return obj if self.equal?(obj.singleton_class)
+    }
+
+    # raises TypeError if neither class nor module
+    ObjectSpace.each_object(self) { |obj|
+      return obj if self.equal?(obj.singleton_class)
+    }
+
+    # if we got here it can't be a singleton class
+    # or its singleton object doesn't exist anymore
+    raise TypeError
   rescue TypeError
     raise TypeError, 'not a singleton class'
   end
@@ -96,6 +105,8 @@ if $0 == __FILE__
   p s.singleton_class?
   p s.singleton_object
 
+  ###
+
   o = [1, 2]
   p o
 
@@ -104,15 +115,34 @@ if $0 == __FILE__
   p s.singleton_class?
   p s.singleton_object
 
+  ###
+
   p Class.new.singleton_class?
   p Class.singleton_class?
+
+  ###
 
   c = Class.new
   o = c.new
   p o
   p c.singleton_class?
 
+  ###
+
   p nil.singleton_class
   p NilClass.singleton_class?
-  p NilClass.singleton_object  # raises TypeError
+  p NilClass.singleton_object
+
+  ###
+
+  class A; end
+  class B < A; end
+
+  a = A.singleton_class
+  b = B.singleton_class
+
+  p a
+  p a.singleton_object  #=> A
+  p b
+  p b.singleton_object  #=> B
 end

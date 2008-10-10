@@ -29,10 +29,11 @@ require 'tempfile'
 
 class Tempfile
 
-  # use enhanced Tempfile#make_tmpname, as of r13631
   if RUBY_RELEASE_DATE < '2007-10-05'
     alias_method :_nuggets_original_make_tmpname, :make_tmpname
 
+    # Enhanced Tempfile#make_tmpname, as of r13631 (Ruby version prior to
+    # 2007-10-05)
     def make_tmpname(basename, name)
       case basename
         when Array
@@ -53,7 +54,7 @@ class Tempfile
   # and the tempfile will automatically be closed when the block
   # terminates.  In this case, open() returns tempfile -- in contrast
   # to the original implementation, which returns nil.
-  def open(*args)
+  def self.open(*args)
     tempfile = new(*args)
 
     if block_given?

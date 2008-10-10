@@ -27,10 +27,10 @@
 
 require 'tempfile'
 
-# use enhanced Tempfile#make_tmpname, as of r13631
-if RUBY_RELEASE_DATE < '2007-10-05'
-  class Tempfile
+class Tempfile
 
+  # use enhanced Tempfile#make_tmpname, as of r13631
+  if RUBY_RELEASE_DATE < '2007-10-05'
     alias_method :_nuggets_original_make_tmpname, :make_tmpname
 
     def make_tmpname(basename, name)
@@ -43,6 +43,28 @@ if RUBY_RELEASE_DATE < '2007-10-05'
 
       "#{prefix}#{Time.now.strftime('%Y%m%d')}-#{$$}-#{rand(0x100000000).to_s(36)}-#{name}#{suffix}"
     end
-
   end
+
+  alias_method :_nuggets_original_open, :open
+
+  # If no block is given, this is a synonym for new().
+  #
+  # If a block is given, it will be passed tempfile as an argument,
+  # and the tempfile will automatically be closed when the block
+  # terminates.  In this case, open() returns tempfile -- in contrast
+  # to the original implementation, which returns nil.
+  def open(*args)
+    tempfile = new(*args)
+
+    if block_given?
+      begin
+        yield tempfile
+      ensure
+        tempfile.close
+      end
+    end
+
+    tempfile
+  end
+
 end

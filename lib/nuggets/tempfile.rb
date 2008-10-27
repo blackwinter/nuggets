@@ -29,23 +29,6 @@ require 'tempfile'
 
 class Tempfile
 
-  if RUBY_RELEASE_DATE < '2007-10-05'
-    alias_method :_nuggets_original_make_tmpname, :make_tmpname
-
-    # Enhanced Tempfile#make_tmpname, as of r13631 (Ruby version prior to
-    # 2007-10-05)
-    def make_tmpname(basename, name)
-      case basename
-        when Array
-          prefix, suffix = *basename
-        else
-          prefix, suffix = basename, ''
-      end
-
-      "#{prefix}#{Time.now.strftime('%Y%m%d')}-#{$$}-#{rand(0x100000000).to_s(36)}-#{name}#{suffix}"
-    end
-  end
-
   alias_method :_nuggets_original_open, :open
 
   # If no block is given, this is a synonym for new().

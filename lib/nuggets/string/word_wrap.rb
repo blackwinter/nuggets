@@ -60,7 +60,7 @@ class String
   #
   # Similar to #word_wrap, but assumes a single paragraph.
   def word_wrap_paragraph(line_width = 80)
-    dup.word_wrap_paragraph!(line_width) || dup
+    (_dup = dup).word_wrap_paragraph!(line_width) || _dup
   end
 
   # call-seq:

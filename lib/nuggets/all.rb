@@ -25,6 +25,10 @@
 ###############################################################################
 #++
 
-Dir[File.dirname(__FILE__) + '/*/**/*.rb'].sort.each { |rb|
-  require rb
+base = File.dirname(__FILE__)
+base_re = Regexp.escape(base)
+
+Dir[File.join(base, %w[* ** *.rb])].sort.each { |path|
+  ext_re = Regexp.escape(File.extname(path))
+  require path.sub(/#{base_re}(.*)#{ext_re}/, 'nuggets\1')
 }

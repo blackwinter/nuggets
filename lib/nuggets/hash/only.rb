@@ -25,12 +25,12 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), 'at')
+require 'nuggets/hash/at'
 
 class Hash
 
   # call-seq:
-  #   hash.only([relax]) => aHash
+  #   hash.only(relax = true or false) => aHash
   #
   # Returns the only key/value pair of _hash_. Raises an IndexError if _hash_'s
   # size is not 1, unless +relax+ is true.
@@ -42,7 +42,7 @@ class Hash
   end
 
   # call-seq:
-  #   hash.only_pair([relax]) => anArray
+  #   hash.only_pair(relax = true or false) => anArray
   #
   # Returns the only key/value pair of _hash_ as an array. Raises an IndexError
   # if _hash_'s size is not 1, unless +relax+ is true.

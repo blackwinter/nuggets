@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), '..', 'array', 'in_order')
+require 'nuggets/array/in_order'
 
 class Hash
 

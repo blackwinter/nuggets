@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), 'evaluate')
+require 'nuggets/string/evaluate'
 
 class String
 
@@ -43,7 +43,7 @@ class String
   # string or a regexp, +substitution+ may contain string expressions (cf.
   # #evaluate).
   def msub(*substitutions)
-    dup.msub!(*substitutions) || dup
+    (_dup = dup).msub!(*substitutions) || _dup
   end
 
   # call-seq:
@@ -62,7 +62,7 @@ class String
     }
 
     gsub!(Regexp.union(*keys)) { |match|
-      cache[match] ||= subs.find { |key,|
+      cache[match] ||= subs.find { |key, _|
         key =~ match
       }.last.evaluate(binding)
     }

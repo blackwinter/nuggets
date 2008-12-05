@@ -25,8 +25,16 @@
 ###############################################################################
 #++
 
-require 'rubygems'
-require 'amatch'
+begin
+  require 'rubygems'
+rescue LoadError
+end
+
+begin
+  require 'amatch'
+rescue LoadError
+  warn "Couldn't load amatch..." if $VERBOSE
+end
 
 module Enumerable
 
@@ -46,13 +54,15 @@ module Enumerable
   # - Only works with string elements in _enum_. (Calls +to_s+ on each element)
   # - The cost for individual error types (substitution, insertion, deletion)
   #   cannot be adjusted. 
-  def agrep(pattern, distance = 0, &block)
+  def agrep(pattern, distance = 0)
+    raise 'Amatch not available!' unless defined?(Amatch)
+
     pattern = pattern.source if pattern.is_a?(Regexp)
 
     amatch  = Amatch::Levenshtein.new(pattern)
     matches = select { |obj| amatch.search(obj.to_s) <= distance }
 
-    block ? matches.map(&block) : matches
+    block_given? ? matches.map { |match| yield match } : matches
   end
 
 end

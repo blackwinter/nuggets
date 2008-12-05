@@ -45,8 +45,8 @@ class Integer
   # Calculate the factorial of _int_ with the help of memoization (Which gives
   # a considerable speedup for repeated calculations -- at the cost of memory).
   #
-  # WARNING: Don't try to calculate the factorial this way for a too large
-  # integer! This might well bring your system down to its knees... ;-)
+  # WARNING: Don't try to calculate the factorial this way for "large"
+  # integers! This might well bring your system down to its knees... ;-)
   def factorial_memoized
     FACTORIAL[self] ||= (1..self).inject { |f, i| FACTORIAL[i] ||= f * i }
   end

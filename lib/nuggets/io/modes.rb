@@ -39,8 +39,8 @@ class IO
     #
     # Opens +name+ with mode +r+. NOTE: With no associated block,
     # acts like the original IO::read, not like IO::new.
-    def read(name, *args, &block)
-      return _nuggets_original_read(name, *args) unless block
+    def read(name, *args)
+      return _nuggets_original_read(name, *args) unless block_given?
 
       case args.size
         when 0
@@ -56,7 +56,7 @@ class IO
           raise ArgumentError, "wrong number of arguments (#{args.size + 1} for 1-2)"
       end
 
-      open_with_mode(name, 'r', binary, &block)
+      open_with_mode(name, 'r', binary) { |*a| yield(*a) }
     end
 
     # call-seq:
@@ -64,8 +64,10 @@ class IO
     #   IO.write(name, binary = false) { |io| ... } => anObject
     #
     # Opens +name+ with mode +w+.
-    def write(name, binary = false, &block)
-      open_with_mode(name, 'w', binary, &block)
+    def write(name, binary = false)
+      block_given? ?
+        open_with_mode(name, 'w', binary) { |*a| yield(*a) } :
+        open_with_mode(name, 'w', binary)
     end
 
     # call-seq:
@@ -73,8 +75,10 @@ class IO
     #   IO.append(name, binary = false) { |io| ... } => anObject
     #
     # Opens +name+ with mode +a+.
-    def append(name, binary = false, &block)
-      open_with_mode(name, 'a', binary, &block)
+    def append(name, binary = false)
+      block_given? ?
+        open_with_mode(name, 'a', binary) { |*a| yield(*a) } :
+        open_with_mode(name, 'a', binary)
     end
 
     # call-seq:
@@ -82,8 +86,10 @@ class IO
     #   IO.read_write(name, binary = false) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>r+</tt>.
-    def read_write(name, binary = false, &block)
-      open_with_mode(name, 'r+', binary, &block)
+    def read_write(name, binary = false)
+      block_given? ?
+        open_with_mode(name, 'r+', binary) { |*a| yield(*a) } :
+        open_with_mode(name, 'r+', binary)
     end
 
     # call-seq:
@@ -91,8 +97,10 @@ class IO
     #   IO.write_read(name, binary = false) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>w+</tt>.
-    def write_read(name, binary = false, &block)
-      open_with_mode(name, 'w+', binary, &block)
+    def write_read(name, binary = false)
+      block_given? ?
+        open_with_mode(name, 'w+', binary) { |*a| yield(*a) } :
+        open_with_mode(name, 'w+', binary)
     end
 
     # call-seq:
@@ -100,16 +108,18 @@ class IO
     #   IO.append_read(name, binary = false) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>a+</tt>.
-    def append_read(name, binary = false, &block)
-      open_with_mode(name, 'a+', binary, &block)
+    def append_read(name, binary = false)
+      block_given? ?
+        open_with_mode(name, 'a+', binary) { |*a| yield(*a) } :
+        open_with_mode(name, 'a+', binary)
     end
 
     private
 
     # Just a helper to DRY things up.
-    def open_with_mode(name, mode, binary = false, &block)
+    def open_with_mode(name, mode, binary = false)
       mode << 'b' if binary
-      open(name, mode, &block)
+      block_given? ? open(name, mode) { |io| yield io } : open(name, mode)
     end
 
   end

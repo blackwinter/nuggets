@@ -28,12 +28,12 @@
 class Array
 
   # call-seq:
-  #   array.monotone?(op) => true or false
+  #   array.monotone?(operator) => true or false
   #
-  # Check whether _array_ is monotone according to operator +op+.
-  def monotone?(op)
+  # Check whether _array_ is monotone according to +operator+.
+  def monotone?(operator)
     inject { |a, b|
-      return false unless a.send(op, b)
+      return false unless a.send(operator, b)
       b
     }
 

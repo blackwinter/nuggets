@@ -25,8 +25,6 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), '..', 'object', 'singleton_class')
-
 class Proc
 
   # call-seq:
@@ -36,7 +34,7 @@ class Proc
   def bind(object)
     block, time = self, Time.now
 
-    object.singleton_class.class_eval {
+    (class << object; self; end).class_eval {
       method_name = "__bind_#{time.to_i}_#{time.usec}"
       define_method(method_name, &block)
 

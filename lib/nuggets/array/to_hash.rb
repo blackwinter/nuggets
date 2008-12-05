@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), 'flatten_once')
+require 'nuggets/array/flatten_once'
 
 class Array
 
@@ -39,55 +39,27 @@ class Array
   # <tt>hash.to_a.to_h == hash</tt>). Otherwise, maps each element of
   # _array_ to +value+ or the result of the block.
   #
-  # NOTE: This is the "nice" version. For a more speed-optimized one,
-  # use #to_hash_opt.
-  #
   # Examples:
   #   [[0, 0], [1, [2, 3]]].to_h  #=> { 0 => 0, 1 => [2, 3] }
   #   %w[a b c d].to_h            #=> { "a" => "b", "c" => "d" }
   #   %w[a b c d].to_h(1)         #=> { "a" => 1, "b" => 1, "c" => 1, "d" => 1 }
   #   %w[a b].to_h { |e| e * 2 }  #=> { "a" => "aa", "b" => "bb" }
-  def to_hash(value = default = Object.new, &block)
-    if block ||= value != default && lambda { value }
-      inject({}) { |hash, element|
-        hash.update(element => block[element])
-      }
+  def to_hash(value = default = Object.new)
+    hash = {}
+
+    if block_given?
+      raise ArgumentError, "both block and value argument given" if default.nil?
+
+      each { |element| hash[element] = yield element }
+    elsif default.nil?
+      each { |element| hash[element] = value }
     else
-      Hash[*flatten_once]
+      return Hash[*flatten_once]
     end
+
+    hash
   end
   alias_method :to_h, :to_hash
-
-  # call-seq:
-  #   array.to_hash_opt => aHash
-  #   array.to_hash_opt(value) => aHash
-  #   array.to_hash_opt { |element| ... } => aHash
-  #
-  # Same as #to_hash, but slightly optimized for speed. To use this one instead
-  # of #to_hash: <tt>Array.send(:alias_method, :to_h, :to_hash_opt)</tt>.
-  #
-  # Benchmark (array = (1..20).to_a, N = 100_000):
-  #                            user     system      total        real
-  #   to_hash: plain       4.820000   0.560000   5.380000 (  5.600390)
-  #   to_hash: value      12.910000   0.930000  13.840000 ( 13.938352)
-  #   to_hash: block      13.590000   1.180000  14.770000 ( 14.810804)
-  #   to_hash_opt: plain   4.910000   0.470000   5.380000 (  5.416949)
-  #   to_hash_opt: value   2.170000   0.390000   2.560000 (  2.609034)
-  #   to_hash_opt: block   7.090000   0.880000   7.970000 (  8.109180)
-  def to_hash_opt(value = default = Object.new, &block)
-    if block
-      hash = {}
-      each { |element| hash[element] = block[element] }
-      hash
-    elsif value != default
-      hash = {}
-      each { |element| hash[element] = value }
-      hash
-    else
-      Hash[*flatten_once]
-    end
-  end
-  #alias_method :to_h, :to_hash_opt
 
 end
 

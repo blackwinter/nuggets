@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), 'combination')
+require 'nuggets/array/combination'
 
 class Array
 

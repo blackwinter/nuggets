@@ -56,7 +56,7 @@ class Object
       return obj if self.equal?(obj.singleton_class)
     }
 
-    # if we got here it can't be a singleton class
+    # if we got here, it can't be a singleton class
     # or its singleton object doesn't exist anymore
     raise TypeError
   rescue TypeError
@@ -135,8 +135,10 @@ if $0 == __FILE__
 
   ###
 
-  class A; end
-  class B < A; end
+  class A      # :nodoc:
+  end
+  class B < A  # :nodoc:
+  end
 
   a = A.singleton_class
   b = B.singleton_class

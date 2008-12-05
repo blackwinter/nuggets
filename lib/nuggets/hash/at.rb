@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), '..', 'array', 'rand')
+require 'nuggets/array/rand'
 
 class Hash
 

@@ -70,7 +70,7 @@ module Util
 
     extend self
 
-    HISTFILENAME = '(Readline::HISTORY)'.freeze
+    HISTFILENAME = '(Readline::HISTORY)'.freeze unless const_defined?(:HISTFILENAME)
 
     class AddedMethod
 

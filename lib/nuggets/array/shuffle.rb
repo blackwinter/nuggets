@@ -101,8 +101,8 @@ if $0 == __FILE__
   a.shuffle!
   p a
 
-  require File.join(File.dirname(__FILE__), '..', 'integer', 'factorial')
-  require File.join(File.dirname(__FILE__), '..', 'enumerable', 'minmax')
+  require 'nuggets/integer/factorial'
+  require 'nuggets/enumerable/minmax'
 
   a = %w[a b c]
   n = 100_000

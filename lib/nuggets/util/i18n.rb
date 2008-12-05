@@ -106,7 +106,7 @@ class String
   # Substitutes any diacritics in _str_ with their replacements as per
   # Util::I18n::DIACRITICS.
   def replace_diacritics
-    dup.replace_diacritics! || dup
+    (_dup = dup).replace_diacritics! || _dup
   end
 
   # call-seq:

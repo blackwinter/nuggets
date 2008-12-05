@@ -44,7 +44,7 @@ class File
         }
       end
 
-      return nil
+      nil
     end
 
     # call-seq:

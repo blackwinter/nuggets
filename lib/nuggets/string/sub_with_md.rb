@@ -37,18 +37,20 @@ class String
   #
   # Just like #sub, but passes the MatchData object instead of the current
   # match string to the block.
-  def sub_with_md(pattern, replacement = nil, &block)
-    return sub_without_md(pattern, replacement) if replacement
-    dup.sub_with_md!(pattern, &block) || dup
+  def sub_with_md(pattern, replacement = nil)
+    replacement ?
+      sub_without_md(pattern, replacement) :
+      (_dup = dup).sub_with_md!(pattern) { |*a| yield(*a) } || _dup
   end
 
   # call-seq:
   #   str.sub_with_md!(pattern) { |match_data| ... } => str or nil
   #
   # Destructive version of #sub_with_md.
-  def sub_with_md!(pattern, replacement = nil, &block)
-    return sub_without_md!(pattern, replacement) if replacement
-    sub_without_md!(pattern) { |match| block[$~] }
+  def sub_with_md!(pattern, replacement = nil)
+    replacement ?
+      sub_without_md!(pattern, replacement) :
+      sub_without_md!(pattern) { |match| yield $~ }
   end
 
   # call-seq:
@@ -56,18 +58,20 @@ class String
   #
   # Just like #gsub, but passes the MatchData object instead of the current
   # match string to the block.
-  def gsub_with_md(pattern, replacement = nil, &block)
-    return gsub_without_md(pattern, replacement) if replacement
-    dup.gsub_with_md!(pattern, &block) || dup
+  def gsub_with_md(pattern, replacement = nil)
+    replacement ?
+      gsub_without_md(pattern, replacement) :
+      (_dup = dup).gsub_with_md!(pattern) { |*a| yield(*a) } || _dup
   end
 
   # call-seq:
   #   str.gsub_with_md!(pattern) { |match_data| ... } => str or nil
   #
   # Destructive version of #gsub_with_md.
-  def gsub_with_md!(pattern, replacement = nil, &block)
-    return gsub_without_md!(pattern, replacement) if replacement
-    gsub_without_md!(pattern) { |match| block[$~] }
+  def gsub_with_md!(pattern, replacement = nil)
+    replacement ?
+      gsub_without_md!(pattern, replacement) :
+      gsub_without_md!(pattern) { |match| yield $~ }
   end
 
   # call-seq:

@@ -82,8 +82,9 @@ module Enumerable
   #
   # Maximum #minmax. If +what+ is omitted, or nil, the original Enumerable#max
   # is called.
-  def max(what = nil, &block)
-    what ? minmax(:max, what) : _nuggets_original_max(&block)
+  def max(what = nil)
+    what ? minmax(:max, what) : block_given? ?
+      _nuggets_original_max { |*a| yield(*a) } : _nuggets_original_max
   end
 
   # call-seq:
@@ -91,8 +92,9 @@ module Enumerable
   #
   # Minimum #minmax. If +what+ is omitted, or nil, the original Enumerable#min
   # is called.
-  def min(what = nil, &block)
-    what ? minmax(:min, what) : _nuggets_original_min(&block)
+  def min(what = nil)
+    what ? minmax(:min, what) : block_given? ?
+      _nuggets_original_min { |*a| yield(*a) } : _nuggets_original_min
   end
 
 end

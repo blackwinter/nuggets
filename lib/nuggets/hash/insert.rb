@@ -47,8 +47,8 @@ class Hash
   #   hash.insert!(other) { |key, old_value, new_value| ... } => hash
   #
   # Destructive version of #insert.
-  def insert!(other, &block)
-    replace insert(other, &block)
+  def insert!(other)
+    replace block_given? ? insert(other) { |*a| yield(*a) } : insert(other)
   end
 
 end

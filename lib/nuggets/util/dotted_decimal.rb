@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), '..', 'integer', 'to_binary_s')
+require 'nuggets/integer/to_binary_s'
 
 class Integer
 

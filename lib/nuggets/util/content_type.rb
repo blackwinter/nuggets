@@ -25,13 +25,26 @@
 ###############################################################################
 #++
 
-require 'rubygems'
+begin
+  require 'rubygems'
+rescue LoadError
+end
 
 begin
   require 'filemagic/ext'
 rescue LoadError
   def File.content_type(path)  # :nodoc:
     nil
+  end
+end
+
+begin
+  require 'nuggets/uri/content_type'
+rescue LoadError
+  module URI
+    def self.content_type(path)  # :nodoc:
+      nil
+    end
   end
 end
 
@@ -46,8 +59,6 @@ rescue LoadError
     end
   end
 end
-
-require File.join(File.dirname(__FILE__), '..', 'uri', 'content_type')
 
 module Util
 

@@ -42,12 +42,12 @@ class Object
       return true if blank?
 
       modifiers.each { |modifier|
-        next unless respond_to?(modifier)
-
-        if modifier.to_s[-1] == ??
-          return true if send(modifier)
-        else
-          return true if send(modifier).blank?
+        if respond_to?(modifier)
+          if modifier.to_s =~ /\?\z/
+            return true if send(modifier)
+          else
+            return true if send(modifier).blank?
+          end
         end
       }
 
@@ -86,9 +86,16 @@ class Hash
   #
   # Returns true if all of _hash_'s values are themselves vain.
   def vain?
-    blank? { |h| h.delete_if { |k, v| v.vain? } }
+    blank? { |h| h.delete_if { |_, v| v.vain? } }
   end
 
+end
+
+class String
+  if public_instance_methods(false).include?(method = 'blank?')
+    # remove incompatible implementation added by utility_belt/language_greps.rb
+    remove_method method
+  end
 end
 
 if $0 == __FILE__

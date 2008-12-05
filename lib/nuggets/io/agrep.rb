@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require File.join(File.dirname(__FILE__), '..', 'enumerable', 'agrep')
+require 'nuggets/enumerable/agrep'
 
 class IO
 

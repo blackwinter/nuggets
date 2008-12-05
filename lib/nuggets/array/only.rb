@@ -28,7 +28,7 @@
 class Array
 
   # call-seq:
-  #   array.only([relax]) => anObject
+  #   array.only(relax = true or false) => anObject
   #
   # Returns the only element of _array_. Raises an IndexError if _array_'s
   # size is not 1, unless +relax+ is true.

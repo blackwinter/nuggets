@@ -24,6 +24,20 @@
 ###############################################################################
 #++
 
+# Load selected +nuggets+.
+#
+# Examples:
+#   # All String nuggets
+#   Nuggets(:string)
+#   Nuggets(String)
+#
+#   # Only 'msub' and 'word_wrap' String nuggets
+#   Nuggets(:string => %w[msub word_wrap])
+#
+#   # Selected String nuggets and all Numeric nuggets
+#   Nuggets(:numeric, :string => %w[msub word_wrap])
+#
+#   # ...you see the pattern ;-)
 def Nuggets(*nuggets)
   loaded_nuggets = []
 
@@ -32,7 +46,7 @@ def Nuggets(*nuggets)
 
     nuggets.each { |nugget|
       begin
-        require path = File.join(base.to_s, nugget.to_s)
+        require path = File.join(base.to_s, nugget.to_s.downcase)
         loaded_nuggets << path
       rescue LoadError
         # if it's a directory, load anything in it
@@ -49,7 +63,7 @@ def Nuggets(*nuggets)
 
     nuggets_by_hierarchy.each { |hierarchy, nuggets|
       nuggets = [nuggets] if nuggets.is_a?(Hash)
-      load_nuggets[File.join(base.to_s, hierarchy.to_s), *nuggets]
+      load_nuggets[File.join(base.to_s, hierarchy.to_s.downcase), *nuggets]
     }
   }
 

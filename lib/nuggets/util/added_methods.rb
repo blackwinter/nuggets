@@ -269,9 +269,9 @@ module Util
           entries.each { |am|
             results << am if conditions.all? { |key, value|
               case value
-                when Array, Range: value.include?(am[key])
-                when Regexp:       value =~ am[key].to_s
-                else               value == am[key]
+                when Array, Range then value.include?(am[key])
+                when Regexp       then value =~ am[key].to_s
+                else                   value == am[key]
               end
             }
           }

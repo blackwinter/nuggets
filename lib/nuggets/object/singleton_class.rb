@@ -69,6 +69,8 @@ class Object
   alias_method :metaobject,     :singleton_object
   alias_method :uniobject,      :singleton_object
 
+  alias_method :singleton_instance, :singleton_object
+
   # call-seq:
   #   object.singleton_class? => true or false
   #

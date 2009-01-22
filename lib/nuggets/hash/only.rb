@@ -37,8 +37,7 @@ class Hash
   def only(relax = size == 1, split = false)
     raise IndexError, 'not a single-element hash' unless relax
 
-    return *first if split
-    first
+    split ? Array(*first) : first
   end
 
   # call-seq:

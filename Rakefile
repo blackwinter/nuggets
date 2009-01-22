@@ -18,3 +18,13 @@ Hen.lay! {{
     :extra_files => FileList['[A-Z]*'].to_a
   }
 }}
+
+desc "Run all examples"
+task :examples do
+  ruby = "#{Config::CONFIG['RUBY_INSTALL_NAME']}#{Config::CONFIG['EXEEXT']}"
+
+  Dir['lib/nuggets/*/**/*.rb'].each { |file|
+    puts ">>>>> #{file} <<<<<"
+    system(ruby, '-I', 'lib', file)
+  }
+end

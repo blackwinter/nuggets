@@ -51,7 +51,7 @@ class String
   #
   # Destructive version of #msub.
   def msub!(*substitutions)
-    substitutions = *substitutions  # Handle hashes and arrays alike
+    substitutions = substitutions.first if substitutions.first.is_a?(Hash)
     keys, subs, cache = [], [], {}
 
     substitutions.each { |key, value|
@@ -77,6 +77,6 @@ if $0 == __FILE__
   p s.gsub(/a/, 'o').gsub(/o/, 'a')
   p s.msub('a' => 'o', 'o' => 'a')
 
-  s.msub!('a' => 'o','o' => 'a')
+  s.msub!('a' => 'o', 'o' => 'a')
   p s
 end

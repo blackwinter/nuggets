@@ -1,2 +1,2 @@
 # whatever you prefer to call it...
-require 'nuggets/singleton_class'
+require 'nuggets/object/singleton_class'

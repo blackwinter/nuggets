@@ -39,7 +39,7 @@ class File
 
       if path = ENV['PATH']
         path.split(PATH_SEPARATOR).each { |dir|
-          candidate = join(dir, executable)
+          candidate = join(expand_path(dir), executable)
           return candidate if executable?(candidate)
         }
       end

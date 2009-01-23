@@ -21,7 +21,7 @@ Hen.lay! {{
 
 desc "Run all examples"
 task :examples do
-  ruby = "#{Config::CONFIG['RUBY_INSTALL_NAME']}#{Config::CONFIG['EXEEXT']}"
+  ruby = Config::CONFIG.values_at('RUBY_INSTALL_NAME', 'EXEEXT').join
 
   Dir['lib/nuggets/*/**/*.rb'].each { |file|
     puts ">>>>> #{file} <<<<<"

@@ -35,7 +35,7 @@ class String
   # substitution expressions ("#{...}") that can get evaluated in a different
   # environment (= +binding+) at a later point.
   def evaluate(binding = TOPLEVEL_BINDING)
-    eval(%Q{"#{self}"}, binding)
+    eval(%Q{%Q{#{self}}}, binding)
   end
 
 end
@@ -50,4 +50,6 @@ if $0 == __FILE__
   end
 
   p foo(s)
+
+  p 'a"b"c'.evaluate(binding)
 end

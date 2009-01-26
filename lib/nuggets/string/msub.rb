@@ -52,6 +52,11 @@ class String
   # Destructive version of #msub.
   def msub!(*substitutions)
     substitutions = substitutions.first if substitutions.first.is_a?(Hash)
+
+    binding = substitutions.is_a?(Hash) ? substitutions.delete(:__binding__) :
+      substitutions.last.is_a?(Hash) ? substitutions.pop[:__binding__] : nil
+    binding ||= Kernel.binding
+
     keys, subs, cache = [], [], {}
 
     substitutions.each { |key, value|
@@ -62,9 +67,7 @@ class String
     }
 
     gsub!(Regexp.union(*keys)) { |match|
-      cache[match] ||= subs.find { |key, _|
-        key =~ match
-      }.last.evaluate(binding)
+      cache[match] ||= subs.find { |key, _| key =~ match }.last.evaluate(binding)
     }
   end
 
@@ -79,4 +82,12 @@ if $0 == __FILE__
 
   s.msub!('a' => 'o', 'o' => 'a')
   p s
+
+  t = '!!!'
+  begin
+    p s.msub('r' => '???', 'z' => '#{t}')
+  rescue NameError => err
+    warn err
+  end
+  p s.msub('r' => '???', 'z' => '#{t}', :__binding__ => binding)
 end

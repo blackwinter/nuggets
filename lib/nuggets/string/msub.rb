@@ -67,7 +67,10 @@ class String
     }
 
     gsub!(Regexp.union(*keys)) { |match|
-      cache[match] ||= subs.find { |key, _| key =~ match }.last.evaluate(binding)
+      cache[match] ||= begin
+        eval("__match__ = #{match.inspect}", binding)
+        subs.find { |key, _| key =~ match }.last.evaluate(binding)
+      end
     }
   end
 
@@ -90,4 +93,6 @@ if $0 == __FILE__
     warn err
   end
   p s.msub('r' => '???', 'z' => '#{t}', :__binding__ => binding)
+
+  p s.msub(/[A-Z]/ => '#{__match__.downcase}', :__binding__ => binding)
 end

@@ -29,26 +29,30 @@ require 'tempfile'
 
 class Tempfile
 
-  alias_method :_nuggets_original_open, :open
+  class << self
 
-  # If no block is given, this is a synonym for new().
-  #
-  # If a block is given, it will be passed tempfile as an argument,
-  # and the tempfile will automatically be closed when the block
-  # terminates.  In this case, open() returns tempfile -- in contrast
-  # to the original implementation, which returns nil.
-  def self.open(*args)
-    tempfile = new(*args)
+    alias_method :_nuggets_original_open, :open
 
-    if block_given?
-      begin
-        yield tempfile
-      ensure
-        tempfile.close
+    # If no block is given, this is a synonym for new().
+    #
+    # If a block is given, it will be passed tempfile as an argument,
+    # and the tempfile will automatically be closed when the block
+    # terminates.  In this case, open() returns tempfile -- in contrast
+    # to the original implementation, which returns nil.
+    def open(*args)
+      tempfile = new(*args)
+
+      if block_given?
+        begin
+          yield tempfile
+        ensure
+          tempfile.close
+        end
       end
+
+      tempfile
     end
 
-    tempfile
   end
 
 end

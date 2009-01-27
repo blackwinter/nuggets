@@ -27,6 +27,11 @@
 
 module Enumerable
 
+  alias_method :_nuggets_original_minmax_by, :minmax_by if method_defined?(:minmax_by)
+  alias_method :_nuggets_original_min_by,    :min_by    if method_defined?(:min_by)
+  alias_method :_nuggets_original_max_by,    :max_by    if method_defined?(:max_by)
+  alias_method :_nuggets_original_minmax,    :minmax    if method_defined?(:minmax)
+
   alias_method :_nuggets_original_max, :max
   alias_method :_nuggets_original_min, :min
 

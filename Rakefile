@@ -19,12 +19,13 @@ Hen.lay! {{
   }
 }}
 
-desc "Run all examples"
-task :examples do
-  ruby = Config::CONFIG.values_at('RUBY_INSTALL_NAME', 'EXEEXT').join
+desc "Run all specs in isolation"
+task 'spec:isolated' do
+  ARGV.delete('spec:isolated')
+  ARGV.unshift('spec')
 
-  Dir['lib/nuggets/*/**/*.rb'].each { |file|
-    puts ">>>>> #{file} <<<<<"
-    system(ruby, '-I', 'lib', file)
+  Dir['spec/*/**/*_spec.rb'].each { |spec|
+    ENV['SPEC'] = spec
+    system($0, *ARGV)
   }
 end

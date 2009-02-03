@@ -25,7 +25,9 @@
 ###############################################################################
 #++
 
-class Object
+module Nuggets
+  class Object
+    module SingletonClass
 
   # call-seq:
   #   object.singleton_class => aClass
@@ -89,64 +91,10 @@ class Object
   alias_method :metaclass?,     :singleton_class?
   alias_method :uniclass?,      :singleton_class?
 
+    end
+  end
 end
 
-if $0 == __FILE__
-  o = Object.new
-  p o
-  p o.singleton_class?
-
-  begin
-    p o.singleton_object
-  rescue TypeError => err
-    warn err
-  end
-
-  s = o.singleton_class
-  p s
-  p s.singleton_class?
-  p s.singleton_object
-
-  ###
-
-  o = [1, 2]
-  p o
-
-  s = o.singleton_class
-  p s
-  p s.singleton_class?
-  p s.singleton_object
-
-  ###
-
-  p Class.new.singleton_class?
-  p Class.singleton_class?
-
-  ###
-
-  c = Class.new
-  o = c.new
-  p o
-  p c.singleton_class?
-
-  ###
-
-  p nil.singleton_class
-  p NilClass.singleton_class?
-  p NilClass.singleton_object
-
-  ###
-
-  class A      # :nodoc:
-  end
-  class B < A  # :nodoc:
-  end
-
-  a = A.singleton_class
-  b = B.singleton_class
-
-  p a
-  p a.singleton_object  #=> A
-  p b
-  p b.singleton_object  #=> B
+class Object
+  include Nuggets::Object::SingletonClass
 end

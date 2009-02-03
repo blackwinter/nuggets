@@ -25,14 +25,16 @@
 ###############################################################################
 #++
 
-class Object
+module Nuggets
+  class Object
+    module Boolean
 
   # call-seq:
   #   object.boolean? => true or false
   #
   # 
   def boolean?
-    is_a?(TrueClass) || is_a?(FalseClass)
+    is_a?(::TrueClass) || is_a?(::FalseClass)
   end
 
   # call-seq:
@@ -55,15 +57,10 @@ class Object
 
   alias_method :true?, :to_bool
 
+    end
+  end
 end
 
-if $0 == __FILE__
-  [0, 1, nil, '', 'abc', true, false, Class, Object.new].each { |o|
-    p o
-    p o.boolean?
-    p o.negate
-    p o.to_bool
-    p o.true?
-    p o.false?
-  }
+class Object
+  include Nuggets::Object::Boolean
 end

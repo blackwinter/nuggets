@@ -25,7 +25,9 @@
 ###############################################################################
 #++
 
-class Object
+module Nuggets
+  class Object
+    module Blank
 
   # call-seq:
   #   object.blank? => true or false
@@ -65,9 +67,11 @@ class Object
   end
   alias_method :vain?, :void?
 
-end
+    end
+  end
 
-class Array
+  class Array
+    module Blank
 
   # call-seq:
   #   array.vain? => true or false
@@ -77,9 +81,11 @@ class Array
     blank? { |a| a.delete_if { |i| i.vain? } }
   end
 
-end
+    end
+  end
 
-class Hash
+  class Hash
+    module Blank
 
   # call-seq:
   #   hash.vain? => true or false
@@ -89,31 +95,25 @@ class Hash
     blank? { |h| h.delete_if { |_, v| v.vain? } }
   end
 
-end
-
-class String
-  if public_instance_methods(false).include?(method = 'blank?')
-    # remove incompatible implementation added by utility_belt/language_greps.rb
-    remove_method method
+    end
   end
 end
 
-if $0 == __FILE__
-  ['', ' ', 's', 0, 1, nil, true, false, [], [nil], {}].each { |o|
-    p o
-    p o.blank?
-    p o.void?
-  }
-
-  o = ['', [], [nil], {}]
-  p o
-  p o.blank?
-  p o.void?
-  p o.vain?
-
-  o = { :x => nil, :y => [], :z => { :zz => nil } }
-  p o
-  p o.blank?
-  p o.void?
-  p o.vain?
+class Object
+  include Nuggets::Object::Blank
 end
+
+class Array
+  include Nuggets::Array::Blank
+end
+
+class Hash
+  include Nuggets::Hash::Blank
+end
+
+#class String
+#  if public_instance_methods(false).include?(method = 'blank?')
+#    # remove incompatible implementation added by utility_belt/language_greps.rb
+#    remove_method method
+#  end
+#end

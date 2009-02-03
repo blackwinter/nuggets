@@ -25,7 +25,9 @@
 ###############################################################################
 #++
 
-class Object
+module Nuggets
+  class Object
+    module MSend
 
   # call-seq:
   #   object.msend(*messages) => anArray
@@ -33,23 +35,14 @@ class Object
   # Sends _object_ multiple +messages+ and returns an array of the individual
   # return values.
   def msend(*messages)
-    hash = messages.last.is_a?(Hash) ? messages.pop : {}
-    (messages + hash.to_a).map { |msg| send *msg.is_a?(Array) ? msg : [msg] }
+    hash = messages.last.is_a?(::Hash) ? messages.pop : {}
+    (messages + hash.to_a).map { |msg| send(*msg.is_a?(::Array) ? msg : [msg]) }
   end
 
+    end
+  end
 end
 
-if $0 == __FILE__
-  o = 'foo bar'
-  p o
-  p o.msend(:length, :reverse)
-
-  o = 42
-  p o
-  p o.msend(:to_s, :* => 2)
-  p o.msend([:to_s, 2], '-@')
-
-  o = Time.now
-  p o
-  p o.msend(:year, :month, :day)
+class Object
+  include Nuggets::Object::MSend
 end

@@ -1,6 +1,6 @@
 require 'nuggets/object/singleton_class'
 
-describe Object, 'when extended by', Nuggets::Object::SingletonClass do
+describe Object, 'when extended by', Nuggets::Object::SingletonClassMixin do
 
   [Object, Class, Object.new, Class.new, 's', [1, 2], { :a => 'b' }].each { |o|
     example { o.should_not be_a_singleton_class }

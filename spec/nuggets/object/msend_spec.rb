@@ -1,6 +1,6 @@
 require 'nuggets/object/msend'
 
-describe Object, 'when extended by Nuggets::Object::MSend' do
+describe Object, 'when extended by', Nuggets::Object::MSendMixin do
 
   example do
     o = 'foo bar'

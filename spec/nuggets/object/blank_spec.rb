@@ -1,6 +1,6 @@
 require 'nuggets/object/blank'
 
-describe Object, 'when extended by', Nuggets::Object::Blank do
+describe Object, 'when extended by', Nuggets::Object::BlankMixin do
 
   ['s', ' ', 0, 1, true, [nil]].each { |o|
     example { o.should_not be_blank }

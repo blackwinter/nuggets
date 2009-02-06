@@ -37,10 +37,8 @@ module Enumerable
   # Adds the ability to pass an +object+ instead of a block, which will then
   # be tested against each item in _enum_ according to +operator+, defaulting
   # to :===.
-  def all?(object = default = Object.new, operator = :===)
-    _nuggets_original_all?(&block_given? ?
-      _block_for_all_any_extended(object, default, operator) { |*a| yield(*a) } :
-      _block_for_all_any_extended(object, default, operator))
+  def all?(object = default = Object.new, operator = :===, &block)
+    _nuggets_original_all?(&_block_for_all_any_extended(object, default, operator, &block))
   end
 
   # call-seq:
@@ -50,22 +48,19 @@ module Enumerable
   # Adds the ability to pass an +object+ instead of a block, which will then
   # be tested against each item in _enum_ according to +operator+, defaulting
   # to :===.
-  def any?(object = default = Object.new, operator = :===)
-    _nuggets_original_any?(&block_given? ?
-      _block_for_all_any_extended(object, default, operator) { |*a| yield(*a) } :
-      _block_for_all_any_extended(object, default, operator))
+  def any?(object = default = Object.new, operator = :===, &block)
+    _nuggets_original_any?(&_block_for_all_any_extended(object, default, operator, &block))
   end
 
   private
 
   # Common argument processing for extended versions of #all? and #any?.
-  def _block_for_all_any_extended(object, default, operator)
+  def _block_for_all_any_extended(object, default, operator, &block)
     if default.nil?
-      raise ArgumentError, "both block and object argument given", caller(1) if block_given?
-
-      lambda { |item| object.send(operator, item) }
-    elsif block_given?
-      lambda { |item| yield item }
+      raise ArgumentError, "both block and object argument given", caller(1) if block
+      lambda { |*a| object.send(operator, *a) }
+    else
+      block
     end
   end
 

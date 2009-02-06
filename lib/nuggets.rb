@@ -53,8 +53,8 @@ def Nuggets(*nuggets)
         $LOAD_PATH.each { |dir|
           if File.directory?(dir_path = File.join(dir, path))
             load_nuggets[path, *Dir[File.join(dir_path, '*')].map { |file|
-              File.basename(file, '.rb')
-            }]
+              File.basename(file, '.rb') unless file =~ /_mixin\.rb\z/
+            }.compact]
             break
           end
         } and raise  # otherwise, re-raise

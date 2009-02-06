@@ -2,6 +2,10 @@ require 'nuggets/object/blank'
 
 describe Object, 'when extended by', Nuggets::Object::BlankMixin do
 
+  it { Object.ancestors.should include(Nuggets::Object::BlankMixin) }
+  it { Array.ancestors.should include(Nuggets::Array::BlankMixin) }
+  it { Hash.ancestors.should include(Nuggets::Hash::BlankMixin) }
+
   ['s', ' ', 0, 1, true, [nil]].each { |o|
     example { o.should_not be_blank }
   }

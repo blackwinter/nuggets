@@ -2,6 +2,8 @@ require 'nuggets/object/boolean'
 
 describe Object, 'when extended by', Nuggets::Object::BooleanMixin do
 
+  it { Object.ancestors.should include(Nuggets::Object::BooleanMixin) }
+
   [0, 1, -1, nil, '', 'abc', Class, Object.new].each { |o|
     example { o.should_not be_boolean }
   }

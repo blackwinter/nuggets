@@ -2,6 +2,8 @@ require 'nuggets/object/msend'
 
 describe Object, 'when extended by', Nuggets::Object::MSendMixin do
 
+  it { Object.ancestors.should include(Nuggets::Object::MSendMixin) }
+
   example do
     o = 'foo bar'
     o.msend(:length, :reverse).should == [o.length, o.reverse]

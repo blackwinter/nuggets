@@ -2,6 +2,8 @@ require 'nuggets/uri/exist'
 
 describe URI, 'when extended by', Nuggets::URI::ExistMixin do
 
+  it { (class << URI; ancestors; end).should include(Nuggets::URI::ExistMixin) }
+
   %w[
     http://www.google.de
     http://blackwinter.de

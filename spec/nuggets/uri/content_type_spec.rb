@@ -2,6 +2,8 @@ require 'nuggets/uri/content_type'
 
 describe URI, 'when extended by', Nuggets::URI::ContentTypeMixin do
 
+  it { (class << URI; ancestors; end).should include(Nuggets::URI::ContentTypeMixin) }
+
   %w[
     http://www.google.de
     http://blackwinter.de/misc/

@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ruby-nuggets}
-  s.version = "0.5.0"
+  s.version = "0.5.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jens Wille"]
-  s.date = %q{2009-02-25}
+  s.date = %q{2009-03-03}
   s.description = %q{Some extensions to the Ruby programming language.}
   s.email = %q{jens.wille@uni-koeln.de}
   s.extra_rdoc_files = ["COPYING", "ChangeLog", "README"]

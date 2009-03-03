@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2008 Jens Wille                                          #
+# Copyright (C) 2007-2009 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -51,6 +51,14 @@ class String
 
 end
 
+class Array
+
+  def sort_by_dotted_decimal
+    sort_by { |i| i.split('.').map { |j| j.to_i } }
+  end
+
+end
+
 if $0 == __FILE__
   [2294967042, 4294967040].each { |i|
     p i.to_binary_s(32)
@@ -63,4 +71,8 @@ if $0 == __FILE__
     p s
     p s.from_dotted_decimal.to_binary_s(32)
   }
+
+  a = %w[77.47.161.3 196.101.53.1 77.47.161.11]
+  p a.sort
+  p a.sort_by_dotted_decimal
 end

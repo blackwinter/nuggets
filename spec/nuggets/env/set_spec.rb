@@ -8,6 +8,11 @@ describe ENV, 'when extended by', Nuggets::Env::SetMixin do
     @original = ENV.to_hash
   end
 
+  after do
+    ENV.clear
+    ENV.update(@original)
+  end
+
   example do
     ENV.with(:lang => 'C') { ENV['LANG'].should == 'C' }
     ENV['LANG'].should == @original['LANG']

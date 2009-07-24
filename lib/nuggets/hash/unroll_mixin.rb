@@ -56,7 +56,7 @@ module Nuggets
       }
     else
       rows << if value_keys.empty?
-        sort_block ? sort_by(&sort_block).map(&:last) : values
+        sort_block ? sort_by(&sort_block).map { |key, value| value } : values
       else
         values_at(*value_keys)
       end

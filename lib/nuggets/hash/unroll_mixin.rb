@@ -31,7 +31,7 @@ module Nuggets
 
   # call-seq:
   #   hash.unroll(*value_keys) => anArray
-  #   hash.unroll(*value_keys, :sort_by => { |key, value| ... }) => anArray
+  #   hash.unroll(*value_keys, :sort => ...) => anArray
   #   hash.unroll(*value_keys) { |value_hash| ... } => anArray
   #
   # "Unrolls" a nested hash, so that each path through +hash+ results in a
@@ -57,21 +57,31 @@ module Nuggets
   #   #=> [[:foo, :bar, :b, 6, nil], [:foo, :bar, :a, 4, nil]]
   def unroll(*value_keys, &block)
     args = value_keys.dup
-
     options = value_keys.last.is_a?(::Hash) ? value_keys.pop : {}
-    do_sort = options.has_key?(:sort_by)
+
+    do_sort = if options.has_key?(:sort_by)
+      lambda { sort_by(&options[:sort_by]) }
+    elsif options.has_key?(:sort)
+      sort_opt = options[:sort]
+
+      if sort_opt == true
+        lambda { sort }
+      elsif sort_opt.respond_to?(:to_proc)
+        lambda { sort(&sort_opt) }
+      end
+    end
 
     rows = []
 
     if values.first.is_a?(self.class)  # if any is, then all are
-      (do_sort ? sort_by(&options[:sort_by]) : self).each { |key, value|
+      (do_sort ? do_sort.call : self).each { |key, value|
         value.unroll(*args, &block).each { |row| rows << [key, *row] }
       }
     else
       block[self] if block
 
       rows << if value_keys.empty?
-        do_sort ? sort_by(&options[:sort_by]).map { |key, value| value } : values
+        do_sort ? do_sort.call.map { |key, value| value } : values
       else
         values_at(*value_keys)
       end

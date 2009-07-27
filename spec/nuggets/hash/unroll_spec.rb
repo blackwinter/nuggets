@@ -4,28 +4,43 @@ describe Hash, 'when extended by', Nuggets::Hash::UnrollMixin do
 
   it { Hash.ancestors.should include(Nuggets::Hash::UnrollMixin) }
 
-  example do
-    {}.unroll.should == [[]]
+  before :each do
+    @options = { :sort_by => lambda { |h| h.to_s } }
   end
 
   example do
-    { :a => 1 }.unroll.should == [[1]]
+    hash = {}
+    hash.unroll.should == [[]]
   end
 
   example do
-    { :a => { :b => 1 } }.unroll.should == [[:a, 1]]
+    hash = { :a => 1 }
+    hash.unroll.should == [[1]]
   end
 
   example do
-    { :a => { :b => 1, :c => 2 } }.unroll { |h| h.to_s }.should == [[:a, 1, 2]]
+    hash = { :a => { :b => 1 } }
+    hash.unroll.should == [[:a, 1]]
   end
 
   example do
-    { :a => { :b => 1, :c => 2 }, :d => { :b => 0, :c => 3 } }.unroll(:b, :c) { |h| h.to_s }.should == [[:a, 1, 2], [:d, 0, 3]]
+    hash = { :a => { :b => 1, :c => 2 } }
+    hash.unroll(@options).should == [[:a, 1, 2]]
   end
 
   example do
-    { :z => { :a => { :b => 1, :c => 2 }, :d => { :b => 0, :c => 3 } } }.unroll(:b) { |h| h.to_s }.should == [[:z, :a, 1], [:z, :d, 0]]
+    hash = { :a => { :b => 1, :c => 2 }, :d => { :b => 0, :c => 3 } }
+    hash.unroll(:b, :c, @options).should == [[:a, 1, 2], [:d, 0, 3]]
+  end
+
+  example do
+    hash = { :z => { :a => { :b => 1, :c => 2 }, :d => { :b => 0, :c => 3 } } }
+    hash.unroll(:b, @options).should == [[:z, :a, 1], [:z, :d, 0]]
+  end
+
+  example do
+    hash = { :z => { :a => { :b => 1, :c => 2 }, :d => { :b => 0, :c => 3 } } }
+    hash.unroll(@options) { |h| h[:b] = nil; h[:c] *= 2 }.should == [[:z, :a, nil, 4], [:z, :d, nil, 6]]
   end
 
 end

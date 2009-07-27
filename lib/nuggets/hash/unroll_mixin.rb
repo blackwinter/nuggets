@@ -31,32 +31,47 @@ module Nuggets
 
   # call-seq:
   #   hash.unroll(*value_keys) => anArray
-  #   hash.unroll(*value_keys) { |key, value| ... } => anArray
+  #   hash.unroll(*value_keys, :sort_by => { |key, value| ... }) => anArray
+  #   hash.unroll(*value_keys) { |value_hash| ... } => anArray
   #
   # "Unrolls" a nested hash, so that each path through +hash+ results in a
-  # row that is, e.g., suitable for use with CSV. Note that from the final
-  # hash only the values are used, namely, if +value_keys+ are given, the
-  # values at those keys are returned. If a block is given, all hashes are
-  # passed through that block for sorting before being put into the result
-  # array.
+  # row that is, e.g., suitable for use with CSV.
+  #
+  # Note that from the final hash ("value hash") only the values are used,
+  # namely, if +value_keys+ are given, the values at those keys are returned.
+  # If a block is given, the +value_hash+ is passed to that block for any
+  # additional processing or sanitization.
+  #
+  # If +sort_by+ is given, all hashes are passed through that block for
+  # sorting before being put into the result array.
   #
   # Examples:
   #
   #   { :foo => { :bar => { :a => { :x => 1, :y => 2 }, :b => { :x => 0, :y => 3 } } } }.unroll
   #   #=> [[:foo, :bar, :b, 3, 0], [:foo, :bar, :a, 2, 1]]
   #
-  #   { :foo => { :bar => { :a => { :x => 1, :y => 2 }, :b => { :x => 0, :y => 3 } } } }.unroll(&:to_s)
+  #   { :foo => { :bar => { :a => { :x => 1, :y => 2 }, :b => { :x => 0, :y => 3 } } } }.unroll(:sort_by => :to_s)
   #   #=> [[:foo, :bar, :a, 1, 2], [:foo, :bar, :b, 0, 3]]
-  def unroll(*value_keys, &sort_block)
+  #
+  #   { :foo => { :bar => { :a => { :x => 1, :y => 2 }, :b => { :x => 0, :y => 3 } } } }.unroll { |data| data[:x] = nil; data[:y] *= 2 }
+  #   #=> [[:foo, :bar, :b, 6, nil], [:foo, :bar, :a, 4, nil]]
+  def unroll(*value_keys, &block)
+    args = value_keys.dup
+
+    options = value_keys.last.is_a?(::Hash) ? value_keys.pop : {}
+    do_sort = options.has_key?(:sort_by)
+
     rows = []
 
     if values.first.is_a?(self.class)  # if any is, then all are
-      (sort_block ? sort_by(&sort_block) : self).each { |key, value|
-        value.unroll(*value_keys, &sort_block).each { |row| rows << [key, *row] }
+      (do_sort ? sort_by(&options[:sort_by]) : self).each { |key, value|
+        value.unroll(*args, &block).each { |row| rows << [key, *row] }
       }
     else
+      block[self] if block
+
       rows << if value_keys.empty?
-        sort_block ? sort_by(&sort_block).map { |key, value| value } : values
+        do_sort ? sort_by(&options[:sort_by]).map { |key, value| value } : values
       else
         values_at(*value_keys)
       end

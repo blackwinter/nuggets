@@ -34,7 +34,7 @@ module Nuggets
   #   hash.unroll(*value_keys, :sort => ...) => anArray
   #   hash.unroll(*value_keys) { |value_hash| ... } => anArray
   #
-  # "Unrolls" a nested hash, so that each path through +hash+ results in a
+  # "Unrolls" a nested hash, so that each path through _hash_ results in a
   # row that is, e.g., suitable for use with CSV.
   #
   # Note that from the final hash ("value hash") only the values are used,

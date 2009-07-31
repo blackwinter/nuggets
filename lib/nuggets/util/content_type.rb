@@ -78,8 +78,9 @@ module Util
     # NOTE: This is really only useful with the filemagic and mime-types gems
     # installed.
     def of(path)
-      File.content_type(path) || URI.content_type(path) ||
-        ((t = MIME::Types.of(path)).empty? ? nil : t.first.content_type)
+      File.content_type(path) || URI.content_type(path) || (
+        t = MIME::Types.of(path).first and t.content_type
+      )
     end
 
   end

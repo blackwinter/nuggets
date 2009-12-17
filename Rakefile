@@ -8,7 +8,8 @@ require 'lib/nuggets/version'
 
 Hen.lay! {{
   :rubyforge => {
-    :package => 'ruby-nuggets'
+    :project => %q{prometheus},
+    :package => %q{ruby-nuggets}
   },
 
   :gem => {

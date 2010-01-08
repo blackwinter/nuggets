@@ -59,29 +59,23 @@ module Nuggets
     args = value_keys.dup
     options = value_keys.last.is_a?(::Hash) ? value_keys.pop : {}
 
-    do_sort = if options.has_key?(:sort_by)
+    sort_proc = if options.has_key?(:sort_by)
       lambda { sort_by(&options[:sort_by]) }
     elsif options.has_key?(:sort)
-      sort_opt = options[:sort]
-
-      if sort_opt == true
-        lambda { sort }
-      elsif sort_opt.respond_to?(:to_proc)
-        lambda { sort(&sort_opt) }
-      end
+      options[:sort] == true ? lambda { sort } : lambda { sort(&options[:sort]) }
     end
 
     rows = []
 
     if values.first.is_a?(self.class)  # if any is, then all are
-      (do_sort ? do_sort.call : self).each { |key, value|
+      (sort_proc ? sort_proc.call : self).each { |key, value|
         value.unroll(*args, &block).each { |row| rows << [key, *row] }
       }
     else
       block[self] if block
 
       rows << if value_keys.empty?
-        do_sort ? do_sort.call.map { |key, value| value } : values
+        sort_proc ? sort_proc.call.map { |key, value| value } : values
       else
         values_at(*value_keys)
       end

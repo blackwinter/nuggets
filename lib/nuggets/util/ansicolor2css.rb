@@ -31,14 +31,8 @@ module Util
 
     extend self
 
-    COLOUR_RE = %r{\e\[((?:[0-9]|[34][0-7])(?:;(?:[0-9]|[34][0-7]))*)m}
-
-    OPEN  = '<span style="'.freeze
-    OPENC = '">'.freeze
-    CLOSE = '</span>'.freeze
-
     ATTRIBUTES = {
-       '0' => CLOSE,                            # clear
+       '0' => nil,                              # clear
        '1' => 'font-weight: bold',              # bold
        '2' => '',                               # dark
        '3' => 'font-style: italic',             # italic -- not widely implemented
@@ -66,15 +60,31 @@ module Util
       '47' => 'background-color: white'         # on white
     }
 
+    ATTRIBUTES_RE = Regexp.union(*ATTRIBUTES.keys)
+
+    DELIMITER = ';'
+
+    COLOR_RE = %r{
+      \e \[ ( #{ATTRIBUTES_RE} (?: #{DELIMITER} #{ATTRIBUTES_RE} )* ) m
+    }x
+
+    STYLE = '<span style="%s">'
+    CLEAR = '</span>'
+
     def convert(string)
-      string.gsub(COLOUR_RE) {
-        subst, attrs = '', $1.split(';')
+      string.gsub(COLOR_RE) { format($1.split(DELIMITER).uniq) }
+    end
 
-        subst << CLOSE if attrs.delete('0')
-        subst << OPEN << attrs.map { |c| ATTRIBUTES[c] }.join('; ') << OPENC unless attrs.empty?
+    def format(attributes)
+      "#{clear(attributes)}#{style(attributes) if attributes.any?}"
+    end
 
-        subst
-      }
+    def clear(attributes)
+      CLEAR if attributes.delete('0')
+    end
+
+    def style(attributes)
+      STYLE % attributes.map { |code| ATTRIBUTES[code] }.join('; ')
     end
 
   end
@@ -86,5 +96,7 @@ class String
   def ansicolor2css
     Util::ANSIColor2CSS.convert(self)
   end
+
+  alias_method :ansicolour2css, :ansicolor2css
 
 end

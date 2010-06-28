@@ -40,8 +40,9 @@ class String
   # substitution]</tt> pairs, or, simply, a hash. Note that, when using a hash,
   # the ordering of how substitutions are processed might differ from what you
   # intended -- instead use an array when order matters. +pattern+ can be a
-  # string or a regexp, +substitution+ may contain string expressions (cf.
-  # #evaluate).
+  # string or a regexp, +substitution+ can be a string (which may contain string
+  # expressions; cf. #evaluate), a proc (which will be call()ed), or any object
+  # really (which will be converted into a string).
   def msub(*substitutions)
     (_dup = dup).msub!(*substitutions) || _dup
   end
@@ -51,15 +52,12 @@ class String
   #
   # Destructive version of #msub.
   def msub!(*substitutions)
-    substitutions = substitutions.first if substitutions.first.is_a?(Hash)
-
-    binding = substitutions.is_a?(Hash) ? substitutions.delete(:__binding__) :
-      substitutions.last.is_a?(Hash) ? substitutions.pop[:__binding__] : nil
-    binding ||= Kernel.binding
+    options = substitutions.last.is_a?(Hash) ? substitutions.pop : {}
+    binding = options.delete(:__binding__) || Kernel.binding
 
     keys, subs, cache = [], [], {}
 
-    substitutions.each { |key, value|
+    substitutions.concat(options.to_a).each { |key, value|
       key = Regexp.new(Regexp.escape(key)) unless key.is_a?(Regexp)
 
       keys << key
@@ -68,8 +66,18 @@ class String
 
     gsub!(Regexp.union(*keys)) { |match|
       cache[match] ||= begin
-        eval("__match__ = #{match.inspect}", binding)
-        subs.find { |key, _| key =~ match }.last.evaluate(binding)
+        value = subs.find { |key, _| key =~ match }.last
+
+        if value.respond_to?(:evaluate)
+          # make match available for string evaluation
+          eval("__match__ = #{match.inspect}", binding)
+
+          value.evaluate(binding)
+        elsif value.respond_to?(:call)
+          value.call(match)
+        else
+          value
+        end
       end
     }
   end
@@ -87,12 +95,9 @@ if $0 == __FILE__
   p s
 
   t = '!!!'
-  begin
-    p s.msub('r' => '???', 'z' => '#{t}')
-  rescue NameError => err
-    warn err
-  end
+  begin; p s.msub('r' => '???', 'z' => '#{t}'); rescue NameError => err; warn err; end
   p s.msub('r' => '???', 'z' => '#{t}', :__binding__ => binding)
 
   p s.msub(/[A-Z]/ => '#{__match__.downcase}', :__binding__ => binding)
+  p s.msub(/[A-Z]/ => lambda { |match| match.downcase })
 end

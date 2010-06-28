@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2008 Jens Wille                                          #
+# Copyright (C) 2007-2010 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #

@@ -16,8 +16,8 @@ begin
       :extra_files => FileList['[A-Z]*'].to_a
     }
   }}
-rescue LoadError
-  abort "Please install the 'hen' gem first."
+rescue LoadError => err
+  warn "Please install the `hen' gem first. (#{err})"
 end
 
 desc "Run all specs in isolation"

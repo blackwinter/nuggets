@@ -13,7 +13,7 @@ begin
       :version     => Nuggets::VERSION,
       :summary     => 'Some extensions to the Ruby programming language.',
       :files       => FileList['lib/**/*.rb'].to_a,
-      :extra_files => FileList['[A-Z]*'].to_a
+      :extra_files => FileList['[A-Z]*', '.rspec', 'spec/**/*.rb'].to_a
     }
   }}
 rescue LoadError => err

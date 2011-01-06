@@ -35,6 +35,7 @@ describe Hash, 'when extended by', Nuggets::Hash::UnrollMixin do
     result.should include(2)
   end
 
+if RUBY_VERSION < '1.9'
   example do
     hash = { :a => { :b => 1, :c => 2 } }
     lambda { hash.unroll(:sort => true) }.should raise_error(NoMethodError, /<=>/)
@@ -44,6 +45,7 @@ describe Hash, 'when extended by', Nuggets::Hash::UnrollMixin do
     hash = { :a => { :b => 1, :c => 2 } }
     lambda { hash.unroll(:sort_by => lambda { |h| h.to_s }) }.should_not raise_error(NoMethodError)
   end
+end
 
   example do
     hash = { 'a' => { 'b' => 1, 'c' => 2 } }

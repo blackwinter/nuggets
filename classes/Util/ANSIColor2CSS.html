@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Util::ANSIColor2CSS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Util::ANSIColor2CSS</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/nuggets/util/ansicolor2css_rb.html">
+                lib/nuggets/util/ansicolor2css.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000102">clear</a>&nbsp;&nbsp;
+      <a href="#M000100">convert</a>&nbsp;&nbsp;
+      <a href="#M000101">format</a>&nbsp;&nbsp;
+      <a href="#M000103">style</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ATTRIBUTES</td>
+          <td>=</td>
+          <td class="context-item-value">{         '0' =&gt; nil,                              # clear         '1' =&gt; 'font-weight: bold',              # bold         '2' =&gt; '',                               # dark         '3' =&gt; 'font-style: italic',             # italic -- not widely implemented         '4' =&gt; 'text-decoration: underline',     # underline         '5' =&gt; 'text-decoration: blink',         # blink         '6' =&gt; 'text-decoration: blink',         # rapid blink -- not widely implemented         '7' =&gt; '',                               # reverse         '8' =&gt; 'opacity: 0',                     # concealed         '9' =&gt; 'text-decoration: line-through',  # strikethrough -- not widely implemented        '22' =&gt; 'font-weight: normal',            # bold off        '23' =&gt; 'font-style: normal',             # italic off        '24' =&gt; 'text-decoration: none',          # underline off        '25' =&gt; 'text-decoration: none',          # blink off        '27' =&gt; '',                               # reverse off        '28' =&gt; 'opacity: 1',                     # concealed off        '29' =&gt; 'text-decoration: none',          # strikethrough off        '30' =&gt; 'color: black',                   # black        '31' =&gt; 'color: maroon',                  # red        '32' =&gt; 'color: green',                   # green        '33' =&gt; 'color: olive',                   # yellow        '34' =&gt; 'color: navy',                    # blue        '35' =&gt; 'color: purple',                  # magenta        '36' =&gt; 'color: teal',                    # cyan        '37' =&gt; 'color: silver',                  # white        '39' =&gt; 'color: silver',                  # default (white)        '40' =&gt; 'background-color: black',        # on black        '41' =&gt; 'background-color: maroon',       # on red        '42' =&gt; 'background-color: green',        # on green        '43' =&gt; 'background-color: olive',        # on yellow        '44' =&gt; 'background-color: navy',         # on blue        '45' =&gt; 'background-color: purple',       # on magenta        '46' =&gt; 'background-color: teal',         # on cyan        '47' =&gt; 'background-color: silver',       # on white        '49' =&gt; 'background-color: black',        # on default (black)        '90' =&gt; 'color: gray',                    # bright black        '91' =&gt; 'color: red',                     # bright red        '92' =&gt; 'color: lime',                    # bright green        '93' =&gt; 'color: yellow',                  # bright yellow        '94' =&gt; 'color: blue',                    # bright blue        '95' =&gt; 'color: fuchsia',                 # bright magenta        '96' =&gt; 'color: cyan',                    # bright cyan        '97' =&gt; 'color: white',                   # bright white       '100' =&gt; 'background-color: gray',         # on bright black       '101' =&gt; 'background-color: red',          # on bright red       '102' =&gt; 'background-color: lime',         # on bright green       '103' =&gt; 'background-color: yellow',       # on bright yellow       '104' =&gt; 'background-color: blue',         # on bright blue       '105' =&gt; 'background-color: fuchsia',      # on bright magenta       '106' =&gt; 'background-color: cyan',         # on bright cyan       '107' =&gt; 'background-color: white'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ATTRIBUTES_RE</td>
+          <td>=</td>
+          <td class="context-item-value">Regexp.union(*ATTRIBUTES.keys)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DELIMITER</td>
+          <td>=</td>
+          <td class="context-item-value">';'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">COLOR_RE</td>
+          <td>=</td>
+          <td class="context-item-value">%r{       \e \[ ( #{ATTRIBUTES_RE} (?: #{DELIMITER} #{ATTRIBUTES_RE} )* ) m     }x</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">STYLE</td>
+          <td>=</td>
+          <td class="context-item-value">'&lt;span style=&quot;%s&quot;&gt;'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CLEAR</td>
+          <td>=</td>
+          <td class="context-item-value">'&lt;/span&gt;'</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="#M000102" class="method-signature">
+          <span class="method-name">clear</span><span class="method-args">(attributes)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000102-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000102-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/nuggets/util/ansicolor2css.rb, line 107</span>
+107:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>(<span class="ruby-identifier">attributes</span>)
+108:       <span class="ruby-constant">CLEAR</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'0'</span>)
+109:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="#M000100" class="method-signature">
+          <span class="method-name">convert</span><span class="method-args">(string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000100-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000100-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/nuggets/util/ansicolor2css.rb, line 99</span>
+ 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">convert</span>(<span class="ruby-identifier">string</span>)
+100:       <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">COLOR_RE</span>) { <span class="ruby-identifier">format</span>(<span class="ruby-identifier">$1</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">DELIMITER</span>).<span class="ruby-identifier">uniq</span>) }
+101:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="#M000101" class="method-signature">
+          <span class="method-name">format</span><span class="method-args">(attributes)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000101-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000101-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/nuggets/util/ansicolor2css.rb, line 103</span>
+103:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">format</span>(<span class="ruby-identifier">attributes</span>)
+104:       <span class="ruby-node">&quot;#{clear(attributes)}#{style(attributes) if attributes.any?}&quot;</span>
+105:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="#M000103" class="method-signature">
+          <span class="method-name">style</span><span class="method-args">(attributes)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000103-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000103-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/nuggets/util/ansicolor2css.rb, line 111</span>
+111:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">style</span>(<span class="ruby-identifier">attributes</span>)
+112:       <span class="ruby-constant">STYLE</span> <span class="ruby-operator">%</span> <span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">attributes</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">'; '</span>)
+113:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Thu Jan 06 14:10:54 +0100 2011</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>ruby-nuggets - Some extensions to the Ruby programming language</h1>
+<h2>VERSION</h2>
+<p>
+This documentation refers to ruby-nuggets version 0.6.5
+</p>
+<h2>DESCRIPTION</h2>
+<p>
+ruby-nuggets provides a collection of extensions to Ruby core classes. In
+its effort, it&#8216;s similar to projects like <a
+href="http://facets.rubyforge.org">Facets</a> and <a
+href="http://extensions.rubyforge.org">Extensions</a> (or even <a
+href="http://rubyforge.org/projects/labrador/">Labrador</a>), though not as
+ambitious ;-) This is simply where I put stuff that I need on a more or
+less regular basis or that struck me as interesting while surfing the web,
+reading books, or following discussions on ruby-talk.
+</p>
+<p>
+There are several ways to get at the nuggets you&#8216;re interested in:
+</p>
+<pre>
+  # The usual way: Just require() what you need
+  require 'nuggets/object/singleton_class'
+
+  # The more fancy way ;-) (see the documentation of Nuggets() for more examples)
+  require 'nuggets'
+  Nuggets(:object =&gt; 'singleton_class', :string =&gt; %w[nsub sub_with_md])
+
+  # Finally, get everything there is...
+  require 'nuggets/all'
+</pre>
+<p>
+Please be aware that some of the things herein might not work as expected
+or cause other libraries to misbehave. Use at your own risk!
+</p>
+<h2>LINKS</h2>
+<p>
+</p>
+<table>
+<tr><td valign="top">Documentation:</td><td>&lt;<a
+href="http://prometheus.rubyforge.org/ruby-nuggets">prometheus.rubyforge.org/ruby-nuggets</a>&gt;
+
+</td></tr>
+<tr><td valign="top">Source code (old):</td><td>&lt;<a
+href="http://prometheus.rubyforge.org/svn/scratch/ruby-nuggets">prometheus.rubyforge.org/svn/scratch/ruby-nuggets</a>&gt;
+
+</td></tr>
+<tr><td valign="top">Source code:</td><td>&lt;<a
+href="http://github.com/blackwinter/ruby-nuggets">github.com/blackwinter/ruby-nuggets</a>&gt;
+
+</td></tr>
+<tr><td valign="top">Rubyforge project:</td><td>&lt;<a
+href="http://rubyforge.org/projects/prometheus">rubyforge.org/projects/prometheus</a>&gt;
+
+</td></tr>
+<tr><td valign="top">RubyGem:</td><td>&lt;<a
+href="http://rubygems.org/gems/ruby-nuggets">rubygems.org/gems/ruby-nuggets</a>&gt;
+
+</td></tr>
+</table>
+<h2>AUTHORS</h2>
+<ul>
+<li>Jens Wille &lt;<a
+href="mailto:jens.wille@uni-koeln.de">jens.wille@uni-koeln.de</a>&gt;
+
+</li>
+</ul>
+<h2>LICENSE AND COPYRIGHT</h2>
+<p>
+Copyright (C) 2007-2011 Jens Wille
+</p>
+<p>
+ruby-nuggets is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option)
+any later version.
+</p>
+<p>
+ruby-nuggets is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+more details.
+</p>
+<p>
+You should have received a copy of the GNU General Public License along
+with ruby-nuggets. If not, see &lt;<a
+href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

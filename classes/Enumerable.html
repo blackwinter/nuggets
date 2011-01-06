@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Enumerable</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Enumerable</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/nuggets/enumerable/agrep_rb.html">
+                lib/nuggets/enumerable/agrep.rb
+                </a>
+        <br />
+                <a href="../files/lib/nuggets/enumerable/all_any_extended_rb.html">
+                lib/nuggets/enumerable/all_any_extended.rb
+                </a>
+        <br />
+                <a href="../files/lib/nuggets/enumerable/minmax_rb.html">
+                lib/nuggets/enumerable/minmax.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000108">_block_for_all_any_extended</a>&nbsp;&nbsp;
+      <a href="#M000105">agrep</a>&nbsp;&nbsp;
+      <a href="#M000106">all?</a>&nbsp;&nbsp;
+      <a href="#M000107">any?</a>&nbsp;&nbsp;
+      <a href="#M000113">max</a>&nbsp;&nbsp;
+      <a href="#M000110">max_by</a>&nbsp;&nbsp;
+      <a href="#M000114">min</a>&nbsp;&nbsp;
+      <a href="#M000111">min_by</a>&nbsp;&nbsp;
+      <a href="#M000112">minmax</a>&nbsp;&nbsp;
+      <a href="#M000109">minmax_by</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">all?</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_all?</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">any?</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_any?</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">minmax_by</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_minmax_by</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">min_by</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_min_by</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">max_by</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_max_by</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">minmax</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_minmax</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">max</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_max</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">min</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_nuggets_original_min</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="#M000105" class="method-signature">
+          <span class="method-name">enum.agrep(pattern[, distance]) => anArray<br />
+enum.agrep(pattern[, distance]) { |obj| ... } => anArray<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns an array of every element in <em>enum</em> for which
+<tt>pattern</tt> approximately matches <tt>element</tt> (see
+Amatch::Levenshtein#search). If the optional <tt>block</tt> is supplied,
+each matching element is passed to it, and the block‘s result is stored
+in the output array.
+</p>
+<p>
+LIMITATIONS:
+</p>
+<ul>
+<li>Only strings are allowed as <tt>pattern</tt>. Regular expressions are
+reverted to their respective source. (Equivalent to <tt><a
+href="Enumerable.html#M000105">agrep</a> -k</tt>)
+
+</li>
+<li>Only works with string elements in <em>enum</em>. (Calls <tt>to_s</tt> on
+each element)
+
+</li>
+<li>The cost for individual error types (substitution, insertion, deletion)
+cannot be adjusted.
+
+</li>
+</ul>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000105-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000105-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/agrep.rb, line 57</span>
+57:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span> = <span class="ruby-value">0</span>)
+58:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">'Amatch not available!'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">Amatch</span>)
+59: 
+60:     <span class="ruby-identifier">pattern</span> = <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">source</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Regexp</span>)
+61: 
+62:     <span class="ruby-identifier">amatch</span>  = <span class="ruby-constant">Amatch</span><span class="ruby-operator">::</span><span class="ruby-constant">Levenshtein</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pattern</span>)
+63:     <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span> <span class="ruby-identifier">amatch</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">distance</span> }
+64: 
+65:     <span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-identifier">matches</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">match</span> } <span class="ruby-operator">:</span> <span class="ruby-identifier">matches</span>
+66:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="#M000106" class="method-signature">
+          <span class="method-name">enum.all?(obj[, operator]) => true or false<br />
+enum.all? { ... } => true or false<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds the ability to pass an <tt>object</tt> instead of a block, which will
+then be tested against each item in <em>enum</em> according to
+<tt>operator</tt>, defaulting to :===.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000106-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000106-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/all_any_extended.rb, line 40</span>
+40:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">all?</span>(<span class="ruby-identifier">object</span> = <span class="ruby-identifier">default</span> = <span class="ruby-constant">Object</span>.<span class="ruby-identifier">new</span>, <span class="ruby-identifier">operator</span> = <span class="ruby-identifier">:===</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+41:     <span class="ruby-identifier">_nuggets_original_all?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
+42:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <a href="#M000107" class="method-signature">
+          <span class="method-name">enum.any?(obj[, operator]) => true or false<br />
+enum.any? { ... } => true or false<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds the ability to pass an <tt>object</tt> instead of a block, which will
+then be tested against each item in <em>enum</em> according to
+<tt>operator</tt>, defaulting to :===.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000107-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000107-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/all_any_extended.rb, line 51</span>
+51:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">any?</span>(<span class="ruby-identifier">object</span> = <span class="ruby-identifier">default</span> = <span class="ruby-constant">Object</span>.<span class="ruby-identifier">new</span>, <span class="ruby-identifier">operator</span> = <span class="ruby-identifier">:===</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+52:     <span class="ruby-identifier">_nuggets_original_any?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
+53:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000113" class="method-detail">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+          <a href="#M000113" class="method-signature">
+          <span class="method-name">enum.max(what) => aValue<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Maximum <a href="Enumerable.html#M000112">minmax</a>. If <tt>what</tt> is
+omitted, or nil, the original <a
+href="Enumerable.html#M000113">Enumerable#max</a> is called.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000113-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000113-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/minmax.rb, line 90</span>
+90:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">max</span>(<span class="ruby-identifier">what</span> = <span class="ruby-keyword kw">nil</span>)
+91:     <span class="ruby-identifier">what</span> <span class="ruby-value">? </span><span class="ruby-identifier">minmax</span>(<span class="ruby-identifier">:max</span>, <span class="ruby-identifier">what</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-value">?
+92: </span>      <span class="ruby-identifier">_nuggets_original_max</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span> <span class="ruby-identifier">_nuggets_original_max</span>
+93:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000110" class="method-detail">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+          <a href="#M000110" class="method-signature">
+          <span class="method-name">enum.max_by(by) => aValue<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Maximum <a href="Enumerable.html#M000109">minmax_by</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000110-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000110-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/minmax.rb, line 53</span>
+53:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">max_by</span>(<span class="ruby-identifier">by</span>)
+54:     <span class="ruby-identifier">minmax_by</span>(<span class="ruby-identifier">:max</span>, <span class="ruby-identifier">by</span>)
+55:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000114" class="method-detail">
+        <a name="M000114"></a>
+
+        <div class="method-heading">
+          <a href="#M000114" class="method-signature">
+          <span class="method-name">enum.min(what) => aValue<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Minimum <a href="Enumerable.html#M000112">minmax</a>. If <tt>what</tt> is
+omitted, or nil, the original <a
+href="Enumerable.html#M000114">Enumerable#min</a> is called.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000114-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000114-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/nuggets/enumerable/minmax.rb, line 100</span>
+100:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">min</span>(<span class="ruby-identifier">what</span> = <span class="ruby-keyword kw">nil</span>)
+101:     <span class="ruby-identifier">what</span> <span class="ruby-value">? </span><span class="ruby-identifier">minmax</span>(<span class="ruby-identifier">:min</span>, <span class="ruby-identifier">what</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-value">?
+102: </span>      <span class="ruby-identifier">_nuggets_original_min</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span> <span class="ruby-identifier">_nuggets_original_min</span>
+103:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="#M000111" class="method-signature">
+          <span class="method-name">enum.min_by(by) => aValue<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Minimum <a href="Enumerable.html#M000109">minmax_by</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000111-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000111-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/minmax.rb, line 61</span>
+61:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">min_by</span>(<span class="ruby-identifier">by</span>)
+62:     <span class="ruby-identifier">minmax_by</span>(<span class="ruby-identifier">:min</span>, <span class="ruby-identifier">by</span>)
+63:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000112" class="method-detail">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+          <a href="#M000112" class="method-signature">
+          <span class="method-name">enum.minmax(meth, what) => anObject<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Finds the <a href="Enumerable.html#M000109">minmax_by</a> according to
+<tt>what</tt> and returns that &quot;what&quot;.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  %w[a bcd ef].max(:length)  #=&gt; 3
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000112-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000112-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/minmax.rb, line 72</span>
+72:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-identifier">what</span>)
+73:     <span class="ruby-comment cmt">#m = minmax_by(meth, what)</span>
+74:     <span class="ruby-comment cmt">#what.is_a?(Proc) ? what[m] : m.send(what)</span>
+75: 
+76:     <span class="ruby-identifier">_what</span> = <span class="ruby-identifier">what</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">what</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">what</span>) }
+77:     <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_what</span>[<span class="ruby-identifier">i</span>] }.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">meth</span>)
+78: 
+79:     <span class="ruby-comment cmt"># Benchmark (:max, :length; enum.size = 20, N = 100_000):</span>
+80:     <span class="ruby-comment cmt">#</span>
+81:     <span class="ruby-comment cmt"># max_by(:length).length   7.920000   0.890000   8.810000 (  8.991915)</span>
+82:     <span class="ruby-comment cmt"># map(:length).max         4.800000   0.600000   5.400000 (  5.418114)</span>
+83:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="#M000109" class="method-signature">
+          <span class="method-name">enum.minmax_by(meth, by) => aValue<br />
+</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Finds the maximum/minimum (or whatever <tt>meth</tt> is) value in
+<em>enum</em> according to <tt>by</tt> (which may be a symbol/string that
+is sent to each value, or a proc that receives each value as parameter).
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000109-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000109-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/minmax.rb, line 44</span>
+44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">minmax_by</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-identifier">by</span>)
+45:     <span class="ruby-identifier">_by</span> = <span class="ruby-identifier">by</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">by</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">by</span>) }
+46:     <span class="ruby-identifier">send</span>(<span class="ruby-identifier">meth</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_by</span>[<span class="ruby-identifier">a</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">_by</span>[<span class="ruby-identifier">b</span>] }
+47:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Private Instance methods</h3>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="#M000108" class="method-signature">
+          <span class="method-name">_block_for_all_any_extended</span><span class="method-args">(object, default, operator, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Common argument processing for extended versions of all? and any?.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000108-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000108-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/nuggets/enumerable/all_any_extended.rb, line 58</span>
+58:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+59:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span>.<span class="ruby-identifier">nil?</span>
+60:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;both block and object argument given&quot;</span>, <span class="ruby-identifier">caller</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>
+61:       <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">operator</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) }
+62:     <span class="ruby-keyword kw">else</span>
+63:       <span class="ruby-identifier">block</span>
+64:     <span class="ruby-keyword kw">end</span>
+65:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

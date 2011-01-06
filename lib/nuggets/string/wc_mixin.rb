@@ -69,7 +69,7 @@ module Nuggets
   #
   # Count number of characters in _str_.
   def char_count
-    count_by_re(/./m)
+    count_by_re(/./um)
   end
   alias_method :wc_m, :char_count
 

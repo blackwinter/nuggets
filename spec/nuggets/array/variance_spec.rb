@@ -29,7 +29,7 @@ describe Array, 'when extended by', Nuggets::Array::VarianceMixin do
   end
 
   example do
-    [1, -2, 1, 2, 3, -4, 0, 3, 1, 2, 1, 0, 24].variance.should be_close(42.0, 0.1)
+    [1, -2, 1, 2, 3, -4, 0, 3, 1, 2, 1, 0, 24].variance.should be_within(0.1).of(42.0)
   end
 
 end

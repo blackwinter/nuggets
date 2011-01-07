@@ -25,24 +25,36 @@
 ###############################################################################
 #++
 
+require 'rbconfig'
+
 module Nuggets
   class File
     module WhichMixin
 
-  # call-seq:
-  #   File.which(executable) => aString or nil
-  #
-  # Returns the full path to +executable+, or +nil+ if not found in PATH.
-  # Inspired by Gnuplot.which -- thx, Gordon!
-  def which(executable)
-    return executable if executable?(executable)
+  DEFAULT_EXTENSIONS = [Config::CONFIG['EXEEXT']]
 
-    if path = ENV['PATH']
-      path.split(::File::PATH_SEPARATOR).each { |dir|
-        candidate = join(expand_path(dir), executable)
-        return candidate if executable?(candidate)
-      }
-    end
+  # call-seq:
+  #   File.which(executable, extensions = DEFAULT_EXTENSIONS) => aString or nil
+  #
+  # Returns +executable+ if it's executable, or the full path to +executable+
+  # found in PATH, or +nil+ otherwise. Checks +executable+ with each extension
+  # in +extensions+ appended in turn.
+  #
+  # Inspired by Gnuplot.which -- thx, Gordon!
+  def which(executable, extensions = DEFAULT_EXTENSIONS)
+    extensions |= ['']
+
+    extensions.each { |extension|
+      executable += extension
+      return executable if executable?(executable)
+
+      if path = ENV['PATH']
+        path.split(::File::PATH_SEPARATOR).each { |dir|
+          candidate = join(expand_path(dir), executable)
+          return candidate if executable?(candidate)
+        }
+      end
+    }
 
     nil
   end
@@ -50,9 +62,9 @@ module Nuggets
   # call-seq:
   #   File.which_command(commands) => aString or nil
   #
-  # Returns the first of +commands+ that is executable.
-  def which_command(commands)
-    commands.find { |command| which(command[/\S+/]) }
+  # Returns the first of +commands+ that is executable (according to #which).
+  def which_command(commands, extensions = DEFAULT_EXTENSIONS)
+    commands.find { |command| which(command[/\S+/], extensions) }
   end
 
     end

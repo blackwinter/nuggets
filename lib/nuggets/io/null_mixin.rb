@@ -25,47 +25,16 @@
 ###############################################################################
 #++
 
-require 'rbconfig'
-
 module Nuggets
-  class File
-    module WhichMixin
+  class IO
+    module NullMixin
 
-  DEFAULT_EXTENSIONS = [Config::CONFIG['EXEEXT']]
-
-  # call-seq:
-  #   File.which(executable, extensions = DEFAULT_EXTENSIONS) => aString or nil
-  #
-  # Returns +executable+ if it's executable, or the full path to +executable+
-  # found in PATH, or +nil+ otherwise. Checks +executable+ with each extension
-  # in +extensions+ appended in turn.
-  #
-  # Inspired by Gnuplot.which -- thx, Gordon!
-  def which(executable, extensions = DEFAULT_EXTENSIONS)
-    extensions |= ['']
-
-    extensions.each { |extension|
-      executable += extension
-      return executable if executable?(executable)
-
-      if path = ENV['PATH']
-        path.split(::File::PATH_SEPARATOR).each { |dir|
-          candidate = join(expand_path(dir), executable)
-          return candidate if executable?(candidate)
-        }
-      end
-    }
-
-    nil
-  end
-
-  # call-seq:
-  #   File.which_command(commands) => aString or nil
-  #
-  # Returns the first of +commands+ that is executable (according to #which).
-  def which_command(commands, extensions = DEFAULT_EXTENSIONS)
-    commands.find { |command| which(command[/\S+/], extensions) }
-  end
+      NULL = case RUBY_PLATFORM
+        when /mswin|mingw/i then 'NUL'
+        when /openvms/i     then 'NL:'
+        when /amiga/i       then 'NIL:'
+        else                     '/dev/null'
+      end.freeze
 
     end
   end

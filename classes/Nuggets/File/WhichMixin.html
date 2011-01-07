@@ -93,6 +93,19 @@
     <div id="section">
 
 
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_EXTENSIONS</td>
+          <td>=</td>
+          <td class="context-item-value">[Config::CONFIG['EXEEXT']]</td>
+        </tr>
+        </table>
+      </div>
+    </div>
 
 
 
@@ -108,33 +121,43 @@
 
         <div class="method-heading">
           <a href="#M000186" class="method-signature">
-          <span class="method-name">File.which(executable) => aString or nil<br />
+          <span class="method-name">File.which(executable, extensions = DEFAULT_EXTENSIONS) => aString or nil<br />
 </span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Returns the full path to <tt>executable</tt>, or <tt>nil</tt> if not found
-in PATH. Inspired by Gnuplot.which &#8212; thx, Gordon!
+Returns <tt>executable</tt> if it&#8216;s executable, or the full path to
+<tt>executable</tt> found in PATH, or <tt>nil</tt> otherwise. Checks
+<tt>executable</tt> with each extension in <tt>extensions</tt> appended in
+turn.
+</p>
+<p>
+Inspired by Gnuplot.which &#8212; thx, Gordon!
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000186-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000186-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/nuggets/file/which_mixin.rb, line 37</span>
-37:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">which</span>(<span class="ruby-identifier">executable</span>)
-38:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">executable</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">executable</span>)
-39: 
-40:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'PATH'</span>]
-41:       <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
-42:         <span class="ruby-identifier">candidate</span> = <span class="ruby-identifier">join</span>(<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">dir</span>), <span class="ruby-identifier">executable</span>)
-43:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">candidate</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">candidate</span>)
-44:       }
-45:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/nuggets/file/which_mixin.rb, line 44</span>
+44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">which</span>(<span class="ruby-identifier">executable</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)
+45:     <span class="ruby-identifier">extensions</span> <span class="ruby-operator">|=</span> [<span class="ruby-value str">''</span>]
 46: 
-47:     <span class="ruby-keyword kw">nil</span>
-48:   <span class="ruby-keyword kw">end</span>
+47:     <span class="ruby-identifier">extensions</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">extension</span><span class="ruby-operator">|</span>
+48:       <span class="ruby-identifier">executable</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">extension</span>
+49:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">executable</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">executable</span>)
+50: 
+51:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'PATH'</span>]
+52:         <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+53:           <span class="ruby-identifier">candidate</span> = <span class="ruby-identifier">join</span>(<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">dir</span>), <span class="ruby-identifier">executable</span>)
+54:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">candidate</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">candidate</span>)
+55:         }
+56:       <span class="ruby-keyword kw">end</span>
+57:     }
+58: 
+59:     <span class="ruby-keyword kw">nil</span>
+60:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -152,16 +175,17 @@ in PATH. Inspired by Gnuplot.which &#8212; thx, Gordon!
       
         <div class="method-description">
           <p>
-Returns the first of <tt>commands</tt> that is executable.
+Returns the first of <tt>commands</tt> that is executable (according to <a
+href="WhichMixin.html#M000186">which</a>).
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000187-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000187-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/nuggets/file/which_mixin.rb, line 54</span>
-54:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">which_command</span>(<span class="ruby-identifier">commands</span>)
-55:     <span class="ruby-identifier">commands</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">command</span><span class="ruby-operator">|</span> <span class="ruby-identifier">which</span>(<span class="ruby-identifier">command</span>[<span class="ruby-regexp re">/\S+/</span>]) }
-56:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/nuggets/file/which_mixin.rb, line 66</span>
+66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">which_command</span>(<span class="ruby-identifier">commands</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)
+67:     <span class="ruby-identifier">commands</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">command</span><span class="ruby-operator">|</span> <span class="ruby-identifier">which</span>(<span class="ruby-identifier">command</span>[<span class="ruby-regexp re">/\S+/</span>], <span class="ruby-identifier">extensions</span>) }
+68:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

@@ -30,18 +30,14 @@ module Nuggets
     module UserHomeMixin
 
   # call-seq:
-  #   ENV.user_home => aString
+  #   ENV.user_home(default = '/') => aString
   #
-  # Finds the user's home directory. Stolen from RubyGems ;-)
+  # Returns the user's home directory, or +default+ if it could not be found.
   def user_home(default = ::File::ALT_SEPARATOR ? 'C:/' : '/')
-    %w[HOME USERPROFILE].each { |homekey|
-      home = self[homekey]
-      return home if home
+    %w[HOME HOMEDRIVE:HOMEPATH USERPROFILE APPDATA].each { |key|
+      home = values_at(*key.split(':')).join
+      return home.gsub(/\\/, '/') if home && !home.empty?
     }
-
-    if drive = self['HOMEDRIVE'] and path = self['HOMEPATH']
-      return "#{drive}:#{path}"
-    end
 
     begin
       ::File.expand_path('~')

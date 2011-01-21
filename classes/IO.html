@@ -63,6 +63,10 @@
                 lib/nuggets/io/modes.rb
                 </a>
         <br />
+                <a href="../files/lib/nuggets/io/null_rb.html">
+                lib/nuggets/io/null.rb
+                </a>
+        <br />
             </td>
         </tr>
 
@@ -107,6 +111,13 @@
 
 
     <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></span>
+      </div>
+    </div>
 
     <div id="section">
 
@@ -177,12 +188,10 @@ Opens <tt>name</tt> with mode <tt>a</tt>.
             onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000067-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 78</span>
-78:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">append</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
-79:       <span class="ruby-identifier">block_given?</span> <span class="ruby-value">?
-80: </span>        <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'a'</span>, <span class="ruby-identifier">binary</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span>
-81:         <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'a'</span>, <span class="ruby-identifier">binary</span>)
-82:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 76</span>
+76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">append</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
+77:       <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'a'</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+78:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -207,12 +216,10 @@ Opens <tt>name</tt> with mode <tt>a+</tt>.
             onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000070-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 111</span>
-111:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">append_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
-112:       <span class="ruby-identifier">block_given?</span> <span class="ruby-value">?
-113: </span>        <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'a+'</span>, <span class="ruby-identifier">binary</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span>
-114:         <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'a+'</span>, <span class="ruby-identifier">binary</span>)
-115:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 103</span>
+103:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">append_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
+104:       <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'a+'</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+105:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -256,7 +263,7 @@ acts like the original IO::read, not like IO::new.
 56:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{args.size + 1} for 1-2)&quot;</span>
 57:       <span class="ruby-keyword kw">end</span>
 58: 
-59:       <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'r'</span>, <span class="ruby-identifier">binary</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) }
+59:       <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'r'</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>)
 60:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
@@ -282,12 +289,10 @@ Opens <tt>name</tt> with mode <tt>r+</tt>.
             onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000068-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 89</span>
-89:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
-90:       <span class="ruby-identifier">block_given?</span> <span class="ruby-value">?
-91: </span>        <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'r+'</span>, <span class="ruby-identifier">binary</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span>
-92:         <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'r+'</span>, <span class="ruby-identifier">binary</span>)
-93:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 85</span>
+85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
+86:       <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'r+'</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+87:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -314,10 +319,8 @@ Opens <tt>name</tt> with mode <tt>w</tt>.
 <pre>
     <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 67</span>
 67:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
-68:       <span class="ruby-identifier">block_given?</span> <span class="ruby-value">?
-69: </span>        <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'w'</span>, <span class="ruby-identifier">binary</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span>
-70:         <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'w'</span>, <span class="ruby-identifier">binary</span>)
-71:     <span class="ruby-keyword kw">end</span>
+68:       <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'w'</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+69:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -342,12 +345,10 @@ Opens <tt>name</tt> with mode <tt>w+</tt>.
             onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000069-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 100</span>
-100:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
-101:       <span class="ruby-identifier">block_given?</span> <span class="ruby-value">?
-102: </span>        <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'w+'</span>, <span class="ruby-identifier">binary</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span>
-103:         <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'w+'</span>, <span class="ruby-identifier">binary</span>)
-104:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 94</span>
+94:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
+95:       <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'w+'</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+96:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -360,7 +361,7 @@ Opens <tt>name</tt> with mode <tt>w+</tt>.
 
         <div class="method-heading">
           <a href="#M000071" class="method-signature">
-          <span class="method-name">open_with_mode</span><span class="method-args">(name, mode, binary = false) {|io| ...}</span>
+          <span class="method-name">open_with_mode</span><span class="method-args">(name, mode, binary = false)</span>
           </a>
         </div>
       
@@ -372,11 +373,10 @@ Just a helper to DRY things up.
             onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000071-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 120</span>
-120:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
-121:       <span class="ruby-identifier">mode</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'b'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">binary</span>
-122:       <span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">io</span> } <span class="ruby-operator">:</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>)
-123:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/nuggets/io/modes.rb, line 110</span>
+110:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword kw">false</span>)
+111:       <span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;#{mode}#{'b' if binary}&quot;</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-value">? </span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+112:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

@@ -80,8 +80,8 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000186">which</a>&nbsp;&nbsp;
-      <a href="#M000187">which_command</a>&nbsp;&nbsp;
+      <a href="#M000200">which</a>&nbsp;&nbsp;
+      <a href="#M000201">which_command</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -101,7 +101,7 @@
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">DEFAULT_EXTENSIONS</td>
           <td>=</td>
-          <td class="context-item-value">[Config::CONFIG['EXEEXT']]</td>
+          <td class="context-item-value">[RbConfig::CONFIG['EXEEXT']]</td>
         </tr>
         </table>
       </div>
@@ -116,11 +116,11 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000186" class="method-detail">
-        <a name="M000186"></a>
+      <div id="method-M000200" class="method-detail">
+        <a name="M000200"></a>
 
         <div class="method-heading">
-          <a href="#M000186" class="method-signature">
+          <a href="#M000200" class="method-signature">
           <span class="method-name">File.which(executable, extensions = DEFAULT_EXTENSIONS) => aString or nil<br />
 </span>
           </a>
@@ -137,8 +137,8 @@ turn.
 Inspired by Gnuplot.which &#8212; thx, Gordon!
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000186-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000186-source">
+            onclick="toggleCode('M000200-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000200-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/nuggets/file/which_mixin.rb, line 44</span>
 44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">which</span>(<span class="ruby-identifier">executable</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)
@@ -163,11 +163,11 @@ Inspired by Gnuplot.which &#8212; thx, Gordon!
         </div>
       </div>
 
-      <div id="method-M000187" class="method-detail">
-        <a name="M000187"></a>
+      <div id="method-M000201" class="method-detail">
+        <a name="M000201"></a>
 
         <div class="method-heading">
-          <a href="#M000187" class="method-signature">
+          <a href="#M000201" class="method-signature">
           <span class="method-name">File.which_command(commands) => aString or nil<br />
 </span>
           </a>
@@ -176,11 +176,11 @@ Inspired by Gnuplot.which &#8212; thx, Gordon!
         <div class="method-description">
           <p>
 Returns the first of <tt>commands</tt> that is executable (according to <a
-href="WhichMixin.html#M000186">which</a>).
+href="WhichMixin.html#M000200">which</a>).
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000187-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000187-source">
+            onclick="toggleCode('M000201-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000201-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/nuggets/file/which_mixin.rb, line 66</span>
 66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">which_command</span>(<span class="ruby-identifier">commands</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)

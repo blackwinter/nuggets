@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Module: Nuggets::Object::SilenceMixin</title>
+  <title>Module: Nuggets::IO::NullMixin</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
   <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
@@ -50,13 +50,13 @@
         <table class="header-table">
         <tr class="top-aligned-row">
           <td><strong>Module</strong></td>
-          <td class="class-name-in-header">Nuggets::Object::SilenceMixin</td>
+          <td class="class-name-in-header">Nuggets::IO::NullMixin</td>
         </tr>
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../../files/lib/nuggets/object/silence_mixin_rb.html">
-                lib/nuggets/object/silence_mixin.rb
+                <a href="../../../files/lib/nuggets/io/null_mixin_rb.html">
+                lib/nuggets/io/null_mixin.rb
                 </a>
         <br />
             </td>
@@ -76,13 +76,6 @@
 
    </div>
 
-    <div id="method-list">
-      <h3 class="section-bar">Methods</h3>
-
-      <div class="name-list">
-      <a href="#M000159">silence</a>&nbsp;&nbsp;
-      </div>
-    </div>
 
   </div>
 
@@ -92,6 +85,19 @@
     <div id="section">
 
 
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">NULL</td>
+          <td>=</td>
+          <td class="context-item-value">case RUBY_PLATFORM</td>
+        </tr>
+        </table>
+      </div>
+    </div>
 
 
 
@@ -99,41 +105,6 @@
 
 
     <!-- if method_list -->
-    <div id="methods">
-      <h3 class="section-bar">Public Instance methods</h3>
-
-      <div id="method-M000159" class="method-detail">
-        <a name="M000159"></a>
-
-        <div class="method-heading">
-          <a href="#M000159" class="method-signature">
-          <span class="method-name">silence { ... }<br />
-</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Silence warnings for block execution.
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000159-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000159-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/nuggets/object/silence_mixin.rb, line 36</span>
-36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">silence</span>
-37:     <span class="ruby-identifier">verbose</span>, <span class="ruby-identifier">$VERBOSE</span> = <span class="ruby-identifier">$VERBOSE</span>, <span class="ruby-keyword kw">nil</span>
-38:     <span class="ruby-keyword kw">yield</span>
-39:   <span class="ruby-keyword kw">ensure</span>
-40:     <span class="ruby-identifier">$VERBOSE</span> = <span class="ruby-identifier">verbose</span>
-41:   <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
 
 
   </div>

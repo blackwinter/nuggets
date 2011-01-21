@@ -31,7 +31,7 @@ module Nuggets
   class File
     module WhichMixin
 
-  DEFAULT_EXTENSIONS = [Config::CONFIG['EXEEXT']]
+  DEFAULT_EXTENSIONS = [RbConfig::CONFIG['EXEEXT']]
 
   # call-seq:
   #   File.which(executable, extensions = DEFAULT_EXTENSIONS) => aString or nil

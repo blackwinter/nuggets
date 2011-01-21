@@ -56,7 +56,7 @@ class IO
           raise ArgumentError, "wrong number of arguments (#{args.size + 1} for 1-2)"
       end
 
-      open_with_mode(name, 'r', binary) { |*a| yield(*a) }
+      open_with_mode(name, 'r', binary, &Proc.new)
     end
 
     # call-seq:
@@ -65,9 +65,7 @@ class IO
     #
     # Opens +name+ with mode +w+.
     def write(name, binary = false)
-      block_given? ?
-        open_with_mode(name, 'w', binary) { |*a| yield(*a) } :
-        open_with_mode(name, 'w', binary)
+      open_with_mode(name, 'w', binary, &block_given? ? Proc.new : nil)
     end
 
     # call-seq:
@@ -76,9 +74,7 @@ class IO
     #
     # Opens +name+ with mode +a+.
     def append(name, binary = false)
-      block_given? ?
-        open_with_mode(name, 'a', binary) { |*a| yield(*a) } :
-        open_with_mode(name, 'a', binary)
+      open_with_mode(name, 'a', binary, &block_given? ? Proc.new : nil)
     end
 
     # call-seq:
@@ -87,9 +83,7 @@ class IO
     #
     # Opens +name+ with mode <tt>r+</tt>.
     def read_write(name, binary = false)
-      block_given? ?
-        open_with_mode(name, 'r+', binary) { |*a| yield(*a) } :
-        open_with_mode(name, 'r+', binary)
+      open_with_mode(name, 'r+', binary, &block_given? ? Proc.new : nil)
     end
 
     # call-seq:
@@ -98,9 +92,7 @@ class IO
     #
     # Opens +name+ with mode <tt>w+</tt>.
     def write_read(name, binary = false)
-      block_given? ?
-        open_with_mode(name, 'w+', binary) { |*a| yield(*a) } :
-        open_with_mode(name, 'w+', binary)
+      open_with_mode(name, 'w+', binary, &block_given? ? Proc.new : nil)
     end
 
     # call-seq:
@@ -109,17 +101,14 @@ class IO
     #
     # Opens +name+ with mode <tt>a+</tt>.
     def append_read(name, binary = false)
-      block_given? ?
-        open_with_mode(name, 'a+', binary) { |*a| yield(*a) } :
-        open_with_mode(name, 'a+', binary)
+      open_with_mode(name, 'a+', binary, &block_given? ? Proc.new : nil)
     end
 
     private
 
     # Just a helper to DRY things up.
     def open_with_mode(name, mode, binary = false)
-      mode << 'b' if binary
-      block_given? ? open(name, mode) { |io| yield io } : open(name, mode)
+      open(name, "#{mode}#{'b' if binary}", &block_given? ? Proc.new : nil)
     end
 
   end

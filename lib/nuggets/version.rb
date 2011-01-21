@@ -4,7 +4,7 @@ module Nuggets
 
     MAJOR = 0
     MINOR = 6
-    TINY  = 6
+    TINY  = 7
 
     class << self
 

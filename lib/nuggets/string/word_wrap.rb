@@ -43,7 +43,7 @@ class String
     }
 
     wrapped = wrapped.join
-    
+
     as_array ? wrapped.split("\n") : wrapped
   end
 

@@ -53,7 +53,7 @@ module Enumerable
   #   to their respective source. (Equivalent to <tt>agrep -k</tt>)
   # - Only works with string elements in _enum_. (Calls +to_s+ on each element)
   # - The cost for individual error types (substitution, insertion, deletion)
-  #   cannot be adjusted. 
+  #   cannot be adjusted.
   def agrep(pattern, distance = 0)
     raise 'Amatch not available!' unless defined?(Amatch)
 

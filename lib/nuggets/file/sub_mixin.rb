@@ -42,7 +42,7 @@ module Nuggets
   # +block+ and returns the new content.
   def sub(name, *args)
     content = read(name)
-    content.sub!(*args, &block_given? ? Proc.new : nil)
+    content.sub!(*args, &block_given? ? ::Proc.new : nil)
     content
   end
 
@@ -56,7 +56,7 @@ module Nuggets
     res = nil
 
     replace(name) { |content|
-      res = content.sub!(*args, &block_given? ? Proc.new : nil)
+      res = content.sub!(*args, &block_given? ? ::Proc.new : nil)
       content
     }
 
@@ -70,7 +70,7 @@ module Nuggets
   # +block+ and returns the new content.
   def gsub(name, *args)
     content = read(name)
-    content.gsub!(*args, &block_given? ? Proc.new : nil)
+    content.gsub!(*args, &block_given? ? ::Proc.new : nil)
     content
   end
 
@@ -84,7 +84,7 @@ module Nuggets
     res = nil
 
     replace(name) { |content|
-      res = content.gsub!(*args, &block_given? ? Proc.new : nil)
+      res = content.gsub!(*args, &block_given? ? ::Proc.new : nil)
       content
     }
 

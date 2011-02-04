@@ -1,4 +1,4 @@
-require %q{lib/nuggets/version}
+require File.expand_path(%q{../lib/nuggets/version}, __FILE__)
 
 begin
   require 'hen'

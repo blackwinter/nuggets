@@ -30,14 +30,17 @@ module Nuggets
     module EvaluateMixin
 
   # call-seq:
-  #   str.evaluate(binding = TOPLEVEL_BINDING) => new_str
+  #   str.evaluate([binding, [filename, [lineno]]]) => new_str
   #
   # Basically turns Kernel#eval into an instance method of String -- inspired
   # by Ruby Cookbook example 1.3. This allows to pre-populate strings with
-  # substitution expressions ("#{...}") that can get evaluated in a different
-  # environment (= +binding+) at a later point.
-  def evaluate(binding = TOPLEVEL_BINDING)
-    eval(%Q{"#{gsub(/\\*"/) { |m| "#{"\\" * m.length}#{m}" }}"}, binding)
+  # substitution expressions <tt>"#{...}"</tt> that can get evaluated in a
+  # different environment (= +binding+) at a later point.
+  #
+  # Passes optional arguments +filename+ and +lineno+ on to Kernel#eval.
+  def evaluate(binding = TOPLEVEL_BINDING, filename = nil, lineno = nil)
+    buffer = gsub(/\\*"/) { |m| "#{"\\" * m.length}#{m}" }
+    eval(%Q{"#{buffer}"}, binding, filename || __FILE__, lineno || __LINE__)
   end
 
     end

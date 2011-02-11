@@ -80,7 +80,7 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000199">evaluate</a>&nbsp;&nbsp;
+      <a href="#M000202">evaluate</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -102,12 +102,12 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000199" class="method-detail">
-        <a name="M000199"></a>
+      <div id="method-M000202" class="method-detail">
+        <a name="M000202"></a>
 
         <div class="method-heading">
-          <a href="#M000199" class="method-signature">
-          <span class="method-name">str.evaluate(binding = TOPLEVEL_BINDING) => new_str<br />
+          <a href="#M000202" class="method-signature">
+          <span class="method-name">str.evaluate([binding, [filename, [lineno]]]) => new_str<br />
 </span>
           </a>
         </div>
@@ -117,17 +117,22 @@
 Basically turns Kernel#eval into an instance method of <a
 href="../String.html">String</a> &#8212; inspired by Ruby Cookbook example
 1.3. This allows to pre-populate strings with substitution expressions
-(&quot;#{&#8230;}&quot;) that can get evaluated in a different environment
-(= <tt>binding</tt>) at a later point.
+<tt>&quot;#{&#8230;}&quot;</tt> that can get evaluated in a different
+environment (= <tt>binding</tt>) at a later point.
+</p>
+<p>
+Passes optional arguments <tt>filename</tt> and <tt>lineno</tt> on to
+Kernel#eval.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000199-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000199-source">
+            onclick="toggleCode('M000202-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000202-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/nuggets/string/evaluate_mixin.rb, line 39</span>
-39:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">evaluate</span>(<span class="ruby-identifier">binding</span> = <span class="ruby-constant">TOPLEVEL_BINDING</span>)
-40:     <span class="ruby-identifier">eval</span>(<span class="ruby-node">%Q{&quot;#{gsub(/\\*&quot;/) { |m| &quot;#{&quot;\\&quot; * m.length}#{m}&quot; }}&quot;}</span>, <span class="ruby-identifier">binding</span>)
-41:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/nuggets/string/evaluate_mixin.rb, line 41</span>
+41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">evaluate</span>(<span class="ruby-identifier">binding</span> = <span class="ruby-constant">TOPLEVEL_BINDING</span>, <span class="ruby-identifier">filename</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">lineno</span> = <span class="ruby-keyword kw">nil</span>)
+42:     <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\\*&quot;/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{&quot;\\&quot; * m.length}#{m}&quot;</span> }
+43:     <span class="ruby-identifier">eval</span>(<span class="ruby-node">%Q{&quot;#{buffer}&quot;}</span>, <span class="ruby-identifier">binding</span>, <span class="ruby-identifier">filename</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-identifier">lineno</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">__LINE__</span>)
+44:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

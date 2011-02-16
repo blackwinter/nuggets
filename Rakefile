@@ -10,10 +10,10 @@ begin
     },
 
     :gem => {
-      :version     => Nuggets::VERSION,
-      :summary     => 'Some extensions to the Ruby programming language.',
-      :files       => FileList['lib/**/*.rb'].to_a,
-      :extra_files => FileList['[A-Z]*', '.rspec', 'spec/**/*.rb'].to_a
+      :version => Nuggets::VERSION,
+      :summary => %q{Some extensions to the Ruby programming language.},
+      :author  => %q{Jens Wille},
+      :email   => %q{jens.wille@uni-koeln.de}
     }
   }}
 rescue LoadError => err

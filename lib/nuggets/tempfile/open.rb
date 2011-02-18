@@ -38,7 +38,7 @@ class Tempfile
     # If a block is given, it will be passed tempfile as an argument,
     # and the tempfile will automatically be closed when the block
     # terminates.  In this case, open() returns tempfile -- in contrast
-    # to the original implementation, which returns nil.
+    # to the original implementation, which returns +nil+.
     def open(*args)
       tempfile = new(*args)
 

@@ -46,7 +46,7 @@ class String
   end
 
   # call-seq:
-  #   str.lower_case? => true or false
+  #   str.lower_case? => +true+ or +false+
   #
   # Tell whether _str_ is all lower case.
   def lower_case?
@@ -55,7 +55,7 @@ class String
   alias_method :downcase?, :lower_case?
 
   # call-seq:
-  #   str.upper_case? => true or false
+  #   str.upper_case? => +true+ or +false+
   #
   # Tell whether _str_ is all upper case.
   def upper_case?
@@ -64,7 +64,7 @@ class String
   alias_method :upcase?, :upper_case?
 
   # call-seq:
-  #   str.mixed_case? => true or false
+  #   str.mixed_case? => +true+ or +false+
   #
   # Tell whether _str_ is mixed case.
   def mixed_case?
@@ -72,7 +72,7 @@ class String
   end
 
   # call-seq:
-  #   str.capitalized? => true or false
+  #   str.capitalized? => +true+ or +false+
   #
   # Tell whether _str_ is capitalized.
   def capitalized?

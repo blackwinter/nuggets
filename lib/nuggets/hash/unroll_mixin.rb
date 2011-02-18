@@ -31,7 +31,7 @@ module Nuggets
 
   # call-seq:
   #   hash.unroll(*value_keys) => anArray
-  #   hash.unroll(*value_keys, :sort => ...) => anArray
+  #   hash.unroll(*value_keys, :sort_by => ...) => anArray
   #   hash.unroll(*value_keys) { |value_hash| ... } => anArray
   #
   # "Unrolls" a nested hash, so that each path through _hash_ results in a

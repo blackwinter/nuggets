@@ -85,7 +85,7 @@ module Enumerable
   # call-seq:
   #   enum.max(what) => aValue
   #
-  # Maximum #minmax. If +what+ is omitted, or nil, the original Enumerable#max
+  # Maximum #minmax. If +what+ is omitted, or +nil+, the original Enumerable#max
   # is called.
   def max(what = nil)
     what ? minmax(:max, what) : block_given? ?
@@ -95,7 +95,7 @@ module Enumerable
   # call-seq:
   #   enum.min(what) => aValue
   #
-  # Minimum #minmax. If +what+ is omitted, or nil, the original Enumerable#min
+  # Minimum #minmax. If +what+ is omitted, or +nil+, the original Enumerable#min
   # is called.
   def min(what = nil)
     what ? minmax(:min, what) : block_given? ?

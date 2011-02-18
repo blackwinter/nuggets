@@ -30,7 +30,7 @@ module Nuggets
     module BlankMixin
 
   # call-seq:
-  #   object.blank? => true or false
+  #   object.blank? => +true+ or +false+
   #
   # Basically a short-cut to <tt>object.nil? || object.empty?</tt>.
   def blank?(*modifiers)
@@ -58,7 +58,7 @@ module Nuggets
   end
 
   # call-seq:
-  #   object.void? => true or false
+  #   object.void? => +true+ or +false+
   #
   # Adds white-space strings, 0 and arrays of +nil+ objects to the list of
   # blank objects.
@@ -74,9 +74,9 @@ module Nuggets
     module BlankMixin
 
   # call-seq:
-  #   array.vain? => true or false
+  #   array.vain? => +true+ or +false+
   #
-  # Returns true if all of _array_'s elements are themselves vain.
+  # Returns +true+ if all of _array_'s elements are themselves vain.
   def vain?
     blank? { |a| a.delete_if { |i| i.vain? } }
   end
@@ -88,9 +88,9 @@ module Nuggets
     module BlankMixin
 
   # call-seq:
-  #   hash.vain? => true or false
+  #   hash.vain? => +true+ or +false+
   #
-  # Returns true if all of _hash_'s values are themselves vain.
+  # Returns +true+ if all of _hash_'s values are themselves vain.
   def vain?
     blank? { |h| h.delete_if { |_, v| v.vain? } }
   end

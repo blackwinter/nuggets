@@ -44,7 +44,7 @@ class String
   end
 
   # call-seq:
-  #   str.sub_with_md!(pattern) { |match_data| ... } => str or nil
+  #   str.sub_with_md!(pattern) { |match_data| ... } => str or +nil+
   #
   # Destructive version of #sub_with_md.
   def sub_with_md!(pattern, replacement = nil)
@@ -65,7 +65,7 @@ class String
   end
 
   # call-seq:
-  #   str.gsub_with_md!(pattern) { |match_data| ... } => str or nil
+  #   str.gsub_with_md!(pattern) { |match_data| ... } => str or +nil+
   #
   # Destructive version of #gsub_with_md.
   def gsub_with_md!(pattern, replacement = nil)

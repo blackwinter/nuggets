@@ -47,7 +47,7 @@ module Nuggets
   end
 
   # call-seq:
-  #   File.sub!(name, *args, &block) => aString or nil
+  #   File.sub!(name, *args, &block) => aString or +nil+
   #
   # Calls String#sub! on file +name+'s contents with +args+ and (optional)
   # +block+ and replaces the file with the new content. Returns the result
@@ -75,7 +75,7 @@ module Nuggets
   end
 
   # call-seq:
-  #   File.gsub!(name, *args, &block) => aString or nil
+  #   File.gsub!(name, *args, &block) => aString or +nil+
   #
   # Calls String#gsub! on file +name+'s contents with +args+ and (optional)
   # +block+ and replaces the file with the new content. Returns the result

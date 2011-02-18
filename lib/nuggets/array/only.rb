@@ -28,10 +28,11 @@
 class Array
 
   # call-seq:
-  #   array.only(relax = true or false) => anObject
+  #   array.only => anObject
+  #   array.only(+true+) => anObject
   #
   # Returns the only element of _array_. Raises an IndexError if _array_'s
-  # size is not 1, unless +relax+ is true.
+  # size is not 1, unless parameter +true+ is passed.
   #
   # Idea stolen from Gavin Sinclair's Ruby Extensions Project.
   def only(relax = size == 1)

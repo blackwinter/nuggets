@@ -11,9 +11,9 @@ describe String, 'when extended by', Nuggets::String::EvaluateMixin do
         example { str.evaluate(binding).should == res }
       }
 
-      example {
+      example do
         lambda { str.evaluate(binding) }.should raise_error(NameError, /`a'/)
-      }
+      end
     }
 
   end

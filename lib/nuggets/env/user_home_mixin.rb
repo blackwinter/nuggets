@@ -30,7 +30,7 @@ module Nuggets
     module UserHomeMixin
 
   # call-seq:
-  #   ENV.user_home(default = '/') => aString
+  #   ENV.user_home([default]) => aString
   #
   # Returns the user's home directory, or +default+ if it could not be found.
   def user_home(default = ::File::ALT_SEPARATOR ? 'C:/' : '/')

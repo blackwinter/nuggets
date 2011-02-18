@@ -33,7 +33,7 @@ module Nuggets
     module ContentTypeMixin
 
   # call-seq:
-  #   URI.content_type(uri) => aString or nil
+  #   URI.content_type(uri) => aString or +nil+
   #
   # Return the content type of +uri+, or +nil+ if not found.
   def content_type(uri)

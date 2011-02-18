@@ -32,9 +32,9 @@ module Nuggets
     module ExistMixin
 
   # call-seq:
-  #   URI.exist?(uri) => true or false
+  #   URI.exist?(uri) => +true+ or +false+
   #
-  # Return +true+ if the named URI exists.
+  # Return +true+ if the URI +uri+ exists.
   def exist?(uri)
     open(uri.to_s)
     true

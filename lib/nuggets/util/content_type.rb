@@ -67,7 +67,7 @@ module Util
     extend self
 
     # call-seq:
-    #   ContentType.of(path) => aString or nil
+    #   ContentType.of(path) => aString or +nil+
     #
     # Get the MIME-Type of the file living at +path+. Either by looking
     # directly into the file (requires FileMagic), or, assuming +path+

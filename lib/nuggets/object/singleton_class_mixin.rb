@@ -74,10 +74,10 @@ module Nuggets
   alias_method :singleton_instance, :singleton_object
 
   # call-seq:
-  #   object.singleton_class? => true or false
+  #   object.singleton_class? => +true+ or +false+
   #
-  # Returns true if _object_ is a singleton_class
-  # (i.e., has a singleton_object), false otherwise.
+  # Returns +true+ if _object_ is a singleton_class
+  # (i.e., has a singleton_object), +false+ otherwise.
   def singleton_class?
     singleton_object
     true

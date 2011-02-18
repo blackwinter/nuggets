@@ -30,10 +30,10 @@ module Nuggets
     module SetMixin
 
   # call-seq:
-  #   ENV.set(env = {}, clear = true) => aHash
-  #   ENV.set(env = {}, clear = true) { ... } => anObject
+  #   ENV.set([env[, clear]]) => aHash
+  #   ENV.set([env[, clear]]) { ... } => anObject
   #
-  # Overrides ENV with +env+, clearing it beforehand if +clear+ is true. If a
+  # Overrides ENV with +env+, clearing it beforehand if +clear+ is +true+. If a
   # block is given, restores ENV to its original state afterwards and returns
   # the result of the block; otherwise returns the original ENV as a hash.
   def set(env = {}, clear = true)
@@ -56,7 +56,7 @@ module Nuggets
   alias_method :without, :set
 
   # call-seq:
-  #   ENV.with(env = {}, clear = false) { ... } => anObject
+  #   ENV.with([env[, clear]]) { ... } => anObject
   #
   # Temporarily overrides ENV with +env+ for the block execution. See #set.
   def with(env = {}, clear = false)

@@ -30,10 +30,11 @@ require 'nuggets/hash/at'
 class Hash
 
   # call-seq:
-  #   hash.only(relax = true or false) => aHash
+  #   hash.only => aHash
+  #   hash.only(+true+) => aHash
   #
   # Returns the only key/value pair of _hash_. Raises an IndexError if _hash_'s
-  # size is not 1, unless +relax+ is true.
+  # size is not 1, unless parameter +true+ is passed.
   def only(relax = size == 1, split = false)
     raise IndexError, 'not a single-element hash' unless relax
 
@@ -41,10 +42,11 @@ class Hash
   end
 
   # call-seq:
-  #   hash.only_pair(relax = true or false) => anArray
+  #   hash.only_pair => anArray
+  #   hash.only_pair(+true+) => anArray
   #
   # Returns the only key/value pair of _hash_ as an array. Raises an IndexError
-  # if _hash_'s size is not 1, unless +relax+ is true.
+  # if _hash_'s size is not 1, unless parameter +true+ is passed.
   def only_pair(relax = size == 1)
     only(relax, true)
   end

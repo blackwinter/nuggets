@@ -58,7 +58,7 @@ class Numeric
   end
 
   # call-seq:
-  #   num.to_hms(precision = 0, labels = %w[h m s]) => aString
+  #   num.to_hms([precision[, labels]]) => aString
   #
   # Produces a stringified version of _num_'s time portions (cf. #hms),
   # with the specified +precision+ for the seconds (treated as floating
@@ -82,11 +82,11 @@ class Numeric
   end
 
   # call-seq:
-  #   num.to_ymd(include_hms = false, labels = %w[y m d]) => aString
+  #   num.to_ymd([include_hms[, labels]]) => aString
   #
   # Produces a stringified version of _num_'s date portions (cf. #ymd),
   # analogous to #to_hms. Includes time portions (cf. #hms) if +include_hms+
-  # is true.
+  # is +true+.
   def to_ymd(include_hms = false, labels = %w[y m d])
     unless include_hms
       to_hms(0, labels, ymd)

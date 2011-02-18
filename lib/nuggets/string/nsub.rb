@@ -41,8 +41,8 @@ class String
   end
 
   # call-seq:
-  #   str.nsub!(pattern, replacement, count) => str or nil
-  #   str.nsub!(pattern, count) { |match| ... } => str or nil
+  #   str.nsub!(pattern, replacement, count) => str or +nil+
+  #   str.nsub!(pattern, count) { |match| ... } => str or +nil+
   #
   # Performs the substitutions of #nsub in place, returning _str_, or +nil+ if
   # no substitutions were performed.

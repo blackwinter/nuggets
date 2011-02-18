@@ -48,7 +48,7 @@ class String
   end
 
   # call-seq:
-  #   str.msub!(*substitutions) => str or nil
+  #   str.msub!(*substitutions) => str or +nil+
   #
   # Destructive version of #msub.
   def msub!(*substitutions)

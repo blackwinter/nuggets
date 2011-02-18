@@ -30,9 +30,9 @@ module Nuggets
     module NestMixin
 
   # call-seq:
-  #   Hash.nest(depth = 0) => aHash
-  #   Hash.nest(depth = 0, value) => aHash
-  #   Hash.nest(depth = 0) { |key| ... } => aHash
+  #   Hash.nest([depth]) => aHash
+  #   Hash.nest([depth[, value]]) => aHash
+  #   Hash.nest([depth]) { |key| ... } => aHash
   #
   # Creates a nested hash, +depth+ levels deep. The final hash will receive a
   # default value of +value+ or, if +value+ is not given but a block is given,

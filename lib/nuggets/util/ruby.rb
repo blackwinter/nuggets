@@ -109,8 +109,8 @@ module Util
 
     # Returns whether the Ruby interpreter supports process forking.
     def ruby_supports_fork?
-      # MRI >= 1.9.2's respond_to? returns false for methods
-      # that are not implemented.
+      # MRI >= 1.9.2's respond_to? returns false
+      # for methods that are not implemented.
       Process.respond_to?(:fork) &&
       RUBY_ENGINE != 'jruby'     &&
       RUBY_ENGINE != 'macruby'   &&
@@ -124,7 +124,7 @@ module Util
 
     # If the current Ruby interpreter is managed by RVM, returns the
     # directory in which RVM places its working files. Otherwise returns
-    # nil.
+    # +nil+.
     def rvm_path
       return @rvm_path if defined?(@rvm_path)
 
@@ -147,7 +147,7 @@ module Util
     # currently active gemset, e.g. something like this:
     # "ruby-1.9.2-p0@mygemset"
     #
-    # Returns nil otherwise.
+    # Returns +nil+ otherwise.
     def rvm_ruby_string
       return @rvm_ruby_string if defined?(@rvm_ruby_string)
 
@@ -194,7 +194,7 @@ module Util
     # NOTE: The return value may not be the actual correct invocation for the tool.
     # Use command_for_ruby_tool for that.
     #
-    # Returns nil when nothing's found.
+    # Returns +nil+ when nothing's found.
     def locate_ruby_tool(name)
       extensions = ['', CONFIG['EXEEXT']].compact.uniq
 
@@ -213,8 +213,8 @@ module Util
     end
 
     # Returns the correct command string for invoking the +name+ executable
-    # that belongs to the current Ruby interpreter. Returns nil if the command
-    # is not found.
+    # that belongs to the current Ruby interpreter. Returns +nil+ if the
+    # command is not found.
     #
     # If the command executable is a Ruby program, then we need to run it
     # in the correct Ruby interpreter just in case the command doesn't

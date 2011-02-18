@@ -30,13 +30,13 @@ module Nuggets
     module ReplaceMixin
 
   # call-seq:
-  #   File.replace(name, create_if_missing = false) { ... } => aString
-  #   File.replace(name, create_if_missing = false) { |content| ... } => aString
+  #   File.replace(name[, create_if_missing]) { ... } => aString
+  #   File.replace(name[, create_if_missing]) { |content| ... } => aString
   #
   # Replaces the contents of file +name+ with the result of the block. Yields
   # the file's contents to the block if requested. Returns the new content.
   #
-  # If +create_if_missing+ is true and the file does not exist, it will be
+  # If +create_if_missing+ is +true+ and the file does not exist, it will be
   # created.
   def replace(name, create_if_missing = false, &block)
     open(name, create_if_missing && !exist?(name) ? 'w+' : 'r+') { |f|

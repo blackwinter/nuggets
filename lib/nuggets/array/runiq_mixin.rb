@@ -38,7 +38,7 @@ module Nuggets
   end
 
   # call-seq:
-  #   array.runiq! => an_array or nil
+  #   array.runiq! => an_array or +nil+
   #
   # Reverse #uniq!.
   def runiq!

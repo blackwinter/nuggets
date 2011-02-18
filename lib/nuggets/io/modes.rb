@@ -34,8 +34,8 @@ class IO
     alias_method :_nuggets_original_read, :read
 
     # call-seq:
-    #   IO.read(name, [length [, offset]]) => aString
-    #   IO.read(name, binary = false) { |io| ... } => anObject
+    #   IO.read(name[, length[, offset]]]) => aString
+    #   IO.read(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode +r+. NOTE: With no associated block,
     # acts like the original IO::read, not like IO::new.
@@ -60,8 +60,8 @@ class IO
     end
 
     # call-seq:
-    #   IO.write(name, binary = false) => anIO
-    #   IO.write(name, binary = false) { |io| ... } => anObject
+    #   IO.write(name[, binary]) => anIO
+    #   IO.write(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode +w+.
     def write(name, binary = false)
@@ -69,8 +69,8 @@ class IO
     end
 
     # call-seq:
-    #   IO.append(name, binary = false) => anIO
-    #   IO.append(name, binary = false) { |io| ... } => anObject
+    #   IO.append(name[, binary]) => anIO
+    #   IO.append(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode +a+.
     def append(name, binary = false)
@@ -78,8 +78,8 @@ class IO
     end
 
     # call-seq:
-    #   IO.read_write(name, binary = false) => anIO
-    #   IO.read_write(name, binary = false) { |io| ... } => anObject
+    #   IO.read_write(name[, binary]) => anIO
+    #   IO.read_write(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>r+</tt>.
     def read_write(name, binary = false)
@@ -87,8 +87,8 @@ class IO
     end
 
     # call-seq:
-    #   IO.write_read(name, binary = false) => anIO
-    #   IO.write_read(name, binary = false) { |io| ... } => anObject
+    #   IO.write_read(name[, binary]) => anIO
+    #   IO.write_read(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>w+</tt>.
     def write_read(name, binary = false)
@@ -96,8 +96,8 @@ class IO
     end
 
     # call-seq:
-    #   IO.append_read(name, binary = false) => anIO
-    #   IO.append_read(name, binary = false) { |io| ... } => anObject
+    #   IO.append_read(name[, binary]) => anIO
+    #   IO.append_read(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>a+</tt>.
     def append_read(name, binary = false)

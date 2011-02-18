@@ -30,7 +30,7 @@ module Nuggets
     module QuantileMixin
 
   # call-seq:
-  #   range.quantile(value, order = 100) => anInteger
+  #   range.quantile(value[, order]) => anInteger
   #
   # Determines the <tt>order</tt>-quantile of +value+ in _range_.
   def quantile(value, order = 100)

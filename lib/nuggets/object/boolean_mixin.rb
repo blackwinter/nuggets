@@ -30,7 +30,7 @@ module Nuggets
     module BooleanMixin
 
   # call-seq:
-  #   object.boolean? => true or false
+  #   object.boolean? => +true+ or +false+
   #
   #
   def boolean?
@@ -38,7 +38,7 @@ module Nuggets
   end
 
   # call-seq:
-  #   object.negate => true or false
+  #   object.negate => +true+ or +false+
   #
   #
   def negate
@@ -48,7 +48,7 @@ module Nuggets
   alias_method :false?, :negate
 
   # call-seq:
-  #   object.to_bool => true or false
+  #   object.to_bool => +true+ or +false+
   #
   #
   def to_bool

@@ -31,23 +31,23 @@ module Enumerable
   alias_method :_nuggets_original_any?, :any?
 
   # call-seq:
-  #   enum.all?(obj[, operator]) => true or false
-  #   enum.all? { ... } => true or false
+  #   enum.all?(obj[, operator]) => +true+ or +false+
+  #   enum.all? { ... } => +true+ or +false+
   #
   # Adds the ability to pass an +object+ instead of a block, which will then
   # be tested against each item in _enum_ according to +operator+, defaulting
-  # to :===.
+  # to <tt>:===</tt>.
   def all?(object = default = Object.new, operator = :===, &block)
     _nuggets_original_all?(&_block_for_all_any_extended(object, default, operator, &block))
   end
 
   # call-seq:
-  #   enum.any?(obj[, operator]) => true or false
-  #   enum.any? { ... } => true or false
+  #   enum.any?(obj[, operator]) => +true+ or +false+
+  #   enum.any? { ... } => +true+ or +false+
   #
   # Adds the ability to pass an +object+ instead of a block, which will then
   # be tested against each item in _enum_ according to +operator+, defaulting
-  # to :===.
+  # to <tt>:===</tt>.
   def any?(object = default = Object.new, operator = :===, &block)
     _nuggets_original_any?(&_block_for_all_any_extended(object, default, operator, &block))
   end

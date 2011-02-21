@@ -44,19 +44,20 @@ module Nuggets
   def which(executable, extensions = DEFAULT_EXTENSIONS)
     extensions |= ['']
 
-    extensions.each { |extension|
-      executable += extension
-      return executable if executable?(executable)
+    if env = ENV['PATH']
+      dirs = env.split(self::PATH_SEPARATOR)
+      dirs.map! { |dir| expand_path(dir) }
+    end
 
-      if path = ENV['PATH']
-        path.split(::File::PATH_SEPARATOR).each { |dir|
-          candidate = join(expand_path(dir), executable)
-          return candidate if executable?(candidate)
-        }
-      end
+    extensions.find { |extension|
+      file = "#{executable}#{extension}"
+      return file if file?(file) && executable?(file)
+
+      dirs.find { |dir|
+        path = join(dir, file)
+        return path if file?(path) && executable?(path)
+      } if dirs
     }
-
-    nil
   end
 
   # call-seq:
@@ -64,7 +65,7 @@ module Nuggets
   #
   # Returns the first of +commands+ that is executable (according to #which).
   def which_command(commands, extensions = DEFAULT_EXTENSIONS)
-    commands.find { |command| which(command[/\S+/], extensions) }
+    commands.find { |command| which(command.to_s[/\S+/], extensions) }
   end
 
     end

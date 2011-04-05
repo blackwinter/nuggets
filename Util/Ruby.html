@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Module: Util::Ruby</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="module">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/nuggets/util/ruby_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/nuggets/util/ruby.rb">lib/nuggets/util/ruby.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-command_for_ruby_tool">#command_for_ruby_tool</a></li>
+          
+          <li><a href="#method-i-locate_ruby_tool">#locate_ruby_tool</a></li>
+          
+          <li><a href="#method-i-locate_ruby_tool_by_basename">#locate_ruby_tool_by_basename</a></li>
+          
+          <li><a href="#method-i-ruby_command">#ruby_command</a></li>
+          
+          <li><a href="#method-i-ruby_executable">#ruby_executable</a></li>
+          
+          <li><a href="#method-i-ruby_options_to_argv">#ruby_options_to_argv</a></li>
+          
+          <li><a href="#method-i-ruby_sudo_command">#ruby_sudo_command</a></li>
+          
+          <li><a href="#method-i-ruby_supports_fork-3F">#ruby_supports_fork?</a></li>
+          
+          <li><a href="#method-i-rvm-3F">#rvm?</a></li>
+          
+          <li><a href="#method-i-rvm_path">#rvm_path</a></li>
+          
+          <li><a href="#method-i-rvm_ruby_string">#rvm_ruby_string</a></li>
+          
+          <li><a href="#method-i-shebang_command">#shebang_command</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../ChangeLog.html">ChangeLog</a></li>
+        
+          <li class="file"><a href="../README.html">README</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Nuggets.html">Nuggets</a></li>
+        
+          <li><a href="../Nuggets/Array.html">Nuggets::Array</a></li>
+        
+          <li><a href="../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a></li>
+        
+          <li><a href="../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a></li>
+        
+          <li><a href="../Nuggets/Env.html">Nuggets::Env</a></li>
+        
+          <li><a href="../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a></li>
+        
+          <li><a href="../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a></li>
+        
+          <li><a href="../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a></li>
+        
+          <li><a href="../Nuggets/File.html">Nuggets::File</a></li>
+        
+          <li><a href="../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a></li>
+        
+          <li><a href="../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a></li>
+        
+          <li><a href="../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a></li>
+        
+          <li><a href="../Nuggets/Hash.html">Nuggets::Hash</a></li>
+        
+          <li><a href="../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a></li>
+        
+          <li><a href="../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a></li>
+        
+          <li><a href="../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a></li>
+        
+          <li><a href="../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a></li>
+        
+          <li><a href="../Nuggets/IO.html">Nuggets::IO</a></li>
+        
+          <li><a href="../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></li>
+        
+          <li><a href="../Nuggets/Integer.html">Nuggets::Integer</a></li>
+        
+          <li><a href="../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a></li>
+        
+          <li><a href="../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a></li>
+        
+          <li><a href="../Nuggets/Object.html">Nuggets::Object</a></li>
+        
+          <li><a href="../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a></li>
+        
+          <li><a href="../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a></li>
+        
+          <li><a href="../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a></li>
+        
+          <li><a href="../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a></li>
+        
+          <li><a href="../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a></li>
+        
+          <li><a href="../Nuggets/Proc.html">Nuggets::Proc</a></li>
+        
+          <li><a href="../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a></li>
+        
+          <li><a href="../Nuggets/Range.html">Nuggets::Range</a></li>
+        
+          <li><a href="../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a></li>
+        
+          <li><a href="../Nuggets/String.html">Nuggets::String</a></li>
+        
+          <li><a href="../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a></li>
+        
+          <li><a href="../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a></li>
+        
+          <li><a href="../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a></li>
+        
+          <li><a href="../Nuggets/URI.html">Nuggets::URI</a></li>
+        
+          <li><a href="../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a></li>
+        
+          <li><a href="../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a></li>
+        
+          <li><a href="../Nuggets/Version.html">Nuggets::Version</a></li>
+        
+          <li><a href="../Util.html">Util</a></li>
+        
+          <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a></li>
+        
+          <li><a href="../Util/ContentType.html">Util::ContentType</a></li>
+        
+          <li><a href="../Util/ContentType.html">Util::ContentType</a></li>
+        
+          <li><a href="../Util/I18n.html">Util::I18n</a></li>
+        
+          <li><a href="../Util/Ruby.html">Util::Ruby</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../Util/ContentType.html">Object::ContentType</a></li>
+        
+          <li><a href="../String.html">String</a></li>
+        
+          <li><a href="../String/Case.html">String::Case</a></li>
+        
+          <li><a href="../Array.html">Array</a></li>
+        
+          <li><a href="../Enumerable.html">Enumerable</a></li>
+        
+          <li><a href="../File.html">File</a></li>
+        
+          <li><a href="../Hash.html">Hash</a></li>
+        
+          <li><a href="../IO.html">IO</a></li>
+        
+          <li><a href="../Integer.html">Integer</a></li>
+        
+          <li><a href="../Numeric.html">Numeric</a></li>
+        
+          <li><a href="../Proc.html">Proc</a></li>
+        
+          <li><a href="../Process.html">Process</a></li>
+        
+          <li><a href="../Range.html">Range</a></li>
+        
+          <li><a href="../Tempfile.html">Tempfile</a></li>
+        
+          <li><a href="../URI.html">URI</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="module">Util::Ruby</h1>
+
+    <div id="description" class="description">
+      
+<p>Heavily based on Phusion Passenger’s PlatformInfo module; see <a
+href="https://github.com/FooBarWidget/passenger/blob/release-3.0.2/lib/phusion_passenger/platform_info/ruby.rb">their
+code</a>.</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="CONFIG">CONFIG</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="GEM_HOME">GEM_HOME</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="OSX_RUBY_RE">OSX_RUBY_RE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="RUBY_ENGINE">RUBY_ENGINE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="command_for_ruby_tool-method" class="method-detail ">
+          <a name="method-i-command_for_ruby_tool"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">command_for_ruby_tool</span><span
+              class="method-args">(name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns the correct command string for invoking the <tt>name</tt>
+executable that belongs to the current <a href="Ruby.html">Ruby</a>
+interpreter. Returns <tt>nil</tt> if the command is not found.</p>
+
+<p>If the command executable is a <a href="Ruby.html">Ruby</a> program, then
+we need to run it in the correct <a href="Ruby.html">Ruby</a> interpreter
+just in case the command doesn’t have the correct shebang line; we
+don’t want a totally different <a href="Ruby.html">Ruby</a> than the
+current one to be invoked.</p>
+
+<p>If it’s not a <a href="Ruby.html">Ruby</a> program then it’s probably a
+wrapper script as is the case with e.g. RVM (~/.rvm/wrappers).</p>
+            
+
+            
+            <div class="method-source-code" id="command_for_ruby_tool-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 226</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">command_for_ruby_tool</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">=~</span> <span class="ruby-regexp">/ruby/</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{ruby_command} #{filename}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">filename</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- command_for_ruby_tool-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- command_for_ruby_tool-method -->
+
+      
+        <div id="locate_ruby_tool-method" class="method-detail ">
+          <a name="method-i-locate_ruby_tool"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">locate_ruby_tool</span><span
+              class="method-args">(name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Locates a <a href="Ruby.html">Ruby</a> tool command <tt>name</tt>, e.g.
+‘gem’, ‘rake’, ‘bundle’, etc. Instead of naively looking in
+$PATH, this function uses a variety of search heuristics to find the
+command that’s really associated with the current <a
+href="Ruby.html">Ruby</a> interpreter. It should never locate a command
+that’s actually associated with a different <a href="Ruby.html">Ruby</a>
+interpreter.</p>
+
+<p>NOTE: The return value may not be the actual correct invocation for the
+tool. Use <a
+href="Ruby.html#method-i-command_for_ruby_tool">command_for_ruby_tool</a>
+for that.</p>
+
+<p>Returns <tt>nil</tt> when nothing’s found.</p>
+            
+
+            
+            <div class="method-source-code" id="locate_ruby_tool-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 198</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">extensions</span> = [<span class="ruby-string">''</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'EXEEXT'</span>]].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>
+
+  <span class="ruby-comment"># Deduce Ruby's --program-prefix and --program-suffix from its install name</span>
+  <span class="ruby-comment"># and transform the given input name accordingly.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment">#   &quot;rake&quot; =&gt; &quot;jrake&quot;, &quot;rake1.8&quot;, etc</span>
+  [<span class="ruby-identifier">name</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'RUBY_INSTALL_NAME'</span>].<span class="ruby-identifier">sub</span>(<span class="ruby-string">'ruby'</span>, <span class="ruby-identifier">name</span>)].<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">basename</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">extensions</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ext</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">locate_ruby_tool_by_basename</span>(<span class="ruby-node">&quot;#{basename}#{ext}&quot;</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>
+    }
+  }
+
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- locate_ruby_tool-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- locate_ruby_tool-method -->
+
+      
+        <div id="ruby_command-method" class="method-detail ">
+          <a name="method-i-ruby_command"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ruby_command</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns correct command for invoking the current <a
+href="Ruby.html">Ruby</a> interpreter. In case of RVM this function will
+return the path to the RVM wrapper script that executes the current <a
+href="Ruby.html">Ruby</a> interpreter in the currently active gem set.</p>
+            
+
+            
+            <div class="method-source-code" id="ruby_command-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_command</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@ruby_command</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@ruby_command</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@ruby_command</span> = <span class="ruby-identifier">ruby_executable</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">rvm?</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> = <span class="ruby-identifier">rvm_ruby_string</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">rvm_path</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-string">'wrappers'</span>, <span class="ruby-identifier">name</span>, <span class="ruby-string">'ruby'</span>))
+      <span class="ruby-comment"># Old wrapper scripts reference $HOME which causes</span>
+      <span class="ruby-comment"># things to blow up when run by a different user.</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@ruby_command</span> = <span class="ruby-identifier">filename</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-string">'$HOME'</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">abort</span> <span class="ruby-string">'Your RVM wrapper scripts are too old. '</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">UPDATE_RVM</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Something's wrong with the user's RVM installation.</span>
+  <span class="ruby-comment"># Raise an error so that the user knows this instead of</span>
+  <span class="ruby-comment"># having things fail randomly later on.</span>
+  <span class="ruby-comment"># 'name' is guaranteed to be non-nil because rvm_ruby_string</span>
+  <span class="ruby-comment"># already raises an exception on error.</span>
+  <span class="ruby-identifier">abort</span> <span class="ruby-string">'Your RVM installation appears to be broken: the RVM path cannot be found. '</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">'Please fix your RVM installation or contact the RVM developers for support.'</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ruby_command-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ruby_command-method -->
+
+      
+        <div id="ruby_executable-method" class="method-detail ">
+          <a name="method-i-ruby_executable"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ruby_executable</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns the full path to the current <a href="Ruby.html">Ruby</a>
+interpreter’s executable file. This might not be the actual correct
+command to use for invoking the <a href="Ruby.html">Ruby</a> interpreter;
+use <a href="Ruby.html#method-i-ruby_command">ruby_command</a> instead.</p>
+            
+
+            
+            <div class="method-source-code" id="ruby_executable-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_executable</span>
+  <span class="ruby-ivar">@ruby_executable</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-constant">CONFIG</span>.<span class="ruby-identifier">values_at</span>(*<span class="ruby-node">]bindir RUBY_INSTALL_NAME EXEEXT]</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ext</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/.*\s.*/</span>, <span class="ruby-string">'&quot;\&amp;&quot;'</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ruby_executable-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ruby_executable-method -->
+
+      
+        <div id="ruby_options_to_argv-method" class="method-detail ">
+          <a name="method-i-ruby_options_to_argv"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ruby_options_to_argv</span><span
+              class="method-args">(args, ruby_command = ruby_command)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="ruby_options_to_argv-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 243</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">ruby_command</span> = <span class="ruby-identifier">ruby_command</span>)
+  <span class="ruby-identifier">argv</span> = [<span class="ruby-identifier">ruby_command</span>]
+
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">opt</span> = <span class="ruby-node">&quot;-#{key.to_s[0, 1]}&quot;</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+      <span class="ruby-identifier">val</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">wal</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">wal</span>.<span class="ruby-identifier">to_s</span>
+      }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-e'</span>
+        <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{opt}#{val unless val == true}&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  } <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+
+  <span class="ruby-identifier">argv</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span> })
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ruby_options_to_argv-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ruby_options_to_argv-method -->
+
+      
+        <div id="ruby_sudo_command-method" class="method-detail ">
+          <a name="method-i-ruby_sudo_command"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ruby_sudo_command</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns either ‘sudo’ or ‘rvmsudo’ depending on whether the current
+<a href="Ruby.html">Ruby</a> interpreter is managed by RVM.</p>
+            
+
+            
+            <div class="method-source-code" id="ruby_sudo_command-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_sudo_command</span>
+  <span class="ruby-node">&quot;#{'rvm' if rvm?}sudo&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ruby_sudo_command-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ruby_sudo_command-method -->
+
+      
+        <div id="ruby_supports_fork-3F-method" class="method-detail ">
+          <a name="method-i-ruby_supports_fork-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ruby_supports_fork?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns whether the <a href="Ruby.html">Ruby</a> interpreter supports
+process forking.</p>
+            
+
+            
+            <div class="method-source-code" id="ruby_supports_fork-3F-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_supports_fork?</span>
+  <span class="ruby-comment"># MRI &gt;= 1.9.2's respond_to? returns false</span>
+  <span class="ruby-comment"># for methods that are not implemented.</span>
+  <span class="ruby-constant">Process</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:fork</span>) <span class="ruby-operator">&amp;&amp;</span>
+  <span class="ruby-constant">RUBY_ENGINE</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'jruby'</span>     <span class="ruby-operator">&amp;&amp;</span>
+  <span class="ruby-constant">RUBY_ENGINE</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'macruby'</span>   <span class="ruby-operator">&amp;&amp;</span>
+  <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'target_os'</span>] <span class="ruby-operator">!~</span> <span class="ruby-regexp">/mswin|windows|mingw/</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ruby_supports_fork-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ruby_supports_fork-3F-method -->
+
+      
+        <div id="rvm-3F-method" class="method-detail ">
+          <a name="method-i-rvm-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rvm?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns whether the current <a href="Ruby.html">Ruby</a> interpreter is
+managed by RVM.</p>
+            
+
+            
+            <div class="method-source-code" id="rvm-3F-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rvm?</span>
+  <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'bindir'</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">%{/\.?rvm/}</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- rvm-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- rvm-3F-method -->
+
+      
+        <div id="rvm_path-method" class="method-detail ">
+          <a name="method-i-rvm_path"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rvm_path</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>If the current <a href="Ruby.html">Ruby</a> interpreter is managed by RVM,
+returns the directory in which RVM places its working files. Otherwise
+returns <tt>nil</tt>.</p>
+            
+
+            
+            <div class="method-source-code" id="rvm_path-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rvm_path</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_path</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@rvm_path</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_path</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">rvm?</span>
+
+  [<span class="ruby-constant">ENV</span>[<span class="ruby-string">'rvm_path'</span>], <span class="ruby-string">'~/.rvm'</span>, <span class="ruby-string">'/usr/local/rvm'</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_path</span> = <span class="ruby-identifier">path</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span>)
+  }
+
+  <span class="ruby-comment"># Failure to locate the RVM path is probably caused by the</span>
+  <span class="ruby-comment"># user customizing $rvm_path. Older RVM versions don't</span>
+  <span class="ruby-comment"># export $rvm_path, making us unable to detect its value.</span>
+  <span class="ruby-identifier">abort</span> <span class="ruby-string">'Unable to locate the RVM path. Your RVM '</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">'installation is probably too old. '</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">UPDATE_RVM</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- rvm_path-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- rvm_path-method -->
+
+      
+        <div id="rvm_ruby_string-method" class="method-detail ">
+          <a name="method-i-rvm_ruby_string"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rvm_ruby_string</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>If the current <a href="Ruby.html">Ruby</a> interpreter is managed by RVM,
+returns the RVM name which identifies the current <a
+href="Ruby.html">Ruby</a> interpreter plus the currently active gemset,
+e.g. something like this: “ruby-1.9.2-p0@mygemset”</p>
+
+<p>Returns <tt>nil</tt> otherwise.</p>
+            
+
+            
+            <div class="method-source-code" id="rvm_ruby_string-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 151</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rvm_ruby_string</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_ruby_string</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@rvm_ruby_string</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_ruby_string</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">rvm?</span>
+
+  <span class="ruby-comment"># RVM used to export the necessary information through</span>
+  <span class="ruby-comment"># environment variables, but doesn't always do that anymore</span>
+  <span class="ruby-comment"># in the latest versions in order to fight env var pollution.</span>
+  <span class="ruby-comment"># Scanning $LOAD_PATH seems to be the only way to obtain</span>
+  <span class="ruby-comment"># the information.</span>
+
+  <span class="ruby-comment"># Getting the RVM name of the Ruby interpreter (&quot;ruby-1.9.2&quot;)</span>
+  <span class="ruby-comment"># isn't so hard, we can extract it from the #ruby_executable</span>
+  <span class="ruby-comment"># string. Getting the gemset name is a bit harder, so let's</span>
+  <span class="ruby-comment"># try various strategies...</span>
+
+  <span class="ruby-comment"># $GEM_HOME usually contains the gem set name.</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_ruby_string</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-constant">GEM_HOME</span>) <span class="ruby-keyword">if</span> <span class="ruby-constant">GEM_HOME</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">GEM_HOME</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'rvm/gems/'</span>)
+
+  <span class="ruby-comment"># User somehow managed to nuke $GEM_HOME. Extract info from $LOAD_PATH.</span>
+  <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_ruby_string</span> = <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%{^.*rvm/gems/([^/]+)}</span> }
+
+  <span class="ruby-comment"># On Ruby 1.9, $LOAD_PATH does not contain any gem paths until</span>
+  <span class="ruby-comment"># at least one gem has been required so the above can fail.</span>
+  <span class="ruby-comment"># We're out of options now, we can't detect the gem set.</span>
+  <span class="ruby-comment"># Raise an exception so that the user knows what's going on</span>
+  <span class="ruby-comment"># instead of having things fail in obscure ways later.</span>
+  <span class="ruby-identifier">abort</span> <span class="ruby-string">'Unable to autodetect the currently active RVM gem set '</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">&quot;name. Please contact this program's author for support.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- rvm_ruby_string-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- rvm_ruby_string-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+      <div id="private-instance-method-details" class="method-section section">
+        <h3 class="section-header">Private Instance Methods</h3>
+
+      
+        <div id="locate_ruby_tool_by_basename-method" class="method-detail ">
+          <a name="method-i-locate_ruby_tool_by_basename"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">locate_ruby_tool_by_basename</span><span
+              class="method-args">(name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="locate_ruby_tool_by_basename-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 267</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">dir</span> = <span class="ruby-keyword">if</span> <span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/darwin/</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ruby_command</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OSX_RUBY_RE</span>
+    <span class="ruby-comment"># On OS X we must look for Ruby binaries in /usr/bin.</span>
+    <span class="ruby-comment"># RubyGems puts executables (e.g. 'rake') in there, not in</span>
+    <span class="ruby-comment"># /System/Libraries/(...)/bin.</span>
+    <span class="ruby-string">'/usr/bin'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">ruby_command</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">filename</span>)
+
+  <span class="ruby-comment"># RubyGems might put binaries in a directory other</span>
+  <span class="ruby-comment"># than Ruby's bindir. Debian packaged RubyGems and</span>
+  <span class="ruby-comment"># DebGem packaged RubyGems are the prime examples.</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">require</span> <span class="ruby-string">'rubygems'</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">Gem</span>)
+
+    <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Gem</span>.<span class="ruby-identifier">bindir</span>, <span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Looks like it's not in the RubyGems bindir. Search in $PATH, but</span>
+  <span class="ruby-comment"># be very careful about this because whatever we find might belong</span>
+  <span class="ruby-comment"># to a different Ruby interpreter than the current one.</span>
+  <span class="ruby-constant">ENV</span>[<span class="ruby-string">'PATH'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">name</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">filename</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">ruby_command</span>
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- locate_ruby_tool_by_basename-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- locate_ruby_tool_by_basename-method -->
+
+      
+        <div id="shebang_command-method" class="method-detail ">
+          <a name="method-i-shebang_command"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">shebang_command</span><span
+              class="method-args">(filename)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="shebang_command-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 305</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">filename</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/\A#!\s*(\S*)/</span>
+
+    <span class="ruby-comment"># Allow one extra line for magic comment.</span>
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$.</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- shebang_command-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- shebang_command-method -->
+
+      
+      </div><!-- private-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

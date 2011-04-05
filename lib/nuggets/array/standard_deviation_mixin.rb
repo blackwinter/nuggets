@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2009 Jens Wille                                          #
+# Copyright (C) 2007-2011 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -38,13 +38,10 @@ module Nuggets
   # call-seq:
   #   array.standard_deviation => aFloat
   #
-  # Calculates the standard deviation of the items contained in _array_.
-  def standard_deviation
-    begin
-      Math.sqrt(block_given? ? variance { |*a| yield(*a) } : variance)
-    rescue Errno::EDOM
-      0.0
-    end
+  # Calculates the {standard deviation}[http://en.wikipedia.org/wiki/Standard_deviation]
+  # of the values in _array_.
+  def standard_deviation(&block)
+    Math.sqrt(variance(&block))
   end
 
   alias_method :std, :standard_deviation

@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2009 Jens Wille                                          #
+# Copyright (C) 2007-2011 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -32,26 +32,45 @@ module Nuggets
   # call-seq:
   #   array.variance => aFloat
   #
-  # Calculates the variance of the items in _array_.
-  #
-  # Based on <http://warrenseen.com/blog/2006/03/13/how-to-calculate-standard-deviation/>.
+  # Calculates the variance[http://en.wikipedia.org/wiki/Variance] of the
+  # values in _array_.
   def variance
-    s, mean = 0.0, 0.0
+    sx, sq = 0.0, 0.0
 
-    return s if empty?
+    return sx if empty?
 
-    each_with_index { |x, n|
+    each { |x|
       x = yield x if block_given?
 
-      delta = x - mean
-      mean += delta / (n + 1)
-      s += delta * (x - mean)
+      sx += x
+      sq += x ** 2
     }
 
-    s / size
+    (sq - sx ** 2 / size) / size
   end
 
   alias_method :var, :variance
+
+  # call-seq:
+  #   array.covariance => aFloat
+  #
+  # Calculates the covariance[http://en.wikipedia.org/wiki/Covariance] of the
+  # <tt>{x,y}</tt> pairs in _array_.
+  def covariance
+    sx, sy, sp = 0.0, 0.0, 0.0
+
+    return sx if empty?
+
+    each { |x, y|
+      sx += x
+      sy += y
+      sp += x * y
+    }
+
+    (sp - sx * sy / size) / size
+  end
+
+  alias_method :cov, :covariance
 
     end
   end

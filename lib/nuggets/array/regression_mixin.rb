@@ -25,35 +25,42 @@
 ###############################################################################
 #++
 
-require 'nuggets/array/correlation_mixin'
+require 'nuggets/array/variance_mixin'
 
 module Nuggets
   class Array
     module RegressionMixin
 
   def self.included(base)
-    base.send :include, Nuggets::Array::CorrelationMixin
+    base.send :include, Nuggets::Array::VarianceMixin
   end
 
   # call-seq:
   #   array.linear_least_squares => anArray
   #
-  # Calculates the {linear least squares regression}[http://en.wikipedia.org/wiki/Ordinary_least_squares]
-  # for the <tt>{x,y}</tt> pairs in _array_.
+  # Calculates the {linear least squares regression}[http://en.wikipedia.org/wiki/Simple_linear_regression]
+  # for the <tt>{x,y}</tt> pairs in _array_. If _array_ only contains
+  # values instead of pairs, +y+ will be the value and +x+ will be each
+  # value's position (rank) in _array_.
   def linear_least_squares
-    sx, sy = 0.0, 0.0
-
     return [] if empty?
 
-    each { |x, y|
+    target = first.respond_to?(:to_ary) ? self :
+      ::Array.new(size) { |i| i + 1 }.zip(self)
+
+    sx, sy = 0.0, 0.0
+
+    target.each { |x, y|
       sx += x
       sy += y
     }
 
-    b = corr * sy / sx
-    a = (sy - b * sx) / size.to_f
+    v = target.var { |x, _| x }
 
-    map { |x, _| [x, a + b * x] }
+    b = v.zero? ? 0.0 : target.cov / v
+    a = (sy - b * sx) / size
+
+    target.map { |x, _| [x, a + b * x] }
   end
 
   alias_method :llsq, :linear_least_squares

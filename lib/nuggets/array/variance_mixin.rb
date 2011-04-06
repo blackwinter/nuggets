@@ -54,14 +54,19 @@ module Nuggets
   # call-seq:
   #   array.covariance => aFloat
   #
-  # Calculates the covariance[http://en.wikipedia.org/wiki/Covariance] of the
-  # <tt>{x,y}</tt> pairs in _array_.
+  # Calculates the covariance[http://en.wikipedia.org/wiki/Covariance] of
+  # the <tt>{x,y}</tt> pairs in _array_. If _array_ only contains values
+  # instead of pairs, +y+ will be the value and +x+ will be each value's
+  # position (rank) in _array_.
   def covariance
     sx, sy, sp = 0.0, 0.0, 0.0
 
     return sx if empty?
 
-    each { |x, y|
+    target = first.respond_to?(:to_ary) ? self :
+      ::Array.new(size) { |i| i + 1 }.zip(self)
+
+    target.each { |x, y|
       sx += x
       sy += y
       sp += x * y

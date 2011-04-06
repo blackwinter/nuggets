@@ -17,11 +17,11 @@ describe Array, 'when extended by', Nuggets::Array::StandardDeviationMixin do
   end
 
   example do
-    [1, 2, 3].standard_deviation.should be_within(0.0001).of(0.8165)
+    [1, 2, 3].standard_deviation.should equal_float(0.816496580927726)
   end
 
   example do
-    [3, 2, 1].standard_deviation.should be_within(0.0001).of(0.8165)
+    [3, 2, 1].standard_deviation.should equal_float(0.816496580927726)
   end
 
   example do
@@ -29,7 +29,7 @@ describe Array, 'when extended by', Nuggets::Array::StandardDeviationMixin do
   end
 
   example do
-    [1, -2, 1, 2, 3, -4, 0, 3, 1, 2, 1, 0, 24].standard_deviation.should be_within(0.01).of(6.49)
+    [1, -2, 1, 2, 3, -4, 0, 3, 1, 2, 1, 0, 24].standard_deviation.should equal_float(6.48804088737217)
   end
 
 end

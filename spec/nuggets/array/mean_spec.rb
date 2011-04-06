@@ -120,8 +120,4 @@ describe Array, 'when extended by', Nuggets::Array::MeanMixin do
   # TODO: other methods
   # TODO: more examples: http://people.revoledu.com/kardi/tutorial/BasicMath/Average/mean.html
 
-  def equal_float(value, precision = 1.0e-14)
-    be_within(precision).of(value)
-  end
-
 end

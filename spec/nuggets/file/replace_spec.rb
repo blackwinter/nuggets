@@ -94,11 +94,4 @@ BEFORE HE REACHED THE TOWN O
     end
   end
 
-  def tempfile
-    t = Tempfile.open('nuggets_file_replace_spec_temp') { |f| f.puts @txt }
-    block_given? ? yield(t.path) : t.path
-  ensure
-    t.close(true) if t
-  end
-
 end

@@ -1,14 +1,16 @@
-$:.unshift('lib') unless $:[0] == 'lib'
+$:.unshift('lib') unless $:.first == 'lib'
 
-#class << Spec::Matchers
-#
-#  def generated_description
-#    return nil if last_should.nil?
-#
-#    operator = last_should.to_s.tr('_', ' ')
-#    target = last_matcher.instance_variable_get(:@actual)
-#
-#    "#{target.inspect} #{operator} #{last_description}"
-#  end
-#
-#end
+RSpec.configure { |config|
+  config.include(Module.new {
+    def equal_float(value, precision = 1.0e-14)
+      be_within(precision).of(value)
+    end
+
+    def tempfile(txt = @txt)
+      t = Tempfile.open("nuggets_spec_#{object_id}_temp") { |f| f.puts txt }
+      block_given? ? yield(t.path) : t.path
+    ensure
+      t.close(true) if t
+    end
+  })
+}

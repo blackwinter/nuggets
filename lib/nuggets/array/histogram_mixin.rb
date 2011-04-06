@@ -73,6 +73,21 @@ module Nuggets
   end
 
   # call-seq:
+  #   array.probability_mass_function => aHash
+  #   array.probability_mass_function { |x| ... } => aHash
+  #
+  # Calculates the {probability mass function}[http://en.wikipedia.org/wiki/Probability_mass_function]
+  # (normalized histogram) of the values in _array_. Returns a Hash that
+  # maps any value, or the result of the value yielded to the block, to
+  # its probability (via #histogram).
+  def probability_mass_function(&block)
+    hist, n = histogram(&block), size.to_f
+    hist.each { |k, v| hist[k] = v / n }
+  end
+
+  alias_method :pmf, :probability_mass_function
+
+  # call-seq:
   #   array.annotated_histogram => anArray
   #   array.annotated_histogram { |hist_item| ... } => aHash
   #

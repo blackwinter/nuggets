@@ -324,19 +324,24 @@
             
             <p>Calculates the <a
 href="http://en.wikipedia.org/wiki/Covariance">covariance</a> of the
-<tt>{x,y}</tt> pairs in <em>array</em>.</p>
+<tt>{x,y}</tt> pairs in <em>array</em>. If <em>array</em> only contains
+values instead of pairs, <tt>y</tt> will be the value and <tt>x</tt> will
+be each value’s position (rank) in <em>array</em>.</p>
             
 
             
             <div class="method-source-code" id="covariance-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/array/variance_mixin.rb, line 59</span>
+<span class="ruby-comment"># File lib/nuggets/array/variance_mixin.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">covariance</span>
   <span class="ruby-identifier">sx</span>, <span class="ruby-identifier">sy</span>, <span class="ruby-identifier">sp</span> = <span class="ruby-value">0.0</span>, <span class="ruby-value">0.0</span>, <span class="ruby-value">0.0</span>
 
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">sx</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
 
-  <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">target</span> = <span class="ruby-identifier">first</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_ary</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span>
+    <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">size</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> }.<span class="ruby-identifier">zip</span>(<span class="ruby-keyword">self</span>)
+
+  <span class="ruby-identifier">target</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">sx</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">x</span>
     <span class="ruby-identifier">sy</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">y</span>
     <span class="ruby-identifier">sp</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">x</span> * <span class="ruby-identifier">y</span>

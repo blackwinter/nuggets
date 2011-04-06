@@ -63,6 +63,10 @@
           
           <li><a href="#method-i-histogram">#histogram</a></li>
           
+          <li><a href="#method-i-pmf">#pmf</a></li>
+          
+          <li><a href="#method-i-probability_mass_function">#probability_mass_function</a></li>
+          
         </ul>
       </div>
       
@@ -356,7 +360,7 @@ returns an <a href="../Array.html">Array</a> of the histogram items.</p>
             
             <div class="method-source-code" id="annotated_histogram-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 82</span>
+<span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">annotated_histogram</span>
   <span class="ruby-identifier">hist</span>, <span class="ruby-identifier">items</span> = <span class="ruby-identifier">histogram</span>, []
 
@@ -441,7 +445,7 @@ further details on the individual arguments.</p>
             
             <div class="method-source-code" id="formatted_histogram-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 128</span>
+<span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">formatted_histogram</span>(<span class="ruby-identifier">format</span> = <span class="ruby-value">:default</span>, <span class="ruby-identifier">indicator</span> = <span class="ruby-string">'='</span>)
   <span class="ruby-identifier">format</span> = <span class="ruby-constant">FORMATS</span>[<span class="ruby-identifier">format</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">FORMATS</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">format</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;String expected, got #{format.class}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
@@ -520,6 +524,86 @@ value yielded to the block, to its frequency.</p>
 
           
         </div><!-- histogram-method -->
+
+      
+        <div id="pmf-method" class="method-detail method-alias">
+          <a name="method-i-pmf"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pmf</span><span
+              class="method-args">(&block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="HistogramMixin.html#method-i-probability_mass_function">probability_mass_function</a>
+          </div>
+          
+        </div><!-- pmf-method -->
+
+      
+        <div id="probability_mass_function-method" class="method-detail ">
+          <a name="method-i-probability_mass_function"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">probability_mass_function => aHash</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          <div class="method-heading">
+            <span class="method-callseq">probability_mass_function { |x| ... } => aHash</span>
+            
+          </div>
+          
+          
+
+          <div class="method-description">
+            
+            <p>Calculates the <a
+href="http://en.wikipedia.org/wiki/Probability_mass_function">probability
+mass function</a> (normalized histogram) of the values in <em>array</em>.
+Returns a <a href="../Hash.html">Hash</a> that maps any value, or the
+result of the value yielded to the block, to its probability (via <a
+href="HistogramMixin.html#method-i-histogram">histogram</a>).</p>
+            
+
+            
+            <div class="method-source-code" id="probability_mass_function-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">probability_mass_function</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">hist</span>, <span class="ruby-identifier">n</span> = <span class="ruby-identifier">histogram</span>(&amp;<span class="ruby-identifier">block</span>), <span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">hist</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hist</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">n</span> }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- probability_mass_function-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="HistogramMixin.html#method-i-pmf">pmf</a>
+          </div>
+          
+
+          
+        </div><!-- probability_mass_function-method -->
 
       
       </div><!-- public-instance-method-details -->

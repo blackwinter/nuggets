@@ -296,7 +296,7 @@
 <pre>
 <span class="ruby-comment"># File lib/nuggets/array/regression_mixin.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
-  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">CorrelationMixin</span>
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">VarianceMixin</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- included-source -->
             
@@ -331,28 +331,36 @@
           <div class="method-description">
             
             <p>Calculates the <a
-href="http://en.wikipedia.org/wiki/Ordinary_least_squares">linear least
-squares regression</a> for the <tt>{x,y}</tt> pairs in <em>array</em>.</p>
+href="http://en.wikipedia.org/wiki/Simple_linear_regression">linear least
+squares regression</a> for the <tt>{x,y}</tt> pairs in <em>array</em>. If
+<em>array</em> only contains values instead of pairs, <tt>y</tt> will be
+the value and <tt>x</tt> will be each value’s position (rank) in
+<em>array</em>.</p>
             
 
             
             <div class="method-source-code" id="linear_least_squares-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/array/regression_mixin.rb, line 43</span>
+<span class="ruby-comment"># File lib/nuggets/array/regression_mixin.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">linear_least_squares</span>
-  <span class="ruby-identifier">sx</span>, <span class="ruby-identifier">sy</span> = <span class="ruby-value">0.0</span>, <span class="ruby-value">0.0</span>
-
   <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
 
-  <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">target</span> = <span class="ruby-identifier">first</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_ary</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span>
+    <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">size</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> }.<span class="ruby-identifier">zip</span>(<span class="ruby-keyword">self</span>)
+
+  <span class="ruby-identifier">sx</span>, <span class="ruby-identifier">sy</span> = <span class="ruby-value">0.0</span>, <span class="ruby-value">0.0</span>
+
+  <span class="ruby-identifier">target</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">sx</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">x</span>
     <span class="ruby-identifier">sy</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">y</span>
   }
 
-  <span class="ruby-identifier">b</span> = <span class="ruby-identifier">corr</span> * <span class="ruby-identifier">sy</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">sx</span>
-  <span class="ruby-identifier">a</span> = (<span class="ruby-identifier">sy</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">b</span> * <span class="ruby-identifier">sx</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">v</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">var</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> }
 
-  <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">x</span>, <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span> * <span class="ruby-identifier">x</span>] }
+  <span class="ruby-identifier">b</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">zero?</span> <span class="ruby-operator">?</span> <span class="ruby-value">0.0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">cov</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-identifier">a</span> = (<span class="ruby-identifier">sy</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">b</span> * <span class="ruby-identifier">sx</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">size</span>
+
+  <span class="ruby-identifier">target</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">x</span>, <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span> * <span class="ruby-identifier">x</span>] }
 <span class="ruby-keyword">end</span></pre>
             </div><!-- linear_least_squares-source -->
             

@@ -25,14 +25,14 @@
 ###############################################################################
 #++
 
-require 'nuggets/array/variance_mixin'
+require 'nuggets/array/standard_deviation_mixin'
 
 module Nuggets
   class Array
     module CorrelationMixin
 
   def self.included(base)
-    base.send :include, Nuggets::Array::VarianceMixin
+    base.send :include, Nuggets::Array::StandardDeviationMixin
   end
 
   # call-seq:
@@ -40,18 +40,21 @@ module Nuggets
   #
   # Calculates the {Pearson product-moment correlation
   # coefficient}[http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient]
-  # for the <tt>{x,y}</tt> pairs in _array_.
+  # for the <tt>{x,y}</tt> pairs in _array_. If _array_ only contains
+  # values instead of pairs, +y+ will be the value and +x+ will be each
+  # value's position (rank) in _array_.
   def correlation_coefficient
-    sx, sy = 0.0, 0.0
+    return 0.0 if empty?
 
-    return sx if empty?
+    target = first.respond_to?(:to_ary) ? self :
+      ::Array.new(size) { |i| i + 1 }.zip(self)
 
-    each { |x, y|
-      sx += x
-      sy += y
-    }
+    sx = target.std { |x, _| x }
+    sy = target.std { |_, y| y }
 
-    (sx * cov) / (sy * var { |x, _| x })
+    c = target.cov
+
+    sx.zero? || sy.zero? ? c < 0 ? -1.0 : 1.0 : c / (sx * sy)
   end
 
   alias_method :corr, :correlation_coefficient

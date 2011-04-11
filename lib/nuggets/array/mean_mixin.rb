@@ -52,7 +52,7 @@ module Nuggets
       weights += weight
     }
 
-    (total / weights.to_f) ** (1 / exponent) unless weights.zero?
+    (total / weights.to_f) ** (1.0 / exponent) unless weights.zero?
   end
 
   alias_method :power_mean,     :generalized_mean

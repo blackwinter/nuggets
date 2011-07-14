@@ -6,7 +6,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>ruby-nuggets Application documentation (v0.7.2)</title>
+  <title>ruby-nuggets Application documentation (v0.7.3)</title>
 
   <link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
 
@@ -19,7 +19,7 @@
 <body class="indexpage">
 
   
-  <h1>ruby-nuggets Application documentation (v0.7.2)</h1>
+  <h1>ruby-nuggets Application documentation (v0.7.3)</h1>
 
   
   <div id="main">
@@ -27,7 +27,7 @@
 
 <h2>VERSION</h2>
 
-<p>This documentation refers to ruby-nuggets version 0.7.2</p>
+<p>This documentation refers to ruby-nuggets version 0.7.3</p>
 
 <h2>DESCRIPTION</h2>
 
@@ -222,6 +222,8 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
     <li class="module"><a href="Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a></li>
     
+    <li class="class"><a href="Util/CLI.html">Util::CLI</a></li>
+    
     <li class="module"><a href="Util/ContentType.html">Util::ContentType</a></li>
     
     <li class="module"><a href="Util/ContentType.html">Util::ContentType</a></li>
@@ -277,21 +279,29 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="IO.html#method-c-append_read">::append_read &mdash; IO</a></li>
     
+      <li><a href="Util/CLI.html#method-c-defaults">::defaults &mdash; Util::CLI</a></li>
+    
+      <li><a href="Util/CLI.html#method-c-execute">::execute &mdash; Util::CLI</a></li>
+    
       <li><a href="Nuggets/File/SubMixin.html#method-c-extended">::extended &mdash; Nuggets::File::SubMixin</a></li>
     
       <li><a href="String.html#method-c-gimme_match_data-21">::gimme_match_data! &mdash; String</a></li>
     
       <li><a href="Nuggets/Array/StandardDeviationMixin.html#method-c-included">::included &mdash; Nuggets::Array::StandardDeviationMixin</a></li>
     
+      <li><a href="Nuggets/Array/ModeMixin.html#method-c-included">::included &mdash; Nuggets::Array::ModeMixin</a></li>
+    
       <li><a href="Nuggets/Array/RegressionMixin.html#method-c-included">::included &mdash; Nuggets::Array::RegressionMixin</a></li>
     
       <li><a href="Nuggets/Array/CorrelationMixin.html#method-c-included">::included &mdash; Nuggets::Array::CorrelationMixin</a></li>
     
-      <li><a href="Nuggets/Array/ModeMixin.html#method-c-included">::included &mdash; Nuggets::Array::ModeMixin</a></li>
+      <li><a href="Util/CLI.html#method-c-new">::new &mdash; Util::CLI</a></li>
     
       <li><a href="Tempfile.html#method-c-open">::open &mdash; Tempfile</a></li>
     
       <li><a href="IO.html#method-c-open_with_mode">::open_with_mode &mdash; IO</a></li>
+    
+      <li><a href="Util/CLI.html#method-c-parent_const_get">::parent_const_get &mdash; Util::CLI</a></li>
     
       <li><a href="IO.html#method-c-read">::read &mdash; IO</a></li>
     
@@ -304,6 +314,10 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
       <li><a href="Nuggets/Version.html#method-c-to_a">::to_a &mdash; Nuggets::Version</a></li>
     
       <li><a href="Nuggets/Version.html#method-c-to_s">::to_s &mdash; Nuggets::Version</a></li>
+    
+      <li><a href="Util/CLI.html#method-c-usage">::usage &mdash; Util::CLI</a></li>
+    
+      <li><a href="Util/CLI.html#method-c-version">::version &mdash; Util::CLI</a></li>
     
       <li><a href="IO.html#method-c-write">::write &mdash; IO</a></li>
     
@@ -333,6 +347,8 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Enumerable.html#method-i-_nuggets_original_minmax_by">#_nuggets_original_minmax_by &mdash; Enumerable</a></li>
     
+      <li><a href="Util/CLI.html#method-i-abort">#abort &mdash; Util::CLI</a></li>
+    
       <li><a href="Enumerable.html#method-i-agrep">#agrep &mdash; Enumerable</a></li>
     
       <li><a href="Enumerable.html#method-i-all-3F">#all? &mdash; Enumerable</a></li>
@@ -349,6 +365,8 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Array.html#method-i-ascending-3F">#ascending? &mdash; Array</a></li>
     
+      <li><a href="Util/CLI.html#method-i-ask">#ask &mdash; Util::CLI</a></li>
+    
       <li><a href="Hash.html#method-i-at">#at &mdash; Hash</a></li>
     
       <li><a href="Numeric.html#method-i-at_least">#at_least &mdash; Numeric</a></li>
@@ -359,9 +377,9 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Nuggets/Array/MeanMixin.html#method-i-avg">#avg &mdash; Nuggets::Array::MeanMixin</a></li>
     
-      <li><a href="Nuggets/Array/LimitMixin.html#method-i-between">#between &mdash; Nuggets::Array::LimitMixin</a></li>
-    
       <li><a href="Numeric.html#method-i-between">#between &mdash; Numeric</a></li>
+    
+      <li><a href="Nuggets/Array/LimitMixin.html#method-i-between">#between &mdash; Nuggets::Array::LimitMixin</a></li>
     
       <li><a href="Nuggets/Proc/BindMixin.html#method-i-bind">#bind &mdash; Nuggets::Proc::BindMixin</a></li>
     
@@ -427,9 +445,13 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Nuggets/String/EvaluateMixin.html#method-i-evaluate">#evaluate &mdash; Nuggets::String::EvaluateMixin</a></li>
     
+      <li><a href="Util/CLI.html#method-i-execute">#execute &mdash; Util::CLI</a></li>
+    
       <li><a href="Nuggets/URI/ExistMixin.html#method-i-exist-3F">#exist? &mdash; Nuggets::URI::ExistMixin</a></li>
     
       <li><a href="Nuggets/URI/ExistMixin.html#method-i-exists-3F">#exists? &mdash; Nuggets::URI::ExistMixin</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-exit">#exit &mdash; Util::CLI</a></li>
     
       <li><a href="Integer.html#method-i-f-21">#f! &mdash; Integer</a></li>
     
@@ -457,6 +479,8 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Nuggets/Array/MeanMixin.html#method-i-generalized_mean">#generalized_mean &mdash; Nuggets::Array::MeanMixin</a></li>
     
+      <li><a href="Util/CLI.html#method-i-generic_opts">#generic_opts &mdash; Util::CLI</a></li>
+    
       <li><a href="Nuggets/Array/MeanMixin.html#method-i-geomean">#geomean &mdash; Nuggets::Array::MeanMixin</a></li>
     
       <li><a href="Nuggets/Array/MeanMixin.html#method-i-geometric_mean">#geometric_mean &mdash; Nuggets::Array::MeanMixin</a></li>
@@ -483,13 +507,15 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Numeric.html#method-i-hms">#hms &mdash; Numeric</a></li>
     
-      <li><a href="Hash.html#method-i-in_order">#in_order &mdash; Hash</a></li>
-    
       <li><a href="Array.html#method-i-in_order">#in_order &mdash; Array</a></li>
+    
+      <li><a href="Hash.html#method-i-in_order">#in_order &mdash; Hash</a></li>
     
       <li><a href="Array.html#method-i-in_order-21">#in_order! &mdash; Array</a></li>
     
       <li><a href="Array.html#method-i-increasing-3F">#increasing? &mdash; Array</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-init">#init &mdash; Util::CLI</a></li>
     
       <li><a href="Hash.html#method-i-insert">#insert &mdash; Hash</a></li>
     
@@ -517,9 +543,9 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Nuggets/Integer/MapMixin.html#method-i-map_positive">#map_positive &mdash; Nuggets::Integer::MapMixin</a></li>
     
-      <li><a href="Enumerable.html#method-i-max">#max &mdash; Enumerable</a></li>
-    
       <li><a href="Numeric.html#method-i-max">#max &mdash; Numeric</a></li>
+    
+      <li><a href="Enumerable.html#method-i-max">#max &mdash; Enumerable</a></li>
     
       <li><a href="Enumerable.html#method-i-max_by">#max_by &mdash; Enumerable</a></li>
     
@@ -579,11 +605,19 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Util/ContentType.html#method-i-of">#of &mdash; Util::ContentType</a></li>
     
-      <li><a href="Hash.html#method-i-only">#only &mdash; Hash</a></li>
-    
       <li><a href="Array.html#method-i-only">#only &mdash; Array</a></li>
     
+      <li><a href="Hash.html#method-i-only">#only &mdash; Hash</a></li>
+    
       <li><a href="Hash.html#method-i-only_pair">#only_pair &mdash; Hash</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-open_file_or_std">#open_file_or_std &mdash; Util::CLI</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-option_parser">#option_parser &mdash; Util::CLI</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-opts">#opts &mdash; Util::CLI</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-parse_options">#parse_options &mdash; Util::CLI</a></li>
     
       <li><a href="Nuggets/Array/CorrelationMixin.html#method-i-pmcc">#pmcc &mdash; Nuggets::Array::CorrelationMixin</a></li>
     
@@ -591,13 +625,21 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="Numeric.html#method-i-positive-3F">#positive? &mdash; Numeric</a></li>
     
+      <li><a href="Util/CLI.html#method-i-post_opts">#post_opts &mdash; Util::CLI</a></li>
+    
       <li><a href="Nuggets/Array/MeanMixin.html#method-i-power_mean">#power_mean &mdash; Nuggets::Array::MeanMixin</a></li>
     
+      <li><a href="Util/CLI.html#method-i-pre_opts">#pre_opts &mdash; Util::CLI</a></li>
+    
       <li><a href="Nuggets/Array/HistogramMixin.html#method-i-probability_mass_function">#probability_mass_function &mdash; Nuggets::Array::HistogramMixin</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-progname">#progname &mdash; Util::CLI</a></li>
     
       <li><a href="Nuggets/Array/MeanMixin.html#method-i-quadratic_mean">#quadratic_mean &mdash; Nuggets::Array::MeanMixin</a></li>
     
       <li><a href="Nuggets/Range/QuantileMixin.html#method-i-quantile">#quantile &mdash; Nuggets::Range::QuantileMixin</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-quit">#quit &mdash; Util::CLI</a></li>
     
       <li><a href="Array.html#method-i-rand">#rand &mdash; Array</a></li>
     
@@ -608,6 +650,8 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
       <li><a href="String.html#method-i-replace_diacritics">#replace_diacritics &mdash; String</a></li>
     
       <li><a href="String.html#method-i-replace_diacritics-21">#replace_diacritics! &mdash; String</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-reset">#reset &mdash; Util::CLI</a></li>
     
       <li><a href="Nuggets/Array/MeanMixin.html#method-i-rms">#rms &mdash; Nuggets::Array::MeanMixin</a></li>
     
@@ -721,19 +765,23 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
     
       <li><a href="String.html#method-i-upper_case-3F">#upper_case? &mdash; String</a></li>
     
+      <li><a href="Util/CLI.html#method-i-usage">#usage &mdash; Util::CLI</a></li>
+    
       <li><a href="Nuggets/Env/UserEncodingMixin.html#method-i-user_encoding">#user_encoding &mdash; Nuggets::Env::UserEncodingMixin</a></li>
     
       <li><a href="Nuggets/Env/UserHomeMixin.html#method-i-user_home">#user_home &mdash; Nuggets::Env::UserHomeMixin</a></li>
-    
-      <li><a href="Nuggets/Object/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Object::BlankMixin</a></li>
     
       <li><a href="Nuggets/Array/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Array::BlankMixin</a></li>
     
       <li><a href="Nuggets/Hash/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Hash::BlankMixin</a></li>
     
+      <li><a href="Nuggets/Object/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Object::BlankMixin</a></li>
+    
       <li><a href="Nuggets/Array/VarianceMixin.html#method-i-var">#var &mdash; Nuggets::Array::VarianceMixin</a></li>
     
       <li><a href="Nuggets/Array/VarianceMixin.html#method-i-variance">#variance &mdash; Nuggets::Array::VarianceMixin</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-version">#version &mdash; Util::CLI</a></li>
     
       <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-virtual_class">#virtual_class &mdash; Nuggets::Object::SingletonClassMixin</a></li>
     
@@ -742,6 +790,8 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
       <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-virtual_object">#virtual_object &mdash; Nuggets::Object::SingletonClassMixin</a></li>
     
       <li><a href="Nuggets/Object/BlankMixin.html#method-i-void-3F">#void? &mdash; Nuggets::Object::BlankMixin</a></li>
+    
+      <li><a href="Util/CLI.html#method-i-warn">#warn &mdash; Util::CLI</a></li>
     
       <li><a href="Nuggets/String/WcMixin.html#method-i-wc">#wc &mdash; Nuggets::String::WcMixin</a></li>
     

@@ -157,13 +157,21 @@ module Util
       end
     end
 
+    def load_config(file = options[:config] || defaults[:config])
+      @config = YAML.load_file(file) if File.readable?(file)
+    end
+
+    def merge_config(args = [config, defaults])
+      args.each { |hash| hash.each { |key, value|
+        options[key] = value unless options.has_key?(key)
+      } }
+    end
+
     def parse_options(arguments)
       option_parser.parse!(arguments)
 
-      config_file = options[:config] || defaults[:config]
-      @config = YAML.load_file(config_file) if File.readable?(config_file)
-
-      [config, defaults].each { |hash| hash.each { |key, value| options[key] ||= value } }
+      load_config
+      merge_config
     end
 
     def option_parser

@@ -89,6 +89,10 @@
           
           <li><a href="#method-i-init">#init</a></li>
           
+          <li><a href="#method-i-load_config">#load_config</a></li>
+          
+          <li><a href="#method-i-merge_config">#merge_config</a></li>
+          
           <li><a href="#method-i-open_file_or_std">#open_file_or_std</a></li>
           
           <li><a href="#method-i-option_parser">#option_parser</a></li>
@@ -962,7 +966,7 @@
             
             <div class="method-source-code" id="generic_opts-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 194</span>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 202</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
   <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-h'</span>, <span class="ruby-string">'--help'</span>, <span class="ruby-string">'Print this help message and exit'</span>) {
     <span class="ruby-identifier">abort</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">to_s</span>
@@ -1013,6 +1017,74 @@
 
           
         </div><!-- init-method -->
+
+      
+        <div id="load_config-method" class="method-detail ">
+          <a name="method-i-load_config"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">load_config</span><span
+              class="method-args">(file = options[:config] || defaults[:config])</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="load_config-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_config</span>(<span class="ruby-identifier">file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">defaults</span>[<span class="ruby-value">:config</span>])
+  <span class="ruby-ivar">@config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- load_config-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- load_config-method -->
+
+      
+        <div id="merge_config-method" class="method-detail ">
+          <a name="method-i-merge_config"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">merge_config</span><span
+              class="method-args">(args = [config, defaults])</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="merge_config-source">
+<pre>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">merge_config</span>(<span class="ruby-identifier">args</span> = [<span class="ruby-identifier">config</span>, <span class="ruby-identifier">defaults</span>])
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+  } }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- merge_config-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- merge_config-method -->
 
       
         <div id="open_file_or_std-method" class="method-detail ">
@@ -1078,7 +1150,7 @@
             
             <div class="method-source-code" id="option_parser-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 169</span>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 177</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">option_parser</span>
   <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-identifier">usage</span>
@@ -1126,7 +1198,7 @@
             
             <div class="method-source-code" id="opts-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 191</span>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">opts</span>(<span class="ruby-identifier">opts</span>)
 <span class="ruby-keyword">end</span></pre>
             </div><!-- opts-source -->
@@ -1158,14 +1230,12 @@
             
             <div class="method-source-code" id="parse_options-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 160</span>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 170</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>)
   <span class="ruby-identifier">option_parser</span>.<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">arguments</span>)
 
-  <span class="ruby-identifier">config_file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">defaults</span>[<span class="ruby-value">:config</span>]
-  <span class="ruby-ivar">@config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">config_file</span>) <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">config_file</span>)
-
-  [<span class="ruby-identifier">config</span>, <span class="ruby-identifier">defaults</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">value</span> } }
+  <span class="ruby-identifier">load_config</span>
+  <span class="ruby-identifier">merge_config</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- parse_options-source -->
             
@@ -1196,7 +1266,7 @@
             
             <div class="method-source-code" id="post_opts-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 204</span>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 212</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">post_opts</span>(<span class="ruby-identifier">opts</span>)
 <span class="ruby-keyword">end</span></pre>
             </div><!-- post_opts-source -->
@@ -1228,7 +1298,7 @@
             
             <div class="method-source-code" id="pre_opts-source">
 <pre>
-<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 188</span>
+<span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 196</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">pre_opts</span>(<span class="ruby-identifier">opts</span>)
 <span class="ruby-keyword">end</span></pre>
             </div><!-- pre_opts-source -->

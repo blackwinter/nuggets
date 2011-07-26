@@ -1,4 +1,4 @@
-Thu, 14 Jul 2011 18:18:55 +0200
+Tue, 26 Jul 2011 16:24:07 +0200
 lib/nuggets/object/metaclass.rb	Thu, 22 Jan 2009 14:24:48 +0100
 lib/nuggets/object/ghost_class.rb	Thu, 22 Jan 2009 14:24:44 +0100
 ChangeLog	Thu, 04 Dec 2008 16:53:07 +0100
@@ -31,7 +31,7 @@ lib/nuggets/object/virtual_class.rb	Thu, 22 Jan 2009 14:24:59 +0100
 lib/nuggets/numeric/duration.rb	Fri, 29 Apr 2011 13:47:46 +0200
 lib/nuggets/uri/exist.rb	Wed, 25 Feb 2009 12:26:10 +0100
 lib/nuggets/string/evaluate.rb	Thu, 06 Jan 2011 10:47:41 +0100
-lib/nuggets/version.rb	Thu, 14 Jul 2011 18:17:47 +0200
+lib/nuggets/version.rb	Tue, 26 Jul 2011 15:29:21 +0200
 lib/nuggets/object/silence.rb	Wed, 25 Feb 2009 12:26:10 +0100
 lib/nuggets/array/flatten_once.rb	Fri, 29 Apr 2011 13:45:52 +0200
 lib/nuggets/object/uniclass.rb	Thu, 22 Jan 2009 14:24:53 +0100
@@ -61,7 +61,7 @@ lib/nuggets/array/variance_mixin.rb	Fri, 29 Apr 2011 13:45:22 +0200
 lib/nuggets/integer/length_mixin.rb	Fri, 29 Apr 2011 13:42:09 +0200
 lib/nuggets/string/evaluate_mixin.rb	Fri, 29 Apr 2011 13:47:59 +0200
 lib/nuggets/hash/only.rb	Fri, 29 Apr 2011 13:47:01 +0200
-lib/nuggets/util/cli.rb	Thu, 14 Jul 2011 18:12:15 +0200
+lib/nuggets/util/cli.rb	Tue, 26 Jul 2011 14:32:43 +0200
 lib/nuggets/util/dotted_decimal.rb	Fri, 29 Apr 2011 13:42:26 +0200
 lib/nuggets/object/eigenclass.rb	Thu, 22 Jan 2009 14:24:39 +0100
 lib/nuggets/string/wc_mixin.rb	Fri, 29 Apr 2011 13:48:01 +0200
@@ -84,7 +84,7 @@ lib/nuggets/integer/map.rb	Wed, 15 Dec 2010 15:59:31 +0100
 lib/nuggets/proc/bind_mixin.rb	Fri, 29 Apr 2011 13:46:16 +0200
 lib/nuggets/hash/nest.rb	Thu, 23 Jul 2009 18:36:01 +0200
 lib/nuggets/array/runiq_mixin.rb	Fri, 29 Apr 2011 13:46:10 +0200
-README	Thu, 14 Jul 2011 18:17:38 +0200
+README	Tue, 26 Jul 2011 15:29:14 +0200
 lib/nuggets/object/blank.rb	Wed, 25 Feb 2009 12:26:10 +0100
 lib/nuggets/env/set.rb	Thu, 12 Mar 2009 16:56:24 +0100
 lib/nuggets/array/correlation.rb	Tue, 15 Mar 2011 13:10:37 +0100

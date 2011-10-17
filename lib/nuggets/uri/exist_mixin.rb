@@ -38,7 +38,7 @@ module Nuggets
   def exist?(uri)
     open(uri.to_s)
     true
-  rescue OpenURI::HTTPError, SocketError, Errno::ENOENT
+  rescue ::OpenURI::HTTPError, ::SocketError, ::Errno::ENOENT
     false
   end
   alias_method :exists?, :exist?

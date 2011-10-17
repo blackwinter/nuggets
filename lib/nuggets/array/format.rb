@@ -42,17 +42,17 @@ class Array
   # _str_; empty string if _str_ is empty.
   def %(args)
     opts = { :sep => ', ' }
-    opts.update(pop) if last.is_a?(Hash)
+    opts.update(pop) if last.is_a?(::Hash)
 
     default = lambda { |n|
       ['%s'] * n * opts[:sep]
     }
 
     case args
-      when String
+      when ::String
         return (first || default[1]) % args unless
           args.nil? || args.empty?
-      when Array
+      when ::Array
         i = 0
         [*args].comb { |x|
           return (self[i] || default[x.size]) % x unless

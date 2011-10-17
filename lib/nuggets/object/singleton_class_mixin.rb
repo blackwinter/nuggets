@@ -54,15 +54,15 @@ module Nuggets
     }
 
     # raises TypeError if neither class nor module
-    ObjectSpace.each_object(self) { |obj|
+    ::ObjectSpace.each_object(self) { |obj|
       return obj if self.equal?(obj.singleton_class)
     }
 
     # if we got here, it can't be a singleton class
     # or its singleton object doesn't exist anymore
-    raise TypeError
-  rescue TypeError
-    raise TypeError, 'not a singleton class'
+    raise ::TypeError
+  rescue ::TypeError
+    raise ::TypeError, 'not a singleton class'
   end
 
   alias_method :virtual_object, :singleton_object
@@ -81,7 +81,7 @@ module Nuggets
   def singleton_class?
     singleton_object
     true
-  rescue TypeError
+  rescue ::TypeError
     false
   end
 

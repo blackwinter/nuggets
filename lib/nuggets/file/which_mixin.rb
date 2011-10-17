@@ -31,7 +31,7 @@ module Nuggets
   class File
     module WhichMixin
 
-  DEFAULT_EXTENSIONS = [RbConfig::CONFIG['EXEEXT']]
+  DEFAULT_EXTENSIONS = [::RbConfig::CONFIG['EXEEXT']]
 
   # call-seq:
   #   File.which(executable[, extensions]) => aString or +nil+
@@ -44,7 +44,7 @@ module Nuggets
   def which(executable, extensions = DEFAULT_EXTENSIONS)
     extensions |= ['']
 
-    if env = ENV['PATH']
+    if env = ::ENV['PATH']
       dirs = env.split(self::PATH_SEPARATOR)
       dirs.map! { |dir| expand_path(dir) }
     end

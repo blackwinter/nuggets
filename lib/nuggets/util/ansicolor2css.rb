@@ -85,7 +85,7 @@ module Util
       '107' => 'background-color: white'         # on bright white
     }
 
-    ATTRIBUTES_RE = Regexp.union(*ATTRIBUTES.keys)
+    ATTRIBUTES_RE = ::Regexp.union(*ATTRIBUTES.keys)
 
     DELIMITER = ';'
 
@@ -119,7 +119,7 @@ end
 class String
 
   def ansicolor2css
-    Util::ANSIColor2CSS.convert(self)
+    ::Util::ANSIColor2CSS.convert(self)
   end
 
   alias_method :ansicolour2css, :ansicolor2css

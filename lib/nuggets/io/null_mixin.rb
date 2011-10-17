@@ -29,7 +29,7 @@ module Nuggets
   class IO
     module NullMixin
 
-      NULL = case RUBY_PLATFORM
+      NULL = case ::RUBY_PLATFORM
         when /mswin|mingw/i then 'NUL'
         when /openvms/i     then 'NL:'
         when /amiga/i       then 'NIL:'

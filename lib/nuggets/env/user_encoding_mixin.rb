@@ -27,7 +27,7 @@
 
 begin
   require 'win32console'
-rescue LoadError
+rescue ::LoadError
 end
 
 module Nuggets
@@ -42,8 +42,8 @@ module Nuggets
     self['ENCODING'] || begin
       lang = self['LANG']
       lang[/\.(.*)/, 1] if lang
-    end || if defined?(Win32::Console)
-      "CP#{Win32::Console.InputCP}"
+    end || if defined?(::Win32::Console)
+      "CP#{::Win32::Console.InputCP}"
     elsif ::File::ALT_SEPARATOR
       cp = %x{chcp}[/:\s*(.*?)\./, 1]
       "CP#{cp}" if cp

@@ -38,7 +38,7 @@ module Nuggets
   # Return the content type of +uri+, or +nil+ if not found.
   def content_type(uri)
     open(uri.to_s).content_type
-  rescue OpenURI::HTTPError, SocketError, Errno::ENOENT, Errno::EHOSTUNREACH, NoMethodError
+  rescue ::OpenURI::HTTPError, ::SocketError, ::Errno::ENOENT, ::Errno::EHOSTUNREACH, ::NoMethodError
     nil
   end
 

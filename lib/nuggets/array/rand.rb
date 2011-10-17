@@ -32,7 +32,7 @@ class Array
   #
   # Randomly pick an item from _array_.
   def rand
-    at(Kernel.rand(size))
+    at(::Kernel.rand(size))
   end
 
 end

@@ -108,13 +108,13 @@ if $0 == __FILE__
     "#{md[1].gsub_with_md(/[ao]/) { |md2| md2[0].upcase }}#{md[2]}"
   }
 
-  String.gimme_match_data!
+  ::String.gimme_match_data!
 
   p s.gsub(/\w(\w+)(\W*)/) { |m|
     #p m
     begin
       "#{$1.gsub(/[ao]/, 'X')}#{$2}"
-    rescue NoMethodError => err
+    rescue ::NoMethodError => err
       warn err
     end
   }

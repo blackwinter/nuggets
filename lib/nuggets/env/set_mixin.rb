@@ -42,8 +42,8 @@ module Nuggets
     self.clear if clear
 
     env.each { |key, value|
-      key = key.to_s.upcase unless key.is_a?(String)
-      value = value.to_s unless value.is_a?(String)
+      key = key.to_s.upcase unless key.is_a?(::String)
+      value = value.to_s unless value.is_a?(::String)
 
       self[key] = value
     }

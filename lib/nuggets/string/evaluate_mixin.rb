@@ -38,7 +38,7 @@ module Nuggets
   # different environment (= +binding+) at a later point.
   #
   # Passes optional arguments +filename+ and +lineno+ on to Kernel#eval.
-  def evaluate(binding = TOPLEVEL_BINDING, filename = nil, lineno = nil)
+  def evaluate(binding = ::TOPLEVEL_BINDING, filename = nil, lineno = nil)
     buffer = gsub(/\\*"/) { |m| "#{"\\" * m.length}#{m}" }
     eval(%Q{"#{buffer}"}, binding, filename || __FILE__, lineno || __LINE__)
   end

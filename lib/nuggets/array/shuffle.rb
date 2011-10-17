@@ -33,7 +33,7 @@ class Array
   # Shuffles _array_ in random order. Select a different shuffling algorithm:
   # <tt>Array.send(:alias_method, :shuffle, :shuffle_kfy)</tt>.
   def shuffle
-    sort_by { Kernel.rand }
+    sort_by { ::Kernel.rand }
   end
 
   # call-seq:
@@ -114,7 +114,7 @@ if $0 == __FILE__
   max = algorithms.max(:length)
 
   algorithms.each { |algorithm|
-    score = Hash.new { |h, k| h[k] = 0 }
+    score = ::Hash.new { |h, k| h[k] = 0 }
 
     n.times {
       score[a.send(algorithm)] += 1

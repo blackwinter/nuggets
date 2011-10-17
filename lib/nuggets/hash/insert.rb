@@ -35,7 +35,7 @@ class Hash
   # overwriting. Uses default Hash#merge or block for merging.
   def insert(other, &block)
     block ||= lambda { |key, old_val, new_val|
-      old_val.is_a?(Hash) && new_val.is_a?(Hash) ?
+      old_val.is_a?(::Hash) && new_val.is_a?(::Hash) ?
         old_val.merge(new_val, &block) : new_val
     }
 

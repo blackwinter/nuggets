@@ -42,7 +42,7 @@ module Nuggets
 
     length = binary.map { |s| s.length }.inject { |a, b|
       if require_same_length
-        a == b ? a : raise(ArgumentError, 'must be of same length')
+        a == b ? a : raise(::ArgumentError, 'must be of same length')
       else
         [a, b].max
       end

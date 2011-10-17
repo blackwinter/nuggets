@@ -36,7 +36,7 @@ class Array
     flat = []
 
     each { |element|
-      if element.is_a?(Array)
+      if element.is_a?(::Array)
         flat += element
       else
         flat << element

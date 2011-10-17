@@ -25,10 +25,10 @@
 ###############################################################################
 #++
 
-base = File.dirname(__FILE__)
-base_re = Regexp.escape(base)
+base = ::File.dirname(__FILE__)
+base_re = ::Regexp.escape(base)
 
-Dir[File.join(base, %w[* ** *_mixin.rb])].sort.each { |path|
-  ext_re = Regexp.escape(File.extname(path))
+::Dir[::File.join(base, %w[* ** *_mixin.rb])].sort.each { |path|
+  ext_re = ::Regexp.escape(::File.extname(path))
   require path.sub(/#{base_re}(.*)#{ext_re}/, 'nuggets\1')
 }

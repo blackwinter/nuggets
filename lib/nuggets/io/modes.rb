@@ -50,13 +50,13 @@ class IO
             when true, false, nil
               # ok
             else
-              raise TypeError, "wrong argument type #{binary.class} (expected boolean)"
+              raise ::TypeError, "wrong argument type #{binary.class} (expected boolean)"
           end
         else
-          raise ArgumentError, "wrong number of arguments (#{args.size + 1} for 1-2)"
+          raise ::ArgumentError, "wrong number of arguments (#{args.size + 1} for 1-2)"
       end
 
-      open_with_mode(name, 'r', binary, &Proc.new)
+      open_with_mode(name, 'r', binary, &::Proc.new)
     end
 
     # call-seq:
@@ -65,7 +65,7 @@ class IO
     #
     # Opens +name+ with mode +w+.
     def write(name, binary = false)
-      open_with_mode(name, 'w', binary, &block_given? ? Proc.new : nil)
+      open_with_mode(name, 'w', binary, &block_given? ? ::Proc.new : nil)
     end
 
     # call-seq:
@@ -74,7 +74,7 @@ class IO
     #
     # Opens +name+ with mode +a+.
     def append(name, binary = false)
-      open_with_mode(name, 'a', binary, &block_given? ? Proc.new : nil)
+      open_with_mode(name, 'a', binary, &block_given? ? ::Proc.new : nil)
     end
 
     # call-seq:
@@ -83,7 +83,7 @@ class IO
     #
     # Opens +name+ with mode <tt>r+</tt>.
     def read_write(name, binary = false)
-      open_with_mode(name, 'r+', binary, &block_given? ? Proc.new : nil)
+      open_with_mode(name, 'r+', binary, &block_given? ? ::Proc.new : nil)
     end
 
     # call-seq:
@@ -92,7 +92,7 @@ class IO
     #
     # Opens +name+ with mode <tt>w+</tt>.
     def write_read(name, binary = false)
-      open_with_mode(name, 'w+', binary, &block_given? ? Proc.new : nil)
+      open_with_mode(name, 'w+', binary, &block_given? ? ::Proc.new : nil)
     end
 
     # call-seq:
@@ -101,14 +101,14 @@ class IO
     #
     # Opens +name+ with mode <tt>a+</tt>.
     def append_read(name, binary = false)
-      open_with_mode(name, 'a+', binary, &block_given? ? Proc.new : nil)
+      open_with_mode(name, 'a+', binary, &block_given? ? ::Proc.new : nil)
     end
 
     private
 
     # Just a helper to DRY things up.
     def open_with_mode(name, mode, binary = false)
-      open(name, "#{mode}#{'b' if binary}", &block_given? ? Proc.new : nil)
+      open(name, "#{mode}#{'b' if binary}", &block_given? ? ::Proc.new : nil)
     end
 
   end
@@ -116,7 +116,7 @@ class IO
 end
 
 if $0 == __FILE__
-  # File.read(__FILE__) { |f| ... }
-  # File.write(__FILE__) { |f| ... }
-  # File.append(__FILE__) { |f| ... }
+  # ::File.read(__FILE__) { |f| ... }
+  # ::File.write(__FILE__) { |f| ... }
+  # ::File.append(__FILE__) { |f| ... }
 end

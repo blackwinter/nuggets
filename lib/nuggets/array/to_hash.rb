@@ -44,17 +44,17 @@ class Array
   #   %w[a b c d].to_h            #=> { "a" => "b", "c" => "d" }
   #   %w[a b c d].to_h(1)         #=> { "a" => 1, "b" => 1, "c" => 1, "d" => 1 }
   #   %w[a b].to_h { |e| e * 2 }  #=> { "a" => "aa", "b" => "bb" }
-  def to_hash(value = default = Object.new)
+  def to_hash(value = default = true)
     hash = {}
 
     if block_given?
-      raise ArgumentError, "both block and value argument given" if default.nil?
+      raise ::ArgumentError, 'both block and value argument given' unless default
 
       each { |element| hash[element] = yield element }
-    elsif default.nil?
+    elsif !default
       each { |element| hash[element] = value }
     else
-      return Hash[*flatten_once]
+      return ::Hash[*flatten_once]
     end
 
     hash

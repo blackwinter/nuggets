@@ -62,7 +62,7 @@ class String
 
         gsub!(pattern) { |match| (i += 1) <= count ? replacement : match }
       else
-        raise ArgumentError, "wrong number of arguments (#{args.size} for 2-3)"
+        raise ::ArgumentError, "wrong number of arguments (#{args.size} for 2-3)"
     end
   end
 

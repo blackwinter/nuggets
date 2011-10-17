@@ -63,7 +63,7 @@ if $0 == __FILE__
 
   require 'benchmark'
 
-  Benchmark.bm(19) { |x|
+  ::Benchmark.bm(19) { |x|
     [20000, 800, 300, 700, 130, 480, 9999, 9999, 25000].each { |i|
       puts "#{i}:"
 

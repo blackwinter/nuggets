@@ -37,7 +37,7 @@ module Enumerable
   # Adds the ability to pass an +object+ instead of a block, which will then
   # be tested against each item in _enum_ according to +operator+, defaulting
   # to <tt>:===</tt>.
-  def all?(object = default = Object.new, operator = :===, &block)
+  def all?(object = default = true, operator = :===, &block)
     _nuggets_original_all?(&_block_for_all_any_extended(object, default, operator, &block))
   end
 
@@ -48,7 +48,7 @@ module Enumerable
   # Adds the ability to pass an +object+ instead of a block, which will then
   # be tested against each item in _enum_ according to +operator+, defaulting
   # to <tt>:===</tt>.
-  def any?(object = default = Object.new, operator = :===, &block)
+  def any?(object = default = true, operator = :===, &block)
     _nuggets_original_any?(&_block_for_all_any_extended(object, default, operator, &block))
   end
 
@@ -56,8 +56,8 @@ module Enumerable
 
   # Common argument processing for extended versions of #all? and #any?.
   def _block_for_all_any_extended(object, default, operator, &block)
-    if default.nil?
-      raise ArgumentError, "both block and object argument given", caller(1) if block
+    unless default
+      raise ::ArgumentError, 'both block and object argument given', caller(1) if block
       lambda { |*a| object.send(operator, *a) }
     else
       block
@@ -70,18 +70,18 @@ if $0 == __FILE__
   e = %w[quux quuux quix]
   p e
 
-  p e.all?(String)
-  p e.any?(Numeric)
+  p e.all?(::String)
+  p e.any?(::Numeric)
 
   e = [:one, 'c', nil, 88]
   p e
 
-  p e.all?(Object)
-  p e.any?(NilClass)
+  p e.all?(::Object)
+  p e.any?(::NilClass)
 
   begin
-    e.any?(NilClass) { |i| i.nil? }
-  rescue ArgumentError => err
+    e.any?(::NilClass) { |i| i.nil? }
+  rescue ::ArgumentError => err
     puts "#{err.backtrace.first}: #{err} (#{err.class})"
   end
 

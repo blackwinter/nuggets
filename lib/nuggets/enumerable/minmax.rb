@@ -42,7 +42,7 @@ module Enumerable
   # to +by+ (which may be a symbol/string that is sent to each value, or a proc
   # that receives each value as parameter).
   def minmax_by(meth, by)
-    _by = by.is_a?(Proc) ? by : lambda { |i| i.send(by) }
+    _by = by.is_a?(::Proc) ? by : lambda { |i| i.send(by) }
     send(meth) { |a, b| _by[a] <=> _by[b] }
   end
 
@@ -73,7 +73,7 @@ module Enumerable
     #m = minmax_by(meth, what)
     #what.is_a?(Proc) ? what[m] : m.send(what)
 
-    _what = what.is_a?(Proc) ? what : lambda { |i| i.send(what) }
+    _what = what.is_a?(::Proc) ? what : lambda { |i| i.send(what) }
     map { |i| _what[i] }.send(meth)
 
     # Benchmark (:max, :length; enum.size = 20, N = 100_000):

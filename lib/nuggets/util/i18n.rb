@@ -116,8 +116,8 @@ class String
   #
   # Destructive version of #replace_diacritics.
   def replace_diacritics!
-    gsub!(/#{Regexp.union(*Util::I18n::DIACRITICS.keys)}/) { |m|
-      s = Util::I18n::DIACRITICS[m]
+    gsub!(/#{::Regexp.union(*::Util::I18n::DIACRITICS.keys)}/) { |m|
+      s = ::Util::I18n::DIACRITICS[m]
 
       # Try to adjust case:
       #   'Äh' => 'AEh' => 'Aeh'

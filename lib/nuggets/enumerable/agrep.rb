@@ -27,12 +27,12 @@
 
 begin
   require 'rubygems'
-rescue LoadError
+rescue ::LoadError
 end
 
 begin
   require 'amatch'
-rescue LoadError
+rescue ::LoadError
   warn "Couldn't load amatch..." if $VERBOSE
 end
 
@@ -55,11 +55,11 @@ module Enumerable
   # - The cost for individual error types (substitution, insertion, deletion)
   #   cannot be adjusted.
   def agrep(pattern, distance = 0)
-    raise 'Amatch not available!' unless defined?(Amatch)
+    raise 'Amatch not available!' unless defined?(::Amatch)
 
-    pattern = pattern.source if pattern.is_a?(Regexp)
+    pattern = pattern.source if pattern.is_a?(::Regexp)
 
-    amatch  = Amatch::Levenshtein.new(pattern)
+    amatch  = ::Amatch::Levenshtein.new(pattern)
     matches = select { |obj| amatch.search(obj.to_s) <= distance }
 
     block_given? ? matches.map { |match| yield match } : matches

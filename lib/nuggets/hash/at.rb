@@ -38,7 +38,7 @@ class Hash
     return {} if empty?
 
     key = case what
-      when Integer
+      when ::Integer
         keys[what]
       else
         block_given? ? keys.send(*what) { |*a| yield(*a) } : keys.send(*what)

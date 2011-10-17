@@ -41,7 +41,7 @@ module Nuggets
   # Calculates the {standard deviation}[http://en.wikipedia.org/wiki/Standard_deviation]
   # of the values in _array_.
   def standard_deviation(&block)
-    Math.sqrt(variance(&block))
+    ::Math.sqrt(variance(&block))
   end
 
   alias_method :std, :standard_deviation

@@ -27,20 +27,20 @@
 
 begin
   require 'rubygems'
-rescue LoadError
+rescue ::LoadError
 end
 
 begin
   require 'filemagic/ext'
-rescue LoadError
-  def File.content_type(path)  # :nodoc:
+rescue ::LoadError
+  def ::File.content_type(path)  # :nodoc:
     nil
   end
 end
 
 begin
   require 'nuggets/uri/content_type'
-rescue LoadError
+rescue ::LoadError
   module URI
     def self.content_type(path)  # :nodoc:
       nil
@@ -50,7 +50,7 @@ end
 
 begin
   require 'mime/types'
-rescue LoadError
+rescue ::LoadError
   module MIME    # :nodoc:
     class Types  # :nodoc:
       def self.of(path)
@@ -78,8 +78,8 @@ module Util
     # NOTE: This is really only useful with the filemagic and mime-types gems
     # installed.
     def of(path)
-      File.content_type(path) || URI.content_type(path) || (
-        t = MIME::Types.of(path).first and t.content_type
+      ::File.content_type(path) || ::URI.content_type(path) || (
+        t = ::MIME::Types.of(path).first and t.content_type
       )
     end
 
@@ -88,7 +88,7 @@ module Util
 end
 
 # Just a short-cut to make the code read nicer...
-ContentType = Util::ContentType
+ContentType = ::Util::ContentType
 
 if $0 == __FILE__
   [
@@ -100,6 +100,6 @@ if $0 == __FILE__
     'http://blackwinter.de/misc/ww.jpg',
     'http://blackwinter.de/bla/blub.blob'
   ].each { |f|
-    p [f, ContentType.of(f)]
+    p [f, ::ContentType.of(f)]
   }
 end

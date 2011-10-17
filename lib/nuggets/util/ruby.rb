@@ -53,11 +53,11 @@ module Util
 
     extend self
 
-    CONFIG = RbConfig::CONFIG
+    CONFIG = ::RbConfig::CONFIG
 
     # Store original $GEM_HOME value so that even if the app customizes
     # $GEM_HOME we can still work with the original value.
-    if gem_home = ENV['GEM_HOME']
+    if gem_home = ::ENV['GEM_HOME']
       gem_home = gem_home.strip.freeze
       gem_home = nil if gem_home.empty?
     end
@@ -79,10 +79,10 @@ module Util
       return @ruby_command = ruby_executable unless rvm?
 
       if name = rvm_ruby_string and dir = rvm_path
-        if File.exist?(filename = File.join(dir, 'wrappers', name, 'ruby'))
+        if ::File.exist?(filename = ::File.join(dir, 'wrappers', name, 'ruby'))
           # Old wrapper scripts reference $HOME which causes
           # things to blow up when run by a different user.
-          return @ruby_command = filename unless File.read(filename).include?('$HOME')
+          return @ruby_command = filename unless ::File.read(filename).include?('$HOME')
         end
 
         abort 'Your RVM wrapper scripts are too old. ' << UPDATE_RVM
@@ -103,7 +103,7 @@ module Util
     def ruby_executable
       @ruby_executable ||= begin
         dir, name, ext = CONFIG.values_at(*%w[bindir RUBY_INSTALL_NAME EXEEXT])
-        File.join(dir, name + ext).sub(/.*\s.*/m, '"\&"')
+        ::File.join(dir, name + ext).sub(/.*\s.*/m, '"\&"')
       end
     end
 
@@ -111,7 +111,7 @@ module Util
     def ruby_supports_fork?
       # MRI >= 1.9.2's respond_to? returns false
       # for methods that are not implemented.
-      Process.respond_to?(:fork) &&
+      ::Process.respond_to?(:fork) &&
       RUBY_ENGINE != 'jruby'     &&
       RUBY_ENGINE != 'macruby'   &&
       CONFIG['target_os'] !~ /mswin|windows|mingw/
@@ -130,9 +130,9 @@ module Util
 
       return @rvm_path = nil unless rvm?
 
-      [ENV['rvm_path'], '~/.rvm', '/usr/local/rvm'].compact.each { |path|
-        path = File.expand_path(path)
-        return @rvm_path = path if File.directory?(path)
+      [::ENV['rvm_path'], '~/.rvm', '/usr/local/rvm'].compact.each { |path|
+        path = ::File.expand_path(path)
+        return @rvm_path = path if ::File.directory?(path)
       }
 
       # Failure to locate the RVM path is probably caused by the
@@ -165,7 +165,7 @@ module Util
       # try various strategies...
 
       # $GEM_HOME usually contains the gem set name.
-      return @rvm_ruby_string = File.basename(GEM_HOME) if GEM_HOME && GEM_HOME.include?('rvm/gems/')
+      return @rvm_ruby_string = ::File.basename(GEM_HOME) if GEM_HOME && GEM_HOME.include?('rvm/gems/')
 
       # User somehow managed to nuke $GEM_HOME. Extract info from $LOAD_PATH.
       $LOAD_PATH.each { |path| return @rvm_ruby_string = $1 if path =~ %r{^.*rvm/gems/([^/]+)} }
@@ -246,7 +246,7 @@ module Util
       args.pop.each { |key, val|
         opt = "-#{key.to_s[0, 1]}"
 
-        if val.is_a?(Array)
+        if val.is_a?(::Array)
           val.each { |wal|
             argv << opt << wal.to_s
           }
@@ -257,7 +257,7 @@ module Util
             argv << "#{opt}#{val unless val == true}"
           end
         end
-      } if args.last.is_a?(Hash)
+      } if args.last.is_a?(::Hash)
 
       argv.concat(args.map! { |arg| arg.to_s.strip })
     end
@@ -265,36 +265,36 @@ module Util
     private
 
     def locate_ruby_tool_by_basename(name)
-      dir = if RUBY_PLATFORM =~ /darwin/ && ruby_command =~ OSX_RUBY_RE
+      dir = if ::RUBY_PLATFORM =~ /darwin/ && ruby_command =~ OSX_RUBY_RE
         # On OS X we must look for Ruby binaries in /usr/bin.
         # RubyGems puts executables (e.g. 'rake') in there, not in
         # /System/Libraries/(...)/bin.
         '/usr/bin'
       else
-        File.dirname(ruby_command)
+        ::File.dirname(ruby_command)
       end
 
-      filename = File.join(dir, name)
-      return filename if File.file?(filename) && File.executable?(filename)
+      filename = ::File.join(dir, name)
+      return filename if ::File.file?(filename) && ::File.executable?(filename)
 
       # RubyGems might put binaries in a directory other
       # than Ruby's bindir. Debian packaged RubyGems and
       # DebGem packaged RubyGems are the prime examples.
       begin
-        require 'rubygems' unless defined?(Gem)
+        require 'rubygems' unless defined?(::Gem)
 
-        filename = File.join(Gem.bindir, name)
-        return filename if File.file?(filename) && File.executable?(filename)
-      rescue LoadError
+        filename = ::File.join(::Gem.bindir, name)
+        return filename if ::File.file?(filename) && ::File.executable?(filename)
+      rescue ::LoadError
       end
 
       # Looks like it's not in the RubyGems bindir. Search in $PATH, but
       # be very careful about this because whatever we find might belong
       # to a different Ruby interpreter than the current one.
-      ENV['PATH'].split(File::PATH_SEPARATOR).each { |path|
-        filename = File.join(path, name)
+      ::ENV['PATH'].split(::File::PATH_SEPARATOR).each { |path|
+        filename = ::File.join(path, name)
 
-        if File.file?(filename) && File.executable?(filename)
+        if ::File.file?(filename) && ::File.executable?(filename)
           return filename if shebang_command(filename) == ruby_command
         end
       }
@@ -303,7 +303,7 @@ module Util
     end
 
     def shebang_command(filename)
-      File.foreach(filename) { |line|
+      ::File.foreach(filename) { |line|
         return $1 if line =~ /\A#!\s*(\S*)/
 
         # Allow one extra line for magic comment.
@@ -315,14 +315,14 @@ module Util
 
 end
 
-def File.ruby; Util::Ruby.ruby_command; end
+def ::File.ruby; ::Util::Ruby.ruby_command; end
 
 begin
   require 'open4'
 
-  def Process.ruby(*args)
-    argv = Util::Ruby.ruby_options_to_argv(args, File.ruby)
-    Open4.popen4(*argv, &block_given? ? Proc.new : nil)
+  def ::Process.ruby(*args)
+    argv = ::Util::Ruby.ruby_options_to_argv(args, ::File.ruby)
+    ::Open4.popen4(*argv, &block_given? ? ::Proc.new : nil)
   end
-rescue LoadError
+rescue ::LoadError
 end

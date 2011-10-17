@@ -39,5 +39,5 @@ class IO
 end
 
 if $0 == __FILE__
-  puts File.agrep(__FILE__, /calls/, 2)
+  puts ::File.agrep(__FILE__, /calls/, 2)
 end

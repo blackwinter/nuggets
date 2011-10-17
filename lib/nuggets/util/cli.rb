@@ -55,7 +55,7 @@ module Util
       private
 
       def parent_const_get(const, range = 0...-1)
-        name.split('::').inject([Object]) { |memo, name|
+        name.split('::').inject([::Object]) { |memo, name|
           memo << memo.last.const_get(name)
         }.reverse[range].each { |mod|
           return mod.const_get(const) if mod.const_defined?(const)
@@ -81,7 +81,7 @@ module Util
     end
 
     def progname
-      File.basename(prog)
+      ::File.basename(prog)
     end
 
     def usage
@@ -92,7 +92,7 @@ module Util
       self.class.version
     end
 
-    def execute(arguments = ARGV, *inouterr)
+    def execute(arguments = ::ARGV, *inouterr)
       reset(*inouterr)
       parse_options(arguments)
       run(arguments)
@@ -101,11 +101,11 @@ module Util
       abort "#{err.backtrace.first}: #{err} (#{err.class})"
     ensure
       options.each_value { |value|
-        value.close if value.is_a?(Zlib::GzipWriter)
+        value.close if value.is_a?(::Zlib::GzipWriter)
       }
     end
 
-    def reset(stdin = STDIN, stdout = STDOUT, stderr = STDERR)
+    def reset(stdin = ::STDIN, stdout = ::STDOUT, stderr = ::STDERR)
       @stdin, @stdout, @stderr = stdin, stdout, stderr
       @options, @config = {}, {}
     end
@@ -117,7 +117,7 @@ module Util
     end
 
     def ask(question, &block)
-      HighLine.new(stdin, stdout).ask(question, &block)
+      ::HighLine.new(stdin, stdout).ask(question, &block)
     end
 
     def warn(msg)
@@ -139,7 +139,7 @@ module Util
     end
 
     def exit(status = 0)
-      Kernel.exit(status)
+      ::Kernel.exit(status)
     end
 
     def open_file_or_std(file, write = false)
@@ -149,16 +149,16 @@ module Util
         gz = file =~ /\.gz\z/i
 
         if write
-          gz ? Zlib::GzipWriter.open(file) : File.open(file, 'w')
+          gz ? ::Zlib::GzipWriter.open(file) : ::File.open(file, 'w')
         else
-          quit "No such file: #{file}" unless File.readable?(file)
-          (gz ? Zlib::GzipReader : File).open(file)
+          quit "No such file: #{file}" unless ::File.readable?(file)
+          (gz ? ::Zlib::GzipReader : ::File).open(file)
         end
       end
     end
 
     def load_config(file = options[:config] || defaults[:config])
-      @config = YAML.load_file(file) if File.readable?(file)
+      @config = ::YAML.load_file(file) if ::File.readable?(file)
     end
 
     def merge_config(args = [config, defaults])
@@ -175,7 +175,7 @@ module Util
     end
 
     def option_parser
-      OptionParser.new { |opts|
+      ::OptionParser.new { |opts|
         opts.banner = usage
 
         pre_opts(opts)

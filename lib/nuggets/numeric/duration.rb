@@ -32,7 +32,7 @@ class Numeric
   #
   # Converts _num_ into hour, minute, and second portions.
   def hms
-    raise ArgumentError, "negative duration #{self}" if self < 0
+    raise ::ArgumentError, "negative duration #{self}" if self < 0
 
     one_minute = 60
     one_hour   = 60 * one_minute
@@ -45,7 +45,7 @@ class Numeric
   #
   # Converts _num_ into year, month, and day portions.
   def ymd
-    raise ArgumentError, "negative duration #{self}" if self < 0
+    raise ::ArgumentError, "negative duration #{self}" if self < 0
 
     one_day   = 24 * 60 * 60
     one_month = 30 * one_day

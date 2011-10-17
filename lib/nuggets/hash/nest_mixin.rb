@@ -50,7 +50,7 @@ module Nuggets
   #   hash[:foo][:bar][:b] = { :x => 0, :y => 3 }
   #   hash
   #   #=> {:foo=>{:bar=>{:b=>{:y=>3, :x=>0}, :a=>{:y=>2, :x=>1}}}}
-  def nest(depth = 0, value = default = Object.new)
+  def nest(depth = 0, value = default = true)
     if depth.zero?
       if default
         if block_given?

@@ -52,19 +52,19 @@ class String
   #
   # Destructive version of #msub.
   def msub!(*substitutions)
-    options = substitutions.last.is_a?(Hash) ? substitutions.pop : {}
-    binding = options.delete(:__binding__) || Kernel.binding
+    options = substitutions.last.is_a?(::Hash) ? substitutions.pop : {}
+    binding = options.delete(:__binding__) || ::Kernel.binding
 
     keys, subs, cache = [], [], {}
 
     substitutions.concat(options.to_a).each { |key, value|
-      key = Regexp.new(Regexp.escape(key)) unless key.is_a?(Regexp)
+      key = ::Regexp.new(::Regexp.escape(key)) unless key.is_a?(::Regexp)
 
       keys << key
       subs << [key, value]
     }
 
-    gsub!(Regexp.union(*keys)) { |match|
+    gsub!(::Regexp.union(*keys)) { |match|
       cache[match] ||= begin
         value = subs.find { |key, _| key =~ match }.last
 
@@ -95,7 +95,7 @@ if $0 == __FILE__
   p s
 
   t = '!!!'
-  begin; p s.msub('r' => '???', 'z' => '#{t}'); rescue NameError => err; warn err; end
+  begin; p s.msub('r' => '???', 'z' => '#{t}'); rescue ::NameError => err; warn err; end
   p s.msub('r' => '???', 'z' => '#{t}', :__binding__ => binding)
 
   p s.msub(/[A-Z]/ => '#{__match__.downcase}', :__binding__ => binding)

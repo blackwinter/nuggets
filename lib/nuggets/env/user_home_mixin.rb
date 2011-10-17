@@ -41,7 +41,7 @@ module Nuggets
 
     begin
       ::File.expand_path('~')
-    rescue ArgumentError
+    rescue ::ArgumentError
       default
     end
   end

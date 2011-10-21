@@ -25,7 +25,7 @@
 ###############################################################################
 #++
 
-require 'open-uri'
+require 'net/http'
 
 module Nuggets
   module URI
@@ -36,11 +36,20 @@ module Nuggets
   #
   # Return +true+ if the URI +uri+ exists.
   def exist?(uri)
-    open(uri.to_s)
-    true
-  rescue ::OpenURI::HTTPError, ::SocketError, ::Errno::ENOENT
-    false
+    uri = ::URI.parse(uri.to_s)
+    return unless uri.is_a?(::URI::HTTP)
+
+    path = uri.path
+    path = '/' if path.empty?
+
+    res = ::Net::HTTP.start(uri.host, uri.port) { |http| http.head(path) }
+
+    block_given? ? yield(res) : true if res.is_a?(::Net::HTTPSuccess) || (
+      res.is_a?(::Net::HTTPRedirection) && !res.is_a?(::Net::HTTPMultipleChoice)
+    )
+  rescue ::SocketError, ::Errno::EHOSTUNREACH
   end
+
   alias_method :exists?, :exist?
 
     end

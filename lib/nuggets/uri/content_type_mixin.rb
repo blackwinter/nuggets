@@ -25,21 +25,22 @@
 ###############################################################################
 #++
 
-require 'socket'
-require 'open-uri'
+require 'nuggets/uri/exist_mixin'
 
 module Nuggets
   module URI
     module ContentTypeMixin
+
+  def self.extended(base)
+    base.extend Nuggets::URI::ExistMixin
+  end
 
   # call-seq:
   #   URI.content_type(uri) => aString or +nil+
   #
   # Return the content type of +uri+, or +nil+ if not found.
   def content_type(uri)
-    open(uri.to_s).content_type
-  rescue ::OpenURI::HTTPError, ::SocketError, ::Errno::ENOENT, ::Errno::EHOSTUNREACH, ::NoMethodError
-    nil
+    exist?(uri) { |res| res.content_type }
   end
 
     end

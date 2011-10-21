@@ -33,7 +33,7 @@ end
 begin
   require 'filemagic/ext'
 rescue ::LoadError
-  def ::File.content_type(path)  # :nodoc:
+  def File.content_type(path)  # :nodoc:
     nil
   end
 end

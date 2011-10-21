@@ -25,31 +25,36 @@
 ###############################################################################
 #++
 
-require 'nuggets/net/success'
+require 'net/http'
 
-module Nuggets
-  module URI
-    module ExistMixin
+module Net
 
-  # call-seq:
-  #   URI.exist?(uri) => +true+ or +false+
-  #
-  # Return +true+ if the URI +uri+ exists.
-  def exist?(uri)
-    uri = ::URI.parse(uri.to_s)
-    return unless uri.is_a?(::URI::HTTP)
-
-    path = uri.path
-    path = '/' if path.empty?
-
-    res = ::Net::HTTP.start(uri.host, uri.port) { |http| http.head(path) }
-
-    block_given? ? yield(res) : true if res.success?
-  rescue ::SocketError, ::Errno::EHOSTUNREACH
+  class HTTPResponse
+    def success?; nil end
   end
 
-  alias_method :exists?, :exist?
-
-    end
+  class HTTPInformation
+    # ???
   end
+
+  class HTTPSuccess
+    def success?; true end
+  end
+
+  class HTTPRedirection
+    def success?; true end
+  end
+
+  class HTTPMultipleChoice
+    def success?; false end
+  end
+
+  class HTTPClientError
+    def success?; false end
+  end
+
+  class HTTPServerError
+    def success?; false end
+  end
+
 end

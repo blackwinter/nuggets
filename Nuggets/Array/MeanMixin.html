@@ -1,449 +1,454 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Module: Nuggets::Array::MeanMixin</title>
+<title>Module: Nuggets::Array::MeanMixin</title>
 
-  <link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
-  <script src="../../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
 <body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../../index.html">Home</a>
-          <a href="../../index.html#classes">Classes</a>
-          <a href="../../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../../lib/nuggets/array/mean_mixin_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/nuggets/array/mean_mixin.rb">lib/nuggets/array/mean_mixin.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
 
-      
-
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-i-arithmetic_mean">#arithmetic_mean</a></li>
-          
-          <li><a href="#method-i-average">#average</a></li>
-          
-          <li><a href="#method-i-avg">#avg</a></li>
-          
-          <li><a href="#method-i-generalized_mean">#generalized_mean</a></li>
-          
-          <li><a href="#method-i-geomean">#geomean</a></li>
-          
-          <li><a href="#method-i-geometric_mean">#geometric_mean</a></li>
-          
-          <li><a href="#method-i-harmean">#harmean</a></li>
-          
-          <li><a href="#method-i-harmonic_mean">#harmonic_mean</a></li>
-          
-          <li><a href="#method-i-mean">#mean</a></li>
-          
-          <li><a href="#method-i-minkowski_mean">#minkowski_mean</a></li>
-          
-          <li><a href="#method-i-power_mean">#power_mean</a></li>
-          
-          <li><a href="#method-i-quadratic_mean">#quadratic_mean</a></li>
-          
-          <li><a href="#method-i-rms">#rms</a></li>
-          
-          <li><a href="#method-i-root_mean_square">#root_mean_square</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../../COPYING.html">COPYING</a></li>
-        
-          <li class="file"><a href="../../ChangeLog.html">ChangeLog</a></li>
-        
-          <li class="file"><a href="../../README.html">README</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../../Nuggets.html">Nuggets</a></li>
-        
-          <li><a href="../../Nuggets/Array.html">Nuggets::Array</a></li>
-        
-          <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env.html">Nuggets::Env</a></li>
-        
-          <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a></li>
-        
-          <li><a href="../../Nuggets/File.html">Nuggets::File</a></li>
-        
-          <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a></li>
-        
-          <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a></li>
-        
-          <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a></li>
-        
-          <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a></li>
-        
-          <li><a href="../../Nuggets/IO.html">Nuggets::IO</a></li>
-        
-          <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></li>
-        
-          <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a></li>
-        
-          <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a></li>
-        
-          <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object.html">Nuggets::Object</a></li>
-        
-          <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a></li>
-        
-          <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a></li>
-        
-          <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a></li>
-        
-          <li><a href="../../Nuggets/Range.html">Nuggets::Range</a></li>
-        
-          <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a></li>
-        
-          <li><a href="../../Nuggets/String.html">Nuggets::String</a></li>
-        
-          <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a></li>
-        
-          <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a></li>
-        
-          <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a></li>
-        
-          <li><a href="../../Nuggets/URI.html">Nuggets::URI</a></li>
-        
-          <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a></li>
-        
-          <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a></li>
-        
-          <li><a href="../../Nuggets/Version.html">Nuggets::Version</a></li>
-        
-          <li><a href="../../Util.html">Util</a></li>
-        
-          <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a></li>
-        
-          <li><a href="../../Util/CLI.html">Util::CLI</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="../../Util/I18n.html">Util::I18n</a></li>
-        
-          <li><a href="../../Util/Ruby.html">Util::Ruby</a></li>
-        
-          <li><a href="../../Object.html">Object</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Object::ContentType</a></li>
-        
-          <li><a href="../../String.html">String</a></li>
-        
-          <li><a href="../../String/Case.html">String::Case</a></li>
-        
-          <li><a href="../../Array.html">Array</a></li>
-        
-          <li><a href="../../Enumerable.html">Enumerable</a></li>
-        
-          <li><a href="../../File.html">File</a></li>
-        
-          <li><a href="../../Hash.html">Hash</a></li>
-        
-          <li><a href="../../IO.html">IO</a></li>
-        
-          <li><a href="../../Integer.html">Integer</a></li>
-        
-          <li><a href="../../Numeric.html">Numeric</a></li>
-        
-          <li><a href="../../Proc.html">Proc</a></li>
-        
-          <li><a href="../../Process.html">Process</a></li>
-        
-          <li><a href="../../Range.html">Range</a></li>
-        
-          <li><a href="../../Tempfile.html">Tempfile</a></li>
-        
-          <li><a href="../../URI.html">URI</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
-  </div>
-
-  <div id="documentation">
-    <h1 class="module">Nuggets::Array::MeanMixin</h1>
-
-    <div id="description" class="description">
-      
-    </div><!-- description -->
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/nuggets/array/mean_mixin.rb
+  </ul>
+</nav>
 
     
-    <div id="5Buntitled-5D" class="documentation-section">
-      
+  </div>
 
-      
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
 
-      
+  <ul class="link-list">
+    
+    <li><a href="#method-i-arithmetic_mean">#arithmetic_mean</a>
+    
+    <li><a href="#method-i-average">#average</a>
+    
+    <li><a href="#method-i-avg">#avg</a>
+    
+    <li><a href="#method-i-generalized_mean">#generalized_mean</a>
+    
+    <li><a href="#method-i-geomean">#geomean</a>
+    
+    <li><a href="#method-i-geometric_mean">#geometric_mean</a>
+    
+    <li><a href="#method-i-harmean">#harmean</a>
+    
+    <li><a href="#method-i-harmonic_mean">#harmonic_mean</a>
+    
+    <li><a href="#method-i-mean">#mean</a>
+    
+    <li><a href="#method-i-minkowski_mean">#minkowski_mean</a>
+    
+    <li><a href="#method-i-power_mean">#power_mean</a>
+    
+    <li><a href="#method-i-quadratic_mean">#quadratic_mean</a>
+    
+    <li><a href="#method-i-rms">#rms</a>
+    
+    <li><a href="#method-i-root_mean_square">#root_mean_square</a>
+    
+  </ul>
+</nav>
 
-      
+  </div>
 
-      <!-- Methods -->
-      
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
 
-      
-        <div id="arithmetic_mean-method" class="method-detail ">
-          <a name="method-i-arithmetic_mean"></a>
+  <ul>
+  
+    <li class="file"><a href="../../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../../README.html">README</a>
+  
+  </ul>
+</nav>
 
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Nuggets.html">Nuggets</a>
+  
+    <li><a href="../../Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="../../Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="../../Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="../../Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="../../Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="../../Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="../../Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="../../Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="../../Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="../../Net.html">Net</a>
+  
+    <li><a href="../../Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="../../Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="../../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="../../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="../../Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="../../Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="../../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="../../Util.html">Util</a>
+  
+    <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../../Util/Ruby.html">Util::Ruby</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="../../String.html">String</a>
+  
+    <li><a href="../../String/Case.html">String::Case</a>
+  
+    <li><a href="../../Array.html">Array</a>
+  
+    <li><a href="../../Enumerable.html">Enumerable</a>
+  
+    <li><a href="../../File.html">File</a>
+  
+    <li><a href="../../Hash.html">Hash</a>
+  
+    <li><a href="../../IO.html">IO</a>
+  
+    <li><a href="../../Integer.html">Integer</a>
+  
+    <li><a href="../../Numeric.html">Numeric</a>
+  
+    <li><a href="../../Proc.html">Proc</a>
+  
+    <li><a href="../../Range.html">Range</a>
+  
+    <li><a href="../../Tempfile.html">Tempfile</a>
+  
+    <li><a href="../../URI.html">URI</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Nuggets::Array::MeanMixin</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-arithmetic_mean" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            arithmetic_mean &rarr; aFloat
+          </span>
           
+          <span class="method-click-advice">click to toggle source</span>
           
-          <div class="method-heading">
-            <span class="method-callseq">arithmetic_mean => aFloat</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            arithmetic_mean { |x| ... } &rarr; aFloat
+          </span>
           
-          <div class="method-heading">
-            <span class="method-callseq">arithmetic_mean { |x| ... } => aFloat</span>
-            
-          </div>
-          
-          
+        </div>
+        
+        
 
-          <div class="method-description">
-            
-            <p>Calculates the <a
+        <div class="method-description">
+          
+          <p>Calculates the <a
 href="http://en.wikipedia.org/wiki/Arithmetic_mean">arithmetic mean</a> of
 the values in <em>array</em>.</p>
 
 <p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <tt>nil</tt> if the sum of all weights is zero (this
-includes <em>array</em> being empty).</p>
-            
+Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
+(this includes <em>array</em> being empty).</p>
+          
 
-            
-            <div class="method-source-code" id="arithmetic_mean-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 71</span>
+          
+          <div class="method-source-code" id="arithmetic_mean-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">arithmetic_mean</span>(&amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">1</span>, &amp;<span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- arithmetic_mean-source -->
-            
-          </div>
-
+          </div><!-- arithmetic_mean-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="MeanMixin.html#method-i-mean">mean</a>, <a href="MeanMixin.html#method-i-average">average</a>, <a href="MeanMixin.html#method-i-avg">avg</a>
-          </div>
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="MeanMixin.html#method-i-mean">mean</a>, <a href="MeanMixin.html#method-i-average">average</a>, <a href="MeanMixin.html#method-i-avg">avg</a>
+        </div>
+        
+
+        
+      </div><!-- arithmetic_mean-method -->
+
+    
+      <div id="method-i-average" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">average</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-
           
-        </div><!-- arithmetic_mean-method -->
-
-      
-        <div id="average-method" class="method-detail method-alias">
-          <a name="method-i-average"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">average</span><span
-              class="method-args">(&block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-arithmetic_mean">arithmetic_mean</a>
-          </div>
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-arithmetic_mean">arithmetic_mean</a>
+        </div>
+        
+      </div><!-- average-method -->
+
+    
+      <div id="method-i-avg" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">avg</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-        </div><!-- average-method -->
-
-      
-        <div id="avg-method" class="method-detail method-alias">
-          <a name="method-i-avg"></a>
-
           
-          <div class="method-heading">
-            <span class="method-name">avg</span><span
-              class="method-args">(&block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-arithmetic_mean">arithmetic_mean</a>
-          </div>
-          
-        </div><!-- avg-method -->
+        </div>
 
-      
-        <div id="generalized_mean-method" class="method-detail ">
-          <a name="method-i-generalized_mean"></a>
+        
 
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">generalized_mean(exponent) => aFloat</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">generalized_mean(exponent) { |x| ... } => aFloat</span>
-            
-          </div>
-          
-          
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-arithmetic_mean">arithmetic_mean</a>
+        </div>
+        
+      </div><!-- avg-method -->
 
-          <div class="method-description">
-            
-            <p>Calculates the <a
+    
+      <div id="method-i-generalized_mean" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            generalized_mean(exponent) &rarr; aFloat
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            generalized_mean(exponent) { |x| ... } &rarr; aFloat
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the <a
 href="http://en.wikipedia.org/wiki/Generalized_mean">generalized mean</a>
-of the values in <em>array</em> for <tt>exponent</tt>. Returns the <a
-href="MeanMixin.html#method-i-geometric_mean">geometric_mean</a> if
-<tt>exponent</tt> is zero.</p>
+of the values in <em>array</em> for <code>exponent</code>. Returns the <a
+href="MeanMixin.html#method-i-geometric_mean">#geometric_mean</a> if
+<code>exponent</code> is zero.</p>
 
 <p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <tt>nil</tt> if the sum of all weights is zero (this
-includes <em>array</em> being empty).</p>
-            
+Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
+(this includes <em>array</em> being empty).</p>
+          
 
-            
-            <div class="method-source-code" id="generalized_mean-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 43</span>
+          
+          <div class="method-source-code" id="generalized_mean-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-identifier">exponent</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">geometric_mean</span>(&amp;<span class="ruby-identifier">block</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">exponent</span>.<span class="ruby-identifier">zero?</span>
 
@@ -458,83 +463,82 @@ includes <em>array</em> being empty).</p>
 
   (<span class="ruby-identifier">total</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">**</span> (<span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">exponent</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">zero?</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- generalized_mean-source -->
-            
-          </div>
-
+          </div><!-- generalized_mean-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="MeanMixin.html#method-i-power_mean">power_mean</a>, <a href="MeanMixin.html#method-i-minkowski_mean">minkowski_mean</a>
-          </div>
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="MeanMixin.html#method-i-power_mean">power_mean</a>, <a href="MeanMixin.html#method-i-minkowski_mean">minkowski_mean</a>
+        </div>
+        
+
+        
+      </div><!-- generalized_mean-method -->
+
+    
+      <div id="method-i-geomean" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">geomean</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-
           
-        </div><!-- generalized_mean-method -->
-
-      
-        <div id="geomean-method" class="method-detail method-alias">
-          <a name="method-i-geomean"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">geomean</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-geometric_mean">geometric_mean</a>
-          </div>
-          
-        </div><!-- geomean-method -->
+        </div>
 
-      
-        <div id="geometric_mean-method" class="method-detail ">
-          <a name="method-i-geometric_mean"></a>
+        
 
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">geometric_mean => aFloat</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">geometric_mean { |x| ... } => aFloat</span>
-            
-          </div>
-          
-          
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-geometric_mean">geometric_mean</a>
+        </div>
+        
+      </div><!-- geomean-method -->
 
-          <div class="method-description">
-            
-            <p>Calculates the <a
+    
+      <div id="method-i-geometric_mean" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            geometric_mean &rarr; aFloat
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            geometric_mean { |x| ... } &rarr; aFloat
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the <a
 href="http://en.wikipedia.org/wiki/Geometric_median">geometric mean</a> of
 the values in <em>array</em>.</p>
 
 <p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <tt>nil</tt> if the sum of all weights is zero (this
-includes <em>array</em> being empty).</p>
-            
+Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
+(this includes <em>array</em> being empty).</p>
+          
 
-            
-            <div class="method-source-code" id="geometric_mean-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 122</span>
+          
+          <div class="method-source-code" id="geometric_mean-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">geometric_mean</span>
   <span class="ruby-identifier">total</span>, <span class="ruby-identifier">weights</span> = <span class="ruby-value">1</span>, <span class="ruby-value">0</span>
 
@@ -547,308 +551,295 @@ includes <em>array</em> being empty).</p>
 
   <span class="ruby-identifier">total</span> <span class="ruby-operator">**</span> (<span class="ruby-value">1</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">zero?</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- geometric_mean-source -->
-            
-          </div>
-
+          </div><!-- geometric_mean-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="MeanMixin.html#method-i-geomean">geomean</a>
-          </div>
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="MeanMixin.html#method-i-geomean">geomean</a>
+        </div>
+        
+
+        
+      </div><!-- geometric_mean-method -->
+
+    
+      <div id="method-i-harmean" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">harmean</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-
           
-        </div><!-- geometric_mean-method -->
-
-      
-        <div id="harmean-method" class="method-detail method-alias">
-          <a name="method-i-harmean"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">harmean</span><span
-              class="method-args">(&block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-harmonic_mean">harmonic_mean</a>
-          </div>
-          
-        </div><!-- harmean-method -->
+        </div>
 
-      
-        <div id="harmonic_mean-method" class="method-detail ">
-          <a name="method-i-harmonic_mean"></a>
+        
 
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">harmonic_mean => aFloat</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">harmonic_mean { |x| ... } => aFloat</span>
-            
-          </div>
-          
-          
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-harmonic_mean">harmonic_mean</a>
+        </div>
+        
+      </div><!-- harmean-method -->
 
-          <div class="method-description">
-            
-            <p>Calculates the <a
+    
+      <div id="method-i-harmonic_mean" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            harmonic_mean &rarr; aFloat
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            harmonic_mean { |x| ... } &rarr; aFloat
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the <a
 href="http://en.wikipedia.org/wiki/Harmonic_mean">harmonic mean</a> of the
 values in <em>array</em>.</p>
 
 <p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <tt>nil</tt> if the sum of all weights is zero (this
-includes <em>array</em> being empty).</p>
-            
+Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
+(this includes <em>array</em> being empty).</p>
+          
 
-            
-            <div class="method-source-code" id="harmonic_mean-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 106</span>
+          
+          <div class="method-source-code" id="harmonic_mean-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">harmonic_mean</span>(&amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">-1</span>, &amp;<span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- harmonic_mean-source -->
-            
-          </div>
-
+          </div><!-- harmonic_mean-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="MeanMixin.html#method-i-harmean">harmean</a>
-          </div>
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="MeanMixin.html#method-i-harmean">harmean</a>
+        </div>
+        
+
+        
+      </div><!-- harmonic_mean-method -->
+
+    
+      <div id="method-i-mean" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">mean</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-
           
-        </div><!-- harmonic_mean-method -->
-
-      
-        <div id="mean-method" class="method-detail method-alias">
-          <a name="method-i-mean"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">mean</span><span
-              class="method-args">(&block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-arithmetic_mean">arithmetic_mean</a>
-          </div>
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-arithmetic_mean">arithmetic_mean</a>
+        </div>
+        
+      </div><!-- mean-method -->
+
+    
+      <div id="method-i-minkowski_mean" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">minkowski_mean</span><span
+            class="method-args">(exponent, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-        </div><!-- mean-method -->
-
-      
-        <div id="minkowski_mean-method" class="method-detail method-alias">
-          <a name="method-i-minkowski_mean"></a>
-
           
-          <div class="method-heading">
-            <span class="method-name">minkowski_mean</span><span
-              class="method-args">(exponent, &block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-generalized_mean">generalized_mean</a>
-          </div>
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-generalized_mean">generalized_mean</a>
+        </div>
+        
+      </div><!-- minkowski_mean-method -->
+
+    
+      <div id="method-i-power_mean" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">power_mean</span><span
+            class="method-args">(exponent, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-        </div><!-- minkowski_mean-method -->
-
-      
-        <div id="power_mean-method" class="method-detail method-alias">
-          <a name="method-i-power_mean"></a>
-
           
-          <div class="method-heading">
-            <span class="method-name">power_mean</span><span
-              class="method-args">(exponent, &block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-generalized_mean">generalized_mean</a>
-          </div>
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-generalized_mean">generalized_mean</a>
+        </div>
+        
+      </div><!-- power_mean-method -->
+
+    
+      <div id="method-i-quadratic_mean" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">quadratic_mean</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-        </div><!-- power_mean-method -->
-
-      
-        <div id="quadratic_mean-method" class="method-detail method-alias">
-          <a name="method-i-quadratic_mean"></a>
-
           
-          <div class="method-heading">
-            <span class="method-name">quadratic_mean</span><span
-              class="method-args">(&block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-root_mean_square">root_mean_square</a>
-          </div>
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-root_mean_square">root_mean_square</a>
+        </div>
+        
+      </div><!-- quadratic_mean-method -->
+
+    
+      <div id="method-i-rms" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">rms</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-        </div><!-- quadratic_mean-method -->
-
-      
-        <div id="rms-method" class="method-detail method-alias">
-          <a name="method-i-rms"></a>
-
           
-          <div class="method-heading">
-            <span class="method-name">rms</span><span
-              class="method-args">(&block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="MeanMixin.html#method-i-root_mean_square">root_mean_square</a>
-          </div>
-          
-        </div><!-- rms-method -->
+        </div>
 
-      
-        <div id="root_mean_square-method" class="method-detail ">
-          <a name="method-i-root_mean_square"></a>
+        
 
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">root_mean_square => aFloat</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">root_mean_square { |x| ... } => aFloat</span>
-            
-          </div>
-          
-          
+        
+        <div class="aliases">
+          Alias for: <a href="MeanMixin.html#method-i-root_mean_square">root_mean_square</a>
+        </div>
+        
+      </div><!-- rms-method -->
 
-          <div class="method-description">
-            
-            <p>Calculates the <a href="http://en.wikipedia.org/wiki/Root_mean_square">root
+    
+      <div id="method-i-root_mean_square" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            root_mean_square &rarr; aFloat
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            root_mean_square { |x| ... } &rarr; aFloat
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the <a href="http://en.wikipedia.org/wiki/Root_mean_square">root
 mean square</a> (quadratic mean) of the values in <em>array</em>.</p>
 
 <p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <tt>nil</tt> if the sum of all weights is zero (this
-includes <em>array</em> being empty).</p>
-            
+Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
+(this includes <em>array</em> being empty).</p>
+          
 
-            
-            <div class="method-source-code" id="root_mean_square-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 89</span>
+          
+          <div class="method-source-code" id="root_mean_square-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">root_mean_square</span>(&amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">2</span>, &amp;<span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- root_mean_square-source -->
-            
-          </div>
-
+          </div><!-- root_mean_square-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="MeanMixin.html#method-i-rms">rms</a>, <a href="MeanMixin.html#method-i-quadratic_mean">quadratic_mean</a>
-          </div>
-          
+        </div>
 
-          
-        </div><!-- root_mean_square-method -->
+        
+        <div class="aliases">
+          Also aliased as: <a href="MeanMixin.html#method-i-rms">rms</a>, <a href="MeanMixin.html#method-i-quadratic_mean">quadratic_mean</a>
+        </div>
+        
 
-      
-      </div><!-- public-instance-method-details -->
+        
+      </div><!-- root_mean_square-method -->
+
     
-    </div><!-- 5Buntitled-5D -->
+    </section><!-- public-instance-method-details -->
   
+  </section><!-- 5Buntitled-5D -->
 
-  </div><!-- documentation -->
+</div><!-- documentation -->
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
 
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

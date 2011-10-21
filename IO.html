@@ -1,497 +1,498 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Class: IO</title>
+<title>Class: IO</title>
 
-  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
 <body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="./index.html">Home</a>
-          <a href="./index.html#classes">Classes</a>
-          <a href="./index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="./lib/nuggets/io/agrep_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/nuggets/io/agrep.rb">lib/nuggets/io/agrep.rb</a></li>
-          
-            <li><a href="./lib/nuggets/io/null_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/nuggets/io/null.rb">lib/nuggets/io/null.rb</a></li>
-          
-            <li><a href="./lib/nuggets/io/modes_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/nuggets/io/modes.rb">lib/nuggets/io/modes.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link"><a href="Object.html">Object</a></p>
-        
-      </div>
-      
 
-      
-
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-c-_nuggets_original_read">::_nuggets_original_read</a></li>
-          
-          <li><a href="#method-c-agrep">::agrep</a></li>
-          
-          <li><a href="#method-c-append">::append</a></li>
-          
-          <li><a href="#method-c-append_read">::append_read</a></li>
-          
-          <li><a href="#method-c-open_with_mode">::open_with_mode</a></li>
-          
-          <li><a href="#method-c-read">::read</a></li>
-          
-          <li><a href="#method-c-read_write">::read_write</a></li>
-          
-          <li><a href="#method-c-write">::write</a></li>
-          
-          <li><a href="#method-c-write_read">::write_read</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-      <!-- Included Modules -->
-      <div id="includes-section" class="section">
-        <h3 class="section-header">Included Modules</h3>
-        <ul class="link-list">
-        
-        
-          <li><a class="include" href="Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></li>
-        
-        
-        </ul>
-      </div>
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="./COPYING.html">COPYING</a></li>
-        
-          <li class="file"><a href="./ChangeLog.html">ChangeLog</a></li>
-        
-          <li class="file"><a href="./README.html">README</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="./images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="./Nuggets.html">Nuggets</a></li>
-        
-          <li><a href="./Nuggets/Array.html">Nuggets::Array</a></li>
-        
-          <li><a href="./Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a></li>
-        
-          <li><a href="./Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a></li>
-        
-          <li><a href="./Nuggets/Env.html">Nuggets::Env</a></li>
-        
-          <li><a href="./Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a></li>
-        
-          <li><a href="./Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a></li>
-        
-          <li><a href="./Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a></li>
-        
-          <li><a href="./Nuggets/File.html">Nuggets::File</a></li>
-        
-          <li><a href="./Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a></li>
-        
-          <li><a href="./Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a></li>
-        
-          <li><a href="./Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a></li>
-        
-          <li><a href="./Nuggets/Hash.html">Nuggets::Hash</a></li>
-        
-          <li><a href="./Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a></li>
-        
-          <li><a href="./Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a></li>
-        
-          <li><a href="./Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a></li>
-        
-          <li><a href="./Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a></li>
-        
-          <li><a href="./Nuggets/IO.html">Nuggets::IO</a></li>
-        
-          <li><a href="./Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></li>
-        
-          <li><a href="./Nuggets/Integer.html">Nuggets::Integer</a></li>
-        
-          <li><a href="./Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a></li>
-        
-          <li><a href="./Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a></li>
-        
-          <li><a href="./Nuggets/Object.html">Nuggets::Object</a></li>
-        
-          <li><a href="./Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a></li>
-        
-          <li><a href="./Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a></li>
-        
-          <li><a href="./Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a></li>
-        
-          <li><a href="./Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a></li>
-        
-          <li><a href="./Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a></li>
-        
-          <li><a href="./Nuggets/Proc.html">Nuggets::Proc</a></li>
-        
-          <li><a href="./Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a></li>
-        
-          <li><a href="./Nuggets/Range.html">Nuggets::Range</a></li>
-        
-          <li><a href="./Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a></li>
-        
-          <li><a href="./Nuggets/String.html">Nuggets::String</a></li>
-        
-          <li><a href="./Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a></li>
-        
-          <li><a href="./Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a></li>
-        
-          <li><a href="./Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a></li>
-        
-          <li><a href="./Nuggets/URI.html">Nuggets::URI</a></li>
-        
-          <li><a href="./Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a></li>
-        
-          <li><a href="./Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a></li>
-        
-          <li><a href="./Nuggets/Version.html">Nuggets::Version</a></li>
-        
-          <li><a href="./Util.html">Util</a></li>
-        
-          <li><a href="./Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a></li>
-        
-          <li><a href="./Util/CLI.html">Util::CLI</a></li>
-        
-          <li><a href="./Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="./Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="./Util/I18n.html">Util::I18n</a></li>
-        
-          <li><a href="./Util/Ruby.html">Util::Ruby</a></li>
-        
-          <li><a href="./Object.html">Object</a></li>
-        
-          <li><a href="./Util/ContentType.html">Object::ContentType</a></li>
-        
-          <li><a href="./String.html">String</a></li>
-        
-          <li><a href="./String/Case.html">String::Case</a></li>
-        
-          <li><a href="./Array.html">Array</a></li>
-        
-          <li><a href="./Enumerable.html">Enumerable</a></li>
-        
-          <li><a href="./File.html">File</a></li>
-        
-          <li><a href="./Hash.html">Hash</a></li>
-        
-          <li><a href="./IO.html">IO</a></li>
-        
-          <li><a href="./Integer.html">Integer</a></li>
-        
-          <li><a href="./Numeric.html">Numeric</a></li>
-        
-          <li><a href="./Proc.html">Proc</a></li>
-        
-          <li><a href="./Process.html">Process</a></li>
-        
-          <li><a href="./Range.html">Range</a></li>
-        
-          <li><a href="./Tempfile.html">Tempfile</a></li>
-        
-          <li><a href="./URI.html">URI</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
-  </div>
-
-  <div id="documentation">
-    <h1 class="class">IO</h1>
-
-    <div id="description" class="description">
-      
-    </div><!-- description -->
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/nuggets/io/modes.rb
+    <li>lib/nuggets/io/null.rb
+    <li>lib/nuggets/io/agrep.rb
+  </ul>
+</nav>
 
     
-    <div id="5Buntitled-5D" class="documentation-section">
-      
+  </div>
 
-      
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</nav>
 
-      
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
 
-      
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+  
+  </ul>
+</nav>
 
-      <!-- Methods -->
-      
-      <div id="public-class-method-details" class="method-section section">
-        <h3 class="section-header">Public Class Methods</h3>
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
 
-      
-        <div id="_nuggets_original_read-method" class="method-detail method-alias">
-          <a name="method-c-_nuggets_original_read"></a>
+  <ul class="link-list">
+    
+    <li><a href="#method-c-_nuggets_original_read">::_nuggets_original_read</a>
+    
+    <li><a href="#method-c-agrep">::agrep</a>
+    
+    <li><a href="#method-c-append">::append</a>
+    
+    <li><a href="#method-c-append_read">::append_read</a>
+    
+    <li><a href="#method-c-open_with_mode">::open_with_mode</a>
+    
+    <li><a href="#method-c-read">::read</a>
+    
+    <li><a href="#method-c-read_write">::read_write</a>
+    
+    <li><a href="#method-c-write">::write</a>
+    
+    <li><a href="#method-c-write_read">::write_read</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="./ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="./README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Nuggets.html">Nuggets</a>
+  
+    <li><a href="./Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="./Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="./Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="./Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="./Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="./Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="./Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="./Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="./Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="./Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="./Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="./Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="./Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="./Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="./Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="./Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="./Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="./Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="./Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="./Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="./Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="./Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="./Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="./Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="./Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="./Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="./Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="./Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="./Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="./Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="./Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="./Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="./Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="./Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="./Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="./Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="./Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="./Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="./Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="./Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="./Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="./Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="./Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="./Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="./Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="./Net.html">Net</a>
+  
+    <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="./Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="./Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="./Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="./Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="./Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="./Util.html">Util</a>
+  
+    <li><a href="./Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="./Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="./Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="./Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="./Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="./Util/Ruby.html">Util::Ruby</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="./String.html">String</a>
+  
+    <li><a href="./String/Case.html">String::Case</a>
+  
+    <li><a href="./Array.html">Array</a>
+  
+    <li><a href="./Enumerable.html">Enumerable</a>
+  
+    <li><a href="./File.html">File</a>
+  
+    <li><a href="./Hash.html">Hash</a>
+  
+    <li><a href="./IO.html">IO</a>
+  
+    <li><a href="./Integer.html">Integer</a>
+  
+    <li><a href="./Numeric.html">Numeric</a>
+  
+    <li><a href="./Proc.html">Proc</a>
+  
+    <li><a href="./Range.html">Range</a>
+  
+    <li><a href="./Tempfile.html">Tempfile</a>
+  
+    <li><a href="./URI.html">URI</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class IO</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-_nuggets_original_read" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">_nuggets_original_read</span><span
+            class="method-args">(name, *args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">_nuggets_original_read</span><span
-              class="method-args">(name, *args)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
+        </div>
 
-          <div class="method-description">
-            
-            
-            
+        
 
-            
-          </div>
+        
+        <div class="aliases">
+          Alias for: <a href="IO.html#method-c-read">read</a>
+        </div>
+        
+      </div><!-- _nuggets_original_read-method -->
 
+    
+      <div id="method-c-agrep" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            agrep(fd, pattern[, distance]) &rarr; anArray
+          </span>
           
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
 
+        <div class="method-description">
           
-          <div class="aliases">
-            Alias for: <a href="IO.html#method-c-read">read</a>
-          </div>
-          
-        </div><!-- _nuggets_original_read-method -->
-
-      
-        <div id="agrep-method" class="method-detail ">
-          <a name="method-c-agrep"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">agrep(fd, pattern[, distance]) => anArray</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
           
           
 
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="agrep-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/agrep.rb, line 35</span>
+          
+          <div class="method-source-code" id="agrep-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/agrep.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">fd</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span>)
   <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fd</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span>) }
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- agrep-source -->
-            
-          </div>
+          </div><!-- agrep-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- agrep-method -->
+
+    
+      <div id="method-c-append" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            append(name[, binary]) &rarr; anIO
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            append(name[, binary]) { |io| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Opens <code>name</code> with mode <code>a</code>.</p>
+          
 
           
-
-          
-        </div><!-- agrep-method -->
-
-      
-        <div id="append-method" class="method-detail ">
-          <a name="method-c-append"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">append(name[, binary]) => anIO</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">append(name[, binary]) { |io| ... } => anObject</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Opens <tt>name</tt> with mode <tt>a</tt>.</p>
-            
-
-            
-            <div class="method-source-code" id="append-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 76</span>
+          <div class="method-source-code" id="append-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">append</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'a'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'a'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- append-source -->
-            
-          </div>
+          </div><!-- append-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- append-method -->
+
+    
+      <div id="method-c-append_read" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            append_read(name[, binary]) &rarr; anIO
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            append_read(name[, binary]) { |io| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Opens <code>name</code> with mode <code>a+</code>.</p>
+          
 
           
-
-          
-        </div><!-- append-method -->
-
-      
-        <div id="append_read-method" class="method-detail ">
-          <a name="method-c-append_read"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">append_read(name[, binary]) => anIO</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">append_read(name[, binary]) { |io| ... } => anObject</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Opens <tt>name</tt> with mode <tt>a+</tt>.</p>
-            
-
-            
-            <div class="method-source-code" id="append_read-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 103</span>
+          <div class="method-source-code" id="append_read-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">append_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'a+'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'a+'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- append_read-source -->
-            
-          </div>
+          </div><!-- append_read-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- append_read-method -->
+
+    
+      <div id="method-c-read" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            read(name[, length[, offset]]]) &rarr; aString
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            read(name[, binary]) { |io| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Opens <code>name</code> with mode <code>r</code>. NOTE: With no associated
+block, acts like the original <a href="IO.html#method-c-read">::read</a>,
+not like IO::new.</p>
+          
 
           
-
-          
-        </div><!-- append_read-method -->
-
-      
-        <div id="read-method" class="method-detail ">
-          <a name="method-c-read"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">read(name[, length[, offset]]]) => aString</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">read(name[, binary]) { |io| ... } => anObject</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Opens <tt>name</tt> with mode <tt>r</tt>. NOTE: With no associated block,
-acts like the original <a href="IO.html#method-c-read">IO::read</a>, not
-like IO::new.</p>
-            
-
-            
-            <div class="method-source-code" id="read-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 42</span>
+          <div class="method-source-code" id="read-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">_nuggets_original_read</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
 
@@ -503,203 +504,200 @@ like IO::new.</p>
         <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>
           <span class="ruby-comment"># ok</span>
         <span class="ruby-keyword">else</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;wrong argument type #{binary.class} (expected boolean)&quot;</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;wrong argument type #{binary.class} (expected boolean)&quot;</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{args.size + 1} for 1-2)&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{args.size + 1} for 1-2)&quot;</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'r'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>)
+  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'r'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- read-source -->
-            
-          </div>
+          </div><!-- read-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="IO.html#method-c-_nuggets_original_read">_nuggets_original_read</a>
+        </div>
+        
+
+        
+      </div><!-- read-method -->
+
+    
+      <div id="method-c-read_write" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            read_write(name[, binary]) &rarr; anIO
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            read_write(name[, binary]) { |io| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Opens <code>name</code> with mode <code>r+</code>.</p>
+          
 
           
-          <div class="aliases">
-            Also aliased as: <a href="IO.html#method-c-_nuggets_original_read">_nuggets_original_read</a>
-          </div>
-          
-
-          
-        </div><!-- read-method -->
-
-      
-        <div id="read_write-method" class="method-detail ">
-          <a name="method-c-read_write"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">read_write(name[, binary]) => anIO</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">read_write(name[, binary]) { |io| ... } => anObject</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Opens <tt>name</tt> with mode <tt>r+</tt>.</p>
-            
-
-            
-            <div class="method-source-code" id="read_write-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 85</span>
+          <div class="method-source-code" id="read_write-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read_write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'r+'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'r+'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- read_write-source -->
-            
-          </div>
+          </div><!-- read_write-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- read_write-method -->
+
+    
+      <div id="method-c-write" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            write(name[, binary]) &rarr; anIO
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            write(name[, binary]) { |io| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Opens <code>name</code> with mode <code>w</code>.</p>
+          
 
           
-
-          
-        </div><!-- read_write-method -->
-
-      
-        <div id="write-method" class="method-detail ">
-          <a name="method-c-write"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">write(name[, binary]) => anIO</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">write(name[, binary]) { |io| ... } => anObject</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Opens <tt>name</tt> with mode <tt>w</tt>.</p>
-            
-
-            
-            <div class="method-source-code" id="write-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 67</span>
+          <div class="method-source-code" id="write-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'w'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'w'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- write-source -->
-            
-          </div>
+          </div><!-- write-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- write-method -->
+
+    
+      <div id="method-c-write_read" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            write_read(name[, binary]) &rarr; anIO
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            write_read(name[, binary]) { |io| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Opens <code>name</code> with mode <code>w+</code>.</p>
+          
 
           
-
-          
-        </div><!-- write-method -->
-
-      
-        <div id="write_read-method" class="method-detail ">
-          <a name="method-c-write_read"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">write_read(name[, binary]) => anIO</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          <div class="method-heading">
-            <span class="method-callseq">write_read(name[, binary]) { |io| ... } => anObject</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Opens <tt>name</tt> with mode <tt>w+</tt>.</p>
-            
-
-            
-            <div class="method-source-code" id="write_read-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 94</span>
+          <div class="method-source-code" id="write_read-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'w+'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">'w+'</span>, <span class="ruby-identifier">binary</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- write_read-source -->
-            
-          </div>
-
+          </div><!-- write_read-source -->
           
+        </div>
 
-          
-        </div><!-- write_read-method -->
+        
 
-      
-      </div><!-- public-class-method-details -->
+        
+      </div><!-- write_read-method -->
+
     
-      <div id="private-class-method-details" class="method-section section">
-        <h3 class="section-header">Private Class Methods</h3>
-
-      
-        <div id="open_with_mode-method" class="method-detail ">
-          <a name="method-c-open_with_mode"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">open_with_mode</span><span
-              class="method-args">(name, mode, binary = false)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p>Just a helper to DRY things up.</p>
-            
-
-            
-            <div class="method-source-code" id="open_with_mode-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 110</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;#{mode}#{'b' if binary}&quot;</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- open_with_mode-source -->
-            
-          </div>
-
-          
-
-          
-        </div><!-- open_with_mode-method -->
-
-      
-      </div><!-- private-class-method-details -->
-    
-    </div><!-- 5Buntitled-5D -->
+    </section><!-- public-class-method-details -->
   
+     <section id="private-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Private Class Methods</h3>
 
-  </div><!-- documentation -->
+    
+      <div id="method-c-open_with_mode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">open_with_mode</span><span
+            class="method-args">(name, mode, binary = false)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
+        <div class="method-description">
+          
+          <p>Just a helper to DRY things up.</p>
+          
 
-</body>
-</html>
+          
+          <div class="method-source-code" id="open_with_mode-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;#{mode}#{'b' if binary}&quot;</span>, &amp;<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- open_with_mode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- open_with_mode-method -->
+
+    
+    </section><!-- private-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

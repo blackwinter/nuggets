@@ -1,35 +1,241 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>ruby-nuggets Application documentation (v0.7.4)</title>
+<title>ruby-nuggets Application documentation (v0.7.5)</title>
 
-  <link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-  <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
 
-</head>
-<body class="indexpage">
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
+
+<body>
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
   
-  <h1>ruby-nuggets Application documentation (v0.7.4)</h1>
-
+    <li class="file"><a href="./COPYING.html">COPYING</a>
   
-  <div id="main">
-    
+    <li class="file"><a href="./ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="./README.html">README</a>
+  
+  </ul>
+</nav>
 
-<h2>VERSION</h2>
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
 
-<p>This documentation refers to ruby-nuggets version 0.7.4</p>
+  <ul class="link-list">
+  
+    <li><a href="./Nuggets.html">Nuggets</a>
+  
+    <li><a href="./Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="./Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="./Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="./Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="./Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="./Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="./Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="./Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="./Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="./Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="./Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="./Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="./Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="./Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="./Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="./Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="./Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="./Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="./Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="./Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="./Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="./Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="./Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="./Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="./Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="./Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="./Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="./Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="./Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="./Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="./Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="./Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="./Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="./Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="./Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="./Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="./Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="./Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="./Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="./Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="./Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="./Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="./Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="./Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="./Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="./Net.html">Net</a>
+  
+    <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="./Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="./Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="./Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="./Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="./Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="./Util.html">Util</a>
+  
+    <li><a href="./Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="./Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="./Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="./Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="./Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="./Util/Ruby.html">Util::Ruby</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="./String.html">String</a>
+  
+    <li><a href="./String/Case.html">String::Case</a>
+  
+    <li><a href="./Array.html">Array</a>
+  
+    <li><a href="./Enumerable.html">Enumerable</a>
+  
+    <li><a href="./File.html">File</a>
+  
+    <li><a href="./Hash.html">Hash</a>
+  
+    <li><a href="./IO.html">IO</a>
+  
+    <li><a href="./Integer.html">Integer</a>
+  
+    <li><a href="./Numeric.html">Numeric</a>
+  
+    <li><a href="./Proc.html">Proc</a>
+  
+    <li><a href="./Range.html">Range</a>
+  
+    <li><a href="./Tempfile.html">Tempfile</a>
+  
+    <li><a href="./URI.html">URI</a>
+  
+  </ul>
+</nav>
 
-<h2>DESCRIPTION</h2>
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-ruby-nuggets+-+Some+extensions+to+the+Ruby+programming+language">ruby-nuggets - Some extensions to the Ruby programming language</h1>
+
+<h2 id="label-VERSION">VERSION</h2>
+
+<p>This documentation refers to ruby-nuggets version 0.7.5</p>
+
+<h2 id="label-DESCRIPTION">DESCRIPTION</h2>
 
 <p>ruby-nuggets provides a collection of extensions to Ruby core classes. In
 its effort, it’s similar to projects like <a
@@ -42,47 +248,48 @@ reading books, or following discussions on ruby-talk.</p>
 
 <p>There are several ways to get at the nuggets you’re interested in:</p>
 
-<pre># The usual way: Just require() what you need
-require 'nuggets/object/singleton_class'
+<pre class="ruby"><span class="ruby-comment"># The usual way: Just require() what you need</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'nuggets/object/singleton_class'</span>
 
-# The more fancy way ;-) (see the documentation of Nuggets() for more examples)
-require 'nuggets'
-Nuggets(:object =&gt; 'singleton_class', :string =&gt; %w[nsub sub_with_md])
+<span class="ruby-comment"># The more fancy way ;-) (see the documentation of Nuggets() for more examples)</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'nuggets'</span>
+<span class="ruby-constant">Nuggets</span>(:<span class="ruby-identifier">object</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'singleton_class'</span>, :<span class="ruby-identifier">string</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">]nsub sub_with_md]</span>)
 
-# Finally, get everything there is...
-require 'nuggets/all'</pre>
+<span class="ruby-comment"># Finally, get everything there is...</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'nuggets/all'</span>
+</pre>
 
 <p>Please be aware that some of the things herein might not work as expected
 or cause other libraries to misbehave. Use at your own risk!</p>
 
-<h2>LINKS</h2>
+<h2 id="label-LINKS">LINKS</h2>
 
 <p></p>
-<table class="rdoc-list"><tr><td class="rdoc-term"><p>Documentation</p></td>
-<td>
+<dl class="rdoc-list note-list"><dt>Documentation
+<dd>
 <p><a
 href="http://prometheus.rubyforge.org/ruby-nuggets">prometheus.rubyforge.org/ruby-nuggets</a></p>
-</td></tr><tr><td class="rdoc-term"><p>Source code</p></td>
-<td>
+</dd><dt>Source code
+<dd>
 <p><a
 href="http://github.com/blackwinter/ruby-nuggets">github.com/blackwinter/ruby-nuggets</a></p>
-</td></tr><tr><td class="rdoc-term"><p>RubyForge project</p></td>
-<td>
+</dd><dt>RubyForge project
+<dd>
 <p><a
 href="http://rubyforge.org/projects/prometheus">rubyforge.org/projects/prometheus</a></p>
-</td></tr><tr><td class="rdoc-term"><p>RubyGem</p></td>
-<td>
+</dd><dt>RubyGem
+<dd>
 <p><a
 href="http://rubygems.org/gems/ruby-nuggets">rubygems.org/gems/ruby-nuggets</a></p>
-</td></tr></table>
+</dd></dl>
 
-<h2>AUTHORS</h2>
+<h2 id="label-AUTHORS">AUTHORS</h2>
 <ul><li>
 <p>Jens Wille &lt;<a
 href="mailto:jens.wille@uni-koeln.de">jens.wille@uni-koeln.de</a>&gt;</p>
 </li></ul>
 
-<h2>LICENSE AND COPYRIGHT</h2>
+<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT</h2>
 
 <p>Copyright (C) 2007-2011 Jens Wille</p>
 
@@ -100,741 +307,12 @@ for more details.</p>
 along with ruby-nuggets. If not, see &lt;<a
 href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
 
-  </div>
-  
+</div>
 
-  
-  
-  <h2>Files</h2>
-  <ul>
-    
-      <li class="file"><a href="COPYING.html">COPYING</a></li>
-    
-      <li class="file"><a href="ChangeLog.html">ChangeLog</a></li>
-    
-      <li class="file"><a href="README.html">README</a></li>
-    
-  </ul>
-  
 
-  <h2 id="classes">Classes/Modules</h2>
-  <ul>
-    
-    <li class="module"><a href="Nuggets.html">Nuggets</a></li>
-    
-    <li class="class"><a href="Nuggets/Array.html">Nuggets::Array</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Env.html">Nuggets::Env</a></li>
-    
-    <li class="module"><a href="Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/File.html">Nuggets::File</a></li>
-    
-    <li class="module"><a href="Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/Hash.html">Nuggets::Hash</a></li>
-    
-    <li class="module"><a href="Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/IO.html">Nuggets::IO</a></li>
-    
-    <li class="module"><a href="Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/Integer.html">Nuggets::Integer</a></li>
-    
-    <li class="module"><a href="Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/Object.html">Nuggets::Object</a></li>
-    
-    <li class="module"><a href="Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/Proc.html">Nuggets::Proc</a></li>
-    
-    <li class="module"><a href="Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/Range.html">Nuggets::Range</a></li>
-    
-    <li class="module"><a href="Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a></li>
-    
-    <li class="class"><a href="Nuggets/String.html">Nuggets::String</a></li>
-    
-    <li class="module"><a href="Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/URI.html">Nuggets::URI</a></li>
-    
-    <li class="module"><a href="Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a></li>
-    
-    <li class="module"><a href="Nuggets/Version.html">Nuggets::Version</a></li>
-    
-    <li class="module"><a href="Util.html">Util</a></li>
-    
-    <li class="module"><a href="Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a></li>
-    
-    <li class="class"><a href="Util/CLI.html">Util::CLI</a></li>
-    
-    <li class="module"><a href="Util/ContentType.html">Util::ContentType</a></li>
-    
-    <li class="module"><a href="Util/ContentType.html">Util::ContentType</a></li>
-    
-    <li class="module"><a href="Util/I18n.html">Util::I18n</a></li>
-    
-    <li class="module"><a href="Util/Ruby.html">Util::Ruby</a></li>
-    
-    <li class="class"><a href="Object.html">Object</a></li>
-    
-    <li class="module"><a href="Util/ContentType.html">Object::ContentType</a></li>
-    
-    <li class="class"><a href="String.html">String</a></li>
-    
-    <li class="module"><a href="String/Case.html">String::Case</a></li>
-    
-    <li class="class"><a href="Array.html">Array</a></li>
-    
-    <li class="module"><a href="Enumerable.html">Enumerable</a></li>
-    
-    <li class="class"><a href="File.html">File</a></li>
-    
-    <li class="class"><a href="Hash.html">Hash</a></li>
-    
-    <li class="class"><a href="IO.html">IO</a></li>
-    
-    <li class="class"><a href="Integer.html">Integer</a></li>
-    
-    <li class="class"><a href="Numeric.html">Numeric</a></li>
-    
-    <li class="class"><a href="Proc.html">Proc</a></li>
-    
-    <li class="module"><a href="Process.html">Process</a></li>
-    
-    <li class="class"><a href="Range.html">Range</a></li>
-    
-    <li class="class"><a href="Tempfile.html">Tempfile</a></li>
-    
-    <li class="module"><a href="URI.html">URI</a></li>
-    
-  </ul>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 
-  <h2 id="methods">Methods</h2>
-  <ul>
-    
-      <li><a href="Tempfile.html#method-c-_nuggets_original_open">::_nuggets_original_open &mdash; Tempfile</a></li>
-    
-      <li><a href="IO.html#method-c-_nuggets_original_read">::_nuggets_original_read &mdash; IO</a></li>
-    
-      <li><a href="IO.html#method-c-agrep">::agrep &mdash; IO</a></li>
-    
-      <li><a href="IO.html#method-c-append">::append &mdash; IO</a></li>
-    
-      <li><a href="IO.html#method-c-append_read">::append_read &mdash; IO</a></li>
-    
-      <li><a href="Util/CLI.html#method-c-defaults">::defaults &mdash; Util::CLI</a></li>
-    
-      <li><a href="Util/CLI.html#method-c-execute">::execute &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/File/SubMixin.html#method-c-extended">::extended &mdash; Nuggets::File::SubMixin</a></li>
-    
-      <li><a href="String.html#method-c-gimme_match_data-21">::gimme_match_data! &mdash; String</a></li>
-    
-      <li><a href="Nuggets/Array/CorrelationMixin.html#method-c-included">::included &mdash; Nuggets::Array::CorrelationMixin</a></li>
-    
-      <li><a href="Nuggets/Array/ModeMixin.html#method-c-included">::included &mdash; Nuggets::Array::ModeMixin</a></li>
-    
-      <li><a href="Nuggets/Array/RegressionMixin.html#method-c-included">::included &mdash; Nuggets::Array::RegressionMixin</a></li>
-    
-      <li><a href="Nuggets/Array/StandardDeviationMixin.html#method-c-included">::included &mdash; Nuggets::Array::StandardDeviationMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-c-new">::new &mdash; Util::CLI</a></li>
-    
-      <li><a href="Tempfile.html#method-c-open">::open &mdash; Tempfile</a></li>
-    
-      <li><a href="IO.html#method-c-open_with_mode">::open_with_mode &mdash; IO</a></li>
-    
-      <li><a href="Util/CLI.html#method-c-parent_const_get">::parent_const_get &mdash; Util::CLI</a></li>
-    
-      <li><a href="IO.html#method-c-read">::read &mdash; IO</a></li>
-    
-      <li><a href="IO.html#method-c-read_write">::read_write &mdash; IO</a></li>
-    
-      <li><a href="Process.html#method-c-ruby">::ruby &mdash; Process</a></li>
-    
-      <li><a href="File.html#method-c-ruby">::ruby &mdash; File</a></li>
-    
-      <li><a href="Nuggets/Version.html#method-c-to_a">::to_a &mdash; Nuggets::Version</a></li>
-    
-      <li><a href="Nuggets/Version.html#method-c-to_s">::to_s &mdash; Nuggets::Version</a></li>
-    
-      <li><a href="Util/CLI.html#method-c-usage">::usage &mdash; Util::CLI</a></li>
-    
-      <li><a href="Util/CLI.html#method-c-version">::version &mdash; Util::CLI</a></li>
-    
-      <li><a href="IO.html#method-c-write">::write &mdash; IO</a></li>
-    
-      <li><a href="IO.html#method-c-write_read">::write_read &mdash; IO</a></li>
-    
-      <li><a href="Array.html#method-i-25">#% &mdash; Array</a></li>
-    
-      <li><a href="Object.html#method-i-Nuggets">#Nuggets &mdash; Object</a></li>
-    
-      <li><a href="Nuggets/String/XorMixin.html#method-i-5E">#^ &mdash; Nuggets::String::XorMixin</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_block_for_all_any_extended">#_block_for_all_any_extended &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_all-3F">#_nuggets_original_all? &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_any-3F">#_nuggets_original_any? &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_max">#_nuggets_original_max &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_max_by">#_nuggets_original_max_by &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_min">#_nuggets_original_min &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_min_by">#_nuggets_original_min_by &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_minmax">#_nuggets_original_minmax &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-_nuggets_original_minmax_by">#_nuggets_original_minmax_by &mdash; Enumerable</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-abort">#abort &mdash; Util::CLI</a></li>
-    
-      <li><a href="Enumerable.html#method-i-agrep">#agrep &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-all-3F">#all? &mdash; Enumerable</a></li>
-    
-      <li><a href="Nuggets/Array/HistogramMixin.html#method-i-annotated_histogram">#annotated_histogram &mdash; Nuggets::Array::HistogramMixin</a></li>
-    
-      <li><a href="String.html#method-i-ansicolor2css">#ansicolor2css &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-ansicolour2css">#ansicolour2css &mdash; String</a></li>
-    
-      <li><a href="Enumerable.html#method-i-any-3F">#any? &mdash; Enumerable</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-arithmetic_mean">#arithmetic_mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Array.html#method-i-ascending-3F">#ascending? &mdash; Array</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-ask">#ask &mdash; Util::CLI</a></li>
-    
-      <li><a href="Hash.html#method-i-at">#at &mdash; Hash</a></li>
-    
-      <li><a href="Numeric.html#method-i-at_least">#at_least &mdash; Numeric</a></li>
-    
-      <li><a href="Numeric.html#method-i-at_most">#at_most &mdash; Numeric</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-average">#average &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-avg">#avg &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Array/LimitMixin.html#method-i-between">#between &mdash; Nuggets::Array::LimitMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-between">#between &mdash; Numeric</a></li>
-    
-      <li><a href="Nuggets/Proc/BindMixin.html#method-i-bind">#bind &mdash; Nuggets::Proc::BindMixin</a></li>
-    
-      <li><a href="Nuggets/Object/BlankMixin.html#method-i-blank-3F">#blank? &mdash; Nuggets::Object::BlankMixin</a></li>
-    
-      <li><a href="Nuggets/Object/BooleanMixin.html#method-i-boolean-3F">#boolean? &mdash; Nuggets::Object::BooleanMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-byte_count">#byte_count &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="String.html#method-i-capitalize_first">#capitalize_first &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-capitalize_first-21">#capitalize_first! &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-capitalized-3F">#capitalized? &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-case">#case &mdash; String</a></li>
-    
-      <li><a href="Numeric.html#method-i-ceil_to">#ceil_to &mdash; Numeric</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-char_count">#char_count &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Util/ANSIColor2CSS.html#method-i-clear">#clear &mdash; Util::ANSIColor2CSS</a></li>
-    
-      <li><a href="Array.html#method-i-comb">#comb &mdash; Array</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-command_for_ruby_tool">#command_for_ruby_tool &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Nuggets/URI/ContentTypeMixin.html#method-i-content_type">#content_type &mdash; Nuggets::URI::ContentTypeMixin</a></li>
-    
-      <li><a href="Util/ANSIColor2CSS.html#method-i-convert">#convert &mdash; Util::ANSIColor2CSS</a></li>
-    
-      <li><a href="Nuggets/Array/CorrelationMixin.html#method-i-corr">#corr &mdash; Nuggets::Array::CorrelationMixin</a></li>
-    
-      <li><a href="Nuggets/Array/CorrelationMixin.html#method-i-correlation_coefficient">#correlation_coefficient &mdash; Nuggets::Array::CorrelationMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-count_by_re">#count_by_re &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-count_by_re2">#count_by_re2 &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/Array/VarianceMixin.html#method-i-cov">#cov &mdash; Nuggets::Array::VarianceMixin</a></li>
-    
-      <li><a href="Nuggets/Array/VarianceMixin.html#method-i-covariance">#covariance &mdash; Nuggets::Array::VarianceMixin</a></li>
-    
-      <li><a href="Array.html#method-i-decreasing-3F">#decreasing? &mdash; Array</a></li>
-    
-      <li><a href="Nuggets/Hash/DeepMergeMixin.html#method-i-deep_merge">#deep_merge &mdash; Nuggets::Hash::DeepMergeMixin</a></li>
-    
-      <li><a href="Nuggets/Hash/DeepMergeMixin.html#method-i-deep_merge-21">#deep_merge! &mdash; Nuggets::Hash::DeepMergeMixin</a></li>
-    
-      <li><a href="Nuggets/Hash/DeepMergeMixin.html#method-i-deep_update">#deep_update &mdash; Nuggets::Hash::DeepMergeMixin</a></li>
-    
-      <li><a href="Array.html#method-i-descending-3F">#descending? &mdash; Array</a></li>
-    
-      <li><a href="Nuggets/Integer/LengthMixin.html#method-i-digit_count">#digit_count &mdash; Nuggets::Integer::LengthMixin</a></li>
-    
-      <li><a href="String.html#method-i-downcase-3F">#downcase? &mdash; String</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-eigenclass">#eigenclass &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-eigenclass-3F">#eigenclass? &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-eigenobject">#eigenobject &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/String/EvaluateMixin.html#method-i-evaluate">#evaluate &mdash; Nuggets::String::EvaluateMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-execute">#execute &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/URI/ExistMixin.html#method-i-exist-3F">#exist? &mdash; Nuggets::URI::ExistMixin</a></li>
-    
-      <li><a href="Nuggets/URI/ExistMixin.html#method-i-exists-3F">#exists? &mdash; Nuggets::URI::ExistMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-exit">#exit &mdash; Util::CLI</a></li>
-    
-      <li><a href="Integer.html#method-i-f-21">#f! &mdash; Integer</a></li>
-    
-      <li><a href="Integer.html#method-i-fac">#fac &mdash; Integer</a></li>
-    
-      <li><a href="Integer.html#method-i-factorial">#factorial &mdash; Integer</a></li>
-    
-      <li><a href="Integer.html#method-i-factorial_memoized">#factorial_memoized &mdash; Integer</a></li>
-    
-      <li><a href="Nuggets/Object/BooleanMixin.html#method-i-false-3F">#false? &mdash; Nuggets::Object::BooleanMixin</a></li>
-    
-      <li><a href="Hash.html#method-i-first">#first &mdash; Hash</a></li>
-    
-      <li><a href="Array.html#method-i-flatten_once">#flatten_once &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-flatten_once-21">#flatten_once! &mdash; Array</a></li>
-    
-      <li><a href="Numeric.html#method-i-floor_to">#floor_to &mdash; Numeric</a></li>
-    
-      <li><a href="Util/ANSIColor2CSS.html#method-i-format">#format &mdash; Util::ANSIColor2CSS</a></li>
-    
-      <li><a href="Nuggets/Array/HistogramMixin.html#method-i-formatted_histogram">#formatted_histogram &mdash; Nuggets::Array::HistogramMixin</a></li>
-    
-      <li><a href="String.html#method-i-from_dotted_decimal">#from_dotted_decimal &mdash; String</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-generalized_mean">#generalized_mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-generic_opts">#generic_opts &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-geomean">#geomean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-geometric_mean">#geometric_mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-ghost_class">#ghost_class &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-ghost_class-3F">#ghost_class? &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-ghost_object">#ghost_object &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/File/SubMixin.html#method-i-gsub">#gsub &mdash; Nuggets::File::SubMixin</a></li>
-    
-      <li><a href="Nuggets/File/SubMixin.html#method-i-gsub-21">#gsub! &mdash; Nuggets::File::SubMixin</a></li>
-    
-      <li><a href="String.html#method-i-gsub_with_md">#gsub_with_md &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-gsub_with_md-21">#gsub_with_md! &mdash; String</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-harmean">#harmean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-harmonic_mean">#harmonic_mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Array/HistogramMixin.html#method-i-histogram">#histogram &mdash; Nuggets::Array::HistogramMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-hms">#hms &mdash; Numeric</a></li>
-    
-      <li><a href="Array.html#method-i-in_order">#in_order &mdash; Array</a></li>
-    
-      <li><a href="Hash.html#method-i-in_order">#in_order &mdash; Hash</a></li>
-    
-      <li><a href="Array.html#method-i-in_order-21">#in_order! &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-increasing-3F">#increasing? &mdash; Array</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-init">#init &mdash; Util::CLI</a></li>
-    
-      <li><a href="Hash.html#method-i-insert">#insert &mdash; Hash</a></li>
-    
-      <li><a href="Hash.html#method-i-insert-21">#insert! &mdash; Hash</a></li>
-    
-      <li><a href="Hash.html#method-i-last">#last &mdash; Hash</a></li>
-    
-      <li><a href="Nuggets/Integer/LengthMixin.html#method-i-length">#length &mdash; Nuggets::Integer::LengthMixin</a></li>
-    
-      <li><a href="Nuggets/Array/LimitMixin.html#method-i-limit">#limit &mdash; Nuggets::Array::LimitMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-limit">#limit &mdash; Numeric</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-line_count">#line_count &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/Array/RegressionMixin.html#method-i-linear_least_squares">#linear_least_squares &mdash; Nuggets::Array::RegressionMixin</a></li>
-    
-      <li><a href="Nuggets/Array/RegressionMixin.html#method-i-llsq">#llsq &mdash; Nuggets::Array::RegressionMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-load_config">#load_config &mdash; Util::CLI</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-locate_ruby_tool">#locate_ruby_tool &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-locate_ruby_tool_by_basename">#locate_ruby_tool_by_basename &mdash; Util::Ruby</a></li>
-    
-      <li><a href="String.html#method-i-lower_case-3F">#lower_case? &mdash; String</a></li>
-    
-      <li><a href="Nuggets/Integer/MapMixin.html#method-i-map_positive">#map_positive &mdash; Nuggets::Integer::MapMixin</a></li>
-    
-      <li><a href="Enumerable.html#method-i-max">#max &mdash; Enumerable</a></li>
-    
-      <li><a href="Numeric.html#method-i-max">#max &mdash; Numeric</a></li>
-    
-      <li><a href="Enumerable.html#method-i-max_by">#max_by &mdash; Enumerable</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-mean">#mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Array/MedianMixin.html#method-i-median">#median &mdash; Nuggets::Array::MedianMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-merge_config">#merge_config &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-metaclass">#metaclass &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-metaclass-3F">#metaclass? &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-metaobject">#metaobject &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-min">#min &mdash; Numeric</a></li>
-    
-      <li><a href="Enumerable.html#method-i-min">#min &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-min_by">#min_by &mdash; Enumerable</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-minkowski_mean">#minkowski_mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Enumerable.html#method-i-minmax">#minmax &mdash; Enumerable</a></li>
-    
-      <li><a href="Enumerable.html#method-i-minmax_by">#minmax_by &mdash; Enumerable</a></li>
-    
-      <li><a href="String.html#method-i-mixed_case-3F">#mixed_case? &mdash; String</a></li>
-    
-      <li><a href="Nuggets/Array/ModeMixin.html#method-i-mode">#mode &mdash; Nuggets::Array::ModeMixin</a></li>
-    
-      <li><a href="Nuggets/Array/ModeMixin.html#method-i-modes">#modes &mdash; Nuggets::Array::ModeMixin</a></li>
-    
-      <li><a href="Array.html#method-i-monotone-3F">#monotone? &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-monotonic-3F">#monotonic? &mdash; Array</a></li>
-    
-      <li><a href="Nuggets/Object/MSendMixin.html#method-i-msend">#msend &mdash; Nuggets::Object::MSendMixin</a></li>
-    
-      <li><a href="String.html#method-i-msub">#msub &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-msub-21">#msub! &mdash; String</a></li>
-    
-      <li><a href="Nuggets/Object/BooleanMixin.html#method-i-negate">#negate &mdash; Nuggets::Object::BooleanMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-negative-3F">#negative? &mdash; Numeric</a></li>
-    
-      <li><a href="Nuggets/Hash/NestMixin.html#method-i-nest">#nest &mdash; Nuggets::Hash::NestMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-non_negative-3F">#non_negative? &mdash; Numeric</a></li>
-    
-      <li><a href="String.html#method-i-nsub">#nsub &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-nsub-21">#nsub! &mdash; String</a></li>
-    
-      <li><a href="Util/ContentType.html#method-i-of">#of &mdash; Util::ContentType</a></li>
-    
-      <li><a href="Util/ContentType.html#method-i-of">#of &mdash; Util::ContentType</a></li>
-    
-      <li><a href="Util/ContentType.html#method-i-of">#of &mdash; Util::ContentType</a></li>
-    
-      <li><a href="Hash.html#method-i-only">#only &mdash; Hash</a></li>
-    
-      <li><a href="Array.html#method-i-only">#only &mdash; Array</a></li>
-    
-      <li><a href="Hash.html#method-i-only_pair">#only_pair &mdash; Hash</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-open_file_or_std">#open_file_or_std &mdash; Util::CLI</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-option_parser">#option_parser &mdash; Util::CLI</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-opts">#opts &mdash; Util::CLI</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-parse_options">#parse_options &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Array/CorrelationMixin.html#method-i-pmcc">#pmcc &mdash; Nuggets::Array::CorrelationMixin</a></li>
-    
-      <li><a href="Nuggets/Array/HistogramMixin.html#method-i-pmf">#pmf &mdash; Nuggets::Array::HistogramMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-positive-3F">#positive? &mdash; Numeric</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-post_opts">#post_opts &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-power_mean">#power_mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-pre_opts">#pre_opts &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Array/HistogramMixin.html#method-i-probability_mass_function">#probability_mass_function &mdash; Nuggets::Array::HistogramMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-progname">#progname &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-quadratic_mean">#quadratic_mean &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Range/QuantileMixin.html#method-i-quantile">#quantile &mdash; Nuggets::Range::QuantileMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-quit">#quit &mdash; Util::CLI</a></li>
-    
-      <li><a href="Array.html#method-i-rand">#rand &mdash; Array</a></li>
-    
-      <li><a href="Hash.html#method-i-rand">#rand &mdash; Hash</a></li>
-    
-      <li><a href="Nuggets/File/ReplaceMixin.html#method-i-replace">#replace &mdash; Nuggets::File::ReplaceMixin</a></li>
-    
-      <li><a href="String.html#method-i-replace_diacritics">#replace_diacritics &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-replace_diacritics-21">#replace_diacritics! &mdash; String</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-reset">#reset &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-rms">#rms &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Nuggets/Array/MeanMixin.html#method-i-root_mean_square">#root_mean_square &mdash; Nuggets::Array::MeanMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-round_to">#round_to &mdash; Numeric</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-ruby_command">#ruby_command &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-ruby_executable">#ruby_executable &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-ruby_options_to_argv">#ruby_options_to_argv &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-ruby_sudo_command">#ruby_sudo_command &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-ruby_supports_fork-3F">#ruby_supports_fork? &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Nuggets/Array/RuniqMixin.html#method-i-runiq">#runiq &mdash; Nuggets::Array::RuniqMixin</a></li>
-    
-      <li><a href="Nuggets/Array/RuniqMixin.html#method-i-runiq-21">#runiq! &mdash; Nuggets::Array::RuniqMixin</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-rvm-3F">#rvm? &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-rvm_path">#rvm_path &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-rvm_ruby_string">#rvm_ruby_string &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Nuggets/Env/SetMixin.html#method-i-set">#set &mdash; Nuggets::Env::SetMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-sgn">#sgn &mdash; Numeric</a></li>
-    
-      <li><a href="Util/Ruby.html#method-i-shebang_command">#shebang_command &mdash; Util::Ruby</a></li>
-    
-      <li><a href="Array.html#method-i-shuffle">#shuffle &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-shuffle-21">#shuffle! &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-shuffle_kfy">#shuffle_kfy &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-shuffle_kfy-21">#shuffle_kfy! &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-shuffle_knuth">#shuffle_knuth &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-shuffle_knuth-21">#shuffle_knuth! &mdash; Array</a></li>
-    
-      <li><a href="Numeric.html#method-i-sign">#sign &mdash; Numeric</a></li>
-    
-      <li><a href="Numeric.html#method-i-signum">#signum &mdash; Numeric</a></li>
-    
-      <li><a href="Nuggets/Object/SilenceMixin.html#method-i-silence">#silence &mdash; Nuggets::Object::SilenceMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-singleton_class">#singleton_class &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-singleton_class-3F">#singleton_class? &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-singleton_instance">#singleton_instance &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-singleton_object">#singleton_object &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Array.html#method-i-sort_by_dotted_decimal">#sort_by_dotted_decimal &mdash; Array</a></li>
-    
-      <li><a href="Nuggets/Array/StandardDeviationMixin.html#method-i-standard_deviation">#standard_deviation &mdash; Nuggets::Array::StandardDeviationMixin</a></li>
-    
-      <li><a href="Nuggets/Array/StandardDeviationMixin.html#method-i-std">#std &mdash; Nuggets::Array::StandardDeviationMixin</a></li>
-    
-      <li><a href="Array.html#method-i-strictly_ascending-3F">#strictly_ascending? &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-strictly_decreasing-3F">#strictly_decreasing? &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-strictly_descending-3F">#strictly_descending? &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-strictly_increasing-3F">#strictly_increasing? &mdash; Array</a></li>
-    
-      <li><a href="Util/ANSIColor2CSS.html#method-i-style">#style &mdash; Util::ANSIColor2CSS</a></li>
-    
-      <li><a href="Nuggets/File/SubMixin.html#method-i-sub">#sub &mdash; Nuggets::File::SubMixin</a></li>
-    
-      <li><a href="Nuggets/File/SubMixin.html#method-i-sub-21">#sub! &mdash; Nuggets::File::SubMixin</a></li>
-    
-      <li><a href="String.html#method-i-sub_with_md">#sub_with_md &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-sub_with_md-21">#sub_with_md! &mdash; String</a></li>
-    
-      <li><a href="Integer.html#method-i-to_binary_s">#to_binary_s &mdash; Integer</a></li>
-    
-      <li><a href="Nuggets/Object/BooleanMixin.html#method-i-to_bool">#to_bool &mdash; Nuggets::Object::BooleanMixin</a></li>
-    
-      <li><a href="Integer.html#method-i-to_dotted_decimal">#to_dotted_decimal &mdash; Integer</a></li>
-    
-      <li><a href="Array.html#method-i-to_h">#to_h &mdash; Array</a></li>
-    
-      <li><a href="Array.html#method-i-to_hash">#to_hash &mdash; Array</a></li>
-    
-      <li><a href="Numeric.html#method-i-to_hms">#to_hms &mdash; Numeric</a></li>
-    
-      <li><a href="Numeric.html#method-i-to_multiple_of">#to_multiple_of &mdash; Numeric</a></li>
-    
-      <li><a href="Numeric.html#method-i-to_ymd">#to_ymd &mdash; Numeric</a></li>
-    
-      <li><a href="Nuggets/Object/BooleanMixin.html#method-i-true-3F">#true? &mdash; Nuggets::Object::BooleanMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-uniclass">#uniclass &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-uniclass-3F">#uniclass? &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-uniobject">#uniobject &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Hash/UnrollMixin.html#method-i-unroll">#unroll &mdash; Nuggets::Hash::UnrollMixin</a></li>
-    
-      <li><a href="String.html#method-i-upcase-3F">#upcase? &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-upper_case-3F">#upper_case? &mdash; String</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-usage">#usage &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Env/UserEncodingMixin.html#method-i-user_encoding">#user_encoding &mdash; Nuggets::Env::UserEncodingMixin</a></li>
-    
-      <li><a href="Nuggets/Env/UserHomeMixin.html#method-i-user_home">#user_home &mdash; Nuggets::Env::UserHomeMixin</a></li>
-    
-      <li><a href="Nuggets/Hash/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Hash::BlankMixin</a></li>
-    
-      <li><a href="Nuggets/Array/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Array::BlankMixin</a></li>
-    
-      <li><a href="Nuggets/Object/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Object::BlankMixin</a></li>
-    
-      <li><a href="Nuggets/Array/VarianceMixin.html#method-i-var">#var &mdash; Nuggets::Array::VarianceMixin</a></li>
-    
-      <li><a href="Nuggets/Array/VarianceMixin.html#method-i-variance">#variance &mdash; Nuggets::Array::VarianceMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-version">#version &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-virtual_class">#virtual_class &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-virtual_class-3F">#virtual_class? &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/SingletonClassMixin.html#method-i-virtual_object">#virtual_object &mdash; Nuggets::Object::SingletonClassMixin</a></li>
-    
-      <li><a href="Nuggets/Object/BlankMixin.html#method-i-void-3F">#void? &mdash; Nuggets::Object::BlankMixin</a></li>
-    
-      <li><a href="Util/CLI.html#method-i-warn">#warn &mdash; Util::CLI</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-wc">#wc &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-wc_c">#wc_c &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-wc_l">#wc_l &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-wc_m">#wc_m &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-wc_w">#wc_w &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="Nuggets/File/WhichMixin.html#method-i-which">#which &mdash; Nuggets::File::WhichMixin</a></li>
-    
-      <li><a href="Nuggets/File/WhichMixin.html#method-i-which_command">#which_command &mdash; Nuggets::File::WhichMixin</a></li>
-    
-      <li><a href="Nuggets/Env/SetMixin.html#method-i-with">#with &mdash; Nuggets::Env::SetMixin</a></li>
-    
-      <li><a href="Nuggets/Env/SetMixin.html#method-i-without">#without &mdash; Nuggets::Env::SetMixin</a></li>
-    
-      <li><a href="Nuggets/String/WcMixin.html#method-i-word_count">#word_count &mdash; Nuggets::String::WcMixin</a></li>
-    
-      <li><a href="String.html#method-i-word_wrap">#word_wrap &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-word_wrap-21">#word_wrap! &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-word_wrap_paragraph">#word_wrap_paragraph &mdash; String</a></li>
-    
-      <li><a href="String.html#method-i-word_wrap_paragraph-21">#word_wrap_paragraph! &mdash; String</a></li>
-    
-      <li><a href="Nuggets/String/XorMixin.html#method-i-xor">#xor &mdash; Nuggets::String::XorMixin</a></li>
-    
-      <li><a href="Numeric.html#method-i-ymd">#ymd &mdash; Numeric</a></li>
-    
-  </ul>
-
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
-</body>
-</html>

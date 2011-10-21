@@ -1,349 +1,352 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Module: Nuggets::Array::RegressionMixin</title>
+<title>Module: Nuggets::Array::RegressionMixin</title>
 
-  <link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
-  <script src="../../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
 <body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../../index.html">Home</a>
-          <a href="../../index.html#classes">Classes</a>
-          <a href="../../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../../lib/nuggets/array/regression_mixin_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/nuggets/array/regression_mixin.rb">lib/nuggets/array/regression_mixin.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
 
-      
-
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-c-included">::included</a></li>
-          
-          <li><a href="#method-i-linear_least_squares">#linear_least_squares</a></li>
-          
-          <li><a href="#method-i-llsq">#llsq</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../../COPYING.html">COPYING</a></li>
-        
-          <li class="file"><a href="../../ChangeLog.html">ChangeLog</a></li>
-        
-          <li class="file"><a href="../../README.html">README</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../../Nuggets.html">Nuggets</a></li>
-        
-          <li><a href="../../Nuggets/Array.html">Nuggets::Array</a></li>
-        
-          <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env.html">Nuggets::Env</a></li>
-        
-          <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a></li>
-        
-          <li><a href="../../Nuggets/File.html">Nuggets::File</a></li>
-        
-          <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a></li>
-        
-          <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a></li>
-        
-          <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a></li>
-        
-          <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a></li>
-        
-          <li><a href="../../Nuggets/IO.html">Nuggets::IO</a></li>
-        
-          <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></li>
-        
-          <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a></li>
-        
-          <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a></li>
-        
-          <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object.html">Nuggets::Object</a></li>
-        
-          <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a></li>
-        
-          <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a></li>
-        
-          <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a></li>
-        
-          <li><a href="../../Nuggets/Range.html">Nuggets::Range</a></li>
-        
-          <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a></li>
-        
-          <li><a href="../../Nuggets/String.html">Nuggets::String</a></li>
-        
-          <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a></li>
-        
-          <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a></li>
-        
-          <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a></li>
-        
-          <li><a href="../../Nuggets/URI.html">Nuggets::URI</a></li>
-        
-          <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a></li>
-        
-          <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a></li>
-        
-          <li><a href="../../Nuggets/Version.html">Nuggets::Version</a></li>
-        
-          <li><a href="../../Util.html">Util</a></li>
-        
-          <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a></li>
-        
-          <li><a href="../../Util/CLI.html">Util::CLI</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="../../Util/I18n.html">Util::I18n</a></li>
-        
-          <li><a href="../../Util/Ruby.html">Util::Ruby</a></li>
-        
-          <li><a href="../../Object.html">Object</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Object::ContentType</a></li>
-        
-          <li><a href="../../String.html">String</a></li>
-        
-          <li><a href="../../String/Case.html">String::Case</a></li>
-        
-          <li><a href="../../Array.html">Array</a></li>
-        
-          <li><a href="../../Enumerable.html">Enumerable</a></li>
-        
-          <li><a href="../../File.html">File</a></li>
-        
-          <li><a href="../../Hash.html">Hash</a></li>
-        
-          <li><a href="../../IO.html">IO</a></li>
-        
-          <li><a href="../../Integer.html">Integer</a></li>
-        
-          <li><a href="../../Numeric.html">Numeric</a></li>
-        
-          <li><a href="../../Proc.html">Proc</a></li>
-        
-          <li><a href="../../Process.html">Process</a></li>
-        
-          <li><a href="../../Range.html">Range</a></li>
-        
-          <li><a href="../../Tempfile.html">Tempfile</a></li>
-        
-          <li><a href="../../URI.html">URI</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
-  </div>
-
-  <div id="documentation">
-    <h1 class="module">Nuggets::Array::RegressionMixin</h1>
-
-    <div id="description" class="description">
-      
-    </div><!-- description -->
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/nuggets/array/regression_mixin.rb
+  </ul>
+</nav>
 
     
-    <div id="5Buntitled-5D" class="documentation-section">
-      
+  </div>
 
-      
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
 
-      
+  <ul class="link-list">
+    
+    <li><a href="#method-c-included">::included</a>
+    
+    <li><a href="#method-i-linear_least_squares">#linear_least_squares</a>
+    
+    <li><a href="#method-i-llsq">#llsq</a>
+    
+  </ul>
+</nav>
 
-      
+  </div>
 
-      <!-- Methods -->
-      
-      <div id="public-class-method-details" class="method-section section">
-        <h3 class="section-header">Public Class Methods</h3>
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
 
-      
-        <div id="included-method" class="method-detail ">
-          <a name="method-c-included"></a>
+  <ul>
+  
+    <li class="file"><a href="../../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Nuggets.html">Nuggets</a>
+  
+    <li><a href="../../Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="../../Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="../../Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="../../Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="../../Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="../../Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="../../Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="../../Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="../../Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="../../Net.html">Net</a>
+  
+    <li><a href="../../Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="../../Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="../../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="../../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="../../Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="../../Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="../../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="../../Util.html">Util</a>
+  
+    <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../../Util/Ruby.html">Util::Ruby</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="../../String.html">String</a>
+  
+    <li><a href="../../String/Case.html">String::Case</a>
+  
+    <li><a href="../../Array.html">Array</a>
+  
+    <li><a href="../../Enumerable.html">Enumerable</a>
+  
+    <li><a href="../../File.html">File</a>
+  
+    <li><a href="../../Hash.html">Hash</a>
+  
+    <li><a href="../../IO.html">IO</a>
+  
+    <li><a href="../../Integer.html">Integer</a>
+  
+    <li><a href="../../Numeric.html">Numeric</a>
+  
+    <li><a href="../../Proc.html">Proc</a>
+  
+    <li><a href="../../Range.html">Range</a>
+  
+    <li><a href="../../Tempfile.html">Tempfile</a>
+  
+    <li><a href="../../URI.html">URI</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Nuggets::Array::RegressionMixin</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-included" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">included</span><span
+            class="method-args">(base)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">included</span><span
-              class="method-args">(base)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="included-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/array/regression_mixin.rb, line 34</span>
+          <div class="method-source-code" id="included-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/regression_mixin.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">VarianceMixin</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- included-source -->
-            
-          </div>
-
+          </div><!-- included-source -->
           
+        </div>
 
-          
-        </div><!-- included-method -->
+        
 
-      
-      </div><!-- public-class-method-details -->
+        
+      </div><!-- included-method -->
+
     
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
-      
-        <div id="linear_least_squares-method" class="method-detail ">
-          <a name="method-i-linear_least_squares"></a>
+    
+      <div id="method-i-linear_least_squares" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            linear_least_squares &rarr; anArray
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
 
+        <div class="method-description">
           
-          
-          <div class="method-heading">
-            <span class="method-callseq">linear_least_squares => anArray</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Calculates the <a
+          <p>Calculates the <a
 href="http://en.wikipedia.org/wiki/Simple_linear_regression">linear least
-squares regression</a> for the <tt>{x,y}</tt> pairs in <em>array</em>. If
-<em>array</em> only contains values instead of pairs, <tt>y</tt> will be
-the value and <tt>x</tt> will be each value’s position (rank) in
-<em>array</em>.</p>
-            
+squares regression</a> for the <code>{x,y}</code> pairs in <em>array</em>.
+If <em>array</em> only contains values instead of pairs, <code>y</code>
+will be the value and <code>x</code> will be each value’s position (rank)
+in <em>array</em>.</p>
+          
 
-            
-            <div class="method-source-code" id="linear_least_squares-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/array/regression_mixin.rb, line 45</span>
+          
+          <div class="method-source-code" id="linear_least_squares-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/regression_mixin.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">linear_least_squares</span>
   <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
 
@@ -364,62 +367,57 @@ the value and <tt>x</tt> will be each value’s position (rank) in
 
   <span class="ruby-identifier">target</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">x</span>, <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span> * <span class="ruby-identifier">x</span>] }
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- linear_least_squares-source -->
-            
-          </div>
-
+          </div><!-- linear_least_squares-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="RegressionMixin.html#method-i-llsq">llsq</a>
-          </div>
-          
+        </div>
 
-          
-        </div><!-- linear_least_squares-method -->
+        
+        <div class="aliases">
+          Also aliased as: <a href="RegressionMixin.html#method-i-llsq">llsq</a>
+        </div>
+        
 
-      
-        <div id="llsq-method" class="method-detail method-alias">
-          <a name="method-i-llsq"></a>
+        
+      </div><!-- linear_least_squares-method -->
 
-          
-          <div class="method-heading">
-            <span class="method-name">llsq</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="RegressionMixin.html#method-i-linear_least_squares">linear_least_squares</a>
-          </div>
-          
-        </div><!-- llsq-method -->
-
-      
-      </div><!-- public-instance-method-details -->
     
-    </div><!-- 5Buntitled-5D -->
+      <div id="method-i-llsq" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">llsq</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="RegressionMixin.html#method-i-linear_least_squares">linear_least_squares</a>
+        </div>
+        
+      </div><!-- llsq-method -->
+
+    
+    </section><!-- public-instance-method-details -->
   
+  </section><!-- 5Buntitled-5D -->
 
-  </div><!-- documentation -->
+</div><!-- documentation -->
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
 
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

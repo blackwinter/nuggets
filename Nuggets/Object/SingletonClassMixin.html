@@ -1,933 +1,902 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Module: Nuggets::Object::SingletonClassMixin</title>
+<title>Module: Nuggets::Object::SingletonClassMixin</title>
 
-  <link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
-  <script src="../../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
 <body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../../index.html">Home</a>
-          <a href="../../index.html#classes">Classes</a>
-          <a href="../../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../../lib/nuggets/object/singleton_class_mixin_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/nuggets/object/singleton_class_mixin.rb">lib/nuggets/object/singleton_class_mixin.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
 
-      
-
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-i-eigenclass">#eigenclass</a></li>
-          
-          <li><a href="#method-i-eigenclass-3F">#eigenclass?</a></li>
-          
-          <li><a href="#method-i-eigenobject">#eigenobject</a></li>
-          
-          <li><a href="#method-i-ghost_class">#ghost_class</a></li>
-          
-          <li><a href="#method-i-ghost_class-3F">#ghost_class?</a></li>
-          
-          <li><a href="#method-i-ghost_object">#ghost_object</a></li>
-          
-          <li><a href="#method-i-metaclass">#metaclass</a></li>
-          
-          <li><a href="#method-i-metaclass-3F">#metaclass?</a></li>
-          
-          <li><a href="#method-i-metaobject">#metaobject</a></li>
-          
-          <li><a href="#method-i-singleton_class">#singleton_class</a></li>
-          
-          <li><a href="#method-i-singleton_class-3F">#singleton_class?</a></li>
-          
-          <li><a href="#method-i-singleton_instance">#singleton_instance</a></li>
-          
-          <li><a href="#method-i-singleton_object">#singleton_object</a></li>
-          
-          <li><a href="#method-i-uniclass">#uniclass</a></li>
-          
-          <li><a href="#method-i-uniclass-3F">#uniclass?</a></li>
-          
-          <li><a href="#method-i-uniobject">#uniobject</a></li>
-          
-          <li><a href="#method-i-virtual_class">#virtual_class</a></li>
-          
-          <li><a href="#method-i-virtual_class-3F">#virtual_class?</a></li>
-          
-          <li><a href="#method-i-virtual_object">#virtual_object</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../../COPYING.html">COPYING</a></li>
-        
-          <li class="file"><a href="../../ChangeLog.html">ChangeLog</a></li>
-        
-          <li class="file"><a href="../../README.html">README</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../../Nuggets.html">Nuggets</a></li>
-        
-          <li><a href="../../Nuggets/Array.html">Nuggets::Array</a></li>
-        
-          <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a></li>
-        
-          <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env.html">Nuggets::Env</a></li>
-        
-          <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a></li>
-        
-          <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a></li>
-        
-          <li><a href="../../Nuggets/File.html">Nuggets::File</a></li>
-        
-          <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a></li>
-        
-          <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a></li>
-        
-          <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a></li>
-        
-          <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a></li>
-        
-          <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a></li>
-        
-          <li><a href="../../Nuggets/IO.html">Nuggets::IO</a></li>
-        
-          <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a></li>
-        
-          <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a></li>
-        
-          <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a></li>
-        
-          <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object.html">Nuggets::Object</a></li>
-        
-          <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a></li>
-        
-          <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a></li>
-        
-          <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a></li>
-        
-          <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a></li>
-        
-          <li><a href="../../Nuggets/Range.html">Nuggets::Range</a></li>
-        
-          <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a></li>
-        
-          <li><a href="../../Nuggets/String.html">Nuggets::String</a></li>
-        
-          <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a></li>
-        
-          <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a></li>
-        
-          <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a></li>
-        
-          <li><a href="../../Nuggets/URI.html">Nuggets::URI</a></li>
-        
-          <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a></li>
-        
-          <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a></li>
-        
-          <li><a href="../../Nuggets/Version.html">Nuggets::Version</a></li>
-        
-          <li><a href="../../Util.html">Util</a></li>
-        
-          <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a></li>
-        
-          <li><a href="../../Util/CLI.html">Util::CLI</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Util::ContentType</a></li>
-        
-          <li><a href="../../Util/I18n.html">Util::I18n</a></li>
-        
-          <li><a href="../../Util/Ruby.html">Util::Ruby</a></li>
-        
-          <li><a href="../../Object.html">Object</a></li>
-        
-          <li><a href="../../Util/ContentType.html">Object::ContentType</a></li>
-        
-          <li><a href="../../String.html">String</a></li>
-        
-          <li><a href="../../String/Case.html">String::Case</a></li>
-        
-          <li><a href="../../Array.html">Array</a></li>
-        
-          <li><a href="../../Enumerable.html">Enumerable</a></li>
-        
-          <li><a href="../../File.html">File</a></li>
-        
-          <li><a href="../../Hash.html">Hash</a></li>
-        
-          <li><a href="../../IO.html">IO</a></li>
-        
-          <li><a href="../../Integer.html">Integer</a></li>
-        
-          <li><a href="../../Numeric.html">Numeric</a></li>
-        
-          <li><a href="../../Proc.html">Proc</a></li>
-        
-          <li><a href="../../Process.html">Process</a></li>
-        
-          <li><a href="../../Range.html">Range</a></li>
-        
-          <li><a href="../../Tempfile.html">Tempfile</a></li>
-        
-          <li><a href="../../URI.html">URI</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
-  </div>
-
-  <div id="documentation">
-    <h1 class="module">Nuggets::Object::SingletonClassMixin</h1>
-
-    <div id="description" class="description">
-      
-    </div><!-- description -->
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/nuggets/object/singleton_class_mixin.rb
+  </ul>
+</nav>
 
     
-    <div id="5Buntitled-5D" class="documentation-section">
-      
+  </div>
 
-      
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
 
-      
+  <ul class="link-list">
+    
+    <li><a href="#method-i-eigenclass">#eigenclass</a>
+    
+    <li><a href="#method-i-eigenclass-3F">#eigenclass?</a>
+    
+    <li><a href="#method-i-eigenobject">#eigenobject</a>
+    
+    <li><a href="#method-i-ghost_class">#ghost_class</a>
+    
+    <li><a href="#method-i-ghost_class-3F">#ghost_class?</a>
+    
+    <li><a href="#method-i-ghost_object">#ghost_object</a>
+    
+    <li><a href="#method-i-metaclass">#metaclass</a>
+    
+    <li><a href="#method-i-metaclass-3F">#metaclass?</a>
+    
+    <li><a href="#method-i-metaobject">#metaobject</a>
+    
+    <li><a href="#method-i-singleton_class">#singleton_class</a>
+    
+    <li><a href="#method-i-singleton_class-3F">#singleton_class?</a>
+    
+    <li><a href="#method-i-singleton_instance">#singleton_instance</a>
+    
+    <li><a href="#method-i-singleton_object">#singleton_object</a>
+    
+    <li><a href="#method-i-uniclass">#uniclass</a>
+    
+    <li><a href="#method-i-uniclass-3F">#uniclass?</a>
+    
+    <li><a href="#method-i-uniobject">#uniobject</a>
+    
+    <li><a href="#method-i-virtual_class">#virtual_class</a>
+    
+    <li><a href="#method-i-virtual_class-3F">#virtual_class?</a>
+    
+    <li><a href="#method-i-virtual_object">#virtual_object</a>
+    
+  </ul>
+</nav>
 
-      
+  </div>
 
-      <!-- Methods -->
-      
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
 
-      
-        <div id="eigenclass-method" class="method-detail method-alias">
-          <a name="method-i-eigenclass"></a>
+  <ul>
+  
+    <li class="file"><a href="../../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../../README.html">README</a>
+  
+  </ul>
+</nav>
 
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Nuggets.html">Nuggets</a>
+  
+    <li><a href="../../Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="../../Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="../../Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="../../Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="../../Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="../../Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="../../Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="../../Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="../../Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="../../Net.html">Net</a>
+  
+    <li><a href="../../Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="../../Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="../../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="../../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="../../Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="../../Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="../../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="../../Util.html">Util</a>
+  
+    <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../../Util/Ruby.html">Util::Ruby</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="../../String.html">String</a>
+  
+    <li><a href="../../String/Case.html">String::Case</a>
+  
+    <li><a href="../../Array.html">Array</a>
+  
+    <li><a href="../../Enumerable.html">Enumerable</a>
+  
+    <li><a href="../../File.html">File</a>
+  
+    <li><a href="../../Hash.html">Hash</a>
+  
+    <li><a href="../../IO.html">IO</a>
+  
+    <li><a href="../../Integer.html">Integer</a>
+  
+    <li><a href="../../Numeric.html">Numeric</a>
+  
+    <li><a href="../../Proc.html">Proc</a>
+  
+    <li><a href="../../Range.html">Range</a>
+  
+    <li><a href="../../Tempfile.html">Tempfile</a>
+  
+    <li><a href="../../URI.html">URI</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Nuggets::Object::SingletonClassMixin</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-eigenclass" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">eigenclass</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-          <div class="method-heading">
-            <span class="method-name">eigenclass</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
-          </div>
-          
-        </div><!-- eigenclass-method -->
-
-      
-        <div id="eigenclass-3F-method" class="method-detail method-alias">
-          <a name="method-i-eigenclass-3F"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">eigenclass?</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
-          </div>
-          
-        </div><!-- eigenclass-3F-method -->
-
-      
-        <div id="eigenobject-method" class="method-detail method-alias">
-          <a name="method-i-eigenobject"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">eigenobject</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
-          </div>
-          
-        </div><!-- eigenobject-method -->
-
-      
-        <div id="ghost_class-method" class="method-detail method-alias">
-          <a name="method-i-ghost_class"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">ghost_class</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
-          </div>
-          
-        </div><!-- ghost_class-method -->
-
-      
-        <div id="ghost_class-3F-method" class="method-detail method-alias">
-          <a name="method-i-ghost_class-3F"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">ghost_class?</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
-          </div>
-          
-        </div><!-- ghost_class-3F-method -->
-
-      
-        <div id="ghost_object-method" class="method-detail method-alias">
-          <a name="method-i-ghost_object"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">ghost_object</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
-          </div>
-          
-        </div><!-- ghost_object-method -->
-
-      
-        <div id="metaclass-method" class="method-detail method-alias">
-          <a name="method-i-metaclass"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">metaclass</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
-          </div>
-          
-        </div><!-- metaclass-method -->
-
-      
-        <div id="metaclass-3F-method" class="method-detail method-alias">
-          <a name="method-i-metaclass-3F"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">metaclass?</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
-          </div>
-          
-        </div><!-- metaclass-3F-method -->
-
-      
-        <div id="metaobject-method" class="method-detail method-alias">
-          <a name="method-i-metaobject"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">metaobject</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
-          </div>
-          
-        </div><!-- metaobject-method -->
-
-      
-        <div id="singleton_class-method" class="method-detail ">
-          <a name="method-i-singleton_class"></a>
-
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">singleton_class => aClass</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
           
           
 
-          <div class="method-description">
-            
-            <p>Returns the singleton (or virtual/eigen/meta) class associated with
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
+        </div>
+        
+      </div><!-- eigenclass-method -->
+
+    
+      <div id="method-i-eigenclass-3F" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">eigenclass?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
+        </div>
+        
+      </div><!-- eigenclass-3F-method -->
+
+    
+      <div id="method-i-eigenobject" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">eigenobject</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
+        </div>
+        
+      </div><!-- eigenobject-method -->
+
+    
+      <div id="method-i-ghost_class" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">ghost_class</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
+        </div>
+        
+      </div><!-- ghost_class-method -->
+
+    
+      <div id="method-i-ghost_class-3F" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">ghost_class?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
+        </div>
+        
+      </div><!-- ghost_class-3F-method -->
+
+    
+      <div id="method-i-ghost_object" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">ghost_object</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
+        </div>
+        
+      </div><!-- ghost_object-method -->
+
+    
+      <div id="method-i-metaclass" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">metaclass</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
+        </div>
+        
+      </div><!-- metaclass-method -->
+
+    
+      <div id="method-i-metaclass-3F" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">metaclass?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
+        </div>
+        
+      </div><!-- metaclass-3F-method -->
+
+    
+      <div id="method-i-metaobject" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">metaobject</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
+        </div>
+        
+      </div><!-- metaobject-method -->
+
+    
+      <div id="method-i-singleton_class" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            singleton_class &rarr; aClass
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the singleton (or virtual/eigen/meta) class associated with
 <em>object</em>.</p>
-            
+          
 
-            
-            <div class="method-source-code" id="singleton_class-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 36</span>
+          
+          <div class="method-source-code" id="singleton_class-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">singleton_class</span>
   <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>; <span class="ruby-keyword">self</span>; <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- singleton_class-source -->
-            
-          </div>
+          </div><!-- singleton_class-source -->
+          
+        </div>
 
-          
-          <div class="aliases">
-            Also aliased as: <a href="SingletonClassMixin.html#method-i-virtual_class">virtual_class</a>, <a href="SingletonClassMixin.html#method-i-ghost_class">ghost_class</a>, <a href="SingletonClassMixin.html#method-i-eigenclass">eigenclass</a>, <a href="SingletonClassMixin.html#method-i-metaclass">metaclass</a>, <a href="SingletonClassMixin.html#method-i-uniclass">uniclass</a>
-          </div>
-          
+        
+        <div class="aliases">
+          Also aliased as: <a href="SingletonClassMixin.html#method-i-virtual_class">virtual_class</a>, <a href="SingletonClassMixin.html#method-i-ghost_class">ghost_class</a>, <a href="SingletonClassMixin.html#method-i-eigenclass">eigenclass</a>, <a href="SingletonClassMixin.html#method-i-metaclass">metaclass</a>, <a href="SingletonClassMixin.html#method-i-uniclass">uniclass</a>
+        </div>
+        
 
-          
-        </div><!-- singleton_class-method -->
+        
+      </div><!-- singleton_class-method -->
 
-      
-        <div id="singleton_class-3F-method" class="method-detail ">
-          <a name="method-i-singleton_class-3F"></a>
+    
+      <div id="method-i-singleton_class-3F" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            singleton_class? &rarr; +true+ or +false+
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
 
+        <div class="method-description">
           
-          
-          <div class="method-heading">
-            <span class="method-callseq">singleton_class? => +true+ or +false+</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          
-
-          <div class="method-description">
-            
-            <p>Returns <tt>true</tt> if <em>object</em> is a <a
-href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
+          <p>Returns <code>true</code> if <em>object</em> is a <a
+href="SingletonClassMixin.html#method-i-singleton_class">#singleton_class</a>
 (i.e., has a <a
-href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>),
-<tt>false</tt> otherwise.</p>
-            
+href="SingletonClassMixin.html#method-i-singleton_object">#singleton_object</a>),
+<code>false</code> otherwise.</p>
+          
 
-            
-            <div class="method-source-code" id="singleton_class-3F-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 81</span>
+          
+          <div class="method-source-code" id="singleton_class-3F-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">singleton_class?</span>
   <span class="ruby-identifier">singleton_object</span>
   <span class="ruby-keyword">true</span>
-<span class="ruby-keyword">rescue</span> <span class="ruby-constant">TypeError</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
   <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- singleton_class-3F-source -->
-            
-          </div>
-
+          </div><!-- singleton_class-3F-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="SingletonClassMixin.html#method-i-virtual_class-3F">virtual_class?</a>, <a href="SingletonClassMixin.html#method-i-ghost_class-3F">ghost_class?</a>, <a href="SingletonClassMixin.html#method-i-eigenclass-3F">eigenclass?</a>, <a href="SingletonClassMixin.html#method-i-metaclass-3F">metaclass?</a>, <a href="SingletonClassMixin.html#method-i-uniclass-3F">uniclass?</a>
-          </div>
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SingletonClassMixin.html#method-i-virtual_class-3F">virtual_class?</a>, <a href="SingletonClassMixin.html#method-i-ghost_class-3F">ghost_class?</a>, <a href="SingletonClassMixin.html#method-i-eigenclass-3F">eigenclass?</a>, <a href="SingletonClassMixin.html#method-i-metaclass-3F">metaclass?</a>, <a href="SingletonClassMixin.html#method-i-uniclass-3F">uniclass?</a>
+        </div>
+        
+
+        
+      </div><!-- singleton_class-3F-method -->
+
+    
+      <div id="method-i-singleton_instance" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">singleton_instance</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-
           
-        </div><!-- singleton_class-3F-method -->
-
-      
-        <div id="singleton_instance-method" class="method-detail method-alias">
-          <a name="method-i-singleton_instance"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">singleton_instance</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
-          </div>
-          
-        </div><!-- singleton_instance-method -->
+        </div>
 
-      
-        <div id="singleton_object-method" class="method-detail ">
-          <a name="method-i-singleton_object"></a>
+        
 
-          
-          
-          <div class="method-heading">
-            <span class="method-callseq">singleton_object => anObject</span>
-            
-            <span class="method-click-advice">click to toggle source</span>
-            
-          </div>
-          
-          
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
+        </div>
+        
+      </div><!-- singleton_instance-method -->
 
-          <div class="method-description">
-            
-            <p>Returns the object of which <em>object</em> is the singleton_class. Raises
+    
+      <div id="method-i-singleton_object" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            singleton_object &rarr; anObject
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the object of which <em>object</em> is the singleton_class. Raises
 a TypeError if <em>object</em> is not a singleton class.</p>
-            
+          
 
-            
-            <div class="method-source-code" id="singleton_object-source">
-<pre>
-<span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 51</span>
+          
+          <div class="method-source-code" id="singleton_object-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">singleton_object</span>
   [<span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">singleton_class</span>)
   }
 
   <span class="ruby-comment"># raises TypeError if neither class nor module</span>
-  <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">each_object</span>(<span class="ruby-keyword">self</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">each_object</span>(<span class="ruby-keyword">self</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">singleton_class</span>)
   }
 
   <span class="ruby-comment"># if we got here, it can't be a singleton class</span>
   <span class="ruby-comment"># or its singleton object doesn't exist anymore</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>
-<span class="ruby-keyword">rescue</span> <span class="ruby-constant">TypeError</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-string">'not a singleton class'</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-string">'not a singleton class'</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- singleton_object-source -->
-            
-          </div>
-
+          </div><!-- singleton_object-source -->
           
-          <div class="aliases">
-            Also aliased as: <a href="SingletonClassMixin.html#method-i-virtual_object">virtual_object</a>, <a href="SingletonClassMixin.html#method-i-ghost_object">ghost_object</a>, <a href="SingletonClassMixin.html#method-i-eigenobject">eigenobject</a>, <a href="SingletonClassMixin.html#method-i-metaobject">metaobject</a>, <a href="SingletonClassMixin.html#method-i-uniobject">uniobject</a>, <a href="SingletonClassMixin.html#method-i-singleton_instance">singleton_instance</a>
-          </div>
-          
+        </div>
 
-          
-        </div><!-- singleton_object-method -->
+        
+        <div class="aliases">
+          Also aliased as: <a href="SingletonClassMixin.html#method-i-virtual_object">virtual_object</a>, <a href="SingletonClassMixin.html#method-i-ghost_object">ghost_object</a>, <a href="SingletonClassMixin.html#method-i-eigenobject">eigenobject</a>, <a href="SingletonClassMixin.html#method-i-metaobject">metaobject</a>, <a href="SingletonClassMixin.html#method-i-uniobject">uniobject</a>, <a href="SingletonClassMixin.html#method-i-singleton_instance">singleton_instance</a>
+        </div>
+        
 
-      
-        <div id="uniclass-method" class="method-detail method-alias">
-          <a name="method-i-uniclass"></a>
+        
+      </div><!-- singleton_object-method -->
 
-          
-          <div class="method-heading">
-            <span class="method-name">uniclass</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
-          </div>
-          
-        </div><!-- uniclass-method -->
-
-      
-        <div id="uniclass-3F-method" class="method-detail method-alias">
-          <a name="method-i-uniclass-3F"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">uniclass?</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
-          </div>
-          
-        </div><!-- uniclass-3F-method -->
-
-      
-        <div id="uniobject-method" class="method-detail method-alias">
-          <a name="method-i-uniobject"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">uniobject</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
-          </div>
-          
-        </div><!-- uniobject-method -->
-
-      
-        <div id="virtual_class-method" class="method-detail method-alias">
-          <a name="method-i-virtual_class"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">virtual_class</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
-          </div>
-          
-        </div><!-- virtual_class-method -->
-
-      
-        <div id="virtual_class-3F-method" class="method-detail method-alias">
-          <a name="method-i-virtual_class-3F"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">virtual_class?</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
-          </div>
-          
-        </div><!-- virtual_class-3F-method -->
-
-      
-        <div id="virtual_object-method" class="method-detail method-alias">
-          <a name="method-i-virtual_object"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">virtual_object</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
-          
-
-          
-          <div class="aliases">
-            Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
-          </div>
-          
-        </div><!-- virtual_object-method -->
-
-      
-      </div><!-- public-instance-method-details -->
     
-    </div><!-- 5Buntitled-5D -->
+      <div id="method-i-uniclass" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">uniclass</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
+        </div>
+        
+      </div><!-- uniclass-method -->
+
+    
+      <div id="method-i-uniclass-3F" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">uniclass?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
+        </div>
+        
+      </div><!-- uniclass-3F-method -->
+
+    
+      <div id="method-i-uniobject" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">uniobject</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
+        </div>
+        
+      </div><!-- uniobject-method -->
+
+    
+      <div id="method-i-virtual_class" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">virtual_class</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class">singleton_class</a>
+        </div>
+        
+      </div><!-- virtual_class-method -->
+
+    
+      <div id="method-i-virtual_class-3F" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">virtual_class?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_class-3F">singleton_class?</a>
+        </div>
+        
+      </div><!-- virtual_class-3F-method -->
+
+    
+      <div id="method-i-virtual_object" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">virtual_object</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SingletonClassMixin.html#method-i-singleton_object">singleton_object</a>
+        </div>
+        
+      </div><!-- virtual_object-method -->
+
+    
+    </section><!-- public-instance-method-details -->
   
+  </section><!-- 5Buntitled-5D -->
 
-  </div><!-- documentation -->
+</div><!-- documentation -->
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
 
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

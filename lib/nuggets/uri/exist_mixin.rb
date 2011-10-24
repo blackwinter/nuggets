@@ -31,20 +31,25 @@ module Nuggets
   module URI
     module ExistMixin
 
+  URI_EXIST_HTTP_CACHE = ::Hash.new { |h, k| h[k] = ::Net::HTTP.new(*k) }
+
   # call-seq:
   #   URI.exist?(uri) => +true+ or +false+
   #
   # Return +true+ if the URI +uri+ exists.
-  def exist?(uri)
+  def exist?(uri, cache = URI_EXIST_HTTP_CACHE, steps = 20, &block)
     uri = ::URI.parse(uri.to_s)
     return unless uri.is_a?(::URI::HTTP)
 
-    path = uri.path
-    path = '/' if path.empty?
+    res = cache[[uri.host, uri.port]].head(uri.request_uri)
 
-    res = ::Net::HTTP.start(uri.host, uri.port) { |http| http.head(path) }
-
-    block_given? ? yield(res) : true if res.success?
+    if res.is_a?(::Net::HTTPRedirection)
+      exist?(res['Location'], cache, steps - 1, &block) if steps > 0
+    elsif res.success?
+      block ? block[res] : true
+    else
+      false
+    end
   rescue ::SocketError, ::Errno::EHOSTUNREACH
   end
 

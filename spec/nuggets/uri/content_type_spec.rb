@@ -14,10 +14,15 @@ describe URI, 'when extended by', Nuggets::URI::ContentTypeMixin do
   %w[
     htp://www.google.de
     www.google.de
-    http://blackwinter.de/bla
     http://blawinter.de
   ].each { |u|
     example { URI.content_type(u).should == nil }
+  }
+
+  %w[
+    http://blackwinter.de/bla
+  ].each { |u|
+    example { URI.content_type(u).should == false }
   }
 
   {

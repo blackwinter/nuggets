@@ -25,32 +25,29 @@
 ###############################################################################
 #++
 
+require 'nuggets/uri/redirect_mixin'
 require 'nuggets/net/success'
 
 module Nuggets
   module URI
     module ExistMixin
 
-  URI_EXIST_HTTP_CACHE = ::Hash.new { |h, k| h[k] = ::Net::HTTP.new(*k) }
+  def self.extended(base)
+    base.extend Nuggets::URI::RedirectMixin
+  end
 
   # call-seq:
-  #   URI.exist?(uri) => +true+ or +false+
+  #   URI.exist?(uri) => +true+, +false+ or +nil+
+  #   URI.exist?(uri) { |res| ... } => anObject, +false+ or +nil+
   #
-  # Return +true+ if the URI +uri+ exists.
-  def exist?(uri, cache = URI_EXIST_HTTP_CACHE, steps = 20, &block)
-    uri = ::URI.parse(uri.to_s)
-    return unless uri.is_a?(::URI::HTTP)
-
-    res = cache[[uri.host, uri.port]].head(uri.request_uri)
-
-    if res.is_a?(::Net::HTTPRedirection)
-      exist?(res['Location'], cache, steps - 1, &block) if steps > 0
-    elsif res.success?
-      block ? block[res] : true
-    else
-      false
-    end
-  rescue ::SocketError, ::Errno::EHOSTUNREACH
+  # Checks whether the URI +uri+ exists by performing a +HEAD+ request. If
+  # successful, yields the response to the given block and returns its return
+  # value, or +true+ if no block was given. Returns +false+ in case of failure,
+  # or +nil+ if the redirect limit has been exceeded.
+  #
+  # See Nuggets::URI::RedirectMixin#follow_redirect for more information.
+  def exist?(uri)
+    head_redirect(uri) { |res| res.success? && (!block_given? || yield(res)) }
   end
 
   alias_method :exists?, :exist?

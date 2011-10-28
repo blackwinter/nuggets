@@ -64,6 +64,8 @@
 
   <ul class="link-list">
     
+    <li><a href="#method-c-extended">::extended</a>
+    
     <li><a href="#method-i-exist-3F">#exist?</a>
     
     <li><a href="#method-i-exists-3F">#exists?</a>
@@ -189,6 +191,8 @@
   
     <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
   
+    <li><a href="../../Nuggets/URI/RedirectMixin.html">Nuggets::URI::RedirectMixin</a>
+  
     <li><a href="../../Nuggets/Version.html">Nuggets::Version</a>
   
     <li><a href="../../Net.html">Net</a>
@@ -273,24 +277,47 @@
     
 
     
-    <!-- Constants -->
-    <section id="constants-list" class="section">
-      <h3 class="section-header">Constants</h3>
-      <dl>
-      
-        <dt id="URI_EXIST_HTTP_CACHE">URI_EXIST_HTTP_CACHE
-        
-        <dd class="description">
-        
-      
-      </dl>
-    </section>
-    
 
     
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-extended" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">extended</span><span
+            class="method-args">(base)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="extended-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/exist_mixin.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">extended</span>(<span class="ruby-identifier">base</span>)
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">RedirectMixin</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- extended-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- extended-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
 
@@ -300,10 +327,17 @@
         
         <div class="method-heading">
           <span class="method-callseq">
-            exist?(uri) &rarr; +true+ or +false+
+            exist?(uri) &rarr; +true+, +false+ or +nil+
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            exist?(uri) { |res| ... } &rarr; anObject, +false+ or +nil+
+          </span>
           
         </div>
         
@@ -311,27 +345,22 @@
 
         <div class="method-description">
           
-          <p>Return <code>true</code> if the <a href="../URI.html">URI</a>
-<code>uri</code> exists.</p>
+          <p>Checks whether the <a href="../URI.html">URI</a> <code>uri</code> exists by
+performing a <code>HEAD</code> request. If successful, yields the response
+to the given block and returns its return value, or <code>true</code> if no
+block was given. Returns <code>false</code> in case of failure, or
+<code>nil</code> if the redirect limit has been exceeded.</p>
+
+<p>See <a
+href="RedirectMixin.html#method-i-follow_redirect">Nuggets::URI::RedirectMixin#follow_redirect</a>
+for more information.</p>
           
 
           
           <div class="method-source-code" id="exist-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/exist_mixin.rb, line 40</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">cache</span> = <span class="ruby-constant">URI_EXIST_HTTP_CACHE</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-value">20</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">uri</span> = <span class="ruby-operator">::</span><span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
-
-  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">cache</span>[[<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">port</span>]].<span class="ruby-identifier">head</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">request_uri</span>)
-
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPRedirection</span>)
-    <span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">res</span>[<span class="ruby-string">'Location'</span>], <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">steps</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, &amp;<span class="ruby-identifier">block</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">steps</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">success?</span>
-    <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">res</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">false</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">SocketError</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTUNREACH</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/exist_mixin.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-identifier">head_redirect</span>(<span class="ruby-identifier">uri</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">res</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">success?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>)) }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- exist-3F-source -->
           
@@ -351,7 +380,7 @@
         
         <div class="method-heading">
           <span class="method-name">exists?</span><span
-            class="method-args">(uri, cache = URI_EXIST_HTTP_CACHE, steps = 20, &block)</span>
+            class="method-args">(uri)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         

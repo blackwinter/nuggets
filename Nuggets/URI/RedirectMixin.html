@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>Module: Nuggets::String::WcMixin</title>
+<title>Module: Nuggets::URI::RedirectMixin</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/string/wc_mixin.rb
+    <li>lib/nuggets/uri/redirect_mixin.rb
   </ul>
 </nav>
 
@@ -64,27 +64,11 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-byte_count">#byte_count</a>
+    <li><a href="#method-i-follow_redirect">#follow_redirect</a>
     
-    <li><a href="#method-i-char_count">#char_count</a>
+    <li><a href="#method-i-get_redirect">#get_redirect</a>
     
-    <li><a href="#method-i-count_by_re">#count_by_re</a>
-    
-    <li><a href="#method-i-count_by_re2">#count_by_re2</a>
-    
-    <li><a href="#method-i-line_count">#line_count</a>
-    
-    <li><a href="#method-i-wc">#wc</a>
-    
-    <li><a href="#method-i-wc_c">#wc_c</a>
-    
-    <li><a href="#method-i-wc_l">#wc_l</a>
-    
-    <li><a href="#method-i-wc_m">#wc_m</a>
-    
-    <li><a href="#method-i-wc_w">#wc_w</a>
-    
-    <li><a href="#method-i-word_count">#word_count</a>
+    <li><a href="#method-i-head_redirect">#head_redirect</a>
     
   </ul>
 </nav>
@@ -278,7 +262,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::String::WcMixin</h1>
+  <h1 class="module">module Nuggets::URI::RedirectMixin</h1>
 
   <div id="description" class="description">
     
@@ -293,6 +277,24 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="URI_REDIRECT_HTTP_CACHE">URI_REDIRECT_HTTP_CACHE
+        
+        <dd class="description"><p>Cache for HTTP objects to reuse.</p>
+        
+      
+        <dt id="URI_REDIRECT_MAX_STEPS">URI_REDIRECT_MAX_STEPS
+        
+        <dd class="description"><p>Maximum number of redirects to follow.</p>
+        
+      
+      </dl>
+    </section>
+    
 
     
 
@@ -302,12 +304,12 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-byte_count" class="method-detail ">
+      <div id="method-i-follow_redirect" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            byte_count &rarr; anInteger
+            follow_redirect(uri[, steps]) { |req, path| ... } &rarr; aResponse or +nil+
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -318,360 +320,147 @@
 
         <div class="method-description">
           
-          <p>Count number of bytes in <em>str</em>.</p>
+          <p>Performs any HTTP request on <code>uri</code> while following at most
+<code>steps</code> redirects. Accepts both strings and <a
+href="../URI.html">URI</a> objects for <code>uri</code>. Defers to the
+given block to perform the actual request; yields the request object and
+the request <a href="../URI.html">URI</a> string.</p>
+
+<p>Returns the response object if successful, or <code>nil</code> if
+<code>uri</code> is not an HTTP <a href="../URI.html">URI</a>, the redirect
+limit has been exceeded, or any connection error occurs.</p>
           
 
           
-          <div class="method-source-code" id="byte_count-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 62</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">byte_count</span>
-  <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:bytesize</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">bytesize</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">count_by_re</span>(<span class="ruby-regexp">//</span>) <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+          <div class="method-source-code" id="follow_redirect-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>, <span class="ruby-identifier">cache</span> = <span class="ruby-constant">URI_REDIRECT_HTTP_CACHE</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
+    <span class="ruby-identifier">uri</span> = <span class="ruby-operator">::</span><span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">req</span> = <span class="ruby-identifier">cache</span>[[<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">port</span>]]
+  <span class="ruby-identifier">req</span>.<span class="ruby-identifier">use_ssl</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPS</span>)
+
+  <span class="ruby-identifier">ctx</span> = <span class="ruby-identifier">req</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:@ssl_context</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">use_ssl?</span>
+  <span class="ruby-identifier">ctx</span>.<span class="ruby-identifier">verify_mode</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_NONE</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ctx</span>
+
+  <span class="ruby-identifier">res</span> = <span class="ruby-keyword">yield</span> <span class="ruby-identifier">req</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">request_uri</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPRedirection</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">steps</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+
+  <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">res</span>[<span class="ruby-string">'Location'</span>], <span class="ruby-identifier">steps</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">cache</span>) { <span class="ruby-operator">|</span>*<span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(*<span class="ruby-identifier">a</span>) }
+<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">SocketError</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTUNREACH</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- byte_count-source -->
+          </div><!-- follow_redirect-source -->
           
         </div>
 
         
-        <div class="aliases">
-          Also aliased as: <a href="WcMixin.html#method-i-wc_c">wc_c</a>
-        </div>
-        
 
         
-      </div><!-- byte_count-method -->
+      </div><!-- follow_redirect-method -->
 
     
-      <div id="method-i-char_count" class="method-detail ">
+      <div id="method-i-get_redirect" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            char_count &rarr; anInteger
+            get_redirect(uri[, steps]) &rarr; aResponse or +nil+
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
+        <div class="method-heading">
+          <span class="method-callseq">
+            get_redirect(uri[, steps]) { |res| ... } &rarr; anObject or +nil+
+          </span>
+          
+        </div>
+        
         
 
         <div class="method-description">
           
-          <p>Count number of characters in <em>str</em>.</p>
+          <p>Performs a <code>GET</code> request on <code>uri</code> while following at
+most <code>steps</code> redirects. If successful, yields the response to
+the given block and returns its return value, or the response itself if no
+block was given. Returns <code>nil</code> in case of failure.</p>
+
+<p>See <a
+href="RedirectMixin.html#method-i-follow_redirect">#follow_redirect</a> for
+more information.</p>
           
 
           
-          <div class="method-source-code" id="char_count-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 71</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">char_count</span>
-  <span class="ruby-identifier">count_by_re</span>(<span class="ruby-regexp">/./</span><span class="ruby-identifier">m</span>)
+          <div class="method-source-code" id="get_redirect-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">path</span>) }
+  <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- char_count-source -->
+          </div><!-- get_redirect-source -->
           
         </div>
 
         
-        <div class="aliases">
-          Also aliased as: <a href="WcMixin.html#method-i-wc_m">wc_m</a>
-        </div>
-        
 
         
-      </div><!-- char_count-method -->
+      </div><!-- get_redirect-method -->
 
     
-      <div id="method-i-count_by_re" class="method-detail ">
+      <div id="method-i-head_redirect" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            count_by_re(re) &rarr; anInteger
+            head_redirect(uri[, steps]) &rarr; aResponse or +nil+
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
-
-        <div class="method-description">
-          
-          <p>Count number of occurrences of <code>re</code> in <em>str</em>.</p>
-          
-
-          
-          <div class="method-source-code" id="count_by_re-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 80</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">count_by_re</span>(<span class="ruby-identifier">re</span>)
-  <span class="ruby-identifier">scan</span>(<span class="ruby-identifier">re</span>).<span class="ruby-identifier">size</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- count_by_re-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- count_by_re-method -->
-
-    
-      <div id="method-i-count_by_re2" class="method-detail ">
-        
-        
         <div class="method-heading">
           <span class="method-callseq">
-            count_by_re2(re) &rarr; anInteger
+            head_redirect(uri[, steps]) { |res| ... } &rarr; anObject or +nil+
           </span>
           
-          <span class="method-click-advice">click to toggle source</span>
-          
         </div>
         
         
 
         <div class="method-description">
           
-          <p>A more memory-efficient version of <a
-href="WcMixin.html#method-i-count_by_re">#count_by_re</a>.</p>
+          <p>Performs a <code>HEAD</code> request on <code>uri</code> while following at
+most <code>steps</code> redirects. If successful, yields the response to
+the given block and returns its return value, or the response itself if no
+block was given. Returns <code>nil</code> in case of failure.</p>
+
+<p>See <a
+href="RedirectMixin.html#method-i-follow_redirect">#follow_redirect</a> for
+more information.</p>
           
 
           
-          <div class="method-source-code" id="count_by_re2-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 88</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">count_by_re2</span>(<span class="ruby-identifier">re</span>)
-  <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
-  <span class="ruby-identifier">scan</span>(<span class="ruby-identifier">re</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span><span class="ruby-operator">|</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
-  <span class="ruby-identifier">count</span>
+          <div class="method-source-code" id="head_redirect-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">head_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">head</span>(<span class="ruby-identifier">path</span>) }
+  <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- count_by_re2-source -->
+          </div><!-- head_redirect-source -->
           
         </div>
 
         
 
         
-      </div><!-- count_by_re2-method -->
-
-    
-      <div id="method-i-line_count" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            line_count &rarr; anInteger
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Count number of lines in <em>str</em>.</p>
-          
-
-          
-          <div class="method-source-code" id="line_count-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">line_count</span>
-  <span class="ruby-identifier">count_by_re</span>(<span class="ruby-node">/#{$/}/</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- line_count-source -->
-          
-        </div>
-
-        
-        <div class="aliases">
-          Also aliased as: <a href="WcMixin.html#method-i-wc_l">wc_l</a>
-        </div>
-        
-
-        
-      </div><!-- line_count-method -->
-
-    
-      <div id="method-i-wc" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            wc &rarr; anArray
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Count number of lines, words, and bytes in <em>str</em>.</p>
-          
-
-          
-          <div class="method-source-code" id="wc-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">wc</span>
-  [<span class="ruby-identifier">wc_l</span>, <span class="ruby-identifier">wc_w</span>, <span class="ruby-identifier">wc_c</span>]
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- wc-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- wc-method -->
-
-    
-      <div id="method-i-wc_c" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">wc_c</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="WcMixin.html#method-i-byte_count">byte_count</a>
-        </div>
-        
-      </div><!-- wc_c-method -->
-
-    
-      <div id="method-i-wc_l" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">wc_l</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="WcMixin.html#method-i-line_count">line_count</a>
-        </div>
-        
-      </div><!-- wc_l-method -->
-
-    
-      <div id="method-i-wc_m" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">wc_m</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="WcMixin.html#method-i-char_count">char_count</a>
-        </div>
-        
-      </div><!-- wc_m-method -->
-
-    
-      <div id="method-i-wc_w" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">wc_w</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="WcMixin.html#method-i-word_count">word_count</a>
-        </div>
-        
-      </div><!-- wc_w-method -->
-
-    
-      <div id="method-i-word_count" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            word_count &rarr; anInteger
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Count number of words in <em>str</em>.</p>
-          
-
-          
-          <div class="method-source-code" id="word_count-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">word_count</span>
-  <span class="ruby-identifier">count_by_re</span>(<span class="ruby-regexp">/\S+/</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- word_count-source -->
-          
-        </div>
-
-        
-        <div class="aliases">
-          Also aliased as: <a href="WcMixin.html#method-i-wc_w">wc_w</a>
-        </div>
-        
-
-        
-      </div><!-- word_count-method -->
+      </div><!-- head_redirect-method -->
 
     
     </section><!-- public-instance-method-details -->

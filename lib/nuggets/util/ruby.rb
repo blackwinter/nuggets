@@ -315,12 +315,12 @@ module Util
 
 end
 
-def ::File.ruby; ::Util::Ruby.ruby_command; end
+def File.ruby; ::Util::Ruby.ruby_command; end
 
 begin
   require 'open4'
 
-  def ::Process.ruby(*args)
+  def Process.ruby(*args)
     argv = ::Util::Ruby.ruby_options_to_argv(args, ::File.ruby)
     ::Open4.popen4(*argv, &block_given? ? ::Proc.new : nil)
   end

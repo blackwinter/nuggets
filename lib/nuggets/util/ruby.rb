@@ -324,5 +324,14 @@ begin
     argv = ::Util::Ruby.ruby_options_to_argv(args, ::File.ruby)
     ::Open4.popen4(*argv, &block_given? ? ::Proc.new : nil)
   end
+
+  require 'nuggets/io/interact'
+
+  def Process.interact_ruby(input, *args)
+    ruby(*args) { |p, i, o, e|
+      ::IO.interact({ input => i }, { o => $stdout, e => $stderr })
+      p
+    }
+  end
 rescue ::LoadError
 end

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Module: Nuggets::IO::InteractMixin</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/nuggets/io/interact_mixin.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-interact">#interact</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Nuggets.html">Nuggets</a>
+  
+    <li><a href="../../Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="../../Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="../../Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="../../Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="../../Nuggets/IO/InteractMixin.html">Nuggets::IO::InteractMixin</a>
+  
+    <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="../../Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="../../Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="../../Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="../../Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="../../Nuggets/URI/RedirectMixin.html">Nuggets::URI::RedirectMixin</a>
+  
+    <li><a href="../../Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="../../Net.html">Net</a>
+  
+    <li><a href="../../Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="../../Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="../../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="../../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="../../Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="../../Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="../../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="../../Util.html">Util</a>
+  
+    <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../../Util/Ruby.html">Util::Ruby</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="../../String.html">String</a>
+  
+    <li><a href="../../String/Case.html">String::Case</a>
+  
+    <li><a href="../../Array.html">Array</a>
+  
+    <li><a href="../../Enumerable.html">Enumerable</a>
+  
+    <li><a href="../../File.html">File</a>
+  
+    <li><a href="../../Hash.html">Hash</a>
+  
+    <li><a href="../../IO.html">IO</a>
+  
+    <li><a href="../../Integer.html">Integer</a>
+  
+    <li><a href="../../Numeric.html">Numeric</a>
+  
+    <li><a href="../../Proc.html">Proc</a>
+  
+    <li><a href="../../Process.html">Process</a>
+  
+    <li><a href="../../Range.html">Range</a>
+  
+    <li><a href="../../Tempfile.html">Tempfile</a>
+  
+    <li><a href="../../URI.html">URI</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Nuggets::IO::InteractMixin</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-interact" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            interact(input, output[, timeout[, maxlen]]) &rarr; anArray | nil
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Interact with both ends of a pipe in a non-blocking manner.</p>
+
+<p><code>input</code> represents the sending end and is a mapping from the
+actual input <a href="../IO.html">IO</a> (to send into the pipe) to the
+pipe’s input handle (<em>stdin</em>). The input <a
+href="../IO.html">IO</a> must support <code>read_nonblock</code>. If it’s
+a StringIO it will be extended appropriately. If it’s a <a
+href="../String.html">String</a> it will be converted to a StringIO.</p>
+
+<p><code>output</code> represents the receiving end and is a mapping from the
+pipe’s output handle (<em>stdout</em>) to the designated output <a
+href="../IO.html">IO</a> (to receive data from the pipe), and, optionally,
+from the pipe’s error handle (<em>stderr</em>) to the designated error <a
+href="../IO.html">IO</a>. The output and error <a href="../IO.html">IO</a>
+must support <code>&lt;&lt;</code> with a string argument. If either of
+them is a <a href="../Proc.html">Proc</a> it will be extended such that
+<code>&lt;&lt;</code> delegates to <code>call</code>.</p>
+
+<p><code>timeout</code>, if given, will be passed to IO::select and
+<code>nil</code> is returned if the select call times out; in all other
+cases an empty array is returned.</p>
+
+<p><code>maxlen</code> is the chunk size for <code>read_nonblock</code>.</p>
+
+<p>Examples:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'open3'</span>
+
+<span class="ruby-comment"># simply prints 'input string' on STDOUT, ignores +stderr+</span>
+<span class="ruby-constant">Open3</span>.<span class="ruby-identifier">popen3</span>(<span class="ruby-string">'cat'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span><span class="ruby-operator">|</span>
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-string">&quot;input string\n&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">STDOUT</span> })
+}
+
+<span class="ruby-comment"># prints lines you type in reverse order to a string</span>
+<span class="ruby-identifier">str</span> = <span class="ruby-string">''</span>
+<span class="ruby-constant">Open3</span>.<span class="ruby-identifier">popen3</span>(<span class="ruby-string">'tac'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span><span class="ruby-operator">|</span>
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-constant">STDIN</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">str</span> })
+}
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">str</span>
+
+<span class="ruby-comment"># prints the IP adresses from /etc/hosts on STDOUT and their lengths</span>
+<span class="ruby-comment"># on STDERR</span>
+<span class="ruby-identifier">cmd</span> = <span class="ruby-string">%q{ruby -ne 'i = $_.split.first or next; warn i.length; puts i'}</span>
+<span class="ruby-constant">Open3</span>.<span class="ruby-identifier">popen3</span>(<span class="ruby-identifier">cmd</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span><span class="ruby-operator">|</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">'/etc/hosts'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-identifier">f</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">STDERR</span> })
+  }
+}
+</pre>
+          
+
+          
+          <div class="method-source-code" id="interact-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/io/interact_mixin.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">interact</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">maxlen</span> = <span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">16</span>)
+  <span class="ruby-identifier">readers</span>, <span class="ruby-identifier">writers</span> = {}, {}
+
+  <span class="ruby-identifier">output</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:&lt;&lt;</span>)
+      <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>; <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:&lt;&lt;</span>, <span class="ruby-value">:call</span>; <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">readers</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>
+  }
+
+  <span class="ruby-identifier">input</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
+      <span class="ruby-identifier">require</span> <span class="ruby-string">'stringio'</span>
+      <span class="ruby-identifier">key</span> = <span class="ruby-operator">::</span><span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:read_nonblock</span>)
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">read_nonblock</span>(*<span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">read</span>(*<span class="ruby-identifier">args</span>) <span class="ruby-keyword">or</span> <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">EOFError</span>, <span class="ruby-string">'end of string reached'</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">writers</span>[<span class="ruby-identifier">val</span>] = [<span class="ruby-identifier">key</span>, <span class="ruby-string">''</span>]
+  }
+
+  <span class="ruby-identifier">close</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span>*<span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">container</span>, <span class="ruby-identifier">item</span>, <span class="ruby-identifier">read</span> = <span class="ruby-identifier">args</span>
+
+    <span class="ruby-identifier">container</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">item</span>)
+    <span class="ruby-identifier">read</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">close_read</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">close_write</span>
+  }
+
+  <span class="ruby-identifier">read</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span>*<span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">writer</span> = <span class="ruby-identifier">args</span>
+
+    <span class="ruby-identifier">container</span> = <span class="ruby-identifier">writer</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">writers</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">readers</span>
+    <span class="ruby-identifier">buffer</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">container</span>[<span class="ruby-identifier">reader</span>]
+
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">read_nonblock</span>(<span class="ruby-identifier">maxlen</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EAGAIN</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">EOFError</span>
+      <span class="ruby-identifier">close</span>[<span class="ruby-identifier">container</span>, <span class="ruby-identifier">writer</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">reader</span>, <span class="ruby-operator">!</span><span class="ruby-identifier">writer</span>]
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-keyword">until</span> <span class="ruby-identifier">readers</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">writers</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">fhs</span> = <span class="ruby-identifier">select</span>(<span class="ruby-identifier">readers</span>.<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">writers</span>.<span class="ruby-identifier">keys</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">timeout</span>) <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
+
+    <span class="ruby-identifier">fhs</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">reader</span><span class="ruby-operator">|</span> <span class="ruby-identifier">read</span>[<span class="ruby-identifier">reader</span>] }
+
+    <span class="ruby-identifier">fhs</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">writer</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">writers</span>[<span class="ruby-identifier">writer</span>]
+      <span class="ruby-identifier">read</span>[<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">writer</span>] <span class="ruby-keyword">or</span> <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">empty?</span>
+
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">written</span> = <span class="ruby-identifier">writer</span>.<span class="ruby-identifier">write_nonblock</span>(<span class="ruby-identifier">buffer</span>)
+      <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EPIPE</span>
+        <span class="ruby-identifier">close</span>[<span class="ruby-identifier">writers</span>, <span class="ruby-identifier">writer</span>]
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">written</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">written</span>
+    }
+  <span class="ruby-keyword">end</span>
+
+  []
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- interact-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- interact-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

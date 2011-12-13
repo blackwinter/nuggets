@@ -3,8 +3,8 @@ module Nuggets
   module Version
 
     MAJOR = 0
-    MINOR = 7
-    TINY  = 9
+    MINOR = 8
+    TINY  = 0
 
     class << self
 

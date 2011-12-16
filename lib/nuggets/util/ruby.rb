@@ -321,7 +321,7 @@ begin
   require 'open4'
 
   def Process.ruby(*args)
-    argv = ::Util::Ruby.ruby_options_to_argv(args, ::File.ruby)
+    argv = ::Util::Ruby.ruby_options_to_argv(args)
     ::Open4.popen4(*argv, &block_given? ? ::Proc.new : nil)
   end
 

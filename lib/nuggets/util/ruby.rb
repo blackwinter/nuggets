@@ -97,6 +97,8 @@ module Util
             'Please fix your RVM installation or contact the RVM developers for support.'
     end
 
+    attr_writer :ruby_command
+
     # Returns the full path to the current Ruby interpreter's executable file.
     # This might not be the actual correct command to use for invoking the Ruby
     # interpreter; use ruby_command instead.
@@ -106,6 +108,8 @@ module Util
         ::File.join(dir, name + ext).sub(/.*\s.*/m, '"\&"')
       end
     end
+
+    attr_writer :ruby_executable
 
     # Returns whether the Ruby interpreter supports process forking.
     def ruby_supports_fork?
@@ -141,6 +145,8 @@ module Util
       abort 'Unable to locate the RVM path. Your RVM ' <<
             'installation is probably too old. ' << UPDATE_RVM
     end
+
+    attr_writer :rvm_path
 
     # If the current Ruby interpreter is managed by RVM, returns the
     # RVM name which identifies the current Ruby interpreter plus the
@@ -178,6 +184,8 @@ module Util
       abort 'Unable to autodetect the currently active RVM gem set ' <<
             "name. Please contact this program's author for support."
     end
+
+    attr_writer :rvm_ruby_string
 
     # Returns either 'sudo' or 'rvmsudo' depending on whether the current
     # Ruby interpreter is managed by RVM.
@@ -234,9 +242,13 @@ module Util
           @#{name} ||= locate_ruby_tool('#{name}')
         end
 
+        attr_writer :#{name}
+
         def #{name}_command
           @#{name}_command ||= command_for_ruby_tool('#{name}')
         end
+
+        attr_writer :#{name}_command
       EOT
     }
 

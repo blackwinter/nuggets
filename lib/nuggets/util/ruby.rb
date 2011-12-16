@@ -328,9 +328,8 @@ begin
   require 'nuggets/io/interact'
 
   def Process.interact_ruby(input, *args)
-    ruby(*args) { |p, i, o, e|
+    ruby(*args) { |_, i, o, e|
       ::IO.interact({ input => i }, { o => $stdout, e => $stderr })
-      p
     }
   end
 rescue ::LoadError

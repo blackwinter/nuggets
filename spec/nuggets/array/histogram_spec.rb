@@ -67,7 +67,7 @@ describe Array, 'when extended by', Nuggets::Array::HistogramMixin do
   end
 
   example do
-    [1, -2, 1, 2, 3, -4, 0, 3, 1, 2, 1, 0, 24].probability_mass_function.values.inject(:+).should == 1.0
+    [1, -2, 1, 2, 3, -4, 0, 3, 1, 2, 1, 0, 24].probability_mass_function.values.inject(:+).should equal_float(1.0)
   end
 
   example do

@@ -61,7 +61,7 @@ module Util
           return mod.const_get(const) if mod.const_defined?(const)
         }
 
-        raise NameError, "uninitialized constant #{self}::#{const}"
+        raise ::NameError, "uninitialized constant #{self}::#{const}"
       end
 
     end
@@ -162,7 +162,7 @@ module Util
     end
 
     def merge_config(args = [config, defaults])
-      args.each { |hash| hash.each { |key, value|
+      args.each { |hash| hash && hash.each { |key, value|
         options[key] = value unless options.has_key?(key)
       } }
     end

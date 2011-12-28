@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>Class: Numeric</title>
+<title>class Numeric - ruby-nuggets Application documentation (v0.8.1)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -267,6 +267,8 @@
     <li><a href="./Util/ContentType.html">Util::ContentType</a>
   
     <li><a href="./Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="./Util/Pluggable.html">Util::Pluggable</a>
   
     <li><a href="./Util/Ruby.html">Util::Ruby</a>
   
@@ -882,7 +884,7 @@ to <em>num</em>.</p>
         <div class="method-description">
           
           <p>Produces a stringified version of <em>num</em>’s time portions (cf. <a
-href="Numeric.html#method-i-hms">#hms</a>), with the specified
+href="Numeric.html#method-i-hms">hms</a>), with the specified
 <code>precision</code> for the seconds (treated as floating point). The
 individual parts are labelled as specified in the <code>labels</code>
 parameter (hours, minutes, seconds in that order). Leading parts with a
@@ -894,14 +896,14 @@ value of zero are omitted.</p>
 <span class="ruby-value">180.75</span>.<span class="ruby-identifier">to_hms</span>            <span class="ruby-comment">#=&gt; &quot;3m1s&quot;</span>
 <span class="ruby-value">180.75</span>.<span class="ruby-identifier">to_hms</span>(<span class="ruby-value">2</span>)         <span class="ruby-comment">#=&gt; &quot;3m0.75s&quot;</span>
 <span class="ruby-value">8180</span>.<span class="ruby-identifier">to_hms</span>              <span class="ruby-comment">#=&gt; &quot;2h16m20s&quot;</span>
-<span class="ruby-value">8180</span>.<span class="ruby-identifier">to_hms</span>(<span class="ruby-value">0</span>, <span class="ruby-node">]: :]</span>)  <span class="ruby-comment">#=&gt; &quot;2:16:20&quot;</span>
+<span class="ruby-value">8180</span>.<span class="ruby-identifier">to_hms</span>(<span class="ruby-value">0</span>, <span class="ruby-node">%w[: :]</span>)  <span class="ruby-comment">#=&gt; &quot;2:16:20&quot;</span>
 </pre>
           
 
           
           <div class="method-source-code" id="to_hms-source">
             <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 75</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hms</span>(<span class="ruby-identifier">precision</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">labels</span> = <span class="ruby-node">]h m s]</span>, <span class="ruby-identifier">time</span> = <span class="ruby-identifier">hms</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hms</span>(<span class="ruby-identifier">precision</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">labels</span> = <span class="ruby-node">%w[h m s]</span>, <span class="ruby-identifier">time</span> = <span class="ruby-identifier">hms</span>)
   <span class="ruby-identifier">h</span>, <span class="ruby-identifier">m</span>, <span class="ruby-identifier">s</span> = <span class="ruby-identifier">time</span>
 
   <span class="ruby-identifier">h</span>.<span class="ruby-identifier">zero?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">zero?</span> <span class="ruby-operator">?</span>
@@ -972,16 +974,16 @@ value of zero are omitted.</p>
         <div class="method-description">
           
           <p>Produces a stringified version of <em>num</em>’s date portions (cf. <a
-href="Numeric.html#method-i-ymd">#ymd</a>), analogous to <a
-href="Numeric.html#method-i-to_hms">#to_hms</a>. Includes time portions
-(cf. <a href="Numeric.html#method-i-hms">#hms</a>) if
-<code>include_hms</code> is <code>true</code>.</p>
+href="Numeric.html#method-i-ymd">ymd</a>), analogous to <a
+href="Numeric.html#method-i-to_hms">to_hms</a>. Includes time portions (cf.
+<a href="Numeric.html#method-i-hms">hms</a>) if <code>include_hms</code> is
+<code>true</code>.</p>
           
 
           
           <div class="method-source-code" id="to_ymd-source">
             <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 90</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_ymd</span>(<span class="ruby-identifier">include_hms</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">labels</span> = <span class="ruby-node">]y m d]</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_ymd</span>(<span class="ruby-identifier">include_hms</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">labels</span> = <span class="ruby-node">%w[y m d]</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">include_hms</span>
     <span class="ruby-identifier">to_hms</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">labels</span>, <span class="ruby-identifier">ymd</span>)
   <span class="ruby-keyword">else</span>
@@ -1054,7 +1056,7 @@ href="Numeric.html#method-i-to_hms">#to_hms</a>. Includes time portions
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

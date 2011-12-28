@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>Module: Util::Ruby</title>
+<title>module Util::Ruby - ruby-nuggets Application documentation (v0.8.1)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -243,6 +243,8 @@
   
     <li><a href="../Util/I18n.html">Util::I18n</a>
   
+    <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
+  
     <li><a href="../Util/Ruby.html">Util::Ruby</a>
   
     <li><a href="../Object.html">Object</a>
@@ -333,6 +335,65 @@ code</a>.</p>
     
 
     
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-ruby_command" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ruby_command</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-ruby_executable" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ruby_executable</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-rvm_path" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">rvm_path</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-rvm_ruby_string" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">rvm_ruby_string</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
 
     <!-- Methods -->
     
@@ -367,10 +428,10 @@ wrapper script as is the case with e.g. RVM (~/.rvm/wrappers).</p>
 
           
           <div class="method-source-code" id="command_for_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 226</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 234</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">command_for_ruby_tool</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">=~</span> <span class="ruby-regexp">/ruby/</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{ruby_command} #{filename}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">filename</span>
+  <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">=~</span> <span class="ruby-regexp">%rruby/</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{ruby_command} #{filename}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">filename</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- command_for_ruby_tool-source -->
           
@@ -411,7 +472,7 @@ for that.</p>
 
           
           <div class="method-source-code" id="locate_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 198</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 206</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">extensions</span> = [<span class="ruby-string">''</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'EXEEXT'</span>]].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>
 
@@ -510,11 +571,11 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="ruby_executable-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 103</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_executable</span>
   <span class="ruby-ivar">@ruby_executable</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
-    <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-constant">CONFIG</span>.<span class="ruby-identifier">values_at</span>(*<span class="ruby-node">]bindir RUBY_INSTALL_NAME EXEEXT]</span>)
-    <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ext</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/.*\s.*/</span>, <span class="ruby-string">'&quot;\&amp;&quot;'</span>)
+    <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-constant">CONFIG</span>.<span class="ruby-identifier">values_at</span>(*<span class="ruby-node">%w[bindir RUBY_INSTALL_NAME EXEEXT]</span>)
+    <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ext</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">%r.*\s.*/</span>, <span class="ruby-string">'&quot;\&amp;&quot;'</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- ruby_executable-source -->
@@ -543,7 +604,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="ruby_options_to_argv-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 243</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 255</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">ruby_command</span> = <span class="ruby-identifier">ruby_command</span>)
   <span class="ruby-identifier">argv</span> = [<span class="ruby-identifier">ruby_command</span>]
 
@@ -592,7 +653,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="ruby_sudo_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 184</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 192</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_sudo_command</span>
   <span class="ruby-node">&quot;#{'rvm' if rvm?}sudo&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -623,14 +684,14 @@ process forking.</p>
 
           
           <div class="method-source-code" id="ruby_supports_fork-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_supports_fork?</span>
   <span class="ruby-comment"># MRI &gt;= 1.9.2's respond_to? returns false</span>
   <span class="ruby-comment"># for methods that are not implemented.</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">Process</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:fork</span>) <span class="ruby-operator">&amp;&amp;</span>
   <span class="ruby-constant">RUBY_ENGINE</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'jruby'</span>     <span class="ruby-operator">&amp;&amp;</span>
   <span class="ruby-constant">RUBY_ENGINE</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'macruby'</span>   <span class="ruby-operator">&amp;&amp;</span>
-  <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'target_os'</span>] <span class="ruby-operator">!~</span> <span class="ruby-regexp">/mswin|windows|mingw/</span>
+  <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'target_os'</span>] <span class="ruby-operator">!~</span> <span class="ruby-regexp">%rmswin|windows|mingw/</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- ruby_supports_fork-3F-source -->
           
@@ -659,7 +720,7 @@ managed by RVM.</p>
 
           
           <div class="method-source-code" id="rvm-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 121</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">rvm?</span>
   <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">'bindir'</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">%r{/\.?rvm/}</span>
 <span class="ruby-keyword">end</span></pre>
@@ -691,7 +752,7 @@ returns <code>nil</code>.</p>
 
           
           <div class="method-source-code" id="rvm_path-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 128</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">rvm_path</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_path</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@rvm_path</span>)
 
@@ -739,7 +800,7 @@ e.g. something like this: “mygemset at ruby-1.9.2-p0”</p>
 
           
           <div class="method-source-code" id="rvm_ruby_string-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 151</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 157</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">rvm_ruby_string</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rvm_ruby_string</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@rvm_ruby_string</span>)
 
@@ -802,9 +863,9 @@ e.g. something like this: “mygemset at ruby-1.9.2-p0”</p>
 
           
           <div class="method-source-code" id="locate_ruby_tool_by_basename-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 267</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 279</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">dir</span> = <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/darwin/</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ruby_command</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OSX_RUBY_RE</span>
+  <span class="ruby-identifier">dir</span> = <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%rdarwin/</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ruby_command</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OSX_RUBY_RE</span>
     <span class="ruby-comment"># On OS X we must look for Ruby binaries in /usr/bin.</span>
     <span class="ruby-comment"># RubyGems puts executables (e.g. 'rake') in there, not in</span>
     <span class="ruby-comment"># /System/Libraries/(...)/bin.</span>
@@ -866,10 +927,10 @@ e.g. something like this: “mygemset at ruby-1.9.2-p0”</p>
 
           
           <div class="method-source-code" id="shebang_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 305</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/ruby.rb, line 317</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">filename</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/\A#!\s*(\S*)/</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-node">%r\A#!\s*(\S*)/</span>
 
     <span class="ruby-comment"># Allow one extra line for magic comment.</span>
     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$.</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
@@ -894,7 +955,7 @@ e.g. something like this: “mygemset at ruby-1.9.2-p0”</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

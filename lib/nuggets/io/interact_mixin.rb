@@ -119,6 +119,13 @@ module Nuggets
         buffer << reader.read_nonblock(maxlen)
       rescue ::Errno::EAGAIN
       rescue ::EOFError
+        buffer.force_encoding(
+          reader.internal_encoding  ||
+          reader.external_encoding  ||
+          Encoding.default_internal ||
+          Encoding.default_external
+        ) if buffer.respond_to?(:force_encoding)
+
         close[container, writer || reader, !writer]
       end
     }
@@ -133,12 +140,15 @@ module Nuggets
         read[reader, buffer, writer] or next if buffer.empty?
 
         begin
-          written = writer.write_nonblock(buffer)
+          bytes = writer.write_nonblock(buffer)
         rescue ::Errno::EPIPE
           close[writers, writer]
         end
 
-        buffer.slice!(0, written) if written
+        if bytes
+          buffer.force_encoding('BINARY') if buffer.respond_to?(:force_encoding)
+          buffer.slice!(0, bytes)
+        end
       }
     end
 

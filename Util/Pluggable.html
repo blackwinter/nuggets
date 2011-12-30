@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Util::Pluggable - ruby-nuggets Application documentation (v0.8.1)</title>
+<title>module Util::Pluggable - ruby-nuggets Application documentation (v0.8.2)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -64,17 +64,23 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-c-extended">::extended</a>
-    
     <li><a href="#method-c-load_plugins_for">::load_plugins_for</a>
     
     <li><a href="#method-i-load_env_plugins">#load_env_plugins</a>
     
     <li><a href="#method-i-load_gem_plugins">#load_gem_plugins</a>
     
+    <li><a href="#method-i-load_path_plugins">#load_path_plugins</a>
+    
+    <li><a href="#method-i-load_plugin_file">#load_plugin_file</a>
+    
     <li><a href="#method-i-load_plugin_files">#load_plugin_files</a>
     
     <li><a href="#method-i-load_plugins">#load_plugins</a>
+    
+    <li><a href="#method-i-loaded_plugins">#loaded_plugins</a>
+    
+    <li><a href="#method-i-plugin_filename">#plugin_filename</a>
     
   </ul>
 </nav>
@@ -299,7 +305,7 @@
       <div id="attribute-i-plugin_filename" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">plugin_filename</span><span
-            class="attribute-access-type">[RW]</span>
+            class="attribute-access-type">[W]</span>
         </div>
 
         <div class="method-description">
@@ -316,39 +322,6 @@
     
      <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-extended" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">extended</span><span
-            class="method-args">(base)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="extended-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">extended</span>(<span class="ruby-identifier">base</span>)
-  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">plugin_filename</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{base.name.
-    gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
-    gsub(/([a-z\d])([A-Z])/,     '\1_\2').
-    gsub(/::/, '/').tr('-', '_').downcase}_plugin.rb&quot;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- extended-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- extended-method -->
 
     
       <div id="method-c-load_plugins_for" class="method-detail ">
@@ -368,7 +341,7 @@
           
           <div class="method-source-code" id="load_plugins_for-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugins_for</span>(*<span class="ruby-identifier">klasses</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_plugins_for</span>(*<span class="ruby-identifier">klasses</span>)
   <span class="ruby-identifier">klasses</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">load_plugins</span> }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- load_plugins_for-source -->
@@ -391,7 +364,7 @@
         
         <div class="method-heading">
           <span class="method-name">load_plugins</span><span
-            class="method-args">()</span>
+            class="method-args">(name = plugin_filename)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -403,12 +376,13 @@
 
           
           <div class="method-source-code" id="load_plugins-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 49</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugins</span>
-  <span class="ruby-identifier">plugins</span>, <span class="ruby-identifier">name</span> = [], <span class="ruby-identifier">plugin_filename</span>
-  <span class="ruby-identifier">plugins</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">load_env_plugins</span>(<span class="ruby-identifier">name</span>))
-  <span class="ruby-identifier">plugins</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">load_gem_plugins</span>(<span class="ruby-identifier">name</span>)) <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Gem</span>)
-  <span class="ruby-identifier">plugins</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugins</span>(<span class="ruby-identifier">name</span> = <span class="ruby-identifier">plugin_filename</span>)
+  <span class="ruby-identifier">load_path_plugins</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">load_gem_plugins</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">load_env_plugins</span>(<span class="ruby-identifier">name</span>)
+
+  <span class="ruby-identifier">loaded_plugins</span>.<span class="ruby-identifier">to_a</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- load_plugins-source -->
           
@@ -418,6 +392,69 @@
 
         
       </div><!-- load_plugins-method -->
+
+    
+      <div id="method-i-loaded_plugins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">loaded_plugins</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="loaded_plugins-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">loaded_plugins</span>
+  <span class="ruby-ivar">@loaded_plugins</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- loaded_plugins-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- loaded_plugins-method -->
+
+    
+      <div id="method-i-plugin_filename" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">plugin_filename</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="plugin_filename-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">plugin_filename</span>
+  <span class="ruby-ivar">@plugin_filename</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{name.
+    gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
+    gsub(/([a-z\d])([A-Z])/,     '\1_\2').
+    gsub(/::/, '/').tr('-', '_').downcase}_plugin.rb&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- plugin_filename-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- plugin_filename-method -->
 
     
     </section><!-- public-instance-method-details -->
@@ -442,12 +479,12 @@
 
           
           <div class="method-source-code" id="load_env_plugins-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 58</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">load_env_plugins</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">plugin</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">path</span>)
-    <span class="ruby-identifier">plugin</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">plugin</span>)
-  }.<span class="ruby-identifier">compact</span>)
+  <span class="ruby-identifier">path</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{name.chomp(ext = ::File.extname(name)).upcase}_PATH&quot;</span>]
+  <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{dir}/*#{ext}&quot;</span>])
+  } <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- load_env_plugins-source -->
           
@@ -475,11 +512,11 @@
 
           
           <div class="method-source-code" id="load_gem_plugins-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 65</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">load_gem_plugins</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Specification</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">matches_for_glob</span>(<span class="ruby-identifier">name</span>)
-  }.<span class="ruby-identifier">flatten</span>)
+  <span class="ruby-operator">::</span><span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Specification</span>.<span class="ruby-identifier">latest_specs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-identifier">spec</span>.<span class="ruby-identifier">matches_for_glob</span>(<span class="ruby-identifier">name</span>))
+  } <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">Object</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:Gem</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- load_gem_plugins-source -->
           
@@ -489,6 +526,72 @@
 
         
       </div><!-- load_gem_plugins-method -->
+
+    
+      <div id="method-i-load_path_plugins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_path_plugins</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="load_path_plugins-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_path_plugins</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">plugin</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">path</span>)
+    <span class="ruby-identifier">load_plugin_file</span>(<span class="ruby-identifier">plugin</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">plugin</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- load_path_plugins-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- load_path_plugins-method -->
+
+    
+      <div id="method-i-load_plugin_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_plugin_file</span><span
+            class="method-args">(plugin)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="load_plugin_file-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugin_file</span>(<span class="ruby-identifier">plugin</span>)
+  <span class="ruby-identifier">load</span> <span class="ruby-identifier">plugin</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">loaded_plugins</span>.<span class="ruby-identifier">add?</span>(<span class="ruby-identifier">plugin</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loaded_plugins</span>.<span class="ruby-identifier">delete?</span>(<span class="ruby-identifier">plugin</span>)
+  <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Error loading #{name} plugin: #{plugin}: #{err} (#{err.class})&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- load_plugin_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- load_plugin_file-method -->
 
     
       <div id="method-i-load_plugin_files" class="method-detail ">
@@ -507,15 +610,9 @@
 
           
           <div class="method-source-code" id="load_plugin_files-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-identifier">plugins</span>)
-  <span class="ruby-identifier">plugins</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">plugin</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">begin</span>
-      <span class="ruby-identifier">load</span> <span class="ruby-identifier">plugin</span>
-    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
-      <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Error loading #{name} plugin: #{plugin}: #{err} (#{err.class})&quot;</span>
-    <span class="ruby-keyword">end</span>
-  }
+  <span class="ruby-identifier">plugins</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">plugin</span><span class="ruby-operator">|</span> <span class="ruby-identifier">load_plugin_file</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">plugin</span>)) }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- load_plugin_files-source -->
           

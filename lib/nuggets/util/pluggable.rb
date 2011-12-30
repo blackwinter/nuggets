@@ -25,57 +25,68 @@
 ###############################################################################
 #++
 
+require 'set'
+
 module Util
 
   module Pluggable
 
-    class << self
-
-      def load_plugins_for(*klasses)
-        klasses.map { |klass| klass.extend(self).load_plugins }
-      end
-
-      def extended(base)
-        base.plugin_filename ||= "#{base.name.
-          gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
-          gsub(/([a-z\d])([A-Z])/,     '\1_\2').
-          gsub(/::/, '/').tr('-', '_').downcase}_plugin.rb"
-      end
-
+    def self.load_plugins_for(*klasses)
+      klasses.map { |klass| klass.extend(self).load_plugins }
     end
 
-    attr_accessor :plugin_filename
+    def load_plugins(name = plugin_filename)
+      load_path_plugins(name)
+      load_gem_plugins(name)
+      load_env_plugins(name)
 
-    def load_plugins
-      plugins, name = [], plugin_filename
-      plugins.concat(load_env_plugins(name))
-      plugins.concat(load_gem_plugins(name)) if defined?(::Gem)
-      plugins
+      loaded_plugins.to_a
     end
+
+    def loaded_plugins
+      @loaded_plugins ||= Set.new
+    end
+
+    def plugin_filename
+      @plugin_filename ||= "#{name.
+        gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
+        gsub(/([a-z\d])([A-Z])/,     '\1_\2').
+        gsub(/::/, '/').tr('-', '_').downcase}_plugin.rb"
+    end
+
+    attr_writer :plugin_filename
 
     private
 
-    def load_env_plugins(name)
-      load_plugin_files($LOAD_PATH.map { |path|
+    def load_path_plugins(name)
+      $LOAD_PATH.dup.each { |path|
         plugin = ::File.expand_path(name, path)
-        plugin if ::File.file?(plugin)
-      }.compact)
+        load_plugin_file(plugin) if ::File.file?(plugin)
+      }
     end
 
     def load_gem_plugins(name)
-      load_plugin_files(::Gem::Specification.map { |spec|
-        spec.matches_for_glob(name)
-      }.flatten)
+      ::Gem::Specification.latest_specs.each { |spec|
+        load_plugin_files(spec.matches_for_glob(name))
+      } if ::Object.const_defined?(:Gem)
+    end
+
+    def load_env_plugins(name)
+      path = ::ENV["#{name.chomp(ext = ::File.extname(name)).upcase}_PATH"]
+      path.split(::File::PATH_SEPARATOR).each { |dir|
+        load_plugin_files(::Dir["#{dir}/*#{ext}"])
+      } if path
+    end
+
+    def load_plugin_file(plugin)
+      load plugin if loaded_plugins.add?(plugin)
+    rescue ::Exception => err
+      raise unless loaded_plugins.delete?(plugin)
+      warn "Error loading #{name} plugin: #{plugin}: #{err} (#{err.class})"
     end
 
     def load_plugin_files(plugins)
-      plugins.each { |plugin|
-        begin
-          load plugin
-        rescue ::Exception => err
-          warn "Error loading #{name} plugin: #{plugin}: #{err} (#{err.class})"
-        end
-      }
+      plugins.each { |plugin| load_plugin_file(::File.expand_path(plugin)) }
     end
 
   end

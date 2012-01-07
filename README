@@ -2,7 +2,7 @@
 
 == VERSION
 
-This documentation refers to ruby-nuggets version 0.8.2
+This documentation refers to ruby-nuggets version 0.8.3
 
 
 == DESCRIPTION
@@ -47,7 +47,7 @@ RubyGem::           http://rubygems.org/gems/ruby-nuggets
 
 == LICENSE AND COPYRIGHT
 
-Copyright (C) 2007-2011 Jens Wille
+Copyright (C) 2007-2012 Jens Wille
 
 ruby-nuggets is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free

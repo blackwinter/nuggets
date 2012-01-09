@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Range::QuantileMixin - ruby-nuggets Application documentation (v0.8.4)</title>
+<title>module Nuggets::File::ExtMixin - ruby-nuggets Application documentation (v0.8.4)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/range/quantile_mixin.rb
+    <li>lib/nuggets/file/ext_mixin.rb
   </ul>
 </nav>
 
@@ -64,7 +64,17 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-quantile">#quantile</a>
+    <li><a href="#method-i-chomp_ext">#chomp_ext</a>
+    
+    <li><a href="#method-i-chomp_ext-21">#chomp_ext!</a>
+    
+    <li><a href="#method-i-set_ext">#set_ext</a>
+    
+    <li><a href="#method-i-set_ext-21">#set_ext!</a>
+    
+    <li><a href="#method-i-sub_ext">#sub_ext</a>
+    
+    <li><a href="#method-i-sub_ext-21">#sub_ext!</a>
     
   </ul>
 </nav>
@@ -268,7 +278,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::Range::QuantileMixin</h1>
+  <h1 class="module">module Nuggets::File::ExtMixin</h1>
 
   <div id="description" class="description">
     
@@ -292,12 +302,12 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-quantile" class="method-detail ">
+      <div id="method-i-chomp_ext" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            quantile(value[, order]) &rarr; anInteger
+            chomp_ext(path) &rarr; aString
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -308,25 +318,209 @@
 
         <div class="method-description">
           
-          <p>Determines the <code>order</code>-quantile of <code>value</code> in
-<em>range</em>.</p>
+          <p>Returns a copy of <code>path</code> with its file extension removed.</p>
           
 
           
-          <div class="method-source-code" id="quantile-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/range/quantile_mixin.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">quantile</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">order</span> = <span class="ruby-value">100</span>)
-  <span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">order</span> <span class="ruby-operator">:</span>
-    ((<span class="ruby-identifier">value</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">first</span>) <span class="ruby-operator">/</span> ((<span class="ruby-identifier">last</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">first</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">to_f</span>)).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+          <div class="method-source-code" id="chomp_ext-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chomp_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
+  <span class="ruby-identifier">path</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">ext</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- quantile-source -->
+          </div><!-- chomp_ext-source -->
           
         </div>
 
         
 
         
-      </div><!-- quantile-method -->
+      </div><!-- chomp_ext-method -->
+
+    
+      <div id="method-i-chomp_ext-21" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            chomp_ext!(path) &rarr; aString | nil
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Modifies <code>path</code> in place as described for <a
+href="ExtMixin.html#method-i-chomp_ext">chomp_ext</a>, returning
+<code>path</code>, or <code>nil</code> if no modifications were made.</p>
+          
+
+          
+          <div class="method-source-code" id="chomp_ext-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chomp_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
+  <span class="ruby-identifier">path</span>.<span class="ruby-identifier">chomp!</span>(<span class="ruby-identifier">ext</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- chomp_ext-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- chomp_ext-21-method -->
+
+    
+      <div id="method-i-set_ext" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            set_ext(path, new_ext) &rarr; aString
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a copy of <code>path</code> with its file extension removed and
+<code>new_ext</code> appended. Like <a
+href="ExtMixin.html#method-i-sub_ext">sub_ext</a>, but also applies when
+file extension is not present.</p>
+          
+
+          
+          <div class="method-source-code" id="set_ext-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
+  <span class="ruby-identifier">chomp_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_ext</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_ext-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_ext-method -->
+
+    
+      <div id="method-i-set_ext-21" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            set_ext!(path, new_ext) &rarr; aString
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Modifies <code>path</code> in place as described for <a
+href="ExtMixin.html#method-i-set_ext">set_ext</a>, returning
+<code>path</code>.</p>
+          
+
+          
+          <div class="method-source-code" id="set_ext-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
+  <span class="ruby-identifier">chomp_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span>); <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_ext</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_ext-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_ext-21-method -->
+
+    
+      <div id="method-i-sub_ext" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            sub_ext(path, new_ext) &rarr; aString
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a copy of <code>path</code> with its file extension replaced with
+<code>new_ext</code> (if present; see also <a
+href="ExtMixin.html#method-i-set_ext">set_ext</a>).</p>
+          
+
+          
+          <div class="method-source-code" id="sub_ext-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
+  <span class="ruby-identifier">sub_ext!</span>(<span class="ruby-identifier">_path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span>); <span class="ruby-identifier">_path</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sub_ext-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sub_ext-method -->
+
+    
+      <div id="method-i-sub_ext-21" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            sub_ext!(path, new_ext) &rarr; aString | nil
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Modifies <code>path</code> in place as described for <a
+href="ExtMixin.html#method-i-sub_ext">sub_ext</a>, returning
+<code>path</code>, or <code>nil</code> if no modifications were made.</p>
+          
+
+          
+          <div class="method-source-code" id="sub_ext-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
+  <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_ext</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">chomp_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sub_ext-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sub_ext-21-method -->
 
     
     </section><!-- public-instance-method-details -->

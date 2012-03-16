@@ -30,15 +30,27 @@ module Nuggets
     module LimitMixin
 
   # call-seq:
-  #   array.limit(min, max) => new_array
+  #   array.limit(min, max) => anArray
   #
   # Returns a new array of all distinct values in _array_ limited to +min+
-  # and +max+ (cf. Numeric#limit).
-  def limit(min, max)
-    map { |item| item.between(min, max) }.uniq
+  # and +max+ (cf. Numeric#limit). If +uniq+ is +true+, resulting duplicates
+  # will be removed.
+  def limit(min, max, uniq = true)
+    limited = cap(min..max)
+    limited.uniq! if uniq
+    limited
   end
 
   alias_method :between, :limit
+
+  def cap(max)
+    if max.respond_to?(:begin)
+      min, max = max.begin, max.end
+      map { |item| item.limit(min, max) }
+    else
+      map { |item| item.max(max) }
+    end
+  end
 
     end
   end

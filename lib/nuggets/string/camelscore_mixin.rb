@@ -85,7 +85,7 @@ module Nuggets
     gsub!(/::/, '/')
 
     a = CAMELSCORE_ACRONYMS.values
-    r = a.empty? ? /(?=a)b/ : Regexp.union(*a)
+    r = a.empty? ? /(?=a)b/ : ::Regexp.union(*a.sort_by { |v| v.length })
 
     gsub!(/(?:([A-Za-z])|(\d)|^)(#{r})(?=\b|[^a-z])/) {
       "#{$1 || $2}#{'_' if $1}#{$3.downcase}"
@@ -103,11 +103,11 @@ module Nuggets
   #   str.constantize(base = Object) => anObject
   #
   # Returns the constant pointed to by _str_, relative to +base+.
-  def constantize(base = Object)
+  def constantize(base = ::Object)
     names = split('::')
     return if names.empty?
 
-    const = names.first.empty? ? (names.shift; Object) : base
+    const = names.first.empty? ? (names.shift; ::Object) : base
     names.each { |name| const = const.const_get(name) }
     const
   end

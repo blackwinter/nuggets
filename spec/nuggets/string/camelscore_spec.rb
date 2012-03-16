@@ -6,8 +6,8 @@ describe String, 'when extended by', Nuggets::String::CamelscoreMixin do
 
   def self.with_acronyms(acronyms, &block)
     describe "with acronyms #{acronyms.inspect}" do
-      before :all do String::CAMELSCORE_ACRONYMS.replace(acronyms) end
-      after  :all do String::CAMELSCORE_ACRONYMS.clear             end
+      before :all do ::String::CAMELSCORE_ACRONYMS.replace(acronyms) end
+      after  :all do ::String::CAMELSCORE_ACRONYMS.clear             end
 
       instance_eval(&block)
     end

@@ -30,10 +30,11 @@ require 'nuggets/enumerable/agrep'
 class IO
 
   # call-seq:
-  #   IO.agrep(fd, pattern[, distance]) => anArray
+  #   IO.agrep(fd, pattern[, distance]) -> anArray
+  #   IO.agrep(fd, pattern[, distance]) { |line| ... } -> io
   #
-  def self.agrep(fd, pattern, distance)
-    open(fd) { |io| io.agrep(pattern, distance) }
+  def self.agrep(fd, pattern, distance = 0, &block)
+    open(fd) { |io| io.agrep(pattern, distance, &block) }
   end
 
 end

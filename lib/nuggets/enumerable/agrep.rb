@@ -39,13 +39,13 @@ end
 module Enumerable
 
   # call-seq:
-  #   enum.agrep(pattern[, distance]) => anArray
-  #   enum.agrep(pattern[, distance]) { |obj| ... } => anArray
+  #   enum.agrep(pattern[, distance]) -> anArray
+  #   enum.agrep(pattern[, distance]) { |element| ... } -> enum
   #
-  # Returns an array of every element in _enum_ for which +pattern+ approximately
+  # Returns an array of all elements in _enum_ for which +pattern+ approximately
   # matches +element+ (see Amatch::Levenshtein#search). If the optional +block+
-  # is supplied, each matching element is passed to it, and the block‘s result
-  # is stored in the output array.
+  # is supplied, each matching element is passed to it, and the _enum_ itself is
+  # returned.
   #
   # LIMITATIONS:
   #
@@ -55,14 +55,12 @@ module Enumerable
   # - The cost for individual error types (substitution, insertion, deletion)
   #   cannot be adjusted.
   def agrep(pattern, distance = 0)
-    raise 'Amatch not available!' unless defined?(::Amatch)
-
     pattern = pattern.source if pattern.is_a?(::Regexp)
 
-    amatch  = ::Amatch::Levenshtein.new(pattern)
-    matches = select { |obj| amatch.search(obj.to_s) <= distance }
+    am = ::Amatch::Levenshtein.new(pattern)
+    ma = lambda { |i| am.search(i.to_s) <= distance }
 
-    block_given? ? matches.map { |match| yield match } : matches
+    block_given? ? each { |i| yield i if ma[i] } : select(&ma)
   end
 
 end

@@ -158,7 +158,11 @@ module Util
     end
 
     def load_config(file = options[:config] || defaults[:config])
-      @config = ::YAML.load_file(file) if ::File.readable?(file)
+      if ::File.readable?(file)
+        @config = ::YAML.load_file(file)
+      elsif file != defaults[:config]
+        quit "No such file: #{file}"
+      end
     end
 
     def merge_config(args = [config, defaults])

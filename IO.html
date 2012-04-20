@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class IO - ruby-nuggets Application documentation (v0.8.5)</title>
+<title>class IO - ruby-nuggets Application documentation (v0.8.6)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -375,6 +375,13 @@
           
         </div>
         
+        <div class="method-heading">
+          <span class="method-callseq">
+            agrep(fd, pattern[, distance]) { |line| ... } &rarr; io
+          </span>
+          
+        </div>
+        
         
 
         <div class="method-description">
@@ -384,9 +391,9 @@
 
           
           <div class="method-source-code" id="agrep-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/agrep.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">fd</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span>)
-  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fd</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span>) }
+            <pre><span class="ruby-comment"># File lib/nuggets/io/agrep.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">fd</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span> = <span class="ruby-value">0</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fd</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span>, &amp;<span class="ruby-identifier">block</span>) }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- agrep-source -->
           

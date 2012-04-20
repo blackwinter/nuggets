@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::String::CamelscoreMixin - ruby-nuggets Application documentation (v0.8.5)</title>
+<title>module Nuggets::String::CamelscoreMixin - ruby-nuggets Application documentation (v0.8.6)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -486,11 +486,11 @@ href="CamelscoreMixin.html#method-i-underscore">underscore</a>.</p>
           
           <div class="method-source-code" id="constantize-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/camelscore_mixin.rb, line 106</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">constantize</span>(<span class="ruby-identifier">base</span> = <span class="ruby-constant">Object</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">constantize</span>(<span class="ruby-identifier">base</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Object</span>)
   <span class="ruby-identifier">names</span> = <span class="ruby-identifier">split</span>(<span class="ruby-string">'::'</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">names</span>.<span class="ruby-identifier">empty?</span>
 
-  <span class="ruby-identifier">const</span> = <span class="ruby-identifier">names</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">names</span>.<span class="ruby-identifier">shift</span>; <span class="ruby-constant">Object</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">base</span>
+  <span class="ruby-identifier">const</span> = <span class="ruby-identifier">names</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">names</span>.<span class="ruby-identifier">shift</span>; <span class="ruby-operator">::</span><span class="ruby-constant">Object</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">base</span>
   <span class="ruby-identifier">names</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-identifier">const</span> = <span class="ruby-identifier">const</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>) }
   <span class="ruby-identifier">const</span>
 <span class="ruby-keyword">end</span></pre>
@@ -565,7 +565,7 @@ href="CamelscoreMixin.html#method-i-underscore">underscore</a>.</p>
   <span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">%r::/</span>, <span class="ruby-string">'/'</span>)
 
   <span class="ruby-identifier">a</span> = <span class="ruby-constant">CAMELSCORE_ACRONYMS</span>.<span class="ruby-identifier">values</span>
-  <span class="ruby-identifier">r</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-regexp">%r(?=a)b/</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">union</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-identifier">r</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-regexp">%r(?=a)b/</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">union</span>(*<span class="ruby-identifier">a</span>.<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> })
 
   <span class="ruby-identifier">gsub!</span>(<span class="ruby-node">%r(?:([A-Za-z])|(\d)|^)(#{r})(?=\b|[^a-z])/</span>) {
     <span class="ruby-node">&quot;#{$1 || $2}#{'_' if $1}#{$3.downcase}&quot;</span>

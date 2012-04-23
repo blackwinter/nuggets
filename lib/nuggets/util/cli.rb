@@ -157,11 +157,13 @@ module Util
       end
     end
 
-    def load_config(file = options[:config] || defaults[:config])
+    def load_config(file = options[:config] || default = defaults[:config])
+      return unless file
+
       if ::File.readable?(file)
         @config = ::YAML.load_file(file)
-      elsif file != defaults[:config]
-        quit "No such file: #{file}"
+      else
+        quit "No such file: #{file}" unless default
       end
     end
 

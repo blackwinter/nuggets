@@ -120,8 +120,12 @@ module Util
       ::HighLine.new(stdin, stdout).ask(question, &block)
     end
 
-    def warn(msg)
-      stderr.puts(msg)
+    def puts(*msg)
+      stdout.puts(*msg)
+    end
+
+    def warn(*msg)
+      stderr.puts(*msg)
     end
 
     def quit(msg = nil, include_usage = msg != false)
@@ -135,6 +139,11 @@ module Util
 
     def abort(msg = nil, status = 1)
       warn(msg) if msg
+      exit(status)
+    end
+
+    def shut(msg = nil, status = 0)
+      puts(msg) if msg
       exit(status)
     end
 
@@ -207,11 +216,11 @@ module Util
 
     def generic_opts(opts)
       opts.on('-h', '--help', 'Print this help message and exit') {
-        abort opts.to_s
+        shut opts
       }
 
       opts.on('--version', 'Print program version and exit') {
-        abort "#{progname} v#{version}"
+        shut "#{progname} v#{version}"
       }
     end
 

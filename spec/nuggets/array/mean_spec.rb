@@ -120,4 +120,53 @@ describe Array, 'when extended by', Nuggets::Array::MeanMixin do
   # TODO: other methods
   # TODO: more examples: http://people.revoledu.com/kardi/tutorial/BasicMath/Average/mean.html
 
+  describe 'report mean' do
+
+    before :each do
+      @ary = [[9.4, 34.75], [9.46, 34.68], [9.51, 34.61]]
+    end
+
+    describe 'w/o stddev' do
+
+      before :each do
+        class << @ary; undef_method :std; end if @ary.respond_to?(:std)
+      end
+
+      example do
+        @ary.report_mean.should == ['9.4567', '34.6800']
+      end
+
+      example do
+        @ary.report_mean(:harmonic).should == ['9.4565', '34.6799']
+      end
+
+      example do
+        @ary.unshift(%w[a b]).report_mean(nil, 2).should == ['a  9.46', 'b  34.68']
+      end
+
+    end
+
+    describe 'w/ stddev' do
+
+      before :each do
+        require 'nuggets/array/standard_deviation_mixin'
+        @ary.extend(Nuggets::Array::StandardDeviationMixin)
+      end
+
+      example do
+        @ary.report_mean.should == ['9.4567 +/- 0.0450', '34.6800 +/- 0.0572']
+      end
+
+      example do
+        @ary.report_mean(:harmonic).should == ['9.4565 +/- 0.0450', '34.6799 +/- 0.0572']
+      end
+
+      example do
+        @ary.unshift(%w[a b]).report_mean(nil, 2).should == ['a  9.46 +/- 0.04', 'b  34.68 +/- 0.06']
+      end
+
+    end
+
+  end
+
 end

@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2012 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -133,6 +133,51 @@ module Nuggets
   end
 
   alias_method :geomean, :geometric_mean
+
+  # call-seq:
+  #   array.report_mean => anArray
+  #   array.report_mean(method[, precision]) => anArray
+  #
+  # Expects _array_ to be an array of arrays ("rows") of numeric values;
+  # the first "row" may consist of strings (labels) instead. Returns an
+  # array of strings with the mean (according to +method+, default #mean)
+  # of each "column", prepended with the label, if present, and appended
+  # with the standard deviation, if available; all values are subject to
+  # +precision+.
+  #
+  # Examples:
+  #
+  #   [[9.4, 34.75], [9.46, 34.68], [9.51, 34.61]].report_mean
+  #   #=> ["9.4567 +/- 0.0450", "34.6800 +/- 0.0572"]
+  #
+  #   [[9.4, 34.75], [9.46, 34.68], [9.51, 34.61]].report_mean(:harmonic)
+  #   #=> ["9.4565 +/- 0.0450", "34.6799 +/- 0.0572"]
+  #
+  #   [["a", "b"], [9.4, 34.75], [9.46, 34.68], [9.51, 34.61]].report_mean(nil, 2)
+  #   #=> ["a  9.46 +/- 0.04", "b  34.68 +/- 0.06"]
+  #
+  #   CSV.read('csv', headers: true, converters: :numeric).to_a.report_mean
+  #   #=> ["a    9.4567 +/- 0.0450", "b    34.6800 +/- 0.0572"]
+  def report_mean(method = nil, precision = 4)
+    met, sep = [method ||= :mean, 'mean'], ['', '_']
+    lab, std = first.first.is_a?(::String), respond_to?(:std)
+
+    fmt = ["%-#{precision}s", "%.#{precision}f", "+/- %.#{precision}f"]
+
+    until respond_to?(method) || sep.empty?
+      method = met.join(sep.shift)
+    end
+
+    transpose.map! { |x|
+      i, a = [], []
+
+      i << 0 and a << x.shift if lab
+      i << 1 and a << x.send(method)
+      i << 2 and a << x.std if std
+
+      fmt.values_at(*i).join(' ') % a
+    }
+  end
 
     end
   end

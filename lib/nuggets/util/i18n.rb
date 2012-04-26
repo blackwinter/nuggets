@@ -96,6 +96,17 @@ module Util
       'ÿ' => 'y'   # LATIN SMALL LETTER Y WITH DIAERESIS
     }
 
+    def self.args_for_map_diacritics
+      @gsub_for_map_diacritics ||= begin
+        map = ::Hash.new { |h, k| h[k] = [] }
+
+        DIACRITICS.each { |a| a.each { |i| map[i].concat(a) } }
+        map.each { |k, v| v.uniq!; map[k] = "(#{::Regexp.union(*v).source})" }
+
+        [::Regexp.union(*map.keys.sort_by { |k| -k.length }), map.method(:[])]
+      end
+    end
+
   end
 
 end
@@ -116,8 +127,10 @@ class String
   #
   # Destructive version of #replace_diacritics.
   def replace_diacritics!
-    gsub!(/#{::Regexp.union(*::Util::I18n::DIACRITICS.keys)}/) { |m|
-      s = ::Util::I18n::DIACRITICS[m]
+    diacritics = ::Util::I18n::DIACRITICS
+
+    gsub!(/#{::Regexp.union(*diacritics.keys)}/) { |m|
+      s = diacritics[m]
 
       # Try to adjust case:
       #   'Äh' => 'AEh' => 'Aeh'
@@ -131,6 +144,15 @@ class String
 
       s
     }
+  end
+
+  def map_diacritics
+    (_dup = dup).map_diacritics! || _dup
+  end
+
+  def map_diacritics!
+    re, block = ::Util::I18n.args_for_map_diacritics
+    gsub!(re, &block)
   end
 
 end

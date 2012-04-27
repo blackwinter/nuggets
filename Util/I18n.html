@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Util::I18n - ruby-nuggets Application documentation (v0.8.6)</title>
+<title>module Util::I18n - ruby-nuggets Application documentation (v0.8.7)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -58,7 +58,17 @@
     
     
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-c-args_for_map_diacritics">::args_for_map_diacritics</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -293,6 +303,49 @@
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-args_for_map_diacritics" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">args_for_map_diacritics</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="args_for_map_diacritics-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/i18n.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">args_for_map_diacritics</span>
+  <span class="ruby-ivar">@gsub_for_map_diacritics</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">map</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, <span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = [] }
+
+    <span class="ruby-constant">DIACRITICS</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">map</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">a</span>) } }
+    <span class="ruby-identifier">map</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">uniq!</span>; <span class="ruby-identifier">map</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-node">&quot;(#{::Regexp.union(*v).source})&quot;</span> }
+
+    [<span class="ruby-operator">::</span><span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">union</span>(*<span class="ruby-identifier">map</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-operator">-</span><span class="ruby-identifier">k</span>.<span class="ruby-identifier">length</span> }), <span class="ruby-identifier">map</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:[]</span>)]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- args_for_map_diacritics-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- args_for_map_diacritics-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

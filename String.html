@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class String - ruby-nuggets Application documentation (v0.8.6)</title>
+<title>class String - ruby-nuggets Application documentation (v0.8.7)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -129,6 +129,10 @@
     <li><a href="#method-i-gsub_with_md-21">#gsub_with_md!</a>
     
     <li><a href="#method-i-lower_case-3F">#lower_case?</a>
+    
+    <li><a href="#method-i-map_diacritics">#map_diacritics</a>
+    
+    <li><a href="#method-i-map_diacritics-21">#map_diacritics!</a>
     
     <li><a href="#method-i-mixed_case-3F">#mixed_case?</a>
     
@@ -384,51 +388,6 @@
 
     <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-gimme_match_data-21" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            gimme_match_data!
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Replaces the traditional substitution methods with their MatchData passing
-equivalents. USE WITH CAUTION!</p>
-          
-
-          
-          <div class="method-source-code" id="gimme_match_data-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/sub_with_md.rb, line 82</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gimme_match_data!</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub</span>,   <span class="ruby-value">:sub_with_md</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub!</span>,  <span class="ruby-value">:sub_with_md!</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub</span>,  <span class="ruby-value">:gsub_with_md</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub!</span>, <span class="ruby-value">:gsub_with_md!</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- gimme_match_data-21-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- gimme_match_data-21-method -->
-
-    
-    </section><!-- public-class-method-details -->
-  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
 
@@ -816,6 +775,67 @@ href="String.html#method-i-gsub_with_md">gsub_with_md</a>.</p>
       </div><!-- lower_case-3F-method -->
 
     
+      <div id="method-i-map_diacritics" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">map_diacritics</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="map_diacritics-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/i18n.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">map_diacritics</span>
+  (<span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>).<span class="ruby-identifier">map_diacritics!</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- map_diacritics-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- map_diacritics-method -->
+
+    
+      <div id="method-i-map_diacritics-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">map_diacritics!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="map_diacritics-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/i18n.rb, line 152</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">map_diacritics!</span>
+  <span class="ruby-identifier">re</span>, <span class="ruby-identifier">block</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-constant">I18n</span>.<span class="ruby-identifier">args_for_map_diacritics</span>
+  <span class="ruby-identifier">gsub!</span>(<span class="ruby-identifier">re</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- map_diacritics-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- map_diacritics-21-method -->
+
+    
       <div id="method-i-mixed_case-3F" class="method-detail ">
         
         
@@ -1089,7 +1109,7 @@ Util::I18n::DIACRITICS.</p>
 
           
           <div class="method-source-code" id="replace_diacritics-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/i18n.rb, line 109</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/i18n.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">replace_diacritics</span>
   (<span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>).<span class="ruby-identifier">replace_diacritics!</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1125,10 +1145,12 @@ href="String.html#method-i-replace_diacritics">replace_diacritics</a>.</p>
 
           
           <div class="method-source-code" id="replace_diacritics-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/i18n.rb, line 117</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/i18n.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">replace_diacritics!</span>
-  <span class="ruby-identifier">gsub!</span>(<span class="ruby-node">%r#{::Regexp.union(*::Util::I18n::DIACRITICS.keys)}/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">s</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-constant">I18n</span><span class="ruby-operator">::</span><span class="ruby-constant">DIACRITICS</span>[<span class="ruby-identifier">m</span>]
+  <span class="ruby-identifier">diacritics</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-constant">I18n</span><span class="ruby-operator">::</span><span class="ruby-constant">DIACRITICS</span>
+
+  <span class="ruby-identifier">gsub!</span>(<span class="ruby-node">%r#{::Regexp.union(*diacritics.keys)}/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">s</span> = <span class="ruby-identifier">diacritics</span>[<span class="ruby-identifier">m</span>]
 
     <span class="ruby-comment"># Try to adjust case:</span>
     <span class="ruby-comment">#   'Äh' =&gt; 'AEh' =&gt; 'Aeh'</span>
@@ -1452,6 +1474,51 @@ href="String.html#method-i-word_wrap_paragraph">word_wrap_paragraph</a>.</p>
 
     
     </section><!-- public-instance-method-details -->
+  
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-gimme_match_data-21" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            gimme_match_data!
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Replaces the traditional substitution methods with their MatchData passing
+equivalents. USE WITH CAUTION!</p>
+          
+
+          
+          <div class="method-source-code" id="gimme_match_data-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/string/sub_with_md.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gimme_match_data!</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub</span>,   <span class="ruby-value">:sub_with_md</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub!</span>,  <span class="ruby-value">:sub_with_md!</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub</span>,  <span class="ruby-value">:gsub_with_md</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub!</span>, <span class="ruby-value">:gsub_with_md!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- gimme_match_data-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- gimme_match_data-21-method -->
+
+    
+    </section><!-- public-class-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

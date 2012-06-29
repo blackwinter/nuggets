@@ -97,7 +97,7 @@ module Util
     }
 
     def self.args_for_map_diacritics
-      @gsub_for_map_diacritics ||= begin
+      @args_for_map_diacritics ||= begin
         map = ::Hash.new { |h, k| h[k] = [] }
 
         DIACRITICS.each { |a| a.each { |i| map[i].concat(a) } }

@@ -205,7 +205,7 @@ module Util
 
         generic_opts(opts)
         post_opts(opts)
-      }
+      }.extend(Util::CLI::OptionParserExtension)
     end
 
     def pre_opts(opts)
@@ -225,6 +225,16 @@ module Util
     end
 
     def post_opts(opts)
+    end
+
+    module OptionParserExtension
+
+      KEY_POOL = ('A'..'Z').to_a + ('a'..'z').to_a + ('0'..'9').to_a
+
+      def keys
+        { :used => keys = top.short.keys, :free => KEY_POOL - keys }
+      end
+
     end
 
   end

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Array::MeanMixin - ruby-nuggets Application documentation (v0.8.7)</title>
+<title>module Nuggets::Array::MeanMixin - ruby-nuggets Application documentation (v0.8.8)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -227,6 +227,30 @@
   
     <li><a href="../../Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="../../Util.html">Util</a>
+  
+    <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../../Util/CLI/OptionParserExtension.html">Util::CLI::OptionParserExtension</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../../Util/LogParser.html">Util::LogParser</a>
+  
+    <li><a href="../../Util/LogParser/Apache.html">Util::LogParser::Apache</a>
+  
+    <li><a href="../../Util/LogParser/Rails.html">Util::LogParser::Rails</a>
+  
+    <li><a href="../../Util/Pluggable.html">Util::Pluggable</a>
+  
+    <li><a href="../../Util/Ruby.html">Util::Ruby</a>
+  
     <li><a href="../../Net.html">Net</a>
   
     <li><a href="../../Net/HTTPClientError.html">Net::HTTPClientError</a>
@@ -242,22 +266,6 @@
     <li><a href="../../Net/HTTPServerError.html">Net::HTTPServerError</a>
   
     <li><a href="../../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="../../Util.html">Util</a>
-  
-    <li><a href="../../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
-  
-    <li><a href="../../Util/CLI.html">Util::CLI</a>
-  
-    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../../Util/I18n.html">Util::I18n</a>
-  
-    <li><a href="../../Util/Pluggable.html">Util::Pluggable</a>
-  
-    <li><a href="../../Util/Ruby.html">Util::Ruby</a>
   
     <li><a href="../../Object.html">Object</a>
   
@@ -791,13 +799,12 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
         <div class="method-description">
           
-          <p>Expects <em>array</em> to be an array of arrays (“rows”) of numeric
-values; the first “row” may consist of strings (labels) instead.
-Returns an array of strings with the mean (according to
-<code>method</code>, default <a
-href="MeanMixin.html#method-i-mean">mean</a>) of each “column”,
-prepended with the label, if present, and appended with the standard
-deviation, if available; all values are subject to <code>precision</code>.</p>
+          <p>Expects <em>array</em> to be an array of arrays (“rows”) of numeric values;
+the first “row” may consist of strings (labels) instead. Returns an array
+of strings with the mean (according to <code>method</code>, default <a
+href="MeanMixin.html#method-i-mean">mean</a>) of each “column”, prepended
+with the label, if present, and appended with the standard deviation, if
+available; all values are subject to <code>precision</code>.</p>
 
 <p>Examples:</p>
 

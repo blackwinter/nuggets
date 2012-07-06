@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Nuggets::String - ruby-nuggets Application documentation (v0.8.8)</title>
+<title>module Util::LogParser - ruby-nuggets Application documentation (v0.8.8)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
 
 
-<body id="top" class="class">
+<body id="top" class="module">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -47,10 +47,9 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/string/wc_mixin.rb
-    <li>lib/nuggets/string/xor_mixin.rb
-    <li>lib/nuggets/string/evaluate_mixin.rb
-    <li>lib/nuggets/string/camelscore_mixin.rb
+    <li>lib/nuggets/util/log_parser.rb
+    <li>lib/nuggets/util/log_parser/rails.rb
+    <li>lib/nuggets/util/log_parser/apache.rb
   </ul>
 </nav>
 
@@ -59,15 +58,25 @@
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
-  
-  <p class="link"><a href="../Object.html">Object</a>
-  
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-register">::register</a>
+    
+    <li><a href="#method-i-parse">#parse</a>
+    
+    <li><a href="#method-i-parse_file">#parse_file</a>
+    
+    <li><a href="#method-i-parse_line">#parse_line</a>
+    
+  </ul>
 </nav>
 
-    
-    
   </div>
 
   <div id="project-metadata">
@@ -277,7 +286,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Nuggets::String</h1>
+  <h1 class="module">module Util::LogParser</h1>
 
   <div id="description" class="description">
     
@@ -292,11 +301,173 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="GZ_EXT_RE">GZ_EXT_RE
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
 
     
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-register" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">register</span><span
+            class="method-args">(base, *modules)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="register-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/log_parser.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">base</span>, *<span class="ruby-identifier">modules</span>)
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:include</span>, *<span class="ruby-identifier">modules</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>)
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-identifier">base</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- register-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- register-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(input) { |dup| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/log_parser.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
+  <span class="ruby-identifier">entry</span> = {}
+
+  <span class="ruby-identifier">input</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">entry</span>) {
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">clear</span>
+    <span class="ruby-keyword">end</span>
+  } }
+
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">entry</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+      <div id="method-i-parse_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_file</span><span
+            class="method-args">(file, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_file-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/log_parser.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_file</span>(<span class="ruby-identifier">file</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">entries</span> = []; <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span> <span class="ruby-identifier">entries</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">entry</span> })
+
+  (<span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">GZ_EXT_RE</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span> <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>).<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">f</span>, &amp;<span class="ruby-identifier">block</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">f</span>, <span class="ruby-identifier">method</span>(<span class="ruby-value">:parse</span>)]
+  }
+
+  <span class="ruby-identifier">entries</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_file-method -->
+
+    
+      <div id="method-i-parse_line" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_line</span><span
+            class="method-args">(line, entry = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_line-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/log_parser.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">entry</span> = {})
+  <span class="ruby-comment"># Yield when entry complete. Preferrably return +entry+.</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-string">'must be implemented by type'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_line-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_line-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

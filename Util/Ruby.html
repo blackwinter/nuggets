@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Util::Ruby - ruby-nuggets Application documentation (v0.8.7)</title>
+<title>module Util::Ruby - ruby-nuggets Application documentation (v0.8.8)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -221,6 +221,30 @@
   
     <li><a href="../Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="../Util.html">Util</a>
+  
+    <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../Util/CLI/OptionParserExtension.html">Util::CLI::OptionParserExtension</a>
+  
+    <li><a href="../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../Util/LogParser.html">Util::LogParser</a>
+  
+    <li><a href="../Util/LogParser/Apache.html">Util::LogParser::Apache</a>
+  
+    <li><a href="../Util/LogParser/Rails.html">Util::LogParser::Rails</a>
+  
+    <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
+  
+    <li><a href="../Util/Ruby.html">Util::Ruby</a>
+  
     <li><a href="../Net.html">Net</a>
   
     <li><a href="../Net/HTTPClientError.html">Net::HTTPClientError</a>
@@ -236,22 +260,6 @@
     <li><a href="../Net/HTTPServerError.html">Net::HTTPServerError</a>
   
     <li><a href="../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="../Util.html">Util</a>
-  
-    <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
-  
-    <li><a href="../Util/CLI.html">Util::CLI</a>
-  
-    <li><a href="../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../Util/I18n.html">Util::I18n</a>
-  
-    <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
-  
-    <li><a href="../Util/Ruby.html">Util::Ruby</a>
   
     <li><a href="../Object.html">Object</a>
   
@@ -424,9 +432,9 @@ interpreter. Returns <code>nil</code> if the command is not found.</p>
 
 <p>If the command executable is a <a href="Ruby.html">Ruby</a> program, then
 we need to run it in the correct <a href="Ruby.html">Ruby</a> interpreter
-just in case the command doesn’t have the correct shebang line; we
-don’t want a totally different <a href="Ruby.html">Ruby</a> than the
-current one to be invoked.</p>
+just in case the command doesn’t have the correct shebang line; we don’t
+want a totally different <a href="Ruby.html">Ruby</a> than the current one
+to be invoked.</p>
 
 <p>If it’s not a <a href="Ruby.html">Ruby</a> program then it’s probably a
 wrapper script as is the case with e.g. RVM (~/.rvm/wrappers).</p>
@@ -461,12 +469,11 @@ wrapper script as is the case with e.g. RVM (~/.rvm/wrappers).</p>
         <div class="method-description">
           
           <p>Locates a <a href="Ruby.html">Ruby</a> tool command <code>name</code>, e.g.
-‘gem’, ‘rake’, ‘bundle’, etc. Instead of naively looking in
-$PATH, this function uses a variety of search heuristics to find the
-command that’s really associated with the current <a
-href="Ruby.html">Ruby</a> interpreter. It should never locate a command
-that’s actually associated with a different <a href="Ruby.html">Ruby</a>
-interpreter.</p>
+‘gem’, ‘rake’, ‘bundle’, etc. Instead of naively looking in $PATH, this
+function uses a variety of search heuristics to find the command that’s
+really associated with the current <a href="Ruby.html">Ruby</a>
+interpreter. It should never locate a command that’s actually associated
+with a different <a href="Ruby.html">Ruby</a> interpreter.</p>
 
 <p>NOTE: The return value may not be the actual correct invocation for the
 tool. Use <a
@@ -570,9 +577,9 @@ href="Ruby.html">Ruby</a> interpreter in the currently active gem set.</p>
         <div class="method-description">
           
           <p>Returns the full path to the current <a href="Ruby.html">Ruby</a>
-interpreter’s executable file. This might not be the actual correct
-command to use for invoking the <a href="Ruby.html">Ruby</a> interpreter;
-use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
+interpreter’s executable file. This might not be the actual correct command
+to use for invoking the <a href="Ruby.html">Ruby</a> interpreter; use <a
+href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
           
 
           
@@ -653,8 +660,8 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
         <div class="method-description">
           
-          <p>Returns either ‘sudo’ or ‘rvmsudo’ depending on whether the current
-<a href="Ruby.html">Ruby</a> interpreter is managed by RVM.</p>
+          <p>Returns either ‘sudo’ or ‘rvmsudo’ depending on whether the current <a
+href="Ruby.html">Ruby</a> interpreter is managed by RVM.</p>
           
 
           

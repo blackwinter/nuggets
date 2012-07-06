@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Util::Pluggable - ruby-nuggets Application documentation (v0.8.7)</title>
+<title>module Util::Pluggable - ruby-nuggets Application documentation (v0.8.8)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -215,6 +215,30 @@
   
     <li><a href="../Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="../Util.html">Util</a>
+  
+    <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../Util/CLI/OptionParserExtension.html">Util::CLI::OptionParserExtension</a>
+  
+    <li><a href="../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../Util/LogParser.html">Util::LogParser</a>
+  
+    <li><a href="../Util/LogParser/Apache.html">Util::LogParser::Apache</a>
+  
+    <li><a href="../Util/LogParser/Rails.html">Util::LogParser::Rails</a>
+  
+    <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
+  
+    <li><a href="../Util/Ruby.html">Util::Ruby</a>
+  
     <li><a href="../Net.html">Net</a>
   
     <li><a href="../Net/HTTPClientError.html">Net::HTTPClientError</a>
@@ -230,22 +254,6 @@
     <li><a href="../Net/HTTPServerError.html">Net::HTTPServerError</a>
   
     <li><a href="../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="../Util.html">Util</a>
-  
-    <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
-  
-    <li><a href="../Util/CLI.html">Util::CLI</a>
-  
-    <li><a href="../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../Util/I18n.html">Util::I18n</a>
-  
-    <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
-  
-    <li><a href="../Util/Ruby.html">Util::Ruby</a>
   
     <li><a href="../Object.html">Object</a>
   
@@ -326,6 +334,42 @@
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-load_plugins_for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_plugins_for</span><span
+            class="method-args">(*klasses)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="load_plugins_for-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_plugins_for</span>(*<span class="ruby-identifier">klasses</span>)
+  <span class="ruby-identifier">klasses</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">load_plugins</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- load_plugins_for-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- load_plugins_for-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
 
@@ -595,42 +639,6 @@
 
     
     </section><!-- private-instance-method-details -->
-  
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-load_plugins_for" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">load_plugins_for</span><span
-            class="method-args">(*klasses)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="load_plugins_for-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/pluggable.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_plugins_for</span>(*<span class="ruby-identifier">klasses</span>)
-  <span class="ruby-identifier">klasses</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">load_plugins</span> }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- load_plugins_for-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- load_plugins_for-method -->
-
-    
-    </section><!-- public-class-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

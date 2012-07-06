@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Util::CLI - ruby-nuggets Application documentation (v0.8.7)</title>
+<title>class Util::CLI - ruby-nuggets Application documentation (v0.8.8)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -259,6 +259,30 @@
   
     <li><a href="../Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="../Util.html">Util</a>
+  
+    <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="../Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="../Util/CLI/OptionParserExtension.html">Util::CLI::OptionParserExtension</a>
+  
+    <li><a href="../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="../Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="../Util/LogParser.html">Util::LogParser</a>
+  
+    <li><a href="../Util/LogParser/Apache.html">Util::LogParser::Apache</a>
+  
+    <li><a href="../Util/LogParser/Rails.html">Util::LogParser::Rails</a>
+  
+    <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
+  
+    <li><a href="../Util/Ruby.html">Util::Ruby</a>
+  
     <li><a href="../Net.html">Net</a>
   
     <li><a href="../Net/HTTPClientError.html">Net::HTTPClientError</a>
@@ -274,22 +298,6 @@
     <li><a href="../Net/HTTPServerError.html">Net::HTTPServerError</a>
   
     <li><a href="../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="../Util.html">Util</a>
-  
-    <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
-  
-    <li><a href="../Util/CLI.html">Util::CLI</a>
-  
-    <li><a href="../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="../Util/I18n.html">Util::I18n</a>
-  
-    <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
-  
-    <li><a href="../Util/Ruby.html">Util::Ruby</a>
   
     <li><a href="../Object.html">Object</a>
   
@@ -448,6 +456,209 @@
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-defaults" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">defaults</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="defaults-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">defaults</span>
+  {}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- defaults-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- defaults-method -->
+
+    
+      <div id="method-c-execute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- execute-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- execute-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(defaults = nil, *args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">defaults</span> = <span class="ruby-keyword">nil</span>, *<span class="ruby-identifier">args</span>)
+  <span class="ruby-ivar">@defaults</span>, <span class="ruby-ivar">@prog</span> = <span class="ruby-identifier">defaults</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">defaults</span>, <span class="ruby-identifier">$0</span>
+
+  <span class="ruby-identifier">init</span>(*<span class="ruby-identifier">args</span>)
+
+  <span class="ruby-comment"># prevent backtrace on ^C</span>
+  <span class="ruby-identifier">trap</span>(<span class="ruby-value">:INT</span>) { <span class="ruby-identifier">exit</span> <span class="ruby-value">130</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+      <div id="method-c-usage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">usage</span><span
+            class="method-args">(prog)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="usage-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">usage</span>(<span class="ruby-identifier">prog</span>)
+  <span class="ruby-node">&quot;Usage: #{prog} [-h|--help] [options]&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- usage-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- usage-method -->
+
+    
+      <div id="method-c-version" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">version</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="version-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">version</span>
+  <span class="ruby-identifier">parent_const_get</span>(<span class="ruby-value">:VERSION</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- version-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- version-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="private-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Private Class Methods</h3>
+
+    
+      <div id="method-c-parent_const_get" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parent_const_get</span><span
+            class="method-args">(const, range = 0...-1)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parent_const_get-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parent_const_get</span>(<span class="ruby-identifier">const</span>, <span class="ruby-identifier">range</span> = <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>)
+  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'::'</span>).<span class="ruby-identifier">inject</span>([<span class="ruby-operator">::</span><span class="ruby-constant">Object</span>]) { <span class="ruby-operator">|</span><span class="ruby-identifier">memo</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">memo</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">memo</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+  }.<span class="ruby-identifier">reverse</span>[<span class="ruby-identifier">range</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">mod</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">const</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">const</span>)
+  }
+
+  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">NameError</span>, <span class="ruby-node">&quot;uninitialized constant #{self}::#{const}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parent_const_get-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parent_const_get-method -->
+
+    
+    </section><!-- private-class-method-details -->
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
 
@@ -917,7 +1128,7 @@
 
     <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
     <span class="ruby-identifier">post_opts</span>(<span class="ruby-identifier">opts</span>)
-  }
+  }.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI</span><span class="ruby-operator">::</span><span class="ruby-constant">OptionParserExtension</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- option_parser-source -->
           
@@ -1176,209 +1387,6 @@
 
     
     </section><!-- private-instance-method-details -->
-  
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-defaults" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">defaults</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="defaults-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">defaults</span>
-  {}
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- defaults-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- defaults-method -->
-
-    
-      <div id="method-c-execute" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">execute</span><span
-            class="method-args">(*args)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="execute-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(*<span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(*<span class="ruby-identifier">args</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- execute-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- execute-method -->
-
-    
-      <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(defaults = nil, *args)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 74</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">defaults</span> = <span class="ruby-keyword">nil</span>, *<span class="ruby-identifier">args</span>)
-  <span class="ruby-ivar">@defaults</span>, <span class="ruby-ivar">@prog</span> = <span class="ruby-identifier">defaults</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">defaults</span>, <span class="ruby-identifier">$0</span>
-
-  <span class="ruby-identifier">init</span>(*<span class="ruby-identifier">args</span>)
-
-  <span class="ruby-comment"># prevent backtrace on ^C</span>
-  <span class="ruby-identifier">trap</span>(<span class="ruby-value">:INT</span>) { <span class="ruby-identifier">exit</span> <span class="ruby-value">130</span> }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- new-method -->
-
-    
-      <div id="method-c-usage" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">usage</span><span
-            class="method-args">(prog)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="usage-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 39</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">usage</span>(<span class="ruby-identifier">prog</span>)
-  <span class="ruby-node">&quot;Usage: #{prog} [-h|--help] [options]&quot;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- usage-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- usage-method -->
-
-    
-      <div id="method-c-version" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">version</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="version-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 43</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">version</span>
-  <span class="ruby-identifier">parent_const_get</span>(<span class="ruby-value">:VERSION</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- version-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- version-method -->
-
-    
-    </section><!-- public-class-method-details -->
-  
-     <section id="private-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Private Class Methods</h3>
-
-    
-      <div id="method-c-parent_const_get" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">parent_const_get</span><span
-            class="method-args">(const, range = 0...-1)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="parent_const_get-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">parent_const_get</span>(<span class="ruby-identifier">const</span>, <span class="ruby-identifier">range</span> = <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>)
-  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'::'</span>).<span class="ruby-identifier">inject</span>([<span class="ruby-operator">::</span><span class="ruby-constant">Object</span>]) { <span class="ruby-operator">|</span><span class="ruby-identifier">memo</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">memo</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">memo</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-  }.<span class="ruby-identifier">reverse</span>[<span class="ruby-identifier">range</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">mod</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">const</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">const</span>)
-  }
-
-  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">NameError</span>, <span class="ruby-node">&quot;uninitialized constant #{self}::#{const}&quot;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- parent_const_get-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- parent_const_get-method -->
-
-    
-    </section><!-- private-class-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

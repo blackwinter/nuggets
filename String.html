@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class String - ruby-nuggets Application documentation (v0.8.7)</title>
+<title>class String - ruby-nuggets Application documentation (v0.8.8)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -297,6 +297,30 @@
   
     <li><a href="./Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="./Util.html">Util</a>
+  
+    <li><a href="./Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
+  
+    <li><a href="./Util/CLI.html">Util::CLI</a>
+  
+    <li><a href="./Util/CLI/OptionParserExtension.html">Util::CLI::OptionParserExtension</a>
+  
+    <li><a href="./Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="./Util/ContentType.html">Util::ContentType</a>
+  
+    <li><a href="./Util/I18n.html">Util::I18n</a>
+  
+    <li><a href="./Util/LogParser.html">Util::LogParser</a>
+  
+    <li><a href="./Util/LogParser/Apache.html">Util::LogParser::Apache</a>
+  
+    <li><a href="./Util/LogParser/Rails.html">Util::LogParser::Rails</a>
+  
+    <li><a href="./Util/Pluggable.html">Util::Pluggable</a>
+  
+    <li><a href="./Util/Ruby.html">Util::Ruby</a>
+  
     <li><a href="./Net.html">Net</a>
   
     <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
@@ -312,22 +336,6 @@
     <li><a href="./Net/HTTPServerError.html">Net::HTTPServerError</a>
   
     <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="./Util.html">Util</a>
-  
-    <li><a href="./Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
-  
-    <li><a href="./Util/CLI.html">Util::CLI</a>
-  
-    <li><a href="./Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="./Util/ContentType.html">Util::ContentType</a>
-  
-    <li><a href="./Util/I18n.html">Util::I18n</a>
-  
-    <li><a href="./Util/Pluggable.html">Util::Pluggable</a>
-  
-    <li><a href="./Util/Ruby.html">Util::Ruby</a>
   
     <li><a href="./Object.html">Object</a>
   
@@ -388,6 +396,51 @@
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-gimme_match_data-21" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            gimme_match_data!
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Replaces the traditional substitution methods with their MatchData passing
+equivalents. USE WITH CAUTION!</p>
+          
+
+          
+          <div class="method-source-code" id="gimme_match_data-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/string/sub_with_md.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gimme_match_data!</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub</span>,   <span class="ruby-value">:sub_with_md</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub!</span>,  <span class="ruby-value">:sub_with_md!</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub</span>,  <span class="ruby-value">:gsub_with_md</span>
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub!</span>, <span class="ruby-value">:gsub_with_md!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- gimme_match_data-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- gimme_match_data-21-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
 
@@ -888,8 +941,8 @@ href="String.html#method-i-gsub_with_md">gsub_with_md</a>.</p>
         <div class="method-description">
           
           <p>Performs <em>multiple</em> substitutions on <em>str</em> with order being
-taken into account (thus results of previous substitutions won’t be
-subject to later ones) – inspired by Ruby Cookbook example 1.18.</p>
+taken into account (thus results of previous substitutions won’t be subject
+to later ones) – inspired by Ruby Cookbook example 1.18.</p>
 
 <p>The <code>substitutions</code> parameter can be an array or a list of
 <code>[pattern, substitution]</code> pairs, or, simply, a hash. Note that,
@@ -1474,51 +1527,6 @@ href="String.html#method-i-word_wrap_paragraph">word_wrap_paragraph</a>.</p>
 
     
     </section><!-- public-instance-method-details -->
-  
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-gimme_match_data-21" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            gimme_match_data!
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Replaces the traditional substitution methods with their MatchData passing
-equivalents. USE WITH CAUTION!</p>
-          
-
-          
-          <div class="method-source-code" id="gimme_match_data-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/sub_with_md.rb, line 82</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gimme_match_data!</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub</span>,   <span class="ruby-value">:sub_with_md</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:sub!</span>,  <span class="ruby-value">:sub_with_md!</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub</span>,  <span class="ruby-value">:gsub_with_md</span>
-  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:gsub!</span>, <span class="ruby-value">:gsub_with_md!</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- gimme_match_data-21-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- gimme_match_data-21-method -->
-
-    
-    </section><!-- public-class-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

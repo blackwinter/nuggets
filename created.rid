@@ -1,4 +1,4 @@
-Fri, 06 Jul 2012 17:25:39 +0200
+Thu, 16 Aug 2012 14:02:44 +0200
 README	Fri, 06 Jul 2012 17:24:56 +0200
 COPYING	Fri, 29 Apr 2011 13:39:35 +0200
 ChangeLog	Thu, 04 Dec 2008 16:53:07 +0100
@@ -7,7 +7,7 @@ lib/nuggets/all.rb	Mon, 17 Oct 2011 15:11:44 +0200
 lib/nuggets/env/set.rb	Thu, 12 Mar 2009 16:56:24 +0100
 lib/nuggets/hash/at.rb	Mon, 17 Oct 2011 14:56:41 +0200
 lib/nuggets/io/null.rb	Fri, 07 Jan 2011 15:31:56 +0100
-lib/nuggets/version.rb	Fri, 06 Jul 2012 17:25:04 +0200
+lib/nuggets/version.rb	Thu, 16 Aug 2012 14:01:28 +0200
 lib/nuggets/file/ext.rb	Mon, 02 Jan 2012 14:00:52 +0100
 lib/nuggets/file/sub.rb	Mon, 31 Jan 2011 12:23:10 +0100
 lib/nuggets/io/agrep.rb	Fri, 16 Mar 2012 16:52:17 +0100
@@ -63,6 +63,7 @@ lib/nuggets/numeric/signum.rb	Fri, 29 Apr 2011 13:47:26 +0200
 lib/nuggets/object/boolean.rb	Wed, 25 Feb 2009 12:26:10 +0100
 lib/nuggets/object/silence.rb	Wed, 25 Feb 2009 12:26:10 +0100
 lib/nuggets/range/quantile.rb	Fri, 31 Jul 2009 12:50:09 +0200
+lib/nuggets/util/lazy_attr.rb	Thu, 16 Aug 2012 13:49:38 +0200
 lib/nuggets/util/pluggable.rb	Mon, 02 Jan 2012 10:56:48 +0100
 lib/nuggets/array/histogram.rb	Thu, 17 Feb 2011 14:32:03 +0100
 lib/nuggets/hash/deep_merge.rb	Wed, 09 Feb 2011 18:17:37 +0100
@@ -127,7 +128,7 @@ lib/nuggets/array/regression_mixin.rb	Fri, 29 Apr 2011 13:45:44 +0200
 lib/nuggets/object/singleton_class.rb	Wed, 25 Feb 2009 12:26:10 +0100
 lib/nuggets/uri/content_type_mixin.rb	Fri, 21 Oct 2011 11:11:05 +0200
 lib/nuggets/util/log_parser/apache.rb	Fri, 06 Jul 2012 16:57:57 +0200
-lib/nuggets/array/correlation_mixin.rb	Fri, 29 Apr 2011 13:46:03 +0200
+lib/nuggets/array/correlation_mixin.rb	Thu, 09 Aug 2012 17:26:27 +0200
 lib/nuggets/env/user_encoding_mixin.rb	Mon, 17 Oct 2011 15:06:46 +0200
 lib/nuggets/string/camelscore_mixin.rb	Thu, 15 Mar 2012 18:29:10 +0100
 lib/nuggets/string/capitalize_first.rb	Fri, 29 Apr 2011 13:47:56 +0200

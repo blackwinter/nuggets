@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Array::CorrelationMixin - ruby-nuggets Application documentation (v0.8.8)</title>
+<title>module Nuggets::Array::CorrelationMixin - ruby-nuggets Application documentation (v0.8.9)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -219,6 +219,8 @@
   
     <li><a href="../../Util/I18n.html">Util::I18n</a>
   
+    <li><a href="../../Util/LazyAttr.html">Util::LazyAttr</a>
+  
     <li><a href="../../Util/LogParser.html">Util::LogParser</a>
   
     <li><a href="../../Util/LogParser/Apache.html">Util::LogParser::Apache</a>
@@ -404,12 +406,11 @@ position (rank) in <em>array</em>.</p>
   <span class="ruby-identifier">target</span> = <span class="ruby-identifier">first</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_ary</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span>
     <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">size</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> }.<span class="ruby-identifier">zip</span>(<span class="ruby-keyword">self</span>)
 
-  <span class="ruby-identifier">sx</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">std</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> }
-  <span class="ruby-identifier">sy</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">std</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">y</span> }
-
   <span class="ruby-identifier">c</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">cov</span>
 
-  <span class="ruby-identifier">sx</span>.<span class="ruby-identifier">zero?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">sy</span>.<span class="ruby-identifier">zero?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">-1.0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1.0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">sx</span> * <span class="ruby-identifier">sy</span>)
+  (<span class="ruby-identifier">sx</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">std</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> }).<span class="ruby-identifier">zero?</span> <span class="ruby-operator">||</span>
+  (<span class="ruby-identifier">sy</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">std</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">y</span> }).<span class="ruby-identifier">zero?</span> <span class="ruby-operator">?</span>
+    <span class="ruby-identifier">c</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">-1.0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1.0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">sx</span> * <span class="ruby-identifier">sy</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- correlation_coefficient-source -->
           

@@ -26,10 +26,10 @@ describe URI, 'when extended by', Nuggets::URI::ContentTypeMixin do
   }
 
   {
-    'http://blackwinter.de/misc/ww.png'                  => 'image/png',
-    'http://blackwinter.de/misc/suicide_is_painless.mid' => 'audio/midi',
-    'http://blackwinter.de/misc/expand_macros.pl.gz'     => 'application/x-gzip',
-    'http://blackwinter.de/misc/blanc60302523.nth'       => 'application/vnd.nok-s40theme'
+    'http://blackwinter.de/misc/ww.png'                                => 'image/png',
+    'http://blackwinter.de/misc/suicide_is_painless.mid'               => 'audio/midi',
+    'http://blackwinter.de/misc/fugmann/wille_-_fugmann-slides.tar.gz' => 'application/x-gzip',
+    'http://blackwinter.de/misc/i_hate_ms.pdf'                         => 'application/pdf'
   }.each { |u, t|
     example { URI.content_type(u).should == t }
   }

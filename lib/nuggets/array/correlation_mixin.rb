@@ -49,12 +49,11 @@ module Nuggets
     target = first.respond_to?(:to_ary) ? self :
       ::Array.new(size) { |i| i + 1 }.zip(self)
 
-    sx = target.std { |x, _| x }
-    sy = target.std { |_, y| y }
-
     c = target.cov
 
-    sx.zero? || sy.zero? ? c < 0 ? -1.0 : 1.0 : c / (sx * sy)
+    (sx = target.std { |x, _| x }).zero? ||
+    (sy = target.std { |_, y| y }).zero? ?
+      c < 0 ? -1.0 : 1.0 : c / (sx * sy)
   end
 
   alias_method :corr, :correlation_coefficient

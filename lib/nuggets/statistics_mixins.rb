@@ -1,5 +1,6 @@
 # load statistics related nuggets (mixins)
 
+require 'nuggets/array/boost_mixin'
 require 'nuggets/array/correlation_mixin'
 require 'nuggets/array/histogram_mixin'
 require 'nuggets/array/mean_mixin'

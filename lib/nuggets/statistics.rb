@@ -1,5 +1,6 @@
 # load statistics related nuggets
 
+require 'nuggets/array/boost'
 require 'nuggets/array/correlation'
 require 'nuggets/array/histogram'
 require 'nuggets/array/mean'

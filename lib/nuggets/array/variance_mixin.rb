@@ -64,7 +64,7 @@ module Nuggets
     return sx if empty?
 
     target = first.respond_to?(:to_ary) ? self :
-      ::Array.new(size) { |i| i + 1 }.zip(self)
+      self.class.new(size) { |i| [i + 1, at(i)] }
 
     target.each { |x, y|
       sx += x

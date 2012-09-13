@@ -47,7 +47,7 @@ module Nuggets
     return 0.0 if empty?
 
     target = first.respond_to?(:to_ary) ? self :
-      ::Array.new(size) { |i| i + 1 }.zip(self)
+      self.class.new(size) { |i| [i + 1, at(i)] }
 
     c = target.cov
 

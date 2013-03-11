@@ -13,7 +13,7 @@ begin
       :version => Nuggets::VERSION,
       :summary => %q{Some extensions to the Ruby programming language.},
       :author  => %q{Jens Wille},
-      :email   => %q{jens.wille@uni-koeln.de}
+      :email   => %q{jens.wille@gmail.com}
     }
   }}
 rescue LoadError => err

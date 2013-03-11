@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Object - ruby-nuggets Application documentation (v0.8.9)</title>
+<title>class Object - ruby-nuggets Application documentation (v0.9.0)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -43,17 +43,19 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
     <li>lib/nuggets.rb
     <li>lib/nuggets/object/blank.rb
-    <li>lib/nuggets/object/msend.rb
     <li>lib/nuggets/object/boolean.rb
+    <li>lib/nuggets/object/msend.rb
     <li>lib/nuggets/object/silence.rb
-    <li>lib/nuggets/util/content_type.rb
     <li>lib/nuggets/object/singleton_class.rb
+    <li>lib/nuggets/util/content_type.rb
   </ul>
 </nav>
 
@@ -80,11 +82,11 @@
   
   
   
-    <li><a class="include" href="Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
-  
-  
-  
     <li><a class="include" href="Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
   
   
   
@@ -98,13 +100,14 @@
   </ul>
 </nav>
 
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-Nuggets">#Nuggets</a>
+    <li ><a href="#method-i-Nuggets">#Nuggets</a>
     
   </ul>
 </nav>
@@ -131,11 +134,41 @@
 
   <ul class="link-list">
   
+    <li><a href="./Array.html">Array</a>
+  
+    <li><a href="./Enumerable.html">Enumerable</a>
+  
+    <li><a href="./File.html">File</a>
+  
+    <li><a href="./Hash.html">Hash</a>
+  
+    <li><a href="./IO.html">IO</a>
+  
+    <li><a href="./Integer.html">Integer</a>
+  
+    <li><a href="./Net.html">Net</a>
+  
+    <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="./Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="./Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="./Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="./Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="./Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
     <li><a href="./Nuggets.html">Nuggets</a>
   
     <li><a href="./Nuggets/Array.html">Nuggets::Array</a>
   
     <li><a href="./Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Array/BoostMixin.html">Nuggets::Array::BoostMixin</a>
   
     <li><a href="./Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
@@ -150,6 +183,8 @@
     <li><a href="./Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
   
     <li><a href="./Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="./Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
     <li><a href="./Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
   
@@ -182,6 +217,8 @@
     <li><a href="./Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
     <li><a href="./Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="./Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
   
     <li><a href="./Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
   
@@ -239,6 +276,26 @@
   
     <li><a href="./Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="./Numeric.html">Numeric</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="./Proc.html">Proc</a>
+  
+    <li><a href="./Process.html">Process</a>
+  
+    <li><a href="./Range.html">Range</a>
+  
+    <li><a href="./String.html">String</a>
+  
+    <li><a href="./String/Case.html">String::Case</a>
+  
+    <li><a href="./Tempfile.html">Tempfile</a>
+  
+    <li><a href="./URI.html">URI</a>
+  
     <li><a href="./Util.html">Util</a>
   
     <li><a href="./Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
@@ -261,57 +318,15 @@
   
     <li><a href="./Util/LogParser/Rails.html">Util::LogParser::Rails</a>
   
+    <li><a href="./Util/MySQL.html">Util::MySQL</a>
+  
+    <li><a href="./Util/MySQL/Parser.html">Util::MySQL::Parser</a>
+  
+    <li><a href="./Util/MySQL/ValueParser.html">Util::MySQL::ValueParser</a>
+  
     <li><a href="./Util/Pluggable.html">Util::Pluggable</a>
   
     <li><a href="./Util/Ruby.html">Util::Ruby</a>
-  
-    <li><a href="./Net.html">Net</a>
-  
-    <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
-  
-    <li><a href="./Net/HTTPInformation.html">Net::HTTPInformation</a>
-  
-    <li><a href="./Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
-  
-    <li><a href="./Net/HTTPRedirection.html">Net::HTTPRedirection</a>
-  
-    <li><a href="./Net/HTTPResponse.html">Net::HTTPResponse</a>
-  
-    <li><a href="./Net/HTTPServerError.html">Net::HTTPServerError</a>
-  
-    <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="./Object.html">Object</a>
-  
-    <li><a href="./Util/ContentType.html">Object::ContentType</a>
-  
-    <li><a href="./String.html">String</a>
-  
-    <li><a href="./String/Case.html">String::Case</a>
-  
-    <li><a href="./Array.html">Array</a>
-  
-    <li><a href="./Enumerable.html">Enumerable</a>
-  
-    <li><a href="./File.html">File</a>
-  
-    <li><a href="./Hash.html">Hash</a>
-  
-    <li><a href="./IO.html">IO</a>
-  
-    <li><a href="./Integer.html">Integer</a>
-  
-    <li><a href="./Numeric.html">Numeric</a>
-  
-    <li><a href="./Proc.html">Proc</a>
-  
-    <li><a href="./Process.html">Process</a>
-  
-    <li><a href="./Range.html">Range</a>
-  
-    <li><a href="./Tempfile.html">Tempfile</a>
-  
-    <li><a href="./URI.html">URI</a>
   
   </ul>
 </nav>
@@ -362,7 +377,9 @@
         <div class="method-heading">
           <span class="method-name">Nuggets</span><span
             class="method-args">(*nuggets)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -376,7 +393,7 @@
 <span class="ruby-constant">Nuggets</span>(:<span class="ruby-identifier">string</span>)
 <span class="ruby-constant">Nuggets</span>(<span class="ruby-constant">String</span>)
 
-<span class="ruby-comment"># Only 'msub' and 'word_wrap' String nuggets</span>
+<span class="ruby-comment"># Only &#39;msub&#39; and &#39;word_wrap&#39; String nuggets</span>
 <span class="ruby-constant">Nuggets</span>(:<span class="ruby-identifier">string</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w[msub word_wrap]</span>)
 
 <span class="ruby-comment"># Selected String nuggets and all Numeric nuggets</span>
@@ -385,14 +402,15 @@
 <span class="ruby-comment"># ...you see the pattern ;-)</span>
 </pre>
           
+          
 
           
           <div class="method-source-code" id="Nuggets-source">
             <pre><span class="ruby-comment"># File lib/nuggets.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Nuggets</span>(*<span class="ruby-identifier">nuggets</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Nuggets</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>)
   <span class="ruby-identifier">loaded_nuggets</span> = []
 
-  <span class="ruby-identifier">load_nuggets</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">base</span>, *<span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">load_nuggets</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">base</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">nuggets_by_hierarchy</span> = <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
 
     <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">nugget</span><span class="ruby-operator">|</span>
@@ -400,11 +418,11 @@
         <span class="ruby-identifier">require</span> <span class="ruby-identifier">path</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">nugget</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>)
         <span class="ruby-identifier">loaded_nuggets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>
       <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">LoadError</span>
-        <span class="ruby-comment"># if it's a directory, load anything in it</span>
+        <span class="ruby-comment"># if it&#39;s a directory, load anything in it</span>
         <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
           <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">dir_path</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">path</span>))
-            <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-identifier">path</span>, *<span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>[<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir_path</span>, <span class="ruby-string">'*'</span>)].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-              <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">'.rb'</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%r_mixin\.rb\z/</span>
+            <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-identifier">path</span>, <span class="ruby-operator">*</span><span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>[<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir_path</span>, <span class="ruby-string">&#39;*&#39;</span>)].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+              <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;.rb&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/_mixin\.rb\z/</span>
             }.<span class="ruby-identifier">compact</span>]
             <span class="ruby-keyword">break</span>
           <span class="ruby-keyword">end</span>
@@ -414,11 +432,11 @@
 
     <span class="ruby-identifier">nuggets_by_hierarchy</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hierarchy</span>, <span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">nuggets</span> = [<span class="ruby-identifier">nuggets</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
-      <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">hierarchy</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>), *<span class="ruby-identifier">nuggets</span>]
+      <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">hierarchy</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
     }
   }
 
-  <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-string">'nuggets'</span>, *<span class="ruby-identifier">nuggets</span>]
+  <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-string">&#39;nuggets&#39;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
 
   <span class="ruby-identifier">loaded_nuggets</span>
 <span class="ruby-keyword">end</span></pre>
@@ -441,7 +459,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Util::CLI - ruby-nuggets Application documentation (v0.8.9)</title>
+<title>class Util::CLI - ruby-nuggets Application documentation (v0.9.0)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -64,67 +66,80 @@
 </nav>
 
     
+    <!-- Extension Modules -->
+<nav id="extends-section" class="section">
+  <h3 class="section-header">Extended With Modules</h3>
+
+  <ul class="link-list">
+    
+  
+    <li><a class="extend" href="CLI/OptionParserExtension.html">Util::CLI::OptionParserExtension</a>
+  
+  
+  </ul>
+</nav>
+
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-c-defaults">::defaults</a>
+    <li ><a href="#method-c-defaults">::defaults</a>
     
-    <li><a href="#method-c-execute">::execute</a>
+    <li ><a href="#method-c-execute">::execute</a>
     
-    <li><a href="#method-c-new">::new</a>
+    <li ><a href="#method-c-new">::new</a>
     
-    <li><a href="#method-c-parent_const_get">::parent_const_get</a>
+    <li ><a href="#method-c-parent_const_get">::parent_const_get</a>
     
-    <li><a href="#method-c-usage">::usage</a>
+    <li ><a href="#method-c-usage">::usage</a>
     
-    <li><a href="#method-c-version">::version</a>
+    <li ><a href="#method-c-version">::version</a>
     
-    <li><a href="#method-i-abort">#abort</a>
+    <li ><a href="#method-i-abort">#abort</a>
     
-    <li><a href="#method-i-ask">#ask</a>
+    <li ><a href="#method-i-ask">#ask</a>
     
-    <li><a href="#method-i-execute">#execute</a>
+    <li ><a href="#method-i-execute">#execute</a>
     
-    <li><a href="#method-i-exit">#exit</a>
+    <li ><a href="#method-i-exit">#exit</a>
     
-    <li><a href="#method-i-generic_opts">#generic_opts</a>
+    <li ><a href="#method-i-generic_opts">#generic_opts</a>
     
-    <li><a href="#method-i-init">#init</a>
+    <li ><a href="#method-i-init">#init</a>
     
-    <li><a href="#method-i-load_config">#load_config</a>
+    <li ><a href="#method-i-load_config">#load_config</a>
     
-    <li><a href="#method-i-merge_config">#merge_config</a>
+    <li ><a href="#method-i-merge_config">#merge_config</a>
     
-    <li><a href="#method-i-open_file_or_std">#open_file_or_std</a>
+    <li ><a href="#method-i-open_file_or_std">#open_file_or_std</a>
     
-    <li><a href="#method-i-option_parser">#option_parser</a>
+    <li ><a href="#method-i-option_parser">#option_parser</a>
     
-    <li><a href="#method-i-opts">#opts</a>
+    <li ><a href="#method-i-opts">#opts</a>
     
-    <li><a href="#method-i-parse_options">#parse_options</a>
+    <li ><a href="#method-i-parse_options">#parse_options</a>
     
-    <li><a href="#method-i-post_opts">#post_opts</a>
+    <li ><a href="#method-i-post_opts">#post_opts</a>
     
-    <li><a href="#method-i-pre_opts">#pre_opts</a>
+    <li ><a href="#method-i-pre_opts">#pre_opts</a>
     
-    <li><a href="#method-i-progname">#progname</a>
+    <li ><a href="#method-i-progname">#progname</a>
     
-    <li><a href="#method-i-puts">#puts</a>
+    <li ><a href="#method-i-puts">#puts</a>
     
-    <li><a href="#method-i-quit">#quit</a>
+    <li ><a href="#method-i-quit">#quit</a>
     
-    <li><a href="#method-i-reset">#reset</a>
+    <li ><a href="#method-i-reset">#reset</a>
     
-    <li><a href="#method-i-shut">#shut</a>
+    <li ><a href="#method-i-shut">#shut</a>
     
-    <li><a href="#method-i-usage">#usage</a>
+    <li ><a href="#method-i-usage">#usage</a>
     
-    <li><a href="#method-i-version">#version</a>
+    <li ><a href="#method-i-version">#version</a>
     
-    <li><a href="#method-i-warn">#warn</a>
+    <li ><a href="#method-i-warn">#warn</a>
     
   </ul>
 </nav>
@@ -151,11 +166,41 @@
 
   <ul class="link-list">
   
+    <li><a href="../Array.html">Array</a>
+  
+    <li><a href="../Enumerable.html">Enumerable</a>
+  
+    <li><a href="../File.html">File</a>
+  
+    <li><a href="../Hash.html">Hash</a>
+  
+    <li><a href="../IO.html">IO</a>
+  
+    <li><a href="../Integer.html">Integer</a>
+  
+    <li><a href="../Net.html">Net</a>
+  
+    <li><a href="../Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="../Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="../Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="../Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
     <li><a href="../Nuggets.html">Nuggets</a>
   
     <li><a href="../Nuggets/Array.html">Nuggets::Array</a>
   
     <li><a href="../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="../Nuggets/Array/BoostMixin.html">Nuggets::Array::BoostMixin</a>
   
     <li><a href="../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
@@ -170,6 +215,8 @@
     <li><a href="../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
   
     <li><a href="../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="../Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
     <li><a href="../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
   
@@ -202,6 +249,8 @@
     <li><a href="../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
     <li><a href="../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
   
     <li><a href="../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
   
@@ -259,6 +308,26 @@
   
     <li><a href="../Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="../Numeric.html">Numeric</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="../Proc.html">Proc</a>
+  
+    <li><a href="../Process.html">Process</a>
+  
+    <li><a href="../Range.html">Range</a>
+  
+    <li><a href="../String.html">String</a>
+  
+    <li><a href="../String/Case.html">String::Case</a>
+  
+    <li><a href="../Tempfile.html">Tempfile</a>
+  
+    <li><a href="../URI.html">URI</a>
+  
     <li><a href="../Util.html">Util</a>
   
     <li><a href="../Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
@@ -281,57 +350,15 @@
   
     <li><a href="../Util/LogParser/Rails.html">Util::LogParser::Rails</a>
   
+    <li><a href="../Util/MySQL.html">Util::MySQL</a>
+  
+    <li><a href="../Util/MySQL/Parser.html">Util::MySQL::Parser</a>
+  
+    <li><a href="../Util/MySQL/ValueParser.html">Util::MySQL::ValueParser</a>
+  
     <li><a href="../Util/Pluggable.html">Util::Pluggable</a>
   
     <li><a href="../Util/Ruby.html">Util::Ruby</a>
-  
-    <li><a href="../Net.html">Net</a>
-  
-    <li><a href="../Net/HTTPClientError.html">Net::HTTPClientError</a>
-  
-    <li><a href="../Net/HTTPInformation.html">Net::HTTPInformation</a>
-  
-    <li><a href="../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
-  
-    <li><a href="../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
-  
-    <li><a href="../Net/HTTPResponse.html">Net::HTTPResponse</a>
-  
-    <li><a href="../Net/HTTPServerError.html">Net::HTTPServerError</a>
-  
-    <li><a href="../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="../Object.html">Object</a>
-  
-    <li><a href="../Util/ContentType.html">Object::ContentType</a>
-  
-    <li><a href="../String.html">String</a>
-  
-    <li><a href="../String/Case.html">String::Case</a>
-  
-    <li><a href="../Array.html">Array</a>
-  
-    <li><a href="../Enumerable.html">Enumerable</a>
-  
-    <li><a href="../File.html">File</a>
-  
-    <li><a href="../Hash.html">Hash</a>
-  
-    <li><a href="../IO.html">IO</a>
-  
-    <li><a href="../Integer.html">Integer</a>
-  
-    <li><a href="../Numeric.html">Numeric</a>
-  
-    <li><a href="../Proc.html">Proc</a>
-  
-    <li><a href="../Process.html">Process</a>
-  
-    <li><a href="../Range.html">Range</a>
-  
-    <li><a href="../Tempfile.html">Tempfile</a>
-  
-    <li><a href="../URI.html">URI</a>
   
   </ul>
 </nav>
@@ -467,11 +494,14 @@
         <div class="method-heading">
           <span class="method-name">defaults</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -497,7 +527,9 @@
         <div class="method-heading">
           <span class="method-name">execute</span><span
             class="method-args">(*args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -505,12 +537,13 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="execute-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(*<span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- execute-source -->
           
@@ -527,7 +560,9 @@
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(defaults = nil, *args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -535,14 +570,15 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 74</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">defaults</span> = <span class="ruby-keyword">nil</span>, *<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">defaults</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-ivar">@defaults</span>, <span class="ruby-ivar">@prog</span> = <span class="ruby-identifier">defaults</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">defaults</span>, <span class="ruby-identifier">$0</span>
 
-  <span class="ruby-identifier">init</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">init</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
 
   <span class="ruby-comment"># prevent backtrace on ^C</span>
   <span class="ruby-identifier">trap</span>(<span class="ruby-value">:INT</span>) { <span class="ruby-identifier">exit</span> <span class="ruby-value">130</span> }
@@ -562,11 +598,14 @@
         <div class="method-heading">
           <span class="method-name">usage</span><span
             class="method-args">(prog)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -592,11 +631,14 @@
         <div class="method-heading">
           <span class="method-name">version</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -628,11 +670,14 @@
         <div class="method-heading">
           <span class="method-name">parent_const_get</span><span
             class="method-args">(const, range = 0...-1)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -641,7 +686,7 @@
           <div class="method-source-code" id="parent_const_get-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parent_const_get</span>(<span class="ruby-identifier">const</span>, <span class="ruby-identifier">range</span> = <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>)
-  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'::'</span>).<span class="ruby-identifier">inject</span>([<span class="ruby-operator">::</span><span class="ruby-constant">Object</span>]) { <span class="ruby-operator">|</span><span class="ruby-identifier">memo</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;::&#39;</span>).<span class="ruby-identifier">inject</span>([<span class="ruby-operator">::</span><span class="ruby-constant">Object</span>]) { <span class="ruby-operator">|</span><span class="ruby-identifier">memo</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">memo</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">memo</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
   }.<span class="ruby-identifier">reverse</span>[<span class="ruby-identifier">range</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">mod</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">const</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">const</span>)
@@ -670,7 +715,9 @@
         <div class="method-heading">
           <span class="method-name">execute</span><span
             class="method-args">(arguments = ::ARGV, *inouterr)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -678,12 +725,13 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="execute-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 95</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">arguments</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ARGV</span>, *<span class="ruby-identifier">inouterr</span>)
-  <span class="ruby-identifier">reset</span>(*<span class="ruby-identifier">inouterr</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">arguments</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ARGV</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
+  <span class="ruby-identifier">reset</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
   <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>)
   <span class="ruby-identifier">run</span>(<span class="ruby-identifier">arguments</span>)
 <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
@@ -709,11 +757,14 @@
         <div class="method-heading">
           <span class="method-name">progname</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -739,11 +790,14 @@
         <div class="method-heading">
           <span class="method-name">reset</span><span
             class="method-args">(stdin = ::STDIN, stdout = ::STDOUT, stderr = ::STDERR)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -770,11 +824,14 @@
         <div class="method-heading">
           <span class="method-name">usage</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -800,11 +857,14 @@
         <div class="method-heading">
           <span class="method-name">version</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -836,11 +896,14 @@
         <div class="method-heading">
           <span class="method-name">abort</span><span
             class="method-args">(msg = nil, status = 1)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -867,7 +930,9 @@
         <div class="method-heading">
           <span class="method-name">ask</span><span
             class="method-args">(question, &block)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -875,12 +940,13 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="ask-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 119</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-operator">::</span><span class="ruby-constant">HighLine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>).<span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-operator">::</span><span class="ruby-constant">HighLine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>).<span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- ask-source -->
           
@@ -897,11 +963,14 @@
         <div class="method-heading">
           <span class="method-name">exit</span><span
             class="method-args">(status = 0)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -927,11 +996,14 @@
         <div class="method-heading">
           <span class="method-name">generic_opts</span><span
             class="method-args">(opts)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -940,11 +1012,11 @@
           <div class="method-source-code" id="generic_opts-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 217</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
-  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-h'</span>, <span class="ruby-string">'--help'</span>, <span class="ruby-string">'Print this help message and exit'</span>) {
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-h&#39;</span>, <span class="ruby-string">&#39;--help&#39;</span>, <span class="ruby-string">&#39;Print this help message and exit&#39;</span>) {
     <span class="ruby-identifier">shut</span> <span class="ruby-identifier">opts</span>
   }
 
-  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--version'</span>, <span class="ruby-string">'Print program version and exit'</span>) {
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;--version&#39;</span>, <span class="ruby-string">&#39;Print program version and exit&#39;</span>) {
     <span class="ruby-identifier">shut</span> <span class="ruby-node">&quot;#{progname} v#{version}&quot;</span>
   }
 <span class="ruby-keyword">end</span></pre>
@@ -963,7 +1035,9 @@
         <div class="method-heading">
           <span class="method-name">init</span><span
             class="method-args">(*args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -971,11 +1045,12 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="init-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 115</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">init</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">reset</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- init-source -->
@@ -993,11 +1068,14 @@
         <div class="method-heading">
           <span class="method-name">load_config</span><span
             class="method-args">(file = options[:config] || default = defaults[:config])</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1029,11 +1107,14 @@
         <div class="method-heading">
           <span class="method-name">merge_config</span><span
             class="method-args">(args = [config, defaults])</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1061,11 +1142,14 @@
         <div class="method-heading">
           <span class="method-name">open_file_or_std</span><span
             class="method-args">(file, write = false)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1074,13 +1158,13 @@
           <div class="method-source-code" id="open_file_or_std-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">open_file_or_std</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">write</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span>
     <span class="ruby-identifier">write</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">stdout</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">stdin</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">gz</span> = <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%r\.gz\z/</span>
+    <span class="ruby-identifier">gz</span> = <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\.gz\z/</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">write</span>
-      <span class="ruby-identifier">gz</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">'w'</span>)
+      <span class="ruby-identifier">gz</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;w&#39;</span>)
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">quit</span> <span class="ruby-node">&quot;No such file: #{file}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
       (<span class="ruby-identifier">gz</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>).<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>)
@@ -1102,11 +1186,14 @@
         <div class="method-heading">
           <span class="method-name">option_parser</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1120,13 +1207,13 @@
 
     <span class="ruby-identifier">pre_opts</span>(<span class="ruby-identifier">opts</span>)
 
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">'Options:'</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;Options:&#39;</span>
 
     <span class="ruby-identifier">opts</span>(<span class="ruby-identifier">opts</span>)
 
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">'Generic options:'</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;Generic options:&#39;</span>
 
     <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
     <span class="ruby-identifier">post_opts</span>(<span class="ruby-identifier">opts</span>)
@@ -1147,11 +1234,14 @@
         <div class="method-heading">
           <span class="method-name">opts</span><span
             class="method-args">(opts)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1176,11 +1266,14 @@
         <div class="method-heading">
           <span class="method-name">parse_options</span><span
             class="method-args">(arguments)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1209,11 +1302,14 @@
         <div class="method-heading">
           <span class="method-name">post_opts</span><span
             class="method-args">(opts)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1238,11 +1334,14 @@
         <div class="method-heading">
           <span class="method-name">pre_opts</span><span
             class="method-args">(opts)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1267,7 +1366,9 @@
         <div class="method-heading">
           <span class="method-name">puts</span><span
             class="method-args">(*msg)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -1275,12 +1376,13 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="puts-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 123</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">puts</span>(*<span class="ruby-identifier">msg</span>)
-  <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span>(*<span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
+  <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- puts-source -->
           
@@ -1297,11 +1399,14 @@
         <div class="method-heading">
           <span class="method-name">quit</span><span
             class="method-args">(msg = nil, include_usage = msg != false)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1332,11 +1437,14 @@
         <div class="method-heading">
           <span class="method-name">shut</span><span
             class="method-args">(msg = nil, status = 0)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1363,7 +1471,9 @@
         <div class="method-heading">
           <span class="method-name">warn</span><span
             class="method-args">(*msg)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -1371,12 +1481,13 @@
           
           
           
+          
 
           
           <div class="method-source-code" id="warn-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/cli.rb, line 127</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">warn</span>(*<span class="ruby-identifier">msg</span>)
-  <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span>(*<span class="ruby-identifier">msg</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">warn</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
+  <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- warn-source -->
           
@@ -1397,7 +1508,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

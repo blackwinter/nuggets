@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Array - ruby-nuggets Application documentation (v0.8.9)</title>
+<title>class Array - ruby-nuggets Application documentation (v0.9.0)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -43,31 +43,34 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/array/mean.rb
-    <li>lib/nuggets/array/mode.rb
-    <li>lib/nuggets/array/only.rb
-    <li>lib/nuggets/array/rand.rb
-    <li>lib/nuggets/array/limit.rb
-    <li>lib/nuggets/array/runiq.rb
-    <li>lib/nuggets/array/format.rb
-    <li>lib/nuggets/array/median.rb
-    <li>lib/nuggets/object/blank.rb
-    <li>lib/nuggets/array/shuffle.rb
-    <li>lib/nuggets/array/to_hash.rb
-    <li>lib/nuggets/array/in_order.rb
-    <li>lib/nuggets/array/monotone.rb
-    <li>lib/nuggets/array/variance.rb
-    <li>lib/nuggets/array/histogram.rb
-    <li>lib/nuggets/array/regression.rb
+    <li>lib/nuggets/array/boost.rb
     <li>lib/nuggets/array/combination.rb
     <li>lib/nuggets/array/correlation.rb
     <li>lib/nuggets/array/flatten_once.rb
-    <li>lib/nuggets/util/dotted_decimal.rb
+    <li>lib/nuggets/array/format.rb
+    <li>lib/nuggets/array/histogram.rb
+    <li>lib/nuggets/array/in_order.rb
+    <li>lib/nuggets/array/limit.rb
+    <li>lib/nuggets/array/mean.rb
+    <li>lib/nuggets/array/median.rb
+    <li>lib/nuggets/array/mode.rb
+    <li>lib/nuggets/array/monotone.rb
+    <li>lib/nuggets/array/only.rb
+    <li>lib/nuggets/array/rand.rb
+    <li>lib/nuggets/array/regression.rb
+    <li>lib/nuggets/array/runiq.rb
+    <li>lib/nuggets/array/shuffle.rb
     <li>lib/nuggets/array/standard_deviation.rb
+    <li>lib/nuggets/array/to_hash.rb
+    <li>lib/nuggets/array/variance.rb
+    <li>lib/nuggets/object/blank.rb
+    <li>lib/nuggets/util/dotted_decimal.rb
   </ul>
 </nav>
 
@@ -90,39 +93,7 @@
   <ul class="link-list">
   
   
-    <li><a class="include" href="Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
-  
-  
-  
-    <li><a class="include" href="Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+    <li><a class="include" href="Nuggets/Array/BoostMixin.html">Nuggets::Array::BoostMixin</a>
   
   
   
@@ -130,71 +101,108 @@
   
   
   
+    <li><a class="include" href="Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+  
+  
     <li><a class="include" href="Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+  
+  
+    <li><a class="include" href="Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
   
   
   </ul>
 </nav>
 
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-25">#%</a>
+    <li ><a href="#method-i-25">#%</a>
     
-    <li><a href="#method-i-ascending-3F">#ascending?</a>
+    <li ><a href="#method-i-ascending-3F">#ascending?</a>
     
-    <li><a href="#method-i-comb">#comb</a>
+    <li ><a href="#method-i-comb">#comb</a>
     
-    <li><a href="#method-i-decreasing-3F">#decreasing?</a>
+    <li ><a href="#method-i-decreasing-3F">#decreasing?</a>
     
-    <li><a href="#method-i-descending-3F">#descending?</a>
+    <li ><a href="#method-i-descending-3F">#descending?</a>
     
-    <li><a href="#method-i-flatten_once">#flatten_once</a>
+    <li ><a href="#method-i-flatten_once">#flatten_once</a>
     
-    <li><a href="#method-i-flatten_once-21">#flatten_once!</a>
+    <li ><a href="#method-i-flatten_once-21">#flatten_once!</a>
     
-    <li><a href="#method-i-in_order">#in_order</a>
+    <li ><a href="#method-i-in_order">#in_order</a>
     
-    <li><a href="#method-i-in_order-21">#in_order!</a>
+    <li ><a href="#method-i-in_order-21">#in_order!</a>
     
-    <li><a href="#method-i-increasing-3F">#increasing?</a>
+    <li ><a href="#method-i-increasing-3F">#increasing?</a>
     
-    <li><a href="#method-i-monotone-3F">#monotone?</a>
+    <li ><a href="#method-i-monotone-3F">#monotone?</a>
     
-    <li><a href="#method-i-monotonic-3F">#monotonic?</a>
+    <li ><a href="#method-i-monotonic-3F">#monotonic?</a>
     
-    <li><a href="#method-i-only">#only</a>
+    <li ><a href="#method-i-only">#only</a>
     
-    <li><a href="#method-i-rand">#rand</a>
+    <li ><a href="#method-i-rand">#rand</a>
     
-    <li><a href="#method-i-shuffle">#shuffle</a>
+    <li ><a href="#method-i-shuffle">#shuffle</a>
     
-    <li><a href="#method-i-shuffle-21">#shuffle!</a>
+    <li ><a href="#method-i-shuffle-21">#shuffle!</a>
     
-    <li><a href="#method-i-shuffle_kfy">#shuffle_kfy</a>
+    <li ><a href="#method-i-shuffle_kfy">#shuffle_kfy</a>
     
-    <li><a href="#method-i-shuffle_kfy-21">#shuffle_kfy!</a>
+    <li ><a href="#method-i-shuffle_kfy-21">#shuffle_kfy!</a>
     
-    <li><a href="#method-i-shuffle_knuth">#shuffle_knuth</a>
+    <li ><a href="#method-i-shuffle_knuth">#shuffle_knuth</a>
     
-    <li><a href="#method-i-shuffle_knuth-21">#shuffle_knuth!</a>
+    <li ><a href="#method-i-shuffle_knuth-21">#shuffle_knuth!</a>
     
-    <li><a href="#method-i-sort_by_dotted_decimal">#sort_by_dotted_decimal</a>
+    <li ><a href="#method-i-sort_by_dotted_decimal">#sort_by_dotted_decimal</a>
     
-    <li><a href="#method-i-strictly_ascending-3F">#strictly_ascending?</a>
+    <li ><a href="#method-i-strictly_ascending-3F">#strictly_ascending?</a>
     
-    <li><a href="#method-i-strictly_decreasing-3F">#strictly_decreasing?</a>
+    <li ><a href="#method-i-strictly_decreasing-3F">#strictly_decreasing?</a>
     
-    <li><a href="#method-i-strictly_descending-3F">#strictly_descending?</a>
+    <li ><a href="#method-i-strictly_descending-3F">#strictly_descending?</a>
     
-    <li><a href="#method-i-strictly_increasing-3F">#strictly_increasing?</a>
+    <li ><a href="#method-i-strictly_increasing-3F">#strictly_increasing?</a>
     
-    <li><a href="#method-i-to_h">#to_h</a>
+    <li ><a href="#method-i-to_h">#to_h</a>
     
-    <li><a href="#method-i-to_hash">#to_hash</a>
+    <li ><a href="#method-i-to_hash">#to_hash</a>
     
   </ul>
 </nav>
@@ -221,11 +229,41 @@
 
   <ul class="link-list">
   
+    <li><a href="./Array.html">Array</a>
+  
+    <li><a href="./Enumerable.html">Enumerable</a>
+  
+    <li><a href="./File.html">File</a>
+  
+    <li><a href="./Hash.html">Hash</a>
+  
+    <li><a href="./IO.html">IO</a>
+  
+    <li><a href="./Integer.html">Integer</a>
+  
+    <li><a href="./Net.html">Net</a>
+  
+    <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="./Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="./Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="./Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="./Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="./Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
     <li><a href="./Nuggets.html">Nuggets</a>
   
     <li><a href="./Nuggets/Array.html">Nuggets::Array</a>
   
     <li><a href="./Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="./Nuggets/Array/BoostMixin.html">Nuggets::Array::BoostMixin</a>
   
     <li><a href="./Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
@@ -240,6 +278,8 @@
     <li><a href="./Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
   
     <li><a href="./Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="./Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
     <li><a href="./Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
   
@@ -272,6 +312,8 @@
     <li><a href="./Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
     <li><a href="./Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="./Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
   
     <li><a href="./Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
   
@@ -329,6 +371,26 @@
   
     <li><a href="./Nuggets/Version.html">Nuggets::Version</a>
   
+    <li><a href="./Numeric.html">Numeric</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./Util/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="./Proc.html">Proc</a>
+  
+    <li><a href="./Process.html">Process</a>
+  
+    <li><a href="./Range.html">Range</a>
+  
+    <li><a href="./String.html">String</a>
+  
+    <li><a href="./String/Case.html">String::Case</a>
+  
+    <li><a href="./Tempfile.html">Tempfile</a>
+  
+    <li><a href="./URI.html">URI</a>
+  
     <li><a href="./Util.html">Util</a>
   
     <li><a href="./Util/ANSIColor2CSS.html">Util::ANSIColor2CSS</a>
@@ -351,57 +413,15 @@
   
     <li><a href="./Util/LogParser/Rails.html">Util::LogParser::Rails</a>
   
+    <li><a href="./Util/MySQL.html">Util::MySQL</a>
+  
+    <li><a href="./Util/MySQL/Parser.html">Util::MySQL::Parser</a>
+  
+    <li><a href="./Util/MySQL/ValueParser.html">Util::MySQL::ValueParser</a>
+  
     <li><a href="./Util/Pluggable.html">Util::Pluggable</a>
   
     <li><a href="./Util/Ruby.html">Util::Ruby</a>
-  
-    <li><a href="./Net.html">Net</a>
-  
-    <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
-  
-    <li><a href="./Net/HTTPInformation.html">Net::HTTPInformation</a>
-  
-    <li><a href="./Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
-  
-    <li><a href="./Net/HTTPRedirection.html">Net::HTTPRedirection</a>
-  
-    <li><a href="./Net/HTTPResponse.html">Net::HTTPResponse</a>
-  
-    <li><a href="./Net/HTTPServerError.html">Net::HTTPServerError</a>
-  
-    <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="./Object.html">Object</a>
-  
-    <li><a href="./Util/ContentType.html">Object::ContentType</a>
-  
-    <li><a href="./String.html">String</a>
-  
-    <li><a href="./String/Case.html">String::Case</a>
-  
-    <li><a href="./Array.html">Array</a>
-  
-    <li><a href="./Enumerable.html">Enumerable</a>
-  
-    <li><a href="./File.html">File</a>
-  
-    <li><a href="./Hash.html">Hash</a>
-  
-    <li><a href="./IO.html">IO</a>
-  
-    <li><a href="./Integer.html">Integer</a>
-  
-    <li><a href="./Numeric.html">Numeric</a>
-  
-    <li><a href="./Proc.html">Proc</a>
-  
-    <li><a href="./Process.html">Process</a>
-  
-    <li><a href="./Range.html">Range</a>
-  
-    <li><a href="./Tempfile.html">Tempfile</a>
-  
-    <li><a href="./URI.html">URI</a>
   
   </ul>
 </nav>
@@ -466,16 +486,17 @@ is empty.</p>
 <p>Applies to string argument accordingly: First string in <em>array</em>
 applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
           
+          
 
           
           <div class="method-source-code" id="25-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/format.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">%</span>(<span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">opts</span> = { <span class="ruby-value">:sep</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">', '</span> }
+  <span class="ruby-identifier">opts</span> = { <span class="ruby-value">:sep</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;, &#39;</span> }
   <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">pop</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
 
   <span class="ruby-identifier">default</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
-    [<span class="ruby-string">'%s'</span>] * <span class="ruby-identifier">n</span> * <span class="ruby-identifier">opts</span>[<span class="ruby-value">:sep</span>]
+    [<span class="ruby-string">&#39;%s&#39;</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:sep</span>]
   }
 
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">args</span>
@@ -484,7 +505,7 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
         <span class="ruby-identifier">args</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>
       <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
-      [*<span class="ruby-identifier">args</span>].<span class="ruby-identifier">comb</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      [<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>].<span class="ruby-identifier">comb</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">return</span> (<span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>[<span class="ruby-identifier">x</span>.<span class="ruby-identifier">size</span>]) <span class="ruby-operator">%</span> <span class="ruby-identifier">x</span> <span class="ruby-keyword">unless</span>
           <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
             <span class="ruby-identifier">y</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">empty?</span>
@@ -494,7 +515,7 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
       }
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-string">''</span>
+  <span class="ruby-string">&#39;&#39;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- 25-source -->
           
@@ -523,6 +544,7 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
         <div class="method-description">
           
           <p>Check whether <em>array</em> is (strictly) ascending.</p>
+          
           
 
           
@@ -573,11 +595,12 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
 <code>combination</code> is yielded to it. Based on &lt;<a
 href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb">blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb</a>&gt;.</p>
           
+          
 
           
           <div class="method-source-code" id="comb-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/combination.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">comb</span>(*<span class="ruby-identifier">sizes</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comb</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">sizes</span>)
   <span class="ruby-comment"># If no sizes are given, produce all!</span>
   <span class="ruby-identifier">sizes</span> = (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">size</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">reverse</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">empty?</span>
 
@@ -605,7 +628,7 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
     <span class="ruby-keyword">end</span>
   }
 
-  <span class="ruby-comment"># Anyway, return what we've found...</span>
+  <span class="ruby-comment"># Anyway, return what we&#39;ve found...</span>
   <span class="ruby-identifier">combinations</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- comb-source -->
@@ -623,11 +646,12 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
         <div class="method-heading">
           <span class="method-name">decreasing?</span><span
             class="method-args">(strict = false)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -662,6 +686,7 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
         <div class="method-description">
           
           <p>Check whether <em>array</em> is (strictly) descending.</p>
+          
           
 
           
@@ -701,8 +726,9 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
         <div class="method-description">
           
           <p>Flatten <em>array</em> by <em>one</em> level only. Pretty straight-forward
-port of David Alan Black’s flattenx C implementation (though much slower,
-of course ;-).</p>
+port of David Alan Black&#39;s flattenx C implementation (though much
+slower, of course ;-).</p>
+          
           
 
           
@@ -750,6 +776,7 @@ of course ;-).</p>
           <p>Destructive version of <a
 href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
           
+          
 
           
           <div class="method-source-code" id="flatten_once-21-source">
@@ -791,11 +818,12 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
 [:<span class="ruby-identifier">created_at</span>, :<span class="ruby-identifier">email</span>, :<span class="ruby-identifier">login</span>, :<span class="ruby-identifier">updated_at</span>].<span class="ruby-identifier">in_order</span>(:<span class="ruby-identifier">email</span>, :<span class="ruby-identifier">address</span>)  <span class="ruby-comment">#=&gt; [:email, :created_at, :login, :updated_at]</span>
 </pre>
           
+          
 
           
           <div class="method-source-code" id="in_order-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/in_order.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">in_order</span>(*<span class="ruby-identifier">ordered</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
   <span class="ruby-identifier">ordered</span> <span class="ruby-operator">&amp;=</span> <span class="ruby-keyword">self</span>
   <span class="ruby-identifier">ordered</span> <span class="ruby-operator">+</span> (<span class="ruby-keyword">self</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">ordered</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -827,12 +855,13 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
           
           <p>Destructive version of <a href="Array.html#method-i-in_order">in_order</a>.</p>
           
+          
 
           
           <div class="method-source-code" id="in_order-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/in_order.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">in_order!</span>(*<span class="ruby-identifier">ordered</span>)
-  <span class="ruby-identifier">replace</span> <span class="ruby-identifier">in_order</span>(*<span class="ruby-identifier">ordered</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">in_order!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
+  <span class="ruby-identifier">replace</span> <span class="ruby-identifier">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- in_order-21-source -->
           
@@ -849,11 +878,12 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
         <div class="method-heading">
           <span class="method-name">increasing?</span><span
             class="method-args">(strict = false)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -890,6 +920,7 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
           <p>Check whether <em>array</em> is monotone according to
 <code>operator</code>.</p>
           
+          
 
           
           <div class="method-source-code" id="monotone-3F-source">
@@ -921,11 +952,12 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
         <div class="method-heading">
           <span class="method-name">monotonic?</span><span
             class="method-args">(operator)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -967,17 +999,18 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
         <div class="method-description">
           
           <p>Returns the only element of <em>array</em>. Raises an IndexError if
-<em>array</em>’s size is not 1, unless parameter <code>true</code> is
+<em>array</em>&#39;s size is not 1, unless parameter <code>true</code> is
 passed.</p>
 
-<p>Idea stolen from Gavin Sinclair’s Ruby Extensions Project.</p>
+<p>Idea stolen from Gavin Sinclair&#39;s Ruby Extensions Project.</p>
+          
           
 
           
           <div class="method-source-code" id="only-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/only.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">only</span>(<span class="ruby-identifier">relax</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">IndexError</span>, <span class="ruby-string">'not a single-element array'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">relax</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">IndexError</span>, <span class="ruby-string">&#39;not a single-element array&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">relax</span>
   <span class="ruby-identifier">first</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- only-source -->
@@ -1007,6 +1040,7 @@ passed.</p>
         <div class="method-description">
           
           <p>Randomly pick an item from <em>array</em>.</p>
+          
           
 
           
@@ -1044,6 +1078,7 @@ passed.</p>
           <p>Shuffles <em>array</em> in random order. Select a different shuffling
 algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
           
+          
 
           
           <div class="method-source-code" id="shuffle-source">
@@ -1078,6 +1113,7 @@ algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
         <div class="method-description">
           
           <p>Destructive version of <a href="Array.html#method-i-shuffle">shuffle</a>.</p>
+          
           
 
           
@@ -1115,6 +1151,7 @@ algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
           <p>Non-destructive version of <a
 href="Array.html#method-i-shuffle_kfy-21">shuffle_kfy!</a>.</p>
           
+          
 
           
           <div class="method-source-code" id="shuffle_kfy-source">
@@ -1150,6 +1187,7 @@ href="Array.html#method-i-shuffle_kfy-21">shuffle_kfy!</a>.</p>
           
           <p>Shuffles <em>array</em> in random order using the Knuth-Fisher-Yates
 algorithm.</p>
+          
           
 
           
@@ -1192,6 +1230,7 @@ algorithm.</p>
           <p>Non-destructive version of <a
 href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
+          
 
           
           <div class="method-source-code" id="shuffle_knuth-source">
@@ -1225,7 +1264,8 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
 
         <div class="method-description">
           
-          <p>Shuffles <em>array</em> in random order using Knuth’s algorithm.</p>
+          <p>Shuffles <em>array</em> in random order using Knuth&#39;s algorithm.</p>
+          
           
 
           
@@ -1254,11 +1294,14 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
         <div class="method-heading">
           <span class="method-name">sort_by_dotted_decimal</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1267,7 +1310,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           <div class="method-source-code" id="sort_by_dotted_decimal-source">
             <pre><span class="ruby-comment"># File lib/nuggets/util/dotted_decimal.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sort_by_dotted_decimal</span>
-  <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'.'</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">to_i</span> } }
+  <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;.&#39;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">to_i</span> } }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- sort_by_dotted_decimal-source -->
           
@@ -1297,6 +1340,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
           <p>Check whether <em>array</em> is strictly ascending.</p>
           
+          
 
           
           <div class="method-source-code" id="strictly_ascending-3F-source">
@@ -1323,11 +1367,12 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
         <div class="method-heading">
           <span class="method-name">strictly_decreasing?</span><span
             class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1363,6 +1408,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
           <p>Check whether <em>array</em> is strictly descending.</p>
           
+          
 
           
           <div class="method-source-code" id="strictly_descending-3F-source">
@@ -1389,11 +1435,12 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
         <div class="method-heading">
           <span class="method-name">strictly_increasing?</span><span
             class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1416,11 +1463,12 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
         <div class="method-heading">
           <span class="method-name">to_h</span><span
             class="method-args">(value = default = true)</span>
-          <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -1478,8 +1526,9 @@ of <em>array</em> to <code>value</code> or the result of the block.</p>
 <pre class="ruby">[[<span class="ruby-value">0</span>, <span class="ruby-value">0</span>], [<span class="ruby-value">1</span>, [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]]].<span class="ruby-identifier">to_h</span>  <span class="ruby-comment">#=&gt; { 0 =&gt; 0, 1 =&gt; [2, 3] }</span>
 <span class="ruby-node">%w[a b c d]</span>.<span class="ruby-identifier">to_h</span>            <span class="ruby-comment">#=&gt; { &quot;a&quot; =&gt; &quot;b&quot;, &quot;c&quot; =&gt; &quot;d&quot; }</span>
 <span class="ruby-node">%w[a b c d]</span>.<span class="ruby-identifier">to_h</span>(<span class="ruby-value">1</span>)         <span class="ruby-comment">#=&gt; { &quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 1, &quot;c&quot; =&gt; 1, &quot;d&quot; =&gt; 1 }</span>
-<span class="ruby-node">%w[a b]</span>.<span class="ruby-identifier">to_h</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span> * <span class="ruby-value">2</span> }  <span class="ruby-comment">#=&gt; { &quot;a&quot; =&gt; &quot;aa&quot;, &quot;b&quot; =&gt; &quot;bb&quot; }</span>
+<span class="ruby-node">%w[a b]</span>.<span class="ruby-identifier">to_h</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span> }  <span class="ruby-comment">#=&gt; { &quot;a&quot; =&gt; &quot;aa&quot;, &quot;b&quot; =&gt; &quot;bb&quot; }</span>
 </pre>
+          
           
 
           
@@ -1489,13 +1538,13 @@ of <em>array</em> to <code>value</code> or the result of the block.</p>
   <span class="ruby-identifier">hash</span> = {}
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'both block and value argument given'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;both block and value argument given&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
 
     <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">element</span>] = <span class="ruby-keyword">yield</span> <span class="ruby-identifier">element</span> }
   <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">default</span>
     <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">element</span>] = <span class="ruby-identifier">value</span> }
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>[*<span class="ruby-identifier">flatten_once</span>]
+    <span class="ruby-keyword">return</span> <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">flatten_once</span>]
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">hash</span>
@@ -1523,7 +1572,7 @@ of <em>array</em> to <code>value</code> or the result of the block.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

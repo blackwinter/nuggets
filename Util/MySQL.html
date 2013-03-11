@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Util::ContentType - ruby-nuggets Application documentation (v0.9.0)</title>
+<title>module Util::MySQL - ruby-nuggets Application documentation (v0.9.0)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/util/content_type.rb
+    <li>lib/nuggets/util/mysql.rb
   </ul>
 </nav>
 
@@ -61,17 +61,7 @@
     
     
     
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
-
-  <ul class="link-list">
     
-    <li ><a href="#method-i-of">#of</a>
-    
-  </ul>
-</nav>
-
   </div>
 
   <div id="project-metadata">
@@ -295,7 +285,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Util::ContentType</h1>
+  <h1 class="module">module Util::MySQL</h1>
 
   <div id="description" class="description">
     
@@ -315,58 +305,6 @@
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-of" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            of(path) &rarr; aString or +nil+
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Get the MIME-Type of the file living at <code>path</code>. Either by
-looking directly into the file (requires FileMagic), or, assuming
-<code>path</code> might denote a <a href="../URI.html">URI</a>, by asking
-the web server (via OpenURI), or finally by just looking at the file
-extension (requires MIME::Types). Returns <code>nil</code> in case no
-decision could be made.</p>
-
-<p>NOTE: This is really only useful with the filemagic and mime-types gems
-installed.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="of-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/content_type.rb, line 80</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">of</span>(<span class="ruby-identifier">path</span>)
-  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">content_type</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> <span class="ruby-operator">::</span><span class="ruby-constant">URI</span>.<span class="ruby-identifier">content_type</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> (
-    <span class="ruby-identifier">t</span> = <span class="ruby-operator">::</span><span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>.<span class="ruby-identifier">of</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">first</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">content_type</span>
-  )
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- of-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- of-method -->
-
-    
-    </section><!-- public-instance-method-details -->
-  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

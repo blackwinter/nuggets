@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Util::MySQL::ValueParser - ruby-nuggets Application documentation (v0.9.0)</title>
+<title>class Util::MySQL::ValueParser - ruby-nuggets Application documentation (v0.9.1)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -375,7 +375,7 @@
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 114</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
   <span class="ruby-identifier">new</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -414,7 +414,7 @@
 
           
           <div class="method-source-code" id="error-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 197</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">error</span>(<span class="ruby-identifier">message</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">eos?</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unexpected end of input (#{message}).&quot;</span>
@@ -451,7 +451,7 @@
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 118</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
   <span class="ruby-ivar">@input</span> = <span class="ruby-constant">StringScanner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>)
 
@@ -498,7 +498,7 @@
 
           
           <div class="method-source-code" id="parse_keyword-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 191</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 193</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_keyword</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/null/</span>)
     <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">nil</span>)
@@ -533,7 +533,7 @@
 
           
           <div class="method-source-code" id="parse_number-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 185</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_number</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/</span>)
     <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">eval</span>(<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">matched</span>))
@@ -568,7 +568,7 @@
 
           
           <div class="method-source-code" id="parse_row-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 136</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_row</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\(/</span>)
 
@@ -612,7 +612,7 @@
 
           
           <div class="method-source-code" id="parse_string-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 157</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_string</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/&#39;/</span>)
 
@@ -655,7 +655,7 @@
 
           
           <div class="method-source-code" id="parse_string_content-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 171</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_string_content</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/[^\&#39;]+/</span>)
     <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">matched</span>)
@@ -690,7 +690,7 @@
 
           
           <div class="method-source-code" id="parse_string_escape-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 177</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_string_escape</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\[abtnvfr]/</span>)
     <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">eval</span>(<span class="ruby-node">%Q{&quot;#{@input.matched}&quot;}</span>))
@@ -727,7 +727,7 @@
 
           
           <div class="method-source-code" id="parse_value-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 151</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 153</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_value</span>
   <span class="ruby-identifier">parse_string</span> <span class="ruby-operator">||</span>
   <span class="ruby-identifier">parse_number</span> <span class="ruby-operator">||</span>

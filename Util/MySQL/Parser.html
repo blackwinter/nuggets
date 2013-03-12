@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Util::MySQL::Parser - ruby-nuggets Application documentation (v0.9.0)</title>
+<title>class Util::MySQL::Parser - ruby-nuggets Application documentation (v0.9.1)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -418,7 +418,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 49</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
   <span class="ruby-identifier">reset</span>
 <span class="ruby-keyword">end</span></pre>
@@ -451,7 +451,7 @@
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">parser</span> = <span class="ruby-identifier">new</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">parser</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">tables</span>
@@ -491,7 +491,7 @@
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 63</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>
     <span class="ruby-identifier">tables</span>, <span class="ruby-identifier">block</span> = <span class="ruby-ivar">@tables</span>, <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">table</span>, <span class="ruby-identifier">columns</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
@@ -565,7 +565,7 @@
 
           
           <div class="method-source-code" id="reset-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/util/mysql.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
   <span class="ruby-ivar">@name</span>         = <span class="ruby-constant">DEFAULT_NAME</span>
   <span class="ruby-ivar">@table</span>        = <span class="ruby-constant">DEFAULT_TABLE</span>

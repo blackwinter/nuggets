@@ -40,6 +40,9 @@ module Util
       # Value separator
       DEFAULT_VS = ' | '
 
+      # Line break indicator
+      DEFAULT_NL = '^'
+
       def self.parse(input, *args, &block)
         parser = new(*args).parse(input, &block)
         block_given? ? parser : parser.records
@@ -52,6 +55,7 @@ module Util
         @fs = options[:fs] || DEFAULT_FS
         @vs = options[:vs] || DEFAULT_VS
         @vs = /\s*#{Regexp.escape(@vs)}\s*/ unless @vs.is_a?(Regexp)
+        @nl = options[:nl] || DEFAULT_NL
 
         reset
       end
@@ -70,8 +74,8 @@ module Util
           }
         end
 
-        rs, fs, vs, key, auto_id, id, record =
-          @rs, @fs, @vs, @key, @auto_id, nil, {}
+        rs, fs, vs, nl, key, auto_id, id, record =
+          @rs, @fs, @vs, @nl, @key, @auto_id, nil, {}
 
         input.each { |line|
           line = line.chomp
@@ -85,8 +89,9 @@ module Util
             if k && v
               if k == key
                 id = v
-              elsif v.index(vs)
-                v = v.split(vs)
+              else
+                v.gsub!(nl, "\n")
+                v = v.split(vs) if v.index(vs)
               end
 
               record[k] = v

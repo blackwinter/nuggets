@@ -34,10 +34,9 @@ cause other libraries to misbehave. Use at your own risk!
 == LINKS
 
 <b></b>
-Documentation::     http://prometheus.rubyforge.org/ruby-nuggets
-Source code::       http://github.com/blackwinter/ruby-nuggets
-RubyForge project:: http://rubyforge.org/projects/prometheus
-RubyGem::           http://rubygems.org/gems/ruby-nuggets
+Documentation:: http://blackwinter.github.com/ruby-nuggets
+Source code::   http://github.com/blackwinter/ruby-nuggets
+RubyGem::       http://rubygems.org/gems/ruby-nuggets
 
 
 == AUTHORS

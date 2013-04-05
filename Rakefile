@@ -4,12 +4,8 @@ begin
   require 'hen'
 
   Hen.lay! {{
-    :rubyforge => {
-      :project => %q{prometheus},
-      :package => %q{ruby-nuggets}
-    },
-
     :gem => {
+      :name    => %q{ruby-nuggets},
       :version => Nuggets::VERSION,
       :summary => %q{Some extensions to the Ruby programming language.},
       :author  => %q{Jens Wille},

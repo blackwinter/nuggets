@@ -5,11 +5,13 @@ begin
 
   Hen.lay! {{
     :gem => {
-      :name    => %q{ruby-nuggets},
-      :version => Nuggets::VERSION,
-      :summary => %q{Some extensions to the Ruby programming language.},
-      :author  => %q{Jens Wille},
-      :email   => %q{jens.wille@gmail.com}
+      :name         => %q{ruby-nuggets},
+      :version      => Nuggets::VERSION,
+      :summary      => %q{Some extensions to the Ruby programming language.},
+      :author       => %q{Jens Wille},
+      :email        => %q{jens.wille@gmail.com},
+      :homepage     => :blackwinter,
+      :dependencies => %w[]
     }
   }}
 rescue LoadError => err

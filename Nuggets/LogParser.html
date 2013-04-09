@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module Nuggets::LogParser - ruby-nuggets Application documentation (v0.9.1)</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/nuggets/log_parser.rb
+    <li>lib/nuggets/log_parser/apache.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-register">::register</a>
+    
+    <li ><a href="#method-i-parse">#parse</a>
+    
+    <li ><a href="#method-i-parse_file">#parse_file</a>
+    
+    <li ><a href="#method-i-parse_line">#parse_line</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Array.html">Array</a>
+  
+    <li><a href="../Enumerable.html">Enumerable</a>
+  
+    <li><a href="../File.html">File</a>
+  
+    <li><a href="../Hash.html">Hash</a>
+  
+    <li><a href="../IO.html">IO</a>
+  
+    <li><a href="../Integer.html">Integer</a>
+  
+    <li><a href="../Net.html">Net</a>
+  
+    <li><a href="../Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="../Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="../Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="../Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="../Nuggets.html">Nuggets</a>
+  
+    <li><a href="../Nuggets/ANSIColor2CSS.html">Nuggets::ANSIColor2CSS</a>
+  
+    <li><a href="../Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="../Nuggets/Array/BoostMixin.html">Nuggets::Array::BoostMixin</a>
+  
+    <li><a href="../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="../Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
+  
+    <li><a href="../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="../Nuggets/CLI.html">Nuggets::CLI</a>
+  
+    <li><a href="../Nuggets/CLI/OptionParserExtension.html">Nuggets::CLI::OptionParserExtension</a>
+  
+    <li><a href="../Nuggets/ContentType.html">Nuggets::ContentType</a>
+  
+    <li><a href="../Nuggets/ContentType.html">Nuggets::ContentType</a>
+  
+    <li><a href="../Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="../Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="../Nuggets/File/ExtMixin.html">Nuggets::File::ExtMixin</a>
+  
+    <li><a href="../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="../Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
+  
+    <li><a href="../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="../Nuggets/I18n.html">Nuggets::I18n</a>
+  
+    <li><a href="../Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="../Nuggets/IO/InteractMixin.html">Nuggets::IO::InteractMixin</a>
+  
+    <li><a href="../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="../Nuggets/IO/RedirectMixin.html">Nuggets::IO::RedirectMixin</a>
+  
+    <li><a href="../Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="../Nuggets/LazyAttr.html">Nuggets::LazyAttr</a>
+  
+    <li><a href="../Nuggets/LogParser.html">Nuggets::LogParser</a>
+  
+    <li><a href="../Nuggets/LogParser/Apache.html">Nuggets::LogParser::Apache</a>
+  
+    <li><a href="../Nuggets/Midos.html">Nuggets::Midos</a>
+  
+    <li><a href="../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
+  
+    <li><a href="../Nuggets/MySQL.html">Nuggets::MySQL</a>
+  
+    <li><a href="../Nuggets/MySQL/Parser.html">Nuggets::MySQL::Parser</a>
+  
+    <li><a href="../Nuggets/MySQL/ValueParser.html">Nuggets::MySQL::ValueParser</a>
+  
+    <li><a href="../Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="../Nuggets/Pluggable.html">Nuggets::Pluggable</a>
+  
+    <li><a href="../Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="../Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="../Nuggets/Ruby.html">Nuggets::Ruby</a>
+  
+    <li><a href="../Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="../Nuggets/String/CamelscoreMixin.html">Nuggets::String::CamelscoreMixin</a>
+  
+    <li><a href="../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="../Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="../Nuggets/URI/RedirectMixin.html">Nuggets::URI::RedirectMixin</a>
+  
+    <li><a href="../Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="../Numeric.html">Numeric</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../Nuggets/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="../Proc.html">Proc</a>
+  
+    <li><a href="../Process.html">Process</a>
+  
+    <li><a href="../Rails.html">Rails</a>
+  
+    <li><a href="../Rails/LogParser.html">Rails::LogParser</a>
+  
+    <li><a href="../Rails/LogParser/Rails.html">Rails::LogParser::Rails</a>
+  
+    <li><a href="../Range.html">Range</a>
+  
+    <li><a href="../String.html">String</a>
+  
+    <li><a href="../String/Case.html">String::Case</a>
+  
+    <li><a href="../Tempfile.html">Tempfile</a>
+  
+    <li><a href="../URI.html">URI</a>
+  
+    <li><a href="../Util.html">Util</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Nuggets::LogParser</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="GZ_EXT_RE">GZ_EXT_RE
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-register" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">register</span><span
+            class="method-args">(base, *modules)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="register-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">base</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">modules</span>)
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:include</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">modules</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>)
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-identifier">base</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- register-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- register-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(input) { |dup| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
+  <span class="ruby-identifier">entry</span> = {}
+
+  <span class="ruby-identifier">input</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">entry</span>) {
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">clear</span>
+    <span class="ruby-keyword">end</span>
+  } }
+
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">entry</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+      <div id="method-i-parse_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_file</span><span
+            class="method-args">(file, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_file-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">entries</span> = []; <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span> <span class="ruby-identifier">entries</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">entry</span> })
+
+  (<span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">GZ_EXT_RE</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span> <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>).<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">f</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">f</span>, <span class="ruby-identifier">method</span>(<span class="ruby-value">:parse</span>)]
+  }
+
+  <span class="ruby-identifier">entries</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_file-method -->
+
+    
+      <div id="method-i-parse_line" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_line</span><span
+            class="method-args">(line, entry = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_line-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">entry</span> = {})
+  <span class="ruby-comment"># Yield when entry complete. Preferrably return +entry+.</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-string">&#39;must be implemented by type&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_line-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_line-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

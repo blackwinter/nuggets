@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Nuggets::MySQL::ValueParser - ruby-nuggets Application documentation (v0.9.1)</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/nuggets/mysql.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-parse">::parse</a>
+    
+    <li ><a href="#method-i-error">#error</a>
+    
+    <li ><a href="#method-i-parse">#parse</a>
+    
+    <li ><a href="#method-i-parse_keyword">#parse_keyword</a>
+    
+    <li ><a href="#method-i-parse_number">#parse_number</a>
+    
+    <li ><a href="#method-i-parse_row">#parse_row</a>
+    
+    <li ><a href="#method-i-parse_string">#parse_string</a>
+    
+    <li ><a href="#method-i-parse_string_content">#parse_string_content</a>
+    
+    <li ><a href="#method-i-parse_string_escape">#parse_string_escape</a>
+    
+    <li ><a href="#method-i-parse_value">#parse_value</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Array.html">Array</a>
+  
+    <li><a href="../../Enumerable.html">Enumerable</a>
+  
+    <li><a href="../../File.html">File</a>
+  
+    <li><a href="../../Hash.html">Hash</a>
+  
+    <li><a href="../../IO.html">IO</a>
+  
+    <li><a href="../../Integer.html">Integer</a>
+  
+    <li><a href="../../Net.html">Net</a>
+  
+    <li><a href="../../Net/HTTPClientError.html">Net::HTTPClientError</a>
+  
+    <li><a href="../../Net/HTTPInformation.html">Net::HTTPInformation</a>
+  
+    <li><a href="../../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
+  
+    <li><a href="../../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
+  
+    <li><a href="../../Net/HTTPResponse.html">Net::HTTPResponse</a>
+  
+    <li><a href="../../Net/HTTPServerError.html">Net::HTTPServerError</a>
+  
+    <li><a href="../../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
+  
+    <li><a href="../../Nuggets.html">Nuggets</a>
+  
+    <li><a href="../../Nuggets/ANSIColor2CSS.html">Nuggets::ANSIColor2CSS</a>
+  
+    <li><a href="../../Nuggets/Array.html">Nuggets::Array</a>
+  
+    <li><a href="../../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Array/BoostMixin.html">Nuggets::Array::BoostMixin</a>
+  
+    <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
+  
+    <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
+  
+    <li><a href="../../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
+  
+    <li><a href="../../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
+  
+    <li><a href="../../Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
+  
+    <li><a href="../../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
+  
+    <li><a href="../../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li><a href="../../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
+  
+    <li><a href="../../Nuggets/CLI.html">Nuggets::CLI</a>
+  
+    <li><a href="../../Nuggets/CLI/OptionParserExtension.html">Nuggets::CLI::OptionParserExtension</a>
+  
+    <li><a href="../../Nuggets/ContentType.html">Nuggets::ContentType</a>
+  
+    <li><a href="../../Nuggets/ContentType.html">Nuggets::ContentType</a>
+  
+    <li><a href="../../Nuggets/Env.html">Nuggets::Env</a>
+  
+    <li><a href="../../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
+  
+    <li><a href="../../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="../../Nuggets/File.html">Nuggets::File</a>
+  
+    <li><a href="../../Nuggets/File/ExtMixin.html">Nuggets::File::ExtMixin</a>
+  
+    <li><a href="../../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
+  
+    <li><a href="../../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
+  
+    <li><a href="../../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
+  
+    <li><a href="../../Nuggets/Hash.html">Nuggets::Hash</a>
+  
+    <li><a href="../../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
+  
+    <li><a href="../../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
+  
+    <li><a href="../../Nuggets/I18n.html">Nuggets::I18n</a>
+  
+    <li><a href="../../Nuggets/IO.html">Nuggets::IO</a>
+  
+    <li><a href="../../Nuggets/IO/InteractMixin.html">Nuggets::IO::InteractMixin</a>
+  
+    <li><a href="../../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
+  
+    <li><a href="../../Nuggets/IO/RedirectMixin.html">Nuggets::IO::RedirectMixin</a>
+  
+    <li><a href="../../Nuggets/Integer.html">Nuggets::Integer</a>
+  
+    <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
+  
+    <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="../../Nuggets/LazyAttr.html">Nuggets::LazyAttr</a>
+  
+    <li><a href="../../Nuggets/LogParser.html">Nuggets::LogParser</a>
+  
+    <li><a href="../../Nuggets/LogParser/Apache.html">Nuggets::LogParser::Apache</a>
+  
+    <li><a href="../../Nuggets/Midos.html">Nuggets::Midos</a>
+  
+    <li><a href="../../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
+  
+    <li><a href="../../Nuggets/MySQL.html">Nuggets::MySQL</a>
+  
+    <li><a href="../../Nuggets/MySQL/Parser.html">Nuggets::MySQL::Parser</a>
+  
+    <li><a href="../../Nuggets/MySQL/ValueParser.html">Nuggets::MySQL::ValueParser</a>
+  
+    <li><a href="../../Nuggets/Object.html">Nuggets::Object</a>
+  
+    <li><a href="../../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
+  
+    <li><a href="../../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  
+    <li><a href="../../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
+  
+    <li><a href="../../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
+  
+    <li><a href="../../Nuggets/Pluggable.html">Nuggets::Pluggable</a>
+  
+    <li><a href="../../Nuggets/Proc.html">Nuggets::Proc</a>
+  
+    <li><a href="../../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
+  
+    <li><a href="../../Nuggets/Range.html">Nuggets::Range</a>
+  
+    <li><a href="../../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
+  
+    <li><a href="../../Nuggets/Ruby.html">Nuggets::Ruby</a>
+  
+    <li><a href="../../Nuggets/String.html">Nuggets::String</a>
+  
+    <li><a href="../../Nuggets/String/CamelscoreMixin.html">Nuggets::String::CamelscoreMixin</a>
+  
+    <li><a href="../../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
+  
+    <li><a href="../../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
+  
+    <li><a href="../../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="../../Nuggets/URI.html">Nuggets::URI</a>
+  
+    <li><a href="../../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
+  
+    <li><a href="../../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
+  
+    <li><a href="../../Nuggets/URI/RedirectMixin.html">Nuggets::URI::RedirectMixin</a>
+  
+    <li><a href="../../Nuggets/Version.html">Nuggets::Version</a>
+  
+    <li><a href="../../Numeric.html">Numeric</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Nuggets/ContentType.html">Object::ContentType</a>
+  
+    <li><a href="../../Proc.html">Proc</a>
+  
+    <li><a href="../../Process.html">Process</a>
+  
+    <li><a href="../../Rails.html">Rails</a>
+  
+    <li><a href="../../Rails/LogParser.html">Rails::LogParser</a>
+  
+    <li><a href="../../Rails/LogParser/Rails.html">Rails::LogParser::Rails</a>
+  
+    <li><a href="../../Range.html">Range</a>
+  
+    <li><a href="../../String.html">String</a>
+  
+    <li><a href="../../String/Case.html">String::Case</a>
+  
+    <li><a href="../../Tempfile.html">Tempfile</a>
+  
+    <li><a href="../../URI.html">URI</a>
+  
+    <li><a href="../../Util.html">Util</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Nuggets::MySQL::ValueParser</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="AST">AST
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(input)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
+  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-error" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">error</span><span
+            class="method-args">(message)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="error-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 198</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">error</span>(<span class="ruby-identifier">message</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">eos?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unexpected end of input (#{message}).&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{message} at #{$.}:#{@input.pos}: #{@input.peek(16).inspect}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- error-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- error-method -->
+
+    
+      <div id="method-i-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(input) { |row| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
+  <span class="ruby-ivar">@input</span> = <span class="ruby-constant">StringScanner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>)
+
+  <span class="ruby-identifier">rows</span>, <span class="ruby-identifier">block_given</span> = [], <span class="ruby-identifier">block_given?</span>
+
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">result</span> = <span class="ruby-identifier">parse_row</span>
+    <span class="ruby-identifier">row</span> = <span class="ruby-identifier">result</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-identifier">block_given</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">row</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">rows</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">row</span>
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/,\s*/</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/;/</span>)  <span class="ruby-comment"># optional</span>
+
+  <span class="ruby-identifier">error</span>(<span class="ruby-string">&#39;Unexpected data&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">eos?</span>
+
+  <span class="ruby-identifier">rows</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+      <div id="method-i-parse_keyword" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_keyword</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_keyword-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_keyword</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/null/</span>)
+    <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_keyword-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_keyword-method -->
+
+    
+      <div id="method-i-parse_number" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_number</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_number-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_number</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/</span>)
+    <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">eval</span>(<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">matched</span>))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_number-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_number-method -->
+
+    
+      <div id="method-i-parse_row" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_row</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_row-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_row</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\(/</span>)
+
+  <span class="ruby-identifier">row</span> = []
+
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">result</span> = <span class="ruby-identifier">parse_value</span>
+    <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/,\s*/</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">error</span>(<span class="ruby-string">&#39;Unclosed row&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\)/</span>)
+
+  <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">row</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_row-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_row-method -->
+
+    
+      <div id="method-i-parse_string" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_string</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_string-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_string</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/&#39;/</span>)
+
+  <span class="ruby-identifier">string</span> = <span class="ruby-string">&#39;&#39;</span>
+
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">contents</span> = <span class="ruby-identifier">parse_string_content</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">parse_string_escape</span>
+    <span class="ruby-identifier">string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">contents</span>.<span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">error</span>(<span class="ruby-string">&#39;Unclosed string&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/&#39;/</span>)
+
+  <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">string</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_string-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_string-method -->
+
+    
+      <div id="method-i-parse_string_content" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_string_content</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_string_content-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_string_content</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/[^\&#39;]+/</span>)
+    <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">matched</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_string_content-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_string_content-method -->
+
+    
+      <div id="method-i-parse_string_escape" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_string_escape</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_string_escape-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 178</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_string_escape</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\[abtnvfr]/</span>)
+    <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">eval</span>(<span class="ruby-node">%Q{&quot;#{@input.matched}&quot;}</span>))
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\.|&#39;&#39;/</span>)
+    <span class="ruby-constant">AST</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">matched</span>[<span class="ruby-value">-1</span>, <span class="ruby-value">1</span>])
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_string_escape-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_string_escape-method -->
+
+    
+      <div id="method-i-parse_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_value-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/mysql.rb, line 152</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_value</span>
+  <span class="ruby-identifier">parse_string</span> <span class="ruby-operator">||</span>
+  <span class="ruby-identifier">parse_number</span> <span class="ruby-operator">||</span>
+  <span class="ruby-identifier">parse_keyword</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_value-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_value-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

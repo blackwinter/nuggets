@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Hash::BlankMixin - ruby-nuggets Application documentation (v0.9.3)</title>
+<title>module Nuggets::LogParser::Rails - ruby-nuggets Application documentation (v0.9.3)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/object/blank_mixin.rb
+    <li>lib/nuggets/log_parser/rails.rb
   </ul>
 </nav>
 
@@ -67,7 +67,7 @@
 
   <ul class="link-list">
     
-    <li ><a href="#method-i-vain-3F">#vain?</a>
+    <li ><a href="#method-i-parse_line">#parse_line</a>
     
   </ul>
 </nav>
@@ -299,7 +299,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::Hash::BlankMixin</h1>
+  <h1 class="module">module Nuggets::LogParser::Rails</h1>
 
   <div id="description" class="description">
     
@@ -314,6 +314,29 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="ITEMS">ITEMS
+        
+        <dd class="description"><p>Log line patterns</p>
+        
+      
+        <dt id="PREFIX_RE">PREFIX_RE
+        
+        <dd class="description"><p>Log line prefix</p>
+        
+      
+        <dt id="SEPARATOR_RE">SEPARATOR_RE
+        
+        <dd class="description"><p>Log entry separator</p>
+        
+      
+      </dl>
+    </section>
+    
 
     
 
@@ -323,41 +346,50 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-vain-3F" class="method-detail ">
-        
+      <div id="method-i-parse_line" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            vain? &rarr; +true+ or +false+
-          </span>
+          <span class="method-name">parse_line</span><span
+            class="method-args">(line, entry = {}) { || ... }</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Returns <code>true</code> if all of <em>hash</em>&#39;s values are
-themselves vain.</p>
+          
           
           
 
           
-          <div class="method-source-code" id="vain-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 94</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">vain?</span>
-  <span class="ruby-identifier">blank?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">vain?</span> } }
+          <div class="method-source-code" id="parse_line-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser/rails.rb, line 201</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">entry</span> = {})
+  <span class="ruby-constant">ITEMS</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">item</span>[<span class="ruby-value">:re</span>].<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value">:processing</span>
+        <span class="ruby-keyword">yield</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+        <span class="ruby-identifier">entry</span>[<span class="ruby-value">:pid</span>], <span class="ruby-identifier">entry</span>[<span class="ruby-value">:host</span>] = <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>]
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">item</span>[<span class="ruby-value">:proc</span>][<span class="ruby-identifier">entry</span>, <span class="ruby-identifier">md</span>]
+
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-identifier">entry</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- vain-3F-source -->
+          </div><!-- parse_line-source -->
           
         </div>
 
         
 
         
-      </div><!-- vain-3F-method -->
+      </div><!-- parse_line-method -->
 
     
     </section><!-- public-instance-method-details -->

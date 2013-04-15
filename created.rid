@@ -1,5 +1,5 @@
-Wed, 10 Apr 2013 11:53:34 +0200
-README	Wed, 10 Apr 2013 11:52:40 +0200
+Mon, 15 Apr 2013 17:09:27 +0200
+README	Mon, 15 Apr 2013 17:08:49 +0200
 COPYING	Fri, 08 Mar 2013 17:52:11 +0100
 ChangeLog	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets.rb	Mon, 11 Mar 2013 15:59:30 +0100
@@ -12,7 +12,7 @@ lib/nuggets/mysql.rb	Mon, 25 Mar 2013 16:52:23 +0100
 lib/nuggets/env/set.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/hash/at.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/io/null.rb	Fri, 08 Mar 2013 17:52:11 +0100
-lib/nuggets/version.rb	Wed, 10 Apr 2013 11:52:46 +0200
+lib/nuggets/version.rb	Mon, 15 Apr 2013 17:08:58 +0200
 lib/nuggets/file/ext.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/file/sub.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/io/agrep.rb	Mon, 11 Mar 2013 16:00:07 +0100
@@ -96,7 +96,7 @@ lib/nuggets/array/mode_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/array/regression.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/enumerable/agrep.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/file/which_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
-lib/nuggets/log_parser/rails.rb	Mon, 25 Mar 2013 16:58:36 +0100
+lib/nuggets/log_parser/rails.rb	Mon, 15 Apr 2013 17:08:32 +0200
 lib/nuggets/numeric/duration.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/object/metaclass.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/string/word_wrap.rb	Mon, 11 Mar 2013 16:00:58 +0100

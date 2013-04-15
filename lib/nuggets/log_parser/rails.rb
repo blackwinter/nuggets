@@ -27,7 +27,7 @@
 
 require 'nuggets/log_parser'
 
-module Rails
+module Nuggets
   module LogParser
     module Rails
 

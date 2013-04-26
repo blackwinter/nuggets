@@ -33,6 +33,13 @@ module Nuggets
 
     include Enumerable
 
+    DEFAULT_EPSILON = Float::EPSILON * 10
+
+    def self.each_norm(items, options = {}, &block)
+      lsi = new(items)
+      lsi.each_norm(nil, options, &block) if lsi.build
+    end
+
     def initialize(items = {})
       @hash, @list, @invlist = {}, Hash.new { |h, k| h[k] = h.size }, {}
       items.each { |k, v| self[k] = v }
@@ -43,7 +50,7 @@ module Nuggets
     end
 
     def []=(key, value)
-      @hash[key] = Doc.new(value, @list)
+      @hash[key] = Doc.new(key, value, @list)
     end
 
     def add(key, value = key)
@@ -71,11 +78,29 @@ module Nuggets
       @hash.each(&block)
     end
 
-    def each_norm(key, min = nil)
-      if d = self[key] and n = d.norm
-        l, i = @invlist, 0
-        n.each { |v| yield l[i], v unless min && v < min; i += 1 }
-      end
+    # min:: minimum value to consider
+    # abs:: minimum absolute value to consider
+    # nul:: exclude null values (true or Float)
+    # new:: exclude original terms / only yield new ones
+    def each_norm(key = nil, options = {})
+      min, abs, nul, new = options.values_at(:min, :abs, :nul, :new)
+      nul = DEFAULT_EPSILON if nul == true
+
+      list = @invlist
+
+      (key ? [self[key]] : docs).each { |doc|
+        if doc && norm = doc.norm
+          i = 0
+
+          norm.each { |v|
+            yield doc, list[i], v unless (min && v < min) ||
+                                         (abs && v.abs < abs) ||
+                                         (nul && v.abs < nul) ||
+                                         (new && doc.include?(i))
+            i += 1
+          }
+        end
+      }
     end
 
     def build(cutoff = 0.75)
@@ -119,12 +144,13 @@ module Nuggets
 
       TOKEN_RE = %r{\s+}
 
-      def initialize(item, list)
-        item = build_hash(item) unless item.is_a?(Hash)
-        @map = item.map { |k, v| [list[k], v] }
+      def initialize(key, value, list)
+        @key = key
+        @map = !value.is_a?(Hash) ? build_hash(value, list) :
+          value.inject({}) { |h, (k, v)| h[list[k]] = v; h }
       end
 
-      attr_reader :vector, :norm
+      attr_reader :key, :vector, :norm
 
       def raw_vector(size)
         vec = GSL::Vector.alloc(size)
@@ -136,17 +162,21 @@ module Nuggets
         @vector, @norm = vec, vec.normalize
       end
 
+      def include?(k)
+        @map.include?(k)
+      end
+
       private
 
-      def build_hash(item, hash = Hash.new(0))
-        build_array(item).each { |i| hash[i] += 1 }
+      def build_hash(value, list, hash = Hash.new(0))
+        build_array(value).each { |i| hash[list[i]] += 1 }
         hash
       end
 
-      def build_array(item, re = TOKEN_RE)
-        item = item.read if item.respond_to?(:read)
-        item = item.split(re) if item.respond_to?(:split)
-        item
+      def build_array(value, re = TOKEN_RE)
+        value = value.read if value.respond_to?(:read)
+        value = value.split(re) if value.respond_to?(:split)
+        value
       end
 
     end

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>Table of Contents - ruby-nuggets Application documentation (v0.9.3)</title>
+<title>Table of Contents - ruby-nuggets Application documentation (v0.9.4)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -21,7 +21,7 @@
 
 
 <body class="indexpage">
-<h1>Table of Contents - ruby-nuggets Application documentation (v0.9.3)</h1>
+<h1>Table of Contents - ruby-nuggets Application documentation (v0.9.4)</h1>
 
 <h2>Pages</h2>
 <ul>
@@ -107,6 +107,12 @@
   </li>
     <li class="module">
     <a href="Nuggets/ANSIColor2CSS.html">Nuggets::ANSIColor2CSS</a>
+  </li>
+    <li class="module">
+    <a href="Nuggets/Argv.html">Nuggets::Argv</a>
+  </li>
+    <li class="module">
+    <a href="Nuggets/Argv/OptionMixin.html">Nuggets::Argv::OptionMixin</a>
   </li>
     <li class="class">
     <a href="Nuggets/Array.html">Nuggets::Array</a>
@@ -230,6 +236,12 @@
   </li>
     <li class="module">
     <a href="Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  </li>
+    <li class="class">
+    <a href="Nuggets/LSI.html">Nuggets::LSI</a>
+  </li>
+    <li class="class">
+    <a href="Nuggets/LSI/Doc.html">Nuggets::LSI::Doc</a>
   </li>
     <li class="module">
     <a href="Nuggets/LazyAttr.html">Nuggets::LazyAttr</a>
@@ -379,6 +391,8 @@
   
     <li class="method"><a href="Nuggets/LogParser/Apache.html#method-c-detect_type">::detect_type &mdash; Nuggets::LogParser::Apache</a>
   
+    <li class="method"><a href="Nuggets/LSI.html#method-c-each_norm">::each_norm &mdash; Nuggets::LSI</a>
+  
     <li class="method"><a href="Nuggets/CLI.html#method-c-execute">::execute &mdash; Nuggets::CLI</a>
   
     <li class="method"><a href="Nuggets/URI/ContentTypeMixin.html#method-c-extended">::extended &mdash; Nuggets::URI::ContentTypeMixin</a>
@@ -391,11 +405,11 @@
   
     <li class="method"><a href="Nuggets/Array/ModeMixin.html#method-c-included">::included &mdash; Nuggets::Array::ModeMixin</a>
   
-    <li class="method"><a href="Nuggets/Array/CorrelationMixin.html#method-c-included">::included &mdash; Nuggets::Array::CorrelationMixin</a>
-  
     <li class="method"><a href="Nuggets/Array/BoostMixin.html#method-c-included">::included &mdash; Nuggets::Array::BoostMixin</a>
   
     <li class="method"><a href="Nuggets/Array/StandardDeviationMixin.html#method-c-included">::included &mdash; Nuggets::Array::StandardDeviationMixin</a>
+  
+    <li class="method"><a href="Nuggets/Array/CorrelationMixin.html#method-c-included">::included &mdash; Nuggets::Array::CorrelationMixin</a>
   
     <li class="method"><a href="Process.html#method-c-interact_ruby">::interact_ruby &mdash; Process</a>
   
@@ -403,9 +417,13 @@
   
     <li class="method"><a href="Nuggets/CLI.html#method-c-new">::new &mdash; Nuggets::CLI</a>
   
-    <li class="method"><a href="Nuggets/Midos/Parser.html#method-c-new">::new &mdash; Nuggets::Midos::Parser</a>
-  
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-c-new">::new &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
+  
+    <li class="method"><a href="Nuggets/LSI/Doc.html#method-c-new">::new &mdash; Nuggets::LSI::Doc</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-c-new">::new &mdash; Nuggets::LSI</a>
+  
+    <li class="method"><a href="Nuggets/Midos/Parser.html#method-c-new">::new &mdash; Nuggets::Midos::Parser</a>
   
     <li class="method"><a href="Nuggets/MySQL/Parser.html#method-c-new">::new &mdash; Nuggets::MySQL::Parser</a>
   
@@ -415,11 +433,13 @@
   
     <li class="method"><a href="Nuggets/CLI.html#method-c-parent_const_get">::parent_const_get &mdash; Nuggets::CLI</a>
   
-    <li class="method"><a href="Nuggets/Midos/Parser.html#method-c-parse">::parse &mdash; Nuggets::Midos::Parser</a>
+    <li class="method"><a href="Nuggets/MySQL/Parser.html#method-c-parse">::parse &mdash; Nuggets::MySQL::Parser</a>
   
     <li class="method"><a href="Nuggets/MySQL/ValueParser.html#method-c-parse">::parse &mdash; Nuggets::MySQL::ValueParser</a>
   
-    <li class="method"><a href="Nuggets/MySQL/Parser.html#method-c-parse">::parse &mdash; Nuggets::MySQL::Parser</a>
+    <li class="method"><a href="Nuggets/Midos/Parser.html#method-c-parse">::parse &mdash; Nuggets::Midos::Parser</a>
+  
+    <li class="method"><a href="Nuggets/Midos/Parser.html#method-c-parse_file">::parse_file &mdash; Nuggets::Midos::Parser</a>
   
     <li class="method"><a href="Nuggets/LogParser/Apache.html#method-c-parse_format">::parse_format &mdash; Nuggets::LogParser::Apache</a>
   
@@ -427,9 +447,9 @@
   
     <li class="method"><a href="IO.html#method-c-read_write">::read_write &mdash; IO</a>
   
-    <li class="method"><a href="Nuggets/LogParser/Apache.html#method-c-register">::register &mdash; Nuggets::LogParser::Apache</a>
-  
     <li class="method"><a href="Nuggets/LogParser.html#method-c-register">::register &mdash; Nuggets::LogParser</a>
+  
+    <li class="method"><a href="Nuggets/LogParser/Apache.html#method-c-register">::register &mdash; Nuggets::LogParser::Apache</a>
   
     <li class="method"><a href="Process.html#method-c-ruby">::ruby &mdash; Process</a>
   
@@ -449,13 +469,23 @@
   
     <li class="method"><a href="Array.html#method-i-25">#% &mdash; Array</a>
   
+    <li class="method"><a href="Nuggets/LSI.html#method-i-3C-3C">#<< &mdash; Nuggets::LSI</a>
+  
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-3C-3C">#<< &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
     <li class="method"><a href="Object.html#method-i-Nuggets">#Nuggets &mdash; Object</a>
   
+    <li class="method"><a href="Nuggets/LSI.html#method-i-5B-5D">#[] &mdash; Nuggets::LSI</a>
+  
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-5B-5D">#[] &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
+    <li class="method"><a href="Nuggets/LSI.html#method-i-5B-5D-3D">#[]= &mdash; Nuggets::LSI</a>
+  
     <li class="method"><a href="Nuggets/String/XorMixin.html#method-i-5E">#^ &mdash; Nuggets::String::XorMixin</a>
+  
+    <li class="method"><a href="Nuggets/Argv/OptionMixin.html#method-i-__key">#__key &mdash; Nuggets::Argv::OptionMixin</a>
+  
+    <li class="method"><a href="Nuggets/Argv/OptionMixin.html#method-i-__opt">#__opt &mdash; Nuggets::Argv::OptionMixin</a>
   
     <li class="method"><a href="Enumerable.html#method-i-_block_for_all_any_extended">#_block_for_all_any_extended &mdash; Enumerable</a>
   
@@ -476,6 +506,8 @@
     <li class="method"><a href="Enumerable.html#method-i-_nuggets_original_minmax_by">#_nuggets_original_minmax_by &mdash; Enumerable</a>
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-abort">#abort &mdash; Nuggets::CLI</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-add">#add &mdash; Nuggets::LSI</a>
   
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-add">#add &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
@@ -499,9 +531,9 @@
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-ask">#ask &mdash; Nuggets::CLI</a>
   
-    <li class="method"><a href="Hash.html#method-i-at">#at &mdash; Hash</a>
-  
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-at">#at &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
+  
+    <li class="method"><a href="Hash.html#method-i-at">#at &mdash; Hash</a>
   
     <li class="method"><a href="Numeric.html#method-i-at_least">#at_least &mdash; Numeric</a>
   
@@ -528,6 +560,14 @@
     <li class="method"><a href="Nuggets/Array/BoostMixin.html#method-i-boost">#boost &mdash; Nuggets::Array::BoostMixin</a>
   
     <li class="method"><a href="Nuggets/Array/BoostMixin.html#method-i-boost_factor">#boost_factor &mdash; Nuggets::Array::BoostMixin</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-build">#build &mdash; Nuggets::LSI</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-build-21">#build! &mdash; Nuggets::LSI</a>
+  
+    <li class="method"><a href="Nuggets/LSI/Doc.html#method-i-build_array">#build_array &mdash; Nuggets::LSI::Doc</a>
+  
+    <li class="method"><a href="Nuggets/LSI/Doc.html#method-i-build_hash">#build_hash &mdash; Nuggets::LSI::Doc</a>
   
     <li class="method"><a href="Nuggets/String/WcMixin.html#method-i-byte_count">#byte_count &mdash; Nuggets::String::WcMixin</a>
   
@@ -557,9 +597,9 @@
   
     <li class="method"><a href="Nuggets/File/ExtMixin.html#method-i-chomp_ext-21">#chomp_ext! &mdash; Nuggets::File::ExtMixin</a>
   
-    <li class="method"><a href="Nuggets/ANSIColor2CSS.html#method-i-clear">#clear &mdash; Nuggets::ANSIColor2CSS</a>
-  
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-clear">#clear &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
+  
+    <li class="method"><a href="Nuggets/ANSIColor2CSS.html#method-i-clear">#clear &mdash; Nuggets::ANSIColor2CSS</a>
   
     <li class="method"><a href="Array.html#method-i-comb">#comb &mdash; Array</a>
   
@@ -583,6 +623,8 @@
   
     <li class="method"><a href="Nuggets/Array/VarianceMixin.html#method-i-covariance">#covariance &mdash; Nuggets::Array::VarianceMixin</a>
   
+    <li class="method"><a href="Nuggets/LSI.html#method-i-cutoff">#cutoff &mdash; Nuggets::LSI</a>
+  
     <li class="method"><a href="Array.html#method-i-decreasing-3F">#decreasing? &mdash; Array</a>
   
     <li class="method"><a href="Nuggets/Hash/DeepMergeMixin.html#method-i-deep_merge">#deep_merge &mdash; Nuggets::Hash::DeepMergeMixin</a>
@@ -595,9 +637,15 @@
   
     <li class="method"><a href="Nuggets/Integer/LengthMixin.html#method-i-digit_count">#digit_count &mdash; Nuggets::Integer::LengthMixin</a>
   
+    <li class="method"><a href="Nuggets/LSI.html#method-i-docs">#docs &mdash; Nuggets::LSI</a>
+  
     <li class="method"><a href="String.html#method-i-downcase-3F">#downcase? &mdash; String</a>
   
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-each">#each &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-each">#each &mdash; Nuggets::LSI</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-each_norm">#each_norm &mdash; Nuggets::LSI</a>
   
     <li class="method"><a href="Nuggets/Object/SingletonClassMixin.html#method-i-eigenclass">#eigenclass &mdash; Nuggets::Object::SingletonClassMixin</a>
   
@@ -683,6 +731,8 @@
   
     <li class="method"><a href="Array.html#method-i-in_order-21">#in_order! &mdash; Array</a>
   
+    <li class="method"><a href="Nuggets/LSI/Doc.html#method-i-include-3F">#include? &mdash; Nuggets::LSI::Doc</a>
+  
     <li class="method"><a href="Array.html#method-i-increasing-3F">#increasing? &mdash; Array</a>
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-init">#init &mdash; Nuggets::CLI</a>
@@ -694,6 +744,8 @@
     <li class="method"><a href="Nuggets/IO/InteractMixin.html#method-i-interact">#interact &mdash; Nuggets::IO::InteractMixin</a>
   
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-intercept">#intercept &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-keys">#keys &mdash; Nuggets::LSI</a>
   
     <li class="method"><a href="Nuggets/CLI/OptionParserExtension.html#method-i-keys">#keys &mdash; Nuggets::CLI::OptionParserExtension</a>
   
@@ -745,9 +797,9 @@
   
     <li class="method"><a href="Nuggets/Integer/MapMixin.html#method-i-map_positive">#map_positive &mdash; Nuggets::Integer::MapMixin</a>
   
-    <li class="method"><a href="Numeric.html#method-i-max">#max &mdash; Numeric</a>
-  
     <li class="method"><a href="Enumerable.html#method-i-max">#max &mdash; Enumerable</a>
+  
+    <li class="method"><a href="Numeric.html#method-i-max">#max &mdash; Numeric</a>
   
     <li class="method"><a href="Enumerable.html#method-i-max_by">#max_by &mdash; Enumerable</a>
   
@@ -809,13 +861,17 @@
   
     <li class="method"><a href="Nuggets/ContentType.html#method-i-of">#of &mdash; Nuggets::ContentType</a>
   
-    <li class="method"><a href="Array.html#method-i-only">#only &mdash; Array</a>
-  
     <li class="method"><a href="Hash.html#method-i-only">#only &mdash; Hash</a>
+  
+    <li class="method"><a href="Array.html#method-i-only">#only &mdash; Array</a>
   
     <li class="method"><a href="Hash.html#method-i-only_pair">#only_pair &mdash; Hash</a>
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-open_file_or_std">#open_file_or_std &mdash; Nuggets::CLI</a>
+  
+    <li class="method"><a href="Nuggets/Argv/OptionMixin.html#method-i-option">#option &mdash; Nuggets::Argv::OptionMixin</a>
+  
+    <li class="method"><a href="Nuggets/Argv/OptionMixin.html#method-i-option-21">#option! &mdash; Nuggets::Argv::OptionMixin</a>
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-option_parser">#option_parser &mdash; Nuggets::CLI</a>
   
@@ -823,19 +879,19 @@
   
     <li class="method"><a href="Nuggets/LogParser.html#method-i-parse">#parse &mdash; Nuggets::LogParser</a>
   
-    <li class="method"><a href="Nuggets/MySQL/Parser.html#method-i-parse">#parse &mdash; Nuggets::MySQL::Parser</a>
+    <li class="method"><a href="Nuggets/Midos/Parser.html#method-i-parse">#parse &mdash; Nuggets::Midos::Parser</a>
   
     <li class="method"><a href="Nuggets/MySQL/ValueParser.html#method-i-parse">#parse &mdash; Nuggets::MySQL::ValueParser</a>
   
-    <li class="method"><a href="Nuggets/Midos/Parser.html#method-i-parse">#parse &mdash; Nuggets::Midos::Parser</a>
+    <li class="method"><a href="Nuggets/MySQL/Parser.html#method-i-parse">#parse &mdash; Nuggets::MySQL::Parser</a>
   
     <li class="method"><a href="Nuggets/LogParser.html#method-i-parse_file">#parse_file &mdash; Nuggets::LogParser</a>
   
     <li class="method"><a href="Nuggets/MySQL/ValueParser.html#method-i-parse_keyword">#parse_keyword &mdash; Nuggets::MySQL::ValueParser</a>
   
-    <li class="method"><a href="Nuggets/LogParser.html#method-i-parse_line">#parse_line &mdash; Nuggets::LogParser</a>
-  
     <li class="method"><a href="Nuggets/LogParser/Rails.html#method-i-parse_line">#parse_line &mdash; Nuggets::LogParser::Rails</a>
+  
+    <li class="method"><a href="Nuggets/LogParser.html#method-i-parse_line">#parse_line &mdash; Nuggets::LogParser</a>
   
     <li class="method"><a href="Nuggets/LogParser/Apache.html#method-i-parse_line">#parse_line &mdash; Nuggets::LogParser::Apache</a>
   
@@ -881,11 +937,17 @@
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-quit">#quit &mdash; Nuggets::CLI</a>
   
-    <li class="method"><a href="Hash.html#method-i-rand">#rand &mdash; Hash</a>
-  
     <li class="method"><a href="Array.html#method-i-rand">#rand &mdash; Array</a>
   
+    <li class="method"><a href="Hash.html#method-i-rand">#rand &mdash; Hash</a>
+  
+    <li class="method"><a href="Nuggets/LSI/Doc.html#method-i-raw_vector">#raw_vector &mdash; Nuggets::LSI::Doc</a>
+  
     <li class="method"><a href="Nuggets/IO/RedirectMixin.html#method-i-redirect">#redirect &mdash; Nuggets::IO::RedirectMixin</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-reduce">#reduce &mdash; Nuggets::LSI</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-related">#related &mdash; Nuggets::LSI</a>
   
     <li class="method"><a href="Nuggets/File/ReplaceMixin.html#method-i-replace">#replace &mdash; Nuggets::File::ReplaceMixin</a>
   
@@ -896,6 +958,8 @@
     <li class="method"><a href="Nuggets/Array/MeanMixin.html#method-i-report_mean">#report_mean &mdash; Nuggets::Array::MeanMixin</a>
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-reset">#reset &mdash; Nuggets::CLI</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-reset">#reset &mdash; Nuggets::LSI</a>
   
     <li class="method"><a href="Nuggets/MySQL/Parser.html#method-i-reset">#reset &mdash; Nuggets::MySQL::Parser</a>
   
@@ -967,6 +1031,8 @@
   
     <li class="method"><a href="Nuggets/Object/SingletonClassMixin.html#method-i-singleton_object">#singleton_object &mdash; Nuggets::Object::SingletonClassMixin</a>
   
+    <li class="method"><a href="Nuggets/LSI.html#method-i-size">#size &mdash; Nuggets::LSI</a>
+  
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-slope">#slope &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
     <li class="method"><a href="Array.html#method-i-sort_by_dotted_decimal">#sort_by_dotted_decimal &mdash; Array</a>
@@ -997,17 +1063,21 @@
   
     <li class="method"><a href="String.html#method-i-sub_with_md-21">#sub_with_md! &mdash; String</a>
   
-    <li class="method"><a href="Net/HTTPClientError.html#method-i-success-3F">#success? &mdash; Net::HTTPClientError</a>
-  
-    <li class="method"><a href="Net/HTTPMultipleChoice.html#method-i-success-3F">#success? &mdash; Net::HTTPMultipleChoice</a>
-  
-    <li class="method"><a href="Net/HTTPServerError.html#method-i-success-3F">#success? &mdash; Net::HTTPServerError</a>
-  
-    <li class="method"><a href="Net/HTTPSuccess.html#method-i-success-3F">#success? &mdash; Net::HTTPSuccess</a>
-  
     <li class="method"><a href="Net/HTTPResponse.html#method-i-success-3F">#success? &mdash; Net::HTTPResponse</a>
   
     <li class="method"><a href="Net/HTTPRedirection.html#method-i-success-3F">#success? &mdash; Net::HTTPRedirection</a>
+  
+    <li class="method"><a href="Net/HTTPSuccess.html#method-i-success-3F">#success? &mdash; Net::HTTPSuccess</a>
+  
+    <li class="method"><a href="Net/HTTPServerError.html#method-i-success-3F">#success? &mdash; Net::HTTPServerError</a>
+  
+    <li class="method"><a href="Net/HTTPMultipleChoice.html#method-i-success-3F">#success? &mdash; Net::HTTPMultipleChoice</a>
+  
+    <li class="method"><a href="Net/HTTPClientError.html#method-i-success-3F">#success? &mdash; Net::HTTPClientError</a>
+  
+    <li class="method"><a href="Nuggets/Argv/OptionMixin.html#method-i-switch">#switch &mdash; Nuggets::Argv::OptionMixin</a>
+  
+    <li class="method"><a href="Nuggets/Argv/OptionMixin.html#method-i-switch-21">#switch! &mdash; Nuggets::Argv::OptionMixin</a>
   
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-to_a">#to_a &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
@@ -1028,6 +1098,8 @@
     <li class="method"><a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-to_s">#to_s &mdash; Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
   
     <li class="method"><a href="Numeric.html#method-i-to_ymd">#to_ymd &mdash; Numeric</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-transform">#transform &mdash; Nuggets::LSI</a>
   
     <li class="method"><a href="Nuggets/Object/BooleanMixin.html#method-i-true-3F">#true? &mdash; Nuggets::Object::BooleanMixin</a>
   
@@ -1053,15 +1125,19 @@
   
     <li class="method"><a href="Nuggets/Env/UserHomeMixin.html#method-i-user_home">#user_home &mdash; Nuggets::Env::UserHomeMixin</a>
   
-    <li class="method"><a href="Nuggets/Object/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Object::BlankMixin</a>
+    <li class="method"><a href="Nuggets/Array/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Array::BlankMixin</a>
   
     <li class="method"><a href="Nuggets/Hash/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Hash::BlankMixin</a>
   
-    <li class="method"><a href="Nuggets/Array/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Array::BlankMixin</a>
+    <li class="method"><a href="Nuggets/Object/BlankMixin.html#method-i-vain-3F">#vain? &mdash; Nuggets::Object::BlankMixin</a>
   
     <li class="method"><a href="Nuggets/Array/VarianceMixin.html#method-i-var">#var &mdash; Nuggets::Array::VarianceMixin</a>
   
     <li class="method"><a href="Nuggets/Array/VarianceMixin.html#method-i-variance">#variance &mdash; Nuggets::Array::VarianceMixin</a>
+  
+    <li class="method"><a href="Nuggets/LSI/Doc.html#method-i-vector-3D">#vector= &mdash; Nuggets::LSI::Doc</a>
+  
+    <li class="method"><a href="Nuggets/LSI.html#method-i-vectors">#vectors &mdash; Nuggets::LSI</a>
   
     <li class="method"><a href="Nuggets/CLI.html#method-i-version">#version &mdash; Nuggets::CLI</a>
   

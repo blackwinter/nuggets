@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Array::BoostMixin - ruby-nuggets Application documentation (v0.9.4)</title>
+<title>class Nuggets::LSI::Doc - ruby-nuggets Application documentation (v0.9.4)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
 
-<body id="top" class="module">
+<body id="top" class="class">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/array/boost_mixin.rb
+    <li>lib/nuggets/lsi.rb
   </ul>
 </nav>
 
@@ -58,7 +58,13 @@
 
   <div id="class-metadata">
     
-    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</nav>
+
     
     
     <!-- Method Quickref -->
@@ -67,13 +73,17 @@
 
   <ul class="link-list">
     
-    <li ><a href="#method-c-included">::included</a>
+    <li ><a href="#method-c-new">::new</a>
     
-    <li ><a href="#method-i-boof">#boof</a>
+    <li ><a href="#method-i-build_array">#build_array</a>
     
-    <li ><a href="#method-i-boost">#boost</a>
+    <li ><a href="#method-i-build_hash">#build_hash</a>
     
-    <li ><a href="#method-i-boost_factor">#boost_factor</a>
+    <li ><a href="#method-i-include-3F">#include?</a>
+    
+    <li ><a href="#method-i-raw_vector">#raw_vector</a>
+    
+    <li ><a href="#method-i-vector-3D">#vector=</a>
     
   </ul>
 </nav>
@@ -313,7 +323,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::Array::BoostMixin</h1>
+  <h1 class="class">class Nuggets::LSI::Doc</h1>
 
   <div id="description" class="description">
     
@@ -328,7 +338,66 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="TOKEN_RE">TOKEN_RE
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
 
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-key" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">key</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-norm" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">norm</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-vector" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">vector</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
     
 
     <!-- Methods -->
@@ -337,11 +406,11 @@
       <h3 class="section-header">Public Class Methods</h3>
 
     
-      <div id="method-c-included" class="method-detail ">
+      <div id="method-c-new" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">included</span><span
-            class="method-args">(base)</span>
+          <span class="method-name">new</span><span
+            class="method-args">(key, value, list)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -355,19 +424,21 @@
           
 
           
-          <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
-  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">MeanMixin</span>
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>)
+  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">key</span>
+  <span class="ruby-ivar">@map</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">build_hash</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>) <span class="ruby-operator">:</span>
+    <span class="ruby-identifier">value</span>.<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, (<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">list</span>[<span class="ruby-identifier">k</span>]] = <span class="ruby-identifier">v</span>; <span class="ruby-identifier">h</span> }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- included-source -->
+          </div><!-- new-source -->
           
         </div>
 
         
 
         
-      </div><!-- included-method -->
+      </div><!-- new-method -->
 
     
     </section><!-- public-class-method-details -->
@@ -376,140 +447,183 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-boof" class="method-detail method-alias">
+      <div id="method-i-include-3F" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">boof</span><span
-            class="method-args">(other, &block)</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="BoostMixin.html#method-i-boost_factor">boost_factor</a>
-        </div>
-        
-      </div><!-- boof-method -->
-
-    
-      <div id="method-i-boost" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            boost(factor) &rarr; anArray
-          </span>
+          <span class="method-name">include?</span><span
+            class="method-args">(k)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Maps each value in <em>array</em> to its “boosted” value according to
-<code>factor</code>. (Cf. <a
-href="BoostMixin.html#method-i-boost_factor">boost_factor</a>)</p>
-
-<p>Example:</p>
-
-<pre>a.boost(a.boost_factor(b)).mean == b.mean</pre>
+          
           
           
 
           
-          <div class="method-source-code" id="boost-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 72</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">boost</span>(<span class="ruby-identifier">factor</span>)
-  <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> (<span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">factor</span>) }
+          <div class="method-source-code" id="include-3F-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 177</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>)
+  <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- boost-source -->
+          </div><!-- include-3F-source -->
           
         </div>
 
         
 
         
-      </div><!-- boost-method -->
+      </div><!-- include-3F-method -->
 
     
-      <div id="method-i-boost_factor" class="method-detail ">
-        
+      <div id="method-i-raw_vector" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            boost_factor(other_array) &rarr; aFloat
-          </span>
+          <span class="method-name">raw_vector</span><span
+            class="method-args">(size)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        <div class="method-heading">
-          <span class="method-callseq">
-            boost_factor(other_array) { |array| ... } &rarr; aFloat
-          </span>
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="raw_vector-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 167</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">raw_vector</span>(<span class="ruby-identifier">size</span>)
+  <span class="ruby-identifier">vec</span> = <span class="ruby-constant">GSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Vector</span>.<span class="ruby-identifier">alloc</span>(<span class="ruby-identifier">size</span>)
+  <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">vec</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+  <span class="ruby-identifier">vec</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- raw_vector-source -->
           
         </div>
+
         
+
+        
+      </div><!-- raw_vector-method -->
+
+    
+      <div id="method-i-vector-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">vector=</span><span
+            class="method-args">(vec)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
         
 
         <div class="method-description">
           
-          <p>Calculates the “boost factor” <strong>from</strong> the series of values in
-<em>array</em> <strong>to</strong> the series of values in
-<code>other_array</code> by means of their arithmetic mean or the value
-returned from the block given.</p>
-
-<p>Example:</p>
-
-<pre class="ruby"><span class="ruby-comment"># series of runtime measurements for old version</span>
-<span class="ruby-identifier">a</span> = [<span class="ruby-value">1.5</span>, <span class="ruby-value">1.6</span>, <span class="ruby-value">1.4</span>]
-
-<span class="ruby-comment"># series of runtime measurements for new version</span>
-<span class="ruby-identifier">b</span> = [<span class="ruby-value">0.7</span>, <span class="ruby-value">0.8</span>, <span class="ruby-value">0.8</span>]
-
-<span class="ruby-comment"># what speedup did we get? =&gt; almost 50%</span>
-<span class="ruby-identifier">a</span>.<span class="ruby-identifier">boost_factor</span>(<span class="ruby-identifier">b</span>)  <span class="ruby-comment">#=&gt; -0.48888888888888893</span>
-</pre>
+          
           
           
 
           
-          <div class="method-source-code" id="boost_factor-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 56</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">boost_factor</span>(<span class="ruby-identifier">other</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>.<span class="ruby-identifier">to_proc</span>
-  <span class="ruby-identifier">block</span>[<span class="ruby-identifier">other</span>] <span class="ruby-operator">/</span> <span class="ruby-identifier">block</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+          <div class="method-source-code" id="vector-3D-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">vector=</span>(<span class="ruby-identifier">vec</span>)
+  <span class="ruby-ivar">@vector</span>, <span class="ruby-ivar">@norm</span> = <span class="ruby-identifier">vec</span>, <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">normalize</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- boost_factor-source -->
+          </div><!-- vector-3D-source -->
           
         </div>
 
         
-        <div class="aliases">
-          Also aliased as: <a href="BoostMixin.html#method-i-boof">boof</a>
-        </div>
-        
 
         
-      </div><!-- boost_factor-method -->
+      </div><!-- vector-3D-method -->
 
     
     </section><!-- public-instance-method-details -->
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="method-i-build_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">build_array</span><span
+            class="method-args">(value, re = TOKEN_RE)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="build_array-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">build_array</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">re</span> = <span class="ruby-constant">TOKEN_RE</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">read</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:read</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">re</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:split</span>)
+  <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- build_array-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- build_array-method -->
+
+    
+      <div id="method-i-build_hash" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">build_hash</span><span
+            class="method-args">(value, list, hash = Hash.new(0))</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="build_hash-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">build_hash</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>))
+  <span class="ruby-identifier">build_array</span>(<span class="ruby-identifier">value</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">list</span>[<span class="ruby-identifier">i</span>]] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
+  <span class="ruby-identifier">hash</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- build_hash-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- build_hash-method -->
+
+    
+    </section><!-- private-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

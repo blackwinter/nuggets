@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Array::BoostMixin - ruby-nuggets Application documentation (v0.9.4)</title>
+<title>module Nuggets::Argv::OptionMixin - ruby-nuggets Application documentation (v0.9.4)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/array/boost_mixin.rb
+    <li>lib/nuggets/argv/option_mixin.rb
   </ul>
 </nav>
 
@@ -67,13 +67,17 @@
 
   <ul class="link-list">
     
-    <li ><a href="#method-c-included">::included</a>
+    <li ><a href="#method-i-__key">#__key</a>
     
-    <li ><a href="#method-i-boof">#boof</a>
+    <li ><a href="#method-i-__opt">#__opt</a>
     
-    <li ><a href="#method-i-boost">#boost</a>
+    <li ><a href="#method-i-option">#option</a>
     
-    <li ><a href="#method-i-boost_factor">#boost_factor</a>
+    <li ><a href="#method-i-option-21">#option!</a>
+    
+    <li ><a href="#method-i-switch">#switch</a>
+    
+    <li ><a href="#method-i-switch-21">#switch!</a>
     
   </ul>
 </nav>
@@ -313,7 +317,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::Array::BoostMixin</h1>
+  <h1 class="module">module Nuggets::Argv::OptionMixin</h1>
 
   <div id="description" class="description">
     
@@ -333,83 +337,106 @@
 
     <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-included" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">included</span><span
-            class="method-args">(base)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
-  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">MeanMixin</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- included-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- included-method -->
-
-    
-    </section><!-- public-class-method-details -->
-  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-boof" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">boof</span><span
-            class="method-args">(other, &block)</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="BoostMixin.html#method-i-boost_factor">boost_factor</a>
-        </div>
-        
-      </div><!-- boof-method -->
-
-    
-      <div id="method-i-boost" class="method-detail ">
+      <div id="method-i-option" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            boost(factor) &rarr; anArray
+            option(short[, long]) &rarr; aString
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            option(short[, long]) { |value| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the value associated with the option <code>short</code> (or
+<code>long</code>) if present in ARGV. Yields that value to the block if
+given and returns its result.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="option-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/argv/option_mixin.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">option</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">__opt</span>(<span class="ruby-identifier">block</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">at</span>(<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- option-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- option-method -->
+
+    
+      <div id="method-i-option-21" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            option!(short[, long]) &rarr; aString
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            option!(short[, long]) { |value| ... } &rarr; anObject
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the value associated with the option <code>short</code> (or
+<code>long</code>) if present in ARGV and removes both from ARGV. Yields
+that value to the block if given and returns its result.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="option-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/argv/option_mixin.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">option!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">__opt</span>(<span class="ruby-identifier">block</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">index</span>); <span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">index</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- option-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- option-21-method -->
+
+    
+      <div id="method-i-switch" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            switch(short[, long]) &rarr; true | false
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -420,48 +447,35 @@
 
         <div class="method-description">
           
-          <p>Maps each value in <em>array</em> to its “boosted” value according to
-<code>factor</code>. (Cf. <a
-href="BoostMixin.html#method-i-boost_factor">boost_factor</a>)</p>
-
-<p>Example:</p>
-
-<pre>a.boost(a.boost_factor(b)).mean == b.mean</pre>
+          <p>Whether ARGV includes the switch <code>short</code> (or <code>long</code>).</p>
           
           
 
           
-          <div class="method-source-code" id="boost-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 72</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">boost</span>(<span class="ruby-identifier">factor</span>)
-  <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> (<span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">factor</span>) }
+          <div class="method-source-code" id="switch-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/argv/option_mixin.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">switch</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-operator">!</span><span class="ruby-operator">!</span>(<span class="ruby-identifier">__key</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">key</span>) })
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- boost-source -->
+          </div><!-- switch-source -->
           
         </div>
 
         
 
         
-      </div><!-- boost-method -->
+      </div><!-- switch-method -->
 
     
-      <div id="method-i-boost_factor" class="method-detail ">
+      <div id="method-i-switch-21" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            boost_factor(other_array) &rarr; aFloat
+            switch!(short[, long]) &rarr; true | false
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            boost_factor(other_array) { |array| ... } &rarr; aFloat
-          </span>
           
         </div>
         
@@ -469,47 +483,103 @@ href="BoostMixin.html#method-i-boost_factor">boost_factor</a>)</p>
 
         <div class="method-description">
           
-          <p>Calculates the “boost factor” <strong>from</strong> the series of values in
-<em>array</em> <strong>to</strong> the series of values in
-<code>other_array</code> by means of their arithmetic mean or the value
-returned from the block given.</p>
-
-<p>Example:</p>
-
-<pre class="ruby"><span class="ruby-comment"># series of runtime measurements for old version</span>
-<span class="ruby-identifier">a</span> = [<span class="ruby-value">1.5</span>, <span class="ruby-value">1.6</span>, <span class="ruby-value">1.4</span>]
-
-<span class="ruby-comment"># series of runtime measurements for new version</span>
-<span class="ruby-identifier">b</span> = [<span class="ruby-value">0.7</span>, <span class="ruby-value">0.8</span>, <span class="ruby-value">0.8</span>]
-
-<span class="ruby-comment"># what speedup did we get? =&gt; almost 50%</span>
-<span class="ruby-identifier">a</span>.<span class="ruby-identifier">boost_factor</span>(<span class="ruby-identifier">b</span>)  <span class="ruby-comment">#=&gt; -0.48888888888888893</span>
-</pre>
+          <p>Whether ARGV includes the switch <code>short</code> (or <code>long</code>).
+Removes the matching switch from ARGV.</p>
           
           
 
           
-          <div class="method-source-code" id="boost_factor-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 56</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">boost_factor</span>(<span class="ruby-identifier">other</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>.<span class="ruby-identifier">to_proc</span>
-  <span class="ruby-identifier">block</span>[<span class="ruby-identifier">other</span>] <span class="ruby-operator">/</span> <span class="ruby-identifier">block</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+          <div class="method-source-code" id="switch-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/argv/option_mixin.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">switch!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-operator">!</span><span class="ruby-operator">!</span>(<span class="ruby-identifier">__key</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>) })
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- boost_factor-source -->
+          </div><!-- switch-21-source -->
           
         </div>
 
         
-        <div class="aliases">
-          Also aliased as: <a href="BoostMixin.html#method-i-boof">boof</a>
-        </div>
-        
 
         
-      </div><!-- boost_factor-method -->
+      </div><!-- switch-21-method -->
 
     
     </section><!-- public-instance-method-details -->
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="method-i-__key" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">__key</span><span
+            class="method-args">(short, long = nil) { |key| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="__key-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/argv/option_mixin.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">__key</span>(<span class="ruby-identifier">short</span>, <span class="ruby-identifier">long</span> = <span class="ruby-keyword">nil</span>)  <span class="ruby-comment"># :yield: key</span>
+  <span class="ruby-identifier">long</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">yield</span>(<span class="ruby-node">&quot;--#{long}&quot;</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">yield</span>(<span class="ruby-node">&quot;-#{short}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- __key-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- __key-method -->
+
+    
+      <div id="method-i-__opt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">__opt</span><span
+            class="method-args">(block, *args) { |index| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="__opt-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/argv/option_mixin.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">__opt</span>(<span class="ruby-identifier">block</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">index</span> = <span class="ruby-identifier">__key</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">index</span>(<span class="ruby-identifier">key</span>) } <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
+
+  <span class="ruby-identifier">value</span> = <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">index</span>)
+  <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">value</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- __opt-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- __opt-method -->
+
+    
+    </section><!-- private-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Nuggets::Midos::Parser - ruby-nuggets Application documentation (v0.9.3)</title>
+<title>class Nuggets::Midos::Parser - ruby-nuggets Application documentation (v0.9.4)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -77,6 +77,8 @@
     
     <li ><a href="#method-c-parse">::parse</a>
     
+    <li ><a href="#method-c-parse_file">::parse_file</a>
+    
     <li ><a href="#method-i-amend_block">#amend_block</a>
     
     <li ><a href="#method-i-auto_id">#auto_id</a>
@@ -141,6 +143,10 @@
     <li><a href="../../Nuggets.html">Nuggets</a>
   
     <li><a href="../../Nuggets/ANSIColor2CSS.html">Nuggets::ANSIColor2CSS</a>
+  
+    <li><a href="../../Nuggets/Argv.html">Nuggets::Argv</a>
+  
+    <li><a href="../../Nuggets/Argv/OptionMixin.html">Nuggets::Argv::OptionMixin</a>
   
     <li><a href="../../Nuggets/Array.html">Nuggets::Array</a>
   
@@ -223,6 +229,10 @@
     <li><a href="../../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
   
     <li><a href="../../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
+  
+    <li><a href="../../Nuggets/LSI.html">Nuggets::LSI</a>
+  
+    <li><a href="../../Nuggets/LSI/Doc.html">Nuggets::LSI::Doc</a>
   
     <li><a href="../../Nuggets/LazyAttr.html">Nuggets::LazyAttr</a>
   
@@ -334,6 +344,12 @@
     <section id="constants-list" class="section">
       <h3 class="section-header">Constants</h3>
       <dl>
+      
+        <dt id="DEFAULT_ENCODING">DEFAULT_ENCODING
+        
+        <dd class="description"><p>Default encoding for <a
+href="Parser.html#method-c-parse_file">::parse_file</a>.</p>
+        
       
         <dt id="DEFAULT_FS">DEFAULT_FS
         
@@ -458,7 +474,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
   <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:key</span>]
 
@@ -499,8 +515,8 @@
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 45</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">parser</span> = <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>).<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">parser</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">records</span>
 <span class="ruby-keyword">end</span></pre>
@@ -512,6 +528,41 @@
 
         
       </div><!-- parse-method -->
+
+    
+      <div id="method-c-parse_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_file</span><span
+            class="method-args">(file, encoding = nil, *args, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_file-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">encoding</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">encoding</span> <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_ENCODING</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_file-method -->
 
     
     </section><!-- public-class-method-details -->
@@ -539,7 +590,7 @@
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>
     <span class="ruby-identifier">records</span>, <span class="ruby-identifier">block</span> = <span class="ruby-ivar">@records</span>, <span class="ruby-identifier">amend_block</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
@@ -603,7 +654,7 @@
 
           
           <div class="method-source-code" id="reset-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 64</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
   <span class="ruby-ivar">@records</span> = {}
   <span class="ruby-ivar">@auto_id</span> = <span class="ruby-identifier">auto_id</span>
@@ -643,7 +694,7 @@
 
           
           <div class="method-source-code" id="amend_block-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 110</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">amend_block</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">block</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">$VERBOSE</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">k</span> = <span class="ruby-ivar">@key</span>
 
@@ -689,7 +740,7 @@
 
           
           <div class="method-source-code" id="auto_id-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">auto_id</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">n</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
 <span class="ruby-keyword">end</span></pre>

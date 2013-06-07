@@ -42,9 +42,22 @@ module Nuggets
       # Line break indicator
       DEFAULT_NL = '^'
 
-      def self.parse(input, *args, &block)
-        parser = new(*args).parse(input, &block)
-        block_given? ? parser : parser.records
+      # Default encoding for ::parse_file.
+      DEFAULT_ENCODING = 'iso-8859-1'
+
+      class << self
+
+        def parse(input, *args, &block)
+          parser = new(*args).parse(input, &block)
+          block_given? ? parser : parser.records
+        end
+
+        def parse_file(file, encoding = nil, *args, &block)
+          File.open(file, :encoding => encoding || DEFAULT_ENCODING) { |input|
+            parse(input, *args, &block)
+          }
+        end
+
       end
 
       def initialize(options = {})

@@ -41,7 +41,7 @@ module Nuggets
     end
 
     def initialize(items = {})
-      @hash, @list, @invlist = {}, Hash.new { |h, k| h[k] = h.size }, {}
+      reset
       items.each { |k, v| self[k] = v }
     end
 
@@ -103,8 +103,20 @@ module Nuggets
       }
     end
 
+    def related(key, num = 5)
+      if doc = self[key] and norm = doc.norm
+        a = []; norm *= -1
+        each { |k, v| a << [norm * v.norm.col, k] unless k == key }
+        a.sort![0, num].map! { |_, k| k }
+      end
+    end
+
     def build(cutoff = 0.75)
       build!(docs, @list, cutoff) if size > 1
+    end
+
+    def reset
+      @hash, @list, @invlist = {}, Hash.new { |h, k| h[k] = h.size }, {}
     end
 
     private

@@ -53,7 +53,7 @@ module Nuggets
         end
 
         def parse_file(file, encoding = nil, *args, &block)
-          File.open(file, :encoding => encoding || DEFAULT_ENCODING) { |input|
+          ::File.open(file, :encoding => encoding || DEFAULT_ENCODING) { |input|
             parse(input, *args, &block)
           }
         end

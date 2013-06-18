@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Nuggets::Midos::Parser - ruby-nuggets Application documentation (v0.9.4)</title>
+<title>class Nuggets::Midos::Parser - ruby-nuggets Application documentation (v0.9.5)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -551,7 +551,7 @@ href="Parser.html#method-c-parse_file">::parse_file</a>.</p>
           <div class="method-source-code" id="parse_file-source">
             <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">encoding</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">encoding</span> <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_ENCODING</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">encoding</span> <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_ENCODING</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   }
 <span class="ruby-keyword">end</span></pre>

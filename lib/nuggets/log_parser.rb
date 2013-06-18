@@ -60,7 +60,7 @@ module Nuggets
     def parse_file(file, &block)
       block ||= (entries = []; lambda { |entry| entries << entry })
 
-      (file =~ GZ_EXT_RE ? Zlib::GzipReader : File).open(file) { |f|
+      (file =~ GZ_EXT_RE ? Zlib::GzipReader : ::File).open(file) { |f|
         block.arity == 1 ? parse(f, &block) : block[f, method(:parse)]
       }
 

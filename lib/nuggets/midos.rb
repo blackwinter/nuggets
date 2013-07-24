@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 #--
 ###############################################################################
 #                                                                             #
@@ -28,37 +30,60 @@
 module Nuggets
   module Midos
 
-    class Parser
+    # Record separator
+    DEFAULT_RS = '&&&'
 
-      # Record separator
-      DEFAULT_RS = '&&&'
+    # Field separator
+    DEFAULT_FS = ':'
 
-      # Field separator
-      DEFAULT_FS = ':'
+    # Value separator
+    DEFAULT_VS = ' | '
 
-      # Value separator
-      DEFAULT_VS = ' | '
+    # Line break indicator
+    DEFAULT_NL = '^'
 
-      # Line break indicator
-      DEFAULT_NL = '^'
+    # Line ending
+    DEFAULT_LE = "\r\n"
 
-      # Default encoding for ::parse_file.
-      DEFAULT_ENCODING = 'iso-8859-1'
+    # Default file encoding
+    DEFAULT_ENCODING = 'iso-8859-1'
 
-      class << self
+    class << self
 
-        def parse(input, *args, &block)
-          parser = new(*args).parse(input, &block)
-          block_given? ? parser : parser.records
-        end
+      def filter(source, target, source_options = {}, target_options = source_options)
+        records = {}
 
-        def parse_file(file, encoding = nil, *args, &block)
-          ::File.open(file, :encoding => encoding || DEFAULT_ENCODING) { |input|
-            parse(input, *args, &block)
-          }
-        end
+        Parser.parse(source, source_options) { |id, record|
+          records[id] = record if yield(id, record)
+        }
 
+        Writer.write(target, records, target_options)
+
+        records
       end
+
+      def filter_file(source_file, target_file, source_options = {}, target_options = source_options, &block)
+        source_options[:encoding] ||= DEFAULT_ENCODING
+        target_options[:encoding] ||= DEFAULT_ENCODING
+
+        ::File.open(source_file, :encoding => source_options[:encoding]) { |source|
+          ::File.open(target_file, 'w', :encoding => target_options[:encoding]) { |target|
+            filter(source, target, source_options, target_options, &block)
+          }
+        }
+      end
+
+      def convert(*args)
+        filter(*args) { |*| true }
+      end
+
+      def convert_file(*args)
+        filter_file(*args) { |*| true }
+      end
+
+    end
+
+    class Base
 
       def initialize(options = {})
         @key = options[:key]
@@ -66,31 +91,61 @@ module Nuggets
         @rs = options[:rs] || DEFAULT_RS
         @fs = options[:fs] || DEFAULT_FS
         @vs = options[:vs] || DEFAULT_VS
-        @vs = /\s*#{Regexp.escape(@vs)}\s*/ unless @vs.is_a?(Regexp)
         @nl = options[:nl] || DEFAULT_NL
+        @le = options[:le] || DEFAULT_LE
 
         reset
       end
 
-      attr_reader :rs, :fs, :vs, :key, :records
+      attr_reader :rs, :fs, :vs, :nl, :le, :key, :records
 
       def reset
         @records = {}
         @auto_id = auto_id
       end
 
-      def parse(input, &block)
+      private
+
+      def auto_id(n = 0)
+        lambda { n += 1 }
+      end
+
+    end
+
+    class Parser < Base
+
+      class << self
+
+        def parse(source, options = {}, &block)
+          parser = new(options).parse(source, &block)
+          block_given? ? parser : parser.records
+        end
+
+        def parse_file(file, options = {}, &block)
+          ::File.open(file, :encoding => options[:encoding] ||= DEFAULT_ENCODING) { |source|
+            parse(source, options, &block)
+          }
+        end
+
+      end
+
+      def initialize(options = {})
+        super
+        @vs = /\s*#{::Regexp.escape(@vs)}\s*/ unless @vs.is_a?(::Regexp)
+      end
+
+      def parse(source, &block)
         unless block
           records, block = @records, amend_block { |id, record|
             records[id] = record
           }
         end
 
-        rs, fs, vs, nl, key, auto_id, id, record =
-          @rs, @fs, @vs, @nl, @key, @auto_id, nil, {}
+        rs, fs, vs, nl, le, key, auto_id, id, record =
+          @rs, @fs, @vs, @nl, @le, @key, @auto_id, nil, {}
 
-        input.each { |line|
-          line = line.chomp
+        source.each { |line|
+          line = line.chomp(le)
 
           if line == rs
             block[key ? id : auto_id.call, record]
@@ -116,17 +171,14 @@ module Nuggets
 
       private
 
-      def auto_id(n = 0)
-        lambda { n += 1 }
-      end
-
       def amend_block(&block)
         return block unless $VERBOSE && k = @key
 
-        r, i = block.binding.eval('_ = records, input')
+        r, i = block.binding.eval('_ = records, source')
 
         l = i.respond_to?(:lineno)
-        s = i.respond_to?(:path) ? i.path : Object.instance_method(:inspect).bind(i).call
+        s = i.respond_to?(:path) ? i.path :
+          ::Object.instance_method(:inspect).bind(i).call
 
         lambda { |id, *args|
           if (r ||= block.binding.eval('records')).has_key?(id)
@@ -135,6 +187,50 @@ module Nuggets
 
           block[id, *args]
         }
+      end
+
+    end
+
+    class Writer < Base
+
+      class << self
+
+        def write(target, records, options = {})
+          new(options).write(target, records)
+        end
+
+        def write_file(file, records, options = {})
+          ::File.open(file, 'w', :encoding => options[:encoding] ||= DEFAULT_ENCODING) { |target|
+            write(target, records, options)
+          }
+        end
+
+      end
+
+      def write(target, records = {})
+        rs, fs, vs, nl, le, key, auto_id =
+          @rs, @fs, @vs, @nl, @le, @key, @auto_id
+
+        @records.update(records).each { |id, record|
+          record, id = id, nil unless record
+
+          if key && !record.has_key?(key)
+            record[key] = id || auto_id.call
+          end
+
+          record.each { |k, v|
+            if v
+              v = v.is_a?(::Array) ? v.join(vs) : v.to_s
+              v.gsub!("\n", nl)
+
+              target << k << fs << v << le
+            end
+          }
+
+          target << rs << le << le
+        }
+
+        self
       end
 
     end

@@ -25,32 +25,55 @@
 ###############################################################################
 #++
 
+require 'forwardable'
 require 'gsl'
 
 module Nuggets
 
   class LSI
 
-    include Enumerable
+    include ::Enumerable
 
-    DEFAULT_EPSILON = Float::EPSILON * 10
+    extend ::Forwardable
 
-    def self.each_norm(items, options = {}, &block)
-      lsi = new(items)
-      lsi.each_norm(nil, options, &block) if lsi.build
+    DEFAULT_EPSILON   = ::Float::EPSILON * 10
+
+    DEFAULT_PRECISION = 2
+
+    DEFAULT_TRANSFORM = :tfidf
+
+    DEFAULT_CUTOFF    = 0.75
+
+    class << self
+
+      def build(items, options = {})
+        lsi = new(items)
+        lsi if lsi.build(options)
+      end
+
+      def each_norm(items, options = {}, build_options = {}, &block)
+        lsi = new(items)
+        lsi.each_norm(nil, options, &block) if lsi.build(build_options)
+      end
+
     end
 
     def initialize(items = {})
       reset
-      items.each { |k, v| self[k] = v }
+      items.each { |k, v| self[k] = v || k }
     end
 
-    def [](key)
-      @hash[key]
-    end
+    def_delegators :@hash, :[], :each, :include?, :key, :keys, :size
+
+    def_delegator  :@hash, :values,    :docs
+    def_delegator  :@hash, :values_at, :docs_at
+
+    def_delegator  :@list, :keys, :terms
+
+    alias_method :doc, :[]
 
     def []=(key, value)
-      @hash[key] = Doc.new(key, value, @list)
+      @hash[key] = Doc.new(key, value, @list, @freq)
     end
 
     def add(key, value = key)
@@ -62,27 +85,13 @@ module Nuggets
       add(value.object_id, value)
     end
 
-    def size
-      @hash.size
-    end
-
-    def keys
-      @hash.keys
-    end
-
-    def docs
-      @hash.values
-    end
-
-    def each(&block)
-      @hash.each(&block)
-    end
-
     # min:: minimum value to consider
     # abs:: minimum absolute value to consider
     # nul:: exclude null values (true or Float)
     # new:: exclude original terms / only yield new ones
     def each_norm(key = nil, options = {})
+      return enum_for(:each_norm, key, options) unless block_given?
+
       min, abs, nul, new = options.values_at(:min, :abs, :nul, :new)
       nul = DEFAULT_EPSILON if nul == true
 
@@ -90,14 +99,14 @@ module Nuggets
 
       (key ? [self[key]] : docs).each { |doc|
         if doc && norm = doc.norm
-          i = 0
+          i = -1
 
           norm.each { |v|
+            i += 1
             yield doc, list[i], v unless (min && v < min) ||
                                          (abs && v.abs < abs) ||
                                          (nul && v.abs < nul) ||
                                          (new && doc.include?(i))
-            i += 1
           }
         end
       }
@@ -105,87 +114,160 @@ module Nuggets
 
     def related(key, num = 5)
       if doc = self[key] and norm = doc.norm
-        a = []; norm *= -1
-        each { |k, v| a << [norm * v.norm.col, k] unless k == key }
-        a.sort![0, num].map! { |_, k| k }
+        temp = sort_by { |k, v| -norm * v.norm.col }
+        temp.map! { |k,| k }.delete(key)
+        temp[0, num]
       end
     end
 
-    def build(cutoff = 0.75)
-      build!(docs, @list, cutoff) if size > 1
+    def related_score(key, num = 5)
+      if doc = self[key] and norm = doc.norm
+        temp = map { |k, v| [k, norm * v.norm.col] }.sort_by { |_, i| -i }
+        temp.delete(temp.assoc(key))
+        temp[0, num]
+      end
+    end
+
+    def build(options = {})
+      build!(docs, @list, options.is_a?(::Hash) ?
+        options : { :cutoff => options }) if size > 1
     end
 
     def reset
-      @hash, @list, @invlist = {}, Hash.new { |h, k| h[k] = h.size }, {}
+      @hash, @list, @freq, @invlist =
+        {}, ::Hash.new { |h, k| h[k] = h.size }, ::Hash.new(0), {}
+    end
+
+    def inspect
+      '%s@%d/%d' % [self.class, size, @list.size]
+    end
+
+    def to_a(norm = true)
+      (norm ? map { |_, doc| doc.norm.to_a } :
+              map { |_, doc| doc.vector.to_a }).transpose
     end
 
     private
 
-    def build!(docs, list, cutoff)
-      u, v, s = GSL::Matrix.alloc(*vectors(docs, list)).trans.SV_decomp
-      reduce(u, v, cutoff(s, cutoff), docs)
+    def build!(docs, list, options)
+      Doc.transform = options.fetch(:transform, DEFAULT_TRANSFORM)
+
+      @invlist = list.invert
+
+      # TODO: GSL::ERROR::EUNIMPL: Ruby/GSL error code 24, svd of
+      # MxN matrix, M<N, is not implemented (file svd.c, line 61)
+      u, v, s = matrix(docs, list.size, size = docs.size).SV_decomp
+
+      r, i = reduce(s, options.fetch(:cutoff, DEFAULT_CUTOFF)), -1
+      (u * r * v.trans).each_col { |c| docs[i += 1].vector = c.row }
+
       size
     end
 
-    def vectors(docs, list)
-      @invlist, size = list.invert, list.size
-      docs.map { |doc| transform(doc.raw_vector(size)) }
+    def matrix(d = docs, m = @list.size, n = d.size)
+      x = ::GSL::Matrix.alloc(m, n)
+      d.each_with_index { |i, j| x.set_col(j, i.transformed_vector(m, n)) }
+      x
     end
 
-    # FIXME: "first-order association transform" ???
-    def transform(vec, q = 0)
-      return vec #unless (sum = vec.sum) > 1
+    # k == nil:: keep all
+    # k >= 1::   keep this many
+    # k < 1::    keep (at most) this proportion
+    def reduce(s, k, m = s.size)
+      if k && k < m
+        if k > 0
+          k = (m * k).floor if k < 1
+          s[k, m - k] = 0
+        else
+          s.set_zero
+        end
+      end
 
-      vec.each { |v| q -= (w = v / sum) * Math.log(w) if v > 0 }
-      vec.map! { |v| Math.log(v + 1) / q }
-    end
-
-    def cutoff(s, c)
-      w, i = s.sort[-(s.size * c).round], 0
-      s.each { |v| s[i] = 0 if v < w; i += 1 }
-      s
-    end
-
-    def reduce(u, v, s, d, i = -1)
-      (u * GSL::Matrix.diagonal(s) * v.trans).each_col { |c|
-        d[i += 1].vector = c.row
-      }
+      s.to_m_diagonal
     end
 
     class Doc
 
+      include ::Enumerable
+
+      extend ::Forwardable
+
       TOKEN_RE = %r{\s+}
 
-      def initialize(key, value, list)
-        @key = key
-        @map = !value.is_a?(Hash) ? build_hash(value, list) :
+      class << self
+
+        attr_reader :transform
+
+        def transform=(transform)
+          method = :transformed_vector
+
+          case transform
+            when ::Proc          then define_method(method, &transform)
+            when ::UnboundMethod then define_method(method, transform)
+            else alias_method(method, "#{transform ||= :raw}_vector")
+          end
+
+          @transform = transform
+        end
+
+      end
+
+      def initialize(key, value, list, freq)
+        @key, @list, @freq, @total = key, list, freq, 1
+
+        @map = !value.is_a?(::Hash) ? build_hash(value, list) :
           value.inject({}) { |h, (k, v)| h[list[k]] = v; h }
+
+        @map.each_key { |k| freq[k] += 1 }
+
+        self.vector = raw_vector
       end
 
       attr_reader :key, :vector, :norm
 
-      def raw_vector(size)
-        vec = GSL::Vector.alloc(size)
-        @map.each { |k, v| vec[k] = v }
+      def_delegators :@map, :each, :include?
+
+      def_delegator :raw_vector, :sum, :size
+
+      def raw_vector(size = @list.size, *)
+        vec = ::GSL::Vector.calloc(size)
+        each { |k, v| vec[k] = v }
         vec
       end
+
+      # TODO: "first-order association transform" ???
+      def foat_vector(*args)
+        vec, q = raw_vector(*args), 0
+        return vec unless (s = vec.sum) > 1
+
+        vec.each { |v| q -= (w = v / s) * ::Math.log(w) if v > 0 }
+        vec.map { |v| ::Math.log(v + 1) / q }
+      end
+
+      def tfidf_vector(*args)
+        vec, f, i = raw_vector(*args), @freq, -1
+        s, d = vec.sum, @total = args.fetch(1, @total).to_f
+        vec.map { |v| i += 1; v > 0 ? ::Math.log(d / f[i]) * v / s : v }
+      end
+
+      self.transform = DEFAULT_TRANSFORM
 
       def vector=(vec)
         @vector, @norm = vec, vec.normalize
       end
 
-      def include?(k)
-        @map.include?(k)
+      def inspect
+        '%s@%p/%d' % [self.class, key, size]
       end
 
       private
 
-      def build_hash(value, list, hash = Hash.new(0))
-        build_array(value).each { |i| hash[list[i]] += 1 }
+      def build_hash(value, list, hash = ::Hash.new(0))
+        build_enum(value).each { |i| hash[list[i]] += 1 }
         hash
       end
 
-      def build_array(value, re = TOKEN_RE)
+      def build_enum(value, re = TOKEN_RE)
         value = value.read if value.respond_to?(:read)
         value = value.split(re) if value.respond_to?(:split)
         value

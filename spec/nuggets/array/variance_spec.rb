@@ -33,6 +33,22 @@ describe Array, 'when extended by', Nuggets::Array::VarianceMixin do
   end
 
   example do
+    [1, 2, 4, 5, 8].variance.should == 6.0
+  end
+
+  example do
+    [1, 2, 4, 5, 8].variance { |i| i + 1e7 }.should == 6.0
+  end
+
+  example do
+    pending { [1, 2, 4, 5, 8].variance { |i| i + 1e12 }.should == 6.0 }
+  end
+
+  example do
+    ([1, 2, 4, 5, 8] * 100).variance.should == 6.0
+  end
+
+  example do
     [].covariance.should == 0.0
   end
 

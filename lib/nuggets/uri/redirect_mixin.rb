@@ -64,7 +64,7 @@ module Nuggets
     return nil unless steps > 0
 
     follow_redirect(res['Location'], steps - 1, cache) { |*a| yield(*a) }
-  rescue ::SocketError, ::Errno::EHOSTUNREACH
+  rescue ::SocketError, ::Errno::EHOSTUNREACH, ::Errno::ENOENT
   end
 
   # call-seq:

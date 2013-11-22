@@ -34,6 +34,12 @@ module Nuggets
   #
   # Returns the user's home directory, or +default+ if it could not be found.
   def user_home(default = ::File::ALT_SEPARATOR ? 'C:/' : '/')
+    begin
+      return ::Dir.home
+    rescue ::ArgumentError
+      # "couldn't find HOME environment -- expanding `~'"
+    end if ::Dir.respond_to?(:home)
+
     %w[HOME HOMEDRIVE:HOMEPATH USERPROFILE APPDATA].each { |key|
       home = values_at(*key.split(':')).join
       return home.gsub(/\\/, '/') if home && !home.empty?

@@ -259,15 +259,11 @@ module Nuggets
         opt = "-#{key.to_s[0, 1]}"
 
         if val.is_a?(::Array)
-          val.each { |wal|
-            argv << opt << wal.to_s
-          }
-        else
-          if opt == '-e'
-            argv << opt << val.to_s
-          elsif val != false
-            argv << "#{opt}#{val unless val == true}"
-          end
+          val.each { |wal| argv << opt << wal.to_s }
+        elsif opt == '-e'
+          argv << opt << val.to_s
+        elsif val != false
+          argv << "#{opt}#{val unless val == true}"
         end
       } if args.last.is_a?(::Hash)
 

@@ -221,9 +221,7 @@ module Nuggets
           record.each { |k, v|
             if v
               v = v.is_a?(::Array) ? v.join(vs) : v.to_s
-              v.gsub!("\n", nl)
-
-              target << k << fs << v << le
+              target << k << fs << v.gsub("\n", nl) << le
             end
           }
 

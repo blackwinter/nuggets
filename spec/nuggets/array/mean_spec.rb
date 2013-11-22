@@ -1,4 +1,5 @@
 require 'nuggets/array/mean'
+require 'nuggets/array/standard_deviation'
 
 describe Array, 'when extended by', Nuggets::Array::MeanMixin do
 
@@ -77,6 +78,14 @@ describe Array, 'when extended by', Nuggets::Array::MeanMixin do
       [-3, -2, -1].arithmetic_mean.should == -[3, 2, 1].arithmetic_mean
     end
 
+    example do
+      [1e16, 1, 3, -1e16].arithmetic_mean.should == 1.0
+    end
+
+    example do
+      pending { [1e30, 1, 3, -1e30].arithmetic_mean.should == 1.0 }
+    end
+
     context do
 
       before :each do
@@ -124,12 +133,17 @@ describe Array, 'when extended by', Nuggets::Array::MeanMixin do
 
     before :each do
       @ary = [[9.4, 34.75], [9.46, 34.68], [9.51, 34.61]]
+
+      @ary1 = @ary.map(&:first)
+      @ary2 = @ary.map(&:last)
     end
 
     describe 'w/o stddev' do
 
       before :each do
-        class << @ary; undef_method :std; end if @ary.respond_to?(:std)
+        [@ary, @ary1, @ary2].each { |ary|
+          class << ary; undef_method :std; end if ary.respond_to?(:std)
+        }
       end
 
       example do
@@ -144,14 +158,21 @@ describe Array, 'when extended by', Nuggets::Array::MeanMixin do
         @ary.unshift(%w[a b]).report_mean(nil, 2).should == ['a  9.46', 'b  34.68']
       end
 
+      example do
+        @ary1.report_mean.should == ['9.4567']
+      end
+
+      example do
+        @ary2.report_mean.should == ['34.6800']
+      end
+
+      example do
+        [].report_mean.should be_nil
+      end
+
     end
 
     describe 'w/ stddev' do
-
-      before :each do
-        require 'nuggets/array/standard_deviation_mixin'
-        @ary.extend(Nuggets::Array::StandardDeviationMixin)
-      end
 
       example do
         @ary.report_mean.should == ['9.4567 +/- 0.0450', '34.6800 +/- 0.0572']
@@ -163,6 +184,18 @@ describe Array, 'when extended by', Nuggets::Array::MeanMixin do
 
       example do
         @ary.unshift(%w[a b]).report_mean(nil, 2).should == ['a  9.46 +/- 0.04', 'b  34.68 +/- 0.06']
+      end
+
+      example do
+        @ary1.report_mean.should == ['9.4567 +/- 0.0450']
+      end
+
+      example do
+        @ary2.report_mean.should == ['34.6800 +/- 0.0572']
+      end
+
+      example do
+        [].report_mean.should be_nil
       end
 
     end

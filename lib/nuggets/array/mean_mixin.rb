@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2012 Jens Wille                                          #
+# Copyright (C) 2007-2013 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -145,7 +145,12 @@ module Nuggets
   # with the standard deviation, if available; all values are subject to
   # +precision+.
   #
-  # Examples:
+  # If _array_ is a flat array of numeric values, it is treated as a single
+  # "column".
+  #
+  # Returns +nil+ if _array_ is empty.
+  #
+  # Examples (with standard deviation):
   #
   #   [[9.4, 34.75], [9.46, 34.68], [9.51, 34.61]].report_mean
   #   #=> ["9.4567 +/- 0.0450", "34.6800 +/- 0.0572"]
@@ -158,7 +163,21 @@ module Nuggets
   #
   #   CSV.read('csv', headers: true, converters: :numeric).to_a.report_mean
   #   #=> ["a    9.4567 +/- 0.0450", "b    34.6800 +/- 0.0572"]
+  #
+  #   [9.4, 9.46, 9.51].report_mean
+  #   #=> ["9.4567 +/- 0.0450"]
+  #
+  #   [34.75, 34.68, 34.61].report_mean
+  #   #=> ["34.6800 +/- 0.0572"]
+  #
+  #   [].report_mean
+  #   #=> nil
   def report_mean(method = nil, precision = 4)
+    return if empty?
+
+    return clone.replace(self.class.new.push(self).transpose).
+      report_mean(method, precision) unless first.is_a?(self.class)
+
     met, sep = [method ||= :mean, 'mean'], ['', '_']
     lab, std = first.first.is_a?(::String), respond_to?(:std)
 

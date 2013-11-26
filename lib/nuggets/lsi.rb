@@ -89,27 +89,29 @@ module Nuggets
     # abs:: minimum absolute value to consider
     # nul:: exclude null values (true or Float)
     # new:: exclude original terms / only yield new ones
-    def each_norm(key = nil, options = {})
-      return enum_for(:each_norm, key, options) unless block_given?
+    def each_term(key = nil, options = {})
+      return enum_for(:each_term, key, options) unless block_given?
 
       min, abs, nul, new = options.values_at(:min, :abs, :nul, :new)
       nul = DEFAULT_EPSILON if nul == true
 
-      list = @invlist
+      list, norm = @invlist, options[:norm]
 
       (key ? [self[key]] : docs).each { |doc|
-        if doc && norm = doc.norm
-          i = -1
-
-          norm.each { |v|
-            i += 1
-            yield doc, list[i], v unless (min && v < min) ||
+        if doc && vec = norm ? doc.norm : doc.vector
+          vec.enum_for(:each).with_index { |v, i|
+            yield doc, list[i], v unless v.nan? ||
+                                         (min && v < min) ||
                                          (abs && v.abs < abs) ||
                                          (nul && v.abs < nul) ||
                                          (new && doc.include?(i))
           }
         end
       }
+    end
+
+    def each_norm(key = nil, options = {}, &block)
+      each_term(key, options.merge(:norm => true), &block)
     end
 
     def related(key, num = 5)
@@ -158,8 +160,8 @@ module Nuggets
       # MxN matrix, M<N, is not implemented (file svd.c, line 61)
       u, v, s = matrix(docs, list.size, size = docs.size).SV_decomp
 
-      r, i = reduce(s, options.fetch(:cutoff, DEFAULT_CUTOFF)), -1
-      (u * r * v.trans).each_col { |c| docs[i += 1].vector = c.row }
+      (u * reduce(s, options.fetch(:cutoff, DEFAULT_CUTOFF)) * v.trans).
+        enum_for(:each_col).with_index { |c, i| docs[i].vector = c.row }
 
       size
     end
@@ -175,12 +177,7 @@ module Nuggets
     # k < 1::    keep (at most) this proportion
     def reduce(s, k, m = s.size)
       if k && k < m
-        if k > 0
-          k = (m * k).floor if k < 1
-          s[k, m - k] = 0
-        else
-          s.set_zero
-        end
+        k > 0 ? s[k = (k < 1 ? m * k : k).floor, m - k] = 0 : s.set_zero
       end
 
       s.to_m_diagonal
@@ -207,7 +204,7 @@ module Nuggets
             else alias_method(method, "#{transform ||= :raw}_vector")
           end
 
-          @transform = transform
+          @transform = transform.to_sym
         end
 
       end
@@ -245,9 +242,11 @@ module Nuggets
       end
 
       def tfidf_vector(*args)
-        vec, f, i = raw_vector(*args), @freq, -1
+        vec, f = raw_vector(*args), @freq
         s, d = vec.sum, @total = args.fetch(1, @total).to_f
-        vec.map { |v| i += 1; v > 0 ? ::Math.log(d / f[i]) * v / s : v }
+
+        vec.enum_for(:map).with_index { |v, i|
+          v > 0 ? ::Math.log(d / f[i]) * v / s : v }
       end
 
       self.transform = DEFAULT_TRANSFORM

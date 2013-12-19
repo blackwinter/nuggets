@@ -37,7 +37,7 @@ module Nuggets
     DEFAULT_FS = ':'
 
     # Value separator
-    DEFAULT_VS = ' | '
+    DEFAULT_VS = '|'
 
     # Line break indicator
     DEFAULT_NL = '^'
@@ -85,28 +85,35 @@ module Nuggets
 
     class Base
 
-      def initialize(options = {})
-        @key = options[:key]
+      def initialize(options = {}, &block)
+        self.key = options[:key]
 
-        @rs = options[:rs] || DEFAULT_RS
-        @fs = options[:fs] || DEFAULT_FS
-        @vs = options[:vs] || DEFAULT_VS
-        @nl = options[:nl] || DEFAULT_NL
-        @le = options[:le] || DEFAULT_LE
+        self.rs = options[:rs] || DEFAULT_RS
+        self.fs = options[:fs] || DEFAULT_FS
+        self.vs = options[:vs] || DEFAULT_VS
+        self.nl = options[:nl] || DEFAULT_NL
+        self.le = options[:le] || DEFAULT_LE
 
+        @auto_id_block = block
         reset
       end
 
-      attr_reader :rs, :fs, :vs, :nl, :le, :key, :records
+      attr_accessor :key, :rs, :fs, :nl, :le, :auto_id
+
+      attr_reader :vs, :records
+
+      def vs=(vs)
+        @vs = vs.is_a?(::Regexp) ? vs : %r{\s*#{::Regexp.escape(vs)}\s*}
+      end
 
       def reset
         @records = {}
-        @auto_id = auto_id
+        @auto_id = @auto_id_block ? @auto_id_block.call : default_auto_id
       end
 
       private
 
-      def auto_id(n = 0)
+      def default_auto_id(n = 0)
         lambda { n += 1 }
       end
 

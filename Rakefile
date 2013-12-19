@@ -10,7 +10,7 @@ begin
       :summary      => %q{Some extensions to the Ruby programming language.},
       :author       => %q{Jens Wille},
       :email        => %q{jens.wille@gmail.com},
-      :license      => %q{AGPL},
+      :license      => %q{AGPL-3.0},
       :homepage     => :blackwinter,
       :dependencies => %w[]
     }

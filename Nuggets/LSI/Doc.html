@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Nuggets::LSI::Doc - ruby-nuggets Application documentation (v0.9.5)</title>
+<title>class Nuggets::LSI::Doc - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -65,8 +65,32 @@
   
 </nav>
 
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="../../Enumerable.html">Enumerable</a>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Extension Modules -->
+<nav id="extends-section" class="section">
+  <h3 class="section-header">Extended With Modules</h3>
+
+  <ul class="link-list">
     
-    
+  
+    <li><span class="extend">::Forwardable</span>
+  
+  
+  </ul>
+</nav>
+
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
@@ -75,13 +99,19 @@
     
     <li ><a href="#method-c-new">::new</a>
     
-    <li ><a href="#method-i-build_array">#build_array</a>
+    <li ><a href="#method-c-transform-3D">::transform=</a>
+    
+    <li ><a href="#method-i-build_enum">#build_enum</a>
     
     <li ><a href="#method-i-build_hash">#build_hash</a>
     
-    <li ><a href="#method-i-include-3F">#include?</a>
+    <li ><a href="#method-i-foat_vector">#foat_vector</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
     
     <li ><a href="#method-i-raw_vector">#raw_vector</a>
+    
+    <li ><a href="#method-i-tfidf_vector">#tfidf_vector</a>
     
     <li ><a href="#method-i-vector-3D">#vector=</a>
     
@@ -154,6 +184,8 @@
   
     <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
+    <li><a href="../../Nuggets/Array/FlushMixin.html">Nuggets::Array::FlushMixin</a>
+  
     <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
   
     <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
@@ -206,6 +238,8 @@
   
     <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
+    <li><a href="../../Nuggets/Hash/IDMapMixin.html">Nuggets::Hash::IDMapMixin</a>
+  
     <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
   
     <li><a href="../../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
@@ -242,7 +276,11 @@
   
     <li><a href="../../Nuggets/Midos.html">Nuggets::Midos</a>
   
+    <li><a href="../../Nuggets/Midos/Base.html">Nuggets::Midos::Base</a>
+  
     <li><a href="../../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
+  
+    <li><a href="../../Nuggets/Midos/Writer.html">Nuggets::Midos::Writer</a>
   
     <li><a href="../../Nuggets/MySQL.html">Nuggets::MySQL</a>
   
@@ -358,6 +396,19 @@
       <h3 class="section-header">Attributes</h3>
 
       
+      <div id="attribute-c-transform" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">transform</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-key" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">key</span><span
@@ -410,7 +461,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(key, value, list)</span>
+            class="method-args">(key, value, list, freq)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -425,11 +476,16 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 159</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>)
-  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">key</span>
-  <span class="ruby-ivar">@map</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">build_hash</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>) <span class="ruby-operator">:</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 212</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">freq</span>)
+  <span class="ruby-ivar">@key</span>, <span class="ruby-ivar">@list</span>, <span class="ruby-ivar">@freq</span>, <span class="ruby-ivar">@total</span> = <span class="ruby-identifier">key</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">freq</span>, <span class="ruby-value">1</span>
+
+  <span class="ruby-ivar">@map</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">build_hash</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>) <span class="ruby-operator">:</span>
     <span class="ruby-identifier">value</span>.<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, (<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">list</span>[<span class="ruby-identifier">k</span>]] = <span class="ruby-identifier">v</span>; <span class="ruby-identifier">h</span> }
+
+  <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">each_key</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">freq</span>[<span class="ruby-identifier">k</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">vector</span> = <span class="ruby-identifier">raw_vector</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -441,17 +497,11 @@
       </div><!-- new-method -->
 
     
-    </section><!-- public-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-include-3F" class="method-detail ">
+      <div id="method-c-transform-3D" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">include?</span><span
-            class="method-args">(k)</span>
+          <span class="method-name">transform=</span><span
+            class="method-args">(transform)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -465,26 +515,110 @@
           
 
           
-          <div class="method-source-code" id="include-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 177</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>)
-  <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>)
+          <div class="method-source-code" id="transform-3D-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 198</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">transform=</span>(<span class="ruby-identifier">transform</span>)
+  <span class="ruby-identifier">method</span> = <span class="ruby-value">:transformed_vector</span>
+
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">transform</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>          <span class="ruby-keyword">then</span> <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">transform</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">UnboundMethod</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">transform</span>)
+    <span class="ruby-keyword">else</span> <span class="ruby-identifier">alias_method</span>(<span class="ruby-identifier">method</span>, <span class="ruby-node">&quot;#{transform ||= :raw}_vector&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@transform</span> = <span class="ruby-identifier">transform</span>.<span class="ruby-identifier">to_sym</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- include-3F-source -->
+          </div><!-- transform-3D-source -->
           
         </div>
 
         
 
         
-      </div><!-- include-3F-method -->
+      </div><!-- transform-3D-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-foat_vector" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">foat_vector</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>TODO: “first-order association transform” ???</p>
+          
+          
+
+          
+          <div class="method-source-code" id="foat_vector-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 236</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">foat_vector</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">vec</span>, <span class="ruby-identifier">q</span> = <span class="ruby-identifier">raw_vector</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>), <span class="ruby-value">0</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">vec</span> <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">s</span> = <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">sum</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+
+  <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">q</span> <span class="ruby-operator">-=</span> (<span class="ruby-identifier">w</span> = <span class="ruby-identifier">v</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">s</span>) <span class="ruby-operator">*</span> <span class="ruby-operator">::</span><span class="ruby-constant">Math</span>.<span class="ruby-identifier">log</span>(<span class="ruby-identifier">w</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> }
+  <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-operator">::</span><span class="ruby-constant">Math</span>.<span class="ruby-identifier">log</span>(<span class="ruby-identifier">v</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">q</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- foat_vector-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- foat_vector-method -->
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 258</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-string">&#39;%s@%p/%d&#39;</span> <span class="ruby-operator">%</span> [<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">size</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- inspect-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- inspect-method -->
 
     
       <div id="method-i-raw_vector" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">raw_vector</span><span
-            class="method-args">(size)</span>
+            class="method-args">(size = @list.size, *)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -499,10 +633,10 @@
 
           
           <div class="method-source-code" id="raw_vector-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 167</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">raw_vector</span>(<span class="ruby-identifier">size</span>)
-  <span class="ruby-identifier">vec</span> = <span class="ruby-constant">GSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Vector</span>.<span class="ruby-identifier">alloc</span>(<span class="ruby-identifier">size</span>)
-  <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">vec</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 229</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">raw_vector</span>(<span class="ruby-identifier">size</span> = <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">size</span>, <span class="ruby-operator">*</span>)
+  <span class="ruby-identifier">vec</span> = <span class="ruby-operator">::</span><span class="ruby-constant">GSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Vector</span>.<span class="ruby-identifier">calloc</span>(<span class="ruby-identifier">size</span>)
+  <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">vec</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
   <span class="ruby-identifier">vec</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- raw_vector-source -->
@@ -513,6 +647,43 @@
 
         
       </div><!-- raw_vector-method -->
+
+    
+      <div id="method-i-tfidf_vector" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tfidf_vector</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tfidf_vector-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 244</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tfidf_vector</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">vec</span>, <span class="ruby-identifier">f</span> = <span class="ruby-identifier">raw_vector</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>), <span class="ruby-ivar">@freq</span>
+  <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span> = <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">sum</span>, <span class="ruby-ivar">@total</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">1</span>, <span class="ruby-ivar">@total</span>).<span class="ruby-identifier">to_f</span>
+
+  <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">enum_for</span>(<span class="ruby-value">:map</span>).<span class="ruby-identifier">with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">v</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Math</span>.<span class="ruby-identifier">log</span>(<span class="ruby-identifier">d</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">f</span>[<span class="ruby-identifier">i</span>]) <span class="ruby-operator">*</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">v</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tfidf_vector-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tfidf_vector-method -->
 
     
       <div id="method-i-vector-3D" class="method-detail ">
@@ -534,7 +705,7 @@
 
           
           <div class="method-source-code" id="vector-3D-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 173</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 254</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">vector=</span>(<span class="ruby-identifier">vec</span>)
   <span class="ruby-ivar">@vector</span>, <span class="ruby-ivar">@norm</span> = <span class="ruby-identifier">vec</span>, <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">normalize</span>
 <span class="ruby-keyword">end</span></pre>
@@ -554,10 +725,10 @@
       <h3 class="section-header">Private Instance Methods</h3>
 
     
-      <div id="method-i-build_array" class="method-detail ">
+      <div id="method-i-build_enum" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">build_array</span><span
+          <span class="method-name">build_enum</span><span
             class="method-args">(value, re = TOKEN_RE)</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -572,28 +743,28 @@
           
 
           
-          <div class="method-source-code" id="build_array-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 188</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">build_array</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">re</span> = <span class="ruby-constant">TOKEN_RE</span>)
+          <div class="method-source-code" id="build_enum-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 269</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">build_enum</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">re</span> = <span class="ruby-constant">TOKEN_RE</span>)
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">read</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:read</span>)
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">re</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:split</span>)
   <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- build_array-source -->
+          </div><!-- build_enum-source -->
           
         </div>
 
         
 
         
-      </div><!-- build_array-method -->
+      </div><!-- build_enum-method -->
 
     
       <div id="method-i-build_hash" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">build_hash</span><span
-            class="method-args">(value, list, hash = Hash.new(0))</span>
+            class="method-args">(value, list, hash = ::Hash.new(0))</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -608,9 +779,9 @@
 
           
           <div class="method-source-code" id="build_hash-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 183</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">build_hash</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>))
-  <span class="ruby-identifier">build_array</span>(<span class="ruby-identifier">value</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">list</span>[<span class="ruby-identifier">i</span>]] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
+            <pre><span class="ruby-comment"># File lib/nuggets/lsi.rb, line 264</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">build_hash</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">hash</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>))
+  <span class="ruby-identifier">build_enum</span>(<span class="ruby-identifier">value</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">list</span>[<span class="ruby-identifier">i</span>]] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
   <span class="ruby-identifier">hash</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- build_hash-source -->

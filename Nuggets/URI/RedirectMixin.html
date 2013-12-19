@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::URI::RedirectMixin - ruby-nuggets Application documentation (v0.9.5)</title>
+<title>module Nuggets::URI::RedirectMixin - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -142,6 +142,8 @@
   
     <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
+    <li><a href="../../Nuggets/Array/FlushMixin.html">Nuggets::Array::FlushMixin</a>
+  
     <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
   
     <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
@@ -194,6 +196,8 @@
   
     <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
+    <li><a href="../../Nuggets/Hash/IDMapMixin.html">Nuggets::Hash::IDMapMixin</a>
+  
     <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
   
     <li><a href="../../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
@@ -230,7 +234,11 @@
   
     <li><a href="../../Nuggets/Midos.html">Nuggets::Midos</a>
   
+    <li><a href="../../Nuggets/Midos/Base.html">Nuggets::Midos::Base</a>
+  
     <li><a href="../../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
+  
+    <li><a href="../../Nuggets/Midos/Writer.html">Nuggets::Midos::Writer</a>
   
     <li><a href="../../Nuggets/MySQL.html">Nuggets::MySQL</a>
   
@@ -401,7 +409,7 @@ limit has been exceeded, or any connection error occurs.</p>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">steps</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
 
   <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;Location&#39;</span>], <span class="ruby-identifier">steps</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">cache</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) }
-<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">SocketError</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTUNREACH</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">SocketError</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTUNREACH</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- follow_redirect-source -->
           

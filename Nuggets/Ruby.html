@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Ruby - ruby-nuggets Application documentation (v0.9.5)</title>
+<title>module Nuggets::Ruby - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -160,6 +160,8 @@
   
     <li><a href="../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
+    <li><a href="../Nuggets/Array/FlushMixin.html">Nuggets::Array::FlushMixin</a>
+  
     <li><a href="../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
   
     <li><a href="../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
@@ -212,6 +214,8 @@
   
     <li><a href="../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
+    <li><a href="../Nuggets/Hash/IDMapMixin.html">Nuggets::Hash::IDMapMixin</a>
+  
     <li><a href="../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
   
     <li><a href="../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
@@ -248,7 +252,11 @@
   
     <li><a href="../Nuggets/Midos.html">Nuggets::Midos</a>
   
+    <li><a href="../Nuggets/Midos/Base.html">Nuggets::Midos::Base</a>
+  
     <li><a href="../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
+  
+    <li><a href="../Nuggets/Midos/Writer.html">Nuggets::Midos::Writer</a>
   
     <li><a href="../Nuggets/MySQL.html">Nuggets::MySQL</a>
   
@@ -670,15 +678,11 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
     <span class="ruby-identifier">opt</span> = <span class="ruby-node">&quot;-#{key.to_s[0, 1]}&quot;</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>)
-      <span class="ruby-identifier">val</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">wal</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">wal</span>.<span class="ruby-identifier">to_s</span>
-      }
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-e&#39;</span>
-        <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>
-        <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{opt}#{val unless val == true}&quot;</span>
-      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">val</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">wal</span><span class="ruby-operator">|</span> <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">wal</span>.<span class="ruby-identifier">to_s</span> }
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-e&#39;</span>
+      <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{opt}#{val unless val == true}&quot;</span>
     <span class="ruby-keyword">end</span>
   } <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
 
@@ -939,7 +943,7 @@ e.g. something like this: “ruby-1.9.2-p0@mygemset”</p>
 
           
           <div class="method-source-code" id="locate_ruby_tool_by_basename-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 279</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 275</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">dir</span> = <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/darwin/</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ruby_command</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OSX_RUBY_RE</span>
     <span class="ruby-comment"># On OS X we must look for Ruby binaries in /usr/bin.</span>
@@ -1006,7 +1010,7 @@ e.g. something like this: “ruby-1.9.2-p0@mygemset”</p>
 
           
           <div class="method-source-code" id="shebang_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 317</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 313</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">filename</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/\A#!\s*(\S*)/</span>

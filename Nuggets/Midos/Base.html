@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Hash::SeenMixin - ruby-nuggets Application documentation (v0.9.6)</title>
+<title>class Nuggets::Midos::Base - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
 
-<body id="top" class="module">
+<body id="top" class="class">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/hash/seen_mixin.rb
+    <li>lib/nuggets/midos.rb
   </ul>
 </nav>
 
@@ -58,7 +58,13 @@
 
   <div id="class-metadata">
     
-    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</nav>
+
     
     
     <!-- Method Quickref -->
@@ -67,7 +73,13 @@
 
   <ul class="link-list">
     
-    <li ><a href="#method-i-seen">#seen</a>
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-default_auto_id">#default_auto_id</a>
+    
+    <li ><a href="#method-i-reset">#reset</a>
+    
+    <li ><a href="#method-i-vs-3D">#vs=</a>
     
   </ul>
 </nav>
@@ -315,7 +327,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::Hash::SeenMixin</h1>
+  <h1 class="class">class Nuggets::Midos::Base</h1>
 
   <div id="description" class="description">
     
@@ -332,68 +344,279 @@
     
 
     
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-auto_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">auto_id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-fs" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fs</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-key" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">key</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-le" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">le</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nl" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nl</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-records" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">records</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-rs" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">rs</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-vs" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">vs</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
 
     
-      <div id="method-i-seen" class="method-detail ">
-        
+      <div id="method-c-new" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            seen([seen[, unseen]]) &rarr; aHash
-          </span>
+          <span class="method-name">new</span><span
+            class="method-args">(options = {}, &block)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Returns a hash that returns <code>unseen</code> as the default value for a
-key that wasn&#39;t seen before and <code>seen</code> for a key that was.</p>
-
-<p>Examples:</p>
-
-<pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">seen</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; false</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; true</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; true</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; false</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; true</span>
-
-<span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">seen</span>(<span class="ruby-value">42</span>, <span class="ruby-value">23</span>)
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 23</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 42</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 42</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; 23</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; 42</span>
-</pre>
+          
           
           
 
           
-          <div class="method-source-code" id="seen-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/seen_mixin.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">seen</span>(<span class="ruby-identifier">seen</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">unseen</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">seen</span>; <span class="ruby-identifier">unseen</span> }
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">key</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:key</span>]
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">rs</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:rs</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_RS</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">fs</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:fs</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_FS</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">vs</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:vs</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_VS</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nl</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:nl</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_NL</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">le</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:le</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_LE</span>
+
+  <span class="ruby-ivar">@auto_id_block</span> = <span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">reset</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- seen-source -->
+          </div><!-- new-source -->
           
         </div>
 
         
 
         
-      </div><!-- seen-method -->
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-reset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reset</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reset-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
+  <span class="ruby-ivar">@records</span> = {}
+  <span class="ruby-ivar">@auto_id</span> = <span class="ruby-ivar">@auto_id_block</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@auto_id_block</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">default_auto_id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reset-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reset-method -->
+
+    
+      <div id="method-i-vs-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">vs=</span><span
+            class="method-args">(vs)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="vs-3D-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">vs=</span>(<span class="ruby-identifier">vs</span>)
+  <span class="ruby-ivar">@vs</span> = <span class="ruby-identifier">vs</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Regexp</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">vs</span> <span class="ruby-operator">:</span> <span class="ruby-node">%r{\s*#{::Regexp.escape(vs)}\s*}</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- vs-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- vs-3D-method -->
 
     
     </section><!-- public-instance-method-details -->
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="method-i-default_auto_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">default_auto_id</span><span
+            class="method-args">(n = 0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="default_auto_id-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">default_auto_id</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">n</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- default_auto_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- default_auto_id-method -->
+
+    
+    </section><!-- private-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

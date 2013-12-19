@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Midos - ruby-nuggets Application documentation (v0.9.5)</title>
+<title>module Nuggets::Midos - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -61,7 +61,23 @@
     
     
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li ><a href="#method-c-convert">::convert</a>
+    
+    <li ><a href="#method-c-convert_file">::convert_file</a>
+    
+    <li ><a href="#method-c-filter">::filter</a>
+    
+    <li ><a href="#method-c-filter_file">::filter_file</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -128,6 +144,8 @@
   
     <li><a href="../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
+    <li><a href="../Nuggets/Array/FlushMixin.html">Nuggets::Array::FlushMixin</a>
+  
     <li><a href="../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
   
     <li><a href="../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
@@ -180,6 +198,8 @@
   
     <li><a href="../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
+    <li><a href="../Nuggets/Hash/IDMapMixin.html">Nuggets::Hash::IDMapMixin</a>
+  
     <li><a href="../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
   
     <li><a href="../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
@@ -216,7 +236,11 @@
   
     <li><a href="../Nuggets/Midos.html">Nuggets::Midos</a>
   
+    <li><a href="../Nuggets/Midos/Base.html">Nuggets::Midos::Base</a>
+  
     <li><a href="../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
+  
+    <li><a href="../Nuggets/Midos/Writer.html">Nuggets::Midos::Writer</a>
   
     <li><a href="../Nuggets/MySQL.html">Nuggets::MySQL</a>
   
@@ -312,11 +336,202 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="DEFAULT_ENCODING">DEFAULT_ENCODING
+        
+        <dd class="description"><p>Default file encoding</p>
+        
+      
+        <dt id="DEFAULT_FS">DEFAULT_FS
+        
+        <dd class="description"><p>Field separator</p>
+        
+      
+        <dt id="DEFAULT_LE">DEFAULT_LE
+        
+        <dd class="description"><p>Line ending</p>
+        
+      
+        <dt id="DEFAULT_NL">DEFAULT_NL
+        
+        <dd class="description"><p>Line break indicator</p>
+        
+      
+        <dt id="DEFAULT_RS">DEFAULT_RS
+        
+        <dd class="description"><p>Record separator</p>
+        
+      
+        <dt id="DEFAULT_VS">DEFAULT_VS
+        
+        <dd class="description"><p>Value separator</p>
+        
+      
+      </dl>
+    </section>
+    
 
     
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-convert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">convert</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="convert-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">convert</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">filter</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-operator">|</span> <span class="ruby-keyword">true</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- convert-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- convert-method -->
+
+    
+      <div id="method-c-convert_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">convert_file</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="convert_file-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">convert_file</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">filter_file</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-operator">|</span> <span class="ruby-keyword">true</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- convert_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- convert_file-method -->
+
+    
+      <div id="method-c-filter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">filter</span><span
+            class="method-args">(source, target, source_options = {}, target_options = source_options) { |id, record| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="filter-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">source_options</span> = {}, <span class="ruby-identifier">target_options</span> = <span class="ruby-identifier">source_options</span>)
+  <span class="ruby-identifier">records</span> = {}
+
+  <span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">source_options</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">records</span>[<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">record</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">record</span>)
+  }
+
+  <span class="ruby-constant">Writer</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">records</span>, <span class="ruby-identifier">target_options</span>)
+
+  <span class="ruby-identifier">records</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- filter-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- filter-method -->
+
+    
+      <div id="method-c-filter_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">filter_file</span><span
+            class="method-args">(source_file, target_file, source_options = {}, target_options = source_options, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="filter_file-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">filter_file</span>(<span class="ruby-identifier">source_file</span>, <span class="ruby-identifier">target_file</span>, <span class="ruby-identifier">source_options</span> = {}, <span class="ruby-identifier">target_options</span> = <span class="ruby-identifier">source_options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">source_options</span>[<span class="ruby-value">:encoding</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">DEFAULT_ENCODING</span>
+  <span class="ruby-identifier">target_options</span>[<span class="ruby-value">:encoding</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">DEFAULT_ENCODING</span>
+
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">source_file</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">source_options</span>[<span class="ruby-value">:encoding</span>]) { <span class="ruby-operator">|</span><span class="ruby-identifier">source</span><span class="ruby-operator">|</span>
+    <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">target_file</span>, <span class="ruby-string">&#39;w&#39;</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">target_options</span>[<span class="ruby-value">:encoding</span>]) { <span class="ruby-operator">|</span><span class="ruby-identifier">target</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">source_options</span>, <span class="ruby-identifier">target_options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    }
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- filter_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- filter_file-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

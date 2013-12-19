@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Hash::SeenMixin - ruby-nuggets Application documentation (v0.9.6)</title>
+<title>module Nuggets::Array::FlushMixin - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/hash/seen_mixin.rb
+    <li>lib/nuggets/array/flush_mixin.rb
   </ul>
 </nav>
 
@@ -67,7 +67,7 @@
 
   <ul class="link-list">
     
-    <li ><a href="#method-i-seen">#seen</a>
+    <li ><a href="#method-i-flush">#flush</a>
     
   </ul>
 </nav>
@@ -315,7 +315,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::Hash::SeenMixin</h1>
+  <h1 class="module">module Nuggets::Array::FlushMixin</h1>
 
   <div id="description" class="description">
     
@@ -339,15 +339,22 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-seen" class="method-detail ">
+      <div id="method-i-flush" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            seen([seen[, unseen]]) &rarr; aHash
+            flush &rarr; anArray
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            flush { |array| ... } &rarr; anObject
+          </span>
           
         </div>
         
@@ -355,42 +362,28 @@
 
         <div class="method-description">
           
-          <p>Returns a hash that returns <code>unseen</code> as the default value for a
-key that wasn&#39;t seen before and <code>seen</code> for a key that was.</p>
-
-<p>Examples:</p>
-
-<pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">seen</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; false</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; true</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; true</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; false</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; true</span>
-
-<span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">seen</span>(<span class="ruby-value">42</span>, <span class="ruby-value">23</span>)
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 23</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 42</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 42</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; 23</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; 42</span>
-</pre>
+          <p>If a block is given, yields <em>array</em> to the block and clears it
+afterwards; returns the return value of the block. Otherwise clears
+<em>array</em> and returns its contents.</p>
           
           
 
           
-          <div class="method-source-code" id="seen-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/seen_mixin.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">seen</span>(<span class="ruby-identifier">seen</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">unseen</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">seen</span>; <span class="ruby-identifier">unseen</span> }
+          <div class="method-source-code" id="flush-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/flush_mixin.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">flush</span>
+  <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">clear</span>
+  <span class="ruby-identifier">ret</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- seen-source -->
+          </div><!-- flush-source -->
           
         </div>
 
         
 
         
-      </div><!-- seen-method -->
+      </div><!-- flush-method -->
 
     
     </section><!-- public-instance-method-details -->

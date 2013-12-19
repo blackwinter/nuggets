@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Hash::SeenMixin - ruby-nuggets Application documentation (v0.9.6)</title>
+<title>class Nuggets::Midos::Writer - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
 
-<body id="top" class="module">
+<body id="top" class="class">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/nuggets/hash/seen_mixin.rb
+    <li>lib/nuggets/midos.rb
   </ul>
 </nav>
 
@@ -58,7 +58,13 @@
 
   <div id="class-metadata">
     
-    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">Nuggets::Midos::Base</a>
+  
+</nav>
+
     
     
     <!-- Method Quickref -->
@@ -67,7 +73,11 @@
 
   <ul class="link-list">
     
-    <li ><a href="#method-i-seen">#seen</a>
+    <li ><a href="#method-c-write">::write</a>
+    
+    <li ><a href="#method-c-write_file">::write_file</a>
+    
+    <li ><a href="#method-i-write">#write</a>
     
   </ul>
 </nav>
@@ -315,7 +325,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Nuggets::Hash::SeenMixin</h1>
+  <h1 class="class">class Nuggets::Midos::Writer</h1>
 
   <div id="description" class="description">
     
@@ -335,62 +345,135 @@
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
 
     
-      <div id="method-i-seen" class="method-detail ">
-        
+      <div id="method-c-write" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            seen([seen[, unseen]]) &rarr; aHash
-          </span>
+          <span class="method-name">write</span><span
+            class="method-args">(target, records, options = {})</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Returns a hash that returns <code>unseen</code> as the default value for a
-key that wasn&#39;t seen before and <code>seen</code> for a key that was.</p>
-
-<p>Examples:</p>
-
-<pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">seen</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; false</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; true</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; true</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; false</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; true</span>
-
-<span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">seen</span>(<span class="ruby-value">42</span>, <span class="ruby-value">23</span>)
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 23</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 42</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>]  <span class="ruby-comment">#=&gt; 42</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; 23</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">bar</span>]  <span class="ruby-comment">#=&gt; 42</span>
-</pre>
+          
           
           
 
           
-          <div class="method-source-code" id="seen-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/seen_mixin.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">seen</span>(<span class="ruby-identifier">seen</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">unseen</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">seen</span>; <span class="ruby-identifier">unseen</span> }
+          <div class="method-source-code" id="write-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">records</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>).<span class="ruby-identifier">write</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">records</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- seen-source -->
+          </div><!-- write-source -->
           
         </div>
 
         
 
         
-      </div><!-- seen-method -->
+      </div><!-- write-method -->
+
+    
+      <div id="method-c-write_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">write_file</span><span
+            class="method-args">(file, records, options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="write_file-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">records</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;w&#39;</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:encoding</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">DEFAULT_ENCODING</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">target</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">write</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">records</span>, <span class="ruby-identifier">options</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- write_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- write_file-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-write" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">write</span><span
+            class="method-args">(target, records = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="write-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/midos.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">records</span> = {})
+  <span class="ruby-identifier">rs</span>, <span class="ruby-identifier">fs</span>, <span class="ruby-identifier">vs</span>, <span class="ruby-identifier">nl</span>, <span class="ruby-identifier">le</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">auto_id</span> =
+    <span class="ruby-ivar">@rs</span>, <span class="ruby-ivar">@fs</span>, <span class="ruby-ivar">@vs</span>, <span class="ruby-ivar">@nl</span>, <span class="ruby-ivar">@le</span>, <span class="ruby-ivar">@key</span>, <span class="ruby-ivar">@auto_id</span>
+
+  <span class="ruby-ivar">@records</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">records</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">record</span>, <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>, <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">record</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+      <span class="ruby-identifier">record</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">id</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">auto_id</span>.<span class="ruby-identifier">call</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">record</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>
+        <span class="ruby-identifier">v</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">vs</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">target</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-identifier">nl</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">le</span>
+      <span class="ruby-keyword">end</span>
+    }
+
+    <span class="ruby-identifier">target</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">rs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">le</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">le</span>
+  }
+
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- write-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- write-method -->
 
     
     </section><!-- public-instance-method-details -->

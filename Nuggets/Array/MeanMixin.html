@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Nuggets::Array::MeanMixin - ruby-nuggets Application documentation (v0.9.5)</title>
+<title>module Nuggets::Array::MeanMixin - ruby-nuggets Application documentation (v0.9.6)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -166,6 +166,8 @@
   
     <li><a href="../../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
   
+    <li><a href="../../Nuggets/Array/FlushMixin.html">Nuggets::Array::FlushMixin</a>
+  
     <li><a href="../../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
   
     <li><a href="../../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
@@ -218,6 +220,8 @@
   
     <li><a href="../../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
   
+    <li><a href="../../Nuggets/Hash/IDMapMixin.html">Nuggets::Hash::IDMapMixin</a>
+  
     <li><a href="../../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
   
     <li><a href="../../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
@@ -254,7 +258,11 @@
   
     <li><a href="../../Nuggets/Midos.html">Nuggets::Midos</a>
   
+    <li><a href="../../Nuggets/Midos/Base.html">Nuggets::Midos::Base</a>
+  
     <li><a href="../../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
+  
+    <li><a href="../../Nuggets/Midos/Writer.html">Nuggets::Midos::Writer</a>
   
     <li><a href="../../Nuggets/MySQL.html">Nuggets::MySQL</a>
   
@@ -847,7 +855,12 @@ href="MeanMixin.html#method-i-mean">mean</a>) of each “column”, prepended
 with the label, if present, and appended with the standard deviation, if
 available; all values are subject to <code>precision</code>.</p>
 
-<p>Examples:</p>
+<p>If <em>array</em> is a flat array of numeric values, it is treated as a
+single “column”.</p>
+
+<p>Returns <code>nil</code> if <em>array</em> is empty.</p>
+
+<p>Examples (with standard deviation):</p>
 
 <pre class="ruby">[[<span class="ruby-value">9.4</span>, <span class="ruby-value">34.75</span>], [<span class="ruby-value">9.46</span>, <span class="ruby-value">34.68</span>], [<span class="ruby-value">9.51</span>, <span class="ruby-value">34.61</span>]].<span class="ruby-identifier">report_mean</span>
 <span class="ruby-comment">#=&gt; [&quot;9.4567 +/- 0.0450&quot;, &quot;34.6800 +/- 0.0572&quot;]</span>
@@ -860,14 +873,28 @@ available; all values are subject to <code>precision</code>.</p>
 
 <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&#39;csv&#39;</span>, <span class="ruby-identifier">headers</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>, <span class="ruby-identifier">converters</span><span class="ruby-operator">:</span> :<span class="ruby-identifier">numeric</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">report_mean</span>
 <span class="ruby-comment">#=&gt; [&quot;a    9.4567 +/- 0.0450&quot;, &quot;b    34.6800 +/- 0.0572&quot;]</span>
+
+[<span class="ruby-value">9.4</span>, <span class="ruby-value">9.46</span>, <span class="ruby-value">9.51</span>].<span class="ruby-identifier">report_mean</span>
+<span class="ruby-comment">#=&gt; [&quot;9.4567 +/- 0.0450&quot;]</span>
+
+[<span class="ruby-value">34.75</span>, <span class="ruby-value">34.68</span>, <span class="ruby-value">34.61</span>].<span class="ruby-identifier">report_mean</span>
+<span class="ruby-comment">#=&gt; [&quot;34.6800 +/- 0.0572&quot;]</span>
+
+[].<span class="ruby-identifier">report_mean</span>
+<span class="ruby-comment">#=&gt; nil</span>
 </pre>
           
           
 
           
           <div class="method-source-code" id="report_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 161</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">report_mean</span>(<span class="ruby-identifier">method</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">precision</span> = <span class="ruby-value">4</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">clone</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">push</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">transpose</span>).
+    <span class="ruby-identifier">report_mean</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">precision</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>)
+
   <span class="ruby-identifier">met</span>, <span class="ruby-identifier">sep</span> = [<span class="ruby-identifier">method</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>, <span class="ruby-string">&#39;mean&#39;</span>], [<span class="ruby-string">&#39;&#39;</span>, <span class="ruby-string">&#39;_&#39;</span>]
   <span class="ruby-identifier">lab</span>, <span class="ruby-identifier">std</span> = <span class="ruby-identifier">first</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>), <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:std</span>)
 

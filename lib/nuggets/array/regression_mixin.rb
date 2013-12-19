@@ -76,7 +76,7 @@ module Nuggets
   # Call #to_a (or any Enumerable method) to work with the regression points.
   class IncrementalLinearRegression
 
-    include Enumerable
+    include ::Enumerable
 
     def initialize(*ys)
       clear

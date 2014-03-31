@@ -27,65 +27,91 @@
 ###############################################################################
 #++
 
-require 'nuggets/midos/base'
-require 'nuggets/midos/reader'
-require 'nuggets/midos/writer'
-
 module Nuggets
   module Midos
+    class Reader < Base
 
-    # Record separator
-    DEFAULT_RS = '&&&'
+  DEFAULT_IO = $stdin
 
-    # Field separator
-    DEFAULT_FS = ':'
+  class << self
 
-    # Value separator
-    DEFAULT_VS = '|'
-
-    # Line break indicator
-    DEFAULT_NL = '^'
-
-    # Line ending
-    DEFAULT_LE = "\r\n"
-
-    # Default file encoding
-    DEFAULT_ENCODING = 'iso-8859-1'
-
-    class << self
-
-      def filter(source, target, source_options = {}, target_options = source_options)
-        writer, size = Writer.new(target_options.merge(:io => target)),  0
-
-        Reader.parse(source, source_options) { |*args|
-          writer << args and size += 1 if yield(*args)
-        }
-
-        size
-      end
-
-      def filter_file(source_file, target_file, source_options = {}, target_options = source_options, &block)
-        open_file(source_file, source_options) { |source|
-          open_file(target_file, target_options, 'w') { |target|
-            filter(source, target, source_options, target_options, &block)
-          }
-        }
-      end
-
-      def convert(*args)
-        filter(*args) { |*| true }
-      end
-
-      def convert_file(*args)
-        filter_file(*args) { |*| true }
-      end
-
-      def open_file(file, options = {}, mode = 'r', &block)
-        encoding = options[:encoding] ||= DEFAULT_ENCODING
-        ::File.open(file, mode, :encoding => encoding, &block)
-      end
-
+    def parse(*args, &block)
+      reader = new(extract_options!(args)).parse(*args, &block)
+      block ? reader : reader.records
     end
 
+    def parse_file(*args, &block)
+      file_method(:parse, 'r', *args, &block)
+    end
+
+  end
+
+  attr_reader :records
+
+  def reset
+    super
+    @records = {}
+  end
+
+  def vs=(vs)
+    @vs = vs.is_a?(::Regexp) ? vs : %r{\s*#{::Regexp.escape(vs)}\s*}
+  end
+
+  def parse(io = io, &block)
+    unless block
+      records, block = @records, amend_block { |id, record|
+        records[id] = record
+      }
+    end
+
+    rs, fs, vs, nl, le, key, auto_id, id, record =
+      @rs, @fs, @vs, @nl, @le, @key, @auto_id, nil, {}
+
+    io.each { |line|
+      line = line.chomp(le)
+
+      if line == rs
+        block[key ? id : auto_id.call, record]
+        id, record = nil, {}
+      else
+        k, v = line.split(fs, 2)
+
+        if k && v
+          if k == key
+            id = v
+          else
+            v.gsub!(nl, "\n")
+            v = v.split(vs) if v.index(vs)
+          end
+
+          record[k] = v
+        end
+      end
+    }
+
+    self
+  end
+
+  private
+
+  def amend_block(&block)
+    return block unless $VERBOSE && k = @key
+
+    r, i = block.binding.eval('_ = records, io')
+
+    l = i.respond_to?(:lineno)
+    s = i.respond_to?(:path) ? i.path :
+      ::Object.instance_method(:inspect).bind(i).call
+
+    lambda { |id, *args|
+      if (r ||= block.binding.eval('records')).key?(id)
+        warn "Duplicate record in #{s}#{":#{i.lineno}" if l}: »#{k}:#{id}«"
+      end
+
+      block[id, *args]
+    }
+  end
+
+    end
   end
 end

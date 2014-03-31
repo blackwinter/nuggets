@@ -27,65 +27,55 @@
 ###############################################################################
 #++
 
-require 'nuggets/midos/base'
-require 'nuggets/midos/reader'
-require 'nuggets/midos/writer'
-
 module Nuggets
   module Midos
+    class Base
 
-    # Record separator
-    DEFAULT_RS = '&&&'
+  class << self
 
-    # Field separator
-    DEFAULT_FS = ':'
+    private
 
-    # Value separator
-    DEFAULT_VS = '|'
-
-    # Line break indicator
-    DEFAULT_NL = '^'
-
-    # Line ending
-    DEFAULT_LE = "\r\n"
-
-    # Default file encoding
-    DEFAULT_ENCODING = 'iso-8859-1'
-
-    class << self
-
-      def filter(source, target, source_options = {}, target_options = source_options)
-        writer, size = Writer.new(target_options.merge(:io => target)),  0
-
-        Reader.parse(source, source_options) { |*args|
-          writer << args and size += 1 if yield(*args)
-        }
-
-        size
-      end
-
-      def filter_file(source_file, target_file, source_options = {}, target_options = source_options, &block)
-        open_file(source_file, source_options) { |source|
-          open_file(target_file, target_options, 'w') { |target|
-            filter(source, target, source_options, target_options, &block)
-          }
-        }
-      end
-
-      def convert(*args)
-        filter(*args) { |*| true }
-      end
-
-      def convert_file(*args)
-        filter_file(*args) { |*| true }
-      end
-
-      def open_file(file, options = {}, mode = 'r', &block)
-        encoding = options[:encoding] ||= DEFAULT_ENCODING
-        ::File.open(file, mode, :encoding => encoding, &block)
-      end
-
+    def file_method(method, mode, file, options = {}, *args, &block)
+      Midos.open_file(file, options, mode) { |io|
+        args.unshift(options.merge(:io => io))
+        method ? send(method, *args, &block) : block[new(*args)]
+      }
     end
 
+    def extract_options!(args)
+      args.last.is_a?(::Hash) ? args.pop : {}
+    end
+
+  end
+
+  def initialize(options = {}, &block)
+    self.key = options[:key]
+
+    self.rs = options[:rs] || DEFAULT_RS
+    self.fs = options[:fs] || DEFAULT_FS
+    self.vs = options[:vs] || DEFAULT_VS
+    self.nl = options[:nl] || DEFAULT_NL
+    self.le = options[:le] || DEFAULT_LE
+    self.io = options[:io] || self.class::DEFAULT_IO
+
+    @auto_id_block = options[:auto_id] || block
+    reset
+  end
+
+  attr_accessor :key, :rs, :fs, :nl, :le, :io, :auto_id
+
+  attr_reader :vs
+
+  def reset
+    @auto_id = @auto_id_block ? @auto_id_block.call : default_auto_id
+  end
+
+  private
+
+  def default_auto_id(n = 0)
+    lambda { n += 1 }
+  end
+
+    end
   end
 end

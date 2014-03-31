@@ -1,19 +1,20 @@
-Thu, 19 Dec 2013 13:42:51 +0100
-README	Thu, 19 Dec 2013 13:40:27 +0100
+Mon, 31 Mar 2014 11:25:46 +0200
+README	Mon, 31 Mar 2014 11:25:02 +0200
 COPYING	Fri, 08 Mar 2013 17:52:11 +0100
 ChangeLog	Tue, 16 Apr 2013 12:19:20 +0200
 lib/nuggets.rb	Mon, 11 Mar 2013 15:59:30 +0100
 lib/nuggets/all.rb	Mon, 11 Mar 2013 15:59:44 +0100
-lib/nuggets/cli.rb	Mon, 25 Mar 2013 16:37:11 +0100
+lib/nuggets/cli.rb	Thu, 06 Mar 2014 15:46:46 +0100
 lib/nuggets/lsi.rb	Thu, 19 Dec 2013 13:41:47 +0100
 lib/nuggets/i18n.rb	Mon, 25 Mar 2013 16:44:07 +0100
 lib/nuggets/ruby.rb	Wed, 11 Sep 2013 11:55:28 +0200
-lib/nuggets/midos.rb	Tue, 26 Nov 2013 12:26:20 +0100
+lib/nuggets/midos.rb	Wed, 15 Jan 2014 12:40:32 +0100
 lib/nuggets/mysql.rb	Mon, 25 Mar 2013 16:52:23 +0100
 lib/nuggets/env/set.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/hash/at.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/io/null.rb	Fri, 08 Mar 2013 17:52:11 +0100
-lib/nuggets/version.rb	Thu, 19 Dec 2013 13:40:18 +0100
+lib/nuggets/rdf/uri.rb	Thu, 09 Jan 2014 16:56:25 +0100
+lib/nuggets/version.rb	Mon, 31 Mar 2014 11:24:41 +0200
 lib/nuggets/file/ext.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/file/sub.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/io/agrep.rb	Mon, 11 Mar 2013 16:00:07 +0100
@@ -37,6 +38,9 @@ lib/nuggets/array/rand.rb	Mon, 11 Mar 2013 16:00:16 +0100
 lib/nuggets/file/which.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/hash/idmap.rb	Mon, 24 Jun 2013 17:44:23 +0200
 lib/nuggets/log_parser.rb	Tue, 18 Jun 2013 11:32:31 +0200
+lib/nuggets/midos/base.rb	Wed, 15 Jan 2014 12:41:50 +0100
+lib/nuggets/rdf/prefix.rb	Thu, 09 Jan 2014 17:01:24 +0100
+lib/nuggets/rdf/turtle.rb	Wed, 15 Jan 2014 12:37:07 +0100
 lib/nuggets/statistics.rb	Thu, 19 Dec 2013 13:41:47 +0100
 lib/nuggets/string/xor.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/util/midos.rb	Mon, 25 Mar 2013 16:53:11 +0100
@@ -59,10 +63,13 @@ lib/nuggets/array/format.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/array/median.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/content_type.rb	Mon, 25 Mar 2013 16:40:44 +0100
 lib/nuggets/file/replace.rb	Fri, 08 Mar 2013 17:52:11 +0100
+lib/nuggets/midos/reader.rb	Mon, 24 Feb 2014 16:07:03 +0100
+lib/nuggets/midos/writer.rb	Mon, 31 Mar 2014 11:06:35 +0200
 lib/nuggets/object/blank.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/object/msend.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/uri/redirect.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/ansicolor2css.rb	Mon, 25 Mar 2013 16:27:33 +0100
+lib/nuggets/array/hashify.rb	Thu, 06 Feb 2014 18:18:42 +0100
 lib/nuggets/array/shuffle.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/array/to_hash.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/env/set_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
@@ -91,6 +98,7 @@ lib/nuggets/hash/seen_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/numeric/between.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/object/uniclass.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/proc/bind_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
+lib/nuggets/rdf/compression.rb	Thu, 09 Jan 2014 16:53:35 +0100
 lib/nuggets/string/evaluate.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/string/wc_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/uri/exist_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
@@ -116,13 +124,14 @@ lib/nuggets/array/limit_mixin.rb	Mon, 11 Mar 2013 16:00:12 +0100
 lib/nuggets/array/runiq_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/enumerable/minmax.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/env/user_encoding.rb	Fri, 08 Mar 2013 17:52:11 +0100
-lib/nuggets/hash/unroll_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
+lib/nuggets/hash/unroll_mixin.rb	Fri, 21 Feb 2014 16:39:43 +0100
 lib/nuggets/integer/factorial.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/integer/map_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/io/interact_mixin.rb	Mon, 11 Mar 2013 15:59:50 +0100
 lib/nuggets/io/redirect_mixin.rb	Mon, 11 Mar 2013 15:59:59 +0100
 lib/nuggets/log_parser/apache.rb	Mon, 25 Mar 2013 16:57:18 +0100
 lib/nuggets/object/eigenclass.rb	Fri, 08 Mar 2013 17:52:11 +0100
+lib/nuggets/rdf/turtle/reader.rb	Fri, 10 Jan 2014 17:45:43 +0100
 lib/nuggets/statistics_mixins.rb	Thu, 19 Dec 2013 13:41:47 +0100
 lib/nuggets/string/camelscore.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/util/content_type.rb	Mon, 25 Mar 2013 16:39:16 +0100
@@ -135,6 +144,7 @@ lib/nuggets/object/msend_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/string/sub_with_md.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/uri/redirect_mixin.rb	Tue, 13 Aug 2013 14:54:48 +0200
 lib/nuggets/util/ansicolor2css.rb	Mon, 25 Mar 2013 16:33:50 +0100
+lib/nuggets/array/hashify_mixin.rb	Thu, 06 Feb 2014 18:19:27 +0100
 lib/nuggets/env/user_home_mixin.rb	Fri, 22 Nov 2013 15:15:12 +0100
 lib/nuggets/integer/to_binary_s.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/numeric/to_multiple.rb	Mon, 11 Mar 2013 16:00:58 +0100
@@ -145,7 +155,7 @@ lib/nuggets/object/boolean_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/object/silence_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/object/virtual_class.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/range/quantile_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
-lib/nuggets/array/histogram_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
+lib/nuggets/array/histogram_mixin.rb	Fri, 21 Feb 2014 16:39:21 +0100
 lib/nuggets/hash/deep_merge_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/string/evaluate_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/util/log_parser/rails.rb	Mon, 25 Mar 2013 17:01:08 +0100

@@ -2,73 +2,72 @@
 
 <html>
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta charset="UTF-8">
 
-<title>class Nuggets::CLI - ruby-nuggets Application documentation (v0.9.6)</title>
+<title>class Nuggets::CLI - ruby-nuggets Application documentation (v0.9.7)</title>
 
-<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="../index.html">Home</a>
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
     <a href="../table_of_contents.html#classes">Classes</a>
     <a href="../table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </div>
+</div>
 
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
+    <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
   </form>
+</div>
 
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
+  </div>
 
   
-
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/nuggets/cli.rb
-  </ul>
-</nav>
-
-    
-  </div>
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
   
   <p class="link"><a href="../Object.html">Object</a>
   
-</nav>
+</div>
 
     
-    <!-- Extension Modules -->
-<nav id="extends-section" class="section">
-  <h3 class="section-header">Extended With Modules</h3>
+    <div id="extends-section" class="nav-section">
+  <h3>Extended With Modules</h3>
 
   <ul class="link-list">
     
@@ -77,29 +76,21 @@
   
   
   </ul>
-</nav>
+</div>
 
     <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
 
-  <ul class="link-list">
-    
-    <li ><a href="#method-c-defaults">::defaults</a>
-    
-    <li ><a href="#method-c-execute">::execute</a>
+  <ul class="link-list" role="directory">
     
     <li ><a href="#method-c-new">::new</a>
-    
-    <li ><a href="#method-c-parent_const_get">::parent_const_get</a>
-    
-    <li ><a href="#method-c-usage">::usage</a>
-    
-    <li ><a href="#method-c-version">::version</a>
     
     <li ><a href="#method-i-abort">#abort</a>
     
     <li ><a href="#method-i-ask">#ask</a>
+    
+    <li ><a href="#method-i-defaults">#defaults</a>
     
     <li ><a href="#method-i-execute">#execute</a>
     
@@ -119,6 +110,8 @@
     
     <li ><a href="#method-i-opts">#opts</a>
     
+    <li ><a href="#method-i-parent_const_get">#parent_const_get</a>
+    
     <li ><a href="#method-i-parse_options">#parse_options</a>
     
     <li ><a href="#method-i-post_opts">#post_opts</a>
@@ -133,6 +126,8 @@
     
     <li ><a href="#method-i-reset">#reset</a>
     
+    <li ><a href="#method-i-run">#run</a>
+    
     <li ><a href="#method-i-shut">#shut</a>
     
     <li ><a href="#method-i-usage">#usage</a>
@@ -142,256 +137,19 @@
     <li ><a href="#method-i-warn">#warn</a>
     
   </ul>
-</nav>
-
-  </div>
-
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
-
-  <ul>
-  
-    <li class="file"><a href="../COPYING.html">COPYING</a>
-  
-    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
-  
-    <li class="file"><a href="../README.html">README</a>
-  
-  </ul>
-</nav>
-
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
-
-  <ul class="link-list">
-  
-    <li><a href="../Array.html">Array</a>
-  
-    <li><a href="../Enumerable.html">Enumerable</a>
-  
-    <li><a href="../File.html">File</a>
-  
-    <li><a href="../Hash.html">Hash</a>
-  
-    <li><a href="../IO.html">IO</a>
-  
-    <li><a href="../Integer.html">Integer</a>
-  
-    <li><a href="../Net.html">Net</a>
-  
-    <li><a href="../Net/HTTPClientError.html">Net::HTTPClientError</a>
-  
-    <li><a href="../Net/HTTPInformation.html">Net::HTTPInformation</a>
-  
-    <li><a href="../Net/HTTPMultipleChoice.html">Net::HTTPMultipleChoice</a>
-  
-    <li><a href="../Net/HTTPRedirection.html">Net::HTTPRedirection</a>
-  
-    <li><a href="../Net/HTTPResponse.html">Net::HTTPResponse</a>
-  
-    <li><a href="../Net/HTTPServerError.html">Net::HTTPServerError</a>
-  
-    <li><a href="../Net/HTTPSuccess.html">Net::HTTPSuccess</a>
-  
-    <li><a href="../Nuggets.html">Nuggets</a>
-  
-    <li><a href="../Nuggets/ANSIColor2CSS.html">Nuggets::ANSIColor2CSS</a>
-  
-    <li><a href="../Nuggets/Argv.html">Nuggets::Argv</a>
-  
-    <li><a href="../Nuggets/Argv/OptionMixin.html">Nuggets::Argv::OptionMixin</a>
-  
-    <li><a href="../Nuggets/Array.html">Nuggets::Array</a>
-  
-    <li><a href="../Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
-  
-    <li><a href="../Nuggets/Array/BoostMixin.html">Nuggets::Array::BoostMixin</a>
-  
-    <li><a href="../Nuggets/Array/CorrelationMixin.html">Nuggets::Array::CorrelationMixin</a>
-  
-    <li><a href="../Nuggets/Array/FlushMixin.html">Nuggets::Array::FlushMixin</a>
-  
-    <li><a href="../Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
-  
-    <li><a href="../Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
-  
-    <li><a href="../Nuggets/Array/MeanMixin.html">Nuggets::Array::MeanMixin</a>
-  
-    <li><a href="../Nuggets/Array/MedianMixin.html">Nuggets::Array::MedianMixin</a>
-  
-    <li><a href="../Nuggets/Array/ModeMixin.html">Nuggets::Array::ModeMixin</a>
-  
-    <li><a href="../Nuggets/Array/RegressionMixin.html">Nuggets::Array::RegressionMixin</a>
-  
-    <li><a href="../Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</a>
-  
-    <li><a href="../Nuggets/Array/RuniqMixin.html">Nuggets::Array::RuniqMixin</a>
-  
-    <li><a href="../Nuggets/Array/StandardDeviationMixin.html">Nuggets::Array::StandardDeviationMixin</a>
-  
-    <li><a href="../Nuggets/Array/VarianceMixin.html">Nuggets::Array::VarianceMixin</a>
-  
-    <li><a href="../Nuggets/CLI.html">Nuggets::CLI</a>
-  
-    <li><a href="../Nuggets/CLI/OptionParserExtension.html">Nuggets::CLI::OptionParserExtension</a>
-  
-    <li><a href="../Nuggets/ContentType.html">Nuggets::ContentType</a>
-  
-    <li><a href="../Nuggets/ContentType.html">Nuggets::ContentType</a>
-  
-    <li><a href="../Nuggets/Env.html">Nuggets::Env</a>
-  
-    <li><a href="../Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
-  
-    <li><a href="../Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
-  
-    <li><a href="../Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
-  
-    <li><a href="../Nuggets/File.html">Nuggets::File</a>
-  
-    <li><a href="../Nuggets/File/ExtMixin.html">Nuggets::File::ExtMixin</a>
-  
-    <li><a href="../Nuggets/File/ReplaceMixin.html">Nuggets::File::ReplaceMixin</a>
-  
-    <li><a href="../Nuggets/File/SubMixin.html">Nuggets::File::SubMixin</a>
-  
-    <li><a href="../Nuggets/File/WhichMixin.html">Nuggets::File::WhichMixin</a>
-  
-    <li><a href="../Nuggets/Hash.html">Nuggets::Hash</a>
-  
-    <li><a href="../Nuggets/Hash/BlankMixin.html">Nuggets::Hash::BlankMixin</a>
-  
-    <li><a href="../Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
-  
-    <li><a href="../Nuggets/Hash/IDMapMixin.html">Nuggets::Hash::IDMapMixin</a>
-  
-    <li><a href="../Nuggets/Hash/NestMixin.html">Nuggets::Hash::NestMixin</a>
-  
-    <li><a href="../Nuggets/Hash/SeenMixin.html">Nuggets::Hash::SeenMixin</a>
-  
-    <li><a href="../Nuggets/Hash/UnrollMixin.html">Nuggets::Hash::UnrollMixin</a>
-  
-    <li><a href="../Nuggets/I18n.html">Nuggets::I18n</a>
-  
-    <li><a href="../Nuggets/IO.html">Nuggets::IO</a>
-  
-    <li><a href="../Nuggets/IO/InteractMixin.html">Nuggets::IO::InteractMixin</a>
-  
-    <li><a href="../Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
-  
-    <li><a href="../Nuggets/IO/RedirectMixin.html">Nuggets::IO::RedirectMixin</a>
-  
-    <li><a href="../Nuggets/Integer.html">Nuggets::Integer</a>
-  
-    <li><a href="../Nuggets/Integer/LengthMixin.html">Nuggets::Integer::LengthMixin</a>
-  
-    <li><a href="../Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
-  
-    <li><a href="../Nuggets/LSI.html">Nuggets::LSI</a>
-  
-    <li><a href="../Nuggets/LSI/Doc.html">Nuggets::LSI::Doc</a>
-  
-    <li><a href="../Nuggets/LazyAttr.html">Nuggets::LazyAttr</a>
-  
-    <li><a href="../Nuggets/LogParser.html">Nuggets::LogParser</a>
-  
-    <li><a href="../Nuggets/LogParser/Apache.html">Nuggets::LogParser::Apache</a>
-  
-    <li><a href="../Nuggets/LogParser/Rails.html">Nuggets::LogParser::Rails</a>
-  
-    <li><a href="../Nuggets/Midos.html">Nuggets::Midos</a>
-  
-    <li><a href="../Nuggets/Midos/Base.html">Nuggets::Midos::Base</a>
-  
-    <li><a href="../Nuggets/Midos/Parser.html">Nuggets::Midos::Parser</a>
-  
-    <li><a href="../Nuggets/Midos/Writer.html">Nuggets::Midos::Writer</a>
-  
-    <li><a href="../Nuggets/MySQL.html">Nuggets::MySQL</a>
-  
-    <li><a href="../Nuggets/MySQL/Parser.html">Nuggets::MySQL::Parser</a>
-  
-    <li><a href="../Nuggets/MySQL/ValueParser.html">Nuggets::MySQL::ValueParser</a>
-  
-    <li><a href="../Nuggets/Object.html">Nuggets::Object</a>
-  
-    <li><a href="../Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
-  
-    <li><a href="../Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
-  
-    <li><a href="../Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
-  
-    <li><a href="../Nuggets/Object/SilenceMixin.html">Nuggets::Object::SilenceMixin</a>
-  
-    <li><a href="../Nuggets/Object/SingletonClassMixin.html">Nuggets::Object::SingletonClassMixin</a>
-  
-    <li><a href="../Nuggets/Pluggable.html">Nuggets::Pluggable</a>
-  
-    <li><a href="../Nuggets/Proc.html">Nuggets::Proc</a>
-  
-    <li><a href="../Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
-  
-    <li><a href="../Nuggets/Range.html">Nuggets::Range</a>
-  
-    <li><a href="../Nuggets/Range/QuantileMixin.html">Nuggets::Range::QuantileMixin</a>
-  
-    <li><a href="../Nuggets/Ruby.html">Nuggets::Ruby</a>
-  
-    <li><a href="../Nuggets/String.html">Nuggets::String</a>
-  
-    <li><a href="../Nuggets/String/CamelscoreMixin.html">Nuggets::String::CamelscoreMixin</a>
-  
-    <li><a href="../Nuggets/String/EvaluateMixin.html">Nuggets::String::EvaluateMixin</a>
-  
-    <li><a href="../Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
-  
-    <li><a href="../Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
-  
-    <li><a href="../Nuggets/URI.html">Nuggets::URI</a>
-  
-    <li><a href="../Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
-  
-    <li><a href="../Nuggets/URI/ExistMixin.html">Nuggets::URI::ExistMixin</a>
-  
-    <li><a href="../Nuggets/URI/RedirectMixin.html">Nuggets::URI::RedirectMixin</a>
-  
-    <li><a href="../Nuggets/Version.html">Nuggets::Version</a>
-  
-    <li><a href="../Numeric.html">Numeric</a>
-  
-    <li><a href="../Object.html">Object</a>
-  
-    <li><a href="../Nuggets/ContentType.html">Object::ContentType</a>
-  
-    <li><a href="../Proc.html">Proc</a>
-  
-    <li><a href="../Process.html">Process</a>
-  
-    <li><a href="../Range.html">Range</a>
-  
-    <li><a href="../String.html">String</a>
-  
-    <li><a href="../String/Case.html">String::Case</a>
-  
-    <li><a href="../Tempfile.html">Tempfile</a>
-  
-    <li><a href="../URI.html">URI</a>
-  
-    <li><a href="../Util.html">Util</a>
-  
-  </ul>
-</nav>
+</div>
 
   </div>
 </nav>
 
-<div id="documentation">
-  <h1 class="class">class Nuggets::CLI</h1>
+<main role="main" aria-labelledby="class-Nuggets::CLI">
+  <h1 id="class-Nuggets::CLI" class="class">
+    class Nuggets::CLI
+  </h1>
 
-  <div id="description" class="description">
+  <section class="description">
     
-  </div><!-- description -->
+  </section>
 
   
   
@@ -404,27 +162,15 @@
     
 
     
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
 
       
       <div id="attribute-i-config" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">config</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-defaults" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">defaults</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
@@ -500,79 +246,14 @@
         </div>
       </div>
       
-    </section><!-- attribute-method-details -->
+    </section>
     
 
-    <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-defaults" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">defaults</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="defaults-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">defaults</span>
-  {}
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- defaults-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- defaults-method -->
-
-    
-      <div id="method-c-execute" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">execute</span><span
-            class="method-args">(*args)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="execute-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 50</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- execute-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- execute-method -->
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
 
     
       <div id="method-c-new" class="method-detail ">
@@ -603,17 +284,191 @@
   <span class="ruby-comment"># prevent backtrace on ^C</span>
   <span class="ruby-identifier">trap</span>(<span class="ruby-value">:INT</span>) { <span class="ruby-identifier">exit</span> <span class="ruby-value">130</span> }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- new-method -->
+      </div>
 
     
-      <div id="method-c-usage" class="method-detail ">
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-defaults" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">defaults</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="defaults-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">defaults</span>
+  {}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-progname" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">progname</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="progname-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">progname</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">prog</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-reset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reset</span><span
+            class="method-args">(stdin = ::STDIN, stdout = ::STDOUT, stderr = ::STDERR)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reset-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>(<span class="ruby-identifier">stdin</span> = <span class="ruby-operator">::</span><span class="ruby-constant">STDIN</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-operator">::</span><span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> = <span class="ruby-operator">::</span><span class="ruby-constant">STDERR</span>)
+  <span class="ruby-ivar">@stdin</span>, <span class="ruby-ivar">@stdout</span>, <span class="ruby-ivar">@stderr</span> = <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span>
+  <span class="ruby-ivar">@options</span>, <span class="ruby-ivar">@config</span> = {}, {}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-run" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run</span><span
+            class="method-args">(arguments)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="run-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">arguments</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">NotImplementedError</span>, <span class="ruby-string">&#39;must be implemented by subclass&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-usage" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">usage</span><span
@@ -636,17 +491,17 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">usage</span>(<span class="ruby-identifier">prog</span>)
   <span class="ruby-node">&quot;Usage: #{prog} [-h|--help] [options]&quot;</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- usage-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- usage-method -->
+      </div>
 
     
-      <div id="method-c-version" class="method-detail ">
+      <div id="method-i-version" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">version</span><span
@@ -669,23 +524,395 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">version</span>
   <span class="ruby-identifier">parent_const_get</span>(<span class="ruby-value">:VERSION</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- version-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- version-method -->
+      </div>
 
     
-    </section><!-- public-class-method-details -->
+    </section>
   
-     <section id="private-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Private Class Methods</h3>
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
 
     
-      <div id="method-c-parent_const_get" class="method-detail ">
+      <div id="method-i-abort" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">abort</span><span
+            class="method-args">(msg = nil, status = 1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="abort-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">abort</span>(<span class="ruby-identifier">msg</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">1</span>)
+  <span class="ruby-identifier">warn</span>(<span class="ruby-identifier">msg</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-identifier">exit</span>(<span class="ruby-identifier">status</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ask" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ask</span><span
+            class="method-args">(question, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ask-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-operator">::</span><span class="ruby-constant">HighLine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>).<span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-exit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exit</span><span
+            class="method-args">(status = 0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="exit-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exit</span>(<span class="ruby-identifier">status</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">exit</span>(<span class="ruby-identifier">status</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-generic_opts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generic_opts</span><span
+            class="method-args">(opts)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="generic_opts-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 220</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-h&#39;</span>, <span class="ruby-string">&#39;--help&#39;</span>, <span class="ruby-string">&#39;Print this help message and exit&#39;</span>) {
+    <span class="ruby-identifier">shut</span> <span class="ruby-identifier">opts</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;--version&#39;</span>, <span class="ruby-string">&#39;Print program version and exit&#39;</span>) {
+    <span class="ruby-identifier">shut</span> <span class="ruby-node">&quot;#{progname} v#{version}&quot;</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-init" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">init</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="init-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">reset</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-load_config" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_config</span><span
+            class="method-args">(file = options[:config] || default = defaults[:config])</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="load_config-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_config</span>(<span class="ruby-identifier">file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span> = <span class="ruby-identifier">defaults</span>[<span class="ruby-value">:config</span>])
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
+    <span class="ruby-ivar">@config</span> = <span class="ruby-operator">::</span><span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">quit</span> <span class="ruby-node">&quot;No such file: #{file}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-merge_config" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">merge_config</span><span
+            class="method-args">(args = [config, defaults])</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="merge_config-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 182</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">merge_config</span>(<span class="ruby-identifier">args</span> = [<span class="ruby-identifier">config</span>, <span class="ruby-identifier">defaults</span>])
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+  } }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-open_file_or_std" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">open_file_or_std</span><span
+            class="method-args">(file, write = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="open_file_or_std-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">open_file_or_std</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">write</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span>
+    <span class="ruby-identifier">write</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">stdout</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">stdin</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">gz</span> = <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\.gz\z/i</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">write</span>
+      <span class="ruby-identifier">gz</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;w&#39;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">quit</span> <span class="ruby-node">&quot;No such file: #{file}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
+      (<span class="ruby-identifier">gz</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>).<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-option_parser" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">option_parser</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="option_parser-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 195</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">option_parser</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-identifier">usage</span>
+
+    <span class="ruby-identifier">pre_opts</span>(<span class="ruby-identifier">opts</span>)
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;Options:&#39;</span>
+
+    <span class="ruby-identifier">opts</span>(<span class="ruby-identifier">opts</span>)
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;Generic options:&#39;</span>
+
+    <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
+    <span class="ruby-identifier">post_opts</span>(<span class="ruby-identifier">opts</span>)
+  }.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI</span><span class="ruby-operator">::</span><span class="ruby-constant">OptionParserExtension</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-opts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">opts</span><span
+            class="method-args">(opts)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="opts-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">opts</span>(<span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-parent_const_get" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">parent_const_get</span><span
@@ -714,571 +941,14 @@
 
   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">NameError</span>, <span class="ruby-node">&quot;uninitialized constant #{self}::#{const}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- parent_const_get-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- parent_const_get-method -->
-
-    
-    </section><!-- private-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-execute" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">execute</span><span
-            class="method-args">(arguments = ::ARGV, *inouterr)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="execute-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 94</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">arguments</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ARGV</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
-  <span class="ruby-identifier">reset</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
-  <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>)
-  <span class="ruby-identifier">run</span>(<span class="ruby-identifier">arguments</span>)
-<span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$VERBOSE</span>
-  <span class="ruby-identifier">abort</span> <span class="ruby-node">&quot;#{err.backtrace.first}: #{err} (#{err.class})&quot;</span>
-<span class="ruby-keyword">ensure</span>
-  <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">value</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>)
-  }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- execute-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- execute-method -->
-
-    
-      <div id="method-i-progname" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">progname</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="progname-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 82</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">progname</span>
-  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">prog</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- progname-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- progname-method -->
-
-    
-      <div id="method-i-reset" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">reset</span><span
-            class="method-args">(stdin = ::STDIN, stdout = ::STDOUT, stderr = ::STDERR)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="reset-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 107</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>(<span class="ruby-identifier">stdin</span> = <span class="ruby-operator">::</span><span class="ruby-constant">STDIN</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-operator">::</span><span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> = <span class="ruby-operator">::</span><span class="ruby-constant">STDERR</span>)
-  <span class="ruby-ivar">@stdin</span>, <span class="ruby-ivar">@stdout</span>, <span class="ruby-ivar">@stderr</span> = <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span>
-  <span class="ruby-ivar">@options</span>, <span class="ruby-ivar">@config</span> = {}, {}
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- reset-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- reset-method -->
-
-    
-      <div id="method-i-usage" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">usage</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="usage-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 86</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">usage</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">usage</span>(<span class="ruby-identifier">prog</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- usage-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- usage-method -->
-
-    
-      <div id="method-i-version" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">version</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="version-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 90</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">version</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">version</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- version-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- version-method -->
-
-    
-    </section><!-- public-instance-method-details -->
-  
-     <section id="private-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Private Instance Methods</h3>
-
-    
-      <div id="method-i-abort" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">abort</span><span
-            class="method-args">(msg = nil, status = 1)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="abort-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 139</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">abort</span>(<span class="ruby-identifier">msg</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">1</span>)
-  <span class="ruby-identifier">warn</span>(<span class="ruby-identifier">msg</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>
-  <span class="ruby-identifier">exit</span>(<span class="ruby-identifier">status</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- abort-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- abort-method -->
-
-    
-      <div id="method-i-ask" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">ask</span><span
-            class="method-args">(question, &block)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="ask-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 118</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-operator">::</span><span class="ruby-constant">HighLine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>).<span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- ask-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- ask-method -->
-
-    
-      <div id="method-i-exit" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">exit</span><span
-            class="method-args">(status = 0)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="exit-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 149</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">exit</span>(<span class="ruby-identifier">status</span> = <span class="ruby-value">0</span>)
-  <span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">exit</span>(<span class="ruby-identifier">status</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- exit-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- exit-method -->
-
-    
-      <div id="method-i-generic_opts" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">generic_opts</span><span
-            class="method-args">(opts)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="generic_opts-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 216</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
-  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-h&#39;</span>, <span class="ruby-string">&#39;--help&#39;</span>, <span class="ruby-string">&#39;Print this help message and exit&#39;</span>) {
-    <span class="ruby-identifier">shut</span> <span class="ruby-identifier">opts</span>
-  }
-
-  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;--version&#39;</span>, <span class="ruby-string">&#39;Print program version and exit&#39;</span>) {
-    <span class="ruby-identifier">shut</span> <span class="ruby-node">&quot;#{progname} v#{version}&quot;</span>
-  }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- generic_opts-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- generic_opts-method -->
-
-    
-      <div id="method-i-init" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">init</span><span
-            class="method-args">(*args)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="init-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 114</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">reset</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- init-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- init-method -->
-
-    
-      <div id="method-i-load_config" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">load_config</span><span
-            class="method-args">(file = options[:config] || default = defaults[:config])</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="load_config-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 168</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_config</span>(<span class="ruby-identifier">file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span> = <span class="ruby-identifier">defaults</span>[<span class="ruby-value">:config</span>])
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span>
-
-  <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
-    <span class="ruby-ivar">@config</span> = <span class="ruby-operator">::</span><span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">file</span>)
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">quit</span> <span class="ruby-node">&quot;No such file: #{file}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- load_config-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- load_config-method -->
-
-    
-      <div id="method-i-merge_config" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">merge_config</span><span
-            class="method-args">(args = [config, defaults])</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="merge_config-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 178</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">merge_config</span>(<span class="ruby-identifier">args</span> = [<span class="ruby-identifier">config</span>, <span class="ruby-identifier">defaults</span>])
-  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
-  } }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- merge_config-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- merge_config-method -->
-
-    
-      <div id="method-i-open_file_or_std" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">open_file_or_std</span><span
-            class="method-args">(file, write = false)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="open_file_or_std-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 153</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">open_file_or_std</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">write</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span>
-    <span class="ruby-identifier">write</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">stdout</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">stdin</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">gz</span> = <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\.gz\z/</span>
-
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">write</span>
-      <span class="ruby-identifier">gz</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;w&#39;</span>)
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">quit</span> <span class="ruby-node">&quot;No such file: #{file}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
-      (<span class="ruby-identifier">gz</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>).<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>)
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- open_file_or_std-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- open_file_or_std-method -->
-
-    
-      <div id="method-i-option_parser" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">option_parser</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="option_parser-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 191</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">option_parser</span>
-  <span class="ruby-operator">::</span><span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-identifier">usage</span>
-
-    <span class="ruby-identifier">pre_opts</span>(<span class="ruby-identifier">opts</span>)
-
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;&#39;</span>
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;Options:&#39;</span>
-
-    <span class="ruby-identifier">opts</span>(<span class="ruby-identifier">opts</span>)
-
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;&#39;</span>
-    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">&#39;Generic options:&#39;</span>
-
-    <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
-    <span class="ruby-identifier">post_opts</span>(<span class="ruby-identifier">opts</span>)
-  }.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI</span><span class="ruby-operator">::</span><span class="ruby-constant">OptionParserExtension</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- option_parser-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- option_parser-method -->
-
-    
-      <div id="method-i-opts" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">opts</span><span
-            class="method-args">(opts)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="opts-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 213</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">opts</span>(<span class="ruby-identifier">opts</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- opts-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- opts-method -->
+      </div>
 
     
       <div id="method-i-parse_options" class="method-detail ">
@@ -1300,21 +970,21 @@
 
           
           <div class="method-source-code" id="parse_options-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 184</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 188</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>)
   <span class="ruby-identifier">option_parser</span>.<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">arguments</span>)
 
   <span class="ruby-identifier">load_config</span>
   <span class="ruby-identifier">merge_config</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- parse_options-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- parse_options-method -->
+      </div>
 
     
       <div id="method-i-post_opts" class="method-detail ">
@@ -1336,17 +1006,17 @@
 
           
           <div class="method-source-code" id="post_opts-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 226</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 230</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">post_opts</span>(<span class="ruby-identifier">opts</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- post_opts-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- post_opts-method -->
+      </div>
 
     
       <div id="method-i-pre_opts" class="method-detail ">
@@ -1368,17 +1038,17 @@
 
           
           <div class="method-source-code" id="pre_opts-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 210</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">pre_opts</span>(<span class="ruby-identifier">opts</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- pre_opts-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- pre_opts-method -->
+      </div>
 
     
       <div id="method-i-puts" class="method-detail ">
@@ -1400,18 +1070,18 @@
 
           
           <div class="method-source-code" id="puts-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 122</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
   <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- puts-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- puts-method -->
+      </div>
 
     
       <div id="method-i-quit" class="method-detail ">
@@ -1433,7 +1103,7 @@
 
           
           <div class="method-source-code" id="quit-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 130</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">quit</span>(<span class="ruby-identifier">msg</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">include_usage</span> = <span class="ruby-identifier">msg</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">out</span> = []
 
@@ -1442,14 +1112,14 @@
 
   <span class="ruby-identifier">abort</span> <span class="ruby-identifier">out</span>.<span class="ruby-identifier">any?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">out</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n\n&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- quit-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- quit-method -->
+      </div>
 
     
       <div id="method-i-shut" class="method-detail ">
@@ -1471,19 +1141,19 @@
 
           
           <div class="method-source-code" id="shut-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 144</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">shut</span>(<span class="ruby-identifier">msg</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">msg</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>
   <span class="ruby-identifier">exit</span>(<span class="ruby-identifier">status</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- shut-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- shut-method -->
+      </div>
 
     
       <div id="method-i-warn" class="method-detail ">
@@ -1505,30 +1175,29 @@
 
           
           <div class="method-source-code" id="warn-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 126</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/cli.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">warn</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
   <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">msg</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- warn-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- warn-method -->
+      </div>
 
     
-    </section><!-- private-instance-method-details -->
+    </section>
   
-  </section><!-- 5Buntitled-5D -->
+  </section>
+</main>
 
-</div><!-- documentation -->
 
-
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

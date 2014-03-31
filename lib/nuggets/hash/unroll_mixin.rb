@@ -59,9 +59,9 @@ module Nuggets
     args = value_keys.dup
     options = value_keys.last.is_a?(::Hash) ? value_keys.pop : {}
 
-    sort_proc = if options.has_key?(:sort_by)
+    sort_proc = if options.key?(:sort_by)
       lambda { sort_by(&options[:sort_by]) }
-    elsif options.has_key?(:sort)
+    elsif options.key?(:sort)
       options[:sort] == true ? lambda { sort } : lambda { sort(&options[:sort]) }
     end
 

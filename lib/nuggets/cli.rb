@@ -181,7 +181,7 @@ module Nuggets
 
     def merge_config(args = [config, defaults])
       args.each { |hash| hash && hash.each { |key, value|
-        options[key] = value unless options.has_key?(key)
+        options[key] = value unless options.key?(key)
       } }
     end
 

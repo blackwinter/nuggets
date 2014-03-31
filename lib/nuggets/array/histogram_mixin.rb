@@ -141,7 +141,7 @@ module Nuggets
   #
   # See HistogramItem for further details on the individual arguments.
   def formatted_histogram(format = :default, indicator = '=')
-    format = FORMATS[format] if FORMATS.has_key?(format)
+    format = FORMATS[format] if FORMATS.key?(format)
     raise ::TypeError, "String expected, got #{format.class}" unless format.is_a?(::String)
 
     include_percentage = format.include?('%%')

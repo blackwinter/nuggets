@@ -104,6 +104,10 @@ module Nuggets
       }
     end
 
+    def run(arguments)
+      raise ::NotImplementedError, 'must be implemented by subclass'
+    end
+
     def reset(stdin = ::STDIN, stdout = ::STDOUT, stderr = ::STDERR)
       @stdin, @stdout, @stderr = stdin, stdout, stderr
       @options, @config = {}, {}

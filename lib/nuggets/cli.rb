@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -119,8 +119,23 @@ module Nuggets
       reset
     end
 
-    def ask(question, &block)
-      ::HighLine.new(stdin, stdout).ask(question, &block)
+    def highline
+      @highline ||= ::HighLine.new(stdin, stdout)
+    end
+
+    def ask(question, echo = true)
+      highline.ask(question) { |q|
+        yield q if block_given?
+        q.echo = echo
+      }
+    end
+
+    def askpass(question, &block)
+      ask(question, false, &block)
+    end
+
+    def agree(question, character = nil, &block)
+      highline.agree(question, character, &block)
     end
 
     def puts(*msg)

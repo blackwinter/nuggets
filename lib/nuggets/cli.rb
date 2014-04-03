@@ -216,6 +216,7 @@ module Nuggets
         opts.separator ''
         opts.separator 'Options:'
 
+        config_opts(opts)
         opts(opts)
 
         opts.separator ''
@@ -227,6 +228,17 @@ module Nuggets
     end
 
     def pre_opts(opts)
+    end
+
+    def config_opts(opts, desc = 'Path to config file (YAML)')
+      if config = defaults.fetch(:config) { return }
+        desc += ' [Default: %s (%s)]' % [config,
+          ::File.readable?(config) ? 'present' : 'currently not present']
+      end
+
+      opts.on('-c', '--config FILE', desc) { |file| options[:config] = file }
+
+      opts.separator ''
     end
 
     def opts(opts)

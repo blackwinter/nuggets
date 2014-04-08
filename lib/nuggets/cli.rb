@@ -25,10 +25,10 @@
 ###############################################################################
 #++
 
+require 'safe_yaml/load'
 require 'optparse'
-require 'yaml'
-require 'zlib'
 require 'highline'
+require 'zlib'
 
 module Nuggets
   class CLI
@@ -188,7 +188,7 @@ module Nuggets
       return unless file
 
       if ::File.readable?(file)
-        @config = ::YAML.load_file(file)
+        @config = ::SafeYAML.load_file(file, :deserialize_symbols => true)
       else
         quit "No such file: #{file}" unless default
       end

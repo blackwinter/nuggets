@@ -244,7 +244,29 @@ module Nuggets
     def opts(opts)
     end
 
+    def verbose_opts(opts)
+      verbose, debug = defaults.key?(:verbose), defaults.key?(:debug)
+
+      if verbose
+        opts.on('-v', '--verbose', 'Print verbose output') {
+          options[:verbose] = true
+        }
+      end
+
+      if debug
+        msg = "; #{debug_message}" if respond_to?(:debug_message, true)
+
+        opts.on('-D', '--debug', "Print debug output#{msg}") {
+          options[:debug] = true
+        }
+      end
+
+      opts.separator '' if verbose || debug
+    end
+
     def generic_opts(opts)
+      verbose_opts(opts)
+
       opts.on('-h', '--help', 'Print this help message and exit') {
         shut opts
       }

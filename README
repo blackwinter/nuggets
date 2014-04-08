@@ -33,10 +33,9 @@ cause other libraries to misbehave. Use at your own risk!
 
 == LINKS
 
-<b></b>
-Documentation:: http://blackwinter.github.com/ruby-nuggets
-Source code::   http://github.com/blackwinter/ruby-nuggets
-RubyGem::       http://rubygems.org/gems/ruby-nuggets
+Documentation:: https://blackwinter.github.io/ruby-nuggets/
+Source code::   https://github.com/blackwinter/ruby-nuggets
+RubyGem::       https://rubygems.org/gems/ruby-nuggets
 
 
 == AUTHORS

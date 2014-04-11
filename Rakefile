@@ -22,7 +22,6 @@ begin
        #'rbzip2',          # rdf/compression
        #'rdf',             # rdf/{prefix,uri,compression}
        #'rdf-turtle',      # rdf/turtle
-       #'rb-gsl',          # lsi
         'ruby-filemagic',  # content_type
         'safe_yaml',       # cli
        #'sinatra'          # sinatra

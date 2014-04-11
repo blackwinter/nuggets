@@ -36,6 +36,7 @@ cause other libraries to misbehave. Use at your own risk!
 Documentation:: https://blackwinter.github.io/ruby-nuggets/
 Source code::   https://github.com/blackwinter/ruby-nuggets
 RubyGem::       https://rubygems.org/gems/ruby-nuggets
+Travis CI::     https://travis-ci.org/blackwinter/ruby-nuggets
 
 
 == AUTHORS

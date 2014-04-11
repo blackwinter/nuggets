@@ -16,14 +16,12 @@ begin
 
       :development_dependencies => [
        #'amatch',          # enumerable/agrep
-        'highline',        # cli
         'mime-types',      # content_type
         'open4',           # ruby
        #'rbzip2',          # rdf/compression
        #'rdf',             # rdf/{prefix,uri,compression}
        #'rdf-turtle',      # rdf/turtle
         'ruby-filemagic',  # content_type
-        'safe_yaml',       # cli
        #'sinatra'          # sinatra
       ]
     }

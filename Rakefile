@@ -39,3 +39,12 @@ task 'spec:isolated' do
     system($0, *ARGV)
   }
 end
+
+if RUBY_PLATFORM == 'java'
+  task :spec => :enable_objspace
+
+  task :enable_objspace do
+    k, v = 'JRUBY_OPTS', '-X+O'
+    ENV[k] ? ENV[k] += " #{v}" : ENV[k] = v
+  end
+end

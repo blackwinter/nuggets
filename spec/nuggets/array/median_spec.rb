@@ -73,7 +73,7 @@ describe Array, 'when extended by', Nuggets::Array::MedianMixin do
   end
 
   example do
-    lambda { [1, 2, 'three'].median }.should raise_error(ArgumentError, 'comparison of Fixnum with String failed')
+    lambda { [1, 2, 'three'].median }.should raise_error(ArgumentError, /comparison .* failed/)
   end
 
 end

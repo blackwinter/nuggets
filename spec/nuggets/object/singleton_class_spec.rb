@@ -23,7 +23,13 @@ describe Object, 'when extended by', Nuggets::Object::SingletonClassMixin do
 
   example do
     nil.singleton_class.should == NilClass
-    #NilClass.should be_a_singleton_class
+
+    if RUBY_VERSION < '2'
+      NilClass.should be_a_singleton_class
+    else
+      NilClass.should be_a_virtual_class
+    end
+
     NilClass.singleton_object.should be_equal(nil)
   end
 

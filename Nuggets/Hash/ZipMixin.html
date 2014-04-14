@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::DeepMergeMixin - ruby-nuggets Application documentation (v0.9.8)</title>
+<title>module Nuggets::Hash::ZipMixin - ruby-nuggets Application documentation (v0.9.8)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -66,11 +66,11 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-deep_merge">#deep_merge</a>
+    <li ><a href="#method-i-zip">#zip</a>
     
-    <li ><a href="#method-i-deep_merge-21">#deep_merge!</a>
+    <li ><a href="#method-i-zipkey">#zipkey</a>
     
-    <li ><a href="#method-i-deep_update">#deep_update</a>
+    <li ><a href="#method-i-zipval">#zipval</a>
     
   </ul>
 </div>
@@ -78,9 +78,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="module-Nuggets::Hash::DeepMergeMixin">
-  <h1 id="module-Nuggets::Hash::DeepMergeMixin" class="module">
-    module Nuggets::Hash::DeepMergeMixin
+<main role="main" aria-labelledby="module-Nuggets::Hash::ZipMixin">
+  <h1 id="module-Nuggets::Hash::ZipMixin" class="module">
+    module Nuggets::Hash::ZipMixin
   </h1>
 
   <section class="description">
@@ -106,33 +106,28 @@
        </header>
 
     
-      <div id="method-i-deep_merge" class="method-detail ">
-        
+      <div id="method-i-zip" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            deep_merge(other_hash) &rarr; aHash
-          </span>
+          <span class="method-name">zip</span><span
+            class="method-args">(*args, &block)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Merges nested hashes recursively (see Hash#merge).</p>
+          
           
           
 
           
-          <div class="method-source-code" id="deep_merge-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/deep_merge_mixin.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">deep_merge</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-identifier">merge</span>(<span class="ruby-identifier">other</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">old</span>, <span class="ruby-identifier">new</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">old</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:deep_merge</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">deep_merge</span>(<span class="ruby-identifier">new</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">new</span>
-  }
+          <div class="method-source-code" id="zip-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zip</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-constant">ZipHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -144,52 +139,46 @@
       </div>
 
     
-      <div id="method-i-deep_merge-21" class="method-detail ">
-        
+      <div id="method-i-zipkey" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            deep_merge!(other_hash) &rarr; hash
-          </span>
+          <span class="method-name">zipkey</span><span
+            class="method-args">(*args, &block)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Destructive version of <a
-href="DeepMergeMixin.html#method-i-deep_merge">deep_merge</a>.</p>
+          
           
           
 
           
-          <div class="method-source-code" id="deep_merge-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/deep_merge_mixin.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">deep_merge!</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">deep_merge</span>(<span class="ruby-identifier">other</span>))
+          <div class="method-source-code" id="zipkey-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zipkey</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-constant">ZipKeyHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
 
         
-        <div class="aliases">
-          Also aliased as: <a href="DeepMergeMixin.html#method-i-deep_update">deep_update</a>
-        </div>
-        
 
         
       </div>
 
     
-      <div id="method-i-deep_update" class="method-detail method-alias">
+      <div id="method-i-zipval" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">deep_update</span><span
-            class="method-args">(other)</span>
+          <span class="method-name">zipval</span><span
+            class="method-args">(*args, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
@@ -201,14 +190,17 @@ href="DeepMergeMixin.html#method-i-deep_merge">deep_merge</a>.</p>
           
 
           
+          <div class="method-source-code" id="zipval-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zipval</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-constant">ZipValHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
         </div>
 
         
 
-        
-        <div class="aliases">
-          Alias for: <a href="DeepMergeMixin.html#method-i-deep_merge-21">deep_merge!</a>
-        </div>
         
       </div>
 

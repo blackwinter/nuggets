@@ -4,35 +4,35 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::RuniqMixin - ruby-nuggets Application documentation (v0.9.8)</title>
+<title>class Nuggets::Hash::ZipMixin::ZipKeyHash - ruby-nuggets Application documentation (v0.9.8)</title>
 
-<link href="../../fonts.css" rel="stylesheet">
-<link href="../../rdoc.css" rel="stylesheet">
+<link href="../../../fonts.css" rel="stylesheet">
+<link href="../../../rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
-  var rdoc_rel_prefix = "../../";
+  var rdoc_rel_prefix = "../../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/navigation.js"></script>
-<script src="../../js/search_index.js"></script>
-<script src="../../js/search.js"></script>
-<script src="../../js/searcher.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/navigation.js"></script>
+<script src="../../../js/search_index.js"></script>
+<script src="../../../js/search.js"></script>
+<script src="../../../js/searcher.js"></script>
+<script src="../../../js/darkfish.js"></script>
 
 
-<body id="top" role="document" class="module">
+<body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
   <h2>
-    <a href="../../index.html" rel="home">Home</a>
+    <a href="../../../index.html" rel="home">Home</a>
   </h2>
 
   <div id="table-of-contents-navigation">
-    <a href="../../table_of_contents.html#pages">Pages</a>
-    <a href="../../table_of_contents.html#classes">Classes</a>
-    <a href="../../table_of_contents.html#methods">Methods</a>
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
   </div>
 </div>
 
@@ -57,7 +57,14 @@
 
   <div id="class-metadata">
     
-    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ZipHash.html">Nuggets::Hash::ZipMixin::ZipHash</a>
+  
+</div>
+
     
     
     <!-- Method Quickref -->
@@ -66,9 +73,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-runiq">#runiq</a>
+    <li ><a href="#method-i-unzipval">#unzipval</a>
     
-    <li ><a href="#method-i-runiq-21">#runiq!</a>
+    <li ><a href="#method-i-zipval">#zipval</a>
     
   </ul>
 </div>
@@ -76,9 +83,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="module-Nuggets::Array::RuniqMixin">
-  <h1 id="module-Nuggets::Array::RuniqMixin" class="module">
-    module Nuggets::Array::RuniqMixin
+<main role="main" aria-labelledby="class-Nuggets::Hash::ZipMixin::ZipKeyHash">
+  <h1 id="class-Nuggets::Hash::ZipMixin::ZipKeyHash" class="class">
+    class Nuggets::Hash::ZipMixin::ZipKeyHash
   </h1>
 
   <section class="description">
@@ -98,37 +105,34 @@
     
 
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
-         <h3>Public Instance Methods</h3>
+         <h3>Private Instance Methods</h3>
        </header>
 
     
-      <div id="method-i-runiq" class="method-detail ">
-        
+      <div id="method-i-unzipval" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            runiq &rarr; an_array
-          </span>
+          <span class="method-name">unzipval</span><span
+            class="method-args">(value)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Reverse uniq.</p>
+          
           
           
 
           
-          <div class="method-source-code" id="runiq-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/runiq_mixin.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">runiq</span>
-  <span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">reverse</span>
+          <div class="method-source-code" id="unzipval-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unzipval</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -140,34 +144,28 @@
       </div>
 
     
-      <div id="method-i-runiq-21" class="method-detail ">
-        
+      <div id="method-i-zipval" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            runiq! &rarr; an_array or +nil+
-          </span>
+          <span class="method-name">zipval</span><span
+            class="method-args">(value)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Reverse uniq!.</p>
+          
           
           
 
           
-          <div class="method-source-code" id="runiq-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/runiq_mixin.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">runiq!</span>
-  <span class="ruby-identifier">reverse!</span>
-  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">uniq!</span>
-  <span class="ruby-identifier">reverse!</span>
-  <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>
+          <div class="method-source-code" id="zipval-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zipval</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

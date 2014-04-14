@@ -1,22 +1,23 @@
-Mon, 31 Mar 2014 11:25:46 +0200
-README	Mon, 31 Mar 2014 11:25:02 +0200
+Mon, 14 Apr 2014 12:46:53 +0200
+README	Mon, 14 Apr 2014 12:44:25 +0200
 COPYING	Fri, 08 Mar 2013 17:52:11 +0100
 ChangeLog	Tue, 16 Apr 2013 12:19:20 +0200
 lib/nuggets.rb	Mon, 11 Mar 2013 15:59:30 +0100
 lib/nuggets/all.rb	Mon, 11 Mar 2013 15:59:44 +0100
-lib/nuggets/cli.rb	Thu, 06 Mar 2014 15:46:46 +0100
-lib/nuggets/lsi.rb	Thu, 19 Dec 2013 13:41:47 +0100
+lib/nuggets/cli.rb	Mon, 14 Apr 2014 11:46:55 +0200
+lib/nuggets/lsi.rb	Mon, 14 Apr 2014 11:50:44 +0200
 lib/nuggets/i18n.rb	Mon, 25 Mar 2013 16:44:07 +0100
 lib/nuggets/ruby.rb	Wed, 11 Sep 2013 11:55:28 +0200
-lib/nuggets/midos.rb	Wed, 15 Jan 2014 12:40:32 +0100
+lib/nuggets/midos.rb	Mon, 14 Apr 2014 11:51:36 +0200
 lib/nuggets/mysql.rb	Mon, 25 Mar 2013 16:52:23 +0100
 lib/nuggets/env/set.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/hash/at.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/io/null.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/rdf/uri.rb	Thu, 09 Jan 2014 16:56:25 +0100
-lib/nuggets/version.rb	Mon, 31 Mar 2014 11:24:41 +0200
+lib/nuggets/version.rb	Wed, 09 Apr 2014 13:34:04 +0200
 lib/nuggets/file/ext.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/file/sub.rb	Fri, 08 Mar 2013 17:52:11 +0100
+lib/nuggets/hash/zip.rb	Sun, 13 Apr 2014 22:18:59 +0200
 lib/nuggets/io/agrep.rb	Mon, 11 Mar 2013 16:00:07 +0100
 lib/nuggets/io/modes.rb	Mon, 11 Mar 2013 16:00:05 +0100
 lib/nuggets/util/cli.rb	Mon, 25 Mar 2013 16:36:30 +0100
@@ -38,7 +39,6 @@ lib/nuggets/array/rand.rb	Mon, 11 Mar 2013 16:00:16 +0100
 lib/nuggets/file/which.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/hash/idmap.rb	Mon, 24 Jun 2013 17:44:23 +0200
 lib/nuggets/log_parser.rb	Tue, 18 Jun 2013 11:32:31 +0200
-lib/nuggets/midos/base.rb	Wed, 15 Jan 2014 12:41:50 +0100
 lib/nuggets/rdf/prefix.rb	Thu, 09 Jan 2014 17:01:24 +0100
 lib/nuggets/rdf/turtle.rb	Wed, 15 Jan 2014 12:37:07 +0100
 lib/nuggets/statistics.rb	Thu, 19 Dec 2013 13:41:47 +0100
@@ -63,8 +63,6 @@ lib/nuggets/array/format.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/array/median.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/content_type.rb	Mon, 25 Mar 2013 16:40:44 +0100
 lib/nuggets/file/replace.rb	Fri, 08 Mar 2013 17:52:11 +0100
-lib/nuggets/midos/reader.rb	Mon, 24 Feb 2014 16:07:03 +0100
-lib/nuggets/midos/writer.rb	Mon, 31 Mar 2014 11:06:35 +0200
 lib/nuggets/object/blank.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/object/msend.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/uri/redirect.rb	Fri, 08 Mar 2013 17:52:11 +0100
@@ -84,6 +82,7 @@ lib/nuggets/array/variance.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/dotted_decimal.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/file/ext_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/file/sub_mixin.rb	Mon, 11 Mar 2013 16:00:58 +0100
+lib/nuggets/hash/zip_mixin.rb	Mon, 14 Apr 2014 11:31:59 +0200
 lib/nuggets/integer/length.rb	Fri, 08 Mar 2013 17:52:11 +0100
 lib/nuggets/numeric/signum.rb	Mon, 11 Mar 2013 16:00:58 +0100
 lib/nuggets/object/boolean.rb	Fri, 08 Mar 2013 17:52:11 +0100

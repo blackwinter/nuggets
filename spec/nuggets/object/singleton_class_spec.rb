@@ -23,7 +23,7 @@ describe Object, 'when extended by', Nuggets::Object::SingletonClassMixin do
 
   example do
     nil.singleton_class.should == NilClass
-    NilClass.should be_a_singleton_class
+    #NilClass.should be_a_singleton_class
     NilClass.singleton_object.should be_equal(nil)
   end
 

@@ -21,7 +21,7 @@ begin
        #'rbzip2',         # rdf/compression
        #'rdf',            # rdf/{prefix,uri,compression}
        #'rdf-turtle',     # rdf/turtle
-        'ruby-filemagic'  # content_type
+       #'ruby-filemagic'  # content_type
       ]
     }
   }}

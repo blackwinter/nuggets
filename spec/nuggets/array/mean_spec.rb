@@ -82,8 +82,8 @@ describe Array, 'when extended by', Nuggets::Array::MeanMixin do
       [1e16, 1, 3, -1e16].arithmetic_mean.should == 1.0
     end
 
-    example do
-      pending { [1e30, 1, 3, -1e30].arithmetic_mean.should == 1.0 }
+    xexample do
+      [1e30, 1, 3, -1e30].arithmetic_mean.should == 1.0
     end
 
     context do

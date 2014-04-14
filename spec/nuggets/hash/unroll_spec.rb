@@ -28,7 +28,7 @@ describe Hash, 'when extended by', Nuggets::Hash::UnrollMixin do
     hash = { :a => { :b => 1, :c => 2 } }
 
     result = hash.unroll.first
-    result.should have(3).items
+    result.size.should == 3
 
     result.first.should == :a
     result.should include(1)

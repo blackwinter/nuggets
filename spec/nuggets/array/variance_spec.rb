@@ -40,8 +40,8 @@ describe Array, 'when extended by', Nuggets::Array::VarianceMixin do
     [1, 2, 4, 5, 8].variance { |i| i + 1e7 }.should == 6.0
   end
 
-  example do
-    pending { [1, 2, 4, 5, 8].variance { |i| i + 1e12 }.should == 6.0 }
+  xexample do
+    [1, 2, 4, 5, 8].variance { |i| i + 1e12 }.should == 6.0
   end
 
   example do

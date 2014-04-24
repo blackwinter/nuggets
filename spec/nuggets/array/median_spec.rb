@@ -69,7 +69,7 @@ describe Array, 'when extended by', Nuggets::Array::MedianMixin do
   end
 
   example do
-    lambda { %w[one two three four].median }.should raise_error(NoMethodError, %q{undefined method `/' for "onethree":String})
+    lambda { %w[one two three four].median }.should raise_error(NoMethodError, %r{undefined method `/' .*String})
   end
 
   example do

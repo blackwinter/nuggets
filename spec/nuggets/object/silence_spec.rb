@@ -20,7 +20,12 @@ describe Object, 'when extended by', Nuggets::Object::SilenceMixin do
     AConst = :bar
 
     AConst.should be_equal(:bar)
-    @stderr.should =~ /warning: already initialized constant AConst/
+
+    if RUBY_ENGINE == 'rbx'
+      @stderr.should == ''
+    else
+      @stderr.should =~ /warning: already initialized constant AConst/
+    end
   end
 
   example do

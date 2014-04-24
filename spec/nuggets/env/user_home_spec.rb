@@ -27,14 +27,18 @@ describe ENV, 'when extended by', Nuggets::Env::UserHomeMixin do
     ENV.user_home.should == 'foo'
   end
 
-  example do
-    ENV.clear
-    ENV.user_home('bar').should == 'bar'
-  end
+  unless RUBY_PLATFORM == 'java'
 
-  example do
-    ENV.clear
-    ENV.user_home(nil).should be_nil
+    example do
+      ENV.clear
+      ENV.user_home('bar').should == 'bar'
+    end
+
+    example do
+      ENV.clear
+      ENV.user_home(nil).should be_nil
+    end
+
   end
 
 end

@@ -29,7 +29,7 @@ base = ::File.dirname(__FILE__)
 base_re = ::Regexp.escape(base)
 
 ::Dir[::File.join(base, %w[* ** *.rb])].sort.each { |path|
-  next if path =~ /_mixin\.rb\z/
+  next if path.include?('/util/') || path.end_with?('_mixin.rb')
 
   ext_re = ::Regexp.escape(::File.extname(path))
   require path.sub(/#{base_re}(.*)#{ext_re}/, 'nuggets\1')

@@ -8,11 +8,11 @@ describe Hash, 'when extended by', Nuggets::Hash::SeenMixin do
     hash = Hash.seen
     hash.should be_an_instance_of(Hash)
 
-    hash[:a].should be_false
+    hash[:a].should == false
     hash.should have_key(:a)
 
-    hash[:a].should be_true
-    hash[:a].should be_true
+    hash[:a].should == true
+    hash[:a].should == true
   end
 
   example do

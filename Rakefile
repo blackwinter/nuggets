@@ -18,9 +18,6 @@ begin
        #'amatch',         # enumerable/agrep
         'mime-types',     # content_type
         'open4',          # ruby
-       #'rbzip2',         # rdf/compression
-       #'rdf',            # rdf/{prefix,uri,compression}
-       #'rdf-turtle',     # rdf/turtle
        #'ruby-filemagic'  # content_type
       ]
     }

@@ -65,30 +65,3 @@ module Enumerable
   end
 
 end
-
-if $0 == __FILE__
-  e = %w[quux quuux quix]
-  p e
-
-  p e.all?(::String)
-  p e.any?(::Numeric)
-
-  e = [:one, 'c', nil, 88]
-  p e
-
-  p e.all?(::Object)
-  p e.any?(::NilClass)
-
-  begin
-    e.any?(::NilClass) { |i| i.nil? }
-  rescue ::ArgumentError => err
-    puts "#{err.backtrace.first}: #{err} (#{err.class})"
-  end
-
-  e = [0, 10, 20]
-  p e
-
-  p e.any?(9..99)
-  p e.any?(9, :<)
-  p e.any? { |i| i < 9 }
-end

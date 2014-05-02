@@ -59,28 +59,7 @@ class Array
 
     hash
   end
+
   alias_method :to_h, :to_hash
 
-end
-
-if $0 == __FILE__
-  a = [[:a, 1], [:b, 2], [:c, 3]]
-  p a
-  p a.to_h
-
-  b = [[:a, [1, 2]], [:b, 3], [[:c, :d], [4, [5, 6]]]]
-  p b
-  p b.to_h
-
-  c = %w[a b c d]
-  p c
-  p c.to_h
-  p c.to_h(1)
-  p c.to_h { nil }
-
-  h = { :a => 1, :b => [2, 3], :c => { :d => 4}}
-  p h
-  p h.to_a
-  p h.to_a.to_h
-  p h.to_a.to_h == h
 end

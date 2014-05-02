@@ -58,21 +58,3 @@ class Array
   end
 
 end
-
-if $0 == __FILE__
-  [2294967042, 4294967040].each { |i|
-    p i.to_binary_s(32)
-    p i.to_dotted_decimal
-  }
-
-  puts '#' * 34
-
-  %w[77.47.161.3 196.101.53.1].each { |s|
-    p s
-    p s.from_dotted_decimal.to_binary_s(32)
-  }
-
-  a = %w[77.47.161.3 196.101.53.1 77.47.161.11]
-  p a.sort
-  p a.sort_by_dotted_decimal
-end

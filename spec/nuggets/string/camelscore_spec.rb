@@ -68,18 +68,18 @@ describe String, 'when extended by', Nuggets::String::CamelscoreMixin do
     example { 'HTML'.underscore.should == 'html' }
     example { 'html5'.camelcase.should == 'HTML5' }
     example { 'HTML5'.underscore.should == 'html5' }
-    pending { 'xhtml'.camelcase.should == 'XHTML' }
-    pending { 'XHTML'.underscore.should == 'xhtml' }
+   #pending { 'xhtml'.camelcase.should == 'XHTML' }
+   #pending { 'XHTML'.underscore.should == 'xhtml' }
     example { 'sql'.camelcase.should == 'SQL' }
     example { 'SQL'.underscore.should == 'sql' }
-    pending { 'mysql'.camelcase.should == 'MySQL' }
-    pending { 'MySQL'.underscore.should == 'mysql' }
-    pending { 'postgresql'.camelcase.should == 'PostgreSQL' }
-    pending { 'PostgreSQL'.underscore.should == 'postgresql' }
-    pending { 'sqlite'.camelcase.should == 'SQLite' }
-    pending { 'SQLite'.underscore.should == 'sqlite' }
-    pending { 'nosql'.camelcase.should == 'NoSQL' }
-    pending { 'NoSQL'.underscore.should == 'nosql' }
+   #pending { 'mysql'.camelcase.should == 'MySQL' }
+   #pending { 'MySQL'.underscore.should == 'mysql' }
+   #pending { 'postgresql'.camelcase.should == 'PostgreSQL' }
+   #pending { 'PostgreSQL'.underscore.should == 'postgresql' }
+   #pending { 'sqlite'.camelcase.should == 'SQLite' }
+   #pending { 'SQLite'.underscore.should == 'sqlite' }
+   #pending { 'nosql'.camelcase.should == 'NoSQL' }
+   #pending { 'NoSQL'.underscore.should == 'nosql' }
   }
 
   with_acronyms('rss' => 'RSS', 'xml' => 'XML') {

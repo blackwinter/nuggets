@@ -80,25 +80,3 @@ class String
   end
 
 end
-
-if $0 == __FILE__
-  s = 'Some string'
-  puts s
-  p    s.case
-  puts s.downcase?
-  puts s.upcase?
-  puts s.mixed_case?
-  puts s.capitalized?
-
-  s = 'some string'
-  puts s
-  p    s.case
-  puts s.downcase?
-  puts s.mixed_case?
-
-  s = 'SOME STRING'
-  puts s
-  p    s.case
-  puts s.upcase?
-  puts s.mixed_case?
-end

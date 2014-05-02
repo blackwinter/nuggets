@@ -51,18 +51,7 @@ class Array
   #
   # Destructive version of #flatten_once.
   def flatten_once!
-    replace flatten_once
+    replace(flatten_once)
   end
 
-end
-
-if $0 == __FILE__
-  a = [1, 2, [3, 4, 5], 6, [7, [8, 9]]]
-  p a
-
-  p a.flatten
-  p a.flatten_once
-
-  a.flatten_once!
-  p a
 end

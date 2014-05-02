@@ -34,15 +34,10 @@ class Hash
   #
   # Returns the key/value pair of _hash_ at key position +what+. Remember that
   # hashes might not have the intended (or expected) order in pre-1.9 Ruby.
-  def at(what)
+  def at(what, &block)
     return {} if empty?
 
-    key = case what
-      when ::Integer
-        keys[what]
-      else
-        block_given? ? keys.send(*what) { |*a| yield(*a) } : keys.send(*what)
-    end
+    key = what.is_a?(::Integer) ? keys[what] : keys.send(*what, &block)
 
     { key => self[key] }
   end
@@ -71,17 +66,4 @@ class Hash
     at(:rand)
   end
 
-end
-
-if $0 == __FILE__
-  h = { :a => 1, 2 => 3, nil => nil, 'foo' => %w[b a r]}
-  p h
-
-  p h.first
-  p h.last
-  p h.rand
-
-  p h.at(0)
-  p h.at(1)
-  p h.at(-1)
 end

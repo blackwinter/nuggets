@@ -36,9 +36,8 @@ class Hash
   # Returns the only key/value pair of _hash_. Raises an IndexError if _hash_'s
   # size is not 1, unless parameter +true+ is passed.
   def only(relax = size == 1, split = false)
-    raise ::IndexError, 'not a single-element hash' unless relax
-
-    split ? Array(*first) : first
+    relax ? split ? Array(*first) : first :
+      raise(::IndexError, 'not a single-element hash')
   end
 
   # call-seq:
@@ -51,19 +50,4 @@ class Hash
     only(relax, true)
   end
 
-end
-
-if $0 == __FILE__
-  [{ :a => 5 }, { 1 => 2, 3 => 4 }, {}].each { |h|
-    p h
-
-    begin
-      p h.only
-      p h.only_pair
-    rescue ::IndexError => err
-      warn err
-    end
-
-    p h.only(true)
-  }
 end

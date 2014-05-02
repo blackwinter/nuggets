@@ -45,18 +45,7 @@ class Array
   #
   # Destructive version of #in_order.
   def in_order!(*ordered)
-    replace in_order(*ordered)
+    replace(in_order(*ordered))
   end
 
-end
-
-if $0 == __FILE__
-  a = [:created_at, :email, :login, :updated_at]
-  p a
-
-  p a.in_order(:login, :email)
-  p a.in_order(:email, :address)
-
-  a.in_order!(:login, :email)
-  p a
 end

@@ -4,7 +4,7 @@
 # A component of ruby-nuggets, some extensions to the Ruby programming        #
 # language.                                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -29,8 +29,9 @@ require 'rbconfig'
 
 module Nuggets
 
-  # Heavily based on Phusion Passenger's PlatformInfo module; see
-  # {their code}[https://github.com/FooBarWidget/passenger/blob/release-3.0.2/lib/phusion_passenger/platform_info/ruby.rb].
+  # Originally based on Phusion Passenger's
+  # {PlatformInfo}[https://github.com/FooBarWidget/passenger/blob/release-3.0.2/lib/phusion_passenger/platform_info/ruby.rb]
+  # module.
   #
   #--
   # Phusion Passenger - http://www.modrails.com/
@@ -68,33 +69,9 @@ module Nuggets
 
     OSX_RUBY_RE = %r{\A/System/Library/Frameworks/Ruby.framework/Versions/.*?/usr/bin/ruby\Z}
 
-    UPDATE_RVM = %q{Please update RVM by running 'rvm update --head && rvm reload && rvm repair all'.}  # :nodoc:
-
     # Returns correct command for invoking the current Ruby interpreter.
-    # In case of RVM this function will return the path to the RVM wrapper script
-    # that executes the current Ruby interpreter in the currently active gem set.
     def ruby_command
-      return @ruby_command if defined?(@ruby_command)
-
-      return @ruby_command = ruby_executable unless rvm?
-
-      if name = rvm_ruby_string and dir = rvm_path
-        if ::File.exist?(filename = ::File.join(dir, 'wrappers', name, 'ruby'))
-          # Old wrapper scripts reference $HOME which causes
-          # things to blow up when run by a different user.
-          return @ruby_command = filename unless ::File.read(filename).include?('$HOME')
-        end
-
-        abort 'Your RVM wrapper scripts are too old. ' << UPDATE_RVM
-      end
-
-      # Something's wrong with the user's RVM installation.
-      # Raise an error so that the user knows this instead of
-      # having things fail randomly later on.
-      # 'name' is guaranteed to be non-nil because rvm_ruby_string
-      # already raises an exception on error.
-      abort 'Your RVM installation appears to be broken: the RVM path cannot be found. ' <<
-            'Please fix your RVM installation or contact the RVM developers for support.'
+      defined?(@ruby_command) ? @ruby_command : @ruby_command = ruby_executable
     end
 
     attr_writer :ruby_command
@@ -111,88 +88,6 @@ module Nuggets
 
     attr_writer :ruby_executable
 
-    # Returns whether the Ruby interpreter supports process forking.
-    def ruby_supports_fork?
-      # MRI >= 1.9.2's respond_to? returns false
-      # for methods that are not implemented.
-      ::Process.respond_to?(:fork) &&
-      RUBY_ENGINE != 'jruby'     &&
-      RUBY_ENGINE != 'macruby'   &&
-      CONFIG['target_os'] !~ /mswin|windows|mingw/
-    end
-
-    # Returns whether the current Ruby interpreter is managed by RVM.
-    def rvm?
-      CONFIG['bindir'] =~ %r{/\.?rvm/}
-    end
-
-    # If the current Ruby interpreter is managed by RVM, returns the
-    # directory in which RVM places its working files. Otherwise returns
-    # +nil+.
-    def rvm_path
-      return @rvm_path if defined?(@rvm_path)
-
-      return @rvm_path = nil unless rvm?
-
-      [::ENV['rvm_path'], '~/.rvm', '/usr/local/rvm'].compact.each { |path|
-        path = ::File.expand_path(path)
-        return @rvm_path = path if ::File.directory?(path)
-      }
-
-      # Failure to locate the RVM path is probably caused by the
-      # user customizing $rvm_path. Older RVM versions don't
-      # export $rvm_path, making us unable to detect its value.
-      abort 'Unable to locate the RVM path. Your RVM ' <<
-            'installation is probably too old. ' << UPDATE_RVM
-    end
-
-    attr_writer :rvm_path
-
-    # If the current Ruby interpreter is managed by RVM, returns the
-    # RVM name which identifies the current Ruby interpreter plus the
-    # currently active gemset, e.g. something like this:
-    # "ruby-1.9.2-p0@mygemset"
-    #
-    # Returns +nil+ otherwise.
-    def rvm_ruby_string
-      return @rvm_ruby_string if defined?(@rvm_ruby_string)
-
-      return @rvm_ruby_string = nil unless rvm?
-
-      # RVM used to export the necessary information through
-      # environment variables, but doesn't always do that anymore
-      # in the latest versions in order to fight env var pollution.
-      # Scanning $LOAD_PATH seems to be the only way to obtain
-      # the information.
-
-      # Getting the RVM name of the Ruby interpreter ("ruby-1.9.2")
-      # isn't so hard, we can extract it from the #ruby_executable
-      # string. Getting the gemset name is a bit harder, so let's
-      # try various strategies...
-
-      # $GEM_HOME usually contains the gem set name.
-      return @rvm_ruby_string = ::File.basename(GEM_HOME) if GEM_HOME && GEM_HOME.include?('rvm/gems/')
-
-      # User somehow managed to nuke $GEM_HOME. Extract info from $LOAD_PATH.
-      $LOAD_PATH.each { |path| return @rvm_ruby_string = $1 if path =~ %r{^.*rvm/gems/([^/]+)} }
-
-      # On Ruby 1.9, $LOAD_PATH does not contain any gem paths until
-      # at least one gem has been required so the above can fail.
-      # We're out of options now, we can't detect the gem set.
-      # Raise an exception so that the user knows what's going on
-      # instead of having things fail in obscure ways later.
-      abort 'Unable to autodetect the currently active RVM gem set ' <<
-            "name. Please contact this program's author for support."
-    end
-
-    attr_writer :rvm_ruby_string
-
-    # Returns either 'sudo' or 'rvmsudo' depending on whether the current
-    # Ruby interpreter is managed by RVM.
-    def ruby_sudo_command
-      "#{'rvm' if rvm?}sudo"
-    end
-
     # Locates a Ruby tool command +name+, e.g. 'gem', 'rake', 'bundle', etc. Instead
     # of naively looking in $PATH, this function uses a variety of search heuristics
     # to find the command that's really associated with the current Ruby interpreter.
@@ -203,17 +98,14 @@ module Nuggets
     # Use command_for_ruby_tool for that.
     #
     # Returns +nil+ when nothing's found.
-    def locate_ruby_tool(name)
-      extensions = ['', CONFIG['EXEEXT']].compact.uniq
-
+    def locate_ruby_tool(name, extensions = ['', CONFIG['EXEEXT']].compact.uniq)
       # Deduce Ruby's --program-prefix and --program-suffix from its install name
       # and transform the given input name accordingly.
       #
-      #   "rake" => "jrake", "rake1.8", etc
+      #   "rake" => "jrake", "rake1.8", etc.
       [name, CONFIG['RUBY_INSTALL_NAME'].sub('ruby', name)].uniq.each { |basename|
         extensions.each { |ext|
-          result = locate_ruby_tool_by_basename("#{basename}#{ext}")
-          return result if result
+          result = locate_ruby_tool_by_basename(basename + ext) and return result
         }
       }
 
@@ -228,15 +120,12 @@ module Nuggets
     # in the correct Ruby interpreter just in case the command doesn't
     # have the correct shebang line; we don't want a totally different
     # Ruby than the current one to be invoked.
-    #
-    # If it's not a Ruby program then it's probably a wrapper
-    # script as is the case with e.g. RVM (~/.rvm/wrappers).
     def command_for_ruby_tool(name)
       filename = respond_to?(name) ? send(name) : locate_ruby_tool(name)
       shebang_command(filename) =~ /ruby/ ? "#{ruby_command} #{filename}" : filename
     end
 
-    %w[gem rake rspec].each { |name|
+    def self.define_ruby_tool(name)
       class_eval <<-EOT, __FILE__, __LINE__ + 1
         def #{name}
           @#{name} ||= locate_ruby_tool('#{name}')
@@ -250,64 +139,65 @@ module Nuggets
 
         attr_writer :#{name}_command
       EOT
-    }
+    end
+
+    %w[gem rake rspec].each { |name| define_ruby_tool(name) }
 
     def ruby_options_to_argv(args, ruby_command = ruby_command)
       argv = [ruby_command]
 
-      args.pop.each { |key, val|
+      ruby_options_from_hash(args.pop, argv) if args.last.is_a?(::Hash)
+
+      argv.concat(args.map! { |arg| arg.to_s.strip })
+    end
+
+    def ruby_options_from_hash(hash, argv = [])
+      hash.each { |key, val|
         opt = "-#{key.to_s[0, 1]}"
 
         if val.is_a?(::Array)
-          val.each { |wal| argv << opt << wal.to_s }
+          val.each { |v| argv << opt << v.to_s }
         elsif opt == '-e'
           argv << opt << val.to_s
         elsif val != false
           argv << "#{opt}#{val unless val == true}"
         end
-      } if args.last.is_a?(::Hash)
+      }
 
-      argv.concat(args.map! { |arg| arg.to_s.strip })
+      argv
     end
 
     private
 
     def locate_ruby_tool_by_basename(name)
-      dir = if ::RUBY_PLATFORM =~ /darwin/ && ruby_command =~ OSX_RUBY_RE
-        # On OS X we must look for Ruby binaries in /usr/bin.
-        # RubyGems puts executables (e.g. 'rake') in there, not in
-        # /System/Libraries/(...)/bin.
-        '/usr/bin'
-      else
-        ::File.dirname(ruby_command)
-      end
+      # On OS X we must look for Ruby binaries in /usr/bin.
+      # RubyGems puts executables (e.g. 'rake') in there, not in
+      # /System/Libraries/(...)/bin.
+      dir = ::RUBY_PLATFORM =~ /darwin/ && ruby_command =~ OSX_RUBY_RE ?
+        '/usr/bin' : ::File.dirname(ruby_command)
 
-      filename = ::File.join(dir, name)
-      return filename if ::File.file?(filename) && ::File.executable?(filename)
+      filename = executable_filename(dir, name) and return filename
 
       # RubyGems might put binaries in a directory other
       # than Ruby's bindir. Debian packaged RubyGems and
       # DebGem packaged RubyGems are the prime examples.
-      begin
-        require 'rubygems' unless defined?(::Gem)
-
-        filename = ::File.join(::Gem.bindir, name)
-        return filename if ::File.file?(filename) && ::File.executable?(filename)
-      rescue ::LoadError
-      end
+      filename = executable_filename(::Gem.bindir, name) and return filename
 
       # Looks like it's not in the RubyGems bindir. Search in $PATH, but
       # be very careful about this because whatever we find might belong
       # to a different Ruby interpreter than the current one.
       ::ENV['PATH'].split(::File::PATH_SEPARATOR).each { |path|
-        filename = ::File.join(path, name)
-
-        if ::File.file?(filename) && ::File.executable?(filename)
+        if filename = executable_filename(path, name)
           return filename if shebang_command(filename) == ruby_command
         end
       }
 
       nil
+    end
+
+    def executable_filename(dir, name)
+      filename = ::File.join(dir, name)
+      filename if ::File.file?(filename) && ::File.executable?(filename)
     end
 
     def shebang_command(filename)
@@ -317,6 +207,8 @@ module Nuggets
         # Allow one extra line for magic comment.
         break if $. > 1
       }
+
+      nil
     end
 
   end
@@ -328,9 +220,9 @@ def File.ruby; ::Nuggets::Ruby.ruby_command; end
 begin
   require 'open4'
 
-  def Process.ruby(*args)
+  def Process.ruby(*args, &block)
     argv = ::Nuggets::Ruby.ruby_options_to_argv(args)
-    ::Open4.popen4(*argv, &block_given? ? ::Proc.new : nil)
+    ::Open4.popen4(*argv, &block)
   end
 
   require 'nuggets/io/interact'

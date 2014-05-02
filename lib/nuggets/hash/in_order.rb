@@ -42,11 +42,3 @@ class Hash
   end
 
 end
-
-if $0 == __FILE__
-  a = { :a => 1, :b => 2, :c => 3 }
-  p a
-
-  p a.in_order(:b, :c)
-  p a.in_order(:b, :d)
-end

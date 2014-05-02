@@ -33,8 +33,7 @@ class String
   # Capitalizes the first character in +str+, but without downcasing the rest
   # like String#capitalize does.
   def capitalize_first
-    return self if empty?
-    self[0..0].upcase << self[1..-1]
+    empty? ? self : self[0..0].upcase << self[1..-1]
   end
 
   # call-seq:
@@ -42,22 +41,7 @@ class String
   #
   # Destructive version of #capitalize_first.
   def capitalize_first!
-    replace capitalize_first
+    replace(capitalize_first)
   end
 
-end
-
-if $0 == __FILE__
-  s = 'Some string'
-  p s
-  p s.capitalize_first
-
-  s = 'some string'
-  p s
-  p s.capitalize_first
-
-  s = 'SOME STRING'
-  p s
-  p s.capitalize
-  p s.capitalize_first
 end

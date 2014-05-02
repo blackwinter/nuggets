@@ -99,11 +99,3 @@ class Numeric
   end
 
 end
-
-if $0 == __FILE__
-  [123, 123456789, 0, 0.001, 1.23, 1234.56789].each { |n|
-    p n
-    p [n.hms, n.to_hms, n.to_hms(2)]
-    p [n.ymd, n.to_ymd, n.to_ymd(true)]
-  }
-end

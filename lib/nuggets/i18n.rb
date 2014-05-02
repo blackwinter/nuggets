@@ -136,7 +136,7 @@ class String
       # But:
       #   'SÖS' => 'SOES' (not 'SOeS'!)
       if s.length > 1
-        t = $'[0..0]
+        t = $'[0, 1]
         s[1..-1] = s[1..-1].downcase if t == t.downcase
       end
 
@@ -153,13 +153,4 @@ class String
     gsub!(re, &block)
   end
 
-end
-
-if $0 == __FILE__
-  s = 'Äh, Rüby iß sö cüül, nö? SÖS!'
-  p s
-  p s.replace_diacritics
-
-  s.replace_diacritics!
-  p s
 end

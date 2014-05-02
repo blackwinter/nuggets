@@ -44,9 +44,7 @@ class Array
     opts = { :sep => ', ' }
     opts.update(pop) if last.is_a?(::Hash)
 
-    default = lambda { |n|
-      ['%s'] * n * opts[:sep]
-    }
+    default = lambda { |n| ['%s'] * n * opts[:sep] }
 
     case args
       when ::String
@@ -56,9 +54,7 @@ class Array
         i = 0
         [*args].comb { |x|
           return (self[i] || default[x.size]) % x unless
-            x.empty? || x.any? { |y|
-              y.nil? || y.empty?
-            }
+            x.empty? || x.any? { |y| y.nil? || y.empty? }
 
           i += 1
         }
@@ -67,58 +63,4 @@ class Array
     ''
   end
 
-end
-
-if $0 == __FILE__
-  [[], 'string', ''].each { |x|
-    p x
-    puts '>> ' << ['"%s"'] % x
-  }
-
-  [ ['place', 'country'],
-    ['place', ''       ],
-    ['',      'country'],
-    ['',      ''       ]
-  ].each { |x|
-    p x
-    puts '>> ' << ['%s, (%s)', '%s', '(%s)'] % x
-  }
-
-  puts '=' * 80
-
-  [ ['author', 'title', 'year'],
-    ['author', 'title', ''    ],
-    ['author', '',      'year'],
-    ['',       'title', 'year'],
-    ['author', ''     , ''    ],
-    ['',       'title', ''    ],
-    ['',       '',      'year'],
-    ['',       '',      ''    ]
-  ].each { |x|
-    p x
-    puts '>> ' << ['%s: %s (%s)', '%s: %s', '%s (%s)', '%s (%s)'] % x
-  }
-
-  puts '=' * 80
-
-  [ ['1', '2', '3', '4'],
-    ['1', '2', '3', '' ],
-    ['1', '2', '',  '4'],
-    ['1', '',  '3', '4'],
-    ['',  '2', '3', '4'],
-    ['1', '2', '',  '' ],
-    ['1', '',  '3', '' ],
-    ['1', '',  '',  '4'],
-    ['',  '2', '3', '' ],
-    ['',  '2', '',  '4'],
-    ['',  '',  '3', '4'],
-    ['1', '',  '',  '' ],
-    ['',  '2', '',  '' ],
-    ['',  '',  '3', '' ],
-    ['',  '',  '',  '4'],
-    ['',  '',  '',  '' ]
-  ].each { |x|
-    p x
-    puts '>> ' << [{ :sep => ':' }] % x
-  }
 end

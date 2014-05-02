@@ -37,10 +37,10 @@ class String
   #
   # Just like #sub, but passes the MatchData object instead of the current
   # match string to the block.
-  def sub_with_md(pattern, replacement = nil)
+  def sub_with_md(pattern, replacement = nil, &block)
     replacement ?
       sub_without_md(pattern, replacement) :
-      (_dup = dup).sub_with_md!(pattern) { |*a| yield(*a) } || _dup
+      (_dup = dup).sub_with_md!(pattern, &block) || _dup
   end
 
   # call-seq:
@@ -58,10 +58,10 @@ class String
   #
   # Just like #gsub, but passes the MatchData object instead of the current
   # match string to the block.
-  def gsub_with_md(pattern, replacement = nil)
+  def gsub_with_md(pattern, replacement = nil, &block)
     replacement ?
       gsub_without_md(pattern, replacement) :
-      (_dup = dup).gsub_with_md!(pattern) { |*a| yield(*a) } || _dup
+      (_dup = dup).gsub_with_md!(pattern, &block) || _dup
   end
 
   # call-seq:
@@ -89,43 +89,24 @@ class String
 end
 
 if $0 == __FILE__
-  # stupid example, but it proves the point ;-)
   s = 'Foo, Bar - Baz'
   p s
 
-  p s.gsub(/\w(\w+)(\W*)/) { |m|
-    #p m
-    "#{$1.gsub(/[ao]/, 'X')}#{$2}"
-  }
-
-  p s.gsub_with_md(/\w(\w+)(\W*)/) { |md|
-    #p md[0]
-    "#{md[1].gsub(/[ao]/, 'X')}#{md[2]}"
-  }
-
-  p s.gsub_with_md(/\w(\w+)(\W*)/) { |md|
-    #p md[0]
-    "#{md[1].gsub_with_md(/[ao]/) { |md2| md2[0].upcase }}#{md[2]}"
-  }
-
-  ::String.gimme_match_data!
+  String.gimme_match_data!
 
   p s.gsub(/\w(\w+)(\W*)/) { |m|
-    #p m
     begin
       "#{$1.gsub(/[ao]/, 'X')}#{$2}"
-    rescue ::NoMethodError => err
+    rescue NoMethodError => err
       warn err
     end
   }
 
   p s.gsub(/\w(\w+)(\W*)/) { |md|
-    #p md[0]
     "#{md[1].gsub(/[ao]/, 'X')}#{md[2]}"
   }
 
   p s.gsub(/\w(\w+)(\W*)/) { |md|
-    #p md[0]
     "#{md[1].gsub(/[ao]/) { |md2| md2[0].upcase }}#{md[2]}"
   }
 end

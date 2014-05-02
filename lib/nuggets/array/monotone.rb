@@ -31,13 +31,17 @@ class Array
   #   array.monotone?(operator) => +true+ or +false+
   #
   # Check whether _array_ is monotone according to +operator+.
-  def monotone?(operator)
-    inject { |a, b|
-      return false unless a.send(operator, b)
-      b
-    }
+  def monotone?(operator = nil)
+    if [nil, true, false].include?(operator)
+      ascending?(operator) || descending?(operator)
+    else
+      inject { |a, b|
+        return false unless a.send(operator, b)
+        b
+      }
 
-    true
+      true
+    end
   end
   alias_method :monotonic?, :monotone?
 
@@ -77,25 +81,4 @@ class Array
   end
   alias_method :strictly_decreasing?, :strictly_descending?
 
-end
-
-if $0 == __FILE__
-  a = [1, 2, 3, 4]
-  p a
-
-  p a.ascending?           # => true
-  p a.strictly_ascending?  # => true
-  p a.descending?          # => false
-
-  b = [1, 2, 4, 3]
-  p b
-
-  p b.ascending?           # => false
-  p b.descending?          # => false
-
-  c = [1, 2, 4, 4]
-  p c
-
-  p c.ascending?           # => true
-  p c.strictly_ascending?  # => false
 end

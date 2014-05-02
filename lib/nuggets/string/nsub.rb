@@ -33,11 +33,8 @@ class String
   #
   # Returns a copy of _str_ with the _first_ +count+ occurrences of pattern
   # replaced with either +replacement+ or the value of the block.
-  def nsub(*args)
-    _dup = dup
-    (block_given? ?
-      _dup.nsub!(*args) { |*a| yield(*a) } :
-      _dup.nsub!(*args)) || _dup
+  def nsub(*args, &block)
+    (_dup = dup).nsub!(*args, &block) || _dup
   end
 
   # call-seq:
@@ -66,15 +63,4 @@ class String
     end
   end
 
-end
-
-if $0 == __FILE__
-  s = 'a b c d e f g h i'
-  puts s
-
-  puts s.nsub(' ', '', 6)
-  puts s.nsub(' ', 6) { '' }
-
-  s.nsub!(' ', '', 6)
-  puts s
 end

@@ -47,19 +47,8 @@ class Hash
   #   hash.insert!(other) { |key, old_value, new_value| ... } => hash
   #
   # Destructive version of #insert.
-  def insert!(other)
-    replace block_given? ? insert(other) { |*a| yield(*a) } : insert(other)
+  def insert!(other, &block)
+    replace(insert(other, &block))
   end
 
-end
-
-if $0 == __FILE__
-  h = { :a => 0, :b => { :b1 => 1, :b2 => 2 } }
-  p h
-
-  p h.insert(:a => -1)
-  p h.insert(:b => { :b3 => 3 })
-
-  h.insert!(:b => { :b0 => 0 })
-  p h
 end

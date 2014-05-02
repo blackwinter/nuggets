@@ -87,9 +87,8 @@ module Enumerable
   #
   # Maximum #minmax. If +what+ is omitted, or +nil+, the original Enumerable#max
   # is called.
-  def max(what = nil)
-    what ? minmax(:max, what) : block_given? ?
-      _nuggets_original_max { |*a| yield(*a) } : _nuggets_original_max
+  def max(what = nil, &block)
+    what ? minmax(:max, what) : _nuggets_original_max(&block)
   end
 
   # call-seq:
@@ -97,28 +96,8 @@ module Enumerable
   #
   # Minimum #minmax. If +what+ is omitted, or +nil+, the original Enumerable#min
   # is called.
-  def min(what = nil)
-    what ? minmax(:min, what) : block_given? ?
-      _nuggets_original_min { |*a| yield(*a) } : _nuggets_original_min
+  def min(what = nil, &block)
+    what ? minmax(:min, what) : _nuggets_original_min(&block)
   end
 
-end
-
-if $0 == __FILE__
-  e = %w[quux quuux quix]
-  p e
-
-  p e.max
-  p e.max_by(:length)
-  p e.max(:length)
-
-  e = [3, 222, 45]
-  p e
-
-  # the last digit counts ;-)
-  l = lambda { |i| i.to_s.split(//).last.to_i }
-
-  p e.max
-  p e.max_by(l)
-  p e.max(l)
 end

@@ -123,7 +123,7 @@ if $0 == __FILE__
     x2 = 0
     score.sort.each { |key, value|
       x = value - e
-      y = x**2 / e
+      y = x ** 2 / e
       #puts '%s: %d (% .2f/%.2f)' % [key, value, x, y]
 
       x2 += y

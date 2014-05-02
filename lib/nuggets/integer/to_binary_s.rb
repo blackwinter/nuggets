@@ -37,11 +37,3 @@ class Integer
   end
 
 end
-
-if $0 == __FILE__
-  [20000, 800, 300, 700, 130, 480, 9999, 9999, 25000].each { |i|
-    p i
-    p i.to_binary_s
-    p i.to_binary_s(32)
-  }
-end

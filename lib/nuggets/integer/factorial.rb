@@ -55,20 +55,3 @@ class Integer
   alias_method :f!,  :factorial
 
 end
-
-if $0 == __FILE__
-  1.upto(8) { |i|
-    puts "#{i}: #{i.factorial}"
-  }
-
-  require 'benchmark'
-
-  ::Benchmark.bm(19) { |x|
-    [20000, 800, 300, 700, 130, 480, 9999, 9999, 25000].each { |i|
-      puts "#{i}:"
-
-      x.report('factorial')          { i.factorial          }
-      x.report('factorial_memoized') { i.factorial_memoized }
-    }
-  }
-end

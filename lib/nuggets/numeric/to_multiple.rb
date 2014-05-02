@@ -60,9 +60,3 @@ class Numeric
   end
 
 end
-
-if $0 == __FILE__
-  [123, -123, 0, 0.001, 5.67, -12.3].each { |n|
-    p [n, n.round_to(10), n.floor_to(10), n.ceil_to(10)]
-  }
-end

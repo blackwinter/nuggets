@@ -51,10 +51,3 @@ class Numeric
   alias_method :sgn,  :signum
 
 end
-
-if $0 == __FILE__
-  [123, -123, 0, 0.001, 1.23, -12.3].each { |n|
-    p n
-    p n.sgn
-  }
-end

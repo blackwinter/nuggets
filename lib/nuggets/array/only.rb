@@ -36,22 +36,7 @@ class Array
   #
   # Idea stolen from Gavin Sinclair's Ruby Extensions Project.
   def only(relax = size == 1)
-    raise ::IndexError, 'not a single-element array' unless relax
-    first
+    relax ? first : raise(::IndexError, 'not a single-element array')
   end
 
-end
-
-if $0 == __FILE__
-  [[5], [1, 2, 3], []].each { |a|
-    p a
-
-    begin
-      p a.only
-    rescue ::IndexError => err
-      warn err
-    end
-
-    p a.only(true)
-  }
 end

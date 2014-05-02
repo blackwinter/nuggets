@@ -1,8 +1,7 @@
 require 'nuggets/object/blank'
 
-describe Object, 'when extended by', Nuggets::Object::BlankMixin do
+describe_extended Object, Nuggets::Object::BlankMixin do
 
-  it { Object.ancestors.should include(Nuggets::Object::BlankMixin) }
   it { Array.ancestors.should include(Nuggets::Array::BlankMixin) }
   it { Hash.ancestors.should include(Nuggets::Hash::BlankMixin) }
 

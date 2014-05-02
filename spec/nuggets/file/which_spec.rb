@@ -1,8 +1,6 @@
 require 'nuggets/file/which'
 
-describe File, 'when extended by', Nuggets::File::WhichMixin do
-
-  it { (class << File; ancestors; end).should include(Nuggets::File::WhichMixin) }
+describe_extended File, Nuggets::File::WhichMixin, true do
 
   %w[cat dog rat gcc /usr/bin/X11/gcc].each { |c|
     example do

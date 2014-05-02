@@ -1,8 +1,6 @@
 require 'nuggets/env/user_home'
 
-describe ENV, 'when extended by', Nuggets::Env::UserHomeMixin do
-
-  it { class << ENV; ancestors; end.should include(Nuggets::Env::UserHomeMixin) }
+describe_extended ENV, Nuggets::Env::UserHomeMixin, true do
 
   before do
     @old_env = ENV.to_hash

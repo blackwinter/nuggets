@@ -1,8 +1,6 @@
 require 'nuggets/array/boost'
 
-describe Array, 'when extended by', Nuggets::Array::BoostMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::BoostMixin) }
+describe_extended Array, Nuggets::Array::BoostMixin do
 
   example {
     lambda { [].boost_factor([]) }.should raise_error(NoMethodError)

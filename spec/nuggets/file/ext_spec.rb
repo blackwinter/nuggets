@@ -1,8 +1,6 @@
 require 'nuggets/file/ext'
 
-describe File, 'when extended by', Nuggets::File::ExtMixin do
-
-  it { (class << File; ancestors; end).should include(Nuggets::File::ExtMixin) }
+describe_extended File, Nuggets::File::ExtMixin, true do
 
   [
     ['foo', nil, '.baz'],

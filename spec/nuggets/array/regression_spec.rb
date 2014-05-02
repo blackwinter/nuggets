@@ -1,8 +1,6 @@
 require 'nuggets/array/regression'
 
-describe Array, 'when extended by', Nuggets::Array::RegressionMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::RegressionMixin) }
+describe_extended Array, Nuggets::Array::RegressionMixin do
 
   example {
     [].linear_least_squares.should == []

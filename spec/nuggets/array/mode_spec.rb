@@ -1,8 +1,6 @@
 require 'nuggets/array/mode'
 
-describe Array, 'when extended by', Nuggets::Array::ModeMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::ModeMixin) }
+describe_extended Array, Nuggets::Array::ModeMixin do
 
   example do
     [].mode.should be_nil

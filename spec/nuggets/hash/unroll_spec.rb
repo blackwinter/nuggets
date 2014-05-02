@@ -1,8 +1,6 @@
 require 'nuggets/hash/unroll'
 
-describe Hash, 'when extended by', Nuggets::Hash::UnrollMixin do
-
-  it { Hash.ancestors.should include(Nuggets::Hash::UnrollMixin) }
+describe_extended Hash, Nuggets::Hash::UnrollMixin do
 
   example do
     hash = {}

@@ -1,9 +1,7 @@
 require 'nuggets/file/sub'
 require 'nuggets/tempfile/open'
 
-describe File, 'when extended by', Nuggets::File::SubMixin do
-
-  it { (class << File; ancestors; end).should include(Nuggets::File::SubMixin) }
+describe_extended File, Nuggets::File::SubMixin, true do
 
   before :each do
     @txt = <<-EOT.freeze

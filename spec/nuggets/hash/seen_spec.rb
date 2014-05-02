@@ -1,8 +1,6 @@
 require 'nuggets/hash/seen'
 
-describe Hash, 'when extended by', Nuggets::Hash::SeenMixin do
-
-  it { (class << Hash; self; end).ancestors.should include(Nuggets::Hash::SeenMixin) }
+describe_extended Hash, Nuggets::Hash::SeenMixin, true do
 
   example do
     hash = Hash.seen

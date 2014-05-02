@@ -1,8 +1,6 @@
 require 'nuggets/string/xor'
 
-describe String, 'when extended by', Nuggets::String::XorMixin do
-
-  it { String.ancestors.should include(Nuggets::String::XorMixin) }
+describe_extended String, Nuggets::String::XorMixin do
 
   describe 'same length' do
 

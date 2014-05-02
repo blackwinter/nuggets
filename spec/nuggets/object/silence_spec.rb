@@ -1,8 +1,6 @@
 require 'nuggets/object/silence'
 
-describe Object, 'when extended by', Nuggets::Object::SilenceMixin do
-
-  it { Object.ancestors.should include(Nuggets::Object::SilenceMixin) }
+describe_extended Object, Nuggets::Object::SilenceMixin do
 
   before do
     @stderr, @old_stderr = '', $stderr

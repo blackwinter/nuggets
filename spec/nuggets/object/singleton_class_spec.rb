@@ -1,8 +1,6 @@
 require 'nuggets/object/singleton_class'
 
-describe Object, 'when extended by', Nuggets::Object::SingletonClassMixin do
-
-  it { Object.ancestors.should include(Nuggets::Object::SingletonClassMixin) }
+describe_extended Object, Nuggets::Object::SingletonClassMixin do
 
   objects = [Class, Object.new, Class.new, 's', [1, 2], { :a => 'b' }]
   objects.unshift(Object) unless RUBY_PLATFORM == 'java' || RUBY_ENGINE == 'rbx'

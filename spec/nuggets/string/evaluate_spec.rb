@@ -1,8 +1,6 @@
 require 'nuggets/string/evaluate'
 
-describe String, 'when extended by', Nuggets::String::EvaluateMixin do
-
-  it { String.ancestors.should include(Nuggets::String::EvaluateMixin) }
+describe_extended String, Nuggets::String::EvaluateMixin do
 
   describe do
 

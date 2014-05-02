@@ -1,8 +1,6 @@
 require 'nuggets/string/camelscore'
 
-describe String, 'when extended by', Nuggets::String::CamelscoreMixin do
-
-  it { String.ancestors.should include(Nuggets::String::CamelscoreMixin) }
+describe_extended String, Nuggets::String::CamelscoreMixin do
 
   def self.with_acronyms(acronyms, &block)
     describe "with acronyms #{acronyms.inspect}" do

@@ -1,9 +1,7 @@
 require 'nuggets/array/mean'
 require 'nuggets/array/standard_deviation'
 
-describe Array, 'when extended by', Nuggets::Array::MeanMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::MeanMixin) }
+describe_extended Array, Nuggets::Array::MeanMixin do
 
   describe 'equalities' do
 

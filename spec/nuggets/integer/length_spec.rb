@@ -1,8 +1,6 @@
 require 'nuggets/integer/length'
 
-describe Integer, 'when extended by', Nuggets::Integer::LengthMixin do
-
-  it { Integer.ancestors.should include(Nuggets::Integer::LengthMixin) }
+describe_extended Integer, Nuggets::Integer::LengthMixin do
 
   {
     0           => [1, 1],

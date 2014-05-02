@@ -1,8 +1,6 @@
 require 'nuggets/array/median'
 
-describe Array, 'when extended by', Nuggets::Array::MedianMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::MedianMixin) }
+describe_extended Array, Nuggets::Array::MedianMixin do
 
   example do
     [].median.should be_nil

@@ -2,9 +2,7 @@
 
 require 'nuggets/string/wc'
 
-describe String, 'when extended by', Nuggets::String::WcMixin do
-
-  it { String.ancestors.should include(Nuggets::String::WcMixin) }
+describe_extended String, Nuggets::String::WcMixin do
 
   describe 'empty' do
 

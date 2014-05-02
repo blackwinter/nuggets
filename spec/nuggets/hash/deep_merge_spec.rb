@@ -1,8 +1,6 @@
 require 'nuggets/hash/deep_merge'
 
-describe Hash, 'when extended by', Nuggets::Hash::DeepMergeMixin do
-
-  it { Hash.ancestors.should include(Nuggets::Hash::DeepMergeMixin) }
+describe_extended Hash, Nuggets::Hash::DeepMergeMixin do
 
   example do
     { :a => 1 }.deep_merge(:a => 2).should == { :a => 2 }

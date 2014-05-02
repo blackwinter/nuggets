@@ -1,8 +1,6 @@
 require 'nuggets/proc/bind'
 
-describe Proc, 'when extended by', Nuggets::Proc::BindMixin do
-
-  it { Proc.ancestors.should include(Nuggets::Proc::BindMixin) }
+describe_extended Proc, Nuggets::Proc::BindMixin do
 
   before :each do
     @l = lambda { bla }

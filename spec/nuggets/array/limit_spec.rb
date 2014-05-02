@@ -1,9 +1,7 @@
 require 'nuggets/array/limit'
 require 'nuggets/numeric/limit'
 
-describe Array, 'when extended by', Nuggets::Array::LimitMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::LimitMixin) }
+describe_extended Array, Nuggets::Array::LimitMixin do
 
   describe '#limit' do
 

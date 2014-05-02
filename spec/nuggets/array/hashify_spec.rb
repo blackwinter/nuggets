@@ -1,8 +1,6 @@
 require 'nuggets/array/hashify'
 
-describe Array, 'when extended by', Nuggets::Array::HashifyMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::HashifyMixin) }
+describe_extended Array, Nuggets::Array::HashifyMixin do
 
   example do
     hash = [1, 2, 3, 4].hashify

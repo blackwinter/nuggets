@@ -1,8 +1,6 @@
 require 'nuggets/hash/deep_fetch'
 
-describe Hash, 'when extended by', Nuggets::Hash::DeepFetchMixin do
-
-  it { Hash.ancestors.should include(Nuggets::Hash::DeepFetchMixin) }
+describe_extended Hash, Nuggets::Hash::DeepFetchMixin do
 
   example do
     lambda { {}.deep_fetch('') }.should raise_error(ArgumentError, 'no keys given')

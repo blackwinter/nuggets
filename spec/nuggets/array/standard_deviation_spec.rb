@@ -1,8 +1,6 @@
 require 'nuggets/array/standard_deviation'
 
-describe Array, 'when extended by', Nuggets::Array::StandardDeviationMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::StandardDeviationMixin) }
+describe_extended Array, Nuggets::Array::StandardDeviationMixin do
 
   example do
     [].standard_deviation.should == 0.0

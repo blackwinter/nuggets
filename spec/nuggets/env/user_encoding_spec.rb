@@ -1,8 +1,6 @@
 require 'nuggets/env/user_encoding'
 
-describe ENV, 'when extended by', Nuggets::Env::UserEncodingMixin do
-
-  it { class << ENV; ancestors; end.should include(Nuggets::Env::UserEncodingMixin) }
+describe_extended ENV, Nuggets::Env::UserEncodingMixin, true do
 
   before do
     @old_env = ENV.to_hash

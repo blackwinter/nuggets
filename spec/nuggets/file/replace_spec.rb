@@ -1,9 +1,7 @@
 require 'nuggets/file/replace'
 require 'nuggets/tempfile/open'
 
-describe File, 'when extended by', Nuggets::File::ReplaceMixin do
-
-  it { (class << File; ancestors; end).should include(Nuggets::File::ReplaceMixin) }
+describe_extended File, Nuggets::File::ReplaceMixin, true do
 
   before :each do
     @txt = <<-EOT.freeze

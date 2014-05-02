@@ -1,8 +1,6 @@
 require 'nuggets/array/variance'
 
-describe Array, 'when extended by', Nuggets::Array::VarianceMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::VarianceMixin) }
+describe_extended Array, Nuggets::Array::VarianceMixin do
 
   example do
     [].variance.should == 0.0

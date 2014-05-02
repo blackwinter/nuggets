@@ -1,8 +1,6 @@
 require 'nuggets/array/flush'
 
-describe Array, 'when extended by', Nuggets::Array::FlushMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::FlushMixin) }
+describe_extended Array, Nuggets::Array::FlushMixin do
 
   example do
     a = [1, 2, 3, 4]

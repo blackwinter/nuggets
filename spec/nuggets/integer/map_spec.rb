@@ -1,8 +1,6 @@
 require 'nuggets/integer/map'
 
-describe Integer, 'when extended by', Nuggets::Integer::MapMixin do
-
-  it { Integer.ancestors.should include(Nuggets::Integer::MapMixin) }
+describe_extended Integer, Nuggets::Integer::MapMixin do
 
   {
     0           => 1,

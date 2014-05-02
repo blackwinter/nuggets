@@ -1,8 +1,6 @@
 require 'nuggets/array/histogram'
 
-describe Array, 'when extended by', Nuggets::Array::HistogramMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::HistogramMixin) }
+describe_extended Array, Nuggets::Array::HistogramMixin do
 
   example do
     [].histogram.should == {}

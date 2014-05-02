@@ -1,8 +1,6 @@
 require 'nuggets/env/set'
 
-describe ENV, 'when extended by', Nuggets::Env::SetMixin do
-
-  it { class << ENV; ancestors; end.should include(Nuggets::Env::SetMixin) }
+describe_extended ENV, Nuggets::Env::SetMixin, true do
 
   before do
     @original = ENV.to_hash

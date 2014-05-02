@@ -1,8 +1,6 @@
 require 'nuggets/array/correlation'
 
-describe Array, 'when extended by', Nuggets::Array::CorrelationMixin do
-
-  it { Array.ancestors.should include(Nuggets::Array::CorrelationMixin) }
+describe_extended Array, Nuggets::Array::CorrelationMixin do
 
   example do
     [].correlation_coefficient.should == 0.0

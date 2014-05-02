@@ -1,8 +1,6 @@
 require 'nuggets/range/quantile'
 
-describe Range, 'when extended by', Nuggets::Range::QuantileMixin do
-
-  it { Range.ancestors.should include(Nuggets::Range::QuantileMixin) }
+describe_extended Range, Nuggets::Range::QuantileMixin do
 
   example do
     (1..5).quantile(0, 3).should == 1

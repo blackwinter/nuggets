@@ -1,8 +1,6 @@
 require 'nuggets/hash/nest'
 
-describe Hash, 'when extended by', Nuggets::Hash::NestMixin do
-
-  it { (class << Hash; self; end).ancestors.should include(Nuggets::Hash::NestMixin) }
+describe_extended Hash, Nuggets::Hash::NestMixin, true do
 
   example do
     hash = Hash.nest

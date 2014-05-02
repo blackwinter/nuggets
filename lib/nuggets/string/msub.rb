@@ -83,21 +83,3 @@ class String
   end
 
 end
-
-if $0 == __FILE__
-  s = 'Foo, Bar - Baz'
-  p s
-
-  p s.gsub(/a/, 'o').gsub(/o/, 'a')
-  p s.msub('a' => 'o', 'o' => 'a')
-
-  s.msub!('a' => 'o', 'o' => 'a')
-  p s
-
-  t = '!!!'
-  begin; p s.msub('r' => '???', 'z' => '#{t}'); rescue ::NameError => err; warn err; end
-  p s.msub('r' => '???', 'z' => '#{t}', :__binding__ => binding)
-
-  p s.msub(/[A-Z]/ => '#{__match__.downcase}', :__binding__ => binding)
-  p s.msub(/[A-Z]/ => lambda { |match| match.downcase })
-end

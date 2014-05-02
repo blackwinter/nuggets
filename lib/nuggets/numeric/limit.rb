@@ -35,7 +35,7 @@ class Numeric
   def limit(min, max)
     min, max = max, min if max < min
 
-    self.min(min).max(max)
+    min(min).max(max)
   end
 
   alias_method :between, :limit
@@ -60,11 +60,4 @@ class Numeric
 
   alias_method :at_most, :max
 
-end
-
-if $0 == __FILE__
-  [123, -123, 0, 0.001, 1.23, -12.3].each { |n|
-    p n
-    p n.between(0, 10)
-  }
 end

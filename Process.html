@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Process - ruby-nuggets Application documentation (v0.9.8)</title>
+<title>module Process - ruby-nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -123,7 +123,7 @@
 
           
           <div class="method-source-code" id="interact_ruby-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 338</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 230</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">interact_ruby</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">ruby</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">o</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
     <span class="ruby-operator">::</span><span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-identifier">input</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">i</span> }, { <span class="ruby-identifier">o</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">$stdout</span>, <span class="ruby-identifier">e</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">$stderr</span> })
@@ -143,7 +143,7 @@
         
         <div class="method-heading">
           <span class="method-name">ruby</span><span
-            class="method-args">(*args)</span>
+            class="method-args">(*args, &block)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -158,10 +158,10 @@
 
           
           <div class="method-source-code" id="ruby-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 331</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">ruby</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 223</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">ruby</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">argv</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Ruby</span>.<span class="ruby-identifier">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>)
-  <span class="ruby-operator">::</span><span class="ruby-constant">Open4</span>.<span class="ruby-identifier">popen4</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">argv</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-operator">::</span><span class="ruby-constant">Open4</span>.<span class="ruby-identifier">popen4</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">argv</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

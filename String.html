@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class String - ruby-nuggets Application documentation (v0.9.8)</title>
+<title>class String - ruby-nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -326,8 +326,7 @@ the rest like String#capitalize does.</p>
           <div class="method-source-code" id="capitalize_first-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/capitalize_first.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">capitalize_first</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
-  <span class="ruby-keyword">self</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+  <span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -362,9 +361,9 @@ href="String.html#method-i-capitalize_first">capitalize_first</a>.</p>
 
           
           <div class="method-source-code" id="capitalize_first-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/capitalize_first.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/string/capitalize_first.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">capitalize_first!</span>
-  <span class="ruby-identifier">replace</span> <span class="ruby-identifier">capitalize_first</span>
+  <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">capitalize_first</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -538,10 +537,10 @@ match string to the block.</p>
           
           <div class="method-source-code" id="gsub_with_md-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/sub_with_md.rb, line 61</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">gsub_with_md</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">replacement</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">gsub_with_md</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">replacement</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">replacement</span> <span class="ruby-operator">?</span>
     <span class="ruby-identifier">gsub_without_md</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">replacement</span>) <span class="ruby-operator">:</span>
-    (<span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>).<span class="ruby-identifier">gsub_with_md!</span>(<span class="ruby-identifier">pattern</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
+    (<span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>).<span class="ruby-identifier">gsub_with_md!</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -878,11 +877,8 @@ value of the block.</p>
           
           <div class="method-source-code" id="nsub-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/nsub.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">nsub</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>
-  (<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span>
-    <span class="ruby-identifier">_dup</span>.<span class="ruby-identifier">nsub!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span>
-    <span class="ruby-identifier">_dup</span>.<span class="ruby-identifier">nsub!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)) <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nsub</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  (<span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>).<span class="ruby-identifier">nsub!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -925,7 +921,7 @@ were performed.</p>
 
           
           <div class="method-source-code" id="nsub-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/nsub.rb, line 49</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/string/nsub.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nsub!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">i</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>, <span class="ruby-value">0</span>
 
@@ -1028,7 +1024,7 @@ href="String.html#method-i-replace_diacritics">replace_diacritics</a>.</p>
     <span class="ruby-comment"># But:</span>
     <span class="ruby-comment">#   &#39;SÖS&#39; =&gt; &#39;SOES&#39; (not &#39;SOeS&#39;!)</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
-      <span class="ruby-identifier">t</span> = <span class="ruby-node">$&#39;</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>]
+      <span class="ruby-identifier">t</span> = <span class="ruby-node">$&#39;</span>[<span class="ruby-value">0</span>, <span class="ruby-value">1</span>]
       <span class="ruby-identifier">s</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] = <span class="ruby-identifier">s</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">downcase</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">downcase</span>
     <span class="ruby-keyword">end</span>
 
@@ -1069,10 +1065,10 @@ string to the block.</p>
           
           <div class="method-source-code" id="sub_with_md-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/sub_with_md.rb, line 40</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_with_md</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">replacement</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_with_md</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">replacement</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">replacement</span> <span class="ruby-operator">?</span>
     <span class="ruby-identifier">sub_without_md</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">replacement</span>) <span class="ruby-operator">:</span>
-    (<span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>).<span class="ruby-identifier">sub_with_md!</span>(<span class="ruby-identifier">pattern</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
+    (<span class="ruby-identifier">_dup</span> = <span class="ruby-identifier">dup</span>).<span class="ruby-identifier">sub_with_md!</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">_dup</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1262,7 +1258,7 @@ modifies the string in place.</p>
           <div class="method-source-code" id="word_wrap-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/word_wrap.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">word_wrap!</span>(<span class="ruby-identifier">line_width</span> = <span class="ruby-value">80</span>)
-  <span class="ruby-identifier">replace</span> <span class="ruby-identifier">word_wrap</span>(<span class="ruby-identifier">line_width</span>)
+  <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">word_wrap</span>(<span class="ruby-identifier">line_width</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
           

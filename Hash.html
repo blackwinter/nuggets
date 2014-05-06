@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Hash - ruby-nuggets Application documentation (v0.9.8)</title>
+<title>class Hash - ruby-nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -69,6 +69,10 @@
   <h3>Included Modules</h3>
 
   <ul class="link-list">
+  
+  
+    <li><a class="include" href="Nuggets/Hash/DeepFetchMixin.html">Nuggets::Hash::DeepFetchMixin</a>
+  
   
   
     <li><a class="include" href="Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
@@ -192,15 +196,10 @@ expected) order in pre-1.9 Ruby.</p>
           
           <div class="method-source-code" id="at-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/at.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">at</span>(<span class="ruby-identifier">what</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">at</span>(<span class="ruby-identifier">what</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">return</span> {} <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
 
-  <span class="ruby-identifier">key</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">what</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Integer</span>
-      <span class="ruby-identifier">keys</span>[<span class="ruby-identifier">what</span>]
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">send</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">what</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">send</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">what</span>)
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">key</span> = <span class="ruby-identifier">what</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Integer</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">keys</span>[<span class="ruby-identifier">what</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">send</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">what</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 
   { <span class="ruby-identifier">key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>[<span class="ruby-identifier">key</span>] }
 <span class="ruby-keyword">end</span></pre>
@@ -236,7 +235,7 @@ expected) order in pre-1.9 Ruby.</p>
 
           
           <div class="method-source-code" id="first-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/at.rb, line 54</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/at.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">first</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">:first</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -373,8 +372,8 @@ merging.</p>
           
           <div class="method-source-code" id="insert-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/insert.rb, line 50</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">insert!</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-identifier">replace</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">other</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) } <span class="ruby-operator">:</span> <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">other</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">insert!</span>(<span class="ruby-identifier">other</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">other</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -408,7 +407,7 @@ merging.</p>
 
           
           <div class="method-source-code" id="last-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/at.rb, line 62</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/at.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">last</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">:last</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -455,9 +454,8 @@ passed.</p>
           <div class="method-source-code" id="only-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/only.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">only</span>(<span class="ruby-identifier">relax</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">split</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">IndexError</span>, <span class="ruby-string">&#39;not a single-element hash&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">relax</span>
-
-  <span class="ruby-identifier">split</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Array</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">first</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">first</span>
+  <span class="ruby-identifier">relax</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">split</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Array</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">first</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">:</span>
+    <span class="ruby-identifier">raise</span>(<span class="ruby-operator">::</span><span class="ruby-constant">IndexError</span>, <span class="ruby-string">&#39;not a single-element hash&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -500,7 +498,7 @@ IndexError if <em>hash</em>&#39;s size is not 1, unless parameter
 
           
           <div class="method-source-code" id="only_pair-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/only.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/only.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">only_pair</span>(<span class="ruby-identifier">relax</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
   <span class="ruby-identifier">only</span>(<span class="ruby-identifier">relax</span>, <span class="ruby-keyword">true</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -536,7 +534,7 @@ IndexError if <em>hash</em>&#39;s size is not 1, unless parameter
 
           
           <div class="method-source-code" id="rand-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/at.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/at.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">rand</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">:rand</span>)
 <span class="ruby-keyword">end</span></pre>

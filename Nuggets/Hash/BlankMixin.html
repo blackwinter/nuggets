@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::BlankMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Hash::BlankMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -125,7 +125,7 @@ themselves vain.</p>
 
           
           <div class="method-source-code" id="vain-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 94</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">vain?</span>
   <span class="ruby-identifier">blank?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">vain?</span> } }
 <span class="ruby-keyword">end</span></pre>

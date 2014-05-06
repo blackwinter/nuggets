@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Object::SingletonClassMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Object::SingletonClassMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -413,7 +413,7 @@
 
           
           <div class="method-source-code" id="singleton_class-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">singleton_class</span>
   <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>; <span class="ruby-keyword">self</span>; <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -457,7 +457,7 @@ href="SingletonClassMixin.html#method-i-singleton_object">#singleton_object</a>)
 
           
           <div class="method-source-code" id="singleton_class-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 81</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">singleton_class?</span>
   <span class="ruby-identifier">singleton_object</span>
   <span class="ruby-keyword">true</span>
@@ -529,7 +529,7 @@ a TypeError if <em>object</em> is not a singleton class.</p>
 
           
           <div class="method-source-code" id="singleton_object-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 51</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">singleton_object</span>
   [<span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">singleton_class</span>)

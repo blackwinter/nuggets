@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>ruby-nuggets Application documentation (v0.9.9)</title>
+<title>nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -204,8 +204,6 @@
   
     <li><a href="./Nuggets/LogParser/Rails.html">Nuggets::LogParser::Rails</a>
   
-    <li><a href="./Nuggets/MySQL.html">Nuggets::MySQL</a>
-  
     <li><a href="./Nuggets/Object.html">Nuggets::Object</a>
   
     <li><a href="./Nuggets/Object/BlankMixin.html">Nuggets::Object::BlankMixin</a>
@@ -223,8 +221,6 @@
     <li><a href="./Nuggets/Proc.html">Nuggets::Proc</a>
   
     <li><a href="./Nuggets/Proc/BindMixin.html">Nuggets::Proc::BindMixin</a>
-  
-    <li><a href="./Nuggets/RDF.html">Nuggets::RDF</a>
   
     <li><a href="./Nuggets/Range.html">Nuggets::Range</a>
   
@@ -266,8 +262,6 @@
   
     <li><a href="./URI.html">URI</a>
   
-    <li><a href="./Util.html">Util</a>
-  
   </ul>
 </div>
 
@@ -277,35 +271,45 @@
 <main role="main">
 
 
-<h1 id="label-ruby-nuggets+-+Some+extensions+to+the+Ruby+programming+language">ruby-nuggets - Some extensions to the Ruby programming language<span><a href="#label-ruby-nuggets+-+Some+extensions+to+the+Ruby+programming+language">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-nuggets+-+Extending+Ruby">nuggets - Extending Ruby<span><a href="#label-nuggets+-+Extending+Ruby">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
 <h2 id="label-VERSION">VERSION<span><a href="#label-VERSION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>This documentation refers to ruby-nuggets version 0.9.9</p>
+<p>This documentation refers to nuggets version 0.9.9.</p>
 
 <h2 id="label-DESCRIPTION">DESCRIPTION<span><a href="#label-DESCRIPTION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>ruby-nuggets provides a collection of extensions to Ruby core classes. In
-its effort, it&#39;s similar to projects like <a
-href="http://facets.rubyforge.org">Facets</a> and <a
+<p>Nuggets provides a collection of extensions to Ruby classes. It&#39;s
+similar to projects like <a
+href="http://rubyworks.github.com/facets">Facets</a> and <a
 href="http://extensions.rubyforge.org">Extensions</a> (or even <a
-href="http://rubyforge.org/projects/labrador/">Labrador</a>), though not as
-ambitious ;-) This is simply where I put stuff that I need on a more or
-less regular basis or that struck me as interesting while surfing the web,
-reading books, or following discussions on ruby-talk.</p>
+href="http://labrador.rubyforge.org">Labrador</a>).</p>
 
-<p>There are several ways to get at the nuggets you&#39;re interested in:</p>
+<p>This is simply where I put stuff that I need on a more or less regular
+basis or that struck me as interesting while surfing the web, reading
+books, or following discussions on <a
+href="http://lists.ruby-lang.org/cgi-bin/mailman/listinfo/ruby-talk">ruby-talk</a>.</p>
 
-<pre class="ruby"><span class="ruby-comment"># The usual way: Just require() what you need</span>
+<p>There are several ways to get the extensions you&#39;re interested in:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Either require() what you need:</span>
 <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;nuggets/object/singleton_class&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;nuggets/string/sub_with_md&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;nuggets/string/nsub&#39;</span>
 
-<span class="ruby-comment"># The more fancy way ;-) (see the documentation of Nuggets() for more examples)</span>
+<span class="ruby-comment"># Or use the helper method (see the documentation of Nuggets()</span>
+<span class="ruby-comment"># for more examples):</span>
 <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;nuggets&#39;</span>
-<span class="ruby-constant">Nuggets</span>(:<span class="ruby-identifier">object</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;singleton_class&#39;</span>, :<span class="ruby-identifier">string</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w[nsub sub_with_md]</span>)
-
-<span class="ruby-comment"># Finally, get everything there is...</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;nuggets/all&#39;</span>
+<span class="ruby-constant">Nuggets</span>(<span class="ruby-identifier">object</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;singleton_class&#39;</span>, <span class="ruby-identifier">string</span><span class="ruby-operator">:</span> <span class="ruby-node">%w[sub_with_md nsub]</span>)
 </pre>
+
+<h2 id="label-NEW+NAME">NEW NAME<span><a href="#label-NEW+NAME">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>This project used to be named <code>ruby-nuggets</code> but was renamed to
+<code>nuggets</code> with version 1.0.0. Please update your dependencies.
+(Require paths are unchanged.)</p>
+
+<h2 id="label-DISCLAIMER">DISCLAIMER<span><a href="#label-DISCLAIMER">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>Please be aware that some of the things herein might not work as expected
 or cause other libraries to misbehave. Use at your own risk!</p>
@@ -314,19 +318,18 @@ or cause other libraries to misbehave. Use at your own risk!</p>
 <dl class="rdoc-list note-list"><dt>Documentation
 <dd>
 <p><a
-href="https://blackwinter.github.io/ruby-nuggets">blackwinter.github.io/ruby-nuggets</a>/</p>
+href="https://blackwinter.github.io/nuggets">blackwinter.github.io/nuggets</a>/</p>
 </dd><dt>Source code
 <dd>
 <p><a
-href="https://github.com/blackwinter/ruby-nuggets">github.com/blackwinter/ruby-nuggets</a></p>
+href="https://github.com/blackwinter/nuggets">github.com/blackwinter/nuggets</a></p>
 </dd><dt>RubyGem
 <dd>
-<p><a
-href="https://rubygems.org/gems/ruby-nuggets">rubygems.org/gems/ruby-nuggets</a></p>
+<p><a href="https://rubygems.org/gems/nuggets">rubygems.org/gems/nuggets</a></p>
 </dd><dt>Travis CI
 <dd>
 <p><a
-href="https://travis-ci.org/blackwinter/ruby-nuggets">travis-ci.org/blackwinter/ruby-nuggets</a></p>
+href="https://travis-ci.org/blackwinter/nuggets">travis-ci.org/blackwinter/nuggets</a></p>
 </dd></dl>
 
 <h2 id="label-AUTHORS">AUTHORS<span><a href="#label-AUTHORS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
@@ -339,18 +342,18 @@ href="mailto:jens.wille@gmail.com">jens.wille@gmail.com</a>&gt;</p>
 
 <p>Copyright (C) 2007-2014 Jens Wille</p>
 
-<p>ruby-nuggets is free software: you can redistribute it and/or modify it
-under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or (at your
-option) any later version.</p>
+<p>nuggets is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option)
+any later version.</p>
 
-<p>ruby-nuggets is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License
-for more details.</p>
+<p>nuggets is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for
+more details.</p>
 
 <p>You should have received a copy of the GNU Affero General Public License
-along with ruby-nuggets. If not, see &lt;<a
+along with nuggets. If not, see &lt;<a
 href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.</p>
 </main>
 

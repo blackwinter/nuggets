@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Env::UserHomeMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Env::UserHomeMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -125,7 +125,7 @@ not be found.</p>
 
           
           <div class="method-source-code" id="user_home-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/env/user_home_mixin.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/env/user_home_mixin.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">user_home</span>(<span class="ruby-identifier">default</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">ALT_SEPARATOR</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39;C:/&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;/&#39;</span>)
   <span class="ruby-keyword">begin</span>
     <span class="ruby-keyword">return</span> <span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">home</span>

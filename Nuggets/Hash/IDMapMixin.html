@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::IDMapMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Hash::IDMapMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -121,7 +121,7 @@
 
           
           <div class="method-source-code" id="idmap-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/idmap_mixin.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/idmap_mixin.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">idmap</span>(<span class="ruby-identifier">counter</span> = <span class="ruby-value">0</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
     <span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">counter</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>) }

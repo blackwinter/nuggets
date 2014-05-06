@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::URI::ContentTypeMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::URI::ContentTypeMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -134,7 +134,7 @@
 
           
           <div class="method-source-code" id="extended-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/content_type_mixin.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/content_type_mixin.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">extended</span>(<span class="ruby-identifier">base</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">ExistMixin</span>
 <span class="ruby-keyword">end</span></pre>
@@ -179,7 +179,7 @@ found.</p>
 
           
           <div class="method-source-code" id="content_type-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/content_type_mixin.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/content_type_mixin.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">content_type</span>(<span class="ruby-identifier">uri</span>)
   <span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">uri</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">res</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">content_type</span> }
 <span class="ruby-keyword">end</span></pre>

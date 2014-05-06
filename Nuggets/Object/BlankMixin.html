@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Object::BlankMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Object::BlankMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -128,7 +128,7 @@
 
           
           <div class="method-source-code" id="blank-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">blank?</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">modifiers</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">blank?</span>
@@ -213,7 +213,7 @@ list of blank objects.</p>
 
           
           <div class="method-source-code" id="void-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 65</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">void?</span>
   <span class="ruby-identifier">blank?</span>(<span class="ruby-value">:zero?</span>, <span class="ruby-value">:strip</span>, <span class="ruby-value">:compact</span>)
 <span class="ruby-keyword">end</span></pre>

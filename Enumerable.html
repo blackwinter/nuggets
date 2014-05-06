@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Enumerable - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Enumerable - nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -405,7 +405,7 @@ cannot be adjusted.</p>
 
           
           <div class="method-source-code" id="agrep-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/agrep.rb, line 57</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/agrep.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">pattern</span> = <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">source</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Regexp</span>)
 
@@ -455,7 +455,7 @@ will then be tested against each item in <em>enum</em> according to
 
           
           <div class="method-source-code" id="all-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 40</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">all?</span>(<span class="ruby-identifier">object</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">operator</span> = <span class="ruby-value">:===</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">_nuggets_original_all?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
 <span class="ruby-keyword">end</span></pre>
@@ -504,7 +504,7 @@ will then be tested against each item in <em>enum</em> according to
 
           
           <div class="method-source-code" id="any-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 51</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">any?</span>(<span class="ruby-identifier">object</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">operator</span> = <span class="ruby-value">:===</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">_nuggets_original_any?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
 <span class="ruby-keyword">end</span></pre>
@@ -546,7 +546,7 @@ href="Enumerable.html#method-i-max">#max</a> is called.</p>
 
           
           <div class="method-source-code" id="max-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 90</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max</span>(<span class="ruby-identifier">what</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">what</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-value">:max</span>, <span class="ruby-identifier">what</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">_nuggets_original_max</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -586,7 +586,7 @@ href="Enumerable.html#method-i-max">#max</a> is called.</p>
 
           
           <div class="method-source-code" id="max_by-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max_by</span>(<span class="ruby-identifier">by</span>)
   <span class="ruby-identifier">minmax_by</span>(<span class="ruby-value">:max</span>, <span class="ruby-identifier">by</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -628,7 +628,7 @@ href="Enumerable.html#method-i-min">#min</a> is called.</p>
 
           
           <div class="method-source-code" id="min-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 99</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min</span>(<span class="ruby-identifier">what</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">what</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-value">:min</span>, <span class="ruby-identifier">what</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">_nuggets_original_min</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -668,7 +668,7 @@ href="Enumerable.html#method-i-min">#min</a> is called.</p>
 
           
           <div class="method-source-code" id="min_by-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 61</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min_by</span>(<span class="ruby-identifier">by</span>)
   <span class="ruby-identifier">minmax_by</span>(<span class="ruby-value">:min</span>, <span class="ruby-identifier">by</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -714,7 +714,7 @@ according to <code>what</code> and returns that “what”.</p>
 
           
           <div class="method-source-code" id="minmax-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 72</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-identifier">what</span>)
   <span class="ruby-comment">#m = minmax_by(meth, what)</span>
   <span class="ruby-comment">#what.is_a?(Proc) ? what[m] : m.send(what)</span>
@@ -766,7 +766,7 @@ parameter).</p>
 
           
           <div class="method-source-code" id="minmax_by-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">minmax_by</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-identifier">by</span>)
   <span class="ruby-identifier">_by</span> = <span class="ruby-identifier">by</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">by</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">by</span>) }
   <span class="ruby-identifier">send</span>(<span class="ruby-identifier">meth</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_by</span>[<span class="ruby-identifier">a</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">_by</span>[<span class="ruby-identifier">b</span>] }
@@ -814,7 +814,7 @@ href="Enumerable.html#method-i-any-3F">any?</a>.</p>
 
           
           <div class="method-source-code" id="_block_for_all_any_extended-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 58</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;both block and object argument given&#39;</span>, <span class="ruby-identifier">caller</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>

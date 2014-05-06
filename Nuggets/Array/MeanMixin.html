@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::MeanMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Array::MeanMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -165,7 +165,7 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
           
           <div class="method-source-code" id="arithmetic_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">arithmetic_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">1</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -276,7 +276,7 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
           
           <div class="method-source-code" id="generalized_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-identifier">exponent</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">geometric_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">exponent</span>.<span class="ruby-identifier">zero?</span>
 
@@ -368,7 +368,7 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
           
           <div class="method-source-code" id="geometric_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 122</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">geometric_mean</span>
   <span class="ruby-identifier">total</span>, <span class="ruby-identifier">weights</span> = <span class="ruby-value">1</span>, <span class="ruby-value">0</span>
 
@@ -458,7 +458,7 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
           
           <div class="method-source-code" id="harmonic_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">harmonic_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">-1</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -651,7 +651,7 @@ single “column”.</p>
 
           
           <div class="method-source-code" id="report_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 175</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 174</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">report_mean</span>(<span class="ruby-identifier">method</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">precision</span> = <span class="ruby-value">4</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
 
@@ -749,7 +749,7 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
           
           <div class="method-source-code" id="root_mean_square-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">root_mean_square</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">2</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>

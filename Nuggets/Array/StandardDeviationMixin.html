@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::StandardDeviationMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Array::StandardDeviationMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -125,7 +125,7 @@
 
           
           <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/standard_deviation_mixin.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/standard_deviation_mixin.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">VarianceMixin</span>
 <span class="ruby-keyword">end</span></pre>
@@ -171,7 +171,7 @@ deviation</a> of the values in <em>array</em>.</p>
 
           
           <div class="method-source-code" id="standard_deviation-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/standard_deviation_mixin.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/standard_deviation_mixin.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">standard_deviation</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-operator">::</span><span class="ruby-constant">Math</span>.<span class="ruby-identifier">sqrt</span>(<span class="ruby-identifier">variance</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
 <span class="ruby-keyword">end</span></pre>

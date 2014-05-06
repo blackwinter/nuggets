@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::HistogramMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Array::HistogramMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -194,7 +194,7 @@ returns an Array of the histogram items.</p>
 
           
           <div class="method-source-code" id="annotated_histogram-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">annotated_histogram</span>
   <span class="ruby-identifier">hist</span>, <span class="ruby-identifier">items</span> = <span class="ruby-identifier">histogram</span>, []
 
@@ -279,7 +279,7 @@ further details on the individual arguments.</p>
 
           
           <div class="method-source-code" id="formatted_histogram-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 143</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 142</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">formatted_histogram</span>(<span class="ruby-identifier">format</span> = <span class="ruby-value">:default</span>, <span class="ruby-identifier">indicator</span> = <span class="ruby-string">&#39;=&#39;</span>)
   <span class="ruby-identifier">format</span> = <span class="ruby-constant">FORMATS</span>[<span class="ruby-identifier">format</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">FORMATS</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">format</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;String expected, got #{format.class}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
@@ -346,7 +346,7 @@ value yielded to the block, to its frequency.</p>
 
           
           <div class="method-source-code" id="histogram-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">histogram</span>
   <span class="ruby-identifier">hist</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>)
   <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hist</span>[<span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
@@ -424,7 +424,7 @@ href="HistogramMixin.html#method-i-histogram">histogram</a>).</p>
 
           
           <div class="method-source-code" id="probability_mass_function-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 83</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/histogram_mixin.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">probability_mass_function</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">hist</span>, <span class="ruby-identifier">n</span> = <span class="ruby-identifier">histogram</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>), <span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span>
   <span class="ruby-identifier">hist</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hist</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">n</span> }

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Numeric - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>class Numeric - nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -254,7 +254,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="ceil_to-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 58</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ceil_to</span>(<span class="ruby-identifier">target</span>)
   <span class="ruby-identifier">to_multiple_of</span>(<span class="ruby-identifier">target</span>, <span class="ruby-value">:ceil</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -291,7 +291,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="floor_to-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">floor_to</span>(<span class="ruby-identifier">target</span>)
    <span class="ruby-identifier">to_multiple_of</span>(<span class="ruby-identifier">target</span>, <span class="ruby-value">:floor</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -327,7 +327,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="hms-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">hms</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;negative duration #{self}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
 
@@ -370,7 +370,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="limit-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/limit.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/limit.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">limit</span>(<span class="ruby-identifier">min</span>, <span class="ruby-identifier">max</span>)
   <span class="ruby-identifier">min</span>, <span class="ruby-identifier">max</span> = <span class="ruby-identifier">max</span>, <span class="ruby-identifier">min</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">max</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min</span>
 
@@ -412,7 +412,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="max-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/limit.rb, line 57</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/limit.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max</span>(<span class="ruby-identifier">max</span>)
   <span class="ruby-keyword">self</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">max</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -452,7 +452,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="min-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/limit.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/limit.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min</span>(<span class="ruby-identifier">min</span>)
   <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">min</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -489,7 +489,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="negative-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">negative?</span>
   <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -522,7 +522,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="non_negative-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">non_negative?</span>
   <span class="ruby-operator">!</span><span class="ruby-identifier">negative?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -555,7 +555,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="positive-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 30</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">positive?</span>
   <span class="ruby-keyword">self</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -591,7 +591,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="round_to-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">round_to</span>(<span class="ruby-identifier">target</span>)
    <span class="ruby-identifier">to_multiple_of</span>(<span class="ruby-identifier">target</span>, <span class="ruby-value">:round</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -683,7 +683,7 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="signum-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 46</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">signum</span>
   <span class="ruby-identifier">positive?</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">negative?</span> <span class="ruby-operator">?</span> <span class="ruby-value">-1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -737,7 +737,7 @@ value of zero are omitted.</p>
 
           
           <div class="method-source-code" id="to_hms-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 75</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hms</span>(<span class="ruby-identifier">precision</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">labels</span> = <span class="ruby-node">%w[h m s]</span>, <span class="ruby-identifier">time</span> = <span class="ruby-identifier">hms</span>)
   <span class="ruby-identifier">h</span>, <span class="ruby-identifier">m</span>, <span class="ruby-identifier">s</span> = <span class="ruby-identifier">time</span>
 
@@ -779,7 +779,7 @@ value of zero are omitted.</p>
 
           
           <div class="method-source-code" id="to_multiple_of-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/to_multiple.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_multiple_of</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">what</span> = <span class="ruby-value">:round</span>)
   <span class="ruby-identifier">target</span>.<span class="ruby-identifier">zero?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span> (<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">target</span>).<span class="ruby-identifier">send</span>(<span class="ruby-identifier">what</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">target</span>
 <span class="ruby-keyword">end</span></pre>
@@ -819,7 +819,7 @@ href="Numeric.html#method-i-to_hms">to_hms</a>. Includes time portions (cf.
 
           
           <div class="method-source-code" id="to_ymd-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 90</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_ymd</span>(<span class="ruby-identifier">include_hms</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">labels</span> = <span class="ruby-node">%w[y m d]</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">include_hms</span>
     <span class="ruby-identifier">to_hms</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">labels</span>, <span class="ruby-identifier">ymd</span>)
@@ -862,7 +862,7 @@ href="Numeric.html#method-i-to_hms">to_hms</a>. Includes time portions (cf.
 
           
           <div class="method-source-code" id="ymd-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/duration.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ymd</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;negative duration #{self}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
 

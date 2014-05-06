@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::LogParser::Rails - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::LogParser::Rails - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -145,7 +145,7 @@
 
           
           <div class="method-source-code" id="parse_line-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/log_parser/rails.rb, line 201</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser/rails.rb, line 200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">entry</span> = {})
   <span class="ruby-constant">ITEMS</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">item</span>[<span class="ruby-value">:re</span>].<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)

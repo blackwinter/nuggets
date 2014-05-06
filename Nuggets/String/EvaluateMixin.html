@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::String::EvaluateMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::String::EvaluateMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -132,7 +132,7 @@ to Kernel#eval.</p>
 
           
           <div class="method-source-code" id="evaluate-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/evaluate_mixin.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/string/evaluate_mixin.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">evaluate</span>(<span class="ruby-identifier">binding</span> = <span class="ruby-operator">::</span><span class="ruby-constant">TOPLEVEL_BINDING</span>, <span class="ruby-identifier">filename</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">lineno</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\*&quot;/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{&quot;\\&quot; * m.length}#{m}&quot;</span> }
   <span class="ruby-identifier">eval</span>(<span class="ruby-node">%Q{&quot;#{buffer}&quot;}</span>, <span class="ruby-identifier">binding</span>, <span class="ruby-identifier">filename</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">__FILE__</span>, <span class="ruby-identifier">lineno</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">__LINE__</span>)

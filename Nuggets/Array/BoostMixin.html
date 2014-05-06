@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::BoostMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Array::BoostMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -127,7 +127,7 @@
 
           
           <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">MeanMixin</span>
 <span class="ruby-keyword">end</span></pre>
@@ -205,7 +205,7 @@ href="BoostMixin.html#method-i-boost_factor">boost_factor</a>)</p>
 
           
           <div class="method-source-code" id="boost-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 72</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">boost</span>(<span class="ruby-identifier">factor</span>)
   <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> (<span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">factor</span>) }
 <span class="ruby-keyword">end</span></pre>
@@ -263,7 +263,7 @@ returned from the block given.</p>
 
           
           <div class="method-source-code" id="boost_factor-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 56</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">boost_factor</span>(<span class="ruby-identifier">other</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>.<span class="ruby-identifier">to_proc</span>
   <span class="ruby-identifier">block</span>[<span class="ruby-identifier">other</span>] <span class="ruby-operator">/</span> <span class="ruby-identifier">block</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">-</span> <span class="ruby-value">1</span>

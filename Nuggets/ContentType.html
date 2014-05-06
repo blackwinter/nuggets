@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::ContentType - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::ContentType - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../fonts.css" rel="stylesheet">
 <link href="../rdoc.css" rel="stylesheet">
@@ -131,7 +131,7 @@ installed.</p>
 
           
           <div class="method-source-code" id="of-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/content_type.rb, line 74</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/content_type.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">of</span>(<span class="ruby-identifier">path</span>)
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">content_type</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> <span class="ruby-operator">::</span><span class="ruby-constant">URI</span>.<span class="ruby-identifier">content_type</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> (
     <span class="ruby-identifier">t</span> = <span class="ruby-operator">::</span><span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>.<span class="ruby-identifier">of</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">first</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">content_type</span>

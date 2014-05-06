@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Integer - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>class Integer - nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -227,7 +227,7 @@
 
           
           <div class="method-source-code" id="factorial-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/integer/factorial.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/integer/factorial.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">factorial</span>
   (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword">self</span>).<span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">i</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -272,7 +272,7 @@ integers! This might well bring your system down to its knees… ;-)</p>
 
           
           <div class="method-source-code" id="factorial_memoized-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/integer/factorial.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/integer/factorial.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">factorial_memoized</span>
   <span class="ruby-constant">FACTORIAL</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">||=</span> (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword">self</span>).<span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-constant">FACTORIAL</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">i</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -316,7 +316,7 @@ integers! This might well bring your system down to its knees… ;-)</p>
 
           
           <div class="method-source-code" id="to_binary_s-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/integer/to_binary_s.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/integer/to_binary_s.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_binary_s</span>(<span class="ruby-identifier">length</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-node">&quot;%0#{length}d&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -352,7 +352,7 @@ integers! This might well bring your system down to its knees… ;-)</p>
 
           
           <div class="method-source-code" id="to_dotted_decimal-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/dotted_decimal.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/dotted_decimal.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_dotted_decimal</span>
   <span class="ruby-identifier">to_binary_s</span>(<span class="ruby-value">32</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&#39;a8&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">2</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;.&#39;</span>)
 <span class="ruby-keyword">end</span></pre>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::SeenMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Hash::SeenMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -142,7 +142,7 @@ key that wasn&#39;t seen before and <code>seen</code> for a key that was.</p>
 
           
           <div class="method-source-code" id="seen-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/seen_mixin.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/seen_mixin.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">seen</span>(<span class="ruby-identifier">seen</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">unseen</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">seen</span>; <span class="ruby-identifier">unseen</span> }
 <span class="ruby-keyword">end</span></pre>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Ruby - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Ruby - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../fonts.css" rel="stylesheet">
 <link href="../rdoc.css" rel="stylesheet">
@@ -206,7 +206,7 @@ module.</p>
 
           
           <div class="method-source-code" id="define_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 128</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 127</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">define_ruby_tool</span>(<span class="ruby-identifier">name</span>)
       <span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;        def #{name}
           @#{name} ||= locate_ruby_tool(&#39;#{name}&#39;)
@@ -266,7 +266,7 @@ current one to be invoked.</p>
 
           
           <div class="method-source-code" id="command_for_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 123</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">command_for_ruby_tool</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">=~</span> <span class="ruby-regexp">/ruby/</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{ruby_command} #{filename}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">filename</span>
@@ -313,7 +313,7 @@ for that.</p>
 
           
           <div class="method-source-code" id="locate_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 101</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">extensions</span> = [<span class="ruby-string">&#39;&#39;</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">&#39;EXEEXT&#39;</span>]].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>)
   <span class="ruby-comment"># Deduce Ruby&#39;s --program-prefix and --program-suffix from its install name</span>
   <span class="ruby-comment"># and transform the given input name accordingly.</span>
@@ -357,7 +357,7 @@ href="Ruby.html">Ruby</a> interpreter.</p>
 
           
           <div class="method-source-code" id="ruby_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_command</span>
   <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@ruby_command</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@ruby_command</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@ruby_command</span> = <span class="ruby-identifier">ruby_executable</span>
 <span class="ruby-keyword">end</span></pre>
@@ -393,7 +393,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="ruby_executable-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 82</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_executable</span>
   <span class="ruby-ivar">@ruby_executable</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-constant">CONFIG</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-node">%w[bindir RUBY_INSTALL_NAME EXEEXT]</span>)
@@ -429,7 +429,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="ruby_options_from_hash-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 154</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 153</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_options_from_hash</span>(<span class="ruby-identifier">hash</span>, <span class="ruby-identifier">argv</span> = [])
   <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">opt</span> = <span class="ruby-node">&quot;-#{key.to_s[0, 1]}&quot;</span>
@@ -474,7 +474,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="ruby_options_to_argv-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 146</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 145</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">ruby_command</span> = <span class="ruby-identifier">ruby_command</span>)
   <span class="ruby-identifier">argv</span> = [<span class="ruby-identifier">ruby_command</span>]
 
@@ -519,7 +519,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="executable_filename-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 198</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 197</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">executable_filename</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">filename</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">filename</span>)
@@ -553,7 +553,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="locate_ruby_tool_by_basename-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 172</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 171</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment"># On OS X we must look for Ruby binaries in /usr/bin.</span>
   <span class="ruby-comment"># RubyGems puts executables (e.g. &#39;rake&#39;) in there, not in</span>
@@ -608,7 +608,7 @@ use <a href="Ruby.html#method-i-ruby_command">#ruby_command</a> instead.</p>
 
           
           <div class="method-source-code" id="shebang_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 203</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 202</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">filename</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/\A#!\s*(\S*)/</span>

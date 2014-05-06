@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::URI::RedirectMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::URI::RedirectMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -154,7 +154,7 @@ or any connection error occurs.</p>
 
           
           <div class="method-source-code" id="follow_redirect-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>, <span class="ruby-identifier">cache</span> = <span class="ruby-constant">URI_REDIRECT_HTTP_CACHE</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
     <span class="ruby-identifier">uri</span> = <span class="ruby-operator">::</span><span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>)
@@ -220,7 +220,7 @@ more information.</p>
 
           
           <div class="method-source-code" id="get_redirect-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 95</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">path</span>) }
   <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
@@ -271,7 +271,7 @@ more information.</p>
 
           
           <div class="method-source-code" id="head_redirect-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 80</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">head_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">head</span>(<span class="ruby-identifier">path</span>) }
   <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>

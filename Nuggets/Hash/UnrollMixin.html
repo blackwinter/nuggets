@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::UnrollMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Hash::UnrollMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -159,7 +159,7 @@ for sorting before being put into the result array.</p>
 
           
           <div class="method-source-code" id="unroll-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/unroll_mixin.rb, line 58</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/unroll_mixin.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">unroll</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">value_keys</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">options</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}

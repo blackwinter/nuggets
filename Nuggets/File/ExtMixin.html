@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::File::ExtMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::File::ExtMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -134,7 +134,7 @@
 
           
           <div class="method-source-code" id="chomp_ext-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">chomp_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
   <span class="ruby-identifier">path</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">ext</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -172,7 +172,7 @@ href="ExtMixin.html#method-i-chomp_ext">chomp_ext</a>, returning
 
           
           <div class="method-source-code" id="chomp_ext-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 45</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">chomp_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
   <span class="ruby-identifier">path</span>.<span class="ruby-identifier">chomp!</span>(<span class="ruby-identifier">ext</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -211,7 +211,7 @@ file extension is not present.</p>
 
           
           <div class="method-source-code" id="set_ext-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
   <span class="ruby-identifier">chomp_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_ext</span>
 <span class="ruby-keyword">end</span></pre>
@@ -249,7 +249,7 @@ href="ExtMixin.html#method-i-set_ext">set_ext</a>, returning
 
           
           <div class="method-source-code" id="set_ext-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 82</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
   <span class="ruby-identifier">chomp_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span>); <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_ext</span>
 <span class="ruby-keyword">end</span></pre>
@@ -287,7 +287,7 @@ href="ExtMixin.html#method-i-set_ext">set_ext</a>).</p>
 
           
           <div class="method-source-code" id="sub_ext-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 54</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_ext</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
   <span class="ruby-identifier">sub_ext!</span>(<span class="ruby-identifier">_path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span>); <span class="ruby-identifier">_path</span>
 <span class="ruby-keyword">end</span></pre>
@@ -325,7 +325,7 @@ href="ExtMixin.html#method-i-sub_ext">sub_ext</a>, returning
 
           
           <div class="method-source-code" id="sub_ext-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 63</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/file/ext_mixin.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">new_ext</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>))
   <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_ext</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">chomp_ext!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">ext</span>)
 <span class="ruby-keyword">end</span></pre>

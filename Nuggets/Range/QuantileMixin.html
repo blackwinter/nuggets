@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Range::QuantileMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Range::QuantileMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -125,7 +125,7 @@
 
           
           <div class="method-source-code" id="quantile-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/range/quantile_mixin.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/range/quantile_mixin.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">quantile</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">order</span> = <span class="ruby-value">100</span>)
   <span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">order</span> <span class="ruby-operator">:</span>
     ((<span class="ruby-identifier">value</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">first</span>) <span class="ruby-operator">/</span> ((<span class="ruby-identifier">last</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">first</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">to_f</span>)).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>

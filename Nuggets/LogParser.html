@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::LogParser - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::LogParser - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../fonts.css" rel="stylesheet">
 <link href="../rdoc.css" rel="stylesheet">
@@ -141,7 +141,7 @@
 
           
           <div class="method-source-code" id="register-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 37</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">base</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">modules</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:include</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">modules</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-identifier">base</span>)
@@ -183,7 +183,7 @@
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">input</span>)
   <span class="ruby-identifier">entry</span> = {}
 
@@ -225,7 +225,7 @@
 
           
           <div class="method-source-code" id="parse_file-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">entries</span> = []; <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span> <span class="ruby-identifier">entries</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">entry</span> })
 
@@ -264,7 +264,7 @@
 
           
           <div class="method-source-code" id="parse_line-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 55</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/log_parser.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">entry</span> = {})
   <span class="ruby-comment"># Yield when entry complete. Preferrably return +entry+.</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-string">&#39;must be implemented by type&#39;</span>

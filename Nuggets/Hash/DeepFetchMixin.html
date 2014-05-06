@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::DeepFetchMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Hash::DeepFetchMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -178,7 +178,7 @@
 
           
           <div class="method-source-code" id="deep_fetch-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/deep_fetch_mixin.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/deep_fetch_mixin.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">deep_fetch</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">separator</span> = <span class="ruby-string">&#39;/&#39;</span>)
   <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">separator</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;no keys given&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">empty?</span>

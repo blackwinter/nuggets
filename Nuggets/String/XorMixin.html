@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::String::XorMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::String::XorMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -161,7 +161,7 @@
 
           
           <div class="method-source-code" id="xor-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/xor_mixin.rb, line 39</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/string/xor_mixin.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">xor</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">require_same_length</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">format</span> = <span class="ruby-string">&#39;B*&#39;</span>
   <span class="ruby-identifier">binary</span> = [<span class="ruby-keyword">self</span>, <span class="ruby-identifier">other</span>.<span class="ruby-identifier">to_s</span>].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-identifier">format</span>).<span class="ruby-identifier">first</span> }

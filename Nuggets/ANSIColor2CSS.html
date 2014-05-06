@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::ANSIColor2CSS - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::ANSIColor2CSS - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../fonts.css" rel="stylesheet">
 <link href="../rdoc.css" rel="stylesheet">
@@ -166,7 +166,7 @@
 
           
           <div class="method-source-code" id="clear-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">clear</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-constant">CLEAR</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;0&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -199,7 +199,7 @@
 
           
           <div class="method-source-code" id="convert-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">convert</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">COLOR_RE</span>) { <span class="ruby-identifier">format</span>(<span class="ruby-node">$1</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">DELIMITER</span>).<span class="ruby-identifier">uniq</span>) }
 <span class="ruby-keyword">end</span></pre>
@@ -232,7 +232,7 @@
 
           
           <div class="method-source-code" id="format-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 102</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">format</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-node">&quot;#{clear(attributes)}#{style(attributes) if attributes.any?}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -265,7 +265,7 @@
 
           
           <div class="method-source-code" id="style-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 110</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">style</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-constant">STYLE</span> <span class="ruby-operator">%</span> <span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">attributes</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;; &#39;</span>)
 <span class="ruby-keyword">end</span></pre>

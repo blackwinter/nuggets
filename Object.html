@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Object - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>class Object - nuggets Application documentation (v0.9.9)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -153,18 +153,17 @@
 
 <p>Examples:</p>
 
-<pre class="ruby"><span class="ruby-comment"># All String nuggets</span>
-<span class="ruby-constant">Nuggets</span>(:<span class="ruby-identifier">string</span>)
-<span class="ruby-constant">Nuggets</span>(<span class="ruby-constant">String</span>)
+<pre># All String nuggets
+Nuggets(:string)
+Nuggets(String)
 
-<span class="ruby-comment"># Only &#39;msub&#39; and &#39;word_wrap&#39; String nuggets</span>
-<span class="ruby-constant">Nuggets</span>(:<span class="ruby-identifier">string</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w[msub word_wrap]</span>)
+# Only &#39;msub&#39; and &#39;word_wrap&#39; String nuggets
+Nuggets(string: %w[msub word_wrap])
 
-<span class="ruby-comment"># Selected String nuggets and all Numeric nuggets</span>
-<span class="ruby-constant">Nuggets</span>(:<span class="ruby-identifier">numeric</span>, :<span class="ruby-identifier">string</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w[msub word_wrap]</span>)
+# Selected String nuggets and all Numeric nuggets
+Nuggets(:numeric, string: %w[msub word_wrap])
 
-<span class="ruby-comment"># ...you see the pattern ;-)</span>
-</pre>
+# etc.</pre>
           
           
 
@@ -172,21 +171,19 @@
           <div class="method-source-code" id="Nuggets-source">
             <pre><span class="ruby-comment"># File lib/nuggets.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Nuggets</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>)
-  <span class="ruby-identifier">loaded_nuggets</span> = []
-
-  <span class="ruby-identifier">load_nuggets</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">base</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">nuggets_by_hierarchy</span> = <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
+  <span class="ruby-identifier">loaded_nuggets</span>, <span class="ruby-identifier">load_nuggets</span> = [], <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">base</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">nuggets_by_hierarchy</span> = <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
 
     <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">nugget</span><span class="ruby-operator">|</span>
       <span class="ruby-keyword">begin</span>
-        <span class="ruby-identifier">require</span> <span class="ruby-identifier">path</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">nugget</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>)
+        <span class="ruby-identifier">require</span> <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">nugget</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>)
         <span class="ruby-identifier">loaded_nuggets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>
-      <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">LoadError</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
         <span class="ruby-comment"># if it&#39;s a directory, load anything in it</span>
         <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">dir_path</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">path</span>))
-            <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-identifier">path</span>, <span class="ruby-operator">*</span><span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>[<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir_path</span>, <span class="ruby-string">&#39;*&#39;</span>)].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-              <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;.rb&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/_mixin\.rb\z/</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">dir_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">path</span>))
+            <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-identifier">path</span>, <span class="ruby-operator">*</span><span class="ruby-constant">Dir</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir_path</span>, <span class="ruby-string">&#39;*&#39;</span>)].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+              <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;.rb&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&#39;_mixin.rb&#39;</span>)
             }.<span class="ruby-identifier">compact</span>]
             <span class="ruby-keyword">break</span>
           <span class="ruby-keyword">end</span>
@@ -195,8 +192,8 @@
     }
 
     <span class="ruby-identifier">nuggets_by_hierarchy</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hierarchy</span>, <span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">nuggets</span> = [<span class="ruby-identifier">nuggets</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
-      <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">hierarchy</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
+      <span class="ruby-identifier">nuggets</span> = [<span class="ruby-identifier">nuggets</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">hierarchy</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
     }
   }
 

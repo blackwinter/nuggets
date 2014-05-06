@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::CorrelationMixin - ruby-nuggets Application documentation (v0.9.9)</title>
+<title>module Nuggets::Array::CorrelationMixin - nuggets Application documentation (v0.9.9)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -127,7 +127,7 @@
 
           
           <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/correlation_mixin.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/correlation_mixin.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">StandardDeviationMixin</span>
 <span class="ruby-keyword">end</span></pre>
@@ -204,7 +204,7 @@ value&#39;s position (rank) in <em>array</em>.</p>
 
           
           <div class="method-source-code" id="correlation_coefficient-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/correlation_mixin.rb, line 46</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/array/correlation_mixin.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">correlation_coefficient</span>
   <span class="ruby-keyword">return</span> <span class="ruby-value">0.0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
 

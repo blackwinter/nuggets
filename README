@@ -1,42 +1,54 @@
-= ruby-nuggets - Some extensions to the Ruby programming language
+= nuggets - Extending Ruby
 
 == VERSION
 
-This documentation refers to ruby-nuggets version 0.9.9
+This documentation refers to nuggets version 0.9.9.
 
 
 == DESCRIPTION
 
-ruby-nuggets provides a collection of extensions to Ruby core classes. In
-its effort, it's similar to projects like Facets[http://facets.rubyforge.org]
+Nuggets provides a collection of extensions to Ruby classes.
+It's similar to projects like Facets[http://rubyworks.github.com/facets]
 and Extensions[http://extensions.rubyforge.org] (or even
-Labrador[http://rubyforge.org/projects/labrador/]), though not as ambitious ;-)
-This is simply where I put stuff that I need on a more or less regular basis
-or that struck me as interesting while surfing the web, reading books, or
-following discussions on ruby-talk.
+Labrador[http://labrador.rubyforge.org]).
 
-There are several ways to get at the nuggets you're interested in:
+This is simply where I put stuff that I need on a more or
+less regular basis or that struck me as interesting while
+surfing the web, reading books, or following discussions on
+ruby-talk[http://lists.ruby-lang.org/cgi-bin/mailman/listinfo/ruby-talk].
 
-  # The usual way: Just require() what you need
+There are several ways to get the extensions you're interested in:
+
+  # Either require() what you need:
   require 'nuggets/object/singleton_class'
+  require 'nuggets/string/sub_with_md'
+  require 'nuggets/string/nsub'
 
-  # The more fancy way ;-) (see the documentation of Nuggets() for more examples)
+  # Or use the helper method (see the documentation of Nuggets()
+  # for more examples):
   require 'nuggets'
-  Nuggets(:object => 'singleton_class', :string => %w[nsub sub_with_md])
+  Nuggets(object: 'singleton_class', string: %w[sub_with_md nsub])
 
-  # Finally, get everything there is...
-  require 'nuggets/all'
 
-Please be aware that some of the things herein might not work as expected or
-cause other libraries to misbehave. Use at your own risk!
+== NEW NAME
+
+This project used to be named <tt>ruby-nuggets</tt> but was renamed
+to +nuggets+ with version 1.0.0. Please update your dependencies.
+(Require paths are unchanged.)
+
+
+== DISCLAIMER
+
+Please be aware that some of the things herein might not work as
+expected or cause other libraries to misbehave. Use at your own risk!
 
 
 == LINKS
 
-Documentation:: https://blackwinter.github.io/ruby-nuggets/
-Source code::   https://github.com/blackwinter/ruby-nuggets
-RubyGem::       https://rubygems.org/gems/ruby-nuggets
-Travis CI::     https://travis-ci.org/blackwinter/ruby-nuggets
+Documentation:: https://blackwinter.github.io/nuggets/
+Source code::   https://github.com/blackwinter/nuggets
+RubyGem::       https://rubygems.org/gems/nuggets
+Travis CI::     https://travis-ci.org/blackwinter/nuggets
 
 
 == AUTHORS
@@ -48,15 +60,15 @@ Travis CI::     https://travis-ci.org/blackwinter/ruby-nuggets
 
 Copyright (C) 2007-2014 Jens Wille
 
-ruby-nuggets is free software: you can redistribute it and/or modify it under
-the terms of the GNU Affero General Public License as published by the Free
-Software Foundation, either version 3 of the License, or (at your option)
-any later version.
+nuggets is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
 
-ruby-nuggets is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
-details.
+nuggets is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+License for more details.
 
-You should have received a copy of the GNU Affero General Public License along
-with ruby-nuggets. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Affero General Public License
+along with nuggets. If not, see <http://www.gnu.org/licenses/>.

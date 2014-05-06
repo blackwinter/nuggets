@@ -2,3 +2,5 @@ doc
 doc.local
 pkg
 .gh-pages
+*.o
+*.so

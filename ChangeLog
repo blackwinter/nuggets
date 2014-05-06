@@ -1,7 +1,7 @@
 # markup: rd
 
-= Revision history for ruby-nuggets
+= Revision history for nuggets
 
-== x.y.z [yyyy-mm-dd]
+== 1.0.0 [2014-05-06]
 
-* ...
+* First release under new name. Formerly known as ruby-nuggets.

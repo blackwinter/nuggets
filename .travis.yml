@@ -23,4 +23,4 @@ script:
   rake spec
 
 install:
-  gem install --development ruby-nuggets
+  gem install --development nuggets

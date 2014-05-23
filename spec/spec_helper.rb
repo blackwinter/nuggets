@@ -24,7 +24,7 @@ RSpec.configure { |config|
 
 extend(Module.new {
   def describe_extended(mod, ext, singleton = false, &block)
-    describe(mod, 'when extended by', ext) {
+    describe(mod, "when extended by #{ext}") {
       example {
         klass = singleton ? class << mod; self; end : mod
         klass.ancestors.should include(ext)

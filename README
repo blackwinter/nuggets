@@ -45,7 +45,7 @@ expected or cause other libraries to misbehave. Use at your own risk!
 
 == LINKS
 
-Documentation:: https://blackwinter.github.io/nuggets/
+Documentation:: https://blackwinter.github.com/nuggets
 Source code::   https://github.com/blackwinter/nuggets
 RubyGem::       https://rubygems.org/gems/nuggets
 Travis CI::     https://travis-ci.org/blackwinter/nuggets

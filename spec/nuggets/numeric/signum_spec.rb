@@ -13,4 +13,15 @@ describe Numeric, 'signum' do
     example { n.sign.should == s }
   }
 
+  {
+    123   => '+',
+    -123  => '-',
+    0     => '+',
+    0.001 => '+',
+    1.23  => '+',
+    -12.3 => '-'
+  }.each { |n, s|
+    example { n.sign_s.should == s }
+  }
+
 end

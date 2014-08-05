@@ -3,7 +3,7 @@
 #                                                                             #
 # nuggets -- Extending Ruby                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -48,5 +48,12 @@ class Numeric
 
   alias_method :sign, :signum
   alias_method :sgn,  :signum
+
+  def signum_s(positive = '+', negative = '-', zero = positive)
+    positive? ? positive : negative? ? negative : zero
+  end
+
+  alias_method :sign_s, :signum_s
+  alias_method :sgn_s,  :signum_s
 
 end

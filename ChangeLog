@@ -2,6 +2,15 @@
 
 = Revision history for nuggets
 
+== 1.0.1 [2014-08-27]
+
+* Added DATA.{consume,reposition,update}.
+* Added Module#query_attr.
+* Added Module#lazy_attr.
+* Added Integer#to_roman.
+* Added Numeric#signum_s.
+* Added Array#interpolate.
+
 == 1.0.0 [2014-06-20]
 
 * First release under new name. Formerly known as ruby-nuggets.

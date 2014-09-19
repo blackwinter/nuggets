@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::IO::InteractMixin - nuggets Application documentation (v1.0.0)</title>
+<title>module Nuggets::IO::InteractMixin - nuggets Application documentation (v1.0.1)</title>
 
 <link href="../../fonts.css" rel="stylesheet">
 <link href="../../rdoc.css" rel="stylesheet">
@@ -173,83 +173,8 @@ cases an empty array is returned.</p>
           
           <div class="method-source-code" id="interact-source">
             <pre><span class="ruby-comment"># File lib/nuggets/io/interact_mixin.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">interact</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">maxlen</span> = <span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">16</span>)
-  <span class="ruby-identifier">readers</span>, <span class="ruby-identifier">writers</span> = {}, {}
-
-  <span class="ruby-identifier">output</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:&lt;&lt;</span>)
-      <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>; <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:&lt;&lt;</span>, <span class="ruby-value">:call</span>; <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
-
-    <span class="ruby-identifier">readers</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>
-  }
-
-  <span class="ruby-identifier">input</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>)
-      <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;stringio&#39;</span>
-      <span class="ruby-identifier">key</span> = <span class="ruby-operator">::</span><span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">key</span>)
-    <span class="ruby-keyword">end</span>
-
-    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:read_nonblock</span>)
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">read_nonblock</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-        <span class="ruby-identifier">read</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) <span class="ruby-keyword">or</span> <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">EOFError</span>, <span class="ruby-string">&#39;end of string reached&#39;</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
-
-    <span class="ruby-identifier">writers</span>[<span class="ruby-identifier">val</span>] = [<span class="ruby-identifier">key</span>, <span class="ruby-string">&#39;&#39;</span>]
-  }
-
-  <span class="ruby-identifier">close</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">container</span>, <span class="ruby-identifier">item</span>, <span class="ruby-identifier">read</span> = <span class="ruby-identifier">args</span>
-
-    <span class="ruby-identifier">container</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">item</span>)
-    <span class="ruby-identifier">read</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">close_read</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">close_write</span>
-  }
-
-  <span class="ruby-identifier">read</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">writer</span> = <span class="ruby-identifier">args</span>
-
-    <span class="ruby-identifier">container</span> = <span class="ruby-identifier">writer</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">writers</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">readers</span>
-    <span class="ruby-identifier">buffer</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">container</span>[<span class="ruby-identifier">reader</span>]
-
-    <span class="ruby-keyword">begin</span>
-      <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">read_nonblock</span>(<span class="ruby-identifier">maxlen</span>)
-    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EAGAIN</span>
-    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">EOFError</span>
-      <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">force_encoding</span>(
-        <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">internal_encoding</span>  <span class="ruby-operator">||</span>
-        <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">external_encoding</span>  <span class="ruby-operator">||</span>
-        <span class="ruby-constant">Encoding</span>.<span class="ruby-identifier">default_internal</span> <span class="ruby-operator">||</span>
-        <span class="ruby-constant">Encoding</span>.<span class="ruby-identifier">default_external</span>
-      ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:force_encoding</span>)
-
-      <span class="ruby-identifier">close</span>[<span class="ruby-identifier">container</span>, <span class="ruby-identifier">writer</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">reader</span>, <span class="ruby-operator">!</span><span class="ruby-identifier">writer</span>]
-    <span class="ruby-keyword">end</span>
-  }
-
-  <span class="ruby-keyword">until</span> <span class="ruby-identifier">readers</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">writers</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">fhs</span> = <span class="ruby-identifier">select</span>(<span class="ruby-identifier">readers</span>.<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">writers</span>.<span class="ruby-identifier">keys</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">timeout</span>) <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
-
-    <span class="ruby-identifier">fhs</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">reader</span><span class="ruby-operator">|</span> <span class="ruby-identifier">read</span>[<span class="ruby-identifier">reader</span>] }
-
-    <span class="ruby-identifier">fhs</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">writer</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">writers</span>[<span class="ruby-identifier">writer</span>]
-      <span class="ruby-identifier">read</span>[<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">writer</span>] <span class="ruby-keyword">or</span> <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">empty?</span>
-
-      <span class="ruby-keyword">begin</span>
-        <span class="ruby-identifier">bytes</span> = <span class="ruby-identifier">writer</span>.<span class="ruby-identifier">write_nonblock</span>(<span class="ruby-identifier">buffer</span>)
-      <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EPIPE</span>
-        <span class="ruby-identifier">close</span>[<span class="ruby-identifier">writers</span>, <span class="ruby-identifier">writer</span>]
-      <span class="ruby-keyword">end</span>
-
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">bytes</span>
-        <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&#39;BINARY&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:force_encoding</span>)
-        <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">bytes</span>)
-      <span class="ruby-keyword">end</span>
-    }
-  <span class="ruby-keyword">end</span>
-
-  []
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">interact</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">maxlen</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-constant">Interaction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span>, <span class="ruby-identifier">maxlen</span>).<span class="ruby-identifier">interact</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -269,7 +194,7 @@ cases an empty array is returned.</p>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

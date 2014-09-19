@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Table of Contents - nuggets Application documentation (v1.0.0)</title>
+<title>Table of Contents - nuggets Application documentation (v1.0.1)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
 <body id="top" class="table-of-contents">
 <main role="main">
-<h1 class="class">Table of Contents - nuggets Application documentation (v1.0.0)</h1>
+<h1 class="class">Table of Contents - nuggets Application documentation (v1.0.1)</h1>
 
 <h2 id="pages">Pages</h2>
 <ul>
@@ -39,6 +39,7 @@
 
     <ul>
       <li><a href="ChangeLog.html#label-Revision+history+for+nuggets">Revision history for nuggets</a>
+      <li><a href="ChangeLog.html#label-1.0.1+%5B2014-08-27%5D">1.0.1 [2014-08-27]</a>
       <li><a href="ChangeLog.html#label-1.0.0+%5B2014-06-20%5D">1.0.0 [2014-06-20]</a>
     </ul>
   </li>
@@ -75,6 +76,9 @@
   </li>
   <li class="class">
     <a href="Integer.html">Integer</a>
+  </li>
+  <li class="class">
+    <a href="Module.html">Module</a>
   </li>
   <li class="class">
     <a href="Net/HTTPClientError.html">Net::HTTPClientError</a>
@@ -125,6 +129,9 @@
     <a href="Nuggets/Array/HistogramMixin.html">Nuggets::Array::HistogramMixin</a>
   </li>
   <li class="module">
+    <a href="Nuggets/Array/InterpolateMixin.html">Nuggets::Array::InterpolateMixin</a>
+  </li>
+  <li class="module">
     <a href="Nuggets/Array/LimitMixin.html">Nuggets::Array::LimitMixin</a>
   </li>
   <li class="module">
@@ -156,6 +163,18 @@
   </li>
   <li class="module">
     <a href="Nuggets/ContentType.html">Nuggets::ContentType</a>
+  </li>
+  <li class="module">
+    <a href="Nuggets/Data.html">Nuggets::Data</a>
+  </li>
+  <li class="module">
+    <a href="Nuggets/Data/ConsumeMixin.html">Nuggets::Data::ConsumeMixin</a>
+  </li>
+  <li class="module">
+    <a href="Nuggets/Data/PositionMixin.html">Nuggets::Data::PositionMixin</a>
+  </li>
+  <li class="module">
+    <a href="Nuggets/Data/UpdateMixin.html">Nuggets::Data::UpdateMixin</a>
   </li>
   <li class="module">
     <a href="Nuggets/Env.html">Nuggets::Env</a>
@@ -229,6 +248,9 @@
   <li class="module">
     <a href="Nuggets/IO/InteractMixin.html">Nuggets::IO::InteractMixin</a>
   </li>
+  <li class="class">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html">Nuggets::IO::InteractMixin::Interaction</a>
+  </li>
   <li class="module">
     <a href="Nuggets/IO/NullMixin.html">Nuggets::IO::NullMixin</a>
   </li>
@@ -245,7 +267,7 @@
     <a href="Nuggets/Integer/MapMixin.html">Nuggets::Integer::MapMixin</a>
   </li>
   <li class="module">
-    <a href="Nuggets/LazyAttr.html">Nuggets::LazyAttr</a>
+    <a href="Nuggets/Integer/RomanMixin.html">Nuggets::Integer::RomanMixin</a>
   </li>
   <li class="module">
     <a href="Nuggets/LogParser.html">Nuggets::LogParser</a>
@@ -257,6 +279,15 @@
     <a href="Nuggets/LogParser/Rails.html">Nuggets::LogParser::Rails</a>
   </li>
   <li class="class">
+    <a href="Nuggets/Module.html">Nuggets::Module</a>
+  </li>
+  <li class="module">
+    <a href="Nuggets/Module/LazyAttrMixin.html">Nuggets::Module::LazyAttrMixin</a>
+  </li>
+  <li class="module">
+    <a href="Nuggets/Module/QueryAttrMixin.html">Nuggets::Module::QueryAttrMixin</a>
+  </li>
+  <li class="class">
     <a href="Nuggets/Object.html">Nuggets::Object</a>
   </li>
   <li class="module">
@@ -264,6 +295,9 @@
   </li>
   <li class="module">
     <a href="Nuggets/Object/BooleanMixin.html">Nuggets::Object::BooleanMixin</a>
+  </li>
+  <li class="module">
+    <a href="Nuggets/Object/LazyAttrMixin.html">Nuggets::Object::LazyAttrMixin</a>
   </li>
   <li class="module">
     <a href="Nuggets/Object/MSendMixin.html">Nuggets::Object::MSendMixin</a>
@@ -364,14 +398,14 @@
     <span class="container">Nuggets::Ruby</span>
 
   <li class="method">
-    <a href="Nuggets/URI/ContentTypeMixin.html#method-c-extended">::extended</a>
-    &mdash;
-    <span class="container">Nuggets::URI::ContentTypeMixin</span>
-
-  <li class="method">
     <a href="Nuggets/File/SubMixin.html#method-c-extended">::extended</a>
     &mdash;
     <span class="container">Nuggets::File::SubMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/URI/ContentTypeMixin.html#method-c-extended">::extended</a>
+    &mdash;
+    <span class="container">Nuggets::URI::ContentTypeMixin</span>
 
   <li class="method">
     <a href="Nuggets/URI/ExistMixin.html#method-c-extended">::extended</a>
@@ -379,19 +413,14 @@
     <span class="container">Nuggets::URI::ExistMixin</span>
 
   <li class="method">
+    <a href="Nuggets/Data/PositionMixin.html#method-c-extended">::extended</a>
+    &mdash;
+    <span class="container">Nuggets::Data::PositionMixin</span>
+
+  <li class="method">
     <a href="String.html#method-c-gimme_match_data-21">::gimme_match_data!</a>
     &mdash;
     <span class="container">String</span>
-
-  <li class="method">
-    <a href="Nuggets/Array/StandardDeviationMixin.html#method-c-included">::included</a>
-    &mdash;
-    <span class="container">Nuggets::Array::StandardDeviationMixin</span>
-
-  <li class="method">
-    <a href="Nuggets/Array/CorrelationMixin.html#method-c-included">::included</a>
-    &mdash;
-    <span class="container">Nuggets::Array::CorrelationMixin</span>
 
   <li class="method">
     <a href="Nuggets/Array/BoostMixin.html#method-c-included">::included</a>
@@ -399,9 +428,19 @@
     <span class="container">Nuggets::Array::BoostMixin</span>
 
   <li class="method">
+    <a href="Nuggets/Array/StandardDeviationMixin.html#method-c-included">::included</a>
+    &mdash;
+    <span class="container">Nuggets::Array::StandardDeviationMixin</span>
+
+  <li class="method">
     <a href="Nuggets/Array/ModeMixin.html#method-c-included">::included</a>
     &mdash;
     <span class="container">Nuggets::Array::ModeMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Array/CorrelationMixin.html#method-c-included">::included</a>
+    &mdash;
+    <span class="container">Nuggets::Array::CorrelationMixin</span>
 
   <li class="method">
     <a href="Process.html#method-c-interact_ruby">::interact_ruby</a>
@@ -414,14 +453,19 @@
     <span class="container">Nuggets::Pluggable</span>
 
   <li class="method">
-    <a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-c-new">::new</a>
-    &mdash;
-    <span class="container">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</span>
-
-  <li class="method">
     <a href="Nuggets/Hash/ZipMixin/ZipVal.html#method-c-new">::new</a>
     &mdash;
     <span class="container">Nuggets::Hash::ZipMixin::ZipVal</span>
+
+  <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
+
+  <li class="method">
+    <a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</span>
 
   <li class="method">
     <a href="Nuggets/LogParser.html#method-c-register">::register</a>
@@ -429,24 +473,29 @@
     <span class="container">Nuggets::LogParser</span>
 
   <li class="method">
-    <a href="File.html#method-c-ruby">::ruby</a>
-    &mdash;
-    <span class="container">File</span>
-
-  <li class="method">
     <a href="Process.html#method-c-ruby">::ruby</a>
     &mdash;
     <span class="container">Process</span>
 
   <li class="method">
-    <a href="Nuggets/Hash/DeepFetchMixin.html#method-i-25">#%</a>
+    <a href="File.html#method-c-ruby">::ruby</a>
     &mdash;
-    <span class="container">Nuggets::Hash::DeepFetchMixin</span>
+    <span class="container">File</span>
+
+  <li class="method">
+    <a href="Nuggets/Integer/RomanMixin.html#method-c-to_roman">::to_roman</a>
+    &mdash;
+    <span class="container">Nuggets::Integer::RomanMixin</span>
 
   <li class="method">
     <a href="Array.html#method-i-25">#%</a>
     &mdash;
     <span class="container">Array</span>
+
+  <li class="method">
+    <a href="Nuggets/Hash/DeepFetchMixin.html#method-i-25">#%</a>
+    &mdash;
+    <span class="container">Nuggets::Hash::DeepFetchMixin</span>
 
   <li class="method">
     <a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-3C-3C">#&lt;&lt;</a>
@@ -469,14 +518,14 @@
     <span class="container">Object</span>
 
   <li class="method">
-    <a href="Nuggets/Hash/ZipMixin/ZipHash.html#method-i-5B-5D">#[]</a>
-    &mdash;
-    <span class="container">Nuggets::Hash::ZipMixin::ZipHash</span>
-
-  <li class="method">
     <a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-5B-5D">#[]</a>
     &mdash;
     <span class="container">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</span>
+
+  <li class="method">
+    <a href="Nuggets/Hash/ZipMixin/ZipHash.html#method-i-5B-5D">#[]</a>
+    &mdash;
+    <span class="container">Nuggets::Hash::ZipMixin::ZipHash</span>
 
   <li class="method">
     <a href="Nuggets/Hash/ZipMixin/ZipHash.html#method-i-5B-5D-3D">#[]=</a>
@@ -629,14 +678,14 @@
     <span class="container">Nuggets::Array::MeanMixin</span>
 
   <li class="method">
-    <a href="Numeric.html#method-i-between">#between</a>
-    &mdash;
-    <span class="container">Numeric</span>
-
-  <li class="method">
     <a href="Nuggets/Array/LimitMixin.html#method-i-between">#between</a>
     &mdash;
     <span class="container">Nuggets::Array::LimitMixin</span>
+
+  <li class="method">
+    <a href="Numeric.html#method-i-between">#between</a>
+    &mdash;
+    <span class="container">Numeric</span>
 
   <li class="method">
     <a href="Nuggets/Proc/BindMixin.html#method-i-bind">#bind</a>
@@ -749,6 +798,11 @@
     <span class="container">Nuggets::ANSIColor2CSS</span>
 
   <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-i-close">#close</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
+
+  <li class="method">
     <a href="Array.html#method-i-comb">#comb</a>
     &mdash;
     <span class="container">Array</span>
@@ -762,6 +816,11 @@
     <a href="Nuggets/String/CamelscoreMixin.html#method-i-constantize">#constantize</a>
     &mdash;
     <span class="container">Nuggets::String::CamelscoreMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Data/ConsumeMixin.html#method-i-consume">#consume</a>
+    &mdash;
+    <span class="container">Nuggets::Data::ConsumeMixin</span>
 
   <li class="method">
     <a href="Nuggets/URI/ContentTypeMixin.html#method-i-content_type">#content_type</a>
@@ -1024,6 +1083,16 @@
     <span class="container">String</span>
 
   <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-i-handle_readers">#handle_readers</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
+
+  <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-i-handle_writers">#handle_writers</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
+
+  <li class="method">
     <a href="Nuggets/Array/MeanMixin.html#method-i-harmean">#harmean</a>
     &mdash;
     <span class="container">Nuggets::Array::MeanMixin</span>
@@ -1064,14 +1133,14 @@
     <span class="container">Nuggets::Hash::IDMapMixin</span>
 
   <li class="method">
-    <a href="Array.html#method-i-in_order">#in_order</a>
-    &mdash;
-    <span class="container">Array</span>
-
-  <li class="method">
     <a href="Hash.html#method-i-in_order">#in_order</a>
     &mdash;
     <span class="container">Hash</span>
+
+  <li class="method">
+    <a href="Array.html#method-i-in_order">#in_order</a>
+    &mdash;
+    <span class="container">Array</span>
 
   <li class="method">
     <a href="Array.html#method-i-in_order-21">#in_order!</a>
@@ -1082,6 +1151,16 @@
     <a href="Array.html#method-i-increasing-3F">#increasing?</a>
     &mdash;
     <span class="container">Array</span>
+
+  <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-i-initialize_reader">#initialize_reader</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
+
+  <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-i-initialize_writer">#initialize_writer</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
 
   <li class="method">
     <a href="Hash.html#method-i-insert">#insert</a>
@@ -1104,9 +1183,19 @@
     <span class="container">Nuggets::IO::InteractMixin</span>
 
   <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-i-interact">#interact</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
+
+  <li class="method">
     <a href="Nuggets/Array/RegressionMixin/IncrementalLinearRegression.html#method-i-intercept">#intercept</a>
     &mdash;
     <span class="container">Nuggets::Array::RegressionMixin::IncrementalLinearRegression</span>
+
+  <li class="method">
+    <a href="Nuggets/Array/InterpolateMixin.html#method-i-interpolate">#interpolate</a>
+    &mdash;
+    <span class="container">Nuggets::Array::InterpolateMixin</span>
 
   <li class="method">
     <a href="Hash.html#method-i-last">#last</a>
@@ -1114,9 +1203,29 @@
     <span class="container">Hash</span>
 
   <li class="method">
-    <a href="Nuggets/LazyAttr.html#method-i-lazy_attr">#lazy_attr</a>
+    <a href="Nuggets/Module/LazyAttrMixin.html#method-i-lazy_accessor">#lazy_accessor</a>
     &mdash;
-    <span class="container">Nuggets::LazyAttr</span>
+    <span class="container">Nuggets::Module::LazyAttrMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Object/LazyAttrMixin.html#method-i-lazy_attr">#lazy_attr</a>
+    &mdash;
+    <span class="container">Nuggets::Object::LazyAttrMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Module/LazyAttrMixin.html#method-i-lazy_attr">#lazy_attr</a>
+    &mdash;
+    <span class="container">Nuggets::Module::LazyAttrMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Module/LazyAttrMixin.html#method-i-lazy_name">#lazy_name</a>
+    &mdash;
+    <span class="container">Nuggets::Module::LazyAttrMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Module/LazyAttrMixin.html#method-i-lazy_reader">#lazy_reader</a>
+    &mdash;
+    <span class="container">Nuggets::Module::LazyAttrMixin</span>
 
   <li class="method">
     <a href="Nuggets/Integer/LengthMixin.html#method-i-length">#length</a>
@@ -1124,14 +1233,14 @@
     <span class="container">Nuggets::Integer::LengthMixin</span>
 
   <li class="method">
-    <a href="Nuggets/Array/LimitMixin.html#method-i-limit">#limit</a>
-    &mdash;
-    <span class="container">Nuggets::Array::LimitMixin</span>
-
-  <li class="method">
     <a href="Numeric.html#method-i-limit">#limit</a>
     &mdash;
     <span class="container">Numeric</span>
+
+  <li class="method">
+    <a href="Nuggets/Array/LimitMixin.html#method-i-limit">#limit</a>
+    &mdash;
+    <span class="container">Nuggets::Array::LimitMixin</span>
 
   <li class="method">
     <a href="Nuggets/String/WcMixin.html#method-i-line_count">#line_count</a>
@@ -1264,14 +1373,14 @@
     <span class="container">Nuggets::Object::SingletonClassMixin</span>
 
   <li class="method">
-    <a href="Enumerable.html#method-i-min">#min</a>
-    &mdash;
-    <span class="container">Enumerable</span>
-
-  <li class="method">
     <a href="Numeric.html#method-i-min">#min</a>
     &mdash;
     <span class="container">Numeric</span>
+
+  <li class="method">
+    <a href="Enumerable.html#method-i-min">#min</a>
+    &mdash;
+    <span class="container">Enumerable</span>
 
   <li class="method">
     <a href="Enumerable.html#method-i-min_by">#min_by</a>
@@ -1374,14 +1483,14 @@
     <span class="container">Nuggets::ContentType</span>
 
   <li class="method">
-    <a href="Hash.html#method-i-only">#only</a>
-    &mdash;
-    <span class="container">Hash</span>
-
-  <li class="method">
     <a href="Array.html#method-i-only">#only</a>
     &mdash;
     <span class="container">Array</span>
+
+  <li class="method">
+    <a href="Hash.html#method-i-only">#only</a>
+    &mdash;
+    <span class="container">Hash</span>
 
   <li class="method">
     <a href="Hash.html#method-i-only_pair">#only_pair</a>
@@ -1424,11 +1533,6 @@
     <span class="container">Nuggets::LogParser::Apache</span>
 
   <li class="method">
-    <a href="Nuggets/LogParser.html#method-i-parse_line">#parse_line</a>
-    &mdash;
-    <span class="container">Nuggets::LogParser</span>
-
-  <li class="method">
     <a href="Nuggets/LogParser/Apache.html#method-i-parse_line">#parse_line</a>
     &mdash;
     <span class="container">Nuggets::LogParser::Apache</span>
@@ -1437,6 +1541,11 @@
     <a href="Nuggets/LogParser/Rails.html#method-i-parse_line">#parse_line</a>
     &mdash;
     <span class="container">Nuggets::LogParser::Rails</span>
+
+  <li class="method">
+    <a href="Nuggets/LogParser.html#method-i-parse_line">#parse_line</a>
+    &mdash;
+    <span class="container">Nuggets::LogParser</span>
 
   <li class="method">
     <a href="Nuggets/Pluggable.html#method-i-plugin_filename">#plugin_filename</a>
@@ -1484,6 +1593,21 @@
     <span class="container">Nuggets::Range::QuantileMixin</span>
 
   <li class="method">
+    <a href="Nuggets/Module/QueryAttrMixin.html#method-i-query_accessor">#query_accessor</a>
+    &mdash;
+    <span class="container">Nuggets::Module::QueryAttrMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Module/QueryAttrMixin.html#method-i-query_attr">#query_attr</a>
+    &mdash;
+    <span class="container">Nuggets::Module::QueryAttrMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Module/QueryAttrMixin.html#method-i-query_reader">#query_reader</a>
+    &mdash;
+    <span class="container">Nuggets::Module::QueryAttrMixin</span>
+
+  <li class="method">
     <a href="Hash.html#method-i-rand">#rand</a>
     &mdash;
     <span class="container">Hash</span>
@@ -1497,6 +1621,11 @@
     <a href="IO.html#method-i-read">#read</a>
     &mdash;
     <span class="container">IO</span>
+
+  <li class="method">
+    <a href="Nuggets/IO/InteractMixin/Interaction.html#method-i-read">#read</a>
+    &mdash;
+    <span class="container">Nuggets::IO::InteractMixin::Interaction</span>
 
   <li class="method">
     <a href="IO.html#method-i-read_write">#read_write</a>
@@ -1532,6 +1661,11 @@
     <a href="Nuggets/Array/MeanMixin.html#method-i-report_mean">#report_mean</a>
     &mdash;
     <span class="container">Nuggets::Array::MeanMixin</span>
+
+  <li class="method">
+    <a href="Nuggets/Data/PositionMixin.html#method-i-reposition">#reposition</a>
+    &mdash;
+    <span class="container">Nuggets::Data::PositionMixin</span>
 
   <li class="method">
     <a href="Nuggets/Array/MeanMixin.html#method-i-rms">#rms</a>
@@ -1604,6 +1738,11 @@
     <span class="container">Numeric</span>
 
   <li class="method">
+    <a href="Numeric.html#method-i-sgn_s">#sgn_s</a>
+    &mdash;
+    <span class="container">Numeric</span>
+
+  <li class="method">
     <a href="Nuggets/Ruby.html#method-i-shebang_command">#shebang_command</a>
     &mdash;
     <span class="container">Nuggets::Ruby</span>
@@ -1644,7 +1783,17 @@
     <span class="container">Numeric</span>
 
   <li class="method">
+    <a href="Numeric.html#method-i-sign_s">#sign_s</a>
+    &mdash;
+    <span class="container">Numeric</span>
+
+  <li class="method">
     <a href="Numeric.html#method-i-signum">#signum</a>
+    &mdash;
+    <span class="container">Numeric</span>
+
+  <li class="method">
+    <a href="Numeric.html#method-i-signum_s">#signum_s</a>
     &mdash;
     <span class="container">Numeric</span>
 
@@ -1754,14 +1903,19 @@
     <span class="container">String</span>
 
   <li class="method">
-    <a href="Net/HTTPRedirection.html#method-i-success-3F">#success?</a>
-    &mdash;
-    <span class="container">Net::HTTPRedirection</span>
-
-  <li class="method">
     <a href="Net/HTTPMultipleChoice.html#method-i-success-3F">#success?</a>
     &mdash;
     <span class="container">Net::HTTPMultipleChoice</span>
+
+  <li class="method">
+    <a href="Net/HTTPResponse.html#method-i-success-3F">#success?</a>
+    &mdash;
+    <span class="container">Net::HTTPResponse</span>
+
+  <li class="method">
+    <a href="Net/HTTPRedirection.html#method-i-success-3F">#success?</a>
+    &mdash;
+    <span class="container">Net::HTTPRedirection</span>
 
   <li class="method">
     <a href="Net/HTTPSuccess.html#method-i-success-3F">#success?</a>
@@ -1772,11 +1926,6 @@
     <a href="Net/HTTPClientError.html#method-i-success-3F">#success?</a>
     &mdash;
     <span class="container">Net::HTTPClientError</span>
-
-  <li class="method">
-    <a href="Net/HTTPResponse.html#method-i-success-3F">#success?</a>
-    &mdash;
-    <span class="container">Net::HTTPResponse</span>
 
   <li class="method">
     <a href="Net/HTTPServerError.html#method-i-success-3F">#success?</a>
@@ -1837,6 +1986,11 @@
     <a href="Numeric.html#method-i-to_multiple_of">#to_multiple_of</a>
     &mdash;
     <span class="container">Numeric</span>
+
+  <li class="method">
+    <a href="Nuggets/Integer/RomanMixin.html#method-i-to_roman">#to_roman</a>
+    &mdash;
+    <span class="container">Nuggets::Integer::RomanMixin</span>
 
   <li class="method">
     <a href="Nuggets/Hash/ZipMixin/ZipVal.html#method-i-to_s">#to_s</a>
@@ -1909,19 +2063,24 @@
     <span class="container">Nuggets::Hash::ZipMixin::ZipValHash</span>
 
   <li class="method">
-    <a href="Nuggets/Hash/ZipMixin/ZipKeyHash.html#method-i-unzipval">#unzipval</a>
-    &mdash;
-    <span class="container">Nuggets::Hash::ZipMixin::ZipKeyHash</span>
-
-  <li class="method">
     <a href="Nuggets/Hash/ZipMixin/ZipHash.html#method-i-unzipval">#unzipval</a>
     &mdash;
     <span class="container">Nuggets::Hash::ZipMixin::ZipHash</span>
 
   <li class="method">
+    <a href="Nuggets/Hash/ZipMixin/ZipKeyHash.html#method-i-unzipval">#unzipval</a>
+    &mdash;
+    <span class="container">Nuggets::Hash::ZipMixin::ZipKeyHash</span>
+
+  <li class="method">
     <a href="String.html#method-i-upcase-3F">#upcase?</a>
     &mdash;
     <span class="container">String</span>
+
+  <li class="method">
+    <a href="Nuggets/Data/UpdateMixin.html#method-i-update">#update</a>
+    &mdash;
+    <span class="container">Nuggets::Data::UpdateMixin</span>
 
   <li class="method">
     <a href="String.html#method-i-upper_case-3F">#upper_case?</a>
@@ -1939,6 +2098,11 @@
     <span class="container">Nuggets::Env::UserHomeMixin</span>
 
   <li class="method">
+    <a href="Nuggets/Hash/BlankMixin.html#method-i-vain-3F">#vain?</a>
+    &mdash;
+    <span class="container">Nuggets::Hash::BlankMixin</span>
+
+  <li class="method">
     <a href="Nuggets/Object/BlankMixin.html#method-i-vain-3F">#vain?</a>
     &mdash;
     <span class="container">Nuggets::Object::BlankMixin</span>
@@ -1947,11 +2111,6 @@
     <a href="Nuggets/Array/BlankMixin.html#method-i-vain-3F">#vain?</a>
     &mdash;
     <span class="container">Nuggets::Array::BlankMixin</span>
-
-  <li class="method">
-    <a href="Nuggets/Hash/BlankMixin.html#method-i-vain-3F">#vain?</a>
-    &mdash;
-    <span class="container">Nuggets::Hash::BlankMixin</span>
 
   <li class="method">
     <a href="Nuggets/Array/VarianceMixin.html#method-i-var">#var</a>
@@ -2118,7 +2277,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -3,7 +3,7 @@
 #                                                                             #
 # nuggets -- Extending Ruby                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -75,44 +75,84 @@ module Nuggets
   #       IO.interact({ f => stdin }, { stdout => STDOUT, stderr => STDERR })
   #     }
   #   }
-  def interact(input, output, timeout = nil, maxlen = 2 ** 16)
-    readers, writers = {}, {}
+  def interact(input, output, timeout = nil, maxlen = nil)
+    Interaction.new(input, output, timeout, maxlen).interact
+  end
 
-    output.each { |key, val|
-      if val.is_a?(::Proc) && !val.respond_to?(:<<)
-        class << val; alias_method :<<, :call; end
+  class Interaction
+
+    DEFAULT_MAXLEN = 2 ** 16
+
+    def initialize(input, output, timeout = nil, maxlen = nil)
+      @readers, @writers = {}, {}
+
+      output.each { |key, val| @readers[key] =  initialize_reader(val)      }
+      input.each  { |key, val| @writers[val] = [initialize_writer(key), ''] }
+
+      @timeout, @maxlen = timeout, maxlen || DEFAULT_MAXLEN
+    end
+
+    attr_reader :readers, :writers
+
+    attr_accessor :timeout, :maxlen
+
+    def interact
+      until readers.empty? && writers.empty?
+        handles = select(readers.keys, writers.keys, nil, timeout) or return
+
+        handle_readers(handles[0])
+        handle_writers(handles[1])
       end
 
-      readers[key] = val
-    }
+      []
+    end
 
-    input.each { |key, val|
-      if key.is_a?(::String)
+    private
+
+    def initialize_reader(reader)
+      if reader.is_a?(::Proc) && !reader.respond_to?(:<<)
+        class << reader; alias_method :<<, :call; end
+      end
+
+      reader
+    end
+
+    def initialize_writer(writer)
+      if writer.is_a?(::String)
         require 'stringio'
-        key = ::StringIO.new(key)
+        writer = ::StringIO.new(writer)
       end
 
-      unless key.respond_to?(:read_nonblock)
-        def key.read_nonblock(*args)
+      unless writer.respond_to?(:read_nonblock)
+        def writer.read_nonblock(*args)
           read(*args) or raise ::EOFError, 'end of string reached'
         end
       end
 
-      writers[val] = [key, '']
-    }
+      writer
+    end
 
-    close = lambda { |*args|
-      container, item, read = args
+    def handle_readers(handles)
+      handles.each { |reader| read(reader, readers[reader]) }
+    end
 
-      container.delete(item)
-      read ? item.close_read : item.close_write
-    }
+    def handle_writers(handles)
+      handles.each { |writer|
+        reader, buffer = writers[writer]
+        read(reader, buffer, writer) or next if buffer.empty?
 
-    read = lambda { |*args|
-      reader, buffer, writer = args
+        begin
+          bytes = writer.write_nonblock(buffer)
+        rescue ::Errno::EPIPE
+          close(writers, writer)
+        end
 
+        buffer.force_encoding('BINARY').slice!(0, bytes) if bytes
+      }
+    end
+
+    def read(reader, buffer, writer = nil)
       container = writer ? writers : readers
-      buffer ||= container[reader]
 
       begin
         buffer << reader.read_nonblock(maxlen)
@@ -125,33 +165,15 @@ module Nuggets
           Encoding.default_external
         ) if buffer.respond_to?(:force_encoding)
 
-        close[container, writer || reader, !writer]
+        close(container, writer || reader, !writer)
       end
-    }
-
-    until readers.empty? && writers.empty?
-      fhs = select(readers.keys, writers.keys, nil, timeout) or return
-
-      fhs[0].each { |reader| read[reader] }
-
-      fhs[1].each { |writer|
-        reader, buffer = writers[writer]
-        read[reader, buffer, writer] or next if buffer.empty?
-
-        begin
-          bytes = writer.write_nonblock(buffer)
-        rescue ::Errno::EPIPE
-          close[writers, writer]
-        end
-
-        if bytes
-          buffer.force_encoding('BINARY') if buffer.respond_to?(:force_encoding)
-          buffer.slice!(0, bytes)
-        end
-      }
     end
 
-    []
+    def close(container, item, reading = nil)
+      container.delete(item)
+      reading ? item.close_read : item.close_write
+    end
+
   end
 
     end

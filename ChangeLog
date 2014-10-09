@@ -2,9 +2,15 @@
 
 = Revision history for nuggets
 
+== 1.0.2 [unreleased]
+
+* Nuggets::LogParser::Rails no longer <tt>eval</tt>s the params hash; set the
+  environment variable +NUGGETS_LOG_PARSER_RAILS_EVAL_PARAMS+ to restore this
+  behaviour.
+
 == 1.0.1 [2014-08-27]
 
-* Added DATA.{consume,reposition,update}.
+* Added <tt>DATA.{consume,reposition,update}</tt>.
 * Added Module#query_attr.
 * Added Module#lazy_attr.
 * Added Integer#to_roman.

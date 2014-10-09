@@ -94,7 +94,7 @@ module Nuggets
               eval("$SAFE = 3\n#{md[3].gsub(/#<.*?>/, '%q{\&}')}", nil, __FILE__, __LINE__)  # !!!
             rescue SyntaxError, SecurityError
               {}
-            end
+            end if ENV['NUGGETS_LOG_PARSER_RAILS_EVAL_PARAMS']
           }
         }],
         [:client_info, {

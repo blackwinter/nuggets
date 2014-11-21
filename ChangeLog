@@ -7,6 +7,7 @@
 * Nuggets::LogParser::Rails no longer <tt>eval</tt>s the params hash; set the
   environment variable +NUGGETS_LOG_PARSER_RAILS_EVAL_PARAMS+ to restore this
   behaviour.
+* Added Object#rescue_if and Object#rescue_unless.
 
 == 1.0.1 [2014-08-27]
 

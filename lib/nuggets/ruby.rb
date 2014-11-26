@@ -216,20 +216,27 @@ end
 
 def File.ruby; ::Nuggets::Ruby.ruby_command; end
 
-begin
-  require 'open4'
-
+if RUBY_PLATFORM == 'java'
   def Process.ruby(*args, &block)
     argv = ::Nuggets::Ruby.ruby_options_to_argv(args)
-    ::Open4.popen4(*argv, &block)
+    ::IO.popen4(*argv, &block); $?
   end
+else
+  begin
+    require 'open4'
 
-  require 'nuggets/io/interact'
+    def Process.ruby(*args, &block)
+      argv = ::Nuggets::Ruby.ruby_options_to_argv(args)
+      ::Open4.popen4(*argv, &block)
+    end
 
-  def Process.interact_ruby(input, *args)
-    ruby(*args) { |_, i, o, e|
-      ::IO.interact({ input => i }, { o => $stdout, e => $stderr })
-    }
+    require 'nuggets/io/interact'
+
+    def Process.interact_ruby(input, *args)
+      ruby(*args) { |_, i, o, e|
+        ::IO.interact({ input => i }, { o => $stdout, e => $stderr })
+      }
+    end
+  rescue ::LoadError
   end
-rescue ::LoadError
 end

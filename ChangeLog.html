@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>ChangeLog - nuggets Application documentation (v1.0.1)</title>
+<title>ChangeLog - nuggets Application documentation (v1.1.0)</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -59,8 +59,9 @@
 
   <ul class="link-list" role="directory">
     <li><a href="#label-Revision+history+for+nuggets">Revision history for nuggets</a>
-    <li><a href="#label-1.0.1+%5B2014-08-27%5D">1.0.1 [2014-08-27]</a>
-    <li><a href="#label-1.0.0+%5B2014-06-20%5D">1.0.0 [2014-06-20]</a>
+    <li><a href="#label-1.1.0+-5B2014-11-26-5D">1.1.0 [2014-11-26]</a>
+    <li><a href="#label-1.0.1+-5B2014-08-27-5D">1.0.1 [2014-08-27]</a>
+    <li><a href="#label-1.0.0+-5B2014-06-20-5D">1.0.0 [2014-06-20]</a>
   </ul>
 </div>
 
@@ -87,9 +88,25 @@
 
 <h1 id="label-Revision+history+for+nuggets">Revision history for nuggets<span><a href="#label-Revision+history+for+nuggets">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
-<h2 id="label-1.0.1+%5B2014-08-27%5D">1.0.1 [2014-08-27]<span><a href="#label-1.0.1+%5B2014-08-27%5D">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-1.1.0+-5B2014-11-26-5D">1.1.0 [2014-11-26]<span><a href="#label-1.1.0+-5B2014-11-26-5D">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
-<p>Added DATA.{consume,reposition,update}.</p>
+<p><a href="Nuggets/LogParser/Rails.html">Nuggets::LogParser::Rails</a> no
+longer <code>eval</code>s the params hash; set the    environment variable
+<code>NUGGETS_LOG_PARSER_RAILS_EVAL_PARAMS</code> to restore this  
+behaviour.</p>
+</li><li>
+<p>Added <a
+href="Nuggets/Object/RescueIfMixin.html#method-i-rescue_if">Nuggets::Object::RescueIfMixin#rescue_if</a>
+and <a
+href="Nuggets/Object/RescueIfMixin.html#method-i-rescue_unless">Nuggets::Object::RescueIfMixin#rescue_unless</a>.</p>
+</li><li>
+<p>Added JRuby variant of <a
+href="Process.html#method-c-ruby">Process.ruby</a>.</p>
+</li></ul>
+
+<h2 id="label-1.0.1+-5B2014-08-27-5D">1.0.1 [2014-08-27]<span><a href="#label-1.0.1+-5B2014-08-27-5D">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<ul><li>
+<p>Added <code>DATA.{consume,reposition,update}</code>.</p>
 </li><li>
 <p>Added <a
 href="Nuggets/Module/QueryAttrMixin.html#method-i-query_attr">Nuggets::Module::QueryAttrMixin#query_attr</a>.</p>
@@ -106,7 +123,7 @@ href="Nuggets/Integer/RomanMixin.html#method-i-to_roman">Nuggets::Integer::Roman
 href="Nuggets/Array/InterpolateMixin.html#method-i-interpolate">Nuggets::Array::InterpolateMixin#interpolate</a>.</p>
 </li></ul>
 
-<h2 id="label-1.0.0+%5B2014-06-20%5D">1.0.0 [2014-06-20]<span><a href="#label-1.0.0+%5B2014-06-20%5D">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-1.0.0+-5B2014-06-20-5D">1.0.0 [2014-06-20]<span><a href="#label-1.0.0+-5B2014-06-20-5D">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
 <p>First release under new name. Formerly known as ruby-nuggets.</p>
 </li></ul>

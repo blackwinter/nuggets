@@ -34,7 +34,7 @@ module Nuggets
   # Rescue exceptions matching +args+, or StandardError if not given,
   # if +block+ returns true.
   def rescue_if(*args, &block)
-    raise ::LocalJumpError, 'no block given' unless block
+    raise ::ArgumentError, 'no block given' unless block
 
     args = [::StandardError] if args.empty?
 
@@ -51,7 +51,7 @@ module Nuggets
   # Rescue exceptions matching +args+, or StandardError if not given,
   # unless +block+ returns true.
   def rescue_unless(*args, &block)
-    raise ::LocalJumpError, 'no block given' unless block
+    raise ::ArgumentError, 'no block given' unless block
 
     rescue_if(*args) { |err| !block[err] }
   end

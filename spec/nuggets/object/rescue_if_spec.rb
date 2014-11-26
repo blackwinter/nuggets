@@ -11,11 +11,11 @@ describe_extended Object, Nuggets::Object::RescueIfMixin do
   }
 
   example {
-    expect { rescue_if }.to raise_error(LocalJumpError)
+    expect { rescue_if }.to raise_error(ArgumentError)
   }
 
   example {
-    expect { rescue_unless }.to raise_error(LocalJumpError)
+    expect { rescue_unless }.to raise_error(ArgumentError)
   }
 
   example {

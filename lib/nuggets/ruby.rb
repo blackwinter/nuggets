@@ -216,7 +216,7 @@ end
 
 def File.ruby; ::Nuggets::Ruby.ruby_command; end
 
-if RUBY_PLATFORM == 'java'
+if RUBY_ENGINE == 'jruby'
   def Process.ruby(*args, &block)
     argv = ::Nuggets::Ruby.ruby_options_to_argv(args)
     ::IO.popen4(*argv, &block); $?

@@ -3,7 +3,7 @@ require 'nuggets/object/singleton_class'
 describe_extended Object, Nuggets::Object::SingletonClassMixin do
 
   objects = [Class, Object.new, Class.new, 's', [1, 2], { :a => 'b' }]
-  objects.unshift(Object) unless RUBY_PLATFORM == 'java' || RUBY_ENGINE == 'rbx'
+  objects.unshift(Object) unless %w[jruby rbx].include?(RUBY_ENGINE)
 
   objects.each { |o|
     example { o.should_not be_a_singleton_class }

@@ -40,7 +40,7 @@ task 'spec:isolated' do
   }
 end
 
-if RUBY_PLATFORM == 'java'
+if RUBY_ENGINE == 'jruby'
   task spec: :enable_objspace
 
   task :enable_objspace do

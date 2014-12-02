@@ -25,7 +25,7 @@ describe_extended ENV, Nuggets::Env::UserHomeMixin, true do
     ENV.user_home.should == 'foo'
   end
 
-  unless RUBY_PLATFORM == 'java'
+  unless RUBY_ENGINE == 'jruby'
 
     example do
       ENV.clear

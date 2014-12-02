@@ -64,6 +64,8 @@ module Nuggets
 
     RUBY_ENGINE = defined?(::RUBY_ENGINE) ? ::RUBY_ENGINE : 'ruby'
 
+    RUBY_PLATFORM = ::RUBY_ENGINE == 'jruby' ? CONFIG['target_os'] : ::RUBY_PLATFORM
+
     OSX_RUBY_RE = %r{\A/System/Library/Frameworks/Ruby.framework/Versions/.*?/usr/bin/ruby\Z}
 
     # Returns correct command for invoking the current Ruby interpreter.

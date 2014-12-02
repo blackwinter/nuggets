@@ -3,7 +3,7 @@
 #                                                                             #
 # nuggets -- Extending Ruby                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -24,11 +24,13 @@
 ###############################################################################
 #++
 
+require 'nuggets/ruby_mixin'
+
 module Nuggets
   class IO
     module NullMixin
 
-      NULL = case ::RUBY_PLATFORM
+      NULL = case RubyMixin::RUBY_PLATFORM
         when /mswin|mingw/i then 'NUL'
         when /openvms/i     then 'NL:'
         when /amiga/i       then 'NIL:'

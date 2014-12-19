@@ -25,3 +25,6 @@ script:
 
 install:
   gem install --prerelease --development nuggets
+
+sudo:
+  false

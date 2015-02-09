@@ -2,6 +2,10 @@
 
 = Revision history for nuggets
 
+== 1.2.0 [unreleased]
+
+* Added Hash.deproc.
+
 == 1.1.0 [2014-11-26]
 
 * Nuggets::LogParser::Rails no longer <tt>eval</tt>s the params hash; set the

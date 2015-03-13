@@ -2,8 +2,9 @@
 
 = Revision history for nuggets
 
-== 1.2.0 [unreleased]
+== 1.2.0 [2015-03-13]
 
+* Extracted Nuggets::RubyMixin from Nuggets::Ruby.
 * Added Net::SSH::Connection::Session#exec_sudo.
 * Added Hash.deproc.
 

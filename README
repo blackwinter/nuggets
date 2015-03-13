@@ -2,7 +2,7 @@
 
 == VERSION
 
-This documentation refers to nuggets version 1.1.0.
+This documentation refers to nuggets version 1.2.0.
 
 
 == DESCRIPTION
@@ -58,7 +58,7 @@ Travis CI::     https://travis-ci.org/blackwinter/nuggets
 
 == LICENSE AND COPYRIGHT
 
-Copyright (C) 2007-2014 Jens Wille
+Copyright (C) 2007-2015 Jens Wille
 
 nuggets is free software: you can redistribute it and/or modify it
 under the terms of the GNU Affero General Public License as published by

@@ -31,13 +31,11 @@ module Nuggets
     module LazyAttrMixin
 
   def lazy_accessor(name, options = {}, &block)
-    attr_accessor(lazy_name(name, options))
-    lazy_reader(name, options, &block)
+    attr_writer(attr = lazy_name(name, options))
+    lazy_reader(name, options, attr, &block)
   end
 
-  def lazy_reader(name, options = {}, &block)
-    attr = lazy_name(name, options)
-
+  def lazy_reader(name, options = {}, attr = lazy_name(name, options), &block)
     define_method(name) { lazy_attr(attr,
       options.fetch(:freeze, true), &block) }
   end

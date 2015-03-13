@@ -4,21 +4,18 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Enumerable - nuggets Application documentation (v1.1.0)</title>
-
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
+<title>module Enumerable - nuggets Application documentation (v1.2.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="module">
@@ -66,12 +63,6 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-_block_for_all_any_extended">#_block_for_all_any_extended</a>
-    
-    <li ><a href="#method-i-_nuggets_original_all-3F">#_nuggets_original_all?</a>
-    
-    <li ><a href="#method-i-_nuggets_original_any-3F">#_nuggets_original_any?</a>
-    
     <li ><a href="#method-i-_nuggets_original_max">#_nuggets_original_max</a>
     
     <li ><a href="#method-i-_nuggets_original_max_by">#_nuggets_original_max_by</a>
@@ -85,10 +76,6 @@
     <li ><a href="#method-i-_nuggets_original_minmax_by">#_nuggets_original_minmax_by</a>
     
     <li ><a href="#method-i-agrep">#agrep</a>
-    
-    <li ><a href="#method-i-all-3F">#all?</a>
-    
-    <li ><a href="#method-i-any-3F">#any?</a>
     
     <li ><a href="#method-i-max">#max</a>
     
@@ -134,62 +121,6 @@
        <header>
          <h3>Public Instance Methods</h3>
        </header>
-
-    
-      <div id="method-i-_nuggets_original_all-3F" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">_nuggets_original_all?</span><span
-            class="method-args">(object = default = true, operator = :===, &block)</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="Enumerable.html#method-i-all-3F">all?</a>
-        </div>
-        
-      </div>
-
-    
-      <div id="method-i-_nuggets_original_any-3F" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">_nuggets_original_any?</span><span
-            class="method-args">(object = default = true, operator = :===, &block)</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="Enumerable.html#method-i-any-3F">any?</a>
-        </div>
-        
-      </div>
 
     
       <div id="method-i-_nuggets_original_max" class="method-detail method-alias">
@@ -418,104 +349,6 @@ cannot be adjusted.</p>
           
         </div>
 
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-all-3F" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            all?(obj[, operator]) &rarr; +true+ or +false+
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            all? { ... } &rarr; +true+ or +false+
-          </span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Adds the ability to pass an <code>object</code> instead of a block, which
-will then be tested against each item in <em>enum</em> according to
-<code>operator</code>, defaulting to <code>:===</code>.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="all-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 39</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">all?</span>(<span class="ruby-identifier">object</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">operator</span> = <span class="ruby-value">:===</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">_nuggets_original_all?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-        <div class="aliases">
-          Also aliased as: <a href="Enumerable.html#method-i-_nuggets_original_all-3F">_nuggets_original_all?</a>
-        </div>
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-any-3F" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            any?(obj[, operator]) &rarr; +true+ or +false+
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            any? { ... } &rarr; +true+ or +false+
-          </span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Adds the ability to pass an <code>object</code> instead of a block, which
-will then be tested against each item in <em>enum</em> according to
-<code>operator</code>, defaulting to <code>:===</code>.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="any-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 50</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">any?</span>(<span class="ruby-identifier">object</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">operator</span> = <span class="ruby-value">:===</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">_nuggets_original_any?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-        <div class="aliases">
-          Also aliased as: <a href="Enumerable.html#method-i-_nuggets_original_any-3F">_nuggets_original_any?</a>
-        </div>
         
 
         
@@ -787,61 +620,13 @@ parameter).</p>
     
     </section>
   
-     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Private Instance Methods</h3>
-       </header>
-
-    
-      <div id="method-i-_block_for_all_any_extended" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">_block_for_all_any_extended</span><span
-            class="method-args">(object, default, operator, &block)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Common argument processing for extended versions of <a
-href="Enumerable.html#method-i-all-3F">all?</a> and <a
-href="Enumerable.html#method-i-any-3F">any?</a>.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="_block_for_all_any_extended-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/all_any_extended.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">_block_for_all_any_extended</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;both block and object argument given&#39;</span>, <span class="ruby-identifier">caller</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
-    <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">operator</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) }
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">block</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-    </section>
-  
   </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

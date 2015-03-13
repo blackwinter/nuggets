@@ -4,21 +4,18 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class IO - nuggets Application documentation (v1.1.0)</title>
-
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
+<title>class IO - nuggets Application documentation (v1.2.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="class">
@@ -99,21 +96,23 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-c-_nuggets_original_read">::_nuggets_original_read</a>
+    
     <li ><a href="#method-c-agrep">::agrep</a>
     
-    <li ><a href="#method-i-append">#append</a>
+    <li ><a href="#method-c-append">::append</a>
     
-    <li ><a href="#method-i-append_read">#append_read</a>
+    <li ><a href="#method-c-append_read">::append_read</a>
     
-    <li ><a href="#method-i-open_with_mode">#open_with_mode</a>
+    <li ><a href="#method-c-open_with_mode">::open_with_mode</a>
     
-    <li ><a href="#method-i-read">#read</a>
+    <li ><a href="#method-c-read">::read</a>
     
-    <li ><a href="#method-i-read_write">#read_write</a>
+    <li ><a href="#method-c-read_write">::read_write</a>
     
-    <li ><a href="#method-i-write">#write</a>
+    <li ><a href="#method-c-write">::write</a>
     
-    <li ><a href="#method-i-write_read">#write_read</a>
+    <li ><a href="#method-c-write_read">::write_read</a>
     
   </ul>
 </div>
@@ -147,6 +146,34 @@
        <header>
          <h3>Public Class Methods</h3>
        </header>
+
+    
+      <div id="method-c-_nuggets_original_read" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">_nuggets_original_read</span><span
+            class="method-args">(name, *args)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="IO.html#method-c-read">read</a>
+        </div>
+        
+      </div>
 
     
       <div id="method-c-agrep" class="method-detail ">
@@ -192,15 +219,7 @@
       </div>
 
     
-    </section>
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-    
-      <div id="method-i-append" class="method-detail ">
+      <div id="method-c-append" class="method-detail ">
         
         
         <div class="method-heading">
@@ -243,7 +262,7 @@
       </div>
 
     
-      <div id="method-i-append_read" class="method-detail ">
+      <div id="method-c-append_read" class="method-detail ">
         
         
         <div class="method-heading">
@@ -286,7 +305,7 @@
       </div>
 
     
-      <div id="method-i-read" class="method-detail ">
+      <div id="method-c-read" class="method-detail ">
         
         
         <div class="method-heading">
@@ -310,7 +329,8 @@
         <div class="method-description">
           
           <p>Opens <code>name</code> with mode <code>r</code>. NOTE: With no associated
-block, acts like the original IO::read, not like IO::new.</p>
+block, acts like the original <a href="IO.html#method-c-read">::read</a>,
+not like IO::new.</p>
           
           
 
@@ -341,12 +361,16 @@ block, acts like the original IO::read, not like IO::new.</p>
         </div>
 
         
+        <div class="aliases">
+          Also aliased as: <a href="IO.html#method-c-_nuggets_original_read">_nuggets_original_read</a>
+        </div>
+        
 
         
       </div>
 
     
-      <div id="method-i-read_write" class="method-detail ">
+      <div id="method-c-read_write" class="method-detail ">
         
         
         <div class="method-heading">
@@ -389,7 +413,7 @@ block, acts like the original IO::read, not like IO::new.</p>
       </div>
 
     
-      <div id="method-i-write" class="method-detail ">
+      <div id="method-c-write" class="method-detail ">
         
         
         <div class="method-heading">
@@ -432,7 +456,7 @@ block, acts like the original IO::read, not like IO::new.</p>
       </div>
 
     
-      <div id="method-i-write_read" class="method-detail ">
+      <div id="method-c-write_read" class="method-detail ">
         
         
         <div class="method-heading">
@@ -477,13 +501,13 @@ block, acts like the original IO::read, not like IO::new.</p>
     
     </section>
   
-     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+     <section id="private-class-5Buntitled-5D-method-details" class="method-section">
        <header>
-         <h3>Private Instance Methods</h3>
+         <h3>Private Class Methods</h3>
        </header>
 
     
-      <div id="method-i-open_with_mode" class="method-detail ">
+      <div id="method-c-open_with_mode" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">open_with_mode</span><span
@@ -524,7 +548,7 @@ block, acts like the original IO::read, not like IO::new.</p>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

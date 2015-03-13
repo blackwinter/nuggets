@@ -4,21 +4,18 @@
 <head>
 <meta charset="UTF-8">
 
-<title>nuggets Application documentation (v1.1.0)</title>
-
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
+<title>nuggets Application documentation (v1.2.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="file">
@@ -78,6 +75,8 @@
   
     <li><a href="./Enumerable.html">Enumerable</a>
   
+    <li><a href="./File.html">File</a>
+  
     <li><a href="./Hash.html">Hash</a>
   
     <li><a href="./IO.html">IO</a>
@@ -85,6 +84,8 @@
     <li><a href="./Integer.html">Integer</a>
   
     <li><a href="./Module.html">Module</a>
+  
+    <li><a href="./Net.html">Net</a>
   
     <li><a href="./Net/HTTPClientError.html">Net::HTTPClientError</a>
   
@@ -100,11 +101,21 @@
   
     <li><a href="./Net/HTTPSuccess.html">Net::HTTPSuccess</a>
   
+    <li><a href="./Net/SSH.html">Net::SSH</a>
+  
+    <li><a href="./Net/SSH/Connection.html">Net::SSH::Connection</a>
+  
+    <li><a href="./Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a>
+  
+    <li><a href="./Nuggets.html">Nuggets</a>
+  
     <li><a href="./Nuggets/ANSIColor2CSS.html">Nuggets::ANSIColor2CSS</a>
   
     <li><a href="./Nuggets/Argv.html">Nuggets::Argv</a>
   
     <li><a href="./Nuggets/Argv/OptionMixin.html">Nuggets::Argv::OptionMixin</a>
+  
+    <li><a href="./Nuggets/Array.html">Nuggets::Array</a>
   
     <li><a href="./Nuggets/Array/BlankMixin.html">Nuggets::Array::BlankMixin</a>
   
@@ -150,6 +161,10 @@
   
     <li><a href="./Nuggets/Data/UpdateMixin.html">Nuggets::Data::UpdateMixin</a>
   
+    <li><a href="./Nuggets/Enumerable.html">Nuggets::Enumerable</a>
+  
+    <li><a href="./Nuggets/Enumerable/AllAnyExtendedMixin.html">Nuggets::Enumerable::AllAnyExtendedMixin</a>
+  
     <li><a href="./Nuggets/Env.html">Nuggets::Env</a>
   
     <li><a href="./Nuggets/Env/SetMixin.html">Nuggets::Env::SetMixin</a>
@@ -157,6 +172,8 @@
     <li><a href="./Nuggets/Env/UserEncodingMixin.html">Nuggets::Env::UserEncodingMixin</a>
   
     <li><a href="./Nuggets/Env/UserHomeMixin.html">Nuggets::Env::UserHomeMixin</a>
+  
+    <li><a href="./Nuggets/File.html">Nuggets::File</a>
   
     <li><a href="./Nuggets/File/ExtMixin.html">Nuggets::File::ExtMixin</a>
   
@@ -173,6 +190,8 @@
     <li><a href="./Nuggets/Hash/DeepFetchMixin.html">Nuggets::Hash::DeepFetchMixin</a>
   
     <li><a href="./Nuggets/Hash/DeepMergeMixin.html">Nuggets::Hash::DeepMergeMixin</a>
+  
+    <li><a href="./Nuggets/Hash/DeprocMixin.html">Nuggets::Hash::DeprocMixin</a>
   
     <li><a href="./Nuggets/Hash/IDMapMixin.html">Nuggets::Hash::IDMapMixin</a>
   
@@ -193,6 +212,8 @@
     <li><a href="./Nuggets/Hash/ZipMixin/ZipVal.html">Nuggets::Hash::ZipMixin::ZipVal</a>
   
     <li><a href="./Nuggets/Hash/ZipMixin/ZipValHash.html">Nuggets::Hash::ZipMixin::ZipValHash</a>
+  
+    <li><a href="./Nuggets/I18n.html">Nuggets::I18n</a>
   
     <li><a href="./Nuggets/IO.html">Nuggets::IO</a>
   
@@ -252,6 +273,8 @@
   
     <li><a href="./Nuggets/Ruby.html">Nuggets::Ruby</a>
   
+    <li><a href="./Nuggets/RubyMixin.html">Nuggets::RubyMixin</a>
+  
     <li><a href="./Nuggets/String.html">Nuggets::String</a>
   
     <li><a href="./Nuggets/String/CamelscoreMixin.html">Nuggets::String::CamelscoreMixin</a>
@@ -261,6 +284,8 @@
     <li><a href="./Nuggets/String/WcMixin.html">Nuggets::String::WcMixin</a>
   
     <li><a href="./Nuggets/String/XorMixin.html">Nuggets::String::XorMixin</a>
+  
+    <li><a href="./Nuggets/URI.html">Nuggets::URI</a>
   
     <li><a href="./Nuggets/URI/ContentTypeMixin.html">Nuggets::URI::ContentTypeMixin</a>
   
@@ -274,6 +299,8 @@
   
     <li><a href="./Object.html">Object</a>
   
+    <li><a href="./Nuggets/ContentType.html">Object::ContentType</a>
+  
     <li><a href="./Proc.html">Proc</a>
   
     <li><a href="./Process.html">Process</a>
@@ -281,6 +308,8 @@
     <li><a href="./Range.html">Range</a>
   
     <li><a href="./String.html">String</a>
+  
+    <li><a href="./String/Case.html">String::Case</a>
   
     <li><a href="./Tempfile.html">Tempfile</a>
   
@@ -295,16 +324,16 @@
 <main role="main">
 
 
-<h1 id="label-nuggets+-+Extending+Ruby">nuggets - Extending Ruby<span><a href="#label-nuggets+-+Extending+Ruby">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-nuggets+-+Extending+Ruby">nuggets - Extending Ruby<span><a href="#label-nuggets+-+Extending+Ruby">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<h2 id="label-VERSION">VERSION<span><a href="#label-VERSION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-VERSION">VERSION<span><a href="#label-VERSION">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>This documentation refers to nuggets version 1.1.0.</p>
+<p>This documentation refers to nuggets version 1.2.0.</p>
 
-<h2 id="label-DESCRIPTION">DESCRIPTION<span><a href="#label-DESCRIPTION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-DESCRIPTION">DESCRIPTION<span><a href="#label-DESCRIPTION">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>Nuggets provides a collection of extensions to Ruby classes. It&#39;s
-similar to projects like <a
+<p><a href="Nuggets.html">Nuggets</a> provides a collection of extensions to
+Ruby classes. It&#39;s similar to projects like <a
 href="http://rubyworks.github.com/facets">Facets</a> and <a
 href="http://extensions.rubyforge.org">Extensions</a> (or even <a
 href="http://labrador.rubyforge.org">Labrador</a>).</p>
@@ -327,18 +356,18 @@ href="http://lists.ruby-lang.org/cgi-bin/mailman/listinfo/ruby-talk">ruby-talk</
 <span class="ruby-constant">Nuggets</span>(<span class="ruby-identifier">object</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;singleton_class&#39;</span>, <span class="ruby-identifier">string</span><span class="ruby-operator">:</span> <span class="ruby-node">%w[sub_with_md nsub]</span>)
 </pre>
 
-<h2 id="label-NEW+NAME">NEW NAME<span><a href="#label-NEW+NAME">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-NEW+NAME">NEW NAME<span><a href="#label-NEW+NAME">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>This project used to be named <code>ruby-nuggets</code> but was renamed to
 <code>nuggets</code> with version 1.0.0. Please update your dependencies.
 (Require paths are unchanged.)</p>
 
-<h2 id="label-DISCLAIMER">DISCLAIMER<span><a href="#label-DISCLAIMER">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-DISCLAIMER">DISCLAIMER<span><a href="#label-DISCLAIMER">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Please be aware that some of the things herein might not work as expected
 or cause other libraries to misbehave. Use at your own risk!</p>
 
-<h2 id="label-LINKS">LINKS<span><a href="#label-LINKS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-LINKS">LINKS<span><a href="#label-LINKS">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <dl class="rdoc-list note-list"><dt>Documentation
 <dd>
 <p><a
@@ -356,15 +385,15 @@ href="https://github.com/blackwinter/nuggets">github.com/blackwinter/nuggets</a>
 href="https://travis-ci.org/blackwinter/nuggets">travis-ci.org/blackwinter/nuggets</a></p>
 </dd></dl>
 
-<h2 id="label-AUTHORS">AUTHORS<span><a href="#label-AUTHORS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-AUTHORS">AUTHORS<span><a href="#label-AUTHORS">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
 <p>Jens Wille &lt;<a
 href="mailto:jens.wille@gmail.com">jens.wille@gmail.com</a>&gt;</p>
 </li></ul>
 
-<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT<span><a href="#label-LICENSE+AND+COPYRIGHT">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT<span><a href="#label-LICENSE+AND+COPYRIGHT">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>Copyright (C) 2007-2014 Jens Wille</p>
+<p>Copyright (C) 2007-2015 Jens Wille</p>
 
 <p>nuggets is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free
@@ -385,7 +414,7 @@ href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.</p>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Enumerable - nuggets Application documentation (v1.2.0)</title>
+<title>module Enumerable - nuggets Application documentation (v1.2.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -155,7 +155,7 @@
         
         <div class="method-heading">
           <span class="method-name">_nuggets_original_max_by</span><span
-            class="method-args">(by)</span>
+            class="method-args">(by = nil, &block)</span>
           
         </div>
         
@@ -211,7 +211,7 @@
         
         <div class="method-heading">
           <span class="method-name">_nuggets_original_min_by</span><span
-            class="method-args">(by)</span>
+            class="method-args">(by = nil, &block)</span>
           
         </div>
         
@@ -239,7 +239,7 @@
         
         <div class="method-heading">
           <span class="method-name">_nuggets_original_minmax</span><span
-            class="method-args">(meth, what)</span>
+            class="method-args">(meth = nil, what = nil, &block)</span>
           
         </div>
         
@@ -267,7 +267,7 @@
         
         <div class="method-heading">
           <span class="method-name">_nuggets_original_minmax_by</span><span
-            class="method-args">(meth, by)</span>
+            class="method-args">(meth = nil, by = nil, &block)</span>
           
         </div>
         
@@ -379,7 +379,7 @@ href="Enumerable.html#method-i-max">#max</a> is called.</p>
 
           
           <div class="method-source-code" id="max-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max</span>(<span class="ruby-identifier">what</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">what</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-value">:max</span>, <span class="ruby-identifier">what</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">_nuggets_original_max</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -419,9 +419,10 @@ href="Enumerable.html#method-i-max">#max</a> is called.</p>
 
           
           <div class="method-source-code" id="max_by-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">max_by</span>(<span class="ruby-identifier">by</span>)
-  <span class="ruby-identifier">minmax_by</span>(<span class="ruby-value">:max</span>, <span class="ruby-identifier">by</span>)
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">max_by</span>(<span class="ruby-identifier">by</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">by</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">by</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Numeric</span>) <span class="ruby-operator">?</span>
+    <span class="ruby-identifier">_nuggets_original_max_by</span>(<span class="ruby-identifier">by</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">minmax_by</span>(<span class="ruby-value">:max</span>, <span class="ruby-identifier">by</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -461,7 +462,7 @@ href="Enumerable.html#method-i-min">#min</a> is called.</p>
 
           
           <div class="method-source-code" id="min-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min</span>(<span class="ruby-identifier">what</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">what</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-value">:min</span>, <span class="ruby-identifier">what</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">_nuggets_original_min</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -501,9 +502,10 @@ href="Enumerable.html#method-i-min">#min</a> is called.</p>
 
           
           <div class="method-source-code" id="min_by-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 60</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">min_by</span>(<span class="ruby-identifier">by</span>)
-  <span class="ruby-identifier">minmax_by</span>(<span class="ruby-value">:min</span>, <span class="ruby-identifier">by</span>)
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">min_by</span>(<span class="ruby-identifier">by</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">by</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">by</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Numeric</span>) <span class="ruby-operator">?</span>
+    <span class="ruby-identifier">_nuggets_original_min_by</span>(<span class="ruby-identifier">by</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">minmax_by</span>(<span class="ruby-value">:min</span>, <span class="ruby-identifier">by</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -547,8 +549,10 @@ according to <code>what</code> and returns that “what”.</p>
 
           
           <div class="method-source-code" id="minmax-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 71</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-identifier">what</span>)
+            <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">minmax</span>(<span class="ruby-identifier">meth</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">what</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">_nuggets_original_minmax</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">meth</span>
+
   <span class="ruby-comment">#m = minmax_by(meth, what)</span>
   <span class="ruby-comment">#what.is_a?(Proc) ? what[m] : m.send(what)</span>
 
@@ -600,7 +604,9 @@ parameter).</p>
           
           <div class="method-source-code" id="minmax_by-source">
             <pre><span class="ruby-comment"># File lib/nuggets/enumerable/minmax.rb, line 43</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">minmax_by</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-identifier">by</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">minmax_by</span>(<span class="ruby-identifier">meth</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">by</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">_nuggets_original_minmax_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">meth</span>
+
   <span class="ruby-identifier">_by</span> = <span class="ruby-identifier">by</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">by</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">by</span>) }
   <span class="ruby-identifier">send</span>(<span class="ruby-identifier">meth</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_by</span>[<span class="ruby-identifier">a</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">_by</span>[<span class="ruby-identifier">b</span>] }
 <span class="ruby-keyword">end</span></pre>

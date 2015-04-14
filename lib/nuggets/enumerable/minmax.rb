@@ -3,7 +3,7 @@
 #                                                                             #
 # nuggets -- Extending Ruby                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2015 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -40,7 +40,9 @@ module Enumerable
   # Finds the maximum/minimum (or whatever +meth+ is) value in _enum_ according
   # to +by+ (which may be a symbol/string that is sent to each value, or a proc
   # that receives each value as parameter).
-  def minmax_by(meth, by)
+  def minmax_by(meth = nil, by = nil, &block)
+    return _nuggets_original_minmax_by(&block) unless meth
+
     _by = by.is_a?(::Proc) ? by : lambda { |i| i.send(by) }
     send(meth) { |a, b| _by[a] <=> _by[b] }
   end
@@ -49,16 +51,18 @@ module Enumerable
   #   enum.max_by(by) => aValue
   #
   # Maximum #minmax_by.
-  def max_by(by)
-    minmax_by(:max, by)
+  def max_by(by = nil, &block)
+    by.nil? || by.is_a?(::Numeric) ?
+      _nuggets_original_max_by(by, &block) : minmax_by(:max, by)
   end
 
   # call-seq:
   #   enum.min_by(by) => aValue
   #
   # Minimum #minmax_by.
-  def min_by(by)
-    minmax_by(:min, by)
+  def min_by(by = nil, &block)
+    by.nil? || by.is_a?(::Numeric) ?
+      _nuggets_original_min_by(by, &block) : minmax_by(:min, by)
   end
 
   # call-seq:
@@ -68,7 +72,9 @@ module Enumerable
   #
   # Example:
   #   %w[a bcd ef].max(:length)  #=> 3
-  def minmax(meth, what)
+  def minmax(meth = nil, what = nil, &block)
+    return _nuggets_original_minmax(&block) unless meth
+
     #m = minmax_by(meth, what)
     #what.is_a?(Proc) ? what[m] : m.send(what)
 

@@ -99,4 +99,47 @@ describe_extended Hash, Nuggets::Hash::NestMixin, true do
     hash[:a][:b][:c].should have_key(:e)
   end
 
+  example do
+    hash = Hash.identity
+    hash.should be_an_instance_of(Hash)
+
+    hash[:a].should == :a
+    hash[:b].should == :b
+
+    hash.should == { a: :a, b: :b }
+  end
+
+  example do
+    hash = Hash.identity(2)
+    hash.should be_an_instance_of(Hash)
+
+    hash[:foo][:bar][:a].should == :a
+    hash[:foo][:bar][:b].should == :b
+
+    hash.should == { foo: { bar: { a: :a, b: :b } } }
+  end
+
+  example do
+    hash = Hash.array
+    hash.should be_an_instance_of(Hash)
+
+    hash[:a].should be_an_instance_of(Array)
+    hash[:a].push(1).push(2).should == [1, 2]
+
+    hash[:b].should be_an_instance_of(Array)
+    hash[:b].push(3).push(4).should == [3, 4]
+
+    hash.should == { a: [1, 2], b: [3, 4] }
+  end
+
+  example do
+    hash = Hash.array(2)
+    hash.should be_an_instance_of(Hash)
+
+    hash[:foo][:bar][:a].push(1).push(2).should == [1, 2]
+    hash[:foo][:bar][:b].push(3).push(4).should == [3, 4]
+
+    hash.should == { foo: { bar: { a: [1, 2], b: [3, 4] } } }
+  end
+
 end

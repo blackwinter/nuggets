@@ -2,6 +2,10 @@
 
 = Revision history for nuggets
 
+== 1.3.0 [unreleased]
+
+* Added <tt>Hash.{identity,array}</tt>.
+
 == 1.2.1 [2015-04-14]
 
 * Ruby Core compatibility for Enumerable#minmax etc. Issue #4 by @codez.
@@ -10,7 +14,7 @@
 
 * Extracted Nuggets::RubyMixin from Nuggets::Ruby.
 * Added Net::SSH::Connection::Session#exec_sudo.
-* Added Hash.deproc.
+* Added Hash#deproc.
 
 == 1.1.0 [2014-11-26]
 

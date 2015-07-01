@@ -3,7 +3,7 @@
 #                                                                             #
 # nuggets -- Extending Ruby                                                   #
 #                                                                             #
-# Copyright (C) 2007-2011 Jens Wille                                          #
+# Copyright (C) 2007-2015 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -44,7 +44,7 @@ module Nuggets
   #
   # Example:
   #
-  #   hash = Hash.nest(3)
+  #   hash = Hash.nest(2)
   #   hash[:foo][:bar][:a] = { :x => 1, :y => 2 }
   #   hash[:foo][:bar][:b] = { :x => 0, :y => 3 }
   #   hash
@@ -71,6 +71,40 @@ module Nuggets
         new { |hash, key| hash[key] = nest(depth - 1, value) }
       end
     end
+  end
+
+  # call-seq:
+  #   Hash.identity([depth]) => aHash
+  #
+  # Creates a nested hash, +depth+ levels deep, that yields the keys
+  # themselves at the last level.
+  #
+  # Example:
+  #
+  #   hash = Hash.identity(2)
+  #   hash[:foo][:bar][:a] #=> :a
+  #   hash[:foo][:bar][:b] #=> :b
+  #   hash
+  #   #=> {:foo=>{:bar=>{:a=>:a, :b=>:b}}}
+  def identity(depth = 0)
+    nest(depth) { |key| key }
+  end
+
+  # call-seq:
+  #   Hash.array([depth]) => aHash
+  #
+  # Creates a nested hash, +depth+ levels deep, that yields arrays
+  # at the last level.
+  #
+  # Example:
+  #
+  #   hash = Hash.array(2)
+  #   hash[:foo][:bar][:a] << 1 << 2
+  #   hash[:foo][:bar][:b] << 3 << 4
+  #   hash
+  #   #=> {:foo=>{:bar=>{:a=>[1, 2], :b=>[3, 4]}}}
+  def array(depth = 0)
+    nest(depth) { [] }
   end
 
     end

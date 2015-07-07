@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::NestMixin - nuggets Application documentation (v1.2.1)</title>
+<title>module Nuggets::Hash::NestMixin - nuggets Application documentation (v1.3.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -63,6 +63,10 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-array">#array</a>
+    
+    <li ><a href="#method-i-identity">#identity</a>
+    
     <li ><a href="#method-i-nest">#nest</a>
     
   </ul>
@@ -97,6 +101,98 @@
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+    
+      <div id="method-i-array" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            array([depth]) &rarr; aHash
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Creates a nested hash, <code>depth</code> levels deep, that yields arrays
+at the last level.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">array</span>(<span class="ruby-value">2</span>)
+<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">a</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">2</span>
+<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">b</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">3</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">4</span>
+<span class="ruby-identifier">hash</span>
+<span class="ruby-comment">#=&gt; {:foo=&gt;{:bar=&gt;{:a=&gt;[1, 2], :b=&gt;[3, 4]}}}</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="array-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/nest_mixin.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">array</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-identifier">nest</span>(<span class="ruby-identifier">depth</span>) { [] }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-identity" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            identity([depth]) &rarr; aHash
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Creates a nested hash, <code>depth</code> levels deep, that yields the keys
+themselves at the last level.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">identity</span>(<span class="ruby-value">2</span>)
+<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">a</span>] <span class="ruby-comment">#=&gt; :a</span>
+<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">b</span>] <span class="ruby-comment">#=&gt; :b</span>
+<span class="ruby-identifier">hash</span>
+<span class="ruby-comment">#=&gt; {:foo=&gt;{:bar=&gt;{:a=&gt;:a, :b=&gt;:b}}}</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="identity-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/hash/nest_mixin.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">identity</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-identifier">nest</span>(<span class="ruby-identifier">depth</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">key</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
 
     
       <div id="method-i-nest" class="method-detail ">
@@ -141,7 +237,7 @@ means that the default proc will be cleared.</p>
 
 <p>Example:</p>
 
-<pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">nest</span>(<span class="ruby-value">3</span>)
+<pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">nest</span>(<span class="ruby-value">2</span>)
 <span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">a</span>] = { :<span class="ruby-identifier">x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, :<span class="ruby-identifier">y</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span> }
 <span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">b</span>] = { :<span class="ruby-identifier">x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, :<span class="ruby-identifier">y</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span> }
 <span class="ruby-identifier">hash</span>

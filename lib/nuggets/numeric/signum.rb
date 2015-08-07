@@ -43,14 +43,15 @@ class Numeric
   #
   # Returns the sign of _num_.
   def signum
-    positive? ? 1 : negative? ? -1 : 0
+    # http://weblog.jamisbuck.org/2015/8/5/reducing-a-number-to-its-sign.html
+    self <=> 0
   end
 
   alias_method :sign, :signum
   alias_method :sgn,  :signum
 
   def signum_s(positive = '+', negative = '-', zero = positive)
-    positive? ? positive : negative? ? negative : zero
+    [zero, positive, negative][signum]
   end
 
   alias_method :sign_s, :signum_s

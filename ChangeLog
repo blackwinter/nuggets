@@ -2,6 +2,10 @@
 
 = Revision history for nuggets
 
+== 1.4.0 [unreleased]
+
+* Added File.open_file.
+
 == 1.3.0 [2015-07-07]
 
 * Added <tt>Hash.{identity,array}</tt>.

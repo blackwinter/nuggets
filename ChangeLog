@@ -2,7 +2,7 @@
 
 = Revision history for nuggets
 
-== 1.4.0 [unreleased]
+== 1.4.0 [2015-10-02]
 
 * Added File.open_file.
 * Added Array#extract_options.

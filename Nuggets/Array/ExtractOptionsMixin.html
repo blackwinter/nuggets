@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Range::QuantileMixin - nuggets Application documentation (v1.4.0)</title>
+<title>module Nuggets::Array::ExtractOptionsMixin - nuggets Application documentation (v1.4.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -63,7 +63,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-quantile">#quantile</a>
+    <li ><a href="#method-i-extract_options">#extract_options</a>
+    
+    <li ><a href="#method-i-extract_options-21">#extract_options!</a>
     
   </ul>
 </div>
@@ -71,9 +73,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="module-Nuggets::Range::QuantileMixin">
-  <h1 id="module-Nuggets::Range::QuantileMixin" class="module">
-    module Nuggets::Range::QuantileMixin
+<main role="main" aria-labelledby="module-Nuggets::Array::ExtractOptionsMixin">
+  <h1 id="module-Nuggets::Array::ExtractOptionsMixin" class="module">
+    module Nuggets::Array::ExtractOptionsMixin
   </h1>
 
   <section class="description">
@@ -99,12 +101,12 @@
        </header>
 
     
-      <div id="method-i-quantile" class="method-detail ">
+      <div id="method-i-extract_options" class="method-detail ">
         
         
         <div class="method-heading">
           <span class="method-callseq">
-            quantile(value[, order]) &rarr; anInteger
+            extract_options([default]) &rarr; aHash or +default+
           </span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -115,17 +117,51 @@
 
         <div class="method-description">
           
-          <p>Determines the <code>order</code>-quantile of <code>value</code> in
-<em>range</em>.</p>
+          <p>Returns options hash from <em>array</em> or <code>default</code>.</p>
           
           
 
           
-          <div class="method-source-code" id="quantile-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/range/quantile_mixin.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">quantile</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">order</span> = <span class="ruby-value">100</span>)
-  <span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">order</span> <span class="ruby-operator">:</span>
-    ((<span class="ruby-identifier">value</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">first</span>) <span class="ruby-operator">/</span> ((<span class="ruby-identifier">last</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">first</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">to_f</span>)).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+          <div class="method-source-code" id="extract_options-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/extract_options_mixin.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extract_options</span>(<span class="ruby-identifier">default</span> = {})
+  <span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">default</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-extract_options-21" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            extract_options!([default]) &rarr; aHash or +default+
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Extracts options hash from <em>array</em> or returns <code>default</code>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="extract_options-21-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/array/extract_options_mixin.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extract_options!</span>(<span class="ruby-identifier">default</span> = {})
+  <span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">default</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Numeric - nuggets Application documentation (v1.3.0)</title>
+<title>class Numeric - nuggets Application documentation (v1.4.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -744,7 +744,8 @@ to <em>num</em>.</p>
           <div class="method-source-code" id="signum-source">
             <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">signum</span>
-  <span class="ruby-identifier">positive?</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">negative?</span> <span class="ruby-operator">?</span> <span class="ruby-value">-1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+  <span class="ruby-comment"># http://weblog.jamisbuck.org/2015/8/5/reducing-a-number-to-its-sign.html</span>
+  <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -779,9 +780,9 @@ to <em>num</em>.</p>
 
           
           <div class="method-source-code" id="signum_s-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/nuggets/numeric/signum.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">signum_s</span>(<span class="ruby-identifier">positive</span> = <span class="ruby-string">&#39;+&#39;</span>, <span class="ruby-identifier">negative</span> = <span class="ruby-string">&#39;-&#39;</span>, <span class="ruby-identifier">zero</span> = <span class="ruby-identifier">positive</span>)
-  <span class="ruby-identifier">positive?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">positive</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">negative?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">negative</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">zero</span>
+  [<span class="ruby-identifier">zero</span>, <span class="ruby-identifier">positive</span>, <span class="ruby-identifier">negative</span>][<span class="ruby-identifier">signum</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
           

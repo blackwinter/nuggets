@@ -1,7 +1,7 @@
-Tue, 07 Jul 2015 13:09:23 +0200
-README	Tue, 07 Jul 2015 10:39:21 +0200
+Fri, 02 Oct 2015 12:09:31 +0200
+README	Fri, 02 Oct 2015 12:07:44 +0200
 COPYING	Wed, 18 Jun 2014 14:58:15 +0200
-ChangeLog	Tue, 07 Jul 2015 10:39:37 +0200
+ChangeLog	Fri, 02 Oct 2015 12:08:26 +0200
 lib/nuggets.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/all.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/i18n.rb	Wed, 18 Jun 2014 14:58:15 +0200
@@ -10,7 +10,7 @@ lib/nuggets/env/set.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/hash/at.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/io/null.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/net/ssh.rb	Fri, 06 Mar 2015 14:27:11 +0100
-lib/nuggets/version.rb	Tue, 07 Jul 2015 10:39:12 +0200
+lib/nuggets/version.rb	Fri, 02 Oct 2015 12:07:50 +0200
 lib/nuggets/file/ext.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/file/sub.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/hash/zip.rb	Wed, 18 Jun 2014 14:58:15 +0200
@@ -76,10 +76,11 @@ lib/nuggets/array/monotone.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/variance.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/dotted_decimal.rb	Thu, 09 Oct 2014 16:09:11 +0200
 lib/nuggets/file/ext_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/file/open_file.rb	Thu, 01 Oct 2015 13:03:31 +0200
 lib/nuggets/file/sub_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/hash/zip_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/integer/length.rb	Tue, 06 May 2014 13:22:47 +0200
-lib/nuggets/numeric/signum.rb	Tue, 24 Jun 2014 14:04:01 +0200
+lib/nuggets/numeric/signum.rb	Fri, 07 Aug 2015 14:11:39 +0200
 lib/nuggets/object/boolean.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/object/silence.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/range/quantile.rb	Tue, 06 May 2014 13:22:47 +0200
@@ -139,7 +140,7 @@ lib/nuggets/object/blank_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/object/ghost_class.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/object/msend_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/string/sub_with_md.rb	Wed, 18 Jun 2014 14:58:15 +0200
-lib/nuggets/uri/redirect_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/uri/redirect_mixin.rb	Fri, 24 Jul 2015 10:03:10 +0200
 lib/nuggets/array/hashify_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/data/position_mixin.rb	Fri, 27 Jun 2014 14:59:52 +0200
 lib/nuggets/env/user_home_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
@@ -147,11 +148,13 @@ lib/nuggets/integer/roman_mixin.rb	Tue, 02 Sep 2014 11:29:26 +0200
 lib/nuggets/integer/to_binary_s.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/numeric/to_multiple.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/variance_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/file/open_file_mixin.rb	Thu, 01 Oct 2015 13:38:17 +0200
 lib/nuggets/integer/length_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/object/boolean_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/object/silence_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/object/virtual_class.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/range/quantile_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/array/extract_options.rb	Thu, 01 Oct 2015 13:46:30 +0200
 lib/nuggets/array/histogram_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/hash/deep_fetch_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/hash/deep_merge_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
@@ -169,6 +172,7 @@ lib/nuggets/module/query_attr_mixin.rb	Tue, 16 Sep 2014 15:28:10 +0200
 lib/nuggets/string/camelscore_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/string/capitalize_first.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/standard_deviation.rb	Tue, 06 May 2014 13:22:47 +0200
+lib/nuggets/array/extract_options_mixin.rb	Fri, 02 Oct 2015 11:58:20 +0200
 lib/nuggets/enumerable/all_any_extended.rb	Wed, 26 Nov 2014 15:57:37 +0100
 lib/nuggets/object/singleton_class_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/standard_deviation_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200

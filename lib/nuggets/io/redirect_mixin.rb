@@ -3,7 +3,7 @@
 #                                                                             #
 # nuggets -- Extending Ruby                                                   #
 #                                                                             #
-# Copyright (C) 2007-2012 Jens Wille                                          #
+# Copyright (C) 2007-2016 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@gmail.com>                                       #
@@ -24,13 +24,11 @@
 ###############################################################################
 #++
 
-require 'nuggets/io/null_mixin'
-
 module Nuggets
   class IO
     module RedirectMixin
 
-  def redirect(target = NullMixin::NULL, mode = 'w')
+  def redirect(target = ::File::NULL, mode = 'w')
     unless target.is_a?(self.class)
       target = ::File.open(target, mode)
       close_target = true

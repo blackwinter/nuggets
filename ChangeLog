@@ -2,6 +2,10 @@
 
 = Revision history for nuggets
 
+== 1.5.0 [unreleased]
+
+* Dropped IO::NULL, available as File::NULL since Ruby 1.9.3.
+
 == 1.4.0 [2015-10-02]
 
 * Added File.open_file.

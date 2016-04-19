@@ -24,7 +24,8 @@ script:
   rake spec
 
 install:
-  gem install --prerelease --development nuggets
+  - gem install mime-types-data
+  - gem install --prerelease --development nuggets
 
 sudo:
   false

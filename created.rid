@@ -1,16 +1,15 @@
-Fri, 02 Oct 2015 12:09:31 +0200
-README	Fri, 02 Oct 2015 12:07:44 +0200
+Tue, 19 Apr 2016 15:21:32 +0200
+README	Tue, 19 Apr 2016 15:20:22 +0200
 COPYING	Wed, 18 Jun 2014 14:58:15 +0200
-ChangeLog	Fri, 02 Oct 2015 12:08:26 +0200
+ChangeLog	Tue, 19 Apr 2016 15:20:43 +0200
 lib/nuggets.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/all.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/i18n.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/ruby.rb	Tue, 02 Dec 2014 12:28:43 +0100
 lib/nuggets/env/set.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/hash/at.rb	Wed, 18 Jun 2014 14:58:15 +0200
-lib/nuggets/io/null.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/net/ssh.rb	Fri, 06 Mar 2015 14:27:11 +0100
-lib/nuggets/version.rb	Fri, 02 Oct 2015 12:07:50 +0200
+lib/nuggets/version.rb	Tue, 19 Apr 2016 15:20:28 +0200
 lib/nuggets/file/ext.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/file/sub.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/hash/zip.rb	Wed, 18 Jun 2014 14:58:15 +0200
@@ -51,7 +50,7 @@ lib/nuggets/net/success.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/string/case.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/string/msub.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/string/nsub.rb	Wed, 18 Jun 2014 14:58:15 +0200
-lib/nuggets/array/format.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/array/format.rb	Tue, 19 Apr 2016 14:54:25 +0200
 lib/nuggets/array/median.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/content_type.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/data/consume.rb	Fri, 27 Jun 2014 12:08:51 +0200
@@ -66,10 +65,10 @@ lib/nuggets/array/to_hash.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/data/position.rb	Fri, 27 Jun 2014 15:00:33 +0200
 lib/nuggets/env/set_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/env/user_home.rb	Tue, 06 May 2014 13:22:47 +0200
-lib/nuggets/hash/in_order.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/hash/in_order.rb	Tue, 19 Apr 2016 14:54:25 +0200
 lib/nuggets/integer/roman.rb	Tue, 26 Aug 2014 15:20:11 +0200
-lib/nuggets/io/null_mixin.rb	Tue, 02 Dec 2014 12:23:48 +0100
 lib/nuggets/numeric/limit.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/string/format.rb	Tue, 19 Apr 2016 15:19:40 +0200
 lib/nuggets/tempfile/open.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/in_order.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/monotone.rb	Wed, 18 Jun 2014 14:58:15 +0200
@@ -87,7 +86,7 @@ lib/nuggets/range/quantile.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/array/histogram.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/hash/deep_fetch.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/hash/deep_merge.rb	Tue, 06 May 2014 13:22:47 +0200
-lib/nuggets/hash/nest_mixin.rb	Wed, 01 Jul 2015 12:45:15 +0200
+lib/nuggets/hash/nest_mixin.rb	Tue, 19 Apr 2016 14:54:25 +0200
 lib/nuggets/hash/seen_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/numeric/between.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/object/uniclass.rb	Tue, 06 May 2014 13:22:47 +0200
@@ -101,12 +100,13 @@ lib/nuggets/array/regression.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/enumerable/agrep.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/file/which_mixin.rb	Mon, 09 Feb 2015 13:31:13 +0100
 lib/nuggets/hash/idmap_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
-lib/nuggets/log_parser/rails.rb	Thu, 09 Oct 2014 16:02:03 +0200
+lib/nuggets/log_parser/rails.rb	Tue, 19 Apr 2016 14:54:25 +0200
 lib/nuggets/module/lazy_attr.rb	Tue, 16 Sep 2014 15:34:53 +0200
 lib/nuggets/numeric/duration.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/object/lazy_attr.rb	Tue, 16 Sep 2014 15:00:13 +0200
 lib/nuggets/object/metaclass.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/object/rescue_if.rb	Thu, 20 Nov 2014 18:11:36 +0100
+lib/nuggets/string/highlight.rb	Tue, 19 Apr 2016 15:19:07 +0200
 lib/nuggets/string/word_wrap.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/string/xor_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/uri/content_type.rb	Tue, 06 May 2014 13:22:47 +0200
@@ -122,11 +122,11 @@ lib/nuggets/data/update_mixin.rb	Fri, 27 Jun 2014 12:09:17 +0200
 lib/nuggets/enumerable/minmax.rb	Mon, 20 Apr 2015 14:35:50 +0200
 lib/nuggets/env/user_encoding.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/hash/deproc_mixin.rb	Fri, 16 Jan 2015 16:11:53 +0100
-lib/nuggets/hash/unroll_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/hash/unroll_mixin.rb	Tue, 19 Apr 2016 14:54:25 +0200
 lib/nuggets/integer/factorial.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/integer/map_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/io/interact_mixin.rb	Wed, 26 Nov 2014 13:36:20 +0100
-lib/nuggets/io/redirect_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/io/redirect_mixin.rb	Mon, 21 Mar 2016 14:05:31 +0100
 lib/nuggets/log_parser/apache.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/module/query_attr.rb	Tue, 16 Sep 2014 15:05:54 +0200
 lib/nuggets/object/eigenclass.rb	Tue, 06 May 2014 13:22:47 +0200
@@ -147,6 +147,7 @@ lib/nuggets/env/user_home_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/integer/roman_mixin.rb	Tue, 02 Sep 2014 11:29:26 +0200
 lib/nuggets/integer/to_binary_s.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/numeric/to_multiple.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/string/format_mixin.rb	Tue, 19 Apr 2016 15:19:40 +0200
 lib/nuggets/array/variance_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/file/open_file_mixin.rb	Thu, 01 Oct 2015 13:38:17 +0200
 lib/nuggets/integer/length_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
@@ -155,7 +156,7 @@ lib/nuggets/object/silence_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/object/virtual_class.rb	Tue, 06 May 2014 13:22:47 +0200
 lib/nuggets/range/quantile_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/extract_options.rb	Thu, 01 Oct 2015 13:46:30 +0200
-lib/nuggets/array/histogram_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
+lib/nuggets/array/histogram_mixin.rb	Tue, 19 Apr 2016 14:54:25 +0200
 lib/nuggets/hash/deep_fetch_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/hash/deep_merge_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/string/evaluate_mixin.rb	Thu, 09 Oct 2014 16:12:45 +0200
@@ -164,6 +165,7 @@ lib/nuggets/module/lazy_attr_mixin.rb	Fri, 13 Mar 2015 13:46:24 +0100
 lib/nuggets/object/lazy_attr_mixin.rb	Wed, 17 Sep 2014 12:48:31 +0200
 lib/nuggets/object/rescue_if_mixin.rb	Tue, 25 Nov 2014 13:13:20 +0100
 lib/nuggets/object/singleton_class.rb	Tue, 06 May 2014 13:22:47 +0200
+lib/nuggets/string/highlight_mixin.rb	Tue, 19 Apr 2016 15:19:07 +0200
 lib/nuggets/uri/content_type_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/correlation_mixin.rb	Wed, 18 Jun 2014 14:58:15 +0200
 lib/nuggets/array/interpolate_mixin.rb	Fri, 20 Jun 2014 14:06:35 +0200

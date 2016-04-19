@@ -2,7 +2,7 @@
 
 = Revision history for nuggets
 
-== 1.5.0 [unreleased]
+== 1.5.0 [2016-04-19]
 
 * Added String#format.
 * Added String#highlight.

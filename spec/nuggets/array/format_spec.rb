@@ -3,6 +3,7 @@ require 'nuggets/array/format'
 describe Array, 'format' do
 
   def self.test_format(*f)
+    return if RUBY_ENGINE == 'jruby' && JRUBY_VERSION < '9.0'
     f.pop.each { |x, y| example { (f.dup % x).should == y } }
   end
 

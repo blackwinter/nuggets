@@ -4,6 +4,7 @@
 
 == 1.5.0 [unreleased]
 
+* Added String#format.
 * Added String#highlight.
 * Dropped IO::NULL, available as File::NULL since Ruby 1.9.3.
 

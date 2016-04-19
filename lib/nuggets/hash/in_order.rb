@@ -34,8 +34,8 @@ class Hash
   # Returns <tt>hash#to_a</tt>, in forced order (cf. Array#in_order).
   #
   # Examples:
-  #   { :a => 1, :b => 2, :c => 3 }.in_order(:b, :c)  #=> [[:b, 2], [:c, 3], [:a, 1]]
-  #   { :a => 1, :b => 2, :c => 3 }.in_order(:b, :d)  #=> [[:b, 2], [:a, 1], [:c, 3]]
+  #   { a: 1, b: 2, c: 3 }.in_order(:b, :c)  #=> [[:b, 2], [:c, 3], [:a, 1]]
+  #   { a: 1, b: 2, c: 3 }.in_order(:b, :d)  #=> [[:b, 2], [:a, 1], [:c, 3]]
   def in_order(*ordered)
     keys.in_order(*ordered).map { |key| [key, self[key]] }
   end

@@ -30,7 +30,7 @@ module Nuggets
 
   # call-seq:
   #   hash.unroll(*value_keys) => anArray
-  #   hash.unroll(*value_keys, :sort_by => ...) => anArray
+  #   hash.unroll(*value_keys, sort_by: ...) => anArray
   #   hash.unroll(*value_keys) { |value_hash| ... } => anArray
   #
   # "Unrolls" a nested hash, so that each path through _hash_ results in a
@@ -46,13 +46,13 @@ module Nuggets
   #
   # Examples:
   #
-  #   { :foo => { :bar => { :a => { :x => 1, :y => 2 }, :b => { :x => 0, :y => 3 } } } }.unroll
+  #   { foo: { bar: { a: { x: 1, y: 2 }, b: { x: 0, y: 3 } } } }.unroll
   #   #=> [[:foo, :bar, :b, 3, 0], [:foo, :bar, :a, 2, 1]]
   #
-  #   { :foo => { :bar => { :a => { :x => 1, :y => 2 }, :b => { :x => 0, :y => 3 } } } }.unroll(:sort_by => :to_s)
+  #   { foo: { bar: { a: { x: 1, y: 2 }, b: { x: 0, y: 3 } } } }.unroll(sort_by: :to_s)
   #   #=> [[:foo, :bar, :a, 1, 2], [:foo, :bar, :b, 0, 3]]
   #
-  #   { :foo => { :bar => { :a => { :x => 1, :y => 2 }, :b => { :x => 0, :y => 3 } } } }.unroll { |data| data[:x] = nil; data[:y] *= 2 }
+  #   { foo: { bar: { a: { x: 1, y: 2 }, b: { x: 0, y: 3 } } } }.unroll { |data| data[:x] = nil; data[:y] *= 2 }
   #   #=> [[:foo, :bar, :b, 6, nil], [:foo, :bar, :a, 4, nil]]
   def unroll(*value_keys, &block)
     args = value_keys.dup

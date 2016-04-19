@@ -25,7 +25,7 @@ describe_extended Hash, Nuggets::Hash::SeenMixin, true do
   end
 
   example do
-    hash = Hash.seen.update(:a => :b)
+    hash = Hash.seen.update(a: :b)
     hash.should be_an_instance_of(Hash)
 
     hash[:a].should == :b

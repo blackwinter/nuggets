@@ -45,8 +45,8 @@ module Nuggets
   # Example:
   #
   #   hash = Hash.nest(2)
-  #   hash[:foo][:bar][:a] = { :x => 1, :y => 2 }
-  #   hash[:foo][:bar][:b] = { :x => 0, :y => 3 }
+  #   hash[:foo][:bar][:a] = { x: 1, y: 2 }
+  #   hash[:foo][:bar][:b] = { x: 0, y: 3 }
   #   hash
   #   #=> {:foo=>{:bar=>{:b=>{:y=>3, :x=>0}, :a=>{:y=>2, :x=>1}}}}
   def nest(depth = 0, value = default = true)

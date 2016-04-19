@@ -2,12 +2,13 @@ require 'nuggets/object/singleton_class'
 
 describe_extended Object, Nuggets::Object::SingletonClassMixin do
 
-  objects = [Class, Object.new, Class.new, 's', [1, 2], { :a => 'b' }]
+  objects = [Class, Object.new, Class.new, 's', [1, 2], { a: 'b' }]
   objects.unshift(Object) unless %w[jruby rbx].include?(RUBY_ENGINE)
 
   objects.each { |o|
     example { o.should_not be_a_singleton_class }
-    example { lambda { o.singleton_object }.should raise_error(TypeError) }
+    example(nil, if: o != Object || RUBY_VERSION < '2.3') {
+      lambda { o.singleton_object }.should raise_error(TypeError) }
 
     s = o.singleton_class
 

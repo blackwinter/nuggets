@@ -39,10 +39,10 @@ module Nuggets
   #
   # The "numeric" variants format the item as a (decimal) number.
   FORMATS = {
-    :default         => '%-*s [%s]%*s %*d',
-    :percent         => '%-*s [%s]%*s %*d (%.2f%%)',
-    :numeric         =>  '%*d [%s]%*s %*d',
-    :numeric_percent =>  '%*d [%s]%*s %*d (%.2f%%)'
+    default:         '%-*s [%s]%*s %*d',
+    percent:         '%-*s [%s]%*s %*d (%.2f%%)',
+    numeric:          '%*d [%s]%*s %*d',
+    numeric_percent:  '%*d [%s]%*s %*d (%.2f%%)'
   }
 
   # Encapsulates a #histogram item and provides the following attributes (see

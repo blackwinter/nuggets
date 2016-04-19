@@ -54,7 +54,7 @@ describe_extended Hash, Nuggets::Hash::DeepFetchMixin do
 
   context do
 
-    let(:hash) { { :foo => { :bar => { :baz => 42 } } } }
+    let(:hash) { { foo: { bar: { baz: 42 } } } }
 
     example do
       lambda { hash.deep_fetch('foo/bar/baz') }.should raise_error(KeyError)

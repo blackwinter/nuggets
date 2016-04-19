@@ -12,12 +12,12 @@ describe_extended ENV, Nuggets::Env::SetMixin, true do
   end
 
   example do
-    ENV.with(:lang => 'C') { ENV['LANG'].should == 'C' }
+    ENV.with(lang: 'C') { ENV['LANG'].should == 'C' }
     ENV['LANG'].should == @original['LANG']
   end
 
   example do
-    ENV.set(:lang => 'C').to_hash.should == @original
+    ENV.set(lang: 'C').to_hash.should == @original
     ENV.to_hash.should == { 'LANG' => 'C' }
   end
 

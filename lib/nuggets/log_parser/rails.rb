@@ -54,7 +54,7 @@ module Nuggets
       # Log line patterns
       ITEMS = [
         [:processing, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Processing\s+
             (\w+)                #  controller
@@ -72,23 +72,23 @@ module Nuggets
               (\w+)              #  request_method
             \]
           }xo,
-          :keys => [:controller, :action, :ip, :datetime, :request_method]
+          keys: [:controller, :action, :ip, :datetime, :request_method]
         }],
         [:session_id, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Session\sID:\s+
             (\S+)                #  sid
           }xo,
-          :keys => [:sid]
+          keys: [:sid]
         }],
         [:parameters, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Parameters:\s+
             (\{.*\})             #  params
           }xo,  #}
-          :proc => lambda { |entry, md|
+          proc: lambda { |entry, md|
             entry[:params_hash] = md[3].hash
             entry[:params] = begin
               eval("$SAFE = 3\n#{md[3].gsub(/#<.*?>/, '%q{\&}')}", nil, __FILE__, __LINE__)  # !!!
@@ -98,7 +98,7 @@ module Nuggets
           }
         }],
         [:client_info, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Client\sinfo:\s+
             UA\s+=\s+
@@ -107,18 +107,18 @@ module Nuggets
             LANG\s+=\s+
             (.*)                 #  accept_language
           }xo,
-          :keys => [:user_agent, :accept_language]
+          keys: [:user_agent, :accept_language]
         }],
         [:referer, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Referer:\s+
             (.*)                 #  referer
           }xo,
-          :keys => [:referer]
+          keys: [:referer]
         }],
         [:meta, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Meta:\s+
             User\s+=\s+
@@ -127,20 +127,20 @@ module Nuggets
             Institution\s+=\s+
             (.*)                 #  institution_id
           }xo,
-          :keys => [:user_id, :institution_id]
+          keys: [:user_id, :institution_id]
         }],
         [:stats, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Stats:\s+
             (.*)                 # flags
           }xo,
-          :proc => lambda { |entry, md|
+          proc: lambda { |entry, md|
             entry[:flags] = md[3].split(SEPARATOR_RE)
           }
         }],
         [:oauth, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             OAuth:\s+
             Token\s+=\s+
@@ -152,10 +152,10 @@ module Nuggets
             Client\s+=\s+
             (.*)                 #  client_id
           }xo,
-          :keys => [:token_type, :token, :user_id, :client_id]
+          keys: [:token_type, :token, :user_id, :client_id]
         }],
         [:benchmark, {
-          :re => %r{
+          re: %r{
             #{PREFIX_RE}         #  pid, host
             Completed\sin\s+
             (\S+)                #  runtime
@@ -185,7 +185,7 @@ module Nuggets
               (.*)               #  request_uri
             \]
           }xo,
-          :keys => [:runtime, :rendering_runtime, :db_runtime, :status, :request_uri]
+          keys: [:runtime, :rendering_runtime, :db_runtime, :status, :request_uri]
         }]
       ]
 

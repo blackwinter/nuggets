@@ -2,7 +2,7 @@ require 'nuggets/hash/at'
 
 describe Hash, 'at' do
 
-  let(:h) { { :a => 1, 2 => 3, nil => nil, 'foo' => %w[b a r] } }
+  let(:h) { { a: 1, 2 => 3, nil => nil, 'foo' => %w[b a r] } }
 
   example { h.first.should == { a: 1 } }
 

@@ -40,7 +40,7 @@ class Array
   # Applies to string argument accordingly: First string in _array_ applied to
   # _str_; empty string if _str_ is empty.
   def %(args)
-    opts = { :sep => ', ' }
+    opts = { sep: ', ' }
     opts.update(pop) if last.is_a?(::Hash)
 
     default = lambda { |n| ['%s'] * n * opts[:sep] }

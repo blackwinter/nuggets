@@ -23,11 +23,11 @@ describe_extended Object, Nuggets::Object::BlankMixin do
     example { o.should be_vain }
   }
 
-  [['', [], [nil], {}], { :x => nil, :y => [], :z => { :zz => nil } }].each { |o|
+  [['', [], [nil], {}], { x: nil, y: [], z: { zz: nil } }].each { |o|
     example { o.should_not be_void }
   }
 
-  [['', [], [nil], {}], { :x => nil, :y => [], :z => { :zz => nil } }].each { |o|
+  [['', [], [nil], {}], { x: nil, y: [], z: { zz: nil } }].each { |o|
     example { o.should be_vain }
   }
 

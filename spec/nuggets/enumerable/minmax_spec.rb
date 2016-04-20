@@ -7,7 +7,7 @@ describe Enumerable, 'minmax' do
 
     e.max.should == 'quux'
     e.max_by(:length).should == 'quuux'
-    e.max(:length).should == 5
+    e.max(:length).should == 5 if RUBY_VERSION < '2.4'
   }
 
   example {
@@ -15,7 +15,7 @@ describe Enumerable, 'minmax' do
 
     e.max.should == 222
     e.max_by(b).should == 45
-    e.max(b).should == 5
+    e.max(b).should == 5 if RUBY_VERSION < '2.4'
   }
 
 end

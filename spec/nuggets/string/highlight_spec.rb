@@ -2,7 +2,7 @@ require 'nuggets/string/highlight'
 
 describe_extended String, Nuggets::String::HighlightMixin do
 
-unless RUBY_ENGINE == 'jruby' && JRUBY_VERSION < '9.0'
+unless RUBY_ENGINE == 'jruby' && JRUBY_VERSION.include?('pre')
 
   example do
     s = 'lingo go do the go go'; t = s.dup

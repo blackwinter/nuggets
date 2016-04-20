@@ -24,6 +24,7 @@ script:
   rake spec
 
 install:
+  - gem install hen
   - rake gem:dependencies:install
   - gem install --prerelease nuggets
 

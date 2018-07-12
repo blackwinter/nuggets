@@ -7,36 +7,16 @@ describe_extended ENV, Nuggets::Env::UserHomeMixin, true do
   end
 
   after do
-    ENV.clear
-    ENV.update(@old_env)
+    ENV.clear.update(@old_env)
   end
 
   example do
-    ENV.user_home.should be_an_instance_of(String)
-  end
-
-  example do
-    ENV.clear
     ENV.user_home.should be_an_instance_of(String)
   end
 
   example do
     ENV['HOME'] = 'foo'
     ENV.user_home.should == 'foo'
-  end
-
-  unless RUBY_ENGINE == 'jruby'
-
-    example do
-      ENV.clear
-      ENV.user_home('bar').should == 'bar'
-    end
-
-    example do
-      ENV.clear
-      ENV.user_home(nil).should be_nil
-    end
-
   end
 
 end

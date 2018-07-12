@@ -52,7 +52,7 @@ describe_extended JSON, Nuggets::JSON::MultiMixin, true do
     example { expect(subject.size).to eq(3) }
     example { expect(subject.keys).to eq(%w[a b a]) }
 
-    example { expect(subject['a']).to eq(1) }
+    example { expect(subject['a']).to eq(1) } unless RUBY_ENGINE == 'jruby'
     example { expect(subject['b']).to eq([42, 23]) }
 
     example { expect(multi[0]).to eq(1) }

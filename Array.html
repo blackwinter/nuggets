@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Array - nuggets Application documentation (v1.5.0)</title>
+<title>class Array - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
@@ -211,8 +212,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -266,8 +265,8 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
           
           <div class="method-source-code" id="25-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/format.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-operator">%</span>(<span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">opts</span> = { <span class="ruby-identifier">sep</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;, &#39;</span> }
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">%</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">opts</span> = { <span class="ruby-value">sep:</span> <span class="ruby-string">&#39;, &#39;</span> }
   <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">pop</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
 
   <span class="ruby-identifier">default</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> [<span class="ruby-string">&#39;%s&#39;</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:sep</span>] }
@@ -321,7 +320,7 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
           
           <div class="method-source-code" id="ascending-3F-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">ascending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ascending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">monotone?</span>(<span class="ruby-identifier">strict</span> <span class="ruby-operator">?</span> <span class="ruby-value">:&lt;</span> <span class="ruby-operator">:</span> <span class="ruby-value">:&lt;=</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -371,7 +370,7 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
           
           <div class="method-source-code" id="comb-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/combination.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">comb</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">sizes</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comb</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">sizes</span>)
   <span class="ruby-comment"># If no sizes are given, produce all!</span>
   <span class="ruby-identifier">sizes</span> = (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">size</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">reverse</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">empty?</span>
 
@@ -457,7 +456,7 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
           
           <div class="method-source-code" id="descending-3F-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 69</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">descending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">descending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">monotone?</span>(<span class="ruby-identifier">strict</span> <span class="ruby-operator">?</span> <span class="ruby-value">:&gt;</span> <span class="ruby-operator">:</span> <span class="ruby-value">:&gt;=</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -499,7 +498,7 @@ slower, of course ;-).</p>
           
           <div class="method-source-code" id="flatten_once-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/flatten_once.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">flatten_once</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">flatten_once</span>
   <span class="ruby-identifier">flat</span> = []
 
   <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
@@ -546,7 +545,7 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
           
           <div class="method-source-code" id="flatten_once-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/flatten_once.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">flatten_once!</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">flatten_once!</span>
   <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">flatten_once</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -579,8 +578,8 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
 
 <p>Examples:</p>
 
-<pre class="ruby">[:<span class="ruby-identifier">created_at</span>, :<span class="ruby-identifier">email</span>, :<span class="ruby-identifier">login</span>, :<span class="ruby-identifier">updated_at</span>].<span class="ruby-identifier">in_order</span>(:<span class="ruby-identifier">login</span>, :<span class="ruby-identifier">email</span>)    <span class="ruby-comment">#=&gt; [:login, :email, :created_at, :updated_at]</span>
-[:<span class="ruby-identifier">created_at</span>, :<span class="ruby-identifier">email</span>, :<span class="ruby-identifier">login</span>, :<span class="ruby-identifier">updated_at</span>].<span class="ruby-identifier">in_order</span>(:<span class="ruby-identifier">email</span>, :<span class="ruby-identifier">address</span>)  <span class="ruby-comment">#=&gt; [:email, :created_at, :login, :updated_at]</span>
+<pre class="ruby">[<span class="ruby-value">:created_at</span>, <span class="ruby-value">:email</span>, <span class="ruby-value">:login</span>, <span class="ruby-value">:updated_at</span>].<span class="ruby-identifier">in_order</span>(<span class="ruby-value">:login</span>, <span class="ruby-value">:email</span>)    <span class="ruby-comment">#=&gt; [:login, :email, :created_at, :updated_at]</span>
+[<span class="ruby-value">:created_at</span>, <span class="ruby-value">:email</span>, <span class="ruby-value">:login</span>, <span class="ruby-value">:updated_at</span>].<span class="ruby-identifier">in_order</span>(<span class="ruby-value">:email</span>, <span class="ruby-value">:address</span>)  <span class="ruby-comment">#=&gt; [:email, :created_at, :login, :updated_at]</span>
 </pre>
           
           
@@ -588,7 +587,7 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
           
           <div class="method-source-code" id="in_order-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/in_order.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
   <span class="ruby-identifier">ordered</span> <span class="ruby-operator">&amp;=</span> <span class="ruby-keyword">self</span>
   <span class="ruby-identifier">ordered</span> <span class="ruby-operator">+</span> (<span class="ruby-keyword">self</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">ordered</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -625,7 +624,7 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
           
           <div class="method-source-code" id="in_order-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/in_order.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">in_order!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">in_order!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
   <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -690,7 +689,7 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
           
           <div class="method-source-code" id="monotone-3F-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">monotone?</span>(<span class="ruby-identifier">operator</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">monotone?</span>(<span class="ruby-identifier">operator</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> [<span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">operator</span>)
     <span class="ruby-identifier">ascending?</span>(<span class="ruby-identifier">operator</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">descending?</span>(<span class="ruby-identifier">operator</span>)
   <span class="ruby-keyword">else</span>
@@ -778,7 +777,7 @@ passed.</p>
           
           <div class="method-source-code" id="only-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/only.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">only</span>(<span class="ruby-identifier">relax</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">only</span>(<span class="ruby-identifier">relax</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
   <span class="ruby-identifier">relax</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">raise</span>(<span class="ruby-operator">::</span><span class="ruby-constant">IndexError</span>, <span class="ruby-string">&#39;not a single-element array&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -814,7 +813,7 @@ passed.</p>
           
           <div class="method-source-code" id="rand-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/rand.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">rand</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rand</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">size</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -851,7 +850,7 @@ algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
           
           <div class="method-source-code" id="shuffle-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffle</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle</span>
   <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">rand</span> }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -887,7 +886,7 @@ algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
           
           <div class="method-source-code" id="shuffle-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 58</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffle!</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle!</span>
   <span class="ruby-identifier">replace</span> <span class="ruby-identifier">shuffle</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -924,7 +923,7 @@ href="Array.html#method-i-shuffle_kfy-21">shuffle_kfy!</a>.</p>
           
           <div class="method-source-code" id="shuffle_kfy-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 50</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffle_kfy</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_kfy</span>
   <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">shuffle_kfy!</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -961,7 +960,7 @@ algorithm.</p>
           
           <div class="method-source-code" id="shuffle_kfy-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffle_kfy!</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_kfy!</span>
   (<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">downto</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">n</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
     <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>]
@@ -1003,7 +1002,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
           <div class="method-source-code" id="shuffle_knuth-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffle_knuth</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_knuth</span>
   <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">shuffle_knuth!</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1039,7 +1038,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
           <div class="method-source-code" id="shuffle_knuth-21-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 66</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffle_knuth!</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_knuth!</span>
   <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">n</span> = <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">i</span>)
     <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>] = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>]
@@ -1077,7 +1076,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
           <div class="method-source-code" id="sort_by_dotted_decimal-source">
             <pre><span class="ruby-comment"># File lib/nuggets/dotted_decimal.rb, line 55</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">sort_by_dotted_decimal</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sort_by_dotted_decimal</span>
   <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;.&#39;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">to_i</span> } }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1113,7 +1112,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
           <div class="method-source-code" id="strictly_ascending-3F-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 60</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">strictly_ascending?</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">strictly_ascending?</span>
   <span class="ruby-identifier">ascending?</span>(<span class="ruby-keyword">true</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1181,7 +1180,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
           
           <div class="method-source-code" id="strictly_descending-3F-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">strictly_descending?</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">strictly_descending?</span>
   <span class="ruby-identifier">descending?</span>(<span class="ruby-keyword">true</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1302,7 +1301,7 @@ of <em>array</em> to <code>value</code> or the result of the block.</p>
           
           <div class="method-source-code" id="to_hash-source">
             <pre><span class="ruby-comment"># File lib/nuggets/array/to_hash.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hash</span>(<span class="ruby-identifier">value</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_hash</span>(<span class="ruby-identifier">value</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">hash</span> = {}
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
@@ -1338,8 +1337,8 @@ of <em>array</em> to <code>value</code> or the result of the block.</p>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

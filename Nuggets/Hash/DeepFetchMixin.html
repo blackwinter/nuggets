@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::DeepFetchMixin - nuggets Application documentation (v1.5.0)</title>
+<title>module Nuggets::Hash::DeepFetchMixin - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
 </script>
 
 <script src="../../js/jquery.js"></script>
@@ -83,8 +84,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -105,7 +104,7 @@
         
         <div class="method-heading">
           <span class="method-name">%</span><span
-            class="method-args">(path, separator = '/')</span>
+            class="method-args">(path, separator = &#39;/&#39;)</span>
           
         </div>
         
@@ -158,7 +157,7 @@
 
 <p>Examples:</p>
 
-<pre class="ruby"><span class="ruby-identifier">hash</span> = { <span class="ruby-string">&#39;foo&#39;</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-string">&#39;bar&#39;</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-string">&#39;baz&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">42</span> }, <span class="ruby-string">&#39;bay&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">23</span> } }
+<pre class="ruby"><span class="ruby-identifier">hash</span> = { <span class="ruby-string">&#39;foo&#39;</span> <span class="ruby-operator">=&gt;</span> { <span class="ruby-string">&#39;bar&#39;</span> <span class="ruby-operator">=&gt;</span> { <span class="ruby-string">&#39;baz&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">42</span> }, <span class="ruby-string">&#39;bay&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">23</span> } }
 <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">deep_fetch</span>(<span class="ruby-string">&#39;foo/bar/baz&#39;</span>) <span class="ruby-comment">#=&gt; 42</span>
 <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">deep_fetch</span>(<span class="ruby-string">&#39;foo/bar/bax&#39;</span>) <span class="ruby-comment">#=&gt; nil</span>
 <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">deep_fetch</span>(<span class="ruby-string">&#39;foo/bax/baz&#39;</span>) <span class="ruby-comment">#=&gt; KeyError</span>
@@ -166,9 +165,9 @@
 <span class="ruby-identifier">hash</span> <span class="ruby-operator">%</span> <span class="ruby-string">&#39;foo/bar/baz&#39;</span> <span class="ruby-comment">#=&gt; 42</span>
 <span class="ruby-identifier">hash</span> <span class="ruby-operator">%</span> <span class="ruby-node">%w[foo bar baz]</span> <span class="ruby-comment">#=&gt; 42</span>
 
-<span class="ruby-identifier">hash</span> = { <span class="ruby-identifier">foo</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">bar</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">baz</span><span class="ruby-operator">:</span> <span class="ruby-value">42</span> } } }
-<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">deep_fetch</span>(<span class="ruby-string">&#39;foo/bar/baz&#39;</span>, <span class="ruby-operator">&amp;</span>:<span class="ruby-identifier">to_sym</span>) <span class="ruby-comment">#=&gt; 42</span>
-<span class="ruby-identifier">hash</span> <span class="ruby-operator">%</span> [:<span class="ruby-identifier">foo</span>, :<span class="ruby-identifier">bar</span>, :<span class="ruby-identifier">baz</span>] <span class="ruby-comment">#=&gt; 42</span>
+<span class="ruby-identifier">hash</span> = { <span class="ruby-value">foo:</span> { <span class="ruby-value">bar:</span> { <span class="ruby-value">baz:</span> <span class="ruby-value">42</span> } } }
+<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">deep_fetch</span>(<span class="ruby-string">&#39;foo/bar/baz&#39;</span>, <span class="ruby-operator">&amp;</span><span class="ruby-value">:to_sym</span>) <span class="ruby-comment">#=&gt; 42</span>
+<span class="ruby-identifier">hash</span> <span class="ruby-operator">%</span> [<span class="ruby-value">:foo</span>, <span class="ruby-value">:bar</span>, <span class="ruby-value">:baz</span>] <span class="ruby-comment">#=&gt; 42</span>
 </pre>
           
           
@@ -176,7 +175,7 @@
           
           <div class="method-source-code" id="deep_fetch-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/deep_fetch_mixin.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">deep_fetch</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">separator</span> = <span class="ruby-string">&#39;/&#39;</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deep_fetch</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">separator</span> = <span class="ruby-string">&#39;/&#39;</span>)
   <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">separator</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;no keys given&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">empty?</span>
 
@@ -214,8 +213,8 @@
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

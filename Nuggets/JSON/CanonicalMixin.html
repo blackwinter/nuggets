@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Nuggets::JSON::CanonicalMixin - nuggets Application documentation (v1.6.0)</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-_nuggets_json_canonical">#_nuggets_json_canonical</a>
+    
+    <li ><a href="#method-i-generate_canonical">#generate_canonical</a>
+    
+    <li ><a href="#method-i-pc">#pc</a>
+    
+    <li ><a href="#method-i-pretty_generate_canonical">#pretty_generate_canonical</a>
+    
+    <li ><a href="#method-i-pretty_print_canonical">#pretty_print_canonical</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Nuggets::JSON::CanonicalMixin">
+  <h1 id="module-Nuggets::JSON::CanonicalMixin" class="module">
+    module Nuggets::JSON::CanonicalMixin
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-generate_canonical" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generate_canonical</span><span
+            class="method-args">(obj, opts = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="generate_canonical-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/json/canonical_mixin.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generate_canonical</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-identifier">generate</span>(<span class="ruby-identifier">_nuggets_json_canonical</span>(<span class="ruby-identifier">obj</span>), <span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pc" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">pc</span><span
+            class="method-args">(source, opts = {})</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="CanonicalMixin.html#method-i-pretty_print_canonical">pretty_print_canonical</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-pretty_generate_canonical" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pretty_generate_canonical</span><span
+            class="method-args">(obj, opts = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pretty_generate_canonical-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/json/canonical_mixin.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pretty_generate_canonical</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-identifier">pretty_generate</span>(<span class="ruby-identifier">_nuggets_json_canonical</span>(<span class="ruby-identifier">obj</span>), <span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pretty_print_canonical" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pretty_print_canonical</span><span
+            class="method-args">(source, opts = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pretty_print_canonical-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/json/canonical_mixin.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pretty_print_canonical</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-identifier">pretty_generate_canonical</span>(<span class="ruby-identifier">parse_multi</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">opts</span>), <span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="CanonicalMixin.html#method-i-pc">pc</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-_nuggets_json_canonical" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">_nuggets_json_canonical</span><span
+            class="method-args">(obj)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="_nuggets_json_canonical-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/json/canonical_mixin.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_nuggets_json_canonical</span>(<span class="ruby-identifier">obj</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">obj</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>
+      <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">res</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">__method__</span>, <span class="ruby-identifier">obj</span>[<span class="ruby-identifier">k</span>]) } }
+    <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>
+      <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">__method__</span>, <span class="ruby-identifier">v</span>) }.<span class="ruby-identifier">sort_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">obj</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

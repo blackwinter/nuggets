@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::NestMixin - nuggets Application documentation (v1.5.0)</title>
+<title>module Nuggets::Hash::NestMixin - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
 </script>
 
 <script src="../../js/jquery.js"></script>
@@ -85,8 +86,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -125,8 +124,8 @@ at the last level.</p>
 <p>Example:</p>
 
 <pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">array</span>(<span class="ruby-value">2</span>)
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">a</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">2</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">b</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">3</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">4</span>
+<span class="ruby-identifier">hash</span>[<span class="ruby-value">:foo</span>][<span class="ruby-value">:bar</span>][<span class="ruby-value">:a</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">2</span>
+<span class="ruby-identifier">hash</span>[<span class="ruby-value">:foo</span>][<span class="ruby-value">:bar</span>][<span class="ruby-value">:b</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">3</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">4</span>
 <span class="ruby-identifier">hash</span>
 <span class="ruby-comment">#=&gt; {:foo=&gt;{:bar=&gt;{:a=&gt;[1, 2], :b=&gt;[3, 4]}}}</span>
 </pre>
@@ -136,7 +135,7 @@ at the last level.</p>
           
           <div class="method-source-code" id="array-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/nest_mixin.rb, line 106</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">array</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">array</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">nest</span>(<span class="ruby-identifier">depth</span>) { [] }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -171,8 +170,8 @@ themselves at the last level.</p>
 <p>Example:</p>
 
 <pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">identity</span>(<span class="ruby-value">2</span>)
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">a</span>] <span class="ruby-comment">#=&gt; :a</span>
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">b</span>] <span class="ruby-comment">#=&gt; :b</span>
+<span class="ruby-identifier">hash</span>[<span class="ruby-value">:foo</span>][<span class="ruby-value">:bar</span>][<span class="ruby-value">:a</span>] <span class="ruby-comment">#=&gt; :a</span>
+<span class="ruby-identifier">hash</span>[<span class="ruby-value">:foo</span>][<span class="ruby-value">:bar</span>][<span class="ruby-value">:b</span>] <span class="ruby-comment">#=&gt; :b</span>
 <span class="ruby-identifier">hash</span>
 <span class="ruby-comment">#=&gt; {:foo=&gt;{:bar=&gt;{:a=&gt;:a, :b=&gt;:b}}}</span>
 </pre>
@@ -182,7 +181,7 @@ themselves at the last level.</p>
           
           <div class="method-source-code" id="identity-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/nest_mixin.rb, line 89</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">identity</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">identity</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">nest</span>(<span class="ruby-identifier">depth</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">key</span> }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -238,8 +237,8 @@ means that the default proc will be cleared.</p>
 <p>Example:</p>
 
 <pre class="ruby"><span class="ruby-identifier">hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">nest</span>(<span class="ruby-value">2</span>)
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">a</span>] = { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span> }
-<span class="ruby-identifier">hash</span>[:<span class="ruby-identifier">foo</span>][:<span class="ruby-identifier">bar</span>][:<span class="ruby-identifier">b</span>] = { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span> }
+<span class="ruby-identifier">hash</span>[<span class="ruby-value">:foo</span>][<span class="ruby-value">:bar</span>][<span class="ruby-value">:a</span>] = { <span class="ruby-value">x:</span> <span class="ruby-value">1</span>, <span class="ruby-value">y:</span> <span class="ruby-value">2</span> }
+<span class="ruby-identifier">hash</span>[<span class="ruby-value">:foo</span>][<span class="ruby-value">:bar</span>][<span class="ruby-value">:b</span>] = { <span class="ruby-value">x:</span> <span class="ruby-value">0</span>, <span class="ruby-value">y:</span> <span class="ruby-value">3</span> }
 <span class="ruby-identifier">hash</span>
 <span class="ruby-comment">#=&gt; {:foo=&gt;{:bar=&gt;{:b=&gt;{:y=&gt;3, :x=&gt;0}, :a=&gt;{:y=&gt;2, :x=&gt;1}}}}</span>
 </pre>
@@ -249,7 +248,7 @@ means that the default proc will be cleared.</p>
           
           <div class="method-source-code" id="nest-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/nest_mixin.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">nest</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nest</span>(<span class="ruby-identifier">depth</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">depth</span>.<span class="ruby-identifier">zero?</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">default</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
@@ -289,8 +288,8 @@ means that the default proc will be cleared.</p>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

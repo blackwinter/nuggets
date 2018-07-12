@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::IO::InteractMixin - nuggets Application documentation (v1.5.0)</title>
+<title>module Nuggets::IO::InteractMixin - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
 </script>
 
 <script src="../../js/jquery.js"></script>
@@ -81,8 +82,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -145,13 +144,13 @@ cases an empty array is returned.</p>
 
 <span class="ruby-comment"># simply prints &#39;input string&#39; on STDOUT, ignores +stderr+</span>
 <span class="ruby-constant">Open3</span>.<span class="ruby-identifier">popen3</span>(<span class="ruby-string">&#39;cat&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span><span class="ruby-operator">|</span>
-  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-string">&quot;input string\n&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">STDOUT</span> })
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-string">&quot;input string\n&quot;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">STDOUT</span> })
 }
 
 <span class="ruby-comment"># prints lines you type in reverse order to a string</span>
 <span class="ruby-identifier">str</span> = <span class="ruby-string">&#39;&#39;</span>
 <span class="ruby-constant">Open3</span>.<span class="ruby-identifier">popen3</span>(<span class="ruby-string">&#39;tac&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span><span class="ruby-operator">|</span>
-  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-constant">STDIN</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">str</span> })
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-constant">STDIN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">str</span> })
 }
 <span class="ruby-identifier">puts</span> <span class="ruby-identifier">str</span>
 
@@ -160,7 +159,7 @@ cases an empty array is returned.</p>
 <span class="ruby-identifier">cmd</span> = <span class="ruby-string">%q{ruby -ne &#39;i = $_.split.first or next; warn i.length; puts i&#39;}</span>
 <span class="ruby-constant">Open3</span>.<span class="ruby-identifier">popen3</span>(<span class="ruby-identifier">cmd</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span><span class="ruby-operator">|</span>
   <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;/etc/hosts&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
-    <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-identifier">f</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">STDERR</span> })
+    <span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-identifier">f</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">stdin</span> }, { <span class="ruby-identifier">stdout</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">STDERR</span> })
   }
 }
 </pre>
@@ -170,7 +169,7 @@ cases an empty array is returned.</p>
           
           <div class="method-source-code" id="interact-source">
             <pre><span class="ruby-comment"># File lib/nuggets/io/interact_mixin.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">interact</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">maxlen</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">interact</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">maxlen</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">Interaction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span>, <span class="ruby-identifier">maxlen</span>).<span class="ruby-identifier">interact</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -190,8 +189,8 @@ cases an empty array is returned.</p>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

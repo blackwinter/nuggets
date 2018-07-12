@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::String::WcMixin - nuggets Application documentation (v1.5.0)</title>
+<title>module Nuggets::String::WcMixin - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
 </script>
 
 <script src="../../js/jquery.js"></script>
@@ -101,8 +102,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -142,7 +141,7 @@
           
           <div class="method-source-code" id="byte_count-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 61</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">byte_count</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">byte_count</span>
   <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:bytesize</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">bytesize</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">count_by_re</span>(<span class="ruby-regexp">//n</span>) <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -182,7 +181,7 @@
           
           <div class="method-source-code" id="char_count-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 70</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">char_count</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">char_count</span>
   <span class="ruby-identifier">count_by_re</span>(<span class="ruby-regexp">/./um</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -222,7 +221,7 @@
           
           <div class="method-source-code" id="count_by_re-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">count_by_re</span>(<span class="ruby-identifier">re</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">count_by_re</span>(<span class="ruby-identifier">re</span>)
   <span class="ruby-identifier">scan</span>(<span class="ruby-identifier">re</span>).<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -259,7 +258,7 @@ href="WcMixin.html#method-i-count_by_re">count_by_re</a>.</p>
           
           <div class="method-source-code" id="count_by_re2-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 87</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">count_by_re2</span>(<span class="ruby-identifier">re</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">count_by_re2</span>(<span class="ruby-identifier">re</span>)
   <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">scan</span>(<span class="ruby-identifier">re</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span><span class="ruby-operator">|</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> }
   <span class="ruby-identifier">count</span>
@@ -297,8 +296,8 @@ href="WcMixin.html#method-i-count_by_re">count_by_re</a>.</p>
           
           <div class="method-source-code" id="line_count-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 43</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">line_count</span>
-  <span class="ruby-identifier">count_by_re</span>(<span class="ruby-node">/#{$/}/</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">line_count</span>
+  <span class="ruby-identifier">count_by_re</span>(<span class="ruby-regexp">/#{$/}/</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -337,7 +336,7 @@ href="WcMixin.html#method-i-count_by_re">count_by_re</a>.</p>
           
           <div class="method-source-code" id="wc-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">wc</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">wc</span>
   [<span class="ruby-identifier">wc_l</span>, <span class="ruby-identifier">wc_w</span>, <span class="ruby-identifier">wc_c</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -485,7 +484,7 @@ href="WcMixin.html#method-i-count_by_re">count_by_re</a>.</p>
           
           <div class="method-source-code" id="word_count-source">
             <pre><span class="ruby-comment"># File lib/nuggets/string/wc_mixin.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">word_count</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">word_count</span>
   <span class="ruby-identifier">count_by_re</span>(<span class="ruby-regexp">/\S+/</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -509,8 +508,8 @@ href="WcMixin.html#method-i-count_by_re">count_by_re</a>.</p>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::DeepMergeMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::JSON::MultiMixin - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -64,11 +64,11 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-deep_merge">#deep_merge</a>
+    <li ><a href="#method-i-parse_multi">#parse_multi</a>
     
-    <li ><a href="#method-i-deep_merge-21">#deep_merge!</a>
+    <li ><a href="#method-i-pp">#pp</a>
     
-    <li ><a href="#method-i-deep_update">#deep_update</a>
+    <li ><a href="#method-i-pretty_print_multi">#pretty_print_multi</a>
     
   </ul>
 </div>
@@ -76,9 +76,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="module-Nuggets::Hash::DeepMergeMixin">
-  <h1 id="module-Nuggets::Hash::DeepMergeMixin" class="module">
-    module Nuggets::Hash::DeepMergeMixin
+<main role="main" aria-labelledby="module-Nuggets::JSON::MultiMixin">
+  <h1 id="module-Nuggets::JSON::MultiMixin" class="module">
+    module Nuggets::JSON::MultiMixin
   </h1>
 
   <section class="description">
@@ -102,33 +102,30 @@
        </header>
 
     
-      <div id="method-i-deep_merge" class="method-detail ">
-        
+      <div id="method-i-parse_multi" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-callseq">
-            deep_merge(other_hash) &rarr; aHash
-          </span>
+          <span class="method-name">parse_multi</span><span
+            class="method-args">(source, opts = {})</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
         </div>
         
-        
 
         <div class="method-description">
           
-          <p>Merges nested hashes recursively (see Hash#merge).</p>
+          <p>Preserves multiple (non-unique) names in <a
+href="https://tools.ietf.org/html/rfc7159#section-4">“non-interoperable”</a>
+<a href="../JSON.html">JSON</a> objects.</p>
           
           
 
           
-          <div class="method-source-code" id="deep_merge-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/deep_merge_mixin.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deep_merge</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-identifier">merge</span>(<span class="ruby-identifier">other</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">old</span>, <span class="ruby-identifier">new</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">old</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:deep_merge</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">deep_merge</span>(<span class="ruby-identifier">new</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">new</span>
-  }
+          <div class="method-source-code" id="parse_multi-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/json/multi_mixin.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse_multi</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">object_class:</span> <span class="ruby-constant">MULTI_OBJECT</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -140,52 +137,11 @@
       </div>
 
     
-      <div id="method-i-deep_merge-21" class="method-detail ">
-        
-        
-        <div class="method-heading">
-          <span class="method-callseq">
-            deep_merge!(other_hash) &rarr; hash
-          </span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-        
-
-        <div class="method-description">
-          
-          <p>Destructive version of <a
-href="DeepMergeMixin.html#method-i-deep_merge">deep_merge</a>.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="deep_merge-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/deep_merge_mixin.rb, line 45</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deep_merge!</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">deep_merge</span>(<span class="ruby-identifier">other</span>))
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-        <div class="aliases">
-          Also aliased as: <a href="DeepMergeMixin.html#method-i-deep_update">deep_update</a>
-        </div>
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-deep_update" class="method-detail method-alias">
+      <div id="method-i-pp" class="method-detail method-alias">
         
         <div class="method-heading">
-          <span class="method-name">deep_update</span><span
-            class="method-args">(other)</span>
+          <span class="method-name">pp</span><span
+            class="method-args">(source, opts = {})</span>
           
         </div>
         
@@ -203,8 +159,45 @@ href="DeepMergeMixin.html#method-i-deep_merge">deep_merge</a>.</p>
 
         
         <div class="aliases">
-          Alias for: <a href="DeepMergeMixin.html#method-i-deep_merge-21">deep_merge!</a>
+          Alias for: <a href="MultiMixin.html#method-i-pretty_print_multi">pretty_print_multi</a>
         </div>
+        
+      </div>
+
+    
+      <div id="method-i-pretty_print_multi" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pretty_print_multi</span><span
+            class="method-args">(source, opts = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pretty_print_multi-source">
+            <pre><span class="ruby-comment"># File lib/nuggets/json/multi_mixin.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pretty_print_multi</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-identifier">pretty_generate</span>(<span class="ruby-identifier">parse_multi</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">opts</span>), <span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="MultiMixin.html#method-i-pp">pp</a>
+        </div>
+        
+
         
       </div>
 

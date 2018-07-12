@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Nuggets::Hash::ZipMixin::ZipVal - nuggets Application documentation (v1.5.0)</title>
+<title>class Nuggets::Hash::ZipMixin::ZipVal - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
 </script>
 
 <script src="../../../js/jquery.js"></script>
@@ -115,8 +116,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -153,7 +152,7 @@
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 115</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">value</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">value</span>)
   <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">zip</span>(<span class="ruby-identifier">value</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -194,7 +193,7 @@
           
           <div class="method-source-code" id="3C-3D-3E-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 119</span>
-<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">other</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;=&gt;</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">class</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -255,7 +254,7 @@
           
           <div class="method-source-code" id="eql-3F-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 136</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">eql?</span>(<span class="ruby-identifier">other</span>)
   (<span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -292,7 +291,7 @@
           
           <div class="method-source-code" id="hash-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 132</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">hash</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hash</span>
   <span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">hash</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -325,7 +324,7 @@
           
           <div class="method-source-code" id="inspect-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 127</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-operator">!</span>((<span class="ruby-identifier">s</span> = <span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">64</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">$/</span>)) <span class="ruby-operator">?</span> <span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span>
     <span class="ruby-string">&#39;#&lt;%s:0x%x length=%p&gt;&#39;</span> <span class="ruby-operator">%</span> [<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">object_id</span>, <span class="ruby-ivar">@value</span>.<span class="ruby-identifier">length</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -359,7 +358,7 @@
           
           <div class="method-source-code" id="to_s-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 123</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">unzip</span>(<span class="ruby-ivar">@value</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -400,7 +399,7 @@
           
           <div class="method-source-code" id="unzip-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 148</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">unzip</span>(<span class="ruby-identifier">string</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unzip</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflate</span>.<span class="ruby-identifier">inflate</span>(<span class="ruby-identifier">string</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -433,7 +432,7 @@
           
           <div class="method-source-code" id="zip-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 144</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">zip</span>(<span class="ruby-identifier">string</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zip</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">Deflate</span>.<span class="ruby-identifier">deflate</span>(<span class="ruby-identifier">string</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -453,8 +452,8 @@
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

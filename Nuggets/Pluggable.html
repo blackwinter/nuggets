@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Pluggable - nuggets Application documentation (v1.5.0)</title>
+<title>module Nuggets::Pluggable - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
 </script>
 
 <script src="../js/jquery.js"></script>
@@ -97,8 +98,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -156,7 +155,7 @@
           
           <div class="method-source-code" id="load_plugins_for-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 32</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_plugins_for</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">klasses</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">load_plugins_for</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">klasses</span>)
   <span class="ruby-identifier">klasses</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">load_plugins</span> }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -197,7 +196,7 @@
           
           <div class="method-source-code" id="load_plugins-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugins</span>(<span class="ruby-identifier">name</span> = <span class="ruby-identifier">plugin_filename</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_plugins</span>(<span class="ruby-identifier">name</span> = <span class="ruby-identifier">plugin_filename</span>)
   <span class="ruby-identifier">load_path_plugins</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">load_gem_plugins</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">load_env_plugins</span>(<span class="ruby-identifier">name</span>)
@@ -234,7 +233,7 @@
           
           <div class="method-source-code" id="loaded_plugins-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">loaded_plugins</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">loaded_plugins</span>
   <span class="ruby-ivar">@loaded_plugins</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -267,7 +266,7 @@
           
           <div class="method-source-code" id="plugin_filename-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">plugin_filename</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">plugin_filename</span>
   <span class="ruby-ivar">@plugin_filename</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{name.
     gsub(/([A-Z]+)([A-Z][a-z])/, &#39;\1_\2&#39;).
     gsub(/([a-z\d])([A-Z])/,     &#39;\1_\2&#39;).
@@ -311,7 +310,7 @@
           
           <div class="method-source-code" id="load_env_plugins-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 72</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_env_plugins</span>(<span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_env_plugins</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">path</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{name.chomp(ext = ::File.extname(name)).upcase}_PATH&quot;</span>]
   <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{dir}/*#{ext}&quot;</span>])
@@ -347,7 +346,7 @@
           
           <div class="method-source-code" id="load_gem_plugins-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 66</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_gem_plugins</span>(<span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_gem_plugins</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-operator">::</span><span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Specification</span>.<span class="ruby-identifier">latest_specs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-identifier">spec</span>.<span class="ruby-identifier">matches_for_glob</span>(<span class="ruby-identifier">name</span>))
   } <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">Object</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:Gem</span>)
@@ -382,7 +381,7 @@
           
           <div class="method-source-code" id="load_path_plugins-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 59</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_path_plugins</span>(<span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_path_plugins</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">plugin</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">path</span>)
     <span class="ruby-identifier">load_plugin_file</span>(<span class="ruby-identifier">plugin</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">plugin</span>)
@@ -418,9 +417,9 @@
           
           <div class="method-source-code" id="load_plugin_file-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugin_file</span>(<span class="ruby-identifier">plugin</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_plugin_file</span>(<span class="ruby-identifier">plugin</span>)
   <span class="ruby-identifier">load</span> <span class="ruby-identifier">plugin</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">loaded_plugins</span>.<span class="ruby-identifier">add?</span>(<span class="ruby-identifier">plugin</span>)
-<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">Exception</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">err</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loaded_plugins</span>.<span class="ruby-identifier">delete?</span>(<span class="ruby-identifier">plugin</span>)
   <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Error loading #{name} plugin: #{plugin}: #{err} (#{err.class})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -454,7 +453,7 @@
           
           <div class="method-source-code" id="load_plugin_files-source">
             <pre><span class="ruby-comment"># File lib/nuggets/pluggable.rb, line 86</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_plugin_files</span>(<span class="ruby-identifier">plugins</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_plugin_files</span>(<span class="ruby-identifier">plugins</span>)
   <span class="ruby-identifier">plugins</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">plugin</span><span class="ruby-operator">|</span> <span class="ruby-identifier">load_plugin_file</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">plugin</span>)) }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -474,8 +473,8 @@
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

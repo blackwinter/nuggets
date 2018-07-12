@@ -4,10 +4,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::UnrollMixin - nuggets Application documentation (v1.5.0)</title>
+<title>module Nuggets::Hash::UnrollMixin - nuggets Application documentation (v1.6.0)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
 </script>
 
 <script src="../../js/jquery.js"></script>
@@ -81,8 +82,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -142,13 +141,13 @@ for sorting before being put into the result array.</p>
 
 <p>Examples:</p>
 
-<pre class="ruby">{ <span class="ruby-identifier">foo</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">bar</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span> }, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span> } } } }.<span class="ruby-identifier">unroll</span>
+<pre class="ruby">{ <span class="ruby-value">foo:</span> { <span class="ruby-value">bar:</span> { <span class="ruby-value">a:</span> { <span class="ruby-value">x:</span> <span class="ruby-value">1</span>, <span class="ruby-value">y:</span> <span class="ruby-value">2</span> }, <span class="ruby-value">b:</span> { <span class="ruby-value">x:</span> <span class="ruby-value">0</span>, <span class="ruby-value">y:</span> <span class="ruby-value">3</span> } } } }.<span class="ruby-identifier">unroll</span>
 <span class="ruby-comment">#=&gt; [[:foo, :bar, :b, 3, 0], [:foo, :bar, :a, 2, 1]]</span>
 
-{ <span class="ruby-identifier">foo</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">bar</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span> }, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span> } } } }.<span class="ruby-identifier">unroll</span>(<span class="ruby-identifier">sort_by</span><span class="ruby-operator">:</span> :<span class="ruby-identifier">to_s</span>)
+{ <span class="ruby-value">foo:</span> { <span class="ruby-value">bar:</span> { <span class="ruby-value">a:</span> { <span class="ruby-value">x:</span> <span class="ruby-value">1</span>, <span class="ruby-value">y:</span> <span class="ruby-value">2</span> }, <span class="ruby-value">b:</span> { <span class="ruby-value">x:</span> <span class="ruby-value">0</span>, <span class="ruby-value">y:</span> <span class="ruby-value">3</span> } } } }.<span class="ruby-identifier">unroll</span>(<span class="ruby-value">sort_by:</span> <span class="ruby-value">:to_s</span>)
 <span class="ruby-comment">#=&gt; [[:foo, :bar, :a, 1, 2], [:foo, :bar, :b, 0, 3]]</span>
 
-{ <span class="ruby-identifier">foo</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">bar</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span> }, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span> } } } }.<span class="ruby-identifier">unroll</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">data</span><span class="ruby-operator">|</span> <span class="ruby-identifier">data</span>[:<span class="ruby-identifier">x</span>] = <span class="ruby-keyword">nil</span>; <span class="ruby-identifier">data</span>[:<span class="ruby-identifier">y</span>] <span class="ruby-operator">*=</span> <span class="ruby-value">2</span> }
+{ <span class="ruby-value">foo:</span> { <span class="ruby-value">bar:</span> { <span class="ruby-value">a:</span> { <span class="ruby-value">x:</span> <span class="ruby-value">1</span>, <span class="ruby-value">y:</span> <span class="ruby-value">2</span> }, <span class="ruby-value">b:</span> { <span class="ruby-value">x:</span> <span class="ruby-value">0</span>, <span class="ruby-value">y:</span> <span class="ruby-value">3</span> } } } }.<span class="ruby-identifier">unroll</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">data</span><span class="ruby-operator">|</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">:x</span>] = <span class="ruby-keyword">nil</span>; <span class="ruby-identifier">data</span>[<span class="ruby-value">:y</span>] <span class="ruby-operator">*=</span> <span class="ruby-value">2</span> }
 <span class="ruby-comment">#=&gt; [[:foo, :bar, :b, 6, nil], [:foo, :bar, :a, 4, nil]]</span>
 </pre>
           
@@ -157,7 +156,7 @@ for sorting before being put into the result array.</p>
           
           <div class="method-source-code" id="unroll-source">
             <pre><span class="ruby-comment"># File lib/nuggets/hash/unroll_mixin.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">unroll</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">value_keys</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unroll</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">value_keys</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">options</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
 
@@ -202,8 +201,8 @@ for sorting before being put into the result array.</p>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

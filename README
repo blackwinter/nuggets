@@ -2,13 +2,13 @@
 
 == VERSION
 
-This documentation refers to nuggets version 1.6.0.
+This documentation refers to nuggets version 1.6.1.
 
 
 == DESCRIPTION
 
 Nuggets provides a collection of extensions to Ruby classes.
-It's similar to projects like Facets[http://rubyworks.github.com/facets]
+It's similar to projects like Facets[https://rubyworks.github.io/facets]
 and Extensions[http://extensions.rubyforge.org] (or even
 Labrador[http://labrador.rubyforge.org]).
 
@@ -45,7 +45,7 @@ expected or cause other libraries to misbehave. Use at your own risk!
 
 == LINKS
 
-Documentation:: https://blackwinter.github.com/nuggets
+Documentation:: https://blackwinter.github.io/nuggets
 Source code::   https://github.com/blackwinter/nuggets
 RubyGem::       https://rubygems.org/gems/nuggets
 Travis CI::     https://travis-ci.org/blackwinter/nuggets
@@ -58,7 +58,7 @@ Travis CI::     https://travis-ci.org/blackwinter/nuggets
 
 == LICENSE AND COPYRIGHT
 
-Copyright (C) 2007-2018 Jens Wille
+Copyright (C) 2007-2022 Jens Wille
 
 nuggets is free software: you can redistribute it and/or modify it
 under the terms of the GNU Affero General Public License as published by

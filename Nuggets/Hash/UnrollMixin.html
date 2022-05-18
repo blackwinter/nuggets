@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Hash::UnrollMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::Hash::UnrollMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -128,16 +132,11 @@
 
         <div class="method-description">
           
-          <p>“Unrolls” a nested hash, so that each path through <em>hash</em> results in
-a row that is, e.g., suitable for use with CSV.</p>
+          <p>“Unrolls” a nested hash, so that each path through <em>hash</em> results in a row that is, e.g., suitable for use with CSV.</p>
 
-<p>Note that from the final hash (“value hash”) only the values are used,
-namely, if <code>value_keys</code> are given, the values at those keys are
-returned. If a block is given, the <code>value_hash</code> is passed to
-that block for any additional processing or sanitization.</p>
+<p>Note that from the final hash (“value hash”) only the values are used, namely, if <code>value_keys</code> are given, the values at those keys are returned. If a block is given, the <code>value_hash</code> is passed to that block for any additional processing or sanitization.</p>
 
-<p>If <code>sort_by</code> is given, all hashes are passed through that block
-for sorting before being put into the result array.</p>
+<p>If <code>sort_by</code> is given, all hashes are passed through that block for sorting before being put into the result array.</p>
 
 <p>Examples:</p>
 
@@ -155,35 +154,35 @@ for sorting before being put into the result array.</p>
 
           
           <div class="method-source-code" id="unroll-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/unroll_mixin.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unroll</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">value_keys</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">args</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">dup</span>
-  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
-
-  <span class="ruby-identifier">sort_proc</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:sort_by</span>)
-    <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">sort_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:sort_by</span>]) }
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:sort</span>)
-    <span class="ruby-identifier">options</span>[<span class="ruby-value">:sort</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">sort</span> } <span class="ruby-operator">:</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">sort</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:sort</span>]) }
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">rows</span> = []
-
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>)  <span class="ruby-comment"># if any is, then all are</span>
-    (<span class="ruby-identifier">sort_proc</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">sort_proc</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">value</span>.<span class="ruby-identifier">unroll</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span> <span class="ruby-identifier">rows</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">key</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">row</span>] }
-    }
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">block</span>[<span class="ruby-keyword">self</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
-
-    <span class="ruby-identifier">rows</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">empty?</span>
-      <span class="ruby-identifier">sort_proc</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">sort_proc</span>.<span class="ruby-identifier">call</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> } <span class="ruby-operator">:</span> <span class="ruby-identifier">values</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">value_keys</span>)
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">rows</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/unroll_mixin.rb</span>
+<span class="line-num">57</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unroll</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">value_keys</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">58</span>   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">59</span>   <span class="ruby-identifier">options</span> = <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
+<span class="line-num">60</span> 
+<span class="line-num">61</span>   <span class="ruby-identifier">sort_proc</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:sort_by</span>)
+<span class="line-num">62</span>     <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">sort_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:sort_by</span>]) }
+<span class="line-num">63</span>   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:sort</span>)
+<span class="line-num">64</span>     <span class="ruby-identifier">options</span>[<span class="ruby-value">:sort</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">sort</span> } <span class="ruby-operator">:</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-identifier">sort</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:sort</span>]) }
+<span class="line-num">65</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">66</span> 
+<span class="line-num">67</span>   <span class="ruby-identifier">rows</span> = []
+<span class="line-num">68</span> 
+<span class="line-num">69</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>)  <span class="ruby-comment"># if any is, then all are</span>
+<span class="line-num">70</span>     (<span class="ruby-identifier">sort_proc</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">sort_proc</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+<span class="line-num">71</span>       <span class="ruby-identifier">value</span>.<span class="ruby-identifier">unroll</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span> <span class="ruby-identifier">rows</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">key</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">row</span>] }
+<span class="line-num">72</span>     }
+<span class="line-num">73</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">74</span>     <span class="ruby-identifier">block</span>[<span class="ruby-keyword">self</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+<span class="line-num">75</span> 
+<span class="line-num">76</span>     <span class="ruby-identifier">rows</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value_keys</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">77</span>       <span class="ruby-identifier">sort_proc</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">sort_proc</span>.<span class="ruby-identifier">call</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> } <span class="ruby-operator">:</span> <span class="ruby-identifier">values</span>
+<span class="line-num">78</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">79</span>       <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">value_keys</span>)
+<span class="line-num">80</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">81</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">82</span> 
+<span class="line-num">83</span>   <span class="ruby-identifier">rows</span>
+<span class="line-num">84</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -197,12 +196,13 @@ for sorting before being put into the result array.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::File::WhichMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::File::WhichMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -130,10 +134,7 @@
 
         <div class="method-description">
           
-          <p>Returns <code>executable</code> if it&#39;s executable, or the full path to
-<code>executable</code> found in PATH, or <code>nil</code> otherwise.
-Checks <code>executable</code> with each extension in
-<code>extensions</code> appended in turn.</p>
+          <p>Returns <code>executable</code> if it&#39;s executable, or the full path to <code>executable</code> found in PATH, or <code>nil</code> otherwise. Checks <code>executable</code> with each extension in <code>extensions</code> appended in turn.</p>
 
 <p>Inspired by Gnuplot.which – thx, Gordon!</p>
           
@@ -141,25 +142,25 @@ Checks <code>executable</code> with each extension in
 
           
           <div class="method-source-code" id="which-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/which_mixin.rb, line 43</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">which</span>(<span class="ruby-identifier">executable</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)
-  <span class="ruby-identifier">extensions</span> <span class="ruby-operator">|=</span> [<span class="ruby-string">&#39;&#39;</span>]
-
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">env</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;PATH&#39;</span>]
-    <span class="ruby-identifier">dirs</span> = <span class="ruby-identifier">env</span>.<span class="ruby-identifier">split</span>(<span class="ruby-keyword">self</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>)
-    <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span> <span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">dir</span>) }
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">extensions</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">extension</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">file</span> = <span class="ruby-node">&quot;#{executable}#{extension}&quot;</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">file</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">file?</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">file</span>)
-
-    <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">path</span> = <span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">file</span>)
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">path</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">file?</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">path</span>)
-    } <span class="ruby-keyword">if</span> <span class="ruby-identifier">dirs</span>
-  }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/file/which_mixin.rb</span>
+<span class="line-num">43</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">which</span>(<span class="ruby-identifier">executable</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)
+<span class="line-num">44</span>   <span class="ruby-identifier">extensions</span> <span class="ruby-operator">|=</span> [<span class="ruby-string">&#39;&#39;</span>]
+<span class="line-num">45</span> 
+<span class="line-num">46</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">env</span> = <span class="ruby-operator">::</span><span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;PATH&#39;</span>]
+<span class="line-num">47</span>     <span class="ruby-identifier">dirs</span> = <span class="ruby-identifier">env</span>.<span class="ruby-identifier">split</span>(<span class="ruby-keyword">self</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>)
+<span class="line-num">48</span>     <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span> <span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">dir</span>) }
+<span class="line-num">49</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">50</span> 
+<span class="line-num">51</span>   <span class="ruby-identifier">extensions</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">extension</span><span class="ruby-operator">|</span>
+<span class="line-num">52</span>     <span class="ruby-identifier">file</span> = <span class="ruby-node">&quot;#{executable}#{extension}&quot;</span>
+<span class="line-num">53</span>     <span class="ruby-keyword">return</span> <span class="ruby-identifier">file</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">file?</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">file</span>)
+<span class="line-num">54</span> 
+<span class="line-num">55</span>     <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+<span class="line-num">56</span>       <span class="ruby-identifier">path</span> = <span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">file</span>)
+<span class="line-num">57</span>       <span class="ruby-keyword">return</span> <span class="ruby-identifier">path</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">file?</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">path</span>)
+<span class="line-num">58</span>     } <span class="ruby-keyword">if</span> <span class="ruby-identifier">dirs</span>
+<span class="line-num">59</span>   }
+<span class="line-num">60</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -186,17 +187,16 @@ Checks <code>executable</code> with each extension in
 
         <div class="method-description">
           
-          <p>Returns the first of <code>commands</code> that is executable (according to
-<a href="WhichMixin.html#method-i-which">which</a>).</p>
+          <p>Returns the first of <code>commands</code> that is executable (according to <a href="WhichMixin.html#method-i-which"><code>which</code></a>).</p>
           
           
 
           
           <div class="method-source-code" id="which_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/which_mixin.rb, line 66</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">which_command</span>(<span class="ruby-identifier">commands</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)
-  <span class="ruby-identifier">commands</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">command</span><span class="ruby-operator">|</span> <span class="ruby-identifier">which</span>(<span class="ruby-identifier">command</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-regexp">/\S+/</span>], <span class="ruby-identifier">extensions</span>) }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/file/which_mixin.rb</span>
+<span class="line-num">66</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">which_command</span>(<span class="ruby-identifier">commands</span>, <span class="ruby-identifier">extensions</span> = <span class="ruby-constant">DEFAULT_EXTENSIONS</span>)
+<span class="line-num">67</span>   <span class="ruby-identifier">commands</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">command</span><span class="ruby-operator">|</span> <span class="ruby-identifier">which</span>(<span class="ruby-identifier">command</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-regexp">/\S+/</span>], <span class="ruby-identifier">extensions</span>) }
+<span class="line-num">68</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -210,12 +210,13 @@ Checks <code>executable</code> with each extension in
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

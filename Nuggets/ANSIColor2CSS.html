@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::ANSIColor2CSS - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::ANSIColor2CSS - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -162,10 +166,10 @@
 
           
           <div class="method-source-code" id="clear-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 105</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear</span>(<span class="ruby-identifier">attributes</span>)
-  <span class="ruby-constant">CLEAR</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;0&#39;</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb</span>
+<span class="line-num">105</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear</span>(<span class="ruby-identifier">attributes</span>)
+<span class="line-num">106</span>   <span class="ruby-constant">CLEAR</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;0&#39;</span>)
+<span class="line-num">107</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -195,10 +199,10 @@
 
           
           <div class="method-source-code" id="convert-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 97</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">convert</span>(<span class="ruby-identifier">string</span>)
-  <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">COLOR_RE</span>) { <span class="ruby-identifier">format</span>(<span class="ruby-node">$1</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">DELIMITER</span>).<span class="ruby-identifier">uniq</span>) }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb</span>
+<span class="line-num">97</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">convert</span>(<span class="ruby-identifier">string</span>)
+<span class="line-num">98</span>   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">COLOR_RE</span>) { <span class="ruby-identifier">format</span>(<span class="ruby-node">$1</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">DELIMITER</span>).<span class="ruby-identifier">uniq</span>) }
+<span class="line-num">99</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -228,10 +232,10 @@
 
           
           <div class="method-source-code" id="format-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 101</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">format</span>(<span class="ruby-identifier">attributes</span>)
-  <span class="ruby-node">&quot;#{clear(attributes)}#{style(attributes) if attributes.any?}&quot;</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb</span>
+<span class="line-num">101</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">format</span>(<span class="ruby-identifier">attributes</span>)
+<span class="line-num">102</span>   <span class="ruby-node">&quot;#{clear(attributes)}#{style(attributes) if attributes.any?}&quot;</span>
+<span class="line-num">103</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -261,10 +265,10 @@
 
           
           <div class="method-source-code" id="style-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb, line 109</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">style</span>(<span class="ruby-identifier">attributes</span>)
-  <span class="ruby-constant">STYLE</span> <span class="ruby-operator">%</span> <span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">attributes</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;; &#39;</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ansicolor2css.rb</span>
+<span class="line-num">109</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">style</span>(<span class="ruby-identifier">attributes</span>)
+<span class="line-num">110</span>   <span class="ruby-constant">STYLE</span> <span class="ruby-operator">%</span> <span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">attributes</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;; &#39;</span>)
+<span class="line-num">111</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -278,12 +282,13 @@
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

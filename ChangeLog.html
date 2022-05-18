@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>ChangeLog - nuggets Application documentation (v1.6.0)</title>
+<title>ChangeLog - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -57,6 +61,7 @@
 
   <ul class="link-list" role="directory">
     <li><a href="#label-Revision+history+for+nuggets">Revision history for nuggets</a>
+    <li><a href="#label-1.6.1+-5B2022-05-18-5D">1.6.1 [2022-05-18]</a>
     <li><a href="#label-1.6.0+-5B2018-07-12-5D">1.6.0 [2018-07-12]</a>
     <li><a href="#label-1.5.0+-5B2016-04-19-5D">1.5.0 [2016-04-19]</a>
     <li><a href="#label-1.4.0+-5B2015-10-02-5D">1.4.0 [2015-10-02]</a>
@@ -92,6 +97,11 @@
 
 <h1 id="label-Revision+history+for+nuggets">Revision history for nuggets<span><a href="#label-Revision+history+for+nuggets">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
+<h2 id="label-1.6.1+-5B2022-05-18-5D">1.6.1 [2022-05-18]<span><a href="#label-1.6.1+-5B2022-05-18-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p>Ruby 3.1 compatibility.</p>
+</li></ul>
+
 <h2 id="label-1.6.0+-5B2018-07-12-5D">1.6.0 [2018-07-12]<span><a href="#label-1.6.0+-5B2018-07-12-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
 <p>Added <code>JSON.*_{multi,canonical}</code>.</p>
@@ -99,11 +109,9 @@
 
 <h2 id="label-1.5.0+-5B2016-04-19-5D">1.5.0 [2016-04-19]<span><a href="#label-1.5.0+-5B2016-04-19-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
-<p>Added <a
-href="Nuggets/String/FormatMixin.html#method-i-format">Nuggets::String::FormatMixin#format</a>.</p>
+<p>Added <a href="Nuggets/String/FormatMixin.html#method-i-format"><code>String#format</code></a>.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/String/HighlightMixin.html#method-i-highlight">Nuggets::String::HighlightMixin#highlight</a>.</p>
+<p>Added <a href="Nuggets/String/HighlightMixin.html#method-i-highlight"><code>String#highlight</code></a>.</p>
 </li><li>
 <p>Dropped IO::NULL, available as File::NULL since Ruby 1.9.3.</p>
 </li></ul>
@@ -112,8 +120,7 @@ href="Nuggets/String/HighlightMixin.html#method-i-highlight">Nuggets::String::Hi
 <ul><li>
 <p>Added File.open_file.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/Array/ExtractOptionsMixin.html#method-i-extract_options">Nuggets::Array::ExtractOptionsMixin#extract_options</a>.</p>
+<p>Added <a href="Nuggets/Array/ExtractOptionsMixin.html#method-i-extract_options"><code>Array#extract_options</code></a>.</p>
 </li></ul>
 
 <h2 id="label-1.3.0+-5B2015-07-07-5D">1.3.0 [2015-07-07]<span><a href="#label-1.3.0+-5B2015-07-07-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
@@ -123,69 +130,54 @@ href="Nuggets/Array/ExtractOptionsMixin.html#method-i-extract_options">Nuggets::
 
 <h2 id="label-1.2.1+-5B2015-04-14-5D">1.2.1 [2015-04-14]<span><a href="#label-1.2.1+-5B2015-04-14-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
-<p>Ruby Core compatibility for <a
-href="Enumerable.html#method-i-minmax">Enumerable#minmax</a> etc. Issue #4
-by @codez.</p>
+<p>Ruby Core compatibility for <a href="Enumerable.html#method-i-minmax"><code>Enumerable#minmax</code></a> etc. Issue #4 by @codez.</p>
 </li></ul>
 
 <h2 id="label-1.2.0+-5B2015-03-13-5D">1.2.0 [2015-03-13]<span><a href="#label-1.2.0+-5B2015-03-13-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
-<p>Extracted <a href="Nuggets/RubyMixin.html">Nuggets::RubyMixin</a> from <a
-href="Nuggets/Ruby.html">Nuggets::Ruby</a>.</p>
+<p>Extracted <a href="Nuggets/RubyMixin.html"><code>Nuggets::RubyMixin</code></a> from <a href="Nuggets/Ruby.html"><code>Nuggets::Ruby</code></a>.</p>
 </li><li>
-<p>Added <a
-href="Net/SSH/Connection/Session.html#method-i-exec_sudo">Net::SSH::Connection::Session#exec_sudo</a>.</p>
+<p>Added <a href="Net/SSH/Connection/Session.html#method-i-exec_sudo"><code>Net::SSH::Connection::Session#exec_sudo</code></a>.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/Hash/DeprocMixin.html#method-i-deproc">Nuggets::Hash::DeprocMixin#deproc</a>.</p>
+<p>Added <a href="Nuggets/Hash/DeprocMixin.html#method-i-deproc"><code>Hash#deproc</code></a>.</p>
 </li></ul>
 
 <h2 id="label-1.1.0+-5B2014-11-26-5D">1.1.0 [2014-11-26]<span><a href="#label-1.1.0+-5B2014-11-26-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
-<p><a href="Nuggets/LogParser/Rails.html">Nuggets::LogParser::Rails</a> no
-longer <code>eval</code>s the params hash; set the    environment variable
-<code>NUGGETS_LOG_PARSER_RAILS_EVAL_PARAMS</code> to restore this  
-behaviour.</p>
+<p><a href="Nuggets/LogParser/Rails.html"><code>Nuggets::LogParser::Rails</code></a> no longer <code>eval</code>s the params hash; set the    environment variable <code>NUGGETS_LOG_PARSER_RAILS_EVAL_PARAMS</code> to restore this   behaviour.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/Object/RescueIfMixin.html#method-i-rescue_if">Nuggets::Object::RescueIfMixin#rescue_if</a>
-and <a
-href="Nuggets/Object/RescueIfMixin.html#method-i-rescue_unless">Nuggets::Object::RescueIfMixin#rescue_unless</a>.</p>
+<p>Added <a href="Nuggets/Object/RescueIfMixin.html#method-i-rescue_if"><code>Object#rescue_if</code></a> and <a href="Nuggets/Object/RescueIfMixin.html#method-i-rescue_unless"><code>Object#rescue_unless</code></a>.</p>
 </li><li>
-<p>Added JRuby variant of <a
-href="Process.html#method-c-ruby">Process.ruby</a>.</p>
+<p>Added JRuby variant of <a href="Process.html#method-c-ruby"><code>Process.ruby</code></a>.</p>
 </li></ul>
 
 <h2 id="label-1.0.1+-5B2014-08-27-5D">1.0.1 [2014-08-27]<span><a href="#label-1.0.1+-5B2014-08-27-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
 <p>Added <code>DATA.{consume,reposition,update}</code>.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/Module/QueryAttrMixin.html#method-i-query_attr">Nuggets::Module::QueryAttrMixin#query_attr</a>.</p>
+<p>Added <a href="Nuggets/Module/QueryAttrMixin.html#method-i-query_attr"><code>Module#query_attr</code></a>.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/Module/LazyAttrMixin.html#method-i-lazy_attr">Nuggets::Module::LazyAttrMixin#lazy_attr</a>.</p>
+<p>Added <a href="Nuggets/Module/LazyAttrMixin.html#method-i-lazy_attr"><code>Module#lazy_attr</code></a>.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/Integer/RomanMixin.html#method-i-to_roman">Nuggets::Integer::RomanMixin#to_roman</a>.</p>
+<p>Added <a href="Nuggets/Integer/RomanMixin.html#method-i-to_roman"><code>Integer#to_roman</code></a>.</p>
 </li><li>
-<p>Added <a href="Numeric.html#method-i-signum_s">Numeric#signum_s</a>.</p>
+<p>Added <a href="Numeric.html#method-i-signum_s"><code>Numeric#signum_s</code></a>.</p>
 </li><li>
-<p>Added <a
-href="Nuggets/Array/InterpolateMixin.html#method-i-interpolate">Nuggets::Array::InterpolateMixin#interpolate</a>.</p>
+<p>Added <a href="Nuggets/Array/InterpolateMixin.html#method-i-interpolate"><code>Array#interpolate</code></a>.</p>
 </li></ul>
 
 <h2 id="label-1.0.0+-5B2014-06-20-5D">1.0.0 [2014-06-20]<span><a href="#label-1.0.0+-5B2014-06-20-5D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 <ul><li>
 <p>First release under new name. Formerly known as ruby-nuggets.</p>
 </li></ul>
+
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

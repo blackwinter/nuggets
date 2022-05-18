@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Object::RescueIfMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::Object::RescueIfMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -116,25 +120,24 @@
 
         <div class="method-description">
           
-          <p>Rescue exceptions matching <code>args</code>, or StandardError if not
-given, if <code>block</code> returns true.</p>
+          <p>Rescue exceptions matching <code>args</code>, or StandardError if not given, if <code>block</code> returns true.</p>
           
           
 
           
           <div class="method-source-code" id="rescue_if-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/rescue_if_mixin.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rescue_if</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;no block given&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>
-
-  <span class="ruby-identifier">args</span> = [<span class="ruby-operator">::</span><span class="ruby-constant">StandardError</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
-
-  <span class="ruby-operator">::</span><span class="ruby-constant">Module</span>.<span class="ruby-identifier">new</span> {
-    <span class="ruby-identifier">define_singleton_method</span>(<span class="ruby-value">:===</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">err</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">block</span>[<span class="ruby-identifier">err</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">err</span> }
-    }
-  }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/object/rescue_if_mixin.rb</span>
+<span class="line-num">36</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rescue_if</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">37</span>   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;no block given&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>
+<span class="line-num">38</span> 
+<span class="line-num">39</span>   <span class="ruby-identifier">args</span> = [<span class="ruby-operator">::</span><span class="ruby-constant">StandardError</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">40</span> 
+<span class="line-num">41</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Module</span>.<span class="ruby-identifier">new</span> {
+<span class="line-num">42</span>     <span class="ruby-identifier">define_singleton_method</span>(<span class="ruby-value">:===</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">err</span><span class="ruby-operator">|</span>
+<span class="line-num">43</span>       <span class="ruby-identifier">block</span>[<span class="ruby-identifier">err</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">err</span> }
+<span class="line-num">44</span>     }
+<span class="line-num">45</span>   }
+<span class="line-num">46</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -161,19 +164,18 @@ given, if <code>block</code> returns true.</p>
 
         <div class="method-description">
           
-          <p>Rescue exceptions matching <code>args</code>, or StandardError if not
-given, unless <code>block</code> returns true.</p>
+          <p>Rescue exceptions matching <code>args</code>, or StandardError if not given, unless <code>block</code> returns true.</p>
           
           
 
           
           <div class="method-source-code" id="rescue_unless-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/rescue_if_mixin.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rescue_unless</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;no block given&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>
-
-  <span class="ruby-identifier">rescue_if</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">err</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>[<span class="ruby-identifier">err</span>] }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/object/rescue_if_mixin.rb</span>
+<span class="line-num">53</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rescue_unless</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">54</span>   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;no block given&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>
+<span class="line-num">55</span> 
+<span class="line-num">56</span>   <span class="ruby-identifier">rescue_if</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">err</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>[<span class="ruby-identifier">err</span>] }
+<span class="line-num">57</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -187,12 +189,13 @@ given, unless <code>block</code> returns true.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

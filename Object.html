@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Object - nuggets Application documentation (v1.6.0)</title>
+<title>class Object - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -188,38 +192,38 @@
 
           
           <div class="method-source-code" id="Nuggets-source">
-            <pre><span class="ruby-comment"># File lib/nuggets.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Nuggets</span>(<span class="ruby-operator">*</span><span class="ruby-identifier ruby-title">nuggets</span>)
-  <span class="ruby-identifier">loaded_nuggets</span>, <span class="ruby-identifier">load_nuggets</span> = [], <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">base</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">nuggets_by_hierarchy</span> = <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
-
-    <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">nugget</span><span class="ruby-operator">|</span>
-      <span class="ruby-keyword">begin</span>
-        <span class="ruby-identifier">require</span> <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">nugget</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>)
-        <span class="ruby-identifier">loaded_nuggets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>
-      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
-        <span class="ruby-comment"># if it&#39;s a directory, load anything in it</span>
-        <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">dir_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">path</span>))
-            <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-identifier">path</span>, <span class="ruby-operator">*</span><span class="ruby-constant">Dir</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir_path</span>, <span class="ruby-string">&#39;*&#39;</span>)].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-              <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;.rb&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&#39;_mixin.rb&#39;</span>)
-            }.<span class="ruby-identifier">compact</span>]
-            <span class="ruby-keyword">break</span>
-          <span class="ruby-keyword">end</span>
-        } <span class="ruby-keyword">and</span> <span class="ruby-identifier">raise</span>  <span class="ruby-comment"># otherwise, re-raise</span>
-      <span class="ruby-keyword">end</span>
-    }
-
-    <span class="ruby-identifier">nuggets_by_hierarchy</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hierarchy</span>, <span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">nuggets</span> = [<span class="ruby-identifier">nuggets</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
-      <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">hierarchy</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
-    }
-  }
-
-  <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-string">&#39;nuggets&#39;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
-
-  <span class="ruby-identifier">loaded_nuggets</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets.rb</span>
+<span class="line-num">41</span> <span class="ruby-keyword">def</span> <span class="ruby-constant">Nuggets</span>(<span class="ruby-operator">*</span><span class="ruby-identifier ruby-title">nuggets</span>)
+<span class="line-num">42</span>   <span class="ruby-identifier">loaded_nuggets</span>, <span class="ruby-identifier">load_nuggets</span> = [], <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">base</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
+<span class="line-num">43</span>     <span class="ruby-identifier">nuggets_by_hierarchy</span> = <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
+<span class="line-num">44</span> 
+<span class="line-num">45</span>     <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">nugget</span><span class="ruby-operator">|</span>
+<span class="line-num">46</span>       <span class="ruby-keyword">begin</span>
+<span class="line-num">47</span>         <span class="ruby-identifier">require</span> <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">nugget</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>)
+<span class="line-num">48</span>         <span class="ruby-identifier">loaded_nuggets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>
+<span class="line-num">49</span>       <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
+<span class="line-num">50</span>         <span class="ruby-comment"># if it&#39;s a directory, load anything in it</span>
+<span class="line-num">51</span>         <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+<span class="line-num">52</span>           <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">dir_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">path</span>))
+<span class="line-num">53</span>             <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-identifier">path</span>, <span class="ruby-operator">*</span><span class="ruby-constant">Dir</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir_path</span>, <span class="ruby-string">&#39;*&#39;</span>)].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+<span class="line-num">54</span>               <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&#39;.rb&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&#39;_mixin.rb&#39;</span>)
+<span class="line-num">55</span>             }.<span class="ruby-identifier">compact</span>]
+<span class="line-num">56</span>             <span class="ruby-keyword">break</span>
+<span class="line-num">57</span>           <span class="ruby-keyword">end</span>
+<span class="line-num">58</span>         } <span class="ruby-keyword">and</span> <span class="ruby-identifier">raise</span>  <span class="ruby-comment"># otherwise, re-raise</span>
+<span class="line-num">59</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">60</span>     }
+<span class="line-num">61</span> 
+<span class="line-num">62</span>     <span class="ruby-identifier">nuggets_by_hierarchy</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hierarchy</span>, <span class="ruby-identifier">nuggets</span><span class="ruby-operator">|</span>
+<span class="line-num">63</span>       <span class="ruby-identifier">nuggets</span> = [<span class="ruby-identifier">nuggets</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">nuggets</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+<span class="line-num">64</span>       <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">hierarchy</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
+<span class="line-num">65</span>     }
+<span class="line-num">66</span>   }
+<span class="line-num">67</span> 
+<span class="line-num">68</span>   <span class="ruby-identifier">load_nuggets</span>[<span class="ruby-string">&#39;nuggets&#39;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">nuggets</span>]
+<span class="line-num">69</span> 
+<span class="line-num">70</span>   <span class="ruby-identifier">loaded_nuggets</span>
+<span class="line-num">71</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -233,12 +237,13 @@
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

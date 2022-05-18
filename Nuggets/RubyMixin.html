@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::RubyMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::RubyMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -97,9 +101,7 @@
 
   <section class="description">
     
-<p>Originally based on Phusion Passenger&#39;s <a
-href="https://github.com/FooBarWidget/passenger/blob/release-3.0.2/lib/phusion_passenger/platform_info/ruby.rb">PlatformInfo</a>
-module.</p>
+<p>Originally based on Phusion Passenger&#39;s <a href="https://github.com/FooBarWidget/passenger/blob/release-3.0.2/lib/phusion_passenger/platform_info/ruby.rb">PlatformInfo</a> module.</p>
 
   </section>
 
@@ -207,22 +209,22 @@ module.</p>
 
           
           <div class="method-source-code" id="define_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 127</span>
-    <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">define_ruby_tool</span>(<span class="ruby-identifier">name</span>)
-      <span class="ruby-identifier">class_eval</span> <span class="ruby-identifier">&lt;&lt;-EOT</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-<span class="ruby-value">        def #{name}
-          @#{name} ||= locate_ruby_tool(&#39;#{name}&#39;)
-        end
-
-        attr_writer :#{name}
-
-        def #{name}_command
-          @#{name}_command ||= command_for_ruby_tool(&#39;#{name}&#39;)
-        end
-
-        attr_writer :#{name}_command
-</span><span class="ruby-identifier">      EOT</span>
-    <span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">127</span>     <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">define_ruby_tool</span>(<span class="ruby-identifier">name</span>)
+<span class="line-num">128</span>       <span class="ruby-identifier">class_eval</span> <span class="ruby-identifier">&lt;&lt;-EOT</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="line-num">129</span> <span class="ruby-value">        def #{name}
+<span class="line-num">130</span>           @#{name} ||= locate_ruby_tool(&#39;#{name}&#39;)
+<span class="line-num">131</span>         end
+<span class="line-num">132</span> 
+<span class="line-num">133</span>         attr_writer :#{name}
+<span class="line-num">134</span> 
+<span class="line-num">135</span>         def #{name}_command
+<span class="line-num">136</span>           @#{name}_command ||= command_for_ruby_tool(&#39;#{name}&#39;)
+<span class="line-num">137</span>         end
+<span class="line-num">138</span> 
+<span class="line-num">139</span>         attr_writer :#{name}_command
+<span class="line-num">140</span> </span><span class="ruby-identifier">      EOT</span>
+<span class="line-num">141</span>     <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -254,25 +256,19 @@ module.</p>
 
         <div class="method-description">
           
-          <p>Returns the correct command string for invoking the <code>name</code>
-executable that belongs to the current <a href="Ruby.html">Ruby</a>
-interpreter. Returns <code>nil</code> if the command is not found.</p>
+          <p>Returns the correct command string for invoking the <code>name</code> executable that belongs to the current <a href="Ruby.html"><code>Ruby</code></a> interpreter. Returns <code>nil</code> if the command is not found.</p>
 
-<p>If the command executable is a <a href="Ruby.html">Ruby</a> program, then
-we need to run it in the correct <a href="Ruby.html">Ruby</a> interpreter
-just in case the command doesn&#39;t have the correct shebang line; we
-don&#39;t want a totally different <a href="Ruby.html">Ruby</a> than the
-current one to be invoked.</p>
+<p>If the command executable is a <a href="Ruby.html"><code>Ruby</code></a> program, then we need to run it in the correct <a href="Ruby.html"><code>Ruby</code></a> interpreter just in case the command doesn&#39;t have the correct shebang line; we don&#39;t want a totally different <a href="Ruby.html"><code>Ruby</code></a> than the current one to be invoked.</p>
           
           
 
           
           <div class="method-source-code" id="command_for_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 122</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">command_for_ruby_tool</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">=~</span> <span class="ruby-regexp">/ruby/</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{ruby_command} #{filename}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">filename</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">122</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">command_for_ruby_tool</span>(<span class="ruby-identifier">name</span>)
+<span class="line-num">123</span>   <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>)
+<span class="line-num">124</span>   <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">=~</span> <span class="ruby-regexp">/ruby/</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{ruby_command} #{filename}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">filename</span>
+<span class="line-num">125</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -296,18 +292,9 @@ current one to be invoked.</p>
 
         <div class="method-description">
           
-          <p>Locates a <a href="Ruby.html">Ruby</a> tool command <code>name</code>, e.g.
-&#39;gem&#39;, &#39;rake&#39;, &#39;bundle&#39;, etc. Instead of naively
-looking in $PATH, this function uses a variety of search heuristics to find
-the command that&#39;s really associated with the current <a
-href="Ruby.html">Ruby</a> interpreter. It should never locate a command
-that&#39;s actually associated with a different <a
-href="Ruby.html">Ruby</a> interpreter.</p>
+          <p>Locates a <a href="Ruby.html"><code>Ruby</code></a> tool command <code>name</code>, e.g. &#39;gem&#39;, &#39;rake&#39;, &#39;bundle&#39;, etc. Instead of naively looking in $PATH, this function uses a variety of search heuristics to find the command that&#39;s really associated with the current <a href="Ruby.html"><code>Ruby</code></a> interpreter. It should never locate a command that&#39;s actually associated with a different <a href="Ruby.html"><code>Ruby</code></a> interpreter.</p>
 
-<p>NOTE: The return value may not be the actual correct invocation for the
-tool. Use <a
-href="RubyMixin.html#method-i-command_for_ruby_tool">#command_for_ruby_tool</a>
-for that.</p>
+<p>NOTE: The return value may not be the actual correct invocation for the tool. Use <a href="RubyMixin.html#method-i-command_for_ruby_tool"><code>command_for_ruby_tool</code></a> for that.</p>
 
 <p>Returns <code>nil</code> when nothing&#39;s found.</p>
           
@@ -315,20 +302,20 @@ for that.</p>
 
           
           <div class="method-source-code" id="locate_ruby_tool-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 100</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">extensions</span> = [<span class="ruby-string">&#39;&#39;</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">&#39;EXEEXT&#39;</span>]].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>)
-  <span class="ruby-comment"># Deduce Ruby&#39;s --program-prefix and --program-suffix from its install name</span>
-  <span class="ruby-comment"># and transform the given input name accordingly.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-comment">#   &quot;rake&quot; =&gt; &quot;jrake&quot;, &quot;rake1.8&quot;, etc.</span>
-  [<span class="ruby-identifier">name</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">&#39;RUBY_INSTALL_NAME&#39;</span>].<span class="ruby-identifier">sub</span>(<span class="ruby-string">&#39;ruby&#39;</span>, <span class="ruby-identifier">name</span>)].<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">basename</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">extensions</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ext</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">basename</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ext</span>) <span class="ruby-keyword">and</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span>
-    }
-  }
-
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">100</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">locate_ruby_tool</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">extensions</span> = [<span class="ruby-string">&#39;&#39;</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">&#39;EXEEXT&#39;</span>]].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>)
+<span class="line-num">101</span>   <span class="ruby-comment"># Deduce Ruby&#39;s --program-prefix and --program-suffix from its install name</span>
+<span class="line-num">102</span>   <span class="ruby-comment"># and transform the given input name accordingly.</span>
+<span class="line-num">103</span>   <span class="ruby-comment">#</span>
+<span class="line-num">104</span>   <span class="ruby-comment">#   &quot;rake&quot; =&gt; &quot;jrake&quot;, &quot;rake1.8&quot;, etc.</span>
+<span class="line-num">105</span>   [<span class="ruby-identifier">name</span>, <span class="ruby-constant">CONFIG</span>[<span class="ruby-string">&#39;RUBY_INSTALL_NAME&#39;</span>].<span class="ruby-identifier">sub</span>(<span class="ruby-string">&#39;ruby&#39;</span>, <span class="ruby-identifier">name</span>)].<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">basename</span><span class="ruby-operator">|</span>
+<span class="line-num">106</span>     <span class="ruby-identifier">extensions</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ext</span><span class="ruby-operator">|</span>
+<span class="line-num">107</span>       <span class="ruby-identifier">result</span> = <span class="ruby-identifier">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">basename</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ext</span>) <span class="ruby-keyword">and</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span>
+<span class="line-num">108</span>     }
+<span class="line-num">109</span>   }
+<span class="line-num">110</span> 
+<span class="line-num">111</span>   <span class="ruby-keyword">nil</span>
+<span class="line-num">112</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -352,17 +339,16 @@ for that.</p>
 
         <div class="method-description">
           
-          <p>Returns correct command for invoking the current <a
-href="Ruby.html">Ruby</a> interpreter.</p>
+          <p>Returns correct command for invoking the current <a href="Ruby.html"><code>Ruby</code></a> interpreter.</p>
           
           
 
           
           <div class="method-source-code" id="ruby_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 72</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_command</span>
-  <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@ruby_command</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@ruby_command</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@ruby_command</span> = <span class="ruby-identifier">ruby_executable</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">72</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_command</span>
+<span class="line-num">73</span>   <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@ruby_command</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@ruby_command</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@ruby_command</span> = <span class="ruby-identifier">ruby_executable</span>
+<span class="line-num">74</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -386,23 +372,19 @@ href="Ruby.html">Ruby</a> interpreter.</p>
 
         <div class="method-description">
           
-          <p>Returns the full path to the current <a href="Ruby.html">Ruby</a>
-interpreter&#39;s executable file. This might not be the actual correct
-command to use for invoking the <a href="Ruby.html">Ruby</a> interpreter;
-use <a href="RubyMixin.html#method-i-ruby_command">#ruby_command</a>
-instead.</p>
+          <p>Returns the full path to the current <a href="Ruby.html"><code>Ruby</code></a> interpreter&#39;s executable file. This might not be the actual correct command to use for invoking the <a href="Ruby.html"><code>Ruby</code></a> interpreter; use <a href="RubyMixin.html#method-i-ruby_command"><code>ruby_command</code></a> instead.</p>
           
           
 
           
           <div class="method-source-code" id="ruby_executable-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 81</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_executable</span>
-  <span class="ruby-ivar">@ruby_executable</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
-    <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-constant">CONFIG</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-node">%w[bindir RUBY_INSTALL_NAME EXEEXT]</span>)
-    <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ext</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/.*\s.*/m</span>, <span class="ruby-string">&#39;&quot;\&amp;&quot;&#39;</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">81</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_executable</span>
+<span class="line-num">82</span>   <span class="ruby-ivar">@ruby_executable</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+<span class="line-num">83</span>     <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-constant">CONFIG</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-node">%w[bindir RUBY_INSTALL_NAME EXEEXT]</span>)
+<span class="line-num">84</span>     <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ext</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/.*\s.*/m</span>, <span class="ruby-string">&#39;&quot;\&amp;&quot;&#39;</span>)
+<span class="line-num">85</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">86</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -432,22 +414,22 @@ instead.</p>
 
           
           <div class="method-source-code" id="ruby_options_from_hash-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 153</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_options_from_hash</span>(<span class="ruby-identifier">hash</span>, <span class="ruby-identifier">argv</span> = [])
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">opt</span> = <span class="ruby-node">&quot;-#{key.to_s[0, 1]}&quot;</span>
-
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>)
-      <span class="ruby-identifier">val</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span> }
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-e&#39;</span>
-      <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>
-      <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{opt}#{val unless val == true}&quot;</span>
-    <span class="ruby-keyword">end</span>
-  }
-
-  <span class="ruby-identifier">argv</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">153</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_options_from_hash</span>(<span class="ruby-identifier">hash</span>, <span class="ruby-identifier">argv</span> = [])
+<span class="line-num">154</span>   <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+<span class="line-num">155</span>     <span class="ruby-identifier">opt</span> = <span class="ruby-node">&quot;-#{key.to_s[0, 1]}&quot;</span>
+<span class="line-num">156</span> 
+<span class="line-num">157</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>)
+<span class="line-num">158</span>       <span class="ruby-identifier">val</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span> }
+<span class="line-num">159</span>     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-e&#39;</span>
+<span class="line-num">160</span>       <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">opt</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>
+<span class="line-num">161</span>     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>
+<span class="line-num">162</span>       <span class="ruby-identifier">argv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{opt}#{val unless val == true}&quot;</span>
+<span class="line-num">163</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">164</span>   }
+<span class="line-num">165</span> 
+<span class="line-num">166</span>   <span class="ruby-identifier">argv</span>
+<span class="line-num">167</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -477,14 +459,14 @@ instead.</p>
 
           
           <div class="method-source-code" id="ruby_options_to_argv-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 145</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">ruby_command</span> = <span class="ruby-identifier">ruby_command</span>())
-  <span class="ruby-identifier">argv</span> = [<span class="ruby-identifier">ruby_command</span>]
-
-  <span class="ruby-identifier">ruby_options_from_hash</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-identifier">argv</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
-
-  <span class="ruby-identifier">argv</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span> })
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">145</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">ruby_command</span> = <span class="ruby-identifier">ruby_command</span>())
+<span class="line-num">146</span>   <span class="ruby-identifier">argv</span> = [<span class="ruby-identifier">ruby_command</span>]
+<span class="line-num">147</span> 
+<span class="line-num">148</span>   <span class="ruby-identifier">ruby_options_from_hash</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-identifier">argv</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
+<span class="line-num">149</span> 
+<span class="line-num">150</span>   <span class="ruby-identifier">argv</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span> })
+<span class="line-num">151</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -522,11 +504,11 @@ instead.</p>
 
           
           <div class="method-source-code" id="executable_filename-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 197</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">executable_filename</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">filename</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">filename</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">197</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">executable_filename</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
+<span class="line-num">198</span>   <span class="ruby-identifier">filename</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
+<span class="line-num">199</span>   <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">executable?</span>(<span class="ruby-identifier">filename</span>)
+<span class="line-num">200</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -556,32 +538,32 @@ instead.</p>
 
           
           <div class="method-source-code" id="locate_ruby_tool_by_basename-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 171</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-comment"># On OS X we must look for Ruby binaries in /usr/bin.</span>
-  <span class="ruby-comment"># RubyGems puts executables (e.g. &#39;rake&#39;) in there, not in</span>
-  <span class="ruby-comment"># /System/Libraries/(...)/bin.</span>
-  <span class="ruby-identifier">dir</span> = <span class="ruby-operator">::</span><span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/darwin/</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ruby_command</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OSX_RUBY_RE</span> <span class="ruby-operator">?</span>
-    <span class="ruby-string">&#39;/usr/bin&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">ruby_command</span>)
-
-  <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">executable_filename</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>) <span class="ruby-keyword">and</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span>
-
-  <span class="ruby-comment"># RubyGems might put binaries in a directory other</span>
-  <span class="ruby-comment"># than Ruby&#39;s bindir. Debian packaged RubyGems and</span>
-  <span class="ruby-comment"># DebGem packaged RubyGems are the prime examples.</span>
-  <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">executable_filename</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Gem</span>.<span class="ruby-identifier">bindir</span>, <span class="ruby-identifier">name</span>) <span class="ruby-keyword">and</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span>
-
-  <span class="ruby-comment"># Looks like it&#39;s not in the RubyGems bindir. Search in $PATH, but</span>
-  <span class="ruby-comment"># be very careful about this because whatever we find might belong</span>
-  <span class="ruby-comment"># to a different Ruby interpreter than the current one.</span>
-  <span class="ruby-operator">::</span><span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;PATH&#39;</span>].<span class="ruby-identifier">split</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">executable_filename</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">name</span>)
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">ruby_command</span>
-    <span class="ruby-keyword">end</span>
-  }
-
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">171</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">locate_ruby_tool_by_basename</span>(<span class="ruby-identifier">name</span>)
+<span class="line-num">172</span>   <span class="ruby-comment"># On OS X we must look for Ruby binaries in /usr/bin.</span>
+<span class="line-num">173</span>   <span class="ruby-comment"># RubyGems puts executables (e.g. &#39;rake&#39;) in there, not in</span>
+<span class="line-num">174</span>   <span class="ruby-comment"># /System/Libraries/(...)/bin.</span>
+<span class="line-num">175</span>   <span class="ruby-identifier">dir</span> = <span class="ruby-operator">::</span><span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/darwin/</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ruby_command</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OSX_RUBY_RE</span> <span class="ruby-operator">?</span>
+<span class="line-num">176</span>     <span class="ruby-string">&#39;/usr/bin&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">ruby_command</span>)
+<span class="line-num">177</span> 
+<span class="line-num">178</span>   <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">executable_filename</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>) <span class="ruby-keyword">and</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span>
+<span class="line-num">179</span> 
+<span class="line-num">180</span>   <span class="ruby-comment"># RubyGems might put binaries in a directory other</span>
+<span class="line-num">181</span>   <span class="ruby-comment"># than Ruby&#39;s bindir. Debian packaged RubyGems and</span>
+<span class="line-num">182</span>   <span class="ruby-comment"># DebGem packaged RubyGems are the prime examples.</span>
+<span class="line-num">183</span>   <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">executable_filename</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Gem</span>.<span class="ruby-identifier">bindir</span>, <span class="ruby-identifier">name</span>) <span class="ruby-keyword">and</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span>
+<span class="line-num">184</span> 
+<span class="line-num">185</span>   <span class="ruby-comment"># Looks like it&#39;s not in the RubyGems bindir. Search in $PATH, but</span>
+<span class="line-num">186</span>   <span class="ruby-comment"># be very careful about this because whatever we find might belong</span>
+<span class="line-num">187</span>   <span class="ruby-comment"># to a different Ruby interpreter than the current one.</span>
+<span class="line-num">188</span>   <span class="ruby-operator">::</span><span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;PATH&#39;</span>].<span class="ruby-identifier">split</span>(<span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">PATH_SEPARATOR</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+<span class="line-num">189</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">executable_filename</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">name</span>)
+<span class="line-num">190</span>       <span class="ruby-keyword">return</span> <span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">shebang_command</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">ruby_command</span>
+<span class="line-num">191</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">192</span>   }
+<span class="line-num">193</span> 
+<span class="line-num">194</span>   <span class="ruby-keyword">nil</span>
+<span class="line-num">195</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -611,17 +593,17 @@ instead.</p>
 
           
           <div class="method-source-code" id="shebang_command-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb, line 202</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shebang_command</span>(<span class="ruby-identifier">filename</span>)
-  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">filename</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A#!\s*(\S*)/</span>
-
-    <span class="ruby-comment"># Allow one extra line for magic comment.</span>
-    <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$.</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
-  }
-
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/ruby_mixin.rb</span>
+<span class="line-num">202</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shebang_command</span>(<span class="ruby-identifier">filename</span>)
+<span class="line-num">203</span>   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">filename</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+<span class="line-num">204</span>     <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A#!\s*(\S*)/</span>
+<span class="line-num">205</span> 
+<span class="line-num">206</span>     <span class="ruby-comment"># Allow one extra line for magic comment.</span>
+<span class="line-num">207</span>     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$.</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+<span class="line-num">208</span>   }
+<span class="line-num">209</span> 
+<span class="line-num">210</span>   <span class="ruby-keyword">nil</span>
+<span class="line-num">211</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -635,12 +617,13 @@ instead.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

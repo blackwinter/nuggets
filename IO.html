@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class IO - nuggets Application documentation (v1.6.0)</title>
+<title>class IO - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -147,7 +151,7 @@
         
         <div class="method-heading">
           <span class="method-name">_nuggets_original_read</span><span
-            class="method-args">(name, *args)</span>
+            class="method-args">(name, *args, **opts, &amp;block)</span>
           
         </div>
         
@@ -200,10 +204,10 @@
 
           
           <div class="method-source-code" id="agrep-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/agrep.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">agrep</span>(<span class="ruby-identifier">fd</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span> = <span class="ruby-value">0</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fd</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/io/agrep.rb</span>
+<span class="line-num">35</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">agrep</span>(<span class="ruby-identifier">fd</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span> = <span class="ruby-value">0</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">36</span>   <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fd</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">agrep</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">distance</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) }
+<span class="line-num">37</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -243,10 +247,10 @@
 
           
           <div class="method-source-code" id="append-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 75</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">append</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;a&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/io/modes.rb</span>
+<span class="line-num">75</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">append</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">76</span>   <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;a&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">77</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -286,10 +290,10 @@
 
           
           <div class="method-source-code" id="append_read-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 102</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">append_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;a+&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/io/modes.rb</span>
+<span class="line-num">102</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">append_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">103</span>   <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;a+&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">104</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -323,34 +327,32 @@
 
         <div class="method-description">
           
-          <p>Opens <code>name</code> with mode <code>r</code>. NOTE: With no associated
-block, acts like the original <a href="IO.html#method-c-read">::read</a>,
-not like IO::new.</p>
+          <p>Opens <code>name</code> with mode <code>r</code>. NOTE: With no associated block, acts like the original <a href="IO.html#method-c-read"><code>IO::read</code></a>, not like IO::new.</p>
           
           
 
           
           <div class="method-source-code" id="read-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">_nuggets_original_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
-
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>
-      <span class="ruby-comment"># ok</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>
-      <span class="ruby-keyword">case</span> <span class="ruby-identifier">binary</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
-        <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>
-          <span class="ruby-comment"># ok</span>
-        <span class="ruby-keyword">else</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;wrong argument type #{binary.class} (expected boolean)&quot;</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{args.size + 1} for 1-2)&quot;</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;r&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/io/modes.rb</span>
+<span class="line-num">41</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">opts</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">42</span>   <span class="ruby-keyword">return</span> <span class="ruby-identifier">_nuggets_original_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">opts</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+<span class="line-num">43</span> 
+<span class="line-num">44</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span>
+<span class="line-num">45</span>     <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>
+<span class="line-num">46</span>       <span class="ruby-comment"># ok</span>
+<span class="line-num">47</span>     <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>
+<span class="line-num">48</span>       <span class="ruby-keyword">case</span> <span class="ruby-identifier">binary</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+<span class="line-num">49</span>         <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>
+<span class="line-num">50</span>           <span class="ruby-comment"># ok</span>
+<span class="line-num">51</span>         <span class="ruby-keyword">else</span>
+<span class="line-num">52</span>           <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;wrong argument type #{binary.class} (expected boolean)&quot;</span>
+<span class="line-num">53</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">54</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">55</span>       <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{args.size + 1} for 1-2)&quot;</span>
+<span class="line-num">56</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">57</span> 
+<span class="line-num">58</span>   <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;r&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">59</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -394,10 +396,10 @@ not like IO::new.</p>
 
           
           <div class="method-source-code" id="read_write-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 84</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;r+&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/io/modes.rb</span>
+<span class="line-num">84</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">85</span>   <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;r+&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">86</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -437,10 +439,10 @@ not like IO::new.</p>
 
           
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 66</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;w&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/io/modes.rb</span>
+<span class="line-num">66</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">67</span>   <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;w&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">68</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -480,10 +482,10 @@ not like IO::new.</p>
 
           
           <div class="method-source-code" id="write_read-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 93</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;w+&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/io/modes.rb</span>
+<span class="line-num">93</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">94</span>   <span class="ruby-identifier">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&#39;w+&#39;</span>, <span class="ruby-identifier">binary</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">95</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -506,7 +508,7 @@ not like IO::new.</p>
         
         <div class="method-heading">
           <span class="method-name">open_with_mode</span><span
-            class="method-args">(name, mode, binary = false)</span>
+            class="method-args">(name, mode, binary = false, &amp;block)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -521,10 +523,10 @@ not like IO::new.</p>
 
           
           <div class="method-source-code" id="open_with_mode-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/modes.rb, line 109</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;#{mode}#{&#39;b&#39; if binary}&quot;</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/io/modes.rb</span>
+<span class="line-num">109</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">open_with_mode</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">binary</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">110</span>   <span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;#{mode}#{&#39;b&#39; if binary}&quot;</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">111</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -538,12 +540,13 @@ not like IO::new.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

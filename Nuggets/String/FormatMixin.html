@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::String::FormatMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::String::FormatMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -142,27 +146,25 @@
           
           <p>Replace format directives in <em>str</em>.</p>
 
-<p>If <code>hash</code> given, uses value of directive key (String or Symbol)
-as replacement value. Raises KeyError if directive key not found.</p>
+<p>If <code>hash</code> given, uses value of directive key (<a href="../String.html"><code>String</code></a> or Symbol) as replacement value. Raises KeyError if directive key not found.</p>
 
-<p>If block given, uses result of <code>directive</code> yielded to block as
-replacement value. Raises ArgumentError if block returns no value.</p>
+<p>If block given, uses result of <code>directive</code> yielded to block as replacement value. Raises ArgumentError if block returns no value.</p>
           
           
 
           
           <div class="method-source-code" id="format-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/format_mixin.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">format</span>(<span class="ruby-identifier">hash</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">replace</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">gsub</span>(<span class="ruby-constant">FORMAT_RE</span>) {
-    (<span class="ruby-identifier">k</span> = <span class="ruby-node">$1</span> <span class="ruby-operator">||</span> <span class="ruby-node">$2</span>) <span class="ruby-operator">==</span> <span class="ruby-constant">PREFIX</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>[<span class="ruby-identifier">k</span>] } }
-
-  <span class="ruby-identifier">hash</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">replace</span>.() { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>) {
-    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_sym</span>) { <span class="ruby-identifier">raise</span>(<span class="ruby-constant">KeyError</span>, <span class="ruby-node">&quot;key not found: #{k}&quot;</span>) } } } <span class="ruby-operator">:</span>
-  <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">replace</span>.() { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword">or</span>
-    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;malformed format string - #{$&amp;}&quot;</span>) } <span class="ruby-operator">:</span>
-    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;wrong number of arguments (given 0, expected 1)&#39;</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/string/format_mixin.rb</span>
+<span class="line-num">46</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">format</span>(<span class="ruby-identifier">hash</span> = <span class="ruby-keyword">nil</span>)
+<span class="line-num">47</span>   <span class="ruby-identifier">replace</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">gsub</span>(<span class="ruby-constant">FORMAT_RE</span>) {
+<span class="line-num">48</span>     (<span class="ruby-identifier">k</span> = <span class="ruby-node">$1</span> <span class="ruby-operator">||</span> <span class="ruby-node">$2</span>) <span class="ruby-operator">==</span> <span class="ruby-constant">PREFIX</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>[<span class="ruby-identifier">k</span>] } }
+<span class="line-num">49</span> 
+<span class="line-num">50</span>   <span class="ruby-identifier">hash</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">replace</span>.() { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>) {
+<span class="line-num">51</span>     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_sym</span>) { <span class="ruby-identifier">raise</span>(<span class="ruby-constant">KeyError</span>, <span class="ruby-node">&quot;key not found: #{k}&quot;</span>) } } } <span class="ruby-operator">:</span>
+<span class="line-num">52</span>   <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">replace</span>.() { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword">or</span>
+<span class="line-num">53</span>     <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;malformed format string - #{$&amp;}&quot;</span>) } <span class="ruby-operator">:</span>
+<span class="line-num">54</span>     <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;wrong number of arguments (given 0, expected 1)&#39;</span>)
+<span class="line-num">55</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -176,12 +178,13 @@ replacement value. Raises ArgumentError if block returns no value.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

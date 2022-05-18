@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Object::BlankMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::Object::BlankMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -124,30 +128,30 @@
 
           
           <div class="method-source-code" id="blank-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">blank?</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">modifiers</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">blank?</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">modifiers</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:empty?</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">empty?</span> <span class="ruby-operator">:</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">blank?</span>
-
-    <span class="ruby-identifier">modifiers</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">modifier</span><span class="ruby-operator">|</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">modifier</span>)
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">modifier</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\?\z/</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">modifier</span>)
-        <span class="ruby-keyword">else</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">modifier</span>).<span class="ruby-identifier">blank?</span>
-        <span class="ruby-keyword">end</span>
-      <span class="ruby-keyword">end</span>
-    }
-
-    <span class="ruby-keyword">false</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb</span>
+<span class="line-num">35</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">blank?</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">modifiers</span>)
+<span class="line-num">36</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+<span class="line-num">37</span>     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">blank?</span>
+<span class="line-num">38</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">39</span> 
+<span class="line-num">40</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">modifiers</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">41</span>     <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:empty?</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">empty?</span> <span class="ruby-operator">:</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>
+<span class="line-num">42</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">43</span>     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">blank?</span>
+<span class="line-num">44</span> 
+<span class="line-num">45</span>     <span class="ruby-identifier">modifiers</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">modifier</span><span class="ruby-operator">|</span>
+<span class="line-num">46</span>       <span class="ruby-keyword">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">modifier</span>)
+<span class="line-num">47</span>         <span class="ruby-keyword">if</span> <span class="ruby-identifier">modifier</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\?\z/</span>
+<span class="line-num">48</span>           <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">modifier</span>)
+<span class="line-num">49</span>         <span class="ruby-keyword">else</span>
+<span class="line-num">50</span>           <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">modifier</span>).<span class="ruby-identifier">blank?</span>
+<span class="line-num">51</span>         <span class="ruby-keyword">end</span>
+<span class="line-num">52</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">53</span>     }
+<span class="line-num">54</span> 
+<span class="line-num">55</span>     <span class="ruby-keyword">false</span>
+<span class="line-num">56</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">57</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -202,17 +206,16 @@
 
         <div class="method-description">
           
-          <p>Adds white-space strings, 0 and arrays of <code>nil</code> objects to the
-list of blank objects.</p>
+          <p>Adds white-space strings, 0 and arrays of <code>nil</code> objects to the list of blank objects.</p>
           
           
 
           
           <div class="method-source-code" id="void-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb, line 64</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">void?</span>
-  <span class="ruby-identifier">blank?</span>(<span class="ruby-value">:zero?</span>, <span class="ruby-value">:strip</span>, <span class="ruby-value">:compact</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/object/blank_mixin.rb</span>
+<span class="line-num">64</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">void?</span>
+<span class="line-num">65</span>   <span class="ruby-identifier">blank?</span>(<span class="ruby-value">:zero?</span>, <span class="ruby-value">:strip</span>, <span class="ruby-value">:compact</span>)
+<span class="line-num">66</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -230,12 +233,13 @@ list of blank objects.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

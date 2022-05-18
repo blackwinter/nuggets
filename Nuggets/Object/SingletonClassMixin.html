@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Object::SingletonClassMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::Object::SingletonClassMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -402,17 +406,16 @@
 
         <div class="method-description">
           
-          <p>Returns the singleton (or virtual/eigen/meta) class associated with
-<em>object</em>.</p>
+          <p>Returns the singleton (or virtual/eigen/meta) class associated with <em>object</em>.</p>
           
           
 
           
           <div class="method-source-code" id="singleton_class-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_class</span>
-  <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>; <span class="ruby-keyword">self</span>; <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb</span>
+<span class="line-num">35</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_class</span>
+<span class="line-num">36</span>   <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>; <span class="ruby-keyword">self</span>; <span class="ruby-keyword">end</span>
+<span class="line-num">37</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -443,23 +446,19 @@
 
         <div class="method-description">
           
-          <p>Returns <code>true</code> if <em>object</em> is a <a
-href="SingletonClassMixin.html#method-i-singleton_class">#singleton_class</a>
-(i.e., has a <a
-href="SingletonClassMixin.html#method-i-singleton_object">#singleton_object</a>),
-<code>false</code> otherwise.</p>
+          <p>Returns <code>true</code> if <em>object</em> is a <a href="SingletonClassMixin.html#method-i-singleton_class"><code>singleton_class</code></a> (i.e., has a <a href="SingletonClassMixin.html#method-i-singleton_object"><code>singleton_object</code></a>), <code>false</code> otherwise.</p>
           
           
 
           
           <div class="method-source-code" id="singleton_class-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 80</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_class?</span>
-  <span class="ruby-identifier">singleton_object</span>
-  <span class="ruby-keyword">true</span>
-<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
-  <span class="ruby-keyword">false</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb</span>
+<span class="line-num">80</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_class?</span>
+<span class="line-num">81</span>   <span class="ruby-identifier">singleton_object</span>
+<span class="line-num">82</span>   <span class="ruby-keyword">true</span>
+<span class="line-num">83</span> <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
+<span class="line-num">84</span>   <span class="ruby-keyword">false</span>
+<span class="line-num">85</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -518,30 +517,29 @@ href="SingletonClassMixin.html#method-i-singleton_object">#singleton_object</a>)
 
         <div class="method-description">
           
-          <p>Returns the object of which <em>object</em> is the singleton_class. Raises
-a TypeError if <em>object</em> is not a singleton class.</p>
+          <p>Returns the object of which <em>object</em> is the singleton_class. Raises a TypeError if <em>object</em> is not a singleton class.</p>
           
           
 
           
           <div class="method-source-code" id="singleton_object-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb, line 50</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_object</span>
-  [<span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">singleton_class</span>)
-  }
-
-  <span class="ruby-comment"># raises TypeError if neither class nor module</span>
-  <span class="ruby-operator">::</span><span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">each_object</span>(<span class="ruby-keyword">self</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">singleton_class</span>)
-  }
-
-  <span class="ruby-comment"># if we got here, it can&#39;t be a singleton class</span>
-  <span class="ruby-comment"># or its singleton object doesn&#39;t exist anymore</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
-<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-string">&#39;not a singleton class&#39;</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/object/singleton_class_mixin.rb</span>
+<span class="line-num">50</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_object</span>
+<span class="line-num">51</span>   [<span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
+<span class="line-num">52</span>     <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">singleton_class</span>)
+<span class="line-num">53</span>   }
+<span class="line-num">54</span> 
+<span class="line-num">55</span>   <span class="ruby-comment"># raises TypeError if neither class nor module</span>
+<span class="line-num">56</span>   <span class="ruby-operator">::</span><span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">each_object</span>(<span class="ruby-keyword">self</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
+<span class="line-num">57</span>     <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">singleton_class</span>)
+<span class="line-num">58</span>   }
+<span class="line-num">59</span> 
+<span class="line-num">60</span>   <span class="ruby-comment"># if we got here, it can&#39;t be a singleton class</span>
+<span class="line-num">61</span>   <span class="ruby-comment"># or its singleton object doesn&#39;t exist anymore</span>
+<span class="line-num">62</span>   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
+<span class="line-num">63</span> <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>
+<span class="line-num">64</span>   <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-string">&#39;not a singleton class&#39;</span>
+<span class="line-num">65</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -727,12 +725,13 @@ a TypeError if <em>object</em> is not a singleton class.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

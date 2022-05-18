@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Nuggets::Hash::ZipMixin::ZipHash - nuggets Application documentation (v1.6.0)</title>
+<title>class Nuggets::Hash::ZipMixin::ZipHash - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../../";
   var index_rel_prefix = "../../../";
 </script>
 
-<script src="../../../js/jquery.js"></script>
-<script src="../../../js/darkfish.js"></script>
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
 
 <link href="../../../css/fonts.css" rel="stylesheet">
 <link href="../../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -143,10 +147,10 @@
 
           
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">key</span>)
-  <span class="ruby-identifier">unzipval</span>(<span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>)))
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">47</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">key</span>)
+<span class="line-num">48</span>   <span class="ruby-identifier">unzipval</span>(<span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>)))
+<span class="line-num">49</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -181,10 +185,10 @@
 
           
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
-  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>), <span class="ruby-identifier">zipval</span>(<span class="ruby-identifier">value</span>))
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">51</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+<span class="line-num">52</span>   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>), <span class="ruby-identifier">zipval</span>(<span class="ruby-identifier">value</span>))
+<span class="line-num">53</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -219,10 +223,10 @@
 
           
           <div class="method-source-code" id="fetch-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 55</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch</span>(<span class="ruby-identifier">key</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">unzipval</span>(<span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>))
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">55</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch</span>(<span class="ruby-identifier">key</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">56</span>   <span class="ruby-identifier">unzipval</span>(<span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>))
+<span class="line-num">57</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -257,10 +261,10 @@
 
           
           <div class="method-source-code" id="store-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 59</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">store</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
-  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>), <span class="ruby-identifier">zipval</span>(<span class="ruby-identifier">value</span>))
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">59</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">store</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+<span class="line-num">60</span>   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">zipkey</span>(<span class="ruby-identifier">key</span>), <span class="ruby-identifier">zipval</span>(<span class="ruby-identifier">value</span>))
+<span class="line-num">61</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -298,10 +302,10 @@
 
           
           <div class="method-source-code" id="unzipkey-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 77</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unzipkey</span>(<span class="ruby-identifier">key</span>)
-  <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipKey</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">key</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">77</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unzipkey</span>(<span class="ruby-identifier">key</span>)
+<span class="line-num">78</span>   <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipKey</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">key</span>
+<span class="line-num">79</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -331,10 +335,10 @@
 
           
           <div class="method-source-code" id="unzipval-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 69</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unzipval</span>(<span class="ruby-identifier">value</span>)
-  <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipVal</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">69</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unzipval</span>(<span class="ruby-identifier">value</span>)
+<span class="line-num">70</span>   <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipVal</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>
+<span class="line-num">71</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -364,10 +368,10 @@
 
           
           <div class="method-source-code" id="zipkey-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 73</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zipkey</span>(<span class="ruby-identifier">key</span>)
-  <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipKey</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">:</span> <span class="ruby-constant">ZipKey</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">key</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">73</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zipkey</span>(<span class="ruby-identifier">key</span>)
+<span class="line-num">74</span>   <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipKey</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">:</span> <span class="ruby-constant">ZipKey</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">key</span>)
+<span class="line-num">75</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -397,10 +401,10 @@
 
           
           <div class="method-source-code" id="zipval-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb, line 65</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zipval</span>(<span class="ruby-identifier">value</span>)
-  <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipVal</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">:</span> <span class="ruby-constant">ZipVal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">value</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/hash/zip_mixin.rb</span>
+<span class="line-num">65</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zipval</span>(<span class="ruby-identifier">value</span>)
+<span class="line-num">66</span>   <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZipVal</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">:</span> <span class="ruby-constant">ZipVal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">value</span>)
+<span class="line-num">67</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -414,12 +418,13 @@
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

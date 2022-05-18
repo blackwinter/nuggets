@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::BoostMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::Array::BoostMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -123,10 +127,10 @@
 
           
           <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">included</span>(<span class="ruby-identifier">base</span>)
-  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">MeanMixin</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb</span>
+<span class="line-num">33</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">included</span>(<span class="ruby-identifier">base</span>)
+<span class="line-num">34</span>   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span><span class="ruby-operator">::</span><span class="ruby-constant">MeanMixin</span>
+<span class="line-num">35</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -189,9 +193,7 @@
 
         <div class="method-description">
           
-          <p>Maps each value in <em>array</em> to its “boosted” value according to
-<code>factor</code>. (Cf. <a
-href="BoostMixin.html#method-i-boost_factor">boost_factor</a>)</p>
+          <p>Maps each value in <em>array</em> to its “boosted” value according to <code>factor</code>. (Cf. <a href="BoostMixin.html#method-i-boost_factor"><code>boost_factor</code></a>)</p>
 
 <p>Example:</p>
 
@@ -202,10 +204,10 @@ href="BoostMixin.html#method-i-boost_factor">boost_factor</a>)</p>
 
           
           <div class="method-source-code" id="boost-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 71</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boost</span>(<span class="ruby-identifier">factor</span>)
-  <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> (<span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">factor</span>) }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb</span>
+<span class="line-num">71</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boost</span>(<span class="ruby-identifier">factor</span>)
+<span class="line-num">72</span>   <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> (<span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">factor</span>) }
+<span class="line-num">73</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -239,10 +241,7 @@ href="BoostMixin.html#method-i-boost_factor">boost_factor</a>)</p>
 
         <div class="method-description">
           
-          <p>Calculates the “boost factor” <strong>from</strong> the series of values in
-<em>array</em> <strong>to</strong> the series of values in
-<code>other_array</code> by means of their arithmetic mean or the value
-returned from the block given.</p>
+          <p>Calculates the “boost factor” <strong>from</strong> the series of values in <em>array</em> <strong>to</strong> the series of values in <code>other_array</code> by means of their arithmetic mean or the value returned from the block given.</p>
 
 <p>Example:</p>
 
@@ -260,11 +259,11 @@ returned from the block given.</p>
 
           
           <div class="method-source-code" id="boost_factor-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb, line 55</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boost_factor</span>(<span class="ruby-identifier">other</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>.<span class="ruby-identifier">to_proc</span>
-  <span class="ruby-identifier">block</span>[<span class="ruby-identifier">other</span>] <span class="ruby-operator">/</span> <span class="ruby-identifier">block</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/boost_mixin.rb</span>
+<span class="line-num">55</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boost_factor</span>(<span class="ruby-identifier">other</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">56</span>   <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>.<span class="ruby-identifier">to_proc</span>
+<span class="line-num">57</span>   <span class="ruby-identifier">block</span>[<span class="ruby-identifier">other</span>] <span class="ruby-operator">/</span> <span class="ruby-identifier">block</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+<span class="line-num">58</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -282,12 +281,13 @@ returned from the block given.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

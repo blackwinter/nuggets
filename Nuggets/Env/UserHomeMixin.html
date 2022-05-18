@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Env::UserHomeMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::Env::UserHomeMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -114,32 +118,31 @@
 
         <div class="method-description">
           
-          <p>Returns the user&#39;s home directory, or <code>default</code> if it could
-not be found.</p>
+          <p>Returns the user&#39;s home directory, or <code>default</code> if it could not be found.</p>
           
           
 
           
           <div class="method-source-code" id="user_home-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/env/user_home_mixin.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">user_home</span>(<span class="ruby-identifier">default</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">ALT_SEPARATOR</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39;C:/&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;/&#39;</span>)
-  <span class="ruby-keyword">begin</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">home</span>
-  <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>
-    <span class="ruby-comment"># &quot;couldn&#39;t find HOME environment -- expanding `~&#39;&quot;</span>
-  <span class="ruby-keyword">end</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:home</span>)
-
-  <span class="ruby-node">%w[HOME HOMEDRIVE:HOMEPATH USERPROFILE APPDATA]</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">home</span> = <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;:&#39;</span>)).<span class="ruby-identifier">join</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">home</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\\/</span>, <span class="ruby-string">&#39;/&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">home</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">home</span>.<span class="ruby-identifier">empty?</span>
-  }
-
-  <span class="ruby-keyword">begin</span>
-    <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&#39;~&#39;</span>)
-  <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>
-    <span class="ruby-identifier">default</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/env/user_home_mixin.rb</span>
+<span class="line-num">35</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">user_home</span>(<span class="ruby-identifier">default</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">ALT_SEPARATOR</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39;C:/&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;/&#39;</span>)
+<span class="line-num">36</span>   <span class="ruby-keyword">begin</span>
+<span class="line-num">37</span>     <span class="ruby-keyword">return</span> <span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">home</span>
+<span class="line-num">38</span>   <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>
+<span class="line-num">39</span>     <span class="ruby-comment"># &quot;couldn&#39;t find HOME environment -- expanding `~&#39;&quot;</span>
+<span class="line-num">40</span>   <span class="ruby-keyword">end</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:home</span>)
+<span class="line-num">41</span> 
+<span class="line-num">42</span>   <span class="ruby-node">%w[HOME HOMEDRIVE:HOMEPATH USERPROFILE APPDATA]</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+<span class="line-num">43</span>     <span class="ruby-identifier">home</span> = <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;:&#39;</span>)).<span class="ruby-identifier">join</span>
+<span class="line-num">44</span>     <span class="ruby-keyword">return</span> <span class="ruby-identifier">home</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\\/</span>, <span class="ruby-string">&#39;/&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">home</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">home</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">45</span>   }
+<span class="line-num">46</span> 
+<span class="line-num">47</span>   <span class="ruby-keyword">begin</span>
+<span class="line-num">48</span>     <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&#39;~&#39;</span>)
+<span class="line-num">49</span>   <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>
+<span class="line-num">50</span>     <span class="ruby-identifier">default</span>
+<span class="line-num">51</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">52</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -153,12 +156,13 @@ not be found.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

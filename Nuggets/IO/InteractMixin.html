@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::IO::InteractMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::IO::InteractMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -116,25 +120,11 @@
           
           <p>Interact with both ends of a pipe in a non-blocking manner.</p>
 
-<p><code>input</code> represents the sending end and is a mapping from the
-actual input <a href="../IO.html">IO</a> (to send into the pipe) to the
-pipe&#39;s input handle (<em>stdin</em>). The input <a
-href="../IO.html">IO</a> must support <code>read_nonblock</code>. If
-it&#39;s a StringIO it will be extended appropriately. If it&#39;s a <a
-href="../String.html">String</a> it will be converted to a StringIO.</p>
+<p><code>input</code> represents the sending end and is a mapping from the actual input <a href="../IO.html"><code>IO</code></a> (to send into the pipe) to the pipe&#39;s input handle (<em>stdin</em>). The input <a href="../IO.html"><code>IO</code></a> must support <code>read_nonblock</code>. If it&#39;s a StringIO it will be extended appropriately. If it&#39;s a <a href="../String.html"><code>String</code></a> it will be converted to a StringIO.</p>
 
-<p><code>output</code> represents the receiving end and is a mapping from the
-pipe&#39;s output handle (<em>stdout</em>) to the designated output <a
-href="../IO.html">IO</a> (to receive data from the pipe), and, optionally,
-from the pipe&#39;s error handle (<em>stderr</em>) to the designated error
-<a href="../IO.html">IO</a>. The output and error <a
-href="../IO.html">IO</a> must support <code>&lt;&lt;</code> with a string
-argument. If either of them is a <a href="../Proc.html">Proc</a> it will be
-extended such that <code>&lt;&lt;</code> delegates to <code>call</code>.</p>
+<p><code>output</code> represents the receiving end and is a mapping from the pipe&#39;s output handle (<em>stdout</em>) to the designated output <a href="../IO.html"><code>IO</code></a> (to receive data from the pipe), and, optionally, from the pipe&#39;s error handle (<em>stderr</em>) to the designated error <a href="../IO.html"><code>IO</code></a>. The output and error <a href="../IO.html"><code>IO</code></a> must support <code>&lt;&lt;</code> with a string argument. If either of them is a <a href="../Proc.html"><code>Proc</code></a> it will be extended such that <code>&lt;&lt;</code> delegates to <code>call</code>.</p>
 
-<p><code>timeout</code>, if given, will be passed to IO::select and
-<code>nil</code> is returned if the select call times out; in all other
-cases an empty array is returned.</p>
+<p><code>timeout</code>, if given, will be passed to IO::select and <code>nil</code> is returned if the select call times out; in all other cases an empty array is returned.</p>
 
 <p><code>maxlen</code> is the chunk size for <code>read_nonblock</code>.</p>
 
@@ -168,10 +158,10 @@ cases an empty array is returned.</p>
 
           
           <div class="method-source-code" id="interact-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/io/interact_mixin.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">interact</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">maxlen</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-constant">Interaction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span>, <span class="ruby-identifier">maxlen</span>).<span class="ruby-identifier">interact</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/io/interact_mixin.rb</span>
+<span class="line-num">78</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">interact</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">maxlen</span> = <span class="ruby-keyword">nil</span>)
+<span class="line-num">79</span>   <span class="ruby-constant">Interaction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">timeout</span>, <span class="ruby-identifier">maxlen</span>).<span class="ruby-identifier">interact</span>
+<span class="line-num">80</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -185,12 +175,13 @@ cases an empty array is returned.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

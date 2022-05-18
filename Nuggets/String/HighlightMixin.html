@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::String::HighlightMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::String::HighlightMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -114,38 +118,36 @@
 
         <div class="method-description">
           
-          <p>Highlight occurrences of <code>needle</code> (String(s) and/or Regexp(s))
-in <em>str</em> by surrounding them with <code>prefix</code> and
-<code>postfix</code>.</p>
+          <p>Highlight occurrences of <code>needle</code> (String(s) and/or Regexp(s)) in <em>str</em> by surrounding them with <code>prefix</code> and <code>postfix</code>.</p>
           
           
 
           
           <div class="method-source-code" id="highlight-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/string/highlight_mixin.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">highlight</span>(<span class="ruby-identifier">needle</span>, <span class="ruby-identifier">prefix</span> = <span class="ruby-string">&#39;|&#39;</span>, <span class="ruby-identifier">postfix</span> = <span class="ruby-identifier">prefix</span>)
-  <span class="ruby-identifier">offsets</span> = []
-
-  <span class="ruby-constant">Array</span>(<span class="ruby-identifier">needle</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">while</span> <span class="ruby-identifier">index</span> = <span class="ruby-identifier">index</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>)
-      <span class="ruby-identifier">offsets</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">index</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">+=</span> (<span class="ruby-node">$&amp;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">arg</span>).<span class="ruby-identifier">length</span>]
-    <span class="ruby-keyword">end</span>
-  }
-
-  <span class="ruby-identifier">flattened</span> = [<span class="ruby-identifier">current</span> = <span class="ruby-identifier">offsets</span>.<span class="ruby-identifier">sort!</span>.<span class="ruby-identifier">shift</span>]
-
-  <span class="ruby-identifier">offsets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">offset</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">i1</span>, <span class="ruby-identifier">j1</span> = <span class="ruby-identifier">current</span>
-    <span class="ruby-identifier">i2</span>, <span class="ruby-identifier">j2</span> = <span class="ruby-identifier">offset</span>
-
-    <span class="ruby-identifier">i2</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">j1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">flattened</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">current</span> = <span class="ruby-identifier">offset</span> <span class="ruby-operator">:</span>
-    <span class="ruby-identifier">j2</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">j1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">current</span>[<span class="ruby-value">-1</span>] = <span class="ruby-identifier">j2</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-  }
-
-  <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">result</span><span class="ruby-operator">|</span> <span class="ruby-identifier">flattened</span>.<span class="ruby-identifier">reverse_each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>, <span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">j</span>, <span class="ruby-identifier">postfix</span>).<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">prefix</span>)
-  } }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/string/highlight_mixin.rb</span>
+<span class="line-num">36</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">highlight</span>(<span class="ruby-identifier">needle</span>, <span class="ruby-identifier">prefix</span> = <span class="ruby-string">&#39;|&#39;</span>, <span class="ruby-identifier">postfix</span> = <span class="ruby-identifier">prefix</span>)
+<span class="line-num">37</span>   <span class="ruby-identifier">offsets</span> = []
+<span class="line-num">38</span> 
+<span class="line-num">39</span>   <span class="ruby-constant">Array</span>(<span class="ruby-identifier">needle</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+<span class="line-num">40</span>     <span class="ruby-keyword">while</span> <span class="ruby-identifier">index</span> = <span class="ruby-identifier">index</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>)
+<span class="line-num">41</span>       <span class="ruby-identifier">offsets</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">index</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">+=</span> (<span class="ruby-node">$&amp;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">arg</span>).<span class="ruby-identifier">length</span>]
+<span class="line-num">42</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">43</span>   }
+<span class="line-num">44</span> 
+<span class="line-num">45</span>   <span class="ruby-identifier">flattened</span> = [<span class="ruby-identifier">current</span> = <span class="ruby-identifier">offsets</span>.<span class="ruby-identifier">sort!</span>.<span class="ruby-identifier">shift</span>]
+<span class="line-num">46</span> 
+<span class="line-num">47</span>   <span class="ruby-identifier">offsets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">offset</span><span class="ruby-operator">|</span>
+<span class="line-num">48</span>     <span class="ruby-identifier">i1</span>, <span class="ruby-identifier">j1</span> = <span class="ruby-identifier">current</span>
+<span class="line-num">49</span>     <span class="ruby-identifier">i2</span>, <span class="ruby-identifier">j2</span> = <span class="ruby-identifier">offset</span>
+<span class="line-num">50</span> 
+<span class="line-num">51</span>     <span class="ruby-identifier">i2</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">j1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">flattened</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">current</span> = <span class="ruby-identifier">offset</span> <span class="ruby-operator">:</span>
+<span class="line-num">52</span>     <span class="ruby-identifier">j2</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">j1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">current</span>[<span class="ruby-value">-1</span>] = <span class="ruby-identifier">j2</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+<span class="line-num">53</span>   }
+<span class="line-num">54</span> 
+<span class="line-num">55</span>   <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">result</span><span class="ruby-operator">|</span> <span class="ruby-identifier">flattened</span>.<span class="ruby-identifier">reverse_each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>, <span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+<span class="line-num">56</span>     <span class="ruby-identifier">result</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">j</span>, <span class="ruby-identifier">postfix</span>).<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">prefix</span>)
+<span class="line-num">57</span>   } }
+<span class="line-num">58</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -159,12 +161,13 @@ in <em>str</em> by surrounding them with <code>prefix</code> and
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

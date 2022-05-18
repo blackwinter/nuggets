@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::Array::MeanMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::Array::MeanMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -149,22 +153,18 @@
 
         <div class="method-description">
           
-          <p>Calculates the <a
-href="http://en.wikipedia.org/wiki/Arithmetic_mean">arithmetic mean</a> of
-the values in <em>array</em>.</p>
+          <p>Calculates the <a href="http://en.wikipedia.org/wiki/Arithmetic_mean">arithmetic mean</a> of the values in <em>array</em>.</p>
 
-<p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
-(this includes <em>array</em> being empty).</p>
+<p>An optional block may be passed to provide a weight for each value. Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero (this includes <em>array</em> being empty).</p>
           
           
 
           
           <div class="method-source-code" id="arithmetic_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 70</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">arithmetic_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">1</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb</span>
+<span class="line-num">70</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">arithmetic_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">71</span>   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">1</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">72</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -258,35 +258,29 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
         <div class="method-description">
           
-          <p>Calculates the <a
-href="http://en.wikipedia.org/wiki/Generalized_mean">generalized mean</a>
-of the values in <em>array</em> for <code>exponent</code>. Returns the <a
-href="MeanMixin.html#method-i-geometric_mean">geometric_mean</a> if
-<code>exponent</code> is zero.</p>
+          <p>Calculates the <a href="http://en.wikipedia.org/wiki/Generalized_mean">generalized mean</a> of the values in <em>array</em> for <code>exponent</code>. Returns the <a href="MeanMixin.html#method-i-geometric_mean"><code>geometric_mean</code></a> if <code>exponent</code> is zero.</p>
 
-<p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
-(this includes <em>array</em> being empty).</p>
+<p>An optional block may be passed to provide a weight for each value. Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero (this includes <em>array</em> being empty).</p>
           
           
 
           
           <div class="method-source-code" id="generalized_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generalized_mean</span>(<span class="ruby-identifier">exponent</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">geometric_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">exponent</span>.<span class="ruby-identifier">zero?</span>
-
-  <span class="ruby-identifier">total</span>, <span class="ruby-identifier">weights</span> = <span class="ruby-value">0</span>, <span class="ruby-value">0</span>
-
-  <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">weight</span> = <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">x</span>] <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
-
-    <span class="ruby-identifier">total</span>   <span class="ruby-operator">+=</span> <span class="ruby-identifier">weight</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">**</span> <span class="ruby-identifier">exponent</span>
-    <span class="ruby-identifier">weights</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">weight</span>
-  }
-
-  (<span class="ruby-identifier">total</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">**</span> (<span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">exponent</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">zero?</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb</span>
+<span class="line-num">42</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generalized_mean</span>(<span class="ruby-identifier">exponent</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">43</span>   <span class="ruby-keyword">return</span> <span class="ruby-identifier">geometric_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">exponent</span>.<span class="ruby-identifier">zero?</span>
+<span class="line-num">44</span> 
+<span class="line-num">45</span>   <span class="ruby-identifier">total</span>, <span class="ruby-identifier">weights</span> = <span class="ruby-value">0</span>, <span class="ruby-value">0</span>
+<span class="line-num">46</span> 
+<span class="line-num">47</span>   <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+<span class="line-num">48</span>     <span class="ruby-identifier">weight</span> = <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">x</span>] <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+<span class="line-num">49</span> 
+<span class="line-num">50</span>     <span class="ruby-identifier">total</span>   <span class="ruby-operator">+=</span> <span class="ruby-identifier">weight</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">**</span> <span class="ruby-identifier">exponent</span>
+<span class="line-num">51</span>     <span class="ruby-identifier">weights</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">weight</span>
+<span class="line-num">52</span>   }
+<span class="line-num">53</span> 
+<span class="line-num">54</span>   (<span class="ruby-identifier">total</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">**</span> (<span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">exponent</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">zero?</span>
+<span class="line-num">55</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -352,31 +346,27 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
         <div class="method-description">
           
-          <p>Calculates the <a
-href="http://en.wikipedia.org/wiki/Geometric_median">geometric mean</a> of
-the values in <em>array</em>.</p>
+          <p>Calculates the <a href="http://en.wikipedia.org/wiki/Geometric_median">geometric mean</a> of the values in <em>array</em>.</p>
 
-<p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
-(this includes <em>array</em> being empty).</p>
+<p>An optional block may be passed to provide a weight for each value. Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero (this includes <em>array</em> being empty).</p>
           
           
 
           
           <div class="method-source-code" id="geometric_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 121</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">geometric_mean</span>
-  <span class="ruby-identifier">total</span>, <span class="ruby-identifier">weights</span> = <span class="ruby-value">1</span>, <span class="ruby-value">0</span>
-
-  <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">weight</span> = <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
-
-    <span class="ruby-identifier">total</span>   <span class="ruby-operator">*=</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">**</span> <span class="ruby-identifier">weight</span>
-    <span class="ruby-identifier">weights</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">weight</span>
-  }
-
-  <span class="ruby-identifier">total</span> <span class="ruby-operator">**</span> (<span class="ruby-value">1</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">zero?</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb</span>
+<span class="line-num">121</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">geometric_mean</span>
+<span class="line-num">122</span>   <span class="ruby-identifier">total</span>, <span class="ruby-identifier">weights</span> = <span class="ruby-value">1</span>, <span class="ruby-value">0</span>
+<span class="line-num">123</span> 
+<span class="line-num">124</span>   <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+<span class="line-num">125</span>     <span class="ruby-identifier">weight</span> = <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+<span class="line-num">126</span> 
+<span class="line-num">127</span>     <span class="ruby-identifier">total</span>   <span class="ruby-operator">*=</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">**</span> <span class="ruby-identifier">weight</span>
+<span class="line-num">128</span>     <span class="ruby-identifier">weights</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">weight</span>
+<span class="line-num">129</span>   }
+<span class="line-num">130</span> 
+<span class="line-num">131</span>   <span class="ruby-identifier">total</span> <span class="ruby-operator">**</span> (<span class="ruby-value">1</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">zero?</span>
+<span class="line-num">132</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -442,22 +432,18 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
         <div class="method-description">
           
-          <p>Calculates the <a
-href="http://en.wikipedia.org/wiki/Harmonic_mean">harmonic mean</a> of the
-values in <em>array</em>.</p>
+          <p>Calculates the <a href="http://en.wikipedia.org/wiki/Harmonic_mean">harmonic mean</a> of the values in <em>array</em>.</p>
 
-<p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
-(this includes <em>array</em> being empty).</p>
+<p>An optional block may be passed to provide a weight for each value. Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero (this includes <em>array</em> being empty).</p>
           
           
 
           
           <div class="method-source-code" id="harmonic_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 105</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">harmonic_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">-1</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb</span>
+<span class="line-num">105</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">harmonic_mean</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">106</span>   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">-1</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">107</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -607,15 +593,9 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
 
         <div class="method-description">
           
-          <p>Expects <em>array</em> to be an array of arrays (“rows”) of numeric values;
-the first “row” may consist of strings (labels) instead. Returns an array
-of strings with the mean (according to <code>method</code>, default <a
-href="MeanMixin.html#method-i-mean">mean</a>) of each “column”, prepended
-with the label, if present, and appended with the standard deviation, if
-available; all values are subject to <code>precision</code>.</p>
+          <p>Expects <em>array</em> to be an array of arrays (“rows”) of numeric values; the first “row” may consist of strings (labels) instead. Returns an array of strings with the mean (according to <code>method</code>, default <a href="MeanMixin.html#method-i-mean"><code>mean</code></a>) of each “column”, prepended with the label, if present, and appended with the standard deviation, if available; all values are subject to <code>precision</code>.</p>
 
-<p>If <em>array</em> is a flat array of numeric values, it is treated as a
-single “column”.</p>
+<p>If <em>array</em> is a flat array of numeric values, it is treated as a single “column”.</p>
 
 <p>Returns <code>nil</code> if <em>array</em> is empty.</p>
 
@@ -647,32 +627,32 @@ single “column”.</p>
 
           
           <div class="method-source-code" id="report_mean-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 174</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">report_mean</span>(<span class="ruby-identifier">method</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">precision</span> = <span class="ruby-value">4</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
-
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">clone</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">push</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">transpose</span>).
-    <span class="ruby-identifier">report_mean</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">precision</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>)
-
-  <span class="ruby-identifier">met</span>, <span class="ruby-identifier">sep</span> = [<span class="ruby-identifier">method</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>, <span class="ruby-string">&#39;mean&#39;</span>], [<span class="ruby-string">&#39;&#39;</span>, <span class="ruby-string">&#39;_&#39;</span>]
-  <span class="ruby-identifier">lab</span>, <span class="ruby-identifier">std</span> = <span class="ruby-identifier">first</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>), <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:std</span>)
-
-  <span class="ruby-identifier">fmt</span> = [<span class="ruby-node">&quot;%-#{precision}s&quot;</span>, <span class="ruby-node">&quot;%.#{precision}f&quot;</span>, <span class="ruby-node">&quot;+/- %.#{precision}f&quot;</span>]
-
-  <span class="ruby-keyword">until</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">sep</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">method</span> = <span class="ruby-identifier">met</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">sep</span>.<span class="ruby-identifier">shift</span>)
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">transpose</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">i</span>, <span class="ruby-identifier">a</span> = [], []
-
-    <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">lab</span>
-    <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>)
-    <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">2</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">std</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">std</span>
-
-    <span class="ruby-identifier">fmt</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">i</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39; &#39;</span>) <span class="ruby-operator">%</span> <span class="ruby-identifier">a</span>
-  }
-<span class="ruby-keyword">end</span></pre>
+            <pre>    <span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb</span>
+<span class="line-num">174</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">report_mean</span>(<span class="ruby-identifier">method</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">precision</span> = <span class="ruby-value">4</span>)
+<span class="line-num">175</span>   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span>
+<span class="line-num">176</span> 
+<span class="line-num">177</span>   <span class="ruby-keyword">return</span> <span class="ruby-identifier">clone</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">push</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">transpose</span>).
+<span class="line-num">178</span>     <span class="ruby-identifier">report_mean</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">precision</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>)
+<span class="line-num">179</span> 
+<span class="line-num">180</span>   <span class="ruby-identifier">met</span>, <span class="ruby-identifier">sep</span> = [<span class="ruby-identifier">method</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:mean</span>, <span class="ruby-string">&#39;mean&#39;</span>], [<span class="ruby-string">&#39;&#39;</span>, <span class="ruby-string">&#39;_&#39;</span>]
+<span class="line-num">181</span>   <span class="ruby-identifier">lab</span>, <span class="ruby-identifier">std</span> = <span class="ruby-identifier">first</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">String</span>), <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:std</span>)
+<span class="line-num">182</span> 
+<span class="line-num">183</span>   <span class="ruby-identifier">fmt</span> = [<span class="ruby-node">&quot;%-#{precision}s&quot;</span>, <span class="ruby-node">&quot;%.#{precision}f&quot;</span>, <span class="ruby-node">&quot;+/- %.#{precision}f&quot;</span>]
+<span class="line-num">184</span> 
+<span class="line-num">185</span>   <span class="ruby-keyword">until</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">sep</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">186</span>     <span class="ruby-identifier">method</span> = <span class="ruby-identifier">met</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">sep</span>.<span class="ruby-identifier">shift</span>)
+<span class="line-num">187</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">188</span> 
+<span class="line-num">189</span>   <span class="ruby-identifier">transpose</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+<span class="line-num">190</span>     <span class="ruby-identifier">i</span>, <span class="ruby-identifier">a</span> = [], []
+<span class="line-num">191</span> 
+<span class="line-num">192</span>     <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">lab</span>
+<span class="line-num">193</span>     <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>)
+<span class="line-num">194</span>     <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">2</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">std</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">std</span>
+<span class="line-num">195</span> 
+<span class="line-num">196</span>     <span class="ruby-identifier">fmt</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">i</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39; &#39;</span>) <span class="ruby-operator">%</span> <span class="ruby-identifier">a</span>
+<span class="line-num">197</span>   }
+<span class="line-num">198</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -734,21 +714,18 @@ single “column”.</p>
 
         <div class="method-description">
           
-          <p>Calculates the <a href="http://en.wikipedia.org/wiki/Root_mean_square">root
-mean square</a> (quadratic mean) of the values in <em>array</em>.</p>
+          <p>Calculates the <a href="http://en.wikipedia.org/wiki/Root_mean_square">root mean square</a> (quadratic mean) of the values in <em>array</em>.</p>
 
-<p>An optional block may be passed to provide a weight for each value.
-Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
-(this includes <em>array</em> being empty).</p>
+<p>An optional block may be passed to provide a weight for each value. Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero (this includes <em>array</em> being empty).</p>
           
           
 
           
           <div class="method-source-code" id="root_mean_square-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb, line 88</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">root_mean_square</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">2</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/mean_mixin.rb</span>
+<span class="line-num">88</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">root_mean_square</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">89</span>   <span class="ruby-identifier">generalized_mean</span>(<span class="ruby-value">2</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">90</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -766,12 +743,13 @@ Defaults to 1. Returns <code>nil</code> if the sum of all weights is zero
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

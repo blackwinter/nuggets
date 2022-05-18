@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Array - nuggets Application documentation (v1.6.0)</title>
+<title>class Array - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -251,42 +255,37 @@
 
         <div class="method-description">
           
-          <p>Format–Uses the first string in <em>array</em> for which the corresponding
-combination of <em>other_array</em> does not contain blank elements as a
-format specification, and returns the result of applying it to that
-combination (cf. String#%). Returns an empty string if <em>other_array</em>
-is empty.</p>
+          <p>Format–Uses the first string in <em>array</em> for which the corresponding combination of <em>other_array</em> does not contain blank elements as a format specification, and returns the result of applying it to that combination (cf. String#%). Returns an empty string if <em>other_array</em> is empty.</p>
 
-<p>Applies to string argument accordingly: First string in <em>array</em>
-applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
+<p>Applies to string argument accordingly: First string in <em>array</em> applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
           
           
 
           
           <div class="method-source-code" id="25-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/format.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">%</span>(<span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">opts</span> = { <span class="ruby-value">sep:</span> <span class="ruby-string">&#39;, &#39;</span> }
-  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">pop</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
-
-  <span class="ruby-identifier">default</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> [<span class="ruby-string">&#39;%s&#39;</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:sep</span>] }
-
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">args</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">String</span>
-      <span class="ruby-keyword">return</span> (<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>[<span class="ruby-value">1</span>]) <span class="ruby-operator">%</span> <span class="ruby-identifier">args</span> <span class="ruby-keyword">unless</span>
-        <span class="ruby-identifier">args</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>
-      <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
-      [<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>].<span class="ruby-identifier">comb</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword">return</span> (<span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>[<span class="ruby-identifier">x</span>.<span class="ruby-identifier">size</span>]) <span class="ruby-operator">%</span> <span class="ruby-identifier">x</span> <span class="ruby-keyword">unless</span>
-          <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">empty?</span> }
-
-        <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-      }
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-string">&#39;&#39;</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/format.rb</span>
+<span class="line-num">42</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">%</span>(<span class="ruby-identifier">args</span>)
+<span class="line-num">43</span>   <span class="ruby-identifier">opts</span> = { <span class="ruby-value">sep:</span> <span class="ruby-string">&#39;, &#39;</span> }
+<span class="line-num">44</span>   <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">pop</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>)
+<span class="line-num">45</span> 
+<span class="line-num">46</span>   <span class="ruby-identifier">default</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> [<span class="ruby-string">&#39;%s&#39;</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:sep</span>] }
+<span class="line-num">47</span> 
+<span class="line-num">48</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">args</span>
+<span class="line-num">49</span>     <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">String</span>
+<span class="line-num">50</span>       <span class="ruby-keyword">return</span> (<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>[<span class="ruby-value">1</span>]) <span class="ruby-operator">%</span> <span class="ruby-identifier">args</span> <span class="ruby-keyword">unless</span>
+<span class="line-num">51</span>         <span class="ruby-identifier">args</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">52</span>     <span class="ruby-keyword">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>
+<span class="line-num">53</span>       <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+<span class="line-num">54</span>       [<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>].<span class="ruby-identifier">comb</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+<span class="line-num">55</span>         <span class="ruby-keyword">return</span> (<span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>[<span class="ruby-identifier">x</span>.<span class="ruby-identifier">size</span>]) <span class="ruby-operator">%</span> <span class="ruby-identifier">x</span> <span class="ruby-keyword">unless</span>
+<span class="line-num">56</span>           <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">empty?</span> }
+<span class="line-num">57</span> 
+<span class="line-num">58</span>         <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+<span class="line-num">59</span>       }
+<span class="line-num">60</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">61</span> 
+<span class="line-num">62</span>   <span class="ruby-string">&#39;&#39;</span>
+<span class="line-num">63</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -319,10 +318,10 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
 
           
           <div class="method-source-code" id="ascending-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ascending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">monotone?</span>(<span class="ruby-identifier">strict</span> <span class="ruby-operator">?</span> <span class="ruby-value">:&lt;</span> <span class="ruby-operator">:</span> <span class="ruby-value">:&lt;=</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/monotone.rb</span>
+<span class="line-num">51</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ascending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
+<span class="line-num">52</span>   <span class="ruby-identifier">monotone?</span>(<span class="ruby-identifier">strict</span> <span class="ruby-operator">?</span> <span class="ruby-value">:&lt;</span> <span class="ruby-operator">:</span> <span class="ruby-value">:&lt;=</span>)
+<span class="line-num">53</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -360,41 +359,38 @@ applied to <em>str</em>; empty string if <em>str</em> is empty.</p>
 
         <div class="method-description">
           
-          <p>Returns an array of arrays of each possible <code>n</code>-combination of
-<em>array</em> for each given <code>n</code>. If a block is given, each
-<code>combination</code> is yielded to it. Based on &lt;<a
-href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb">blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb</a>&gt;.</p>
+          <p>Returns an array of arrays of each possible <code>n</code>-combination of <em>array</em> for each given <code>n</code>. If a block is given, each <code>combination</code> is yielded to it. Based on &lt;<a href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb">blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb</a>&gt;.</p>
           
           
 
           
           <div class="method-source-code" id="comb-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/combination.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comb</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">sizes</span>)
-  <span class="ruby-comment"># If no sizes are given, produce all!</span>
-  <span class="ruby-identifier">sizes</span> = (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">size</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">reverse</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">empty?</span>
-
-  <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">collect_and_yield</span> = [], <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">combination</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
-    <span class="ruby-identifier">combinations</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span>
-  }
-
-  <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">case</span> <span class="ruby-identifier">n</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>        <span class="ruby-comment"># Short-cut (breaks recursion)</span>
-        <span class="ruby-identifier">collect_and_yield</span>[[]]
-      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">size</span>  <span class="ruby-comment"># Ignore out-of-range values</span>
-        <span class="ruby-keyword">self</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">comb</span>(<span class="ruby-identifier">n</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">collect_and_yield</span>[<span class="ruby-identifier">combination</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">first</span>)]
-        }
-        <span class="ruby-keyword">self</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">comb</span>(<span class="ruby-identifier">n</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">collect_and_yield</span>[<span class="ruby-identifier">combination</span>]
-        }
-    <span class="ruby-keyword">end</span>
-  }
-
-  <span class="ruby-identifier">combinations</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/combination.rb</span>
+<span class="line-num">36</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comb</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">sizes</span>)
+<span class="line-num">37</span>   <span class="ruby-comment"># If no sizes are given, produce all!</span>
+<span class="line-num">38</span>   <span class="ruby-identifier">sizes</span> = (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">size</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">reverse</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">39</span> 
+<span class="line-num">40</span>   <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">collect_and_yield</span> = [], <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
+<span class="line-num">41</span>     <span class="ruby-keyword">yield</span> <span class="ruby-identifier">combination</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+<span class="line-num">42</span>     <span class="ruby-identifier">combinations</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span>
+<span class="line-num">43</span>   }
+<span class="line-num">44</span> 
+<span class="line-num">45</span>   <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+<span class="line-num">46</span>     <span class="ruby-keyword">case</span> <span class="ruby-identifier">n</span>
+<span class="line-num">47</span>       <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>        <span class="ruby-comment"># Short-cut (breaks recursion)</span>
+<span class="line-num">48</span>         <span class="ruby-identifier">collect_and_yield</span>[[]]
+<span class="line-num">49</span>       <span class="ruby-keyword">when</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">size</span>  <span class="ruby-comment"># Ignore out-of-range values</span>
+<span class="line-num">50</span>         <span class="ruby-keyword">self</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">comb</span>(<span class="ruby-identifier">n</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
+<span class="line-num">51</span>           <span class="ruby-identifier">collect_and_yield</span>[<span class="ruby-identifier">combination</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">first</span>)]
+<span class="line-num">52</span>         }
+<span class="line-num">53</span>         <span class="ruby-keyword">self</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">comb</span>(<span class="ruby-identifier">n</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
+<span class="line-num">54</span>           <span class="ruby-identifier">collect_and_yield</span>[<span class="ruby-identifier">combination</span>]
+<span class="line-num">55</span>         }
+<span class="line-num">56</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">57</span>   }
+<span class="line-num">58</span> 
+<span class="line-num">59</span>   <span class="ruby-identifier">combinations</span>
+<span class="line-num">60</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -455,10 +451,10 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
 
           
           <div class="method-source-code" id="descending-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 69</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">descending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">monotone?</span>(<span class="ruby-identifier">strict</span> <span class="ruby-operator">?</span> <span class="ruby-value">:&gt;</span> <span class="ruby-operator">:</span> <span class="ruby-value">:&gt;=</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/monotone.rb</span>
+<span class="line-num">69</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">descending?</span>(<span class="ruby-identifier">strict</span> = <span class="ruby-keyword">false</span>)
+<span class="line-num">70</span>   <span class="ruby-identifier">monotone?</span>(<span class="ruby-identifier">strict</span> <span class="ruby-operator">?</span> <span class="ruby-value">:&gt;</span> <span class="ruby-operator">:</span> <span class="ruby-value">:&gt;=</span>)
+<span class="line-num">71</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -489,28 +485,26 @@ href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/combinatorics/array-comb.rb
 
         <div class="method-description">
           
-          <p>Flatten <em>array</em> by <em>one</em> level only. Pretty straight-forward
-port of David Alan Black&#39;s flattenx C implementation (though much
-slower, of course ;-).</p>
+          <p>Flatten <em>array</em> by <em>one</em> level only. Pretty straight-forward port of David Alan Black&#39;s flattenx C implementation (though much slower, of course ;-).</p>
           
           
 
           
           <div class="method-source-code" id="flatten_once-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/flatten_once.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">flatten_once</span>
-  <span class="ruby-identifier">flat</span> = []
-
-  <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>)
-      <span class="ruby-identifier">flat</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">element</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">flat</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>
-    <span class="ruby-keyword">end</span>
-  }
-
-  <span class="ruby-identifier">flat</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/flatten_once.rb</span>
+<span class="line-num">34</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">flatten_once</span>
+<span class="line-num">35</span>   <span class="ruby-identifier">flat</span> = []
+<span class="line-num">36</span> 
+<span class="line-num">37</span>   <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
+<span class="line-num">38</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Array</span>)
+<span class="line-num">39</span>       <span class="ruby-identifier">flat</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">element</span>
+<span class="line-num">40</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">41</span>       <span class="ruby-identifier">flat</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>
+<span class="line-num">42</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">43</span>   }
+<span class="line-num">44</span> 
+<span class="line-num">45</span>   <span class="ruby-identifier">flat</span>
+<span class="line-num">46</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -537,17 +531,16 @@ slower, of course ;-).</p>
 
         <div class="method-description">
           
-          <p>Destructive version of <a
-href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
+          <p>Destructive version of <a href="Array.html#method-i-flatten_once"><code>flatten_once</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="flatten_once-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/flatten_once.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">flatten_once!</span>
-  <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">flatten_once</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/flatten_once.rb</span>
+<span class="line-num">52</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">flatten_once!</span>
+<span class="line-num">53</span>   <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">flatten_once</span>)
+<span class="line-num">54</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -586,11 +579,11 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
 
           
           <div class="method-source-code" id="in_order-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/in_order.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
-  <span class="ruby-identifier">ordered</span> <span class="ruby-operator">&amp;=</span> <span class="ruby-keyword">self</span>
-  <span class="ruby-identifier">ordered</span> <span class="ruby-operator">+</span> (<span class="ruby-keyword">self</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">ordered</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/in_order.rb</span>
+<span class="line-num">37</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
+<span class="line-num">38</span>   <span class="ruby-identifier">ordered</span> <span class="ruby-operator">&amp;=</span> <span class="ruby-keyword">self</span>
+<span class="line-num">39</span>   <span class="ruby-identifier">ordered</span> <span class="ruby-operator">+</span> (<span class="ruby-keyword">self</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">ordered</span>)
+<span class="line-num">40</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -617,16 +610,16 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
 
         <div class="method-description">
           
-          <p>Destructive version of <a href="Array.html#method-i-in_order">in_order</a>.</p>
+          <p>Destructive version of <a href="Array.html#method-i-in_order"><code>in_order</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="in_order-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/in_order.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">in_order!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
-  <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>))
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/in_order.rb</span>
+<span class="line-num">46</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">in_order!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>)
+<span class="line-num">47</span>   <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">in_order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ordered</span>))
+<span class="line-num">48</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -681,26 +674,25 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
 
         <div class="method-description">
           
-          <p>Check whether <em>array</em> is monotone according to
-<code>operator</code>.</p>
+          <p>Check whether <em>array</em> is monotone according to <code>operator</code>.</p>
           
           
 
           
           <div class="method-source-code" id="monotone-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">monotone?</span>(<span class="ruby-identifier">operator</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-keyword">if</span> [<span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">operator</span>)
-    <span class="ruby-identifier">ascending?</span>(<span class="ruby-identifier">operator</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">descending?</span>(<span class="ruby-identifier">operator</span>)
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">operator</span>, <span class="ruby-identifier">b</span>)
-      <span class="ruby-identifier">b</span>
-    }
-
-    <span class="ruby-keyword">true</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/monotone.rb</span>
+<span class="line-num">33</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">monotone?</span>(<span class="ruby-identifier">operator</span> = <span class="ruby-keyword">nil</span>)
+<span class="line-num">34</span>   <span class="ruby-keyword">if</span> [<span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">operator</span>)
+<span class="line-num">35</span>     <span class="ruby-identifier">ascending?</span>(<span class="ruby-identifier">operator</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">descending?</span>(<span class="ruby-identifier">operator</span>)
+<span class="line-num">36</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">37</span>     <span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+<span class="line-num">38</span>       <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">operator</span>, <span class="ruby-identifier">b</span>)
+<span class="line-num">39</span>       <span class="ruby-identifier">b</span>
+<span class="line-num">40</span>     }
+<span class="line-num">41</span> 
+<span class="line-num">42</span>     <span class="ruby-keyword">true</span>
+<span class="line-num">43</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">44</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -766,9 +758,7 @@ href="Array.html#method-i-flatten_once">flatten_once</a>.</p>
 
         <div class="method-description">
           
-          <p>Returns the only element of <em>array</em>. Raises an IndexError if
-<em>array</em>&#39;s size is not 1, unless parameter <code>true</code> is
-passed.</p>
+          <p>Returns the only element of <em>array</em>. Raises an IndexError if <em>array</em>&#39;s size is not 1, unless parameter <code>true</code> is passed.</p>
 
 <p>Idea stolen from Gavin Sinclair&#39;s Ruby Extensions Project.</p>
           
@@ -776,10 +766,10 @@ passed.</p>
 
           
           <div class="method-source-code" id="only-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/only.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">only</span>(<span class="ruby-identifier">relax</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
-  <span class="ruby-identifier">relax</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">raise</span>(<span class="ruby-operator">::</span><span class="ruby-constant">IndexError</span>, <span class="ruby-string">&#39;not a single-element array&#39;</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/only.rb</span>
+<span class="line-num">37</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">only</span>(<span class="ruby-identifier">relax</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
+<span class="line-num">38</span>   <span class="ruby-identifier">relax</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">raise</span>(<span class="ruby-operator">::</span><span class="ruby-constant">IndexError</span>, <span class="ruby-string">&#39;not a single-element array&#39;</span>)
+<span class="line-num">39</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -812,10 +802,10 @@ passed.</p>
 
           
           <div class="method-source-code" id="rand-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/rand.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rand</span>
-  <span class="ruby-identifier">at</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">size</span>))
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/rand.rb</span>
+<span class="line-num">33</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rand</span>
+<span class="line-num">34</span>   <span class="ruby-identifier">at</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">size</span>))
+<span class="line-num">35</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -842,17 +832,16 @@ passed.</p>
 
         <div class="method-description">
           
-          <p>Shuffles <em>array</em> in random order. Select a different shuffling
-algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
+          <p>Shuffles <em>array</em> in random order. Select a different shuffling algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
           
           
 
           
           <div class="method-source-code" id="shuffle-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle</span>
-  <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">rand</span> }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/shuffle.rb</span>
+<span class="line-num">34</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle</span>
+<span class="line-num">35</span>   <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">::</span><span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">rand</span> }
+<span class="line-num">36</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -879,16 +868,16 @@ algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
 
         <div class="method-description">
           
-          <p>Destructive version of <a href="Array.html#method-i-shuffle">shuffle</a>.</p>
+          <p>Destructive version of <a href="Array.html#method-i-shuffle"><code>shuffle</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="shuffle-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 58</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle!</span>
-  <span class="ruby-identifier">replace</span> <span class="ruby-identifier">shuffle</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/shuffle.rb</span>
+<span class="line-num">58</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle!</span>
+<span class="line-num">59</span>   <span class="ruby-identifier">replace</span> <span class="ruby-identifier">shuffle</span>
+<span class="line-num">60</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -915,17 +904,16 @@ algorithm: <code>Array.send(:alias_method, :shuffle, :shuffle_kfy)</code>.</p>
 
         <div class="method-description">
           
-          <p>Non-destructive version of <a
-href="Array.html#method-i-shuffle_kfy-21">shuffle_kfy!</a>.</p>
+          <p>Non-destructive version of <a href="Array.html#method-i-shuffle_kfy-21"><code>shuffle_kfy!</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="shuffle_kfy-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 50</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_kfy</span>
-  <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">shuffle_kfy!</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/shuffle.rb</span>
+<span class="line-num">50</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_kfy</span>
+<span class="line-num">51</span>   <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">shuffle_kfy!</span>
+<span class="line-num">52</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -952,22 +940,21 @@ href="Array.html#method-i-shuffle_kfy-21">shuffle_kfy!</a>.</p>
 
         <div class="method-description">
           
-          <p>Shuffles <em>array</em> in random order using the Knuth-Fisher-Yates
-algorithm.</p>
+          <p>Shuffles <em>array</em> in random order using the Knuth-Fisher-Yates algorithm.</p>
           
           
 
           
           <div class="method-source-code" id="shuffle_kfy-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_kfy!</span>
-  (<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">downto</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">n</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
-    <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>]
-  }
-
-  <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/shuffle.rb</span>
+<span class="line-num">79</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_kfy!</span>
+<span class="line-num">80</span>   (<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">downto</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+<span class="line-num">81</span>     <span class="ruby-identifier">n</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+<span class="line-num">82</span>     <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>]
+<span class="line-num">83</span>   }
+<span class="line-num">84</span> 
+<span class="line-num">85</span>   <span class="ruby-keyword">self</span>
+<span class="line-num">86</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -994,17 +981,16 @@ algorithm.</p>
 
         <div class="method-description">
           
-          <p>Non-destructive version of <a
-href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
+          <p>Non-destructive version of <a href="Array.html#method-i-shuffle_knuth-21"><code>shuffle_knuth!</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="shuffle_knuth-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_knuth</span>
-  <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">shuffle_knuth!</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/shuffle.rb</span>
+<span class="line-num">42</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_knuth</span>
+<span class="line-num">43</span>   <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">shuffle_knuth!</span>
+<span class="line-num">44</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -1037,15 +1023,15 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
 
           
           <div class="method-source-code" id="shuffle_knuth-21-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/shuffle.rb, line 66</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_knuth!</span>
-  <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">n</span> = <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">i</span>)
-    <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>] = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>]
-  }
-
-  <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/shuffle.rb</span>
+<span class="line-num">66</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shuffle_knuth!</span>
+<span class="line-num">67</span>   <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+<span class="line-num">68</span>     <span class="ruby-identifier">n</span> = <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">i</span>)
+<span class="line-num">69</span>     <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>] = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">n</span>], <span class="ruby-keyword">self</span>[<span class="ruby-identifier">i</span>]
+<span class="line-num">70</span>   }
+<span class="line-num">71</span> 
+<span class="line-num">72</span>   <span class="ruby-keyword">self</span>
+<span class="line-num">73</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -1075,10 +1061,10 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
 
           
           <div class="method-source-code" id="sort_by_dotted_decimal-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/dotted_decimal.rb, line 55</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sort_by_dotted_decimal</span>
-  <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;.&#39;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">to_i</span> } }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/dotted_decimal.rb</span>
+<span class="line-num">55</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sort_by_dotted_decimal</span>
+<span class="line-num">56</span>   <span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;.&#39;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">to_i</span> } }
+<span class="line-num">57</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -1111,10 +1097,10 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
 
           
           <div class="method-source-code" id="strictly_ascending-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 60</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">strictly_ascending?</span>
-  <span class="ruby-identifier">ascending?</span>(<span class="ruby-keyword">true</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/monotone.rb</span>
+<span class="line-num">60</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">strictly_ascending?</span>
+<span class="line-num">61</span>   <span class="ruby-identifier">ascending?</span>(<span class="ruby-keyword">true</span>)
+<span class="line-num">62</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -1179,10 +1165,10 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
 
           
           <div class="method-source-code" id="strictly_descending-3F-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/monotone.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">strictly_descending?</span>
-  <span class="ruby-identifier">descending?</span>(<span class="ruby-keyword">true</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/monotone.rb</span>
+<span class="line-num">78</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">strictly_descending?</span>
+<span class="line-num">79</span>   <span class="ruby-identifier">descending?</span>(<span class="ruby-keyword">true</span>)
+<span class="line-num">80</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -1283,10 +1269,7 @@ href="Array.html#method-i-shuffle_knuth-21">shuffle_knuth!</a>.</p>
 
         <div class="method-description">
           
-          <p>If neither <code>value</code> nor block is given, converts <em>array</em>,
-taken as an array of key/value pairs, into a hash, preserving sub-arrays
-(Thus: <code>hash.to_a.to_h == hash</code>). Otherwise, maps each element
-of <em>array</em> to <code>value</code> or the result of the block.</p>
+          <p>If neither <code>value</code> nor block is given, converts <em>array</em>, taken as an array of key/value pairs, into a hash, preserving sub-arrays (Thus: <code>hash.to_a.to_h == hash</code>). Otherwise, maps each element of <em>array</em> to <code>value</code> or the result of the block.</p>
 
 <p>Examples:</p>
 
@@ -1300,22 +1283,22 @@ of <em>array</em> to <code>value</code> or the result of the block.</p>
 
           
           <div class="method-source-code" id="to_hash-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/array/to_hash.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_hash</span>(<span class="ruby-identifier">value</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>)
-  <span class="ruby-identifier">hash</span> = {}
-
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;both block and value argument given&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
-
-    <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">element</span>] = <span class="ruby-keyword">yield</span> <span class="ruby-identifier">element</span> }
-  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">default</span>
-    <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">element</span>] = <span class="ruby-identifier">value</span> }
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">flatten_once</span>]
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">hash</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/array/to_hash.rb</span>
+<span class="line-num">46</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_hash</span>(<span class="ruby-identifier">value</span> = <span class="ruby-identifier">default</span> = <span class="ruby-keyword">true</span>)
+<span class="line-num">47</span>   <span class="ruby-identifier">hash</span> = {}
+<span class="line-num">48</span> 
+<span class="line-num">49</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+<span class="line-num">50</span>     <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;both block and value argument given&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">default</span>
+<span class="line-num">51</span> 
+<span class="line-num">52</span>     <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">element</span>] = <span class="ruby-keyword">yield</span> <span class="ruby-identifier">element</span> }
+<span class="line-num">53</span>   <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">default</span>
+<span class="line-num">54</span>     <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">element</span>] = <span class="ruby-identifier">value</span> }
+<span class="line-num">55</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">56</span>     <span class="ruby-keyword">return</span> <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">flatten_once</span>]
+<span class="line-num">57</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">58</span> 
+<span class="line-num">59</span>   <span class="ruby-identifier">hash</span>
+<span class="line-num">60</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -1333,12 +1316,13 @@ of <em>array</em> to <code>value</code> or the result of the block.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

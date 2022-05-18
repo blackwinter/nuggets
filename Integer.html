@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Integer - nuggets Application documentation (v1.6.0)</title>
+<title>class Integer - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -220,17 +224,16 @@
 
         <div class="method-description">
           
-          <p>Calculate the factorial of <em>int</em>. To use the memoized version:
-<code>Integer.send(:alias_method, :factorial, :factorial_memoized)</code></p>
+          <p>Calculate the factorial of <em>int</em>. To use the memoized version: <code>Integer.send(:alias_method, :factorial, :factorial_memoized)</code></p>
           
           
 
           
           <div class="method-source-code" id="factorial-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/integer/factorial.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">factorial</span>
-  (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword">self</span>).<span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">i</span> }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/integer/factorial.rb</span>
+<span class="line-num">37</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">factorial</span>
+<span class="line-num">38</span>   (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword">self</span>).<span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">i</span> }
+<span class="line-num">39</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -261,21 +264,18 @@
 
         <div class="method-description">
           
-          <p>Calculate the factorial of <em>int</em> with the help of memoization (Which
-gives a considerable speedup for repeated calculations – at the cost of
-memory).</p>
+          <p>Calculate the factorial of <em>int</em> with the help of memoization (Which gives a considerable speedup for repeated calculations – at the cost of memory).</p>
 
-<p>WARNING: Don&#39;t try to calculate the factorial this way for “large”
-integers! This might well bring your system down to its knees… ;-)</p>
+<p>WARNING: Don&#39;t try to calculate the factorial this way for “large” integers! This might well bring your system down to its knees… ;-)</p>
           
           
 
           
           <div class="method-source-code" id="factorial_memoized-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/integer/factorial.rb, line 49</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">factorial_memoized</span>
-  <span class="ruby-constant">FACTORIAL</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">||=</span> (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword">self</span>).<span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-constant">FACTORIAL</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">i</span> }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/integer/factorial.rb</span>
+<span class="line-num">49</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">factorial_memoized</span>
+<span class="line-num">50</span>   <span class="ruby-constant">FACTORIAL</span>[<span class="ruby-keyword">self</span>] <span class="ruby-operator">||=</span> (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword">self</span>).<span class="ruby-identifier">inject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-constant">FACTORIAL</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">i</span> }
+<span class="line-num">51</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -309,17 +309,16 @@ integers! This might well bring your system down to its knees… ;-)</p>
 
         <div class="method-description">
           
-          <p>Returns <em>int</em> as binary number string; optionally zero-padded to
-<code>length</code>.</p>
+          <p>Returns <em>int</em> as binary number string; optionally zero-padded to <code>length</code>.</p>
           
           
 
           
           <div class="method-source-code" id="to_binary_s-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/integer/to_binary_s.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_binary_s</span>(<span class="ruby-identifier">length</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-node">&quot;%0#{length}d&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-value">2</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/integer/to_binary_s.rb</span>
+<span class="line-num">34</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_binary_s</span>(<span class="ruby-identifier">length</span> = <span class="ruby-keyword">nil</span>)
+<span class="line-num">35</span>   <span class="ruby-node">&quot;%0#{length}d&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-value">2</span>)
+<span class="line-num">36</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -352,10 +351,10 @@ integers! This might well bring your system down to its knees… ;-)</p>
 
           
           <div class="method-source-code" id="to_dotted_decimal-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/dotted_decimal.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_dotted_decimal</span>
-  <span class="ruby-identifier">to_binary_s</span>(<span class="ruby-value">32</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&#39;a8&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">2</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;.&#39;</span>)
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/dotted_decimal.rb</span>
+<span class="line-num">35</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_dotted_decimal</span>
+<span class="line-num">36</span>   <span class="ruby-identifier">to_binary_s</span>(<span class="ruby-value">32</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&#39;a8&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">2</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;.&#39;</span>)
+<span class="line-num">37</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -369,12 +368,13 @@ integers! This might well bring your system down to its knees… ;-)</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

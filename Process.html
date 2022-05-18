@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Process - nuggets Application documentation (v1.6.0)</title>
+<title>module Process - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -119,12 +123,12 @@
 
           
           <div class="method-source-code" id="interact_ruby-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 56</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier ruby-title">interact_ruby</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">ruby</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">o</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
-    <span class="ruby-operator">::</span><span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-identifier">input</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">i</span> }, { <span class="ruby-identifier">o</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">$stdout</span>, <span class="ruby-identifier">e</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">$stderr</span> })
-  }
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/ruby.rb</span>
+<span class="line-num">56</span> <span class="ruby-keyword">def</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier ruby-title">interact_ruby</span>(<span class="ruby-identifier">input</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">57</span>   <span class="ruby-identifier">ruby</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">o</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+<span class="line-num">58</span>     <span class="ruby-operator">::</span><span class="ruby-constant">IO</span>.<span class="ruby-identifier">interact</span>({ <span class="ruby-identifier">input</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">i</span> }, { <span class="ruby-identifier">o</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">$stdout</span>, <span class="ruby-identifier">e</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">$stderr</span> })
+<span class="line-num">59</span>   }
+<span class="line-num">60</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -154,11 +158,11 @@
 
           
           <div class="method-source-code" id="ruby-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/ruby.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier ruby-title">ruby</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">argv</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Ruby</span>.<span class="ruby-identifier">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>)
-  <span class="ruby-operator">::</span><span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen4</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">argv</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>); <span class="ruby-identifier">$?</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/ruby.rb</span>
+<span class="line-num">41</span> <span class="ruby-keyword">def</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier ruby-title">ruby</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">42</span>   <span class="ruby-identifier">argv</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Nuggets</span><span class="ruby-operator">::</span><span class="ruby-constant">Ruby</span>.<span class="ruby-identifier">ruby_options_to_argv</span>(<span class="ruby-identifier">args</span>)
+<span class="line-num">43</span>   <span class="ruby-operator">::</span><span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen4</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">argv</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>); <span class="ruby-identifier">$?</span>
+<span class="line-num">44</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -172,12 +176,13 @@
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

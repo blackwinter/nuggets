@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::File::OpenFileMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::File::OpenFileMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -121,48 +125,42 @@
 
         <div class="method-description">
           
-          <p>Supported options are <code>mode</code> (defaults to <code>r</code>) and
-<code>encoding</code> (defaults to the default external encoding).</p>
+          <p>Supported options are <code>mode</code> (defaults to <code>r</code>) and <code>encoding</code> (defaults to the default external encoding).</p>
 
-<p>If <code>filename</code> is <code>-</code>, sets <code>io</code> to
-<code>STDOUT</code> when in write mode or <code>STDIN</code> otherwise.
-Puts <code>io</code> into binary mode if requested. Sets
-<code>io</code>&#39;s encoding.</p>
+<p>If <code>filename</code> is <code>-</code>, sets <code>io</code> to <code>STDOUT</code> when in write mode or <code>STDIN</code> otherwise. Puts <code>io</code> into binary mode if requested. Sets <code>io</code>&#39;s encoding.</p>
 
-<p>If <code>filename</code> ends with <code>.gz</code> or <code>.gzip</code>,
-uses Zlib for reading or writing the file.</p>
+<p>If <code>filename</code> ends with <code>.gz</code> or <code>.gzip</code>, uses Zlib for reading or writing the file.</p>
 
 <p>Otherwise defers to ::open.</p>
 
-<p>Yields <code>io</code> to the given block or returns it when no block
-given.</p>
+<p>Yields <code>io</code> to the given block or returns it when no block given.</p>
           
           
 
           
           <div class="method-source-code" id="open_file-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/file/open_file_mixin.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">open_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">mode</span> = <span class="ruby-string">&#39;r&#39;</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:mode</span>, <span class="ruby-identifier">mode</span>); <span class="ruby-identifier">writing</span> = <span class="ruby-identifier">mode</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/w/</span>
-
-  <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:encoding</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Encoding</span>.<span class="ruby-identifier">default_external</span>)
-
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">filename</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;-&#39;</span>
-      <span class="ruby-identifier">io</span> = <span class="ruby-identifier">writing</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">$stdout</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">$stdin</span>
-      <span class="ruby-identifier">io</span>.<span class="ruby-identifier">binmode</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">mode</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/b/</span>
-      <span class="ruby-identifier">io</span>.<span class="ruby-identifier">set_encoding</span>(<span class="ruby-identifier">encoding</span>)
-
-      <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">io</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">io</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/\.gz(?:ip)?\z/i</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;zlib&#39;</span>
-
-      <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">writing</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>
-      <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-value">encoding:</span> <span class="ruby-identifier">encoding</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-value">encoding:</span> <span class="ruby-identifier">encoding</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/file/open_file_mixin.rb</span>
+<span class="line-num">47</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">open_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">mode</span> = <span class="ruby-string">&#39;r&#39;</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">48</span>   <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:mode</span>, <span class="ruby-identifier">mode</span>); <span class="ruby-identifier">writing</span> = <span class="ruby-identifier">mode</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/w/</span>
+<span class="line-num">49</span> 
+<span class="line-num">50</span>   <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:encoding</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Encoding</span>.<span class="ruby-identifier">default_external</span>)
+<span class="line-num">51</span> 
+<span class="line-num">52</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">filename</span>
+<span class="line-num">53</span>     <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;-&#39;</span>
+<span class="line-num">54</span>       <span class="ruby-identifier">io</span> = <span class="ruby-identifier">writing</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">$stdout</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">$stdin</span>
+<span class="line-num">55</span>       <span class="ruby-identifier">io</span>.<span class="ruby-identifier">binmode</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">mode</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/b/</span>
+<span class="line-num">56</span>       <span class="ruby-identifier">io</span>.<span class="ruby-identifier">set_encoding</span>(<span class="ruby-identifier">encoding</span>)
+<span class="line-num">57</span> 
+<span class="line-num">58</span>       <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>[<span class="ruby-identifier">io</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">io</span>
+<span class="line-num">59</span>     <span class="ruby-keyword">when</span> <span class="ruby-regexp">/\.gz(?:ip)?\z/i</span>
+<span class="line-num">60</span>       <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;zlib&#39;</span>
+<span class="line-num">61</span> 
+<span class="line-num">62</span>       <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">writing</span> <span class="ruby-operator">?</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span> <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>
+<span class="line-num">63</span>       <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-value">encoding:</span> <span class="ruby-identifier">encoding</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">64</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">65</span>       <span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-value">encoding:</span> <span class="ruby-identifier">encoding</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">66</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">67</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -176,12 +174,13 @@ given.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

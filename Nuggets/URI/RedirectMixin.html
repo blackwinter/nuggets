@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module Nuggets::URI::RedirectMixin - nuggets Application documentation (v1.6.0)</title>
+<title>module Nuggets::URI::RedirectMixin - nuggets Application documentation (v1.6.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/darkfish.js"></script>
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
 
 <link href="../../css/fonts.css" rel="stylesheet">
 <link href="../../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -137,40 +141,34 @@
 
         <div class="method-description">
           
-          <p>Performs any HTTP request on <code>uri</code> while following at most
-<code>steps</code> redirects. Accepts both strings and <a
-href="../URI.html">URI</a> objects for <code>uri</code>. Defers to the
-given block to perform the actual request; yields the request object and
-the request <a href="../URI.html">URI</a> string.</p>
+          <p>Performs any HTTP request on <code>uri</code> while following at most <code>steps</code> redirects. Accepts both strings and <a href="../URI.html"><code>URI</code></a> objects for <code>uri</code>. Defers to the given block to perform the actual request; yields the request object and the request <a href="../URI.html"><code>URI</code></a> string.</p>
 
-<p>Returns the response object if successful, or <code>nil</code> if
-<code>uri</code> is not an HTTP <a href="../URI.html">URI</a>, the redirect
-limit has been exceeded, or any connection error occurs.</p>
+<p>Returns the response object if successful, or <code>nil</code> if <code>uri</code> is not an HTTP <a href="../URI.html"><code>URI</code></a>, the redirect limit has been exceeded, or any connection error occurs.</p>
           
           
 
           
           <div class="method-source-code" id="follow_redirect-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 49</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>, <span class="ruby-identifier">cache</span> = <span class="ruby-constant">URI_REDIRECT_HTTP_CACHE</span>)
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
-    <span class="ruby-identifier">uri</span> = <span class="ruby-operator">::</span><span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>)
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">req</span> = <span class="ruby-identifier">cache</span>[[<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">port</span>]]
-  <span class="ruby-identifier">req</span>.<span class="ruby-identifier">use_ssl</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPS</span>)
-
-  <span class="ruby-identifier">ctx</span> = <span class="ruby-identifier">req</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:@ssl_context</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">use_ssl?</span>
-  <span class="ruby-identifier">ctx</span>.<span class="ruby-identifier">verify_mode</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_NONE</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ctx</span>
-
-  <span class="ruby-identifier">res</span> = <span class="ruby-keyword">yield</span> <span class="ruby-identifier">req</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">request_uri</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPRedirection</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">steps</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-
-  <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;Location&#39;</span>], <span class="ruby-identifier">steps</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">cache</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) }
-<span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">SocketError</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTUNREACH</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb</span>
+<span class="line-num">49</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>, <span class="ruby-identifier">cache</span> = <span class="ruby-constant">URI_REDIRECT_HTTP_CACHE</span>)
+<span class="line-num">50</span>   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
+<span class="line-num">51</span>     <span class="ruby-identifier">uri</span> = <span class="ruby-operator">::</span><span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>)
+<span class="line-num">52</span>     <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
+<span class="line-num">53</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">54</span> 
+<span class="line-num">55</span>   <span class="ruby-identifier">req</span> = <span class="ruby-identifier">cache</span>[[<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">port</span>]]
+<span class="line-num">56</span>   <span class="ruby-identifier">req</span>.<span class="ruby-identifier">use_ssl</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPS</span>)
+<span class="line-num">57</span> 
+<span class="line-num">58</span>   <span class="ruby-identifier">ctx</span> = <span class="ruby-identifier">req</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:@ssl_context</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">use_ssl?</span>
+<span class="line-num">59</span>   <span class="ruby-identifier">ctx</span>.<span class="ruby-identifier">verify_mode</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_NONE</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ctx</span>
+<span class="line-num">60</span> 
+<span class="line-num">61</span>   <span class="ruby-identifier">res</span> = <span class="ruby-keyword">yield</span> <span class="ruby-identifier">req</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">request_uri</span>
+<span class="line-num">62</span>   <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPRedirection</span>)
+<span class="line-num">63</span>   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">steps</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+<span class="line-num">64</span> 
+<span class="line-num">65</span>   <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;Location&#39;</span>], <span class="ruby-identifier">steps</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">cache</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>) }
+<span class="line-num">66</span> <span class="ruby-keyword">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">SocketError</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTUNREACH</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
+<span class="line-num">67</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -204,24 +202,19 @@ limit has been exceeded, or any connection error occurs.</p>
 
         <div class="method-description">
           
-          <p>Performs a <code>GET</code> request on <code>uri</code> while following at
-most <code>steps</code> redirects. If successful, yields the response to
-the given block and returns its return value, or the response itself if no
-block was given. Returns <code>nil</code> in case of failure.</p>
+          <p>Performs a <code>GET</code> request on <code>uri</code> while following at most <code>steps</code> redirects. If successful, yields the response to the given block and returns its return value, or the response itself if no block was given. Returns <code>nil</code> in case of failure.</p>
 
-<p>See <a
-href="RedirectMixin.html#method-i-follow_redirect">#follow_redirect</a> for
-more information.</p>
+<p>See <a href="RedirectMixin.html#method-i-follow_redirect"><code>Nuggets::URI::RedirectMixin#follow_redirect</code></a> for more information.</p>
           
           
 
           
           <div class="method-source-code" id="get_redirect-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 94</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
-  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">path</span>) }
-  <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb</span>
+<span class="line-num">94</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
+<span class="line-num">95</span>   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">path</span>) }
+<span class="line-num">96</span>   <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
+<span class="line-num">97</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -255,24 +248,19 @@ more information.</p>
 
         <div class="method-description">
           
-          <p>Performs a <code>HEAD</code> request on <code>uri</code> while following at
-most <code>steps</code> redirects. If successful, yields the response to
-the given block and returns its return value, or the response itself if no
-block was given. Returns <code>nil</code> in case of failure.</p>
+          <p>Performs a <code>HEAD</code> request on <code>uri</code> while following at most <code>steps</code> redirects. If successful, yields the response to the given block and returns its return value, or the response itself if no block was given. Returns <code>nil</code> in case of failure.</p>
 
-<p>See <a
-href="RedirectMixin.html#method-i-follow_redirect">#follow_redirect</a> for
-more information.</p>
+<p>See <a href="RedirectMixin.html#method-i-follow_redirect"><code>Nuggets::URI::RedirectMixin#follow_redirect</code></a> for more information.</p>
           
           
 
           
           <div class="method-source-code" id="head_redirect-source">
-            <pre><span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">head_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
-  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">head</span>(<span class="ruby-identifier">path</span>) }
-  <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre>   <span class="ruby-comment"># File lib/nuggets/uri/redirect_mixin.rb</span>
+<span class="line-num">79</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">head_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span> = <span class="ruby-constant">URI_REDIRECT_MAX_STEPS</span>)
+<span class="line-num">80</span>   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">follow_redirect</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">steps</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">req</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">req</span>.<span class="ruby-identifier">head</span>(<span class="ruby-identifier">path</span>) }
+<span class="line-num">81</span>   <span class="ruby-identifier">res</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">res</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
+<span class="line-num">82</span> <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -286,12 +274,13 @@ more information.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

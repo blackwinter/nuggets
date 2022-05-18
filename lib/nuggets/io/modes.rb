@@ -38,8 +38,8 @@ class IO
     #
     # Opens +name+ with mode +r+. NOTE: With no associated block,
     # acts like the original IO::read, not like IO::new.
-    def read(name, *args)
-      return _nuggets_original_read(name, *args) unless block_given?
+    def read(name, *args, **opts, &block)
+      return _nuggets_original_read(name, *args, **opts) unless block_given?
 
       case args.size
         when 0
@@ -55,7 +55,7 @@ class IO
           raise ::ArgumentError, "wrong number of arguments (#{args.size + 1} for 1-2)"
       end
 
-      open_with_mode(name, 'r', binary, &::Proc.new)
+      open_with_mode(name, 'r', binary, &block)
     end
 
     # call-seq:
@@ -63,8 +63,8 @@ class IO
     #   IO.write(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode +w+.
-    def write(name, binary = false)
-      open_with_mode(name, 'w', binary, &block_given? ? ::Proc.new : nil)
+    def write(name, binary = false, &block)
+      open_with_mode(name, 'w', binary, &block)
     end
 
     # call-seq:
@@ -72,8 +72,8 @@ class IO
     #   IO.append(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode +a+.
-    def append(name, binary = false)
-      open_with_mode(name, 'a', binary, &block_given? ? ::Proc.new : nil)
+    def append(name, binary = false, &block)
+      open_with_mode(name, 'a', binary, &block)
     end
 
     # call-seq:
@@ -81,8 +81,8 @@ class IO
     #   IO.read_write(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>r+</tt>.
-    def read_write(name, binary = false)
-      open_with_mode(name, 'r+', binary, &block_given? ? ::Proc.new : nil)
+    def read_write(name, binary = false, &block)
+      open_with_mode(name, 'r+', binary, &block)
     end
 
     # call-seq:
@@ -90,8 +90,8 @@ class IO
     #   IO.write_read(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>w+</tt>.
-    def write_read(name, binary = false)
-      open_with_mode(name, 'w+', binary, &block_given? ? ::Proc.new : nil)
+    def write_read(name, binary = false, &block)
+      open_with_mode(name, 'w+', binary, &block)
     end
 
     # call-seq:
@@ -99,15 +99,15 @@ class IO
     #   IO.append_read(name[, binary]) { |io| ... } => anObject
     #
     # Opens +name+ with mode <tt>a+</tt>.
-    def append_read(name, binary = false)
-      open_with_mode(name, 'a+', binary, &block_given? ? ::Proc.new : nil)
+    def append_read(name, binary = false, &block)
+      open_with_mode(name, 'a+', binary, &block)
     end
 
     private
 
     # Just a helper to DRY things up.
-    def open_with_mode(name, mode, binary = false)
-      open(name, "#{mode}#{'b' if binary}", &block_given? ? ::Proc.new : nil)
+    def open_with_mode(name, mode, binary = false, &block)
+      open(name, "#{mode}#{'b' if binary}", &block)
     end
 
   end

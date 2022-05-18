@@ -49,11 +49,11 @@ module Nuggets
   #   hash[:foo][:bar][:b] = { x: 0, y: 3 }
   #   hash
   #   #=> {:foo=>{:bar=>{:b=>{:y=>3, :x=>0}, :a=>{:y=>2, :x=>1}}}}
-  def nest(depth = 0, value = default = true)
+  def nest(depth = 0, value = default = true, &block)
     if depth.zero?
       if default
         if block_given?
-          new { |hash, key| hash[key] = yield(key) }
+          new { |hash, key| hash[key] = block[key] }
         else
           new { |hash, key| hash[key] = hash.default }
         end
@@ -62,11 +62,7 @@ module Nuggets
       end
     else
       if default
-        if block_given?
-          new { |hash, key| hash[key] = nest(depth - 1, &::Proc.new) }
-        else
-          new { |hash, key| hash[key] = nest(depth - 1) }
-        end
+        new { |hash, key| hash[key] = nest(depth - 1, &block) }
       else
         new { |hash, key| hash[key] = nest(depth - 1, value) }
       end

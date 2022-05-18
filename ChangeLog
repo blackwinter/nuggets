@@ -2,6 +2,10 @@
 
 = Revision history for nuggets
 
+== 1.6.1 [2022-05-18]
+
+* Ruby 3.1 compatibility.
+
 == 1.6.0 [2018-07-12]
 
 * Added <tt>JSON.*_{multi,canonical}</tt>.

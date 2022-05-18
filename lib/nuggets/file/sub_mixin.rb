@@ -39,9 +39,9 @@ module Nuggets
   #
   # Calls String#sub! on file +name+'s contents with +args+ and (optional)
   # +block+ and returns the new content.
-  def sub(name, *args)
+  def sub(name, *args, &block)
     content = read(name)
-    content.sub!(*args, &block_given? ? ::Proc.new : nil)
+    content.sub!(*args, &block)
     content
   end
 
@@ -51,11 +51,11 @@ module Nuggets
   # Calls String#sub! on file +name+'s contents with +args+ and (optional)
   # +block+ and replaces the file with the new content. Returns the result
   # of the String#sub! call.
-  def sub!(name, *args)
+  def sub!(name, *args, &block)
     res = nil
 
     replace(name) { |content|
-      res = content.sub!(*args, &block_given? ? ::Proc.new : nil)
+      res = content.sub!(*args, &block)
       content
     }
 
@@ -67,9 +67,9 @@ module Nuggets
   #
   # Calls String#gsub! on file +name+'s contents with +args+ and (optional)
   # +block+ and returns the new content.
-  def gsub(name, *args)
+  def gsub(name, *args, &block)
     content = read(name)
-    content.gsub!(*args, &block_given? ? ::Proc.new : nil)
+    content.gsub!(*args, &block)
     content
   end
 
@@ -79,11 +79,11 @@ module Nuggets
   # Calls String#gsub! on file +name+'s contents with +args+ and (optional)
   # +block+ and replaces the file with the new content. Returns the result
   # of the String#gsub! call.
-  def gsub!(name, *args)
+  def gsub!(name, *args, &block)
     res = nil
 
     replace(name) { |content|
-      res = content.gsub!(*args, &block_given? ? ::Proc.new : nil)
+      res = content.gsub!(*args, &block)
       content
     }
 
